@@ -1,0 +1,164 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sb_blog_post_rC3Eff": {
+      "type": "sb-blog-post",
+      "blocks": {
+        "static-blog-post": {
+          "type": "_blog-post",
+          "static": true,
+          "settings": {
+            "show_author": true,
+            "show_reviewer": true,
+            "reviewer_src": "{{ closest.article.metafields.custom.review_by.value }}"
+          },
+          "blocks": {}
+        },
+        "static-blog-author": {
+          "type": "_blog-author",
+          "static": true,
+          "settings": {
+            "use_author_details": true,
+            "source": "about-first-lastname",
+            "link_text": "View All Articles",
+            "padding_top": 56,
+            "padding_bottom": 0,
+            "fg_color": "#111314",
+            "bg_color": "#ffffff",
+            "ch_bg_color": "#F8F9FB"
+          },
+          "blocks": {}
+        },
+        "static-blog-featured-product": {
+          "type": "_blog-featured-product",
+          "static": true,
+          "settings": {
+            "heading": "Featured Product",
+            "use_default_product": true,
+            "dynamic_product": "{{ closest.article.metafields.custom.article_on_product.value }}",
+            "default_product": "creatine-hmb",
+            "fg_color": "#111314",
+            "bg_color": "linear-gradient(180deg, rgba(255, 255, 255, 1) 100%, rgba(168, 255, 251, 1) 100%)",
+            "accent_color": "#1b73b3",
+            "ch_fg_color": "#111314",
+            "ch_bg_color": "linear-gradient(180deg, rgba(248, 249, 251, 1) 100%, rgba(221, 39, 57, 1) 100%)",
+            "padding_top": 56,
+            "padding_bottom": 56
+          },
+          "blocks": {}
+        },
+        "static-blog-trending-posts": {
+          "type": "_trending_posts",
+          "static": true,
+          "settings": {
+            "heading": "What’s Trending",
+            "fg_color": "#000000",
+            "bg_color": "linear-gradient(180deg, rgba(248, 249, 251, 1) 100%, rgba(249, 32, 32, 1) 100%)",
+            "ch_fg_color": "#ffffff",
+            "ch_bg_color": "linear-gradient(360deg, rgba(255, 255, 255, 1) 49%, rgba(255, 255, 255, 1) 100%)",
+            "padding_top": 58,
+            "padding_bottom": 100
+          },
+          "blocks": {
+            "trending_post_W8T8cL": {
+              "type": "_trending_post",
+              "name": "Trending Post",
+              "settings": {
+                "article": "all/protein-powder-weight-gain"
+              },
+              "blocks": {}
+            },
+            "trending_post_pMKYFW": {
+              "type": "_trending_post",
+              "name": "Trending Post",
+              "settings": {
+                "article": "all/protein-powder-weight-gain"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "trending_post_W8T8cL",
+            "trending_post_pMKYFW"
+          ]
+        },
+        "static-mini-newsletter": {
+          "type": "_mini_newsletter",
+          "static": true,
+          "settings": {
+            "heading": "Stay Informed",
+            "subheading": "Sign up for our weekly guide to better health.",
+            "success_message": "",
+            "timeout": 3,
+            "sticky_on_mobile": true,
+            "dismissable": true,
+            "padding_top": 16,
+            "padding_bottom": 16,
+            "fg_color": "#ffffff",
+            "fg_copy_color": "#f8f9fb",
+            "bg_color": "linear-gradient(360deg, rgba(23, 52, 70, 1), rgba(23, 52, 70, 1) 100%)",
+            "accent_color": "#111314"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "SB Blog Post",
+      "settings": {
+        "fg_color": "#111314",
+        "bg_color": "",
+        "header_bg_color": "linear-gradient(360deg, rgba(248, 249, 251, 1) 100%, rgba(250, 13, 253, 1) 100%)",
+        "accent_color": "#334fb4",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "adapt"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": false
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "featured_image",
+        "title",
+        "share",
+        "content"
+      ],
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "sb_blog_post_rC3Eff",
+    "main"
+  ]
+}

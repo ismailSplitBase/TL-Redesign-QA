@@ -1,0 +1,41 @@
+<custom-accordion>
+  <div class="bg-white rounded-xl text-blue-500">
+    <button
+      aria-controls="faq-{{ id }}"
+      class="border-2 border-transparent flex items-center justify-between p-4 rounded-xl text-left transition-all w-full hover:border-blue-400 hover:opacity-70"
+      type="button"
+    >
+      <div class="flex items-center">
+        <div class="bg-orange-400 bg-opacity-20 font-semibold py-2 rounded-md text-center text-orange-400 w-8">
+          Q.
+        </div>
+        <div class="flex-1 mx-3 text-sm sm:text-base">
+          {{ question }}
+        </div>
+      </div>
+
+      <div class="plus-icon text-blue-400 transition-transform">
+        {% render 'old-icon-plus' %}
+      </div>
+
+    </button>
+
+    <div
+      aria-labelled-by="faq-{{ id }}"
+      class="max-h-0 overflow-hidden text-sm"
+      role="region"
+    >
+      <div class="p-4">
+        <div class="flex h-full">
+          <div class="bg-blue-400 bg-opacity-20 font-semibold mr-3 py-2 rounded-md text-blue-400 text-center w-8">
+            A.
+          </div>
+
+          <div class="flex-1 font-semibold">
+            {{ answer }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</custom-accordion>

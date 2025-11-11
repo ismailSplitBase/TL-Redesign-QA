@@ -1,0 +1,274 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-article-404-page": {
+      "type": "old-main-article-404-page",
+      "settings": {
+        "heading": "Page not found",
+        "subheading": "Maybe the URL isn’t correct or moved. Let’s try searching for what you are looking for.",
+        "image": "shopify://shop_images/Group_3.png",
+        "show_serchbox": true
+      }
+    },
+    "popular-article": {
+      "type": "old-popular-article",
+      "blocks": {
+        "213364a4-71a3-4082-9166-ebe02c367099": {
+          "type": "Popular_article",
+          "settings": {
+            "article": "all/best-pre-workout-for-beginners"
+          }
+        },
+        "01121744-96ff-475c-bfe0-9a6313e58cc4": {
+          "type": "Popular_article",
+          "settings": {
+            "article": "all/unilateral-training"
+          }
+        },
+        "d23484b4-716a-4ee2-9c9f-3891338fb3e7": {
+          "type": "Popular_article",
+          "settings": {
+            "article": "all/push-press-vs-overhead-press"
+          }
+        },
+        "e8ed45ae-786e-4af2-b75e-53970db72c7a": {
+          "type": "Popular_article",
+          "settings": {
+            "article": "all/concurrent-training-can-cardio-build-muscle"
+          }
+        }
+      },
+      "block_order": [
+        "213364a4-71a3-4082-9166-ebe02c367099",
+        "01121744-96ff-475c-bfe0-9a6313e58cc4",
+        "d23484b4-716a-4ee2-9c9f-3891338fb3e7",
+        "e8ed45ae-786e-4af2-b75e-53970db72c7a"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Popular article",
+        "hide_info": true,
+        "hnewstyle": false
+      }
+    },
+    "sb_featured_blog_YVnbrE": {
+      "type": "sb-featured-blog",
+      "blocks": {
+        "static-blog-card": {
+          "type": "_blog-card",
+          "static": true,
+          "settings": {
+            "show_blog_title": true,
+            "fg_color": "",
+            "bg_color": ""
+          },
+          "blocks": {}
+        },
+        "static-slider": {
+          "type": "_slider",
+          "static": true,
+          "settings": {
+            "slides_per_view": 1,
+            "space_between_slides": 10,
+            "centered_slides": false,
+            "show_pagination": "always",
+            "show_page_count": "always",
+            "loop": true,
+            "autorotate": false,
+            "autorotate_speed": 5,
+            "slides_offset": 16
+          },
+          "blocks": {
+            "slide_breakpoint_NR7NeA": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 768,
+                "slides_per_view": 2,
+                "space_between_slides": 10,
+                "slides_offset": 16
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_gAiDaU": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1024,
+                "slides_per_view": 4,
+                "space_between_slides": 14,
+                "slides_offset": 48
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_endfph": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1440,
+                "slides_per_view": 4,
+                "space_between_slides": 24,
+                "slides_offset": 64
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_breakpoint_NR7NeA",
+            "slide_breakpoint_gAiDaU",
+            "slide_breakpoint_endfph"
+          ]
+        }
+      },
+      "name": "SB Featured Blog Posts",
+      "settings": {
+        "heading": "Popular Articles",
+        "link_text": "View More",
+        "featured_blog": "all",
+        "max_articles": 4,
+        "fg_color": "",
+        "bg_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "Popular-products": {
+      "type": "old-Popular-products",
+      "blocks": {
+        "18cfadfb-d16f-407a-922e-9612e18aa447": {
+          "type": "Popular_products",
+          "settings": {
+            "product": "hydrate"
+          }
+        },
+        "5a1aa0a5-ab78-4fbb-8c90-6eee72c09502": {
+          "type": "Popular_products",
+          "settings": {
+            "product": "intra-workout"
+          }
+        },
+        "49a01bcb-d3ff-4f94-8225-96b0114bd73d": {
+          "type": "Popular_products",
+          "settings": {
+            "product": "post-workout"
+          }
+        },
+        "2273e211-d2df-46a3-a95c-566f5f51cb6d": {
+          "type": "Popular_products",
+          "settings": {
+            "product": "casein-protein"
+          }
+        }
+      },
+      "block_order": [
+        "18cfadfb-d16f-407a-922e-9612e18aa447",
+        "5a1aa0a5-ab78-4fbb-8c90-6eee72c09502",
+        "49a01bcb-d3ff-4f94-8225-96b0114bd73d",
+        "2273e211-d2df-46a3-a95c-566f5f51cb6d"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Popular products"
+      }
+    },
+    "main": {
+      "type": "main-404",
+      "disabled": true,
+      "settings": {}
+    },
+    "sb_tabbed_collections_eNfkYm": {
+      "type": "sb-tabbed-collections",
+      "blocks": {
+        "static-slider": {
+          "type": "_slider",
+          "static": true,
+          "settings": {
+            "slides_per_view": 1,
+            "space_between_slides": 10,
+            "centered_slides": false,
+            "show_pagination": "always",
+            "show_page_count": "always",
+            "loop": true,
+            "autorotate": false,
+            "autorotate_speed": 5,
+            "slides_offset": 0
+          },
+          "blocks": {
+            "slide_breakpoint_aQ6PtC": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1024,
+                "slides_per_view": 4,
+                "space_between_slides": 10,
+                "slides_offset": 48
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_JUJkY3": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 768,
+                "slides_per_view": 2,
+                "space_between_slides": 10,
+                "slides_offset": 16
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_Dt4wB7": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1440,
+                "slides_per_view": 4,
+                "space_between_slides": 24,
+                "slides_offset": 64
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_breakpoint_aQ6PtC",
+            "slide_breakpoint_JUJkY3",
+            "slide_breakpoint_Dt4wB7"
+          ]
+        }
+      },
+      "name": "SB Tabbed Collections",
+      "settings": {
+        "heading": "Popular Products",
+        "link_text": "View More",
+        "collections": [
+          "bestsellers"
+        ],
+        "products_to_show": 5,
+        "disable_slider": false,
+        "fg_color": "#000000",
+        "bg_color": "#F8F9FB",
+        "accent_color": "",
+        "ch_fg_color": "",
+        "ch_bg_color": "#fff",
+        "ch_accent_color": "",
+        "padding_top": 44,
+        "padding_bottom": 44
+      }
+    }
+  },
+  "order": [
+    "main-article-404-page",
+    "popular-article",
+    "sb_featured_blog_YVnbrE",
+    "Popular-products",
+    "main",
+    "sb_tabbed_collections_eNfkYm"
+  ]
+}

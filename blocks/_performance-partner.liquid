@@ -1,0 +1,210 @@
+{%  stylesheet %}
+  .sb-partner-card {
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+    width: 100%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sb-partner-card__image {
+    height: 224px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    background-color: #eee;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sb-partner-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sb-partner-card__quote {
+    font-family: var(--sb-font-family-heading);
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 130%;
+    color: var(--sb-fg-color, #111314);
+    transition: all 0.3s ease;
+    letter-spacing: 0;
+  }
+
+  .sb-partner-card__partner-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .sb-partner-card__partner {
+    font-family: var(--sb-font-family-heading);
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 130%;
+    color: var(--sb-fg-color, #111314);
+    transition: all 0.3s ease;
+    letter-spacing: 0;
+  }
+
+  .sb-partner-card__partner-byline {
+    font-family: var(--sb-font-family-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: rgba(17, 19, 20, 0.8);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    letter-spacing: 0;
+  }
+
+  /* Active slide styles with enhanced animations */
+
+  .swiper-slide-active .sb-partner-card__image {
+    height: 302px;
+    transform: scaleX(1);
+  }
+
+  .swiper-slide-active .sb-partner-card__content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Non-active slides with smooth transitions */
+
+  .swiper-slide:not(.swiper-slide-active) .sb-partner-card__image {
+    height: 224px;
+    /* transform: scaleX(0.8); */
+    margin-bottom: 78px;
+  }
+
+  .swiper-slide:not(.swiper-slide-active) .sb-partner-card__content {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  /* Hover effects for better interactivity */
+  .sb-partner-card:hover {
+    cursor: grab;
+  }
+
+  .swiper-slide:not(.swiper-slide-active) .sb-partner-card:hover .sb-partner-card__image {
+    filter: brightness(1);
+  }
+
+  .sb-partners__slider .sb-pagination-wrapper {
+    margin-top: 15px;
+    padding: 0px var(--sb-padding-inline);
+  }
+
+  @media screen and (min-width: 750px) {
+    .sb-partner-card__quote {
+      font-size: 20px;
+    }
+
+    .sb-partner-card__partner {
+      font-size: 20px;
+    }
+  }
+
+  @media screen and (min-width: 1024px){
+    .sb-partners__slider .sb-pagination-wrapper {
+      margin-inline: auto var(--sb-padding-inline);
+    }
+  }
+
+  /* Animation for when slides change */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .swiper-slide-active .sb-partner-card__content {
+    animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+  }
+
+  @media screen and (min-width: 1440px) {
+    .sb-partners__slider .sb-pagination-wrapper {
+      margin-inline: auto var(--sb-padding-inline);
+      margin-right: calc((100vw - var(--page-width, 1420px)) / 2);
+    }
+  }
+{% endstylesheet %}
+{% capture  children %}
+  <div class="sb-partner-card">
+    {%  if block.settings.image != blank %}
+      {{ block.settings.image | image_url: width: 900  | image_tag: 
+        loading: 'lazy',
+        class: 'sb-partner-card__image',
+        height: block.settings.image.height,
+        alt: block.settings.image.alt | default: "Performance Partner Card Image"
+      }}
+    {% endif %}
+    <div class="sb-partner-card__content">
+      {% if block.settings.quote != blank %}
+        <div class="sb-partner-card__quote">
+          {{ block.settings.quote }}
+        </div>
+      {% endif %}
+      {%  if block.settings.partner != blank or block.settings.partner_byline != blank %}
+        <div class="sb-partner-card__partner-details">
+          {% if block.settings.partner != blank %}
+            <div class="sb-partner-card__partner">
+              {{ block.settings.partner }}
+            </div>
+          {% endif %}
+          {% if block.settings.partner_byline != blank %}
+            <div class="sb-partner-card__partner-byline">
+              {{ block.settings.partner_byline }}
+            </div>
+          {% endif %}
+        </div>
+      {%  endif %}      
+    </div>
+  </div>
+{% endcapture %}
+{% render 'swiper-slide', children: children %}
+
+{% schema %}
+{
+  "name": "Performance Partner Card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "partner",
+      "label": "Partner Name"
+    },
+    {
+      "type": "text",
+      "id": "partner_byline",
+      "label": "Partner Byline"
+    } 
+  ],
+  "presets": [
+    {
+      "name": "Performance Partner Card",
+    }
+  ]
+}
+{% endschema %}

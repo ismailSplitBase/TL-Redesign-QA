@@ -1,0 +1,1138 @@
+ <style>
+	 @font-face {
+	 font-family: aftika;
+	 src: url(https://cdn.shopify.com/s/files/1/0866/7664/t/140/assets/Aftika-Bold.otf);
+	}
+
+	@font-face {
+	 src: url(https://cdn.shopify.com/s/files/1/0866/7664/t/140/assets/Aftika-Regular.otf);
+	}
+	
+.TL_aff_content {
+max-width:1460px;
+margin:0 auto;
+overflow:hidden;
+}
+
+.TL_aff_hero {
+    display: flex;
+    min-height: 500px;
+    align-items: center;
+    justify-content: flex-start;
+    background: #212121a8;
+    padding: 50px 70px;
+    margin: 0 auto;
+/*     background-image: url(https://cdn.shopify.com/s/files/1/0866/7664/files/hero_affpdp.jpg?v=1660661970); */
+    background-image: url(https://cdn.shopify.com/s/files/1/0866/7664/files/Pauldoverheadt.png?v=1664550835);
+    background-size: cover;
+    background-position: 51% 16%;
+    position: relative;
+}
+
+.TL_aff_hero_inner {
+    max-width: 550px;
+    position: relative;
+    z-index: 2;
+    top: 32px;
+}
+
+.TL_aff_hero h1 {
+    font-size: 44px;
+    line-height: 46px;
+    color: #ffffff;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.TL_aff_hero p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+    margin-bottom: 32px;
+    margin-top: 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.TL_aff_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 32px;
+    gap: 16px;
+    background: #47B6E6;
+    border-radius: 4px;
+    color: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    max-width: 270px;
+    font-weight: 400;
+}
+
+.TL_aff_icon_cont {
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:50px 75px;
+background:#e5e9ed;
+color:#355c7e;
+font-size:14px;
+}
+
+.TL_aff_icon {
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:space-between;
+padding:15px 75px;
+color:#355c7e;
+font-size:14px;
+text-align:center;
+border-right:1px solid #385b8030;
+}
+
+.TL_aff_icon:last-of-type {
+border-right:0px;
+}
+
+.TL_aff_icon svg {
+width:50px;
+height:50px;
+margin-bottom:24px;
+fill:#142937;
+}
+
+.TL_aff_highlight {
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+color:#355c7e;
+font-size:14px;
+text-align:center;
+background: rgb(229,233,237);
+background: linear-gradient(180deg, rgba(229,233,237,1) 14%, rgba(255,255,255,1) 82%);
+padding:15px;
+}
+.TL_aff_content h2 {
+font-size:34px;
+text-align:center;
+font-weight:900;
+color:#132836;
+margin-bottom:50px;
+}
+
+.TL_aff_highlight_callouts {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+    padding-bottom: 35px;
+}
+
+ .ing_pop {
+    margin-bottom: 30px;
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+.TL_aff_highlight_callout {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.TL_aff_highlight_cols {
+    max-width: 30%;
+    text-align: end;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+.co_alt {
+    text-align: start;
+}
+
+.TL_aff_highlight_callouts h3 {
+    color: #132836;
+    font-size: 18px;
+    margin-bottom: 0px;
+    line-height: 1.1em;
+    text-transform: uppercase;
+}
+
+.TL_aff_highlight_callouts svg {
+    min-width:32px;
+    min-height:32px;
+    width:32px;
+    height:32px;
+    margin-left:16px;
+    fill:#142937;
+    margin:15px 25px;
+}
+
+.TL_aff_highlight_callout:after {
+    content:'';
+    width:90px;
+    height:2px;
+    background:#5aaadf;
+    position:absolute;
+    right: -75px;
+    top:30px;
+}
+
+
+.co_alt.TL_aff_highlight_callout:after  {
+    display:none;
+}
+
+.co_img.TL_aff_highlight_callout:after, .co_img.TL_aff_highlight_callout:before  {
+    display:none;
+}
+
+.co_alt.TL_aff_highlight_callout:before {
+    content:'';
+    width:90px;
+    height:2px;
+    background:#5aaadf;
+    position:absolute;
+    left: -75px;
+    top:30px;
+}
+
+.TL_aff_highlight_callouts p {
+    color: #385b80;
+    margin-top: 5px;
+    line-height: 16px;
+    font-size: 12px;
+}
+.co_img  {
+    padding-top:0px
+}
+
+.co_img img {
+    width: 300px;
+}
+
+#ShopNow {
+background:#f7f9fc;
+min-height:300px;
+padding:35px 0px;
+}
+
+.ShopNow_inner {
+max-width:700px;
+margin:0 auto;
+}
+
+.TL_aff_info {
+min-height:300px;
+padding:35px 0px;
+}
+
+.TL_aff_hero-banner {
+    position: absolute;
+    top: 0;
+    padding-left: 10px;
+    background: #000000;
+    width: -webkit-fill-available;
+    color: #ffffff;
+    line-height: 1.8em;
+    display: flex;
+    left: 0;
+    align-items: center;
+    padding: 8px;
+    padding-left: 32px;
+    padding-top:10px;
+    z-index:1;
+}
+
+.TL_aff_mobile {display:none;}
+
+
+
+.darken_it {
+    position: absolute;
+    width: 100%;
+    background: #0000005c;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+}
+
+@media only screen and (max-width: 1165px) {
+.TL_aff_icon {
+    font-size: 12px;
+    text-align: center;
+    border-right: 1px solid #385b8030;
+    padding:15px 25px;
+    width: 25%;
+}
+.TL_aff_icon svg {
+width:32px;
+height:32px;
+margin-bottom:16px;
+}
+
+}
+
+  @media only screen and (max-width: 940px) {
+.TL_aff_mobile {display:block;}
+.TL_aff_mobile img {
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+    .co_img {
+    display: none;
+}
+.TL_aff_highlight_callouts {
+    padding-bottom: 25px;
+    flex-direction: column;
+}
+.TL_aff_highlight_callout:after, .TL_aff_highlight_callout:before  {
+    display:none;
+}
+.TL_aff_highlight_callout {
+    width: 100%;
+    flex-direction: row-reverse;
+    text-align: initial;
+    justify-content: flex-end;
+    align-items: center;
+}
+.co_alt.TL_aff_highlight_callout {
+    flex-direction: row;
+}
+.TL_aff_highlight_cols {
+    max-width: 100%;
+    padding: 0px 0px;
+}
+.TL_aff_highlight_callouts svg {
+    margin: 15px 15px;
+}
+  }
+
+
+@media only screen and (max-width: 600px) {
+
+
+.TL_aff_highlight {
+    padding-top: 25px;
+}
+
+.TL_aff_hero {
+    min-height: 325px;
+    padding: 32px 32px;
+}
+.TL_aff_hero p {
+    display:none;
+}
+.TL_aff_button {
+    max-width: -webkit-fill-available;
+}
+
+.TL_aff_icon_cont {
+    padding: 5px 0px;
+    border-bottom: 1px solid #c4ceda;
+}
+.TL_aff_icon {
+    font-size: 10px;
+    text-align: center;
+    border-right: 1px solid #385b8030;
+    padding: 10px;
+    width: 25%;
+    line-height: 12px;
+}
+.TL_aff_icon svg {
+width:24px;
+height:24px;
+margin-bottom:8px;
+}
+.TL_aff_content h2 {
+    font-size: 26px;
+    line-height: 28px;
+    margin-bottom: 16px;
+}
+.TL_aff_content h1, .TL_aff_content h2 {
+    letter-spacing: -.5px;
+}
+
+.TL_aff_content h1 {
+    font-size: 32px;
+    line-height: 34px;
+    max-width: 65%;
+    margin-bottom: 20px;
+}
+
+}
+
+
+.TL_ing_table {
+max-width:1100px;
+margin:0 auto;
+}
+
+.TL_aff_info table tr td, .TL_aff_info table tr {
+border-collapse:collapse;
+border:0px;
+}
+
+
+.TL_aff_info table tr {
+display:inline-flex;
+flex-direction:column;
+}
+
+.TL_aff_info table tr td {
+text-align:left;
+}
+
+.TL_aff_info table tr td:nth-child(2) {
+font-size:14px;
+font-weight:300;
+}
+
+
+
+   .aff_compare_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:50px;
+    background: rgb(244,244,244);
+background: linear-gradient(180deg, rgba(244,244,244,1) 80%, rgba(255,255,255,1) 100%);
+}
+
+.aff_compare_section h2, .aff_section h2 {
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+}
+
+
+.aff_button_main {
+    background: #41B5E8;
+    max-width: 220px;
+    line-height: 32px;
+    height: 44px;
+    display: flex;
+    border-radius: 4px;
+    color: #ffffff;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+.aff_chart {
+    display: flex;
+    margin: 0 auto;
+    max-width: 900px;
+    margin-bottom: 20px;
+}
+
+.aff_compare {
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    max-width: 500px;
+    padding-right: 10px;
+}
+
+.aff_compare_comp {
+    flex-direction:row-reverse;
+}
+
+.aff_compare_comp svg {
+    width: 18px;
+    height: 18px;
+    fill: #f90a0a !important;
+}
+
+.aff_compare_prod_img {
+    z-index: 2;
+    background: url(https://cdn.shopify.com/s/files/1/0866/7664/products/BULKSOURGRAPEFINALVIEW1-3_800x600.png?v=1653068524);
+    width: 220px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: -75px;
+    margin-left: -30px;
+}
+
+.aff_compare_comp_img {
+    z-index: 2;
+    background: url(https://cdn.shopify.com/s/files/1/0866/7664/files/aff_comp.png?v=1660745332);
+    width: 180px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: -0px;
+    margin-left: -30px;
+}
+
+.aff_compare_stats {
+    position: relative;
+}
+
+.aff_stars {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.aff_compare_stat {
+    background: #ffffff;
+    margin-bottom: 15px;
+    padding: 10px;
+    padding-left: 50px;
+    font-size: 10px;
+    line-height: 1.1em;
+    display: flex;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.aff_compare_stat_comp {
+    padding-left: 10px;
+    padding-right:50px;
+}
+
+.aff_compare_stat svg {
+    width: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 15px;
+    fill: #47B6E6;
+}
+
+.aff_compare_hero {
+    min-height: 350px;
+/*     background: url(https://cdn.shopify.com/s/files/1/0866/7664/files/lift_aff.png?v=1660745104);*/
+  background: url(https://cdn.shopify.com/s/files/1/0866/7664/files/Paulina.png?v=1664550622);
+  
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.aff_compare_hero_2 {
+    background: url(https://cdn.shopify.com/s/files/1/0866/7664/files/test_aff.jpg?v=1660745127);
+}
+
+.aff_section {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    align-items: center;
+    flex-direction: column;
+    background: #f5f5f5;
+    overflow: hidden;
+}
+
+.aff_section h4, .aff_compare_section h4 {
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    line-height: 24px;
+    color:#385B80;
+    text-align:center;
+}
+
+.aff_compare_section h4 span {
+}
+
+
+
+.TL_PressBar {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid #d7d7d7;
+    border-bottom: 0px solid #212121;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 50px 0px;
+}
+.TL_PressBar img {
+    height: 24px;
+}
+
+.aff_quotes {
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    overflow: scroll;
+}
+
+.aff_quote {
+    width: 30%;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 14px 2px #0000000d;
+}
+.aff_quotes span {
+}
+
+.aff_stars svg {
+width:18px;
+fill:#FF5D0D;
+}
+
+
+   .lightbox {
+  /* Default to hidden */
+  display: none;
+
+  /* Overlay entire screen */
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  /* A bit of padding around image */
+  padding: 1em;
+
+  /* Translucent background */
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Unhide the lightbox when it's the target */
+.lightbox:target {
+  display: block;
+}
+
+.lightbox span {
+  /* Full width and height */
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /* Size and position background image */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+.aff_chart {
+    flex-direction: column;
+}
+.aff_compare_comp_img {
+    width: 246px;
+    height: 194px;
+    margin-left: -40px;
+}
+.aff_compare_section {
+    padding: 50px 10px;
+}
+.aff_compare_hero {
+    min-height: 200px;
+    background-position: center;
+}
+.TL_PressBar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: none;
+    padding: 0px;
+    margin-top: 25px;
+    margin-bottom: 35px;
+}
+.TL_PressBar div {
+    text-align: center;
+    width: 100%;
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    gap: 30px;
+}
+.TL_PressBar div:nth-of-type(1) {
+    max-width: 80%;
+    width: -webkit-fill-available;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.TL_PressBar div:nth-of-type(2) {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.TL_PressBar div:nth-of-type(3) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.TL_PressBar div:nth-of-type(4) {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.TL_PressBar div:nth-of-type(5) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.aff_quote {
+    min-width: 220px;
+}
+.aff_section {
+    padding: 50px 20px;
+}
+}
+
+
+
+   .xgen-new-collection .xgen-new-product .xgen-ptitle {
+    text-align: left;
+}
+
+    </style>
+  
+  <section class="TL_aff_content">
+
+<div class="TL_aff_hero">
+<div class="TL_aff_hero-banner">BULK | Pre-Workout Supplement</div>
+<div class="darken_it"></div>
+<div class="TL_aff_hero_inner">
+<h1>Supplement Smarter to Train Harder.</h1>
+<p>Enhance your performance in the gym with Transparent Labs BULK Pre-Workout. Each scoop comes fully loaded with clean, evidence-based ingredients in clinically effective doses and absolutely no fillers or artificial additives.</p>
+<a href="#xgen-new-collection" class="TL_aff_button">SHOP BULK NOW</a>
+</div>
+</div>
+
+
+
+<div class="TL_aff_icon_cont">
+<div class="TL_aff_icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M104 96h-48C42.75 96 32 106.8 32 120V224C14.33 224 0 238.3 0 256c0 17.67 14.33 32 31.1 32L32 392C32 405.3 42.75 416 56 416h48C117.3 416 128 405.3 128 392v-272C128 106.8 117.3 96 104 96zM456 32h-48C394.8 32 384 42.75 384 56V224H256V56C256 42.75 245.3 32 232 32h-48C170.8 32 160 42.75 160 56v400C160 469.3 170.8 480 184 480h48C245.3 480 256 469.3 256 456V288h128v168c0 13.25 10.75 24 24 24h48c13.25 0 24-10.75 24-24V56C480 42.75 469.3 32 456 32zM608 224V120C608 106.8 597.3 96 584 96h-48C522.8 96 512 106.8 512 120v272c0 13.25 10.75 24 24 24h48c13.25 0 24-10.75 24-24V288c17.67 0 32-14.33 32-32C640 238.3 625.7 224 608 224z"/></svg>
+INCREASED STRENGTH</div>
+<div class="TL_aff_icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.3 97.25c-8-3.5-17.5 .25-21 8.5L255.8 184C233.8 184.3 216 202 216 224c0 22.12 17.88 40 40 40S296 246.1 296 224c0-10.5-4.25-20-11-27.12l33.75-78.63C322.3 110.1 318.4 100.8 310.3 97.25zM448 64h-56.23C359.5 24.91 310.7 0 256 0S152.5 24.91 120.2 64H64C28.75 64 0 92.75 0 128v320c0 35.25 28.75 64 64 64h384c35.25 0 64-28.75 64-64V128C512 92.75 483.3 64 448 64zM256 304c-70.58 0-128-57.42-128-128s57.42-128 128-128c70.58 0 128 57.42 128 128S326.6 304 256 304z"/></svg>
+LEAN MUSCLE GROWTH</div>
+<div class="TL_aff_icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M240.5 224H352C365.3 224 377.3 232.3 381.1 244.7C386.6 257.2 383.1 271.3 373.1 280.1L117.1 504.1C105.8 513.9 89.27 514.7 77.19 505.9C65.1 497.1 60.7 481.1 66.59 467.4L143.5 288H31.1C18.67 288 6.733 279.7 2.044 267.3C-2.645 254.8 .8944 240.7 10.93 231.9L266.9 7.918C278.2-1.92 294.7-2.669 306.8 6.114C318.9 14.9 323.3 30.87 317.4 44.61L240.5 224z"/></svg>
+GREATER STAMINA</div>
+<div class="TL_aff_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M224 256C224 238.3 238.3 224 256 224C273.7 224 288 238.3 288 256C288 273.7 273.7 288 256 288C238.3 288 224 273.7 224 256zM256 0C273.7 0 288 14.33 288 32V42.35C381.7 56.27 455.7 130.3 469.6 224H480C497.7 224 512 238.3 512 256C512 273.7 497.7 288 480 288H469.6C455.7 381.7 381.7 455.7 288 469.6V480C288 497.7 273.7 512 256 512C238.3 512 224 497.7 224 480V469.6C130.3 455.7 56.27 381.7 42.35 288H32C14.33 288 0 273.7 0 256C0 238.3 14.33 224 32 224H42.35C56.27 130.3 130.3 56.27 224 42.35V32C224 14.33 238.3 0 256 0V0zM224 404.6V384C224 366.3 238.3 352 256 352C273.7 352 288 366.3 288 384V404.6C346.3 392.1 392.1 346.3 404.6 288H384C366.3 288 352 273.7 352 256C352 238.3 366.3 224 384 224H404.6C392.1 165.7 346.3 119.9 288 107.4V128C288 145.7 273.7 160 256 160C238.3 160 224 145.7 224 128V107.4C165.7 119.9 119.9 165.7 107.4 224H128C145.7 224 160 238.3 160 256C160 273.7 145.7 288 128 288H107.4C119.9 346.3 165.7 392.1 224 404.6z"/></svg>
+ENHANCED FOCUS</div>
+</div>
+
+
+<div class="TL_aff_highlight">
+<h2>Pre-Workout Ingredients that Actually Work</h2>
+<div class="TL_aff_mobile"><img src="https://cdn.shopify.com/s/files/1/0866/7664/products/BULKSOURGRAPEFINALVIEW1-3_800x600.png?v=1653068524" width="800" height="600" alt="BULK Pre-Workout Product"></div>
+<div class="TL_aff_highlight_callouts">
+<div class="TL_aff_highlight_cols">
+<div class="TL_aff_highlight_callout">
+<div><h3>CITRULLINE MALLATE</h3>
+<p>The silver bullet of pre-training science, it’s 2x more energy-producing than L-arginine. Count on improved strength, aerobic performance, and muscle endurance.
+</p></div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M240.5 224H352C365.3 224 377.3 232.3 381.1 244.7C386.6 257.2 383.1 271.3 373.1 280.1L117.1 504.1C105.8 513.9 89.27 514.7 77.19 505.9C65.1 497.1 60.7 481.1 66.59 467.4L143.5 288H31.1C18.67 288 6.733 279.7 2.044 267.3C-2.645 254.8 .8944 240.7 10.93 231.9L266.9 7.918C278.2-1.92 294.7-2.669 306.8 6.114C318.9 14.9 323.3 30.87 317.4 44.61L240.5 224z"/></svg>
+</div>
+<div class="TL_aff_highlight_callout">
+<div><h3>BETA-ALANINE</h3>
+<p>Unlike others, we don’t skimp here. Get the fully-recommended dose needed to increase cellular carnosine levels.
+</p></div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M104 96h-48C42.75 96 32 106.8 32 120V224C14.33 224 0 238.3 0 256c0 17.67 14.33 32 31.1 32L32 392C32 405.3 42.75 416 56 416h48C117.3 416 128 405.3 128 392v-272C128 106.8 117.3 96 104 96zM456 32h-48C394.8 32 384 42.75 384 56V224H256V56C256 42.75 245.3 32 232 32h-48C170.8 32 160 42.75 160 56v400C160 469.3 170.8 480 184 480h48C245.3 480 256 469.3 256 456V288h128v168c0 13.25 10.75 24 24 24h48c13.25 0 24-10.75 24-24V56C480 42.75 469.3 32 456 32zM608 224V120C608 106.8 597.3 96 584 96h-48C522.8 96 512 106.8 512 120v272c0 13.25 10.75 24 24 24h48c13.25 0 24-10.75 24-24V288c17.67 0 32-14.33 32-32C640 238.3 625.7 224 608 224z"/></svg>
+</div>
+
+</div>
+<div class="TL_aff_highlight_cols co_img">
+<img src="https://cdn.shopify.com/s/files/1/0866/7664/products/BULKSOURGRAPEFINALVIEW1-3_800x600.png?v=1653068524" width="300" height="300" alt="BULK Pre-Workout Product">
+</div>
+<div class="TL_aff_highlight_cols">
+<div class="TL_aff_highlight_callout co_alt">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C201.7 512 151.2 495 109.7 466.1C95.2 455.1 91.64 436 101.8 421.5C111.9 407 131.8 403.5 146.3 413.6C177.4 435.3 215.2 448 256 448C362 448 448 362 448 256C448 149.1 362 64 256 64C202.1 64 155 85.46 120.2 120.2L151 151C166.1 166.1 155.4 192 134.1 192H24C10.75 192 0 181.3 0 168V57.94C0 36.56 25.85 25.85 40.97 40.97L74.98 74.98C121.3 28.69 185.3 0 255.1 0L256 0zM256 128C269.3 128 280 138.7 280 152V246.1L344.1 311C354.3 320.4 354.3 335.6 344.1 344.1C335.6 354.3 320.4 354.3 311 344.1L239 272.1C234.5 268.5 232 262.4 232 256V152C232 138.7 242.7 128 256 128V128z"/></svg>
+<div><h3>BETAPURE BETAINE ANHYDROUS</h3>
+<p>This cutting-edge new supplement is clinically proven to trigger dramatic muscle growth. All while reducing fatigue and replenishing strength between sets.
+</p></div>
+</div>
+<div class="TL_aff_highlight_callout co_alt">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M16 319.1C16 245.9 118.3 89.43 166.9 19.3C179.2 1.585 204.8 1.585 217.1 19.3C265.7 89.43 368 245.9 368 319.1C368 417.2 289.2 496 192 496C94.8 496 16 417.2 16 319.1zM112 319.1C112 311.2 104.8 303.1 96 303.1C87.16 303.1 80 311.2 80 319.1C80 381.9 130.1 432 192 432C200.8 432 208 424.8 208 416C208 407.2 200.8 400 192 400C147.8 400 112 364.2 112 319.1z"/></svg>
+<div><h3>Infinergy™ Sustained-Release Caffeine</h3>
+<p>Infinergy™ is not your standard caffeine. Instead, it harnesses an ionic bond between caffeine and malic acid to create a molecule–di-caffeine malate. The result is unmatched synergy for lasting mental and physical performance without jitters or crashing.</p></div>
+</div>
+
+
+</div>
+
+</div>
+
+  <a href="#aff_ing" class="ing_pop">
+  View Full Ingredients
+</a>
+
+<!-- lightbox container hidden with CSS -->
+<a href="#" class="lightbox" id="aff_ing">
+  <span style="background-image: url('https://cdn.shopify.com/s/files/1/0866/7664/files/Screen_Shot_2022-10-17_at_4.46.48_PM.png?v=1666035145')"></span>
+</a>
+  
+</div>
+
+
+
+
+  <style>
+.slick-prev {    left: 25px !important;    z-index: 1;}
+.slick-next {    right: 25px !important;    z-index: 1;}
+.xgen-new-collection .xgen-new-product .xgen-ptitle {margin: 0px 0;}
+.xgen-new-collection .xgen-new-product .button-alt {width: auto;}
+</style>
+
+<div class="flex xgen-new-collection affiliate-xgen recharge-xgen" id="xgen-new-collection">
+  <div class="flex-1">
+    <div  class="pt-4">
+          <div class="xgen-tagging">
+            {% if section.settings.img != blank %}
+            	<img src="{{ section.settings.img | img_url: 'master' }}" alt="{% if section.settings.img.alt %}{{ section.settings.img.alt }}{% else %}Xgen Tagging Banner{% endif %}" loading="lazy" width="1200" height="400">
+            {% endif %}
+            {% if section.settings.title != blank %}
+            	<h2>{{ section.settings.title}}</h2>
+            {% endif %}
+            
+            {% if section.settings.subtitle != blank %}
+            	<p>{{ section.settings.subtitle}}</p>
+            {% endif %}
+          
+          </div>
+      
+      <!--static tagging -->
+      
+      
+      {% for block in section.blocks %}
+          <div class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3">
+		  {% assign product_1 = block.settings.product_1 | strip %}
+          {% assign product_2 = block.settings.product_2  %}
+          {% assign product_3 = block.settings.product_3 | strip  %}
+          
+            {% assign p_type1 = block.settings.product_type %}
+            {% assign p_type2= block.settings.product_type_1 %}
+            {% assign p_type3 = block.settings.product_type_2 %}
+
+            {% assign detail1 = block.settings.detail_1 %}
+            {% assign detail2 = block.settings.detail_2 %}
+            {% assign detail3 = block.settings.detail_3 %}
+            
+            
+            {% assign discount_text1 = section.settings.discount_month %}
+            {% assign discount_text2 = section.settings.discount_days %}
+            {% assign percent_text =  section.settings.percent_text %}
+            
+          {% if product_1 != blank %}
+            {% for pure_product in collections.all.products %}
+              {% if pure_product.handle == product_1 %}
+                {% render 'old-affiliate-single-subscription' with product: pure_product, block_id: block.id, product_type: p_type1, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text, detail: detail1%} 
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        
+          {% if product_2 != blank %}
+          	 
+                {% render 'old-affiliate-stack-product-grid' with product: product_2, block_id: block.id, product_type: p_type2, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text, detail: detail2  %}
+             
+          {% endif %}
+          {% if product_3 != blank %}
+          	 {% for pure_product in collections.all.products %}
+              {% if pure_product.handle == product_3 %}
+                {% render 'old-affiliate-single-product-grid' with product: pure_product, block_id: block.id, product_type: p_type3, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text, detail: detail3 %} 
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+         </div>
+    
+     {% endfor %}
+      
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+<div class="aff_compare_hero">
+</div>
+  
+  <div class="aff_compare_section">
+  <h2>THE REAL SCOOP</h2>
+  <h4 style="margin-bottom:20px;"><span>BULK</span> vs. the others</h4>
+
+
+<div class="aff_chart">
+
+<div class="aff_compare">
+<div class="aff_compare_prod_img">
+  &nbsp;
+</div>
+<div class="aff_compare_stats">
+<div class="aff_compare_stat">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"/></svg>
+BACKED BY REAL SCIENCE
+</div>
+<div class="aff_compare_stat">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"/></svg>
+CLINICALLY DOSED INGREDIENTS
+</div>
+<div class="aff_compare_stat">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"/></svg>
+NO ARTIFICIAL FLAVORS OR SWEETENERS
+</div>
+</div>
+</div>
+
+<div class="aff_compare aff_compare_comp">
+<div class="aff_compare_comp_img">
+  &nbsp;
+</div>
+<div class="aff_compare_stats">
+<div class="aff_compare_stat aff_compare_stat_comp">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+BACKED BY BRO SCIENCE
+</div>
+<div class="aff_compare_stat aff_compare_stat_comp">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+UNDER DOSED INGREDIENTS
+</div>
+<div class="aff_compare_stat aff_compare_stat_comp">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+FILLERS AND ARTIFICIAL FLAVORS
+</div>
+</div>
+</div>
+
+</div>
+
+<a href="#xgen-new-collection" class="aff_button_main">SHOP BULK NOW</a>
+</div>
+
+
+<section class="TL_PressBar">
+		<div>
+			<h4>AS SEEN ON</h4>
+		</div>
+
+
+		<div><img src="https://cdn.shopify.com/s/files/1/0866/7664/files/gq.png?v=1655209648" alt="GQ Logo" loading="lazy" width="100" height="24">
+		</div>
+
+
+		<div><img src="https://cdn.shopify.com/s/files/1/0866/7664/files/healthline.png?v=1655209649" alt="Healthline Logo" loading="lazy" width="120" height="24">
+		</div>
+
+
+		<div><img src="https://cdn.shopify.com/s/files/1/0866/7664/files/menshealth.png?v=1655209648" alt="Men's Journal Logo" loading="lazy" width="110" height="24">
+		</div>
+
+
+		<div><img src="https://cdn.shopify.com/s/files/1/0866/7664/files/livestrong.png?v=1655209649" alt="Live Strong Logo" loading="lazy" width="100" height="24">
+		</div>
+	</section>
+	
+	
+	   <div class="aff_compare_hero aff_compare_hero_2">
+</div>
+
+<div class="aff_section">
+<h2>Don’t Just Take Our Word For It</h2>
+<h4>Read what health-conscious customers and avid gym-goers are saying about BULK Pre-Workout:</h4>
+
+<div class="aff_quotes">
+<div class="aff_quote">
+<div class="aff_stars">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg></div>
+<p>“Y’all have some great quality supplements. I’ve enjoyed using these products for years now. No jittery feeling, no crash after, and it is easy on my stomach...”</p>
+<span>Nate D.</span>
+
+</div>
+
+<div class="aff_quote">
+<div class="aff_stars">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg></div>
+<p>“Definitely feel the difference - helps me boost my energy and maintain focus throughout my workout. Highly recommend Bulk.”</p>
+<span>Ted A.</span>
+
+</div>
+
+<div class="aff_quote">
+<div class="aff_stars">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"/></svg></div>
+<p>“TL is the only pre-workout I use because it gets the job done and yields an intense pump, sustained energy, and no burn out after my workout.”</p>
+<span>Caleb L.</span>
+
+</div>
+</div>
+<a href="#xgen-new-collection" class="aff_button_main" style="margin-top:30px">SHOP BULK NOW</a>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Affiliate Page PDP",
+    "class": "td-legacy",
+    "settings": [
+	{
+    	"type":"image_picker",
+        "id":"img",
+        "label":"Select Image"
+	},
+      {
+    	"type":"text",
+        "id":"title",
+        "label":"Section Title"
+	},
+    {
+    	"type":"textarea",
+        "id":"subtitle",
+        "label":"Section Subtitle"
+	},
+	{
+    	"type":"text",
+        "id":"discount_month",
+        "label":"Discount text by month",
+		"default":"Deliver Every Month"
+	},
+	{
+    	"type":"text",
+        "id":"discount_days",
+        "label":"Discount text by days",
+		"default":"Deliver Every 45 days"
+	},
+	{
+    	"type":"text",
+        "id":"percent_text",
+        "label":"Subcription percent Off text",
+		"default":"10% Off"
+	}
+],
+	"blocks":[
+		{
+			"name":"product",
+			"type":"text",
+			"settings":[
+				{
+                    "type":"text",
+                    "id":"collection_type",
+                    "label":"collection type"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+				{
+                    "type":"text",
+                    "id":"product_type",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_1",
+                    "label":"Select single product"
+                },
+                {
+                    "type":"html",
+                    "id":"detail_1",
+                    "label":"Product deatil"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+				{
+                    "type":"text",
+                    "id":"product_type_1",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_2",
+                    "label":"Select stack product"
+                },
+                {
+                    "type":"html",
+                    "id":"detail_2",
+                    "label":"Product deatil"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+                {
+                    "type":"text",
+                    "id":"product_type_2",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_3",
+                    "label":"Select simple product"
+                },
+                {
+                    "type":"html",
+                    "id":"detail_3",
+                    "label":"Product deatil"
+                }
+			]
+		}
+	],
+	
+	"presets":[
+		{
+			"name": "Affiliate Pagee PDP "
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

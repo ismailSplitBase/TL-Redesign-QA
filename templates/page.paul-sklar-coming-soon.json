@@ -1,0 +1,368 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "f338a9c2-3168-494e-b4e7-b08979119509": {
+      "type": "old-bulk-affiliate-main-banner",
+      "settings": {
+        "image_only": false,
+        "top_heading": "",
+        "image": "shopify://shop_images/PaulSklarBulk_ComingSoon_DesktopBanner.png",
+        "mobile_image": "shopify://shop_images/PaulSklarBulk_ComingSoon_MobileBanner.png",
+        "heading": "",
+        "subheading": "",
+        "btn_text": "",
+        "btn_link": ""
+      }
+    },
+    "c70dec47-0c2c-46fa-a7f6-efa1df957373": {
+      "type": "old-bulk-affiliate-icons",
+      "blocks": {
+        "e5f6ecdd-bd06-4e0b-b4c3-ddbdd91539c4": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_1_d0a7c72a-4b34-4ad7-a846-5eae09d81b5e.png",
+            "title": "INCREASED STRENGTH"
+          }
+        },
+        "b0962df3-6584-49ab-bc75-2cd89389c880": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Citrulline_Icon_144277c8-1c47-48e8-b479-a13e62bdfd05.png",
+            "title": "CLEAN ENERGY BOOST"
+          }
+        },
+        "463078b3-9a15-439e-b00f-18ff2054b39e": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Focus_Icon_81d1a4f7-3069-41b3-a22d-f4bde52f824c.png",
+            "title": "ENHANCED FOCUS"
+          }
+        },
+        "ab09a7c5-a665-4eed-84cd-58414ddcb8ee": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Paul_Sklar_Approved_Icon_91383ff5-cf78-4b42-87d3-eb58d58492ff.png",
+            "title": "APPROVED BY PAUL SKLAR"
+          }
+        }
+      },
+      "block_order": [
+        "e5f6ecdd-bd06-4e0b-b4c3-ddbdd91539c4",
+        "b0962df3-6584-49ab-bc75-2cd89389c880",
+        "463078b3-9a15-439e-b00f-18ff2054b39e",
+        "ab09a7c5-a665-4eed-84cd-58414ddcb8ee"
+      ],
+      "settings": {}
+    },
+    "1a9b2478-a05d-4c94-bdc0-0cf466ca7f06": {
+      "type": "old-bulk-affiliate-ingrediants",
+      "blocks": {
+        "64f9369c-4c8c-46b2-a8da-8199fefb813b": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_ffc308ba-6e5c-4afc-a8b1-bd255eecacb5.png",
+            "title": "CITRULLINE MALLATE",
+            "desc": "The silver bullet of pre-training science, it’s 2x more energy-producing than L-arginine. Count on improved strength, aerobic performance, and muscle endurance."
+          }
+        },
+        "5bd4f26a-f488-491d-8619-b464bc6390f0": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_1_d0a7c72a-4b34-4ad7-a846-5eae09d81b5e.png",
+            "title": "BETA-ALANINE",
+            "desc": "Unlike others, we don’t skimp here. Get the fully-recommended dose needed to increase cellular carnosine levels."
+          }
+        },
+        "a168efc7-f15a-4b87-bc00-5d85f88e730d": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_2_498cccb3-5d65-4891-af72-00238a20d288.png",
+            "title": "BETAPURE BETAINE ANHYDROUS",
+            "desc": "This cutting-edge new supplement is clinically proven to trigger dramatic muscle growth. All while reducing fatigue and replenishing strength between sets."
+          }
+        },
+        "36e94a24-53ed-4fdf-bd05-49451468503a": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_2_4fe05c94-9dad-455d-9d9d-9e1e3f9f0821.png",
+            "title": "INFINERGY™ SUSTAINED-RELEASE CAFFEINE",
+            "desc": "Infinergy™ is not your standard caffeine. Instead, it harnesses an ionic bond between caffeine and malic acid to create a molecule–di-caffeine malate. The result is unmatched synergy for lasting mental and physical performance without jitters or crashing."
+          }
+        }
+      },
+      "block_order": [
+        "64f9369c-4c8c-46b2-a8da-8199fefb813b",
+        "5bd4f26a-f488-491d-8619-b464bc6390f0",
+        "a168efc7-f15a-4b87-bc00-5d85f88e730d",
+        "36e94a24-53ed-4fdf-bd05-49451468503a"
+      ],
+      "settings": {
+        "title": "",
+        "dimage": "shopify://shop_images/BULK_RETRO_CANDY_FINAL_VIEW1_shadow.webp",
+        "mimage": "shopify://shop_images/BULK_RETRO_CANDY_FINAL_VIEW1_shadow.webp",
+        "btn_text": "View Full Ingredients",
+        "pimage": "shopify://shop_images/BulkRetroCandy_SFP_af63a0db-4a94-4fd5-af37-d8cc2c5a244d.png",
+        "product": ""
+      }
+    },
+    "b45048cd-f528-475a-8264-4f948b471942": {
+      "type": "old-bulk-affiliate-product",
+      "blocks": {
+        "bcb9ce21-18c1-46b0-8c85-660b280e6d68": {
+          "type": "text",
+          "settings": {
+            "collection_type": "",
+            "product_type": "BEST DEAL",
+            "product_1": "bulk-preworkout",
+            "detail_1": "• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_1": "MAXIMUM RESULTS",
+            "product_2": "muscle-building-stacks",
+            "detail_2": "• <strong>OPTIMIZED BUNDLE MAXIMIZES GAINS</strong><br>\n• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_2": "ONE-TIME PURCHASE",
+            "product_3": "bulk-preworkout",
+            "detail_3": "<span style=\"text-decoration: line-through;\">• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time</span>"
+          }
+        }
+      },
+      "block_order": [
+        "bcb9ce21-18c1-46b0-8c85-660b280e6d68"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "subtitle": "YOUR CHOICE: SOLO, SUBSCRIPTION, OR STACK SUBSCRIPTION",
+        "discount_month": "Deliver Every Month",
+        "discount_days": "Deliver Every 45 days",
+        "percent_text": "15% Off"
+      }
+    },
+    "main": {
+      "type": "old-bulk-affiliate",
+      "blocks": {
+        "3df6f53c-b737-4255-b6b0-710b24dfc82c": {
+          "type": "text",
+          "settings": {
+            "collection_type": "",
+            "product_type": "BEST DEAL",
+            "product_1": "bulk-preworkout",
+            "detail_1": "• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_1": "MAXIMUM RESULTS",
+            "product_2": "muscle-building-essentials-stack",
+            "detail_2": "• <strong>OPTIMIZED BUNDLE MAXIMIZES GAINS</strong><br>\n• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_2": "ONE-TIME PURCHASE",
+            "product_3": "bulk-preworkout",
+            "detail_3": "<span style=\"text-decoration: line-through;\">• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time</span>"
+          }
+        }
+      },
+      "block_order": [
+        "3df6f53c-b737-4255-b6b0-710b24dfc82c"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "YOUR CHOICE: SOLO, SUBSCRIPTION, OR STACK SUBSCRIPTION",
+        "subtitle": "",
+        "discount_month": "Deliver Every Month",
+        "discount_days": "Deliver Every 45 days",
+        "percent_text": "10% Off"
+      }
+    },
+    "d5dae2ee-29b0-4b3e-9fa5-433d1cdde0e0": {
+      "type": "old-bulk-affiliate-body-banner",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Lifestyle_Banner_-_Desktop_2.png"
+      }
+    },
+    "ae9d4922-b735-486a-b1d1-5c0827d18c2a": {
+      "type": "old-bulk-affiliate-main-banner",
+      "settings": {
+        "image_only": false,
+        "top_heading": "",
+        "image": "shopify://shop_images/QuoteDesktopBanner_ComingSoon.png",
+        "mobile_image": "shopify://shop_images/QuoteMobileBanner_ComingSoon.png",
+        "heading": "",
+        "subheading": "",
+        "btn_text": "",
+        "btn_link": ""
+      }
+    },
+    "878a4b2f-ae66-4ef6-a4c0-13b5c7b649c4": {
+      "type": "old-bulk-affiliate-scoop",
+      "blocks": {
+        "97e103d6-7070-46e6-8a76-471c464747f0": {
+          "type": "text",
+          "settings": {
+            "title": "NO ARTIFICIAL SWEETENERS"
+          }
+        },
+        "1e01f3cb-136f-417b-a2c2-8012a65f03a7": {
+          "type": "text",
+          "settings": {
+            "title": "NO ARTIFICIAL DYES"
+          }
+        },
+        "99f06647-47f8-41ea-8ef1-4ed4c8bd36f4": {
+          "type": "text",
+          "settings": {
+            "title": "TRANSPARENT LABELS"
+          }
+        },
+        "303e639d-3b4c-4f14-a38f-ebe7f04eb890": {
+          "type": "text",
+          "settings": {
+            "title": "ARTIFICIAL SWEETENERS"
+          }
+        },
+        "60956d7a-8c96-4f4b-8f7d-303d37f30ac3": {
+          "type": "text",
+          "settings": {
+            "title": "ARTIFICIAL DYES"
+          }
+        },
+        "e37237aa-035e-459f-b434-699ee8c86945": {
+          "type": "text",
+          "settings": {
+            "title": "PROPRIETARY BLENDS"
+          }
+        }
+      },
+      "block_order": [
+        "97e103d6-7070-46e6-8a76-471c464747f0",
+        "1e01f3cb-136f-417b-a2c2-8012a65f03a7",
+        "99f06647-47f8-41ea-8ef1-4ed4c8bd36f4",
+        "303e639d-3b4c-4f14-a38f-ebe7f04eb890",
+        "60956d7a-8c96-4f4b-8f7d-303d37f30ac3",
+        "e37237aa-035e-459f-b434-699ee8c86945"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "THE REAL SCOOP",
+        "subheading": "<span>BULK</span> vs. the others",
+        "limage": "shopify://shop_images/BULKSOURGRAPEFINALVIEW1-3_800x600_438912c5-5609-41ab-acdf-06fd88ca3028.webp",
+        "rimage": "shopify://shop_images/Comparison_render_2_blurred.png",
+        "btn_text": "SHOP BULK NOW",
+        "btn_link": "https://www.transparentlabs.com/pages/shop-bulk-pre-workout-improve-your-body-of-work#xgen-new-collection"
+      }
+    },
+    "a6d8a429-db3b-4902-b34e-eca0a36a6aaf": {
+      "type": "old-index-pertner-icons",
+      "blocks": {
+        "12b15581-3a2d-4dd0-a28f-f7cc94d48ed9": {
+          "type": "text",
+          "settings": {
+            "icon_text": "AS SEEN ON"
+          }
+        },
+        "a565879d-c6c4-4c9d-946d-58494f22b423": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Group_352.png",
+            "icon_text": ""
+          }
+        },
+        "7ebf789f-0951-416e-8a4e-6f7d661d3d42": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/2560px-Healthline_logo.png",
+            "icon_text": ""
+          }
+        },
+        "77109622-4312-42b4-b9f1-242d38fe7ca3": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/logo1200x630.png",
+            "icon_text": ""
+          }
+        },
+        "3acc0958-bf37-47c7-addf-d80007f12f8d": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/livestrong-logo.png",
+            "icon_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "12b15581-3a2d-4dd0-a28f-f7cc94d48ed9",
+        "a565879d-c6c4-4c9d-946d-58494f22b423",
+        "7ebf789f-0951-416e-8a4e-6f7d661d3d42",
+        "77109622-4312-42b4-b9f1-242d38fe7ca3",
+        "3acc0958-bf37-47c7-addf-d80007f12f8d"
+      ],
+      "disabled": true,
+      "settings": {
+        "index-partner-icons": "index partner icons"
+      }
+    },
+    "7f6173d9-5234-4e26-ba01-d7c495dac4b0": {
+      "type": "old-bulk-affiliate-body-banner",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/test_aff.webp"
+      }
+    },
+    "42981725-61f5-4256-a388-54f731e0ba6d": {
+      "type": "old-bulk-affiliate-reviews",
+      "blocks": {
+        "da50697f-8e87-4bb5-8fe5-c0b15dfa57da": {
+          "type": "text",
+          "settings": {
+            "rating": "5",
+            "review": "“Y’all have some great quality supplements. I’ve enjoyed using these products for years now. No jittery feeling, no crash after, and it is easy on my stomach...”",
+            "name": "Nate D."
+          }
+        },
+        "aa1eb5a1-f64e-4cfe-89e0-506e013ca7d4": {
+          "type": "text",
+          "settings": {
+            "rating": "5",
+            "review": "“Definitely feel the difference - helps me boost my energy and maintain focus throughout my workout. Highly recommend Bulk.”",
+            "name": "Ted A."
+          }
+        },
+        "cedd8563-f887-4f56-80c3-649593bd5442": {
+          "type": "text",
+          "settings": {
+            "rating": "5",
+            "review": "“TL is the only pre-workout I use because it gets the job done and yields an intense pump, sustained energy, and no burn out after my workout.”",
+            "name": "Caleb L."
+          }
+        }
+      },
+      "block_order": [
+        "da50697f-8e87-4bb5-8fe5-c0b15dfa57da",
+        "aa1eb5a1-f64e-4cfe-89e0-506e013ca7d4",
+        "cedd8563-f887-4f56-80c3-649593bd5442"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Don’t Just Take Our Word For It",
+        "subheading": "Read what health-conscious customers and avid gym-goers are saying about BULK Pre-Workout:",
+        "btn_text": "",
+        "btn_link": ""
+      }
+    }
+  },
+  "order": [
+    "f338a9c2-3168-494e-b4e7-b08979119509",
+    "c70dec47-0c2c-46fa-a7f6-efa1df957373",
+    "1a9b2478-a05d-4c94-bdc0-0cf466ca7f06",
+    "b45048cd-f528-475a-8264-4f948b471942",
+    "main",
+    "d5dae2ee-29b0-4b3e-9fa5-433d1cdde0e0",
+    "ae9d4922-b735-486a-b1d1-5c0827d18c2a",
+    "878a4b2f-ae66-4ef6-a4c0-13b5c7b649c4",
+    "a6d8a429-db3b-4902-b34e-eca0a36a6aaf",
+    "7f6173d9-5234-4e26-ba01-d7c495dac4b0",
+    "42981725-61f5-4256-a388-54f731e0ba6d"
+  ]
+}

@@ -1,0 +1,207 @@
+{% stylesheet %}
+  .sb-featured-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    overflow: hidden;
+  }
+  .sb-featured-reviews__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 100%;
+    margin: 0;
+  }
+  .sb-featured-reviews__content svg {
+    color: var(--sb-acc-color, #0ea5e9);
+  }
+  .sb-featured-reviews__heading {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    color: #111314;
+    margin: 0;
+    padding: 0;
+  }
+  .sb-featured-reviews__slider {
+    width: 100%;
+  }
+  .sb-featured-reviews .sb-pagination-wrapper {
+    margin-top: 24px;
+    margin-inline: var(--sb-padding-inline);
+    width: auto;
+    padding: 0px var(--sb-padding-inline);
+  }
+  .sb-featured-reviews .swiper-slide {
+    height: auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sb-featured-reviews {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 48px;
+    }
+    .sb-featured-reviews__content.sb-page-width {
+      width: 35%;
+      flex-shrink: 0;
+      max-width: calc(360px + var(--sb-padding-inline) * 2);
+      margin-left: max(calc((100vw - var(--page-width)) / 2), 0px);
+      padding-inline: var(--sb-padding-inline) 0;
+    }
+    .sb-featured-reviews__slider {
+      width: 65%;
+      flex-grow: 1;
+    }
+    .sb-featured-reviews__heading {
+      font-size: 34px;
+    }
+    .sb-featured-reviews .sb-pagination-wrapper {
+      margin-right: var(--sb-padding-inline);
+      margin-top: 40px;
+      margin-left: auto;
+      width: 300px;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    .sb-featured-reviews__content.sb-page-width {
+      max-width: 400px;
+      min-width: 360px;
+      box-sizing: content-box;
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    .sb-featured-reviews__content.sb-page-width {
+      max-width: 400px;
+      min-width: 360px;
+      box-sizing: content-box;
+    }
+    .sb-featured-reviews .sb-pagination-wrapper {
+      margin-inline: auto var(--sb-padding-inline);
+      margin-right: calc((100vw - var(--page-width, 1420px)) / 2);
+      padding: 0px var(--sb-padding-inline);
+    }
+  }
+  @media screen and (min-width: 1920px) {
+    .sb-featured-reviews__content.sb-page-width {
+      margin-left: calc((100vw - var(--page-width) - 15px) / 2);
+      padding-inline: 0;
+      max-width: 500px;
+    }
+  }
+{% endstylesheet %}
+
+<div class="sb-featured-reviews sb-styled-element" style="{%  render 'style-attributes', settings: section.settings %}">
+  {% if section.settings.heading != empty %}
+    <div class="sb-featured-reviews__content sb-page-width">
+      <svg xmlns="http://www.w3.org/2000/svg" width="140" height="29" viewBox="0 0 140 29" fill="none">
+        <path d="M14 20.2917L21.21 24.6434L19.2967 16.4417L25.6667 10.9234L17.2783 10.2L14 2.47668L10.7217 10.2L2.33334 10.9234L8.69168 16.4417L6.79001 24.6434L14 20.2917Z" fill="#1B73B3"></path>
+        <path d="M42 20.2917L49.21 24.6434L47.2967 16.4417L53.6667 10.9234L45.2783 10.2L42 2.47668L38.7217 10.2L30.3333 10.9234L36.6917 16.4417L34.79 24.6434L42 20.2917Z" fill="#1B73B3"></path>
+        <path d="M70 20.2917L77.21 24.6434L75.2967 16.4417L81.6667 10.9234L73.2783 10.2L70 2.47668L66.7217 10.2L58.3333 10.9234L64.6917 16.4417L62.79 24.6434L70 20.2917Z" fill="#1B73B3"></path>
+        <path d="M98 20.2917L105.21 24.6434L103.297 16.4417L109.667 10.9234L101.278 10.2L98 2.47668L94.7217 10.2L86.3333 10.9234L92.6917 16.4417L90.79 24.6434L98 20.2917Z" fill="#1B73B3"></path>
+        <path d="M126 20.2917L133.21 24.6434L131.297 16.4417L137.667 10.9234L129.278 10.2L126 2.47668L122.722 10.2L114.333 10.9234L120.692 16.4417L118.79 24.6434L126 20.2917Z" fill="#1B73B3"></path>
+      </svg>
+      <h2 class="sb-featured-reviews__heading">{{ section.settings.heading }}</h2>
+    </div>
+  {% endif %}
+
+  <div class="sb-featured-reviews__slider">
+    {% liquid
+      if section.blocks.size > 0
+        capture slide_contents
+          content_for 'blocks'
+        endcapture
+        content_for 'block', type: '_slider', id: 'static-slider', children: slide_contents
+      else
+        render 'sb-no-content', context: 'featured reviews'
+      endif
+    %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "SB Featured Media",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Main Section Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color"
+    },
+    {
+      "type": "paragraph",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "ch_bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "ch_accent_color",
+      "label": "Accent Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "blocks": [{ "type": "_featured-review" }],
+  "presets": [
+    {
+      "name": "SB Featured Reviews"
+    }
+  ]
+}
+{% endschema %}

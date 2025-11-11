@@ -1,0 +1,148 @@
+{% comment %}
+  Example usage of sb-modal component
+  This file demonstrates different ways to use the modal component
+{% endcomment %}
+
+<!-- Basic Modal Example -->
+{% render 'sb-modal', 
+  modal_id: 'basic-modal',
+  heading: 'Basic Modal',
+  children: '<p>This is a basic modal with some content.</p><p>You can put any HTML content here!</p>'
+%}
+
+<!-- Modal without heading -->
+{% render 'sb-modal', 
+  modal_id: 'no-heading-modal',
+  children: '<div class="text-center"><h3>Custom Content</h3><p>This modal has no default heading, but custom content instead.</p></div>'
+%}
+
+<!-- Modal with complex content -->
+{% render 'sb-modal', 
+  modal_id: 'complex-modal',
+  heading: 'Product Information',
+  children: '
+    <div class="modal-content">
+      <div class="product-info">
+        <img src="https://via.placeholder.com/200x200" alt="Product Image" style="width: 100%; max-width: 200px; margin-bottom: 1rem;">
+        <h4>Product Name</h4>
+        <p>Product description goes here with all the details you need to know.</p>
+        <div class="price">$29.99</div>
+        <button class="btn btn-primary">Add To Cart</button>
+      </div>
+    </div>
+  '
+%}
+
+<!-- Trigger buttons for the modals -->
+<div class="modal-examples" style="padding: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+  <button data-modal-trigger="basic-modal" class="btn btn-primary">
+    Open Basic Modal
+  </button>
+  
+  <button data-modal-trigger="no-heading-modal" class="btn btn-secondary">
+    Open Modal (No Heading)
+  </button>
+  
+  <button data-modal-trigger="complex-modal" class="btn btn-accent">
+    Open Complex Modal
+  </button>
+  
+  <!-- Example of programmatic modal control -->
+  <button onclick="openModalProgrammatically()" class="btn btn-info">
+    Open Modal via JavaScript
+  </button>
+  
+  <button onclick="updateModalContent()" class="btn btn-warning">
+    Update Modal Content
+  </button>
+</div>
+
+<script>
+  // Example of opening modal programmatically
+  function openModalProgrammatically() {
+    TdModal.open('basic-modal');
+  }
+  
+  // Example of updating modal content
+  function updateModalContent() {
+    TdModal.update('basic-modal', {
+      heading: 'Updated Modal Title',
+      children: '<p>This content was updated via JavaScript!</p><p>Current time: ' + new Date().toLocaleTimeString() + '</p>'
+    });
+    
+    // Open the modal to show the updated content
+    TdModal.open('basic-modal');
+  }
+  
+  // Example of listening to modal events
+  document.addEventListener('sb-modal:opened', function(event) {
+    //console.log('Modal opened:', event.detail.modalId);
+  });
+  
+  document.addEventListener('sb-modal:closed', function(event) {
+    //console.log('Modal closed:', event.detail.modalId);
+  });
+  
+  document.addEventListener('sb-modal:updated', function(event) {
+    //console.log('Modal updated:', event.detail);
+  });
+</script>
+
+<style>
+  /* Example styling for the demo buttons */
+  .modal-examples {
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary {
+    background: #007bff;
+    color: white;
+  }
+  
+  .btn-secondary {
+    background: #6c757d;
+    color: white;
+  }
+  
+  .btn-accent {
+    background: #28a745;
+    color: white;
+  }
+  
+  .btn-info {
+    background: #17a2b8;
+    color: white;
+  }
+  
+  .btn-warning {
+    background: #ffc107;
+    color: #212529;
+  }
+  
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .modal-content .product-info {
+    text-align: center;
+  }
+  
+  .modal-content .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #28a745;
+    margin: 1rem 0;
+  }
+</style> 

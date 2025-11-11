@@ -1,0 +1,72 @@
+{% style %}
+  .xt-content-with-image-inner-main {display: flex;flex-wrap: wrap;justify-content: space-between;}
+  .xt-cwi-section-image {width: 48%;text-align:center;}
+  .xt-cwi-section-image img{display:block;margin:auto;}
+  .xt-cwi-section-content {width: 48%;}
+  .xt-cwi-section-content p {margin-bottom: 15px;}
+
+  @media only screen and (max-width: 767px) {
+  .xt-cwi-section-image {width: 100%;}
+  .xt-cwi-section-content {width: 100%;}
+
+  }
+  
+{% endstyle %}
+
+<div class="xt-content-with-image-section-main max-w-7xl mx-auto pb-4 px-4 pt-12" id="{{ section.id }}" >
+  
+
+  <div class="xt-content-with-image-inner-main">
+    <div class="xt-cwi-section-content">
+      {% if section.settings.custom_title != blank %}
+        <h2 class="font-bold text-blue-500 text-xl md:border-l-8 md:border-blue-500 md:pl-2 md:text-2xl" style="margin-bottom:20px;">{{ section.settings.custom_title }}</h2>  
+      {% endif %}
+      
+      {% if section.settings.custom_content != blank %}
+        {{ section.settings.custom_content }}
+      {% endif %}
+    </div>
+      
+    {% if section.settings.sectionimage != blank %}
+      <div class="xt-cwi-section-image">
+        {% assign file_name = section.settings.sectionimage | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+        <img src="{{ section.settings.sectionimage | image_url }}" alt="{% if section.settings.sectionimage.alt %}{{ section.settings.sectionimage.alt }}{% else %}{{ file_name }}{% endif %}" />
+      </div>
+    {% endif %}
+  </div>
+
+  
+  
+  
+</div>
+
+
+{% schema %}
+{
+  "name": "Content With Image",
+  "class": "td-legacy",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "custom_content",
+      "label": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "sectionimage",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content With Image",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

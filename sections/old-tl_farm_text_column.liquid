@@ -1,0 +1,45 @@
+<div class="tl_farm_text_column">
+  <div class="xgen-inner">
+    <div class="wraper">
+      {% for block in section.blocks %}
+        {% if block.settings.text!=blank %}
+          <div class="item">
+            <h4>{{ block.settings.text }}</h4>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Farm Shaker Text Column",
+    "class": "td-legacy", 
+    "settings": [],
+    "blocks":[
+      {
+        "name":"list",
+        "type":"text",
+        "limit":4,
+        "settings":[
+          {
+            "type":"textarea",
+            "id":"text",
+            "label":"Block Text"
+          }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name":"Farm Shaker Text Column"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

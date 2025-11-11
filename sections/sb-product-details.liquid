@@ -1,0 +1,86 @@
+{%  stylesheet %}
+.sb-product-details.sb-page-width  {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.sb-product-details .sb-product-details-accordion__container{
+  padding-inline: var(--sb-padding-inline);
+}
+
+@media screen and (min-width: 1024px) {
+  .sb-product-details.sb-page-width  {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .sb-product-details__left-column,
+  .sb-product-details__right-column {
+    width: 50%;
+  }
+  .sb-product-details .sb-product-details-accordion__container{
+    padding-inline: 24px;
+  } 
+}
+@media screen and (max-width: 989px) {
+  .sb-product-details.sb-page-width  {
+    padding: 0;
+  }
+}
+
+{% endstylesheet %}
+
+
+
+<div class="sb-product-details sb-styled-element sb-page-width" style="{% render 'style-attributes', settings: section.settings %}">
+  <div class="sb-product-details__left-column">
+    {%  content_for 'block', type: "_product_testing", id: "static-product-testing" %}
+  </div>
+  <div class="sb-product-details__right-column">  
+    {%  content_for 'block', type: "_product_details_accordion", id: "static-product-details" %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "SB Product Details",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Product Details" 
+    }
+  ]
+}
+{% endschema %}

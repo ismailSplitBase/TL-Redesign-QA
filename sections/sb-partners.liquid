@@ -1,0 +1,176 @@
+{%  stylesheet %}
+  .sb-partners {
+    padding-top: var(--sb-padding-top-mobile, 48px);
+    padding-bottom: var(--sb-padding-bottom-mobile, 48px);
+    background-color: var(--sb-bg-color, #ffffff);
+    overflow: hidden;
+  }
+
+  .sb-partners-content__header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 auto 24px auto;
+  }
+
+  .sb-partners-content__title {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 120%;
+    color: var(--sb-fg-color, #111314);
+    margin: 0;
+    padding: 0;
+    font-family: var(--sb-font-family-heading);
+  }
+
+  .sb-partners-content__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+    color: #676767;
+    font-family: var(--sb-font-family-body);
+  }
+
+  .sb-partners__slider {
+    width: 100%;
+  }
+
+  /* Mobile-first: stack vertically */
+  .sb-partners__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sb-partners {
+      padding-top: var(--sb-padding-top, 88px);
+      padding-bottom: var(--sb-padding-bottom, 88px);
+    }
+
+    .sb-partners__content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    .sb-partners-content__header.sb-page-width {
+      max-width: calc(360px + var(--sb-padding-inline) * 2);
+      flex-shrink: 0;
+      margin-left: max(calc((100vw - var(--page-width)) / 2), 0px);
+    }
+
+    .sb-partners__slider {
+      width: 60%;
+    }
+
+    .sb-partners-content__title {
+      font-size: 40px;
+    }
+
+    .sb-partners-content__text {
+      font-size: 18px;
+      line-height: 140%;
+    }
+  }
+
+
+  @media screen and (min-width: 1920px){
+    .sb-partners-content__header.sb-page-width {
+      margin-left: calc((100vw - var(--page-width) - 15px) / 2);
+    }
+  }
+{% endstylesheet %}
+
+
+
+<div class="sb-partners sb-styled-element" style="{%  render 'style-attributes', settings: section.settings %}">
+  <div class="sb-partners__content">
+    <div class="sb-partners-content__header sb-page-width">
+      {% if section.settings.heading != blank %}
+        <h2 class="sb-partners-content__title">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.content != blank %}
+        <div class="sb-partners-content__text">{{ section.settings.content }}</div>
+      {% endif %}
+    </div>
+    
+    <div class="sb-partners__slider">
+      {% liquid
+        if section.blocks.size > 0
+          capture slide_contents
+            content_for 'blocks'
+          endcapture
+          content_for 'block', type: '_slider', id: 'static-slider', children: slide_contents
+        else
+          render 'sb-no-content', context: "featured partners"
+        endif
+      %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "SB Partners",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "blocks": [
+    {"type": "_performance-partner"}
+  ],
+  "presets": [
+    {
+      "name": "SB Performance Partners"
+    }
+  ]
+}
+{% endschema %}

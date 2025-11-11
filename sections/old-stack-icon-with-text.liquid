@@ -1,0 +1,158 @@
+
+<div class="xgen-stack-icontext">
+  <div class="xgen-inner">
+    
+    {% if section.settings.theading %}
+      <h2 class="heading">{{ section.settings.theading }}</h2>
+    {% endif %}
+    
+    {% if section.settings.sheading %}
+      <p class="subheading">{{ section.settings.sheading }}</p>
+    {% endif %}
+    
+    
+    {% if section.settings.icon_align=='top' %}
+      <div class="stack-icontext-wraper top">
+
+        {% for block in section.blocks %}
+          <div class="stack-icontext">
+            <div class="stack-icontext-in">
+              {% if block.settings.image!=blank %}
+                {% assign image_name = block.settings.image | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+                <img src="{{ block.settings.image | img_url : '' }}" alt="{% if block.settings.image.alt %}{{ block.settings.image.alt }}{% else %}{{ image_name }}{% endif %}">
+              {% endif %}
+            </div>
+
+            <div class="stack-icontext-in">
+              {% if block.settings.heading %}
+                <h4>{{ block.settings.heading }}</h4>
+              {% endif %}
+
+              {% if block.settings.text %}
+                <p>{{ block.settings.text }}</p>
+              {% endif %}
+            </div>
+
+          </div>
+        {% endfor %}
+        
+      </div>
+    {% else %}
+    
+      <div class="stack-icontext-wraper">
+
+        {% for block in section.blocks %}
+          <div class="stack-icontext">
+            <div class="stack-icontext-in">
+              
+              <div class="numbring">{{ forloop.index }}</div>
+              {% comment %}
+              {% if block.settings.image!=blank %}
+                <img src="{{ block.settings.image | img_url : '100x' }}">
+              {% endif %}
+              {% endcomment %}
+              
+            </div>
+
+            <div class="stack-icontext-in">
+              {% if block.settings.heading %}
+                <h4>{{ block.settings.heading }}</h4>
+              {% endif %}
+
+              {% if block.settings.text %}
+                <p>{{ block.settings.text }}</p>
+              {% endif %}
+            </div>
+
+          </div>
+        {% endfor %}
+        
+        
+      </div>
+    
+    
+    
+    {% endif %}
+    
+    {% if section.settings.btn_text!=blank %}
+    <div class="icontext-btn">
+      <a href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+    </div>
+    {% endif %}
+    
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Stack  Icon With Text",
+    "class": "td-legacy",
+    "settings": [
+		{
+			"type":"select",
+			"id":"icon_align",
+			"options":[
+				{"value":"left","label":"Left"},
+				{"value":"top","label":"Top"}
+			],
+			"label":"Icons Alignment"
+		},
+		{
+			"type":"text",
+			"id":"theading",
+			"label":"Heading"
+		},
+		{
+			"type":"textarea",
+			"id":"sheading",
+			"label":"Sub Heading"
+		},
+		{
+			"type":"text",
+			"id":"btn_text",
+			"label":"Button Name"
+		},
+		{
+			"type":"url",
+			"id":"btn_url",
+			"label":"Button URL"
+		}
+	],
+	"blocks":[
+		{
+			"name":"Icon Block",
+			"type":"image",
+			"settings":[
+				
+				{
+                    "type":"image_picker",
+                    "id":"image",
+                    "label":"Image"
+                },
+                {
+                    "type":"text",
+                    "id":"heading",
+                    "label":"Heading"
+                },
+                {
+                    "type":"textarea",
+                    "id":"text",
+                    "label":"Text"
+                }
+
+			]
+		}
+	],
+	"presets":[
+		{
+			"name": "Stack Icon With Text"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

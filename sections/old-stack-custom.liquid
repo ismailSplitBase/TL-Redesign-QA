@@ -1,0 +1,125 @@
+
+<div class="xgen-stack-custom">
+  <div class="xgen-inner">
+    
+    <div class="stack-custom-wraper">
+      <div class="stack-custom-top">
+        
+        {% if section.settings.heading %}
+          <h2>{{ section.settings.heading }}</h2>
+        {% endif %}
+        
+        {% if section.settings.subheading %}
+          <p>{{ section.settings.subheading }}</p>
+        {% endif %}
+        
+        {% if section.settings.btn_text %}
+          <a href="{{ section.settings.btn_url }}" class="btn">{{ section.settings.btn_text }}</a>
+        {% endif %}
+        
+      </div>
+  
+  	  <div class="stack-custom-bottom">
+        {%- capture slider_options -%}
+        {
+          "slidesPerView": 1.4,
+          "spaceBetween": 10,
+          "loop": true,
+          "breakpoints": {
+            "1024": {
+              "slidesPerView": 4,
+              "spaceBetween": 10
+            },
+            "768": {
+              "slidesPerView": 2.2,
+              "spaceBetween": 10
+            }
+          }
+        }  
+      {%- endcapture -%}
+          <swiper-slider
+            data-swiper-options='{{ slider_options }}'
+            class="swiper-slider-container scustom"
+          >
+            <div class="swiper" data-swiper>
+              <div class="swiper-wrapper items">
+                  {% for block in section.blocks %}
+                    {%  if block.settings.product != blank %}
+                      <div class="swiper-slide"  data-swiper-slide>
+                        {%  render 'old-stack-custom-card', product: block.settings.product, block: block %}
+                      </div>
+                    {% endif %}
+                  {%  endfor %}
+              </div>
+            </div>
+          </swiper-slider>
+        
+        <div class="scustom slider">
+          
+
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>
+  
+</div>
+{% schema %}
+  {
+    "name": "Stack Custom",
+    "class": "td-legacy",
+    "settings": [
+		
+			{
+              	"type":"text",
+              	"id":"heading",
+              	"label":"Heading"
+			},
+			{
+              	"type":"textarea",
+              	"id":"subheading",
+              	"label":"Sub Heading"
+			},
+			{
+              	"type":"text",
+              	"id":"btn_text",
+              	"label":"Button Text"
+			},
+			{
+              	"type":"url",
+              	"id":"btn_url",
+              	"label":"Button URL"
+			}
+		
+	],
+	"blocks":[
+		{
+			"name":"product",
+			"type":"text",
+			"settings":[
+				{
+                    "type":"product",
+                    "id":"product",
+                    "label":"Select product"
+                },{
+                    "type":"text",
+                    "id":"subtitle",
+                    "label":"Small Text"
+                },
+                {
+                    "type":"textarea",
+                    "id":"summary",
+                    "label":"Large Text"
+                }
+
+			]
+		}
+	],
+	"presets":[
+		{
+			"name": "Stack Custom"
+		}
+	]
+  }
+{% endschema %}

@@ -1,0 +1,26 @@
+<div class="article-item">
+  <div class="article-item-img">
+    {% render 'old-lazy-image',
+      crop: 'top',
+      height: 300,
+      image: article.image,
+      width: 400,
+    %}
+  </div>
+
+  {% assign url_parts = article.url | split:'/' %}
+  {% assign blog_handle = url_parts[2] %}
+  
+  <div class="article-item-content {{ blog_handle }}">
+    <div class="article-item-box">
+      <span class="article-label">{{ blogs[blog_handle].title }}</span>
+      <h3><span>{{ article.title }}</span> {% render 'old-right-arrow' %} </h3>
+      {% comment %}
+      <div class="article-item-arrow medium-hide large-up-hide">
+        {% render 'old-right-arrow' %}
+      </div>
+      {% endcomment %}
+    </div>
+  </div>
+  <a class="full-link" href="{{ article.url }}" aria-label="Article URL"></a>
+</div>

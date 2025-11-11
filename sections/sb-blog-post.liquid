@@ -1,0 +1,190 @@
+{%  stylesheet %}
+.sb-blog-post-section {
+  --section-spacing: 40px;
+}
+
+.sb-blog-post-section__sidebar {
+  position: relative;
+}
+
+/* Override the _blog-post.liquid padding to let it use the section's background */
+.sb-blog-post-section .sb-blog-post {
+  padding-left: 0;
+  padding-right: 0;
+  background: transparent;
+}
+
+.sb-blog-post-section__sidebar-sticky {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sb-blog-post__header:before {
+  content: "";
+  display: block;
+  width: calc(100vw - 16px);
+  height: 100%;
+  z-index: 0;
+  position: absolute;
+  background: var(--sb-header-bg-color, var(--sb-bg-color, #f9f9f9));
+  left: -16px;
+  top: 0;
+}
+
+.sb-blog-post__header {
+  position: relative;
+  z-index: 1;
+}
+
+.sb-blog-post-section .sb-blog-post {
+  padding: 0 16px;
+}
+
+.sb-blog-post__category, .sb-blog-post__content-wrapper, .sb-blog-post-section__sidebar {
+    z-index: 1;
+    position: relative;
+}
+
+@media screen and (max-width: 989px) {
+  .sb-blog-post-section .sb-blog-post {
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .sb-blog-post-section__container {
+    display: flex;
+    gap: 40px;
+    padding: 0 32px;
+    justify-content: center;
+  }
+
+  .sb-blog-post-section__sidebar-sticky {
+    position: sticky;
+    top: 30px;
+    padding-bottom: 56px;
+  }
+
+  .sb-blog-post-section__sidebar-sticky .sb-trending-posts {
+    background: transparent;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .sb-blog-post__header:before {
+    display: block;
+    left: calc((-100vw + 100% + 160px) / 2);
+    width: calc(100vw + 112px);
+  }
+
+  .sb-blog-post-section__sidebar {
+    min-width: 360px;
+    width: 360px;
+    padding-top: 24px;
+  }
+  .sb-blog-post-section .sb-blog-post {
+    padding: 0;
+  }
+
+  .sb-blog-post-section__main-content {
+    max-width: 512px;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+
+  .sb-blog-post-section__main-content {
+    max-width: 848px;
+  }
+  .sb-blog-post-section__container {
+    gap: 120px;
+    padding: 0 64px;
+  }
+  .sb-blog-post__header:before {
+    left: calc((-100vw + 100% + 240px) / 2);
+  }
+}
+{% endstylesheet %}
+<div class="sb-blog-post-section sb-styled-element" style="{%  render 'style-attributes', settings: section.settings %} {% if section.settings.header_bg_color != blank %} --sb-header-bg-color: {{ section.settings.header_bg_color }};{% endif %}">
+  <div class="sb-blog-post-section__container">
+    <div class="sb-blog-post-section__main-content">
+      {% content_for 'block', type: '_blog-post', id: 'static-blog-post' %}
+      {% content_for 'block', type: '_blog-author', id: 'static-blog-author' %}
+      {% content_for 'block', type: '_blog-featured-product', id: 'static-blog-featured-product' %}
+    </div>
+
+    <div class="sb-blog-post-section__sidebar">
+      <div class="sb-blog-post-section__sidebar-sticky">
+        {% content_for 'block', type: '_trending_posts', id: 'static-blog-trending-posts' %}
+        {% content_for 'block', type: '_mini_newsletter', id: 'static-mini-newsletter' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "SB - Blog Post",
+  "enabled_on": {
+    "templates": [
+      "article"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Main Section Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color_background",
+      "id": "header_bg_color",
+      "label": "Header background color"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "presets": [ 
+    {
+      "name": "SB - Blog Post"
+    }
+  ]
+}
+{% endschema %}

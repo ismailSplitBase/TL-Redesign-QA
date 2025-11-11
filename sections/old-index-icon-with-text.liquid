@@ -1,0 +1,74 @@
+	<section class="TL_RTB ">
+		<div class="TL_RTB_inner">
+          {% for block in section.blocks %}
+          	<div class="TL_RTB_box">
+				<div class="TL_RTB_box_icon">
+                    {% if block.settings.icon != blank %}
+    					<img src="{{ block.settings.icon | img_url: '60x' }}" alt="{% if block.settings.icon.alt %}{{ block.settings.icon.alt }}{% else %}RTB box Icon {{ forloop.index }}{% endif %}" loading="lazy">
+                    {% else %}
+                      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 577.98 577.98"><defs><style>.cls-1{fill:#6e787b;}</style></defs><path d="M413.1,407.21H350l-19.21-60.77a102.1,102.1,0,0,0-20.06-187.22l2.22-3.87a15.85,15.85,0,0,0-5.84-21.61L283,120a15.86,15.86,0,0,0-21.63,5.82L196.68,238.92a6.2,6.2,0,0,0,2.3,8.44l40.84,23.34a6.19,6.19,0,0,0,8.43-2.3L291,193.81A63.87,63.87,0,0,1,314.32,312,29.72,29.72,0,0,0,296,305.6H178.92a15.9,15.9,0,0,0,0,31.79H250L228,407.21H164.88a6.18,6.18,0,0,0-6.18,6.18v30.42a6.18,6.18,0,0,0,6.18,6.18H413.1a6.18,6.18,0,0,0,6.18-6.18V413.39A6.18,6.18,0,0,0,413.1,407.21ZM289,327a18.31,18.31,0,1,1-18.3,18.3A18.33,18.33,0,0,1,289,327Z"/><path d="M289,352.93a7.63,7.63,0,1,0-7.63-7.63A7.64,7.64,0,0,0,289,352.93Z"/><path d="M192.89,272.09l28.63,16.38a6.1,6.1,0,0,0,8.48-2.28l3-5.2-39.39-22.45-3,5.14a6.16,6.16,0,0,0-.62,4.7A6.24,6.24,0,0,0,192.89,272.09Z"/><path d="M313.29,123a22.57,22.57,0,0,1,2.91,2l7.29-12.68a6.3,6.3,0,0,0-2.28-8.47L300.8,92.14a6,6,0,0,0-4.7-.56,5.83,5.83,0,0,0-3.77,2.85L285,107.29a21.73,21.73,0,0,1,4.27,2Z"/><path class="cls-1" d="M289,578C129.64,578,0,448.34,0,289S129.64,0,289,0,578,129.64,578,289,448.34,578,289,578Zm0-532.15C154.91,45.83,45.83,154.92,45.83,289S154.91,532.15,289,532.15,532.15,423.07,532.15,289,423.07,45.83,289,45.83Z"/></svg>
+                    {% endif %}
+				</div>
+				<div class="TL_RTB_text">
+                  {% if block.settings.icon_text != blank %}
+					<h4>{{ block.settings.icon_text }}</h4>
+                  {% else %}
+                    <h4>Clinically Dosed Formulas</h4>
+                  {% endif %}
+            
+				</div>
+			</div>
+            {% endfor %}
+
+		</div>
+	</section>
+
+
+{% schema %}
+{
+  "name": "index icon with text",
+  "class": "index-icon-with-text td-legacy",
+  "settings": [
+    {
+      "id": "index-icon-with-text",
+      "type": "text",
+      "label": "title",
+      "default": "Icon with text"
+    }
+  ],
+	"blocks":[
+		{
+			"name":"icons",
+			"type":"text",
+			"settings":[
+  				{
+                    "type":"image_picker",
+                    "id":"icon",
+                    "label":"Choose icon"
+                },
+    			{
+                    "type":"text",
+                    "id":"icon_text",
+                    "label":"text"
+                }
+			]
+		}
+	],
+  "presets": [{
+    "name": "index icon with text"
+  }]
+}
+{% endschema %}
+
+
+
+<style>
+
+#shopify-section-template--14614680076381__promises,
+  #shopify-section-template--14614680076381__1649252876ef4064a3,
+  #shopify-section-template--14614680076381__featured-blog,
+  #shopify-section-template--14614680076381__recently-viewed-products {
+  display:none;
+  }
+
+</style>

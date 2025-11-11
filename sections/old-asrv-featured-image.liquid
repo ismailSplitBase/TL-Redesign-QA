@@ -1,0 +1,59 @@
+<style>
+  .mobile {    display: none;}    
+      .desktop {    display: block;}    
+  @media only screen and (max-width: 992px){
+      .mobile {    display: block;}    
+      .desktop {    display: none;}    
+  }
+
+</style>
+<div class="main">
+{% for block in section.blocks %}
+ <div class="desktop">
+   <a href="{{ block.settings.banner_url }}">
+    <img src="{{ block.settings.desktop_image | img_url: 'master' }}" alt="Banner Image {{ forloop.index }}" loading="lazy">
+   </a>
+ </div>
+  <div class="mobile">
+    <a href="{{ block.settings.banner_url }}">
+     <img src="{{ block.settings.mobile_image | img_url: 'master' }}" alt="Banner Image {{ forloop.index }}" loading="lazy">
+    </a>
+ </div>
+{% endfor %}
+</div>
+{% schema %}
+{
+  "blocks": [
+    {
+      "name": "ASRV featured image",
+      "settings": [
+        {
+          "id": "desktop_image",
+          "info": "Ideal resolution would be 2560x900",
+          "label": "Desktop Image",
+          "type": "image_picker"
+        },
+        {
+          "id": "mobile_image",
+          "info": "Ideal resolution would be 640x900",
+          "label": "Mobile Image",
+          "type": "image_picker"
+        },
+        {
+          "id": "banner_url",
+          "label": "Banner Link",
+          "type": "url"
+        }
+      ],
+      "type": "slide"
+    }
+  ],
+  "name": "ASRV featured image",
+  "class": "td-legacy",
+  "settings": [],
+              "presets": [{
+    "name": "ASRV featured image",
+    "category": "Text"
+  }]
+}
+{% endschema %}

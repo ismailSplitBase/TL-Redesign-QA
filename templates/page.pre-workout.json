@@ -1,0 +1,361 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "new_breadcrumb_aXfjDq": {
+      "type": "old-new-breadcrumb",
+      "settings": {}
+    },
+    "main": {
+      "type": "old-main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "content_with_image_rLNX4F": {
+      "type": "old-content-with-image",
+      "settings": {
+        "custom_title": "Pre-workout",
+        "custom_content": "<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing</p><p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing</p><p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing</p>",
+        "sectionimage": "shopify://shop_images/Dopamine_SFP_1.png"
+      }
+    },
+    "icon_with_text_KCmbFK": {
+      "type": "old-icon-with-text",
+      "blocks": {
+        "text_BqqyHF": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/1.jpg",
+            "icon_text": "No Artificial Sweeteners"
+          }
+        },
+        "text_XmGccN": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/2.jpg",
+            "icon_text": "No Artificial Coloring"
+          }
+        },
+        "text_izM4gx": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/3.jpg",
+            "icon_text": "Gluten-Free and Non-GMO"
+          }
+        }
+      },
+      "block_order": [
+        "text_BqqyHF",
+        "text_XmGccN",
+        "text_izM4gx"
+      ],
+      "custom_css": [
+        ".xt-iwtimain {padding-bottom: 50px;}"
+      ],
+      "settings": {
+        "custom_title": ""
+      }
+    },
+    "compare_section_4WgnEf": {
+      "type": "old-compare-section",
+      "blocks": {
+        "block_dXQAK6": {
+          "type": "block",
+          "settings": {
+            "p_image": "shopify://shop_images/img-1.png",
+            "ptag": "Bestseller",
+            "starssvg": "<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 1 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 2 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 3 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 4 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Partial Star (20% filled) -->\n  <path d=\"M12.0262 4.99852H7.53066L6.02186 0.498535L4.51896 4.99852H0.0218811L3.76596 7.95679L2.27037 12.4985L6.01886 9.70362L6.02765 9.69777L9.77182 12.4985L8.28354 7.91727L12.0262 4.99852ZM8.31432 10.4858L6.02955 8.747L6.02405 8.75286V3.41354L6.97692 5.74847H9.77179L7.38558 7.57002L8.31432 10.4858Z\" fill=\"#FD6A4C\"></path>\n</svg>",
+            "rating": 4.2,
+            "p_name": "Product Name",
+            "first_Sec": "Best for bulking.",
+            "second_Sec": "28g protein per scoop",
+            "third_Sec": "120 - 150 calories per scoop",
+            "fourth_Sec": "0 - 3g carbs per scoop",
+            "fifth_Sec": "30 Scoops (Net Wt.989g)",
+            "link_label": "Shop 1 flavor",
+            "link_url": "#"
+          }
+        },
+        "block_QUCkyk": {
+          "type": "block",
+          "settings": {
+            "p_image": "shopify://shop_images/img-1.png",
+            "ptag": "Bestseller",
+            "starssvg": "<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 1 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 2 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 3 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 4 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Partial Star (80% filled) -->\n  <path d=\"M12.0262 4.99852H7.53066L6.02186 0.498535L4.51896 4.99852H0.0218811L3.76596 7.95679L2.27037 12.4985L6.01886 9.70362L6.02765 9.69777L9.77182 12.4985L8.28354 7.91727L12.0262 4.99852ZM8.31432 10.4858L6.02955 8.747L6.02405 8.75286V3.41354L6.97692 5.74847H9.77179L7.38558 7.57002L8.31432 10.4858Z\" fill=\"#FD6A4C\"></path>\n</svg>",
+            "rating": 4.8,
+            "p_name": "Product Name",
+            "first_Sec": "Best for bulking.",
+            "second_Sec": "28g protein per scoop",
+            "third_Sec": "120 - 150 calories per scoop",
+            "fourth_Sec": "0 - 3g carbs per scoop",
+            "fifth_Sec": "30 Scoops (Net Wt.989g)",
+            "link_label": "Shop 1 flavor",
+            "link_url": "#"
+          }
+        },
+        "block_GFgUBa": {
+          "type": "block",
+          "settings": {
+            "p_image": "shopify://shop_images/img-1.png",
+            "ptag": "Bestseller",
+            "starssvg": "<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 1 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 2 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 3 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 4 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 5 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>",
+            "rating": 5,
+            "p_name": "Product Name",
+            "first_Sec": "Best for bulking.",
+            "second_Sec": "28g protein per scoop",
+            "third_Sec": "120 - 150 calories per scoop",
+            "fourth_Sec": "0 - 3g carbs per scoop",
+            "fifth_Sec": "30 Scoops (Net Wt.989g)",
+            "link_label": "Shop 1 flavor",
+            "link_url": "#"
+          }
+        },
+        "block_xc7EkG": {
+          "type": "block",
+          "settings": {
+            "p_image": "shopify://shop_images/img-1.png",
+            "ptag": "Bestseller",
+            "starssvg": "<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 1 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 2 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 3 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 4 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>",
+            "rating": 4,
+            "p_name": "Product Name",
+            "first_Sec": "Best for bulking.",
+            "second_Sec": "28g protein per scoop",
+            "third_Sec": "120 - 150 calories per scoop",
+            "fourth_Sec": "0 - 3g carbs per scoop",
+            "fifth_Sec": "30 Scoops (Net Wt.989g)",
+            "link_label": "Shop 1 flavor",
+            "link_url": "#"
+          }
+        },
+        "block_Pj4aDg": {
+          "type": "block",
+          "settings": {
+            "p_image": "shopify://shop_images/img-1.png",
+            "ptag": "Bestseller",
+            "starssvg": "<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 1 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 2 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 3 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Full Star 4 -->\n  <path d=\"M4.49754 4.99935H0.0019989L3.74452 7.95697L2.24982 12.499L6.00594 9.69818L9.75071 12.499L8.26257 7.9174L12.0055 4.99935H7.50992L6.00087 0.499023L4.49754 4.99935Z\" fill=\"#FD6A4C\"></path>\n</svg>\n<svg width=\"13\" height=\"13\" viewbox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Partial Star (80% filled) -->\n  <path d=\"M12.0262 4.99852H7.53066L6.02186 0.498535L4.51896 4.99852H0.0218811L3.76596 7.95679L2.27037 12.4985L6.01886 9.70362L6.02765 9.69777L9.77182 12.4985L8.28354 7.91727L12.0262 4.99852ZM8.31432 10.4858L6.02955 8.747L6.02405 8.75286V3.41354L6.97692 5.74847H9.77179L7.38558 7.57002L8.31432 10.4858Z\" fill=\"#FD6A4C\"></path>\n</svg>",
+            "rating": 4.8,
+            "p_name": "Product Name",
+            "first_Sec": "Best for bulking.",
+            "second_Sec": "28g protein per scoop",
+            "third_Sec": "120 - 150 calories per scoop",
+            "fourth_Sec": "0 - 3g carbs per scoop",
+            "fifth_Sec": "30 Scoops (Net Wt.989g)",
+            "link_label": "Shop 1 flavor",
+            "link_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "block_dXQAK6",
+        "block_QUCkyk",
+        "block_GFgUBa",
+        "block_xc7EkG",
+        "block_Pj4aDg"
+      ],
+      "settings": {
+        "custom_title": "Compare Pre-workout Product",
+        "hnewstyle": true
+      }
+    },
+    "popular_article_RxrVj9": {
+      "type": "old-popular-article",
+      "blocks": {
+        "popular_article_hDqkwK": {
+          "type": "Popular_article",
+          "settings": {
+            "article": "all/active-recovery"
+          }
+        },
+        "popular_article_gYwAUx": {
+          "type": "Popular_article",
+          "settings": {
+            "article": "all/best-heart-healthy-foods"
+          }
+        },
+        "popular_article_yR8NEe": {
+          "type": "Popular_article",
+          "settings": {
+            "article": "all/how-to-get-stronger"
+          }
+        },
+        "popular_article_UWy6ip": {
+          "type": "Popular_article",
+          "settings": {
+            "article": "all/how-to-get-stronger"
+          }
+        }
+      },
+      "block_order": [
+        "popular_article_hDqkwK",
+        "popular_article_gYwAUx",
+        "popular_article_yR8NEe",
+        "popular_article_UWy6ip"
+      ],
+      "custom_css": [],
+      "settings": {
+        "heading": "Useful Resources",
+        "hide_info": false,
+        "hnewstyle": true
+      }
+    },
+    "index_testimonials_mH9NCK": {
+      "type": "old-index-testimonials",
+      "blocks": {
+        "text_pFRyAW": {
+          "type": "text",
+          "settings": {
+            "testimonial": "Transparent Labs helps me recover like no other. I’m convinced these products have a huge impact on my training. I would definitely recommend TL to anyone looking to improve their workouts, training, running, and recovery.",
+            "auther_name": "Scotty S.",
+            "auther_detail": "TL Select Athlete"
+          }
+        }
+      },
+      "block_order": [
+        "text_pFRyAW"
+      ],
+      "settings": {
+        "index-testimonials": "testimonials"
+      }
+    },
+    "wonderment_faq_87Xa8b": {
+      "type": "old-wonderment-faq",
+      "blocks": {
+        "section_heading_FBGWjH": {
+          "type": "section_heading",
+          "settings": {
+            "title": "Frequently Asked Questions",
+            "hnewstyle": true
+          }
+        },
+        "question_BPdNpA": {
+          "type": "question",
+          "settings": {
+            "title": "Where are your products manufactured?",
+            "text": "<p>We are a local company and all merchandise is made with love here on the moon.</p>"
+          }
+        },
+        "question_UwppGy": {
+          "type": "question",
+          "settings": {
+            "title": "How do your sizes work?",
+            "text": "<p>Please take a look at our size chart for more information and how to take accurate measurements.</p>"
+          }
+        },
+        "question_8WV9dg": {
+          "type": "question",
+          "settings": {
+            "title": "Do you ship internationally?",
+            "text": "<p>Currently we are only shipping to USA and Canada.</p>"
+          }
+        },
+        "question_tKWJWB": {
+          "type": "question",
+          "settings": {
+            "title": "How much is shipping?",
+            "text": "<p>If you spend over $100, shipping is always free. For any other purchases, shipping will be calculated at checkout.</p>"
+          }
+        },
+        "question_r9UPrt": {
+          "type": "question",
+          "settings": {
+            "title": "What is your return policy?",
+            "text": "<p>Merchandise that is unworn and in the original packaging can be returned within 30 days with the packing slip included with the product.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "section_heading_FBGWjH",
+        "question_BPdNpA",
+        "question_UwppGy",
+        "question_8WV9dg",
+        "question_tKWJWB",
+        "question_r9UPrt"
+      ],
+      "custom_css": [
+        ".wndr-sxn__sizer.wndr-sxn__faq__expanded-false {max-width: 1280px; padding-left: 1rem; padding-right: 1rem;}"
+      ],
+      "settings": {
+        "show_answers": false,
+        "text_size": 100,
+        "alignment": "center",
+        "text_color": "#121212",
+        "background_color": "linear-gradient(184deg, rgba(255, 255, 255, 1) 7%, rgba(255, 255, 255, 1) 94%)",
+        "border_color": "#121212",
+        "base_width": 100,
+        "max_width": "",
+        "inner_padding": 100,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "sans-serif"
+      }
+    },
+    "multiple_collection_UmPNWn": {
+      "type": "old-multiple-collection",
+      "blocks": {
+        "block_XD3kpf": {
+          "type": "block",
+          "settings": {
+            "collection_Select": "build-muscle"
+          }
+        },
+        "block_z6La4A": {
+          "type": "block",
+          "settings": {
+            "collection_Select": "build-muscle"
+          }
+        },
+        "block_6L6XYV": {
+          "type": "block",
+          "settings": {
+            "collection_Select": "build-muscle"
+          }
+        },
+        "block_CeFJGz": {
+          "type": "block",
+          "settings": {
+            "collection_Select": "build-muscle"
+          }
+        }
+      },
+      "block_order": [
+        "block_XD3kpf",
+        "block_z6La4A",
+        "block_6L6XYV",
+        "block_CeFJGz"
+      ],
+      "settings": {
+        "custom_title": "Collections"
+      }
+    },
+    "custom_content_QNLXY3": {
+      "type": "old-custom-content",
+      "settings": {
+        "custom_title": "What is Lorem Ipsum?",
+        "headingh1": false,
+        "custom_content": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum,  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum,  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum,  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum,  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum,  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>"
+      }
+    }
+  },
+  "order": [
+    "new_breadcrumb_aXfjDq",
+    "main",
+    "content_with_image_rLNX4F",
+    "icon_with_text_KCmbFK",
+    "compare_section_4WgnEf",
+    "popular_article_RxrVj9",
+    "index_testimonials_mH9NCK",
+    "wonderment_faq_87Xa8b",
+    "multiple_collection_UmPNWn",
+    "custom_content_QNLXY3"
+  ]
+}

@@ -1,0 +1,96 @@
+{% stylesheet %}
+.sb-product-details-accordion__container {
+  padding-left: 0;
+  padding-right: 0;
+  background: transparent!important;
+}
+
+sb-accordion {
+  display: block;
+  width: 100%;
+}
+@media screen and (min-width: 1024px) {
+  .sb-product-details-accordion__container {
+    padding-left: 24px;
+    padding-right: 24px;
+    background: var(--sb-bg-color, transparent)!important;
+    border-radius: 6px;
+    height: 100%;
+  }
+  sb-accordion *:first-child .sb-product-detail__accordion-item-divider {
+    display: none;
+  }
+}
+{% endstylesheet %}
+
+<div class="sb-product-details-accordion__container sb-styled-element" style="{%  render 'style-attributes', settings: block.settings %}">
+  {% if block.blocks.size > 0 %}
+    <sb-accordion {% if block.settings.multiple_open %}data-allow-multiple="true"{% endif %}>
+      {% content_for 'blocks' %}
+    </sb-accordion>
+    <script src="{{ 'sb-accordion.js' | asset_url }}" defer="defer"></script>
+  {% else %}
+    {% render 'sb-no-content', context: 'accordion items' %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Product Details Accordion",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 24
+    },
+    {
+      "type": "checkbox",
+      "id": "multiple_open",
+      "label": "Allow multiple sections to be open at the same time",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_product_detail_accordion_item"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Details Accordion"
+    }
+  ]
+}
+{% endschema %}

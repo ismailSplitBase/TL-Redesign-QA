@@ -1,0 +1,72 @@
+<style>
+ 
+.xgen-container {text-align:center;max-width: 1920px;height: auto;padding: 0 50px;}
+  .locator_img {margin: 0 auto;}
+  #stockist-widget .stockist-result-list ul>li {background: #fff;margin: 10px;    border: 1px solid #ccc;margin-left: 0;}
+  #stockist-widget .stockist-query-entry .stockist-search-field {border-radius: 20px;font-size: 0.75rem;}
+  #stockist-widget .stockist-query-entry .stockist-search-button button {    color: #ccc;}
+  #stockist-widget .stockist-feature-bg-color {    background-color: #fff !important;}
+  #stockist-widget {background: url({{section.settings.bgimage | ing_url: 'master'}});    background-size: cover;    padding: 20px;}
+  #stockist-widget .stockist-result-address {font-size: 0.75rem;color: rgb(110 122 126 / var(--tw-text-opacity));}
+  #stockist-widget .leaflet-bottom {    top: 10px;    bottom: unset;}
+  #stockist-widget .stockist-icon-marker:before {color: #41b5e8 !important;}
+  
+  
+  @media only screen and (max-width: 767px){
+    .xgen-container {    padding: 0 0px;}
+    #stockist-widget .stockist-result-list ul>li {    background: #fff;    margin: 10px 0px;    border: 1px solid #ccc;}
+    #stockist-widget .stockist-horizontal .stockist-side-panel {    width: 100% !important;}
+    
+  }
+</style>
+<div class="font-neue xgen-container max-w-6xl mx-auto my-8 px-4 text-blue-500">
+  <h1 class="font-neue mb-8 text-center text-xl md:text-2xl lg:text-3xl">
+    {{ page.title }}
+  </h1>
+  <div class="page-content space-y-4">
+    {{ page.content }}
+  </div>
+</div>
+<div class="xgen-container mx-auto my-8 px-4 text-blue-500">
+  <h1 class="mb-8 text-center text-xl md:text-2xl lg:text-3xl">
+    {% if section.settings.heading != blank %}
+    	{{section.settings.heading}}
+    {% endif %}
+    
+  </h1>
+  {% if section.settings.image != blank %}
+  	<img class="locator_img" src="{{ section.settings.image | img_url: 'master'}}" alt="{% if section.settings.image.alt %}{{ section.settings.image.alt }}{% else %}Locator Image{% endif %}" loading="lazy">
+  {% endif %}
+  
+</div>
+
+{% schema %}
+  {
+    "name": "Store locator",
+    "class": "td-legacy",
+    "settings": [
+		{
+          "id": "heading",
+          "label": "heading",
+          "type": "text"
+        },
+        {
+          "id": "image",
+          "label": "Pick logo",
+          "type": "image_picker"
+        },{
+          "id": "bgimage",
+          "label": "Pick background image",
+          "type": "image_picker"
+        }
+
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+ 

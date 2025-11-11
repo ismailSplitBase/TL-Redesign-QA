@@ -1,0 +1,186 @@
+<div class="xt-quiz-option-cart variant-drawer">
+  <div class="cart-wraper">
+    <div class="xclose close-drawer" onclick="closeDrawer()"></div>
+    {% for quiz_data in metaobjects.quiz_recommendation_data.values %}
+      <div class="xproduct" id="variant-drawer-{{ quiz_data.product.value.id }}"  style="display:none;">
+        <div class="img">
+          {% assign variants = quiz_data.product.value.variants %}
+          {% if variants.size == 1 %}
+            {% assign variant = variants.first %}
+            <img src="{{ variant.image | img_url: 'medium' }}" alt="{{ variant.title }}">
+          {% else %}
+            {% for variant in variants %}
+              <img data-variant-id="{{ variant.id }}" src="{{ variant.image | img_url: 'medium' }}" alt="{{ variant.title }}" style="display:none;">
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <div class="rating">
+          <div class="jdgm-widget jdgm-preview-badge" data-id="{{ quiz_data.product.value.id }}">
+            {{ quiz_data.product.value.metafields.judgeme.badge }}
+            <p class="ml-3 text-gray-500">
+              <!-- <span class="font-bold text-black">{{ quiz_data.product.value.metafields.reviews.rating.value }}</span>
+              /5.0 -->
+              <a class="open-review-details">{{ quiz_data.product.value.metafields.reviews.rating_count }} Reviews</a>
+            </p>
+          </div>
+        </div>
+        <div class="pname">{{ quiz_data.product.value.title }}</div>
+        <form method="post" action="/cart/add" class="variant-form" data-product-id="{{ quiz_data.product.value.id }}">
+          {% assign option_index = 0 %}
+          {% for option in quiz_data.product.value.options_with_values %}
+            {% assign option_name_downcase = option.name | downcase %}
+
+            {% if option_name_downcase == 'size' or option_name_downcase == 'serving size' %}
+              <div class="sizes">
+                <div class="label">{{ option.name }}:</div>
+                <div class="sizes-wrap">
+                  {% for value in option.values %}
+                    {% assign option_available = false %}
+                    {% for variant in quiz_data.product.value.variants %}
+                      {% if variant.available and variant.options[option_index] == value %}
+                        {% assign option_available = true %}
+                      {% endif %}
+                    {% endfor %}
+                    {% if option_available %}
+                      <label class="size {% if forloop.first %} active {% endif %}">
+                        <input
+                          type="radio"
+                          name="option-{{ option_index }}"
+                          value="{{ value }}"
+                          class="product-option-radio"
+                          data-product-id="{{ quiz_data.product.value.id }}"
+                          data-option-index="{{ option_index }}"
+                          {% if forloop.first %} checked {% endif %}
+                        >
+                        {{ value }}
+                      </label>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% else %}
+              <div class="flavors">
+                {% assign flavor_count = 0 %}
+                {% for option in quiz_data.product.value.options_with_values %}
+                  {% if option.name == 'Flavor' %}
+                    {% assign flavor_count = option.values | size %}
+                  {% endif %}
+                {% endfor %}
+                <div class="label">
+                  {% if flavor_count > 0 %}
+                    Available in {{ flavor_count }} flavors
+                  {% else %}
+                    No flavors available
+                  {% endif %}
+                </div>
+                <select
+                  class="flavor-select product-option-dropdown"
+                  data-product-id="{{ quiz_data.product.value.id }}"
+                  data-option-index="{{ option_index }}"
+                >
+                  {% for value in option.values %}
+                    {% assign option_available = false %}
+                    {% for variant in quiz_data.product.value.variants %}
+                      {% if variant.available and variant.options[option_index] == value %}
+                        {% assign option_available = true %}
+                      {% endif %}
+                    {% endfor %}
+                    {% if option_available %}
+                      <option {% if forloop.first %} selected="selected" {% endif %} value="{{ value }}">
+                        {{ value }}
+                      </option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+            {% endif %}
+            {% assign option_index = option_index | plus: 1 %}
+          {% endfor %}
+
+          <div class="frequency">
+            <div class="label">Frequency:</div>
+            <div class="freq-box active">
+              <div class="name-price">
+                <label class="freq-selection">
+                  <input type="radio" name="plan-freq" class="freq-radio" value="subscription" checked>
+                  <div class="name">Subscribe and Save</div>
+                </label>
+
+                <div class="price ">
+                  <span class="product-price">{{ quiz_data.product.value.selected_or_first_available_selling_plan_allocation.price | money}}</span>
+                  <del class="product-compare-price">{{ quiz_data.product.value.selected_or_first_available_selling_plan_allocation.compare_at_price | money}}</del>
+                </div>
+              </div>
+              <div class="desc-box">
+                <ul>
+                  <li>Free Shipping</li>
+                  <li>Save 10% on every order</li>
+                  <li>Cancel or pause anytime</li>
+                </ul>
+                {% if quiz_data.product.value.selling_plan_groups.size > 0 %}
+                  <select
+                    name="selling_plan"
+                    id="selling-plan-{{ quiz_data.product.value.id }}"
+                    class="plan-select selling-plan-dropdown"
+                  >
+                    {% for group in quiz_data.product.value.selling_plan_groups %}
+                      {% for plan in group.selling_plans %}
+                        <option value="{{ plan.id }}" {% if plan.name=='Every 30 days' %} selected {% endif %}>{{ plan.name | replace: 'Every', '' }}</option>
+                      {% endfor %}
+                    {% endfor %}
+                  </select>
+                {% endif %}
+              </div>
+            </div>
+            <div class="freq-box">
+              <div class="name-price">
+                 <label class="freq-selection">
+                    <input type="radio" name="plan-freq" class="freq-radio" value="onetime">
+                    <div class="name">One-Time Purchase</div>
+                 </label>
+                <div class="price one-time-price">{{ quiz_data.product.value.selected_or_first_available_selling_plan_allocation.compare_at_price | money}}</div>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" name="id" class="selected-variant-id" data-product-id="{{ quiz_data.product.value.selected_or_first_available_variant.id }}" value="{{ quiz_data.product.value.selected_or_first_available_variant.id }}">
+          <button type="submit" class="btn btn-{{ quiz_data.product.value.id }}" data-product-id="{{ quiz_data.product.value.id }}">Add To Cart</button>
+          <script type="application/json" id="product-variants-{{ quiz_data.product.value.id }}">
+          {{ quiz_data.product.value.variants | json }}
+        </script>
+        </form>
+        
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+const drawer = document.querySelector(".xt-quiz-option-cart");
+drawer.addEventListener("click", function (event) {
+  
+  const xProducts = document.querySelectorAll(".xproduct");
+
+  if (drawer && drawer.classList.contains("xactive")) {
+    let clickedInsideXProduct = false;
+
+    // Check if the click is inside any `.xproduct`
+    xProducts.forEach(xProduct => {
+      if (xProduct.contains(event.target)) {
+        clickedInsideXProduct = true;
+      }
+    });
+
+    // If click is outside all `.xproduct` elements, close the drawer
+    if (!clickedInsideXProduct) {
+      closeDrawer();
+    }
+  }
+});
+
+function closeDrawer() {
+  document.querySelector(".xt-quiz-option-cart").classList.remove("xactive");
+  document.querySelectorAll(".xproduct").forEach(product => product.style.display = "none");
+}
+
+</script>

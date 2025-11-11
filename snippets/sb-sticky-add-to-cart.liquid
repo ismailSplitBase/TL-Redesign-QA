@@ -1,0 +1,281 @@
+{% comment %}
+  Renders sticky Add To Cart component.
+  Accepts:
+  - product: {Object} product object.
+  - section: {Object} section object.
+
+  Usage:
+  {% render 'sb-sticky-add-to-cart', product: product, section: section %}
+{% endcomment %}
+
+<!-- Load Sticky Add To Cart Web Component -->
+<script src="{{ 'sb-sticky-add-to-cart.js' | asset_url }}" defer="defer"></script>
+
+{% stylesheet %}
+/* TODO fix this when the iframe is open */
+#kustomer-ui-sdk-iframe {
+  transform: 0.2s all ease!important;
+  right: 10px!important;
+}
+
+.sb-sticky-atc-active #kustomer-ui-sdk-iframe {
+  bottom: var(--sticky-atc-height)!important;
+}
+/* TODO turn off once Judge.me has been fixed */
+.sb-sticky-atc .jdgm-preview-badge .jdgm-star.jdgm-star {
+  color: var(--sb-accent-color-sticky, #1B73B3)!important;
+}
+.sb-sticky-atc .jdgm-prev-badge__text {
+  opacity: 0.6;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  margin-left: 4px;
+  margin-top: 2px;
+}
+
+.sb-sticky-atc .jdgm-prev-badge {
+  font-size: 10px!important;
+}
+
+.sb-sticky-atc .jdgm-star {
+  font-size: 10px!important;
+  margin-right: 0!important;
+  padding-right: 0!important;
+}
+.sb-sticky-atc .jdgm-widget * {
+  line-height: 1!important;
+}
+
+
+    /* Sticky Add To Cart Styles */
+  .sb-sticky-atc {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--sb-bg-color-sticky, #fff);
+    border-top: 1px solid var(--sb-fg-color-sticky, rgba(17, 19, 20, 0.1));
+    z-index: 999;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    overflow: hidden;
+    padding: 8px 0;
+  }
+
+  .sb-sticky-atc.sb-sticky-enabled {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .sb-sticky-atc.sb-sticky-atc--visible {
+    transform: translateY(0);
+  }
+
+  .sb-sticky-atc__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    gap: 15px;
+  }
+
+
+  .sb-sticky-atc__product-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .sb-sticky-atc__image {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .sb-sticky-atc__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .sb-sticky-atc__details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .sb-sticky-atc__title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--sb-fg-color-sticky, #111314);
+    margin: 0;
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+  }
+
+    .sb-sticky-atc__button {
+      background: var(--sb-bg-color-sticky-button, #173446);
+      color: var(--sb-fg-color-sticky-button, #fff);
+      border: none;
+      border-radius: 6px;
+      padding: 8px 20px;
+      font-family: var(--sb-font-family-body);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transform: translateY(0);
+      border: 1px solid var(--sb-bg-color-sticky-button, #173446);
+      min-height: 34px;
+    }
+
+    .sb-sticky-atc__button:hover {
+      background: #4C5A63;
+      color: #fff;
+      border-color: #4C5A63;
+    }
+
+    .sb-sticky-atc__button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: translateY(0);
+    }
+
+    /* Desktop styles */
+    @media screen and (min-width: 750px) {
+      .sb-sticky-atc__content {
+        padding: 8px 16px;
+        gap: 32px;
+        margin: 0 auto;
+      }
+
+      .sb-sticky-atc__product-info {
+        gap: 16px;
+      }
+
+      .sb-sticky-atc__image {
+        width: 68px;
+        height: 68px;
+      }
+
+      .sb-sticky-atc__title {
+        font-size: 20px;
+        white-space: normal;
+      }
+
+      .sb-sticky-atc__stars {
+        padding-right: 0.778px;
+      }
+
+      .sb-sticky-atc__star {
+        width: 14px;
+        height: 14px;
+        margin-right: -0.778px;
+      }
+
+      .sb-sticky-atc__button {
+        font-size: 16px;
+        padding: 8px 20px;
+      }
+      .sb-sticky-atc .jdgm-prev-badge {
+        font-size: 14px!important;
+      }
+
+      .sb-sticky-atc .jdgm-star {
+        font-size: 14px!important;
+        margin-right: 0!important;
+        padding-right: 0!important;
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .sb-sticky-atc__content {
+        padding: 8px 64px;
+      }
+    }
+
+    /* Ensure proper animation timing */
+    .sb-sticky-atc.sb-sticky-enabled.sb-sticky-atc--visible {
+      animation: slideUpFromBottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    @keyframes slideUpFromBottom {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+{% endstylesheet %}
+<!-- Sticky Add To Cart -->
+<sb-sticky-add-to-cart 
+  class="sb-sticky-atc sb-sticky-enabled" 
+  data-section-id="{{ section.id }}"
+>
+  <div class="sb-sticky-atc__content sb-page-width"
+    style="--sb-fg-color-sticky: {{ section.settings.ch_fg_color_sticky }}; --sb-bg-color-sticky: {{ section.settings.ch_bg_color_sticky }}; --sb-fg-color-sticky-button: {{ section.settings.ch_fg_color_sticky_button }}; --sb-bg-color-sticky-button: {{ section.settings.ch_bg_color_sticky_button }}; --sb-accent-color-sticky: {{ section.settings.ch_acc_color_sticky }};"
+  >
+    <div class="sb-sticky-atc__product-info">
+      <div class="sb-sticky-atc__image">
+        {% if product.featured_image %}
+          {{ product.featured_image | image_url: width: 136 | image_tag: alt: product.title }}
+        {% endif %}
+      </div>
+      <div class="sb-sticky-atc__details">
+        <h3 class="sb-sticky-atc__title">{{ product.title }}</h3>
+        <div class="sb-sticky-atc__reviews">
+          <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+            {{ product.metafields.judgeme.badge }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="sb-sticky-atc__button"
+      {%- liquid
+        assign check_against_inventory = true
+        if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+          assign check_against_inventory = false
+        endif
+        if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+          assign quantity_rule_soldout = true
+        endif
+      -%}
+      {% if product.selected_or_first_available_variant.available == false
+        or quantity_rule_soldout
+        or product.selected_or_first_available_variant == null
+      %}
+        disabled
+      {% endif %}
+    >
+      {%- if product.selected_or_first_available_variant == null -%}
+        {{ 'products.product.unavailable' | t }}
+      {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+        {{ 'products.product.sold_out' | t }}
+      {%- else -%}
+        {{ 'products.product.add_to_cart' | t }}
+      {%- endif -%}
+    </button>
+  </div>
+</sb-sticky-add-to-cart> 

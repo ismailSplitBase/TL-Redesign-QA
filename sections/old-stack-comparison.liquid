@@ -1,0 +1,130 @@
+
+<div class="xgen-stack-comparison">
+  <div class="xgen-inner">
+    
+    <div class="stack-comparison-wraper">
+      <div class="stack-comparison-in">
+        {% if section.settings.heading %}
+          <h2>{{ section.settings.heading }}</h2>
+        {% endif %}
+
+        {% if section.settings.subheading %}
+          <p>{{ section.settings.subheading }}</p>
+        {% endif %}
+        
+        {% if section.settings.btn_text %}
+          <a class="btn sdesktop" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+        {% endif %}
+      </div>
+      
+      <div class="stack-comparison-in">
+        <table class="table">
+           <tr>
+            <th class="top-th"></th>
+            <th>One Time<br> Order</th>
+            <th>Subscribe & Stack</th>
+          </tr>
+          {% for block in section.blocks %}
+          	<tr>
+            	<td>{{block.settings.text1}}</td>
+            	<td>{% if block.settings.text2 == "N" %} {% render 'old-sicon-cross' %} {%else%} {{block.settings.text2}}{% endif %}</td>
+            	<td>{% if block.settings.text3 == "Y" %} {% render 'old-sicon-check' %} {%else%} {{block.settings.text3}}{% endif %}</td>
+          	</tr>
+          {% endfor %}
+         {% comment %}
+          <tr>
+            <td>Free shipping</td>
+            <td>Orders over $150</td>
+            <td>All orders</td>
+          </tr>
+          <tr>
+            <td>Discount</td>
+            <td>Up to 5%</td>
+            <td>Up to 20%</td>
+          </tr>
+          <tr>
+            <td>Benefit 3</td>
+            <td>{% render 'old-sicon-cross' %}</td>
+            <td>{% render 'old-sicon-check' %}</td>
+          </tr>
+          <tr>
+            <td>Benefit 4</td>
+            <td>{% render 'old-sicon-cross' %}</td>
+            <td>{% render 'old-sicon-check' %}</td>
+          </tr>
+{% endcomment %}
+        </table>
+
+        {% if section.settings.btn_text %}
+          <a class="btn smobile" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Stack Comparison",
+    "class": "td-legacy",
+    "settings": [
+		{
+			"type":"text",
+			"id":"heading",
+			"label":"Heading"
+		},
+		{
+			"type":"textarea",
+			"id":"subheading",
+			"label":"Sub Heading"
+		},
+		{
+			"type":"text",
+			"id":"btn_text",
+			"label":"Button Text"
+		},
+		{
+			"type":"url",
+			"id":"btn_url",
+			"label":"Button URL"
+		}
+	],
+	"blocks":[
+		{
+			"name":"List",
+			"type":"text",
+			"settings":[
+				
+				{
+                    "type":"text",
+                    "id":"text1",
+                    "label":"Text"
+                },
+                {
+                    "type":"text",
+                    "id":"text2",
+                    "label":"Text"
+                },
+                {
+                    "type":"textarea",
+                    "id":"text3",
+                    "label":"Text"
+                }
+
+			]
+		}
+	],
+	"presets":[
+		{
+			"name": "Stack Comparison"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+ 

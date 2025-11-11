@@ -1,0 +1,291 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+  Usage:
+  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+{% liquid
+  assign apparel_product = false
+  for tag in product.tags
+    assign formatted_tag = tag | downcase
+    if 'apparel,merch' contains formatted_tag
+      assign apparel_product = true
+      break
+    endif
+  endfor
+
+%}
+{%- unless product.has_only_default_variant -%}
+  <variant-selects
+    id="variant-selects-{{ section.id }}"
+    data-section="{{ section.id }}"
+    {{ block.shopify_attributes }}
+    {% if apparel_product %}
+      class="product-form__apparel"
+    {% endif %}
+  >
+    {%- for option in product.options_with_values -%}
+      {%- liquid
+        assign swatch_count = option.values | map: 'swatch' | compact | size
+        assign picker_type = block.settings.picker_type
+        assign is_flavor_option = false
+
+        # Check if this is a flavor option
+        assign option_name_lower = option.name | downcase
+        if option_name_lower contains 'flavor' or option_name_lower contains 'flavour' or option_name_lower contains 'taste'
+          assign is_flavor_option = true
+          assign picker_type = 'flavor_drawer'
+        endif
+
+        # Handle swatch logic for non-flavor options
+        unless is_flavor_option
+          if swatch_count > 0 and block.settings.swatch_shape != 'none'
+            if block.settings.picker_type == 'dropdown'
+              assign picker_type = 'swatch_dropdown'
+            else
+              assign picker_type = 'swatch'
+            endif
+          endif
+        endunless
+      -%}
+
+      {%- if picker_type == 'flavor_drawer' -%}
+        <div class="sb-flavor-picker product-form__input product-form__input--dropdown" data-option-name="{{ option.name | escape }}" data-option-position="{{ option.position }}">
+          <div class="form__label">
+            {% render 'sb-option-text', values: option.values, postfix: 'Available:'%}
+          </div>
+          <button 
+            type="button" 
+            class="sb-flavor-selected" 
+            data-flavor-trigger="{{ option.name | escape }}"
+            data-selected-value="{{ option.selected_value | escape }}"
+          >
+            <div class="sb-flavor-selected__content">
+              <div class="sb-flavor-selected__info">
+                {%- if option.selected_value.swatch -%}
+                  <div class="sb-flavor-swatch">
+                    {% render 'swatch', swatch: option.selected_value.swatch, shape: 'circle' %}
+                  </div>
+                {% else %}
+                  <div class="sb-flavor-swatch">
+                    <img src='{{ option.selected_value | replace: " ", "_" | replace: "'", "_" | append: ".jpg" | file_url }}' alt="Variant {{ option.selected_value }}" width="24" height="24">
+                  </div>
+                {%- endif -%}
+                <span class="sb-flavor-selected__text">{{ option.selected_value }}</span>
+              </div>
+              <div class="sb-flavor-selected__arrow">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M13.0384 7.43633C13.0384 7.32563 12.9947 7.21234 12.9097 7.12738C12.7398 6.95747 12.4617 6.95747 12.2918 7.12738L6.47609 12.9431L0.74531 7.21234C0.575395 7.04243 0.297351 7.04243 0.127436 7.21234C-0.0424797 7.38226 -0.0424797 7.6603 0.127436 7.83022L6.16716 13.8725C6.33707 14.0424 6.61512 14.0424 6.78503 13.8725L12.9097 7.74783C12.9972 7.6603 13.0384 7.54961 13.0384 7.43633Z" fill="#111314"/>
+                </svg>
+              </div>
+            </div>
+          </button>
+          
+          {%- # Hidden select for form submission -%}
+          <select
+            class="sb-flavor-hidden-select"
+            name="options[{{ option.name | escape }}]"
+            form="{{ product_form_id }}"
+            style="display: none;"
+            
+          >
+            {%- for value in option.values -%}
+              <option 
+                value="{{ value | escape }}" 
+                
+                id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}"
+                data-product-url="{{ value.product_url }}"
+                data-option-value-id="{{ value.id }}"
+              >
+                {{ value }}
+              </option>
+            {%- endfor -%}
+          </select>
+        </div>
+      {%- elsif picker_type == 'swatch' -%}
+        <fieldset class="js product-form__input product-form__input--swatch" data-option-position="{{ option.position }}">
+          <legend class="form__label">
+            {{ option.name }}:
+            <span data-selected-value>
+              {{- option.selected_value -}}
+            </span>
+          </legend>
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type
+          %}
+        </fieldset>
+      {%- elsif picker_type == 'button' -%}
+        <fieldset class="js product-form__input product-form__input--pill" data-option-position="{{ option.position }}">
+          <legend class="form__label">{{ option.name }}:</legend>
+          {% render 'sb-product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type
+          %}
+        </fieldset>
+      {%- else -%}
+        <div class="product-form__input product-form__input--dropdown" data-option-position="{{ option.position }}">
+          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+            {{ option.name }}
+          </label>
+          <div class="select">
+            {%- if picker_type == 'swatch_dropdown' -%}
+              <span
+                data-selected-value
+                class="dropdown-swatch"
+              >
+                {% render 'swatch', swatch: option.selected_value.swatch, shape: block.settings.swatch_shape %}
+              </span>
+            {%- endif -%}
+            <select
+              id="Option-{{ section.id }}-{{ forloop.index0 }}"
+              class="select__select"
+              name="options[{{ option.name | escape }}]"
+              form="{{ product_form_id }}"
+            >
+              {% render 'product-variant-options',
+                product: product,
+                option: option,
+                block: block,
+                picker_type: picker_type
+              %}
+            </select>
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    <div class="product-card__variant-data" data-product-data hidden>
+      <script type="application/json" data-product-variants>
+        {{ product.variants | json }}
+      </script>
+      <script type="application/json" data-product-options>
+        {{ product.options_with_values | json }}
+      </script>
+      <script type="application/json" data-selected-variant>
+        {{ product.selected_or_first_available_variant | json }}
+      </script>
+    </div>
+  </variant-selects>
+
+  {%- # Flavor Drawer Components -%}
+  {% assign flavor_option = product.options_by_name['Flavor'] %}
+  {% if flavor_option and flavor_option.values.size > 0 %}
+    {% assign flavor_values = product.options_by_name['Flavor'].values %}
+    {% assign available_flavor_variants = flavor_values | where: 'available', true | map: 'variant' %}
+    <sb-flavor-drawer 
+      class="sb-flavor-drawer"
+      data-option-name="Flavor"
+      id="FlavorDrawer-{{ section.id }}"
+    >
+
+      <div class="sb-flavor-drawer__overlay" data-flavor-overlay>&nbsp;</div>
+      <div class="sb-flavor-drawer__content">
+        <div class="sb-flavor-drawer__header">
+          <h3 class="sb-flavor-drawer__title">Flavor:</h3>
+          <button type="button" class="sb-flavor-drawer__close" data-flavor-close>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M5.98959 5.98959L18.0104 18.0104M18.0104 5.98959L5.98959 18.0104" stroke="#111314" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="sb-flavor-drawer__options">
+          {%- for value in flavor_values -%}
+            {%- liquid
+              assign variant_available = false
+              assign is_new_flavor = false
+              assign is_low_stock = false
+              
+              # Get variant info for this option value
+              for variant in product.variants
+                assign position_0_based = flavor_option.position | minus: 1
+                if variant.options[position_0_based] == value and available_flavor_variants contains variant 
+                  assign variant_available = true
+                
+                  if variant.inventory_quantity < 10 and variant.inventory_quantity > 0
+                    assign is_low_stock = true
+                  endif
+                  if variant.metafields.custom.new_variant == true
+                    assign is_new_flavor = true
+                  endif
+                  break
+                endif
+              endfor
+              
+              assign is_selected = false
+              if value == flavor_option.selected_value
+                assign is_selected = true
+              endif
+              
+              assign status_class = ''
+              assign selected_class = ''
+              
+              unless variant_available
+                assign status_class = ' sb-flavor-option--disabled'
+              endunless
+              
+              if is_selected
+                assign selected_class = ' sb-flavor-option--selected'
+              endif
+            -%}
+            
+            <button 
+              type="button" 
+              class="sb-flavor-option{{ selected_class }}{{ status_class }}"
+              data-flavor-option
+              data-value="{{ value | escape }}"
+              {% unless variant_available %}disabled{% endunless %}
+            >
+              <div class="sb-flavor-option__content">
+                <div class="sb-flavor-option__info">
+                  {%- if value.swatch -%}
+                    <div class="sb-flavor-option__swatch">
+                      {% render 'swatch', swatch: value.swatch, shape: 'circle' %}
+                    </div>
+                  {%- else -%}
+                    <div class="sb-flavor-option__swatch sb-flavor-option__swatch--default">
+                      <img src='{{ value | replace: " ", "_" | replace: "'", "_" | append: ".jpg" | file_url }}' alt="Variant {{ value }}" width="24" height="24">
+                    </div>
+                  {%- endif -%}
+                  <span class="sb-flavor-option__text">{{ value }}</span>
+                </div>
+                
+                {%- if variant_available == false or is_low_stock or is_new_flavor -%}
+                  {%- liquid
+                    assign status_type = 'out-of-stock'
+                    assign status_text = 'Out of Stock'
+                    
+                    if variant_available and is_low_stock
+                      assign status_type = 'low-stock'
+                      assign status_text = 'Low Stock'
+                    elsif variant_available and is_new_flavor
+                      assign status_type = 'new'
+                      assign status_text = 'New!'
+                    endif
+                  -%}
+                  <div class="sb-flavor-option__status">
+                    <div class="sb-flavor-option__status-indicator sb-flavor-option__status-indicator--{{ status_type }}"></div>
+                    <span class="sb-flavor-option__status-text">{{ status_text }}</span>
+                  </div>
+                {%- endif -%}
+              </div>
+            </button>
+          {%- endfor -%}
+        </div>
+      </div>
+    </sb-flavor-drawer>
+    
+  {%- endif -%}
+{%- endunless -%}

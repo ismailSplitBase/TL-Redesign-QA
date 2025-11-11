@@ -1,0 +1,179 @@
+{% stylesheet %}
+.sb-compare-product-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: var(--sb-ch-bg-color, #fff);
+  overflow: hidden;
+  height: 100%;
+  color: var(--sb-ch-fg-color, #000);
+  position: relative;
+  padding: 16px;
+}
+.sb-compare-product-card{
+  border-right: 1px solid #EAECEF; 
+}
+
+.sb-compare-product-card__image {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background-color: #fff;
+  position: relative;
+}
+
+.sb-compare-product-card__image img {
+  max-height: 180px;
+  object-fit: contain;
+}
+
+.sb-compare-product-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sb-compare-product-card__title {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  padding: 6px 0;
+  margin: 0;
+  line-height: 140%;
+  color: var(--sb-ch-fg-color, #000);
+  min-height: 50px;
+}
+
+.sb-compare-product-card .jdgm-widget {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sb-compare-product-card .jdgm-preview-badge .jdgm-star.jdgm-star {
+  color: var(--sb-ch-acc-color, #1B73B3);
+  padding-right: 2px !important;
+}
+
+.sb-compare-product-card .jdgm-rating-count {
+  font-size: 13px;
+  font-weight: 400;
+}
+.sb-compare-product-card .jdgm-preview-badge {
+  display: flex!important;
+  align-items: center!important;
+}
+.sb-compare-product-card .jdgm-prev-badge__text {
+  display: none!important;
+}
+
+.sb-compare-product-card__features {
+  display: flex;
+  flex-direction: column;
+}
+
+.sb-compare-product-card__feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 55px;
+  font-size: 14px;
+  color: var(--sb-ch-fg-color, #676767);
+  padding: 12px 0;
+}
+.sb-compare-product-card__feature:not(:last-child) {
+  border-bottom: 1px solid var(--border-color, #EAECEF); 
+}
+.sb-compare-product-card__feature p {
+  padding: 0;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.sb-compare-product-card__feature-image {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sb-compare-product-card__feature-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.sb-compare-product-card .sb-button__link--link {
+  justify-content: flex-start;
+}
+
+.sb-compare-product-card__body {
+    padding-bottom: 16px;
+}
+
+.sb-compare-product-card__body .sb-button {
+  padding-top: 12px;
+}
+
+.sb-compare-product-card .sb-button__link--link.sb-button__link {
+  color: var(--sb-ch-fg-color);
+  border-bottom: 1px solid var(--sb-ch-fg-color);
+}
+
+@media screen and (min-width: 1024px) {
+  .sb-compare-product-card__feature {
+    min-height: 45px;
+  }
+  .sb-compare-product-card__body .sb-button {
+    padding-top: 24px;
+  }
+}
+
+{% endstylesheet %}
+
+<div class="sb-compare-product-card">
+  <div class="sb-compare-product-card__image">
+    {% render 'sb-product-tags', product: product %}
+    {{ product.featured_image | image_url: width: "400" | image_tag: class: 'sb-compare-product-card__image', alt: product.title }}
+  </div>
+  <div class="sb-compare-product-card__content">
+    <div class="sb-compare-product-card__header">
+      <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+        {{ product.metafields.judgeme.badge }} <span class="jdgm-rating-count">{{ product.metafields.reviews.rating.value }}</span>
+      </div> 
+      <h3 class="sb-compare-product-card__title">
+        {{ product.title }}
+      </h3>
+    </div>
+    <div class="sb-compare-product-card__body">
+    {% assign compare_product_feature_list = product.metafields.custom.compare_product_feature_list.value %}
+    {% if compare_product_feature_list != empty %}
+      <div class="sb-compare-product-card__features" style="{% if section.settings.ch_fg_copy_color != blank %}--sb-ch-fg-color: {{ section.settings.ch_fg_copy_color}};{% endif %}">
+        {% for feature in compare_product_feature_list %}
+          {% if feature.title != empty or feature.image != empty %}
+          <div class="sb-compare-product-card__feature">
+            {% if feature.image != empty %}
+              <div class="sb-compare-product-card__feature-image">
+                {{ feature.image | image_url: width: 24, height: auto | image_tag }}
+              </div>
+            {% endif %}
+            {% if feature.title != empty %}
+              <div class="sb-compare-product-card__feature-text">
+                {{ feature.title | metafield_tag }}
+              </div>
+            {% endif %}
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% capture button_text %}
+      Shop {% render 'sb-option-text', product: product %}
+    {% endcapture %}
+    {% assign button = null | default: button_text: button_text, button_url: product.url, button_type: 'link' %}
+    {% render 'sb-button', button: button %}
+    </div>
+  </div>
+</div> 

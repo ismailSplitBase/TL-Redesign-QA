@@ -1,0 +1,142 @@
+{%  stylesheet %}
+
+.sb-blog-header__container {
+  display: flex;
+  flex-direction: column;
+  column-gap: 2rem;
+}
+
+@media screen and (min-width: 990px) {
+  .sb-blog-header__container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .sb-blog-header__featured-posts-container {
+    width: calc(68% - 20px);
+  }
+
+  .sb-blog-header__secondary-content-container {
+    width: calc(32% - 20px);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .sb-blog-header__featured-posts-container {
+    width: calc(68% - 35px);
+  }
+
+  .sb-blog-header__secondary-content-container {
+    width: calc(32% - 35px);
+  }
+}
+
+{% endstylesheet %}
+
+<div class="sb-blog-header sb-styled-element" style="{%  render 'style-attributes', settings: section.settings %}">
+  {% content_for 'block', type: '_blog_header', id: 'static-blog-header', blog: blog %}
+  {% if section.settings.show_secondary_content %}
+    <div class="sb-page-width sb-blog-header__container">
+      <div class="sb-blog-header__featured-posts-container">
+        {% content_for 'block', type: '_featured_posts', id: 'static-blog-featured-posts' %}
+      </div>
+
+      <div class="sb-blog-header__secondary-content-container">
+        {% content_for 'block', type: '_trending_posts', id: 'static-blog-trending-posts' %}
+        {% content_for 'block', type: '_mini_newsletter', id: 'static-mini-newsletter' %}
+      </div>
+
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "SB Blog Header",
+  "enabled_on": {
+    "templates": [
+      "blog"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_content",
+      "label": "Show Secondary Content",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colour"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Text Color"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter Colors"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_color",
+      "label": "Newsletter Text Color"
+    },
+    {
+      "type": "color",
+      "id": "ch_bg_color",
+      "label": "Newsletter Background Color"
+    },
+    {
+      "type": "color",
+      "id": "ch_accent_color",
+      "label": "Newsletter Accent Color"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    }
+  ],
+  "presets": [ 
+    {
+      "name": "SB Blog Header"
+    }
+  ]
+}
+{% endschema %}

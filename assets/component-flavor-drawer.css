@@ -1,0 +1,320 @@
+/* ===============================================
+   Flavor Drawer Component Styles
+   =============================================== */
+
+/* Flavor Picker - Selected Option Display */
+.sb-flavor-picker {
+  margin-bottom: 2rem;
+}
+
+.sb-flavor-picker .form__label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--light-grey, #676767);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.sb-flavor-selected {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid var(--sb-fg-color, #000);
+  border-radius: 6px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+  min-height: 54px;
+}
+
+.sb-flavor-selected:hover {
+  border-color: var(--sb-fg-color, #000);
+}
+
+.sb-flavor-selected__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  width: 100%;
+}
+
+.sb-flavor-selected__info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.sb-flavor-swatch,
+.sb-flavor-option__swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sb-flavor-option__swatch--default {
+  background: #ffffff;
+  border: 1px solid rgba(103, 103, 103, 0.24);
+}
+
+.sb-flavor-selected__text,
+.sb-flavor-option__text {
+  font-family: var(--sb-font-family-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #111314;
+  white-space: nowrap;
+}
+
+.sb-flavor-selected__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  transform: rotate(270deg);
+  transition: transform 0.2s ease;
+}
+
+.sb-flavor-selected.is-open .sb-flavor-selected__arrow {
+  transform: rotate(90deg);
+}
+
+/* Flavor Drawer Modal */
+sb-flavor-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+sb-flavor-drawer.sb-flavor-drawer--open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sb-flavor-drawer__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1113147a;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.sb-flavor-drawer__content {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #ffffff;
+  border-radius: 0;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 100%;
+}
+
+.sb-flavor-drawer--open .sb-flavor-drawer__content {
+  transform: translateX(0);
+}
+
+.sb-flavor-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 16px 0;
+  flex-shrink: 0;
+}
+
+.sb-flavor-drawer__title {
+  font-family: var(--sb-font-family-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--light-grey, #676767);
+  margin: 0;
+}
+
+.sb-flavor-drawer__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.sb-flavor-drawer__close:hover {
+  opacity: 0.7;
+}
+
+.sb-flavor-drawer__options {
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Flavor Option Items */
+.sb-flavor-option {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(103, 103, 103, 0.2);
+  border-radius: 6px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+}
+
+.sb-flavor-option:hover:not(.sb-flavor-option--disabled) {
+  border-color: #111314;
+}
+
+.sb-flavor-option--selected {
+  border: 1.5px solid #111314;
+}
+
+.sb-flavor-option--disabled {
+  cursor: not-allowed;
+}
+
+.sb-flavor-option--disabled .sb-flavor-option__info {
+  opacity: 0.32;
+}
+
+.sb-flavor-option__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  width: 100%;
+}
+
+.sb-flavor-option__info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sb-flavor-option__status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sb-flavor-option__status-indicator {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: block !important;
+}
+
+.sb-flavor-option__status-indicator--new {
+  background: #50b900;
+}
+
+.sb-flavor-option__status-indicator--low-stock {
+  background: #ffb547;
+}
+
+.sb-flavor-option__status-indicator--out-of-stock {
+  background: #d43333;
+}
+
+.sb-flavor-option__status-text {
+  font-family: var(--sb-font-family-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--light-grey, #676767);
+  white-space: nowrap;
+}
+
+/* Desktop Responsive Styles */
+@media screen and (min-width: 750px) {
+  .sb-flavor-drawer__content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .sb-flavor-drawer__header {
+    padding: 24px 16px 0;
+  }
+
+  .sb-flavor-drawer__options {
+    padding: 24px 16px;
+  }
+}
+
+/* Animation for smooth opening */
+@keyframes slideUpFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Accessibility improvements */
+.sb-flavor-drawer[aria-hidden='true'] {
+  display: none;
+}
+
+.sb-flavor-option:focus {
+  outline: 2px solid var(--sb-fg-color, #000);
+  outline-offset: 2px;
+}
+
+.sb-flavor-selected:focus {
+  outline: 2px solid var(--sb-fg-color, #000);
+  outline-offset: 2px;
+}
+
+.sb-flavor-drawer__close:focus {
+  outline: 2px solid var(--sb-fg-color, #000);
+  outline-offset: 2px;
+}

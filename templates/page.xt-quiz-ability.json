@@ -1,0 +1,188 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "new_breadcrumb_aXfjDq": {
+      "type": "old-new-breadcrumb",
+      "disabled": true,
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "xt_quiz_ability_4HCXrL": {
+      "type": "old-xt-quiz-ability",
+      "blocks": {
+        "quiz_i6FGci": {
+          "type": "Quiz",
+          "settings": {
+            "heading": "Get your personalized supplement stack.",
+            "subheading": "Unlock your science-based recommendation by taking our 3-minute quiz.",
+            "btn_text": "Start Now"
+          }
+        },
+        "quizwithinput_qq8p8b": {
+          "type": "Quizwithinput",
+          "settings": {
+            "heading": "Hi! What can we call you?",
+            "subheading": "Just your first name is fine!",
+            "inputelement": true,
+            "placeholder": "Name",
+            "btn_text": "Next",
+            "skip_btn_text": ""
+          }
+        },
+        "quizwithoption_pGMJG4": {
+          "type": "Quizwithoption",
+          "settings": {
+            "heading": "You would like to see products recommended for:",
+            "subheading": "",
+            "target": "gender",
+            "option1": "Men",
+            "datavalue1": "genderMen",
+            "option2": "Women",
+            "datavalue2": "genderWomen",
+            "option3": "No Preference",
+            "datavalue3": "genderNoPref",
+            "option4": "",
+            "datavalue4": "",
+            "option5": "",
+            "datavalue5": "",
+            "btn_text": "Next",
+            "skip_btn_text": ""
+          }
+        },
+        "quizwithoption_nKrcaF": {
+          "type": "Quizwithoption",
+          "settings": {
+            "heading": "What is your main goal?",
+            "subheading": "",
+            "target": "goal",
+            "option1": "Build Lean Muscle",
+            "datavalue1": "goalbuildMuscle",
+            "option2": "Improve Strength",
+            "datavalue2": "goalimproveStrength",
+            "option3": "Lose Body Fat",
+            "datavalue3": "goalloseBodyFat",
+            "option4": "Improve Health & Wellness",
+            "datavalue4": "goalImproveHealth",
+            "option5": "",
+            "datavalue5": "",
+            "btn_text": "Next",
+            "skip_btn_text": ""
+          }
+        },
+        "quizwithoption_8jBANk": {
+          "type": "Quizwithoption",
+          "settings": {
+            "heading": "How do you like to train?",
+            "subheading": "(Select all that apply)",
+            "target": "training",
+            "option1": "Strength Training",
+            "datavalue1": "activityStrength",
+            "option2": "Cardio",
+            "datavalue2": "activityCardio",
+            "option3": "Mobility Training",
+            "datavalue3": "activityMobility",
+            "option4": "Sports",
+            "datavalue4": "activitySports",
+            "option5": "",
+            "datavalue5": "",
+            "btn_text": "Next",
+            "skip_btn_text": ""
+          }
+        },
+        "quizwithoption_BEkkJN": {
+          "type": "Quizwithoption",
+          "settings": {
+            "heading": "Do you have any dietary restrictions or preferences?",
+            "subheading": "(Select all that apply)",
+            "target": "restrictions",
+            "option1": "Vegan",
+            "datavalue1": "dietVegan",
+            "option2": "Dairy-Free",
+            "datavalue2": "DietDairyFree",
+            "option3": "No Natural Flavors",
+            "datavalue3": "dietNoNatural",
+            "option4": "Stimulant-Free",
+            "datavalue4": "dietStimulent",
+            "option5": "No Restrictions or Preferences",
+            "datavalue5": "dietNone",
+            "btn_text": "Next",
+            "skip_btn_text": ""
+          }
+        },
+        "quizwithresult_k4Rtmm": {
+          "type": "Quizwithresult",
+          "settings": {
+            "heading": "We have your results!",
+            "subheading": "Enter your email to get a copy of your recommendations, access to personalized content, and 10% off your first order.",
+            "inputelement": true,
+            "placeholder": "Email",
+            "btn_text": "Next",
+            "skip_btn_text": "Skip"
+          }
+        },
+        "quizwithtags_EEqRxK": {
+          "type": "Quizwithtags",
+          "settings": {
+            "heading": "get to your goals with these science-backed recommendations."
+          }
+        },
+        "resultrecommendationone_tAdH8M": {
+          "type": "Resultrecommendationone",
+          "settings": {
+            "heading": "Start with these core essentials:",
+            "subheading": "These should form the foundation of your daily routine."
+          }
+        },
+        "resultrecommendationtwo_EUWxtX": {
+          "type": "Resultrecommendationtwo",
+          "settings": {
+            "heading": "Complete your stack:",
+            "subheading": "These key building blocks will take your progress to the next level."
+          }
+        },
+        "quizwithloading_w4CGrG": {
+          "type": "Quizwithloading",
+          "settings": {
+            "heading": "Customizing your stack..."
+          }
+        }
+      },
+      "block_order": [
+        "quiz_i6FGci",
+        "quizwithinput_qq8p8b",
+        "quizwithoption_pGMJG4",
+        "quizwithoption_nKrcaF",
+        "quizwithoption_8jBANk",
+        "quizwithoption_BEkkJN",
+        "quizwithresult_k4Rtmm",
+        "quizwithtags_EEqRxK",
+        "resultrecommendationone_tAdH8M",
+        "resultrecommendationtwo_EUWxtX",
+        "quizwithloading_w4CGrG"
+      ],
+      "settings": {
+        "shopalltext": "Shop all",
+        "shopalllink": "shopify://collections/best-sellers",
+        "retaketesttext": "Retake the Quiz",
+        "retaketestlink": "https://www.transparentlabs.com/pages/protein-calculator?view=xt-quiz-ability"
+      }
+    }
+  },
+  "order": [
+    "new_breadcrumb_aXfjDq",
+    "main",
+    "xt_quiz_ability_4HCXrL"
+  ]
+}

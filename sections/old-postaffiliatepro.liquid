@@ -1,0 +1,530 @@
+<style>
+  @font-face {
+  font-family: 'Aftika';
+  font-weight: 200;
+  src: url('Aftika-Extra-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Aftika';
+  font-weight: 300;
+  src: url('Aftika-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Aftika';
+  font-weight: 400;
+  src: url('Aftika-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Aftika';
+  font-weight: 600;
+  src: url('Aftika-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Aftika';
+  font-weight: 700;
+  src: url('Aftika-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Aftika';
+  font-weight: 800;
+  src: url('Aftika-ExtraBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Aftika';
+  font-weight: 900;
+  src: url('Aftika-Black.otf') format('opentype');
+}
+body { margin:0; padding:0; color:#6a747f; font-size:11px; }	
+.row::after {  content: "";  clear: both;  display: table;}
+[class*="col-"] {  float: left;  padding: 15px;}
+p{padding: 5px 0;}
+h2.font-bold.text-blue-500.text-xl.md\:text-2xl {    text-transform: uppercase;}
+h3.font-semibold.text-gray-500 {    margin: 30px 0 5px 0;}
+.menu ul {  list-style-type: none;  margin: 0;  padding: 0;}
+.menu li {  padding: 8px;  margin-bottom: 7px;  color: #000;}
+legend {    padding: 0;    color: rgb(253 106 76);    font-size: 18px;    line-height: 24px;    text-transform: uppercase;}
+ fieldset {display: block;width: 100%;padding: 15px;background: #efefef;margin-bottom: 20px;}
+ .CustomHtmlSignupForm label {display: block;width: 100%;text-transform: capitalize;padding: 10px 6px;color: rgb(19 40 54 / var(--tw-text-opacity));font-size: 16px;line-height: 24px;}
+ .CustomHtmlSignupForm label.error {color: #a94442;background-color: #f2dede;border-color: #ebccd1;padding:1px 20px 1px 20px;font-style:italic;}
+/* For mobile phones: */
+[class*="col-"] {  width: 100%;}
+.max-w-lg {    max-width: 800px;}
+ .text-sm {
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(19 40 54 / var(--tw-text-opacity));
+}
+.container input[type="checkbox"] {
+  width: 16px!important;
+}
+  
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+ 
+  
+  div#FormMessage {
+    padding: 10px;
+    color: green;
+    background: #efefef;
+    margin: 10px 0;
+}
+</style>
+<div class="container mx-auto my-8 px-4 text-blue-500">
+
+<div class="row">
+ <div class="col-6 menu">
+     <ul>
+      <li>
+        <h2 class="font-bold text-blue-500 text-xl md:text-2xl">Benefits </h2>
+        <p class="leading-loose text-gray-500 text-sm  sm:leading-loose">Competitive commissions starting at 30% per sale</p>
+        <p class="leading-loose text-gray-500 text-sm  sm:leading-loose">60-day cookie window</p>
+        <p class="leading-loose text-gray-500 text-sm  sm:leading-loose">Exclusive offers & custom codes available</p>
+        <p class="leading-loose text-gray-500 text-sm  sm:leading-loose">Access to product sampling & launches</p>
+       </li>
+      <li>
+        <h2 class="font-bold text-blue-500 text-xl md:text-2xl">FAQs</h2>
+        
+        <h3 class="font-semibold text-gray-500 text-sm">What is the difference between the Ambassador Program and Affiliate Program?</h3>
+		<p class="leading-loose text-gray-500 text-sm sm:leading-loose">The Ambassador Program is best suited for those that use social media as the primary promotional method. If you are primarily driving traffic via articles, blogs, newsletters, and banners, our Affiliate Program is the best fit!</p>
+
+        <h3 class="font-semibold text-gray-500 text-sm">Are there any country exclusions?</h3>
+        <p class="leading-loose text-gray-500 text-sm sm:leading-loose">No, we currently do not.</p>
+        
+        <h3 class="font-semibold text-gray-500 text-sm">Additional questions?</h3>
+        <p class="leading-loose text-gray-500 text-sm sm:leading-loose">Please reach out to <a href="mailto:hannah@nutraholdings.com">hannah@nutraholdings.com</a>.</p>
+        
+       </li>
+    </ul>
+  </div>
+  <div class="col-6">
+    
+<form class="CustomHtmlSignupForm" id="affiliateSignup" action="https://transparentlabs.postaffiliatepro.com/affiliates/signup.php" method="post"><!-- signup_fields -->
+<div class="SignupForm">
+    <fieldset>
+        <legend>Personal Information</legend>
+      
+      
+      	<label for="username">Username (Email)</label>
+      	<input class="text-input" type="text" id="username" name="username">
+      
+        <div id="rpField" class=""></div>
+        <div id="rpFieldAgain" class=""></div>
+        
+      	<label for="firstname">First Name</label>
+      	<input class="text-input" type="text" id="firstname" name="firstname">
+        
+      	<label for="lastname">Last Name</label>
+      	<input class="text-input" type="text" id="lastname" name="lastname">
+        
+      	<label for="refid">Referral ID</label>
+        <p style="margin: 0 10px;padding: 0;">This is the ID that will show up in your affiliate links. Typically this will be your company name, website name, or social handles. If you do not choose an ID name, a random alphanumeric ID will be generated for you.</p>
+      	<input class="text-input" type="text" id="refid" name="refid">
+        
+      	<input type="hidden" name="parentuserid" id="parentuserid" value="" />
+    </fieldset>
+    
+    <fieldset>
+        <legend>Additional Information</legend>
+        
+      	<label for="data1">Website URL</label>
+      	<input class="text-input" type="text" id="data1" name="data1">
+      	
+      	<label for="data2">Company/Website Name</label>
+      	<input class="text-input" type="text" id="data2" name="data2">      
+      	
+      	<label for="data3">Street</label>
+      	<input class="text-input" type="text" id="data3" name="data3">       
+      		
+      	<label for="data4">City</label>
+      	<input class="text-input" type="text" id="data4" name="data4">       
+      		
+      	<label for="data5">State</label>
+      	<input class="text-input" type="text" id="data5" name="data5">      
+      	
+      	<label for="data6">Country</label>
+      	<select class="text-input" name="data6"><option value="AF">Afghanistan</option><option value="AX">Aland Islands</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="A1">Anonymous Proxy</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AP">Asia/PacificRegion</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BV">Bouvet Island</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="BN">Brunei Darussalam</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CC">Cocos (Keeling) Islands</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo</option><option value="CD">Congo, The Democratic Republic of the</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="CI">Cote D'Ivoire</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="EU">Europe</option><option value="FK">Falkland Islands (Malvinas)</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="FX">France, Metropolitan</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island and McDonald Islands</option><option value="VA">Holy See (Vatican City State)</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran, Islamic Republic of</option><option value="IQ">Iraq</option><option value="IE">Ireland</option><option value="IM">Isle of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KP">Korea, Democratic People's Republic of</option><option value="KR">Korea, Republic of</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Lao People's Democratic Republic</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libyan Arab Jamahiriya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macau</option><option value="MK">Macedonia</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia, Federated States of</option><option value="MD">Moldova, Republic of</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="AN">Netherlands Antilles</option><option value="NL">Netherlands</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="MP">Northern Mariana Islands</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="O1">Other</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PS">Palestinian Territory</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn Islands</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RE">Reunion</option><option value="RO">Romania</option><option value="RU">Russian Federation</option><option value="RW">Rwanda</option><option value="SH">Saint Helena</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="PM">Saint Pierre and Miquelon</option><option value="VC">Saint Vincent and the Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome and Principe</option><option value="A2">Satellite Provider</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia and the South Sandwich Islands</option><option value="ES">Spain</option><option value="LK">SriLanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SJ">Svalbardand Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="SY">Syrian Arab Republic</option><option value="TW">Taiwan</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania, United Republic of</option><option value="TH">Thailand</option><option value="TL">Timor-Leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="UM">United States Minor Outlying Islands</option><option value="US" selected="selected">United States</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option><option value="VG">Virgin Islands, British</option><option value="VI">Virgin Islands, U.S.</option><option value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option></select> 
+      
+      	<label for="data7">Zipcode</label>
+      	<input class="text-input" type="text" id="data7" name="data7">
+        
+      	<label for="data8">Phone</label>
+      	<input class="text-input" type="text" id="data8" name="data8">
+        
+      <div id="data9" class=""></div>
+        <div id="data10" class=""></div>
+        <div id="data11" class=""></div>
+        <div id="data12" class=""></div>
+        <div id="data13" class=""></div>
+        <div id="data14" class=""></div>
+        <div id="data15" class=""></div>
+        <div id="data16" class=""></div>
+        <div id="data17" class=""></div>
+        <div id="data18" class=""></div>
+        <div id="data19" class=""></div>
+        <div id="data20" class=""></div>
+        <div id="data21" class=""></div>
+        <div id="data22" class=""></div>
+        <div id="data23" class=""></div>
+        <div id="data24" class=""></div>
+        <div id="data25" class=""></div>
+        
+		<label for="notificationemail">Notification email</label>
+		<input class="text-input" type="text" id="notificationemail" name="notificationemail">
+
+      	<div id="recaptcha" class=""></div>
+    </fieldset>
+    
+    <div id="payoutMethods" class=""></div>
+    <label>Terms & conditions</label>
+  
+  	<textarea readonly class="text-input" rows="10">Affiliate Terms and Conditions
+
+Affiliate Agreement
+
+Effective date: 05/05/2022
+
+If you have any questions, please don't hesitate to let us know. For the quickest results e-mail hannah@transparentlabs.com.
+Thank you for your support,
+
+Transparent Labs Affiliate Program Manager
+
+PLEASE READ THE ENTIRE AGREEMENT. YOU MAY PRINT THIS PAGE FOR YOUR RECORDS. THIS IS A LEGAL AGREEMENT BETWEEN YOU ("Affiliate") and Transparent Labs ("Company"). BY SUBMITTING THE ONLINE APPLICATION, AND BY REFERRING VISITORS, YOU ARE AGREEING THAT YOU HAVE READ AND UNDERSTAND THE TERMS AND CONDITIONS OF THIS AGREEMENT AND THAT YOU AGREE TO BE LEGALLY BOUND BY EACH AND EVERY TERM AND CONDITION.
+1. Overview
+This Agreement contains the complete terms and conditions governing your relationship with the Company and, if applicable, your participation in the Transparent Labs Affiliate Program (the "Program"). The purpose of this Agreement is to allow HTML linking between your web site and the Transparent Labs website for the purpose of referring potential customers.
+Please note that throughout this Agreement, "we," "us," and "our" refer to Transparent Labs, and "you," "your," and "yours" refer to the Affiliate. The Company must approve you before your participation in Transparent Labs' Affiliate Program. Company reserves the right to withhold or refuse approval for any reason or for no reason. Once you have been approved, you will be notified and thereafter your continued right to participate is conditioned upon the ongoing compliance with the terms and conditions of this Agreement. Failure of the Affiliate to observe the terms and conditions of this Agreement, the privacy policy or acceptable use policy posted on Company's Site will disqualify Affiliate from participating in the Program. Affiliate shall promptly notify Company in the event of a material change in its business practices or strategy. Approval may be withdrawn by Company, at any time for any reason.
+
+2. Affiliate Obligations
+
+2.1. To begin the enrollment process, you will complete and submit the online application at the Transparent Labs website. We will evaluate your application at our convenience. We may reject your application at our sole discretion. We will reject your application or cancel an existing affiliate account if we determine that your site is unsuitable for our Program, including if it:
+2.1.1. Promotes sexually explicit materials.
+2.1.2. Promotes violence.
+2.1.3. Promotes discrimination based on race, sex, religion, nationality, disability, sexual orientation, or age.
+2.1.4. Promotes illegal activities.
+2.1.5. Is otherwise in any way unlawful, harmful, threatening, defamatory, obscene, harassing, or racially, ethnically or otherwise objectionable to us in our sole discretion.
+2.2. All affiliates that send advertisements via email must have the consent of the recipient to send such email. All affiliates shall maintain and post in a conspicuous manner on all its websites involved in the Program, a privacy policy that clearly and adequately describes how consumer information is collected and used. The privacy policy must fully and accurately disclose your use of third-party technology, use of cookies, and options for discontinuing use of such cookies. Company reserves the right to review your privacy policy as necessary. Failure to have a privacy policy may result in termination from the Program.
+2.3. Transparent Labs reserves the right, at any time, to review your placement and reject the use of links and require that you change the placement or use to comply with the guidelines provided to you.
+2.4. The maintenance and the updating of your site will be your responsibility and at your cost. It is entirely your responsibility to comply with all applicable intellectual property and other laws that pertain to your site. You must have express permission to use any person's copyrighted material, whether it be a writing, an image, or any other copyrightable work. We will not be responsible (and you will be solely responsible) if you use another person's copyrighted material or other intellectual property in violation of the law or any third party rights. It is your obligation to review the Terms of Service for the Affiliate Program regularly. You must stay aware of any changes to the Terms of Service.
+
+3. Term and Termination
+
+This Agreement will begin upon our acceptance of your affiliate application, and will continue unless terminated hereunder. Either you or we may end this Agreement on three (3) business days' written advance notice to the other party; with or without cause Termination notice may be provided via email and will be effective immediately, including that you must immediately cease all advertising activities. All moneys then due will be paid during the next billing cycle, subject to any final accounting.
+
+4. Modification
+
+We may modify any of the terms and conditions in this Agreement at any time at our sole discretion. In such event, you will be notified by email, (which may be provided by email to the email address provided in the course of your registration with the Company). Modifications may include, but are not limited to, changes in the payment procedures and the Transparent Labs affiliate Program rules. If any modification is unacceptable to you, you may terminate this Agreement. You must notify us of your acceptance of any changes to the Program and your continued participation in the Program following the email of the change notice and the new Agreement on our site will indicate your agreement to the changes.
+
+5. Commissions & Payment
+
+5.1. Transparent Labs is a PPS (pay-per-sale) affiliate program. We pay affiliates recurring commission on referred customers.
+5.2. Affiliates are paid about every 30 days by Paypal, provided that Company may, in its discretion, withhold payments until such time as its clients have paid Company for the Program. In addition to any other remedies that may be available to Company, in the event of any breaches by you of this Agreement, you shall forfeit your rights to any amounts owed by Company to you. All payments are made in U.S. dollars only.
+5.3. Company shall compile, calculate and electronically deliver data required to determine your billing and compensation. Any questions or disputes regarding the data or payout provided by Company needs to be submitted to the company in writing or email within five (5) business days of receipt, otherwise the information will be deemed accurate and accepted as such by you.
+5.4. Transparent Labs will only pay Affiliates for commissions that are earned and tracked through their termination as an Affiliate. Any Affiliate that is removed from the program because of non-compliant behavior will not receive commissions from any referred customers.
+5.5. As required by U.S. Law, U.S. Residents will be required to submit a W-9 form (as required by the Internal Revenue Service).
+
+6. Promotion Restrictions
+
+6.1. You are free to promote your own websites, but any promotion mentioning Transparent Labs shall in the event be deemed to be a joint effort. To avoid confusion, the following promotional restrictions are to be followed by all participating affiliates.
+• Certain forms of advertising are always prohibited by Transparent Labs . For example, advertising commonly referred to as "spamming" is unacceptable to us and could cause damage to our name. Other generally prohibited forms of advertising include the use of unsolicited commercial email (UCE), postings to non-commercial newsgroups and cross-posting to multiple newsgroups at once.
+• You may not advertise in any way that effectively conceals or misrepresents your identity, your domain name, or your return email address. You may use mailings to customers to promote Transparent Labs so long as the recipient is already a customer or subscriber of your services or web site, and recipients have the option to remove themselves from future mailings.
+• You may post to newsgroups to promote Transparent Labs so long as the news group specifically welcomes commercial messages. At all times, you must clearly represent yourself and your web sites as independent from Transparent Labs and its clients. If it comes to our attention that you are spamming, we will consider that cause for immediate termination of this Agreement and your participation in the Transparent Labs Affiliate Program.
+• Any pending balances owed to you will not be paid if your account may be forfeited because of unacceptable advertising.
+6.2. Affiliates are prohibited from keying in prospect's information into the lead form with the intent of misrepresenting or falsifying leads.
+6.3. We strongly advise affiliates to stay compliant with the Federal Trade Commission (FTC) guidelines on testimonials and endorsements. For example, all endorsements, reviews, testimonials on Transparent Labs products and services, as well as relationships between other types of content websites (forums, blogs, microblogs and other Social Media channels) and Transparent Labs must be clearly disclosed in a separate policy on the affiliate sites. The FTC has noted that "when there exists a connection between the endorser and the seller of the advertised product" it is imperative that such connection is "fully disclosed". We share the concept and concern of the FTC's approach, and will not tolerate any affiliates that fail to adhere to the FTC's guidance. We reserve the right to terminate our relationship with any non-compliant affiliates.
+6.6. Transparent Labs affiliates are rewarded for networking and bringing in new customers through their own marketing effort. Transparent Labs prohibits affiliates from utilizing their affiliate link to refer their own customer account(s) to receive commission. This also includes accounts that are not under their name but are paid for using a payment medium that they own. This includes forms of online payment (Credit/Debit cards) but also checks and money orders.
+
+7. Representations and Warranties
+
+You represent and warrant that:
+7.1. This Agreement has been duly and validly executed and delivered by you and constitutes your legal, valid, and binding obligation, enforceable against you in accordance with its terms.
+7.2. You have the full right, power, and authority to enter into and be bound by the terms and conditions of this Agreement and to perform your obligations under this Agreement, without the approval or consent of any other party.
+7.3. You have sufficient right, title, and interest in and to the rights granted to us in this Agreement.
+
+8. Limitations of Liability
+
+WE WILL NOT BE LIABLE TO YOU WITH RESPECT TO ANY SUBJECT MATTER OF THIS AGREEMENT UNDER ANY CONTRACT, NEGLIGENCE, TORT, STRICT LIABILITY OR OTHER LEGAL OR EQUITABLE THEORY FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL OR EXEMPLARY DAMAGES (INCLUDING, WITHOUT LIMITATION, LOSS OF REVENUE OR GOODWILL OR ANTICIPATED PROFITS OR LOST BUSINESS), EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. FURTHER, NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED IN THIS AGREEMENT, IN NO EVENT SHALL COMPANY'S CUMULATIVE LIABILITY TO YOU ARISING OUT OF OR RELATED TO THIS AGREEMENT, WHETHER BASED IN CONTRACT, NEGLIGENCE, STRICT LIABILITY, TORT OR OTHER LEGAL OR EQUITABLE THEORY, EXCEED THE TOTAL COMMISSION FEES PAID TO YOU UNDER THIS AGREEMENT.
+
+9. Indemnification
+
+You hereby agree to indemnify and hold harmless Transparent Labs and their subsidiaries and affiliates, and their directors, officers, employees, agents, shareholders, partners, members, and other owners, against any and all claims, actions, demands, liabilities, losses, damages, judgments, settlements, costs, and expenses (including reasonable attorneys' fees) (any or all of the foregoing hereinafter referred to as "Losses") insofar as such Losses (or actions in respect thereof) arise out of or are based on (i) any claim that your infringed on any trademark, trade name, service mark, copyright, license, intellectual property, or other proprietary right of any third party, (ii) any misrepresentation of a representation or warranty or breach of a covenant and agreement made by you herein, or (iii) any claim related to your site. You will immediately notify the Company of any current, impending, or potential legal action against it by a third party for matters relating to email, email complaints, email deployment, and violations of CAN-SPAM. Company reserves the right, at its own expense, to assume the exclusive defense and control of any matter otherwise subject to indemnification by the indemnifying party hereunder.
+
+10. Miscellaneous
+
+10.1. You agree that you are an independent contractor, and nothing in this Agreement will create any partnership, joint venture, agency, franchise, sales representative, or employment relationship between you and Transparent Labs. You will have no authority to make or accept any offers or representations on our behalf. You will not make any statement, whether on your site or any other of site or otherwise, that reasonably would contradict anything in this section.
+10.2. Neither party may assign its rights or obligations under this Agreement to any party, except, that the assignment to a third party who obtains all or substantially all of the business or assets of a party shall be permitted subject to the reasonable consent of the other party (i.e. the non-assigning party).
+10.3. This Agreement shall be governed by and interpreted in accordance with the laws of the State of Massachusetts without regard to the conflicts of laws and principles thereof. Further, the parties hereby consent to the general jurisdiction of the federal and state courts located in Boston Massachusetts and agree that any action or proceeding concerning this Agreement shall be brought exclusively in such courts.
+10.4. You may not amend or waive any provision of this Agreement unless in writing and signed by both parties.
+10.5. This Agreement represents the entire agreement between us and you, and shall supersede all prior agreements and communications of the parties, oral or written.
+10.6. The headings and titles contained in this Agreement are included for convenience only, and shall not limit or otherwise affect the terms of this Agreement.
+10.7. If any provision of this Agreement is held to be invalid or unenforceable, that provision shall be eliminated or limited to the minimum extent necessary such that the intent of the parties is effectuated, and the remainder of this agreement shall have full force and effect.
+</textarea>
+    	<div class="row" style="margin:15px 0;">
+			<div class="col-1">
+    		<input type="checkbox" name="agreeWithTerms" value="Y">	
+              
+          </div>
+          <div class="col-11">
+  			<label for="agreeWithTerms" style="padding: 0;line-height: 15px;">I agree to the terms & conditions</label>	
+          </div>
+    	</div>
+    
+  		<div id="expandTermsAndConditions" class="ExpandTermsAndConditions"></div>
+    	<div class="clear"></div>
+    
+  		<div id="FormMessage" class="">&nbsp;</div>
+    	<input class="button-legacy w-full" type="submit" value="Apply">
+	</div>
+  	<input type="hidden" name="visitorId" id="visitorId" value="" />
+    </form>
+  
+  
+  </div>
+</div>
+
+
+
+   
+</div> 
+<script id="pap_x2s6df8d" src="https://transparentlabs.postaffiliatepro.com/scripts/d2juxh1w" type="text/javascript" defer></script>
+<script type="text/javascript">
+    PostAffTracker.track();
+        PostAffTracker.executeOnResponceFinished.push(function() {
+            PostAffTracker.getAffInfo().call(function() {
+                var affiliateId = PostAffTracker.getAffInfo().getAffiliateId();
+                document.getElementById("parentuserid").value = affiliateId;
+                if (affiliateId != "") {
+                    document.getElementById("parentuserid").type = "hidden";
+                    document.querySelector("label[for=parentuserid]").style.display="none";
+                }
+            });
+        });
+        PostAffTracker.writeCookieToCustomField("visitorId");
+</script>
+<script type="text/javascript">
+    // Initialize form without jQuery dependencies
+    document.addEventListener('DOMContentLoaded', function() {
+        preparePAPform();
+    });
+    function preparePayoutMethods() {
+        const payoutOptions = document.getElementById("payoutOptions");
+        if (payoutOptions) {
+            payoutOptions.addEventListener("change", function(){
+                const payoutMethodFields = document.querySelectorAll("div.payoutMethodFields");
+                payoutMethodFields.forEach(field => field.style.display = "none");
+                
+                const selectedValue = this.value;
+                if (selectedValue !== "") {
+                    const selectedDiv = document.getElementById(selectedValue);
+                    if (selectedDiv) selectedDiv.style.display = "block";
+                }
+            });
+            payoutOptions.value = "44xzhbew";
+            payoutOptions.dispatchEvent(new Event('change'));
+        }
+    }
+    function preparePAPform () {
+        preparePayoutMethods();
+        const signupForm = document.getElementById("affiliateSignup");
+        
+        // Simple validation without jQuery validator
+        if (signupForm) {
+            signupForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const formData = new FormData(signupForm);
+                const errors = {};
+                let hasErrors = false;
+                
+                // Clear previous errors
+                document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+                document.getElementById("FormMessage").innerHTML = "";
+                
+                // Basic validation
+                const refid = formData.get('refid');
+                const email = formData.get('notificationemail');
+                const firstname = formData.get('firstname');
+                const lastname = formData.get('lastname');
+                const username = formData.get('username');
+                const data1 = formData.get('data1');
+                const data2 = formData.get('data2');
+                const agreeWithTerms = formData.get('agreeWithTerms');
+                
+                if (!refid || !/^[a-z0-9_-]+$/i.test(refid)) {
+                    errors.refid = refid ? "Referral ID can only contain letters, numbers, underscores and hyphens." : "Please enter your ID, it will be used in your affiliate links";
+                    hasErrors = true;
+                }
+                
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    errors.notificationemail = "Please enter a valid email address";
+                    hasErrors = true;
+                }
+                
+                if (!firstname) {
+                    errors.firstname = "This field is required";
+                    hasErrors = true;
+                }
+                
+                if (!lastname) {
+                    errors.lastname = "This field is required";
+                    hasErrors = true;
+                }
+                
+                if (!username || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username)) {
+                    errors.username = "Please enter a valid email address";
+                    hasErrors = true;
+                }
+                
+                if (!data1) {
+                    errors.data1 = "This field is required";
+                    hasErrors = true;
+                }
+                
+                if (!data2) {
+                    errors.data2 = "This field is required";
+                    hasErrors = true;
+                }
+                
+                if (!agreeWithTerms) {
+                    errors.agreeWithTerms = "You must accept the terms and conditions";
+                    hasErrors = true;
+                }
+                
+                if (hasErrors) {
+                    // Display errors
+                    Object.keys(errors).forEach(field => {
+                        const fieldElement = document.querySelector(`[name="${field}"]`);
+                        if (fieldElement) {
+                            fieldElement.classList.add('error');
+                            // Create or update error message
+                            let errorElement = fieldElement.parentNode.querySelector('.error-message');
+                            if (!errorElement) {
+                                errorElement = document.createElement('label');
+                                errorElement.className = 'error error-message';
+                                fieldElement.parentNode.appendChild(errorElement);
+                            }
+                            errorElement.textContent = errors[field];
+                        }
+                    });
+                    return;
+                }
+                
+                submitToPAP(signupForm);
+            });
+        }
+    }
+    function submitToPAP (signupForm) {
+        const submitButton = signupForm.querySelector("input[type='submit']");
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.value = "Signing up...";
+        }
+        
+        const formData = new FormData(signupForm);
+        formData.append('method', 'jsonp');
+        
+        const params = new URLSearchParams();
+        for (let [key, value] of formData.entries()) {
+            params.append(key, value);
+        }
+        
+        // Create JSONP request
+        const script = document.createElement('script');
+        const callbackName = 'papCallback' + Date.now();
+        
+        window[callbackName] = function(data) {
+            if (data.successMessage !== "") {
+                document.getElementById("FormMessage").innerHTML = "<p>We review every application manually, and your registration is waiting for manual approval. Please, be patient.</p>";
+                if (submitButton) submitButton.value = "Applied";
+            } else {
+                document.getElementById("FormMessage").innerHTML = data.cumulativeErrorMessage;
+                
+                // Handle field errors
+                Object.keys(data).forEach(key => {
+                    if (key.indexOf("Error") !== -1 && key !== "cumulativeErrorMessage" && data[key] !== "") {
+                        const fieldName = key.substring(0, key.length - 5);
+                        const fieldElement = document.querySelector(`[name="${fieldName}"]`);
+                        if (fieldElement) {
+                            fieldElement.classList.add('error');
+                            let errorElement = fieldElement.parentNode.querySelector('.error-message');
+                            if (!errorElement) {
+                                errorElement = document.createElement('label');
+                                errorElement.className = 'error error-message';
+                                fieldElement.parentNode.appendChild(errorElement);
+                            }
+                            errorElement.textContent = data[key];
+                        }
+                    }
+                });
+                
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.value = "Signup";
+                }
+            }
+            
+            // Cleanup
+            document.head.removeChild(script);
+            delete window[callbackName];
+        };
+        
+        script.src = `${signupForm.action}?${params.toString()}&callback=${callbackName}`;
+        script.onerror = function() {
+            const errorMessage = "Network error occurred. Please try again.";
+            document.getElementById("FormMessage").innerHTML = errorMessage;
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.value = "Signup";
+            }
+            // Cleanup
+            document.head.removeChild(script);
+            delete window[callbackName];
+        };
+        
+        document.head.appendChild(script);
+    }
+</script>
+{% schema %}
+{
+  "blocks": [
+	  {
+      "name": "Content",
+      "settings": [
+   
+      ],
+      "type": "content"
+    }
+  ],
+  "name": "postaffiliatepro",
+  "class": "td-legacy",
+  "settings": [
+	  {
+      "id": "desktop_image",
+      "label": "Desktop Image",
+      "type": "image_picker"
+    },
+    {
+      "id": "mobile_image",
+      "label": "Mobile Image",
+      "type": "image_picker"
+    }
+  ]
+}
+{% endschema %}

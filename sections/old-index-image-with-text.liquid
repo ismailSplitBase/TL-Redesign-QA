@@ -1,0 +1,145 @@
+<section class="TL_InfoSection index-hp-rtb-test">
+ 
+  {% if section.settings.position == true %}
+  <style>
+    .img_{{ section.id }} img {
+    height: 100%;
+    width: 100%;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(https://cdn.shopify.com/s/files/1/0866/7664/files/H2B2-min.webp?v=1663860815);
+}
+ 
+  </style>
+  <div class="TL_InfoSection_pic">
+    <div class="TL_InfoSection_pic_inner img_{{ section.id }}">
+      {% assign image_name = section.settings.icon | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+      {% if section.settings.image != blank %}
+        <img src="{{  section.settings.image | img_url: 'master'}}" alt="{% if section.settings.image.alt %}{{ section.settings.image.alt }}{% else %}{{ image_name }}{% endif %}" loading="lazy">
+      {% else %}
+        <img src="https://cdn.shopify.com/s/files/1/0866/7664/files/H2B2-min.webp?v=1663860815" alt="Placeholder Image" loading="lazy">
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="TL_InfoSection_type">
+    {% if section.settings.title != blank %}
+      <h2>{{ section.settings.title }}</h2>
+    {% else %}
+      <h2>Developed for Peak Performance and Optimal Health</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p>{{ section.settings.subtitle }}</p>
+    {% else %}
+      <p>Our formulas are designed in line with the latest sport science and nutrition research to help you perform and feel your best.</p>  
+    {% endif %}
+
+    {% if section.settings.url != blank %}
+      <a class="TL_button_alt" href="{{ section.settings.url }}">{{ section.settings.btntext }}</a>
+    {% else %}
+      <a class="TL_button_alt" href="https://www.transparentlabs.com/collections/bestsellers">SHOP NOW</a>
+    {% endif %}
+    
+  </div>
+  
+    {% else %}
+     <style>
+.img_{{ section.id }} img {
+    height: 100%;
+    width: 100%;
+     border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(https://cdn.shopify.com/s/files/1/0866/7664/files/H2B2-min.webp?v=1663860815);
+}
+    </style>
+          
+  
+  <div class="TL_InfoSection_type">
+    {% if section.settings.title != blank %}
+      <h2>{{ section.settings.title }}</h2>
+    {% else %}
+      <h2>Developed for Peak Performance and Optimal Health</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p>{{ section.settings.subtitle }}</p>
+    {% else %}
+      <p>Our formulas are designed in line with the latest sport science and nutrition research to help you perform and feel your best.</p>  
+    {% endif %}
+    {% if section.settings.url != blank %}
+      <a class="TL_button_alt" href="{{ section.settings.url }}">{{ section.settings.btntext }}</a>
+    {% else %}
+      <a class="TL_button_alt" href="https://www.transparentlabs.com/collections/bestsellers">SHOP NOW</a>
+    {% endif %}
+  </div>
+  <div class="TL_InfoSection_pic">
+    <div class="TL_InfoSection_pic_inner img_{{ section.id }}">
+      {% if section.settings.image != blank %}
+        <img src="{{  section.settings.image | img_url: 'master'}}" alt="{% if section.settings.image.alt %}{{ section.settings.image.alt }}{% else %}{{ image_name }}{% endif %}" loading="lazy">
+      {% else %}
+        <img src="https://cdn.shopify.com/s/files/1/0866/7664/files/H2B2-min.webp?v=1663860815" alt="Placeholder Image" loading="lazy">
+      {% endif %}
+    </div>
+  </div>
+    
+  {%  endif %}
+</section>
+
+{% schema %}
+{
+  "name": "index image with text",
+  "class": "index-image-with-text td-legacy",
+  "settings": [
+    {
+      "id": "index-image-with-text",
+      "type": "text",
+      "label": "title",
+      "default": "image with text"
+    },
+     {
+      "id": "position",
+      "type": "checkbox",
+      "label": "Make image first",
+       "default": true
+    },
+     {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Select image"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "label": "title",
+      "default": "Developed for Peak Performance and Optimal Health"
+    },
+    {
+      "id": "subtitle",
+      "type": "textarea",
+      "label": "Sub title",
+      "default": "Our formulas are designed in line with the latest sport science and nutrition research to help you perform and feel your best."
+    },
+    {
+      "id": "url",
+      "type": "url",
+      "label": "Url"
+    },
+    {
+      "id": "btntext",
+      "type": "text",
+      "label": "Button text",
+      "default": "SHOP NOW"
+    }
+  ],
+  "presets": [{
+    "name": "index image with text"
+  }]
+}
+{% endschema %}

@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16530521437bc846a8": {
+      "type": "old-postaffiliatepro-banner",
+      "blocks": {
+        "001ef431-e277-423e-ba24-9d27756410e4": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/thor_product_replacement_2560x900_45cef427-f4bf-4a4b-b9ef-44af5d1f26b5.jpg",
+            "mobile_image": "shopify://shop_images/thor_product_replacement_640x900_2285ad24-05f1-456d-b8ec-bba0bf09cee6.jpg",
+            "alignment": "center",
+            "text_color": "#ffffff",
+            "text_2_color": "#ffffff",
+            "text": "<p><strong>Join Our Affiliate Program! </strong></p>",
+            "text_2": "<p>As an affiliate, you'll earn a commission on every sale you refer.</p>",
+            "button_color": "",
+            "button_text": "",
+            "button_url": "",
+            "add_overlay": true
+          }
+        }
+      },
+      "block_order": [
+        "001ef431-e277-423e-ba24-9d27756410e4"
+      ],
+      "settings": {}
+    },
+    "main": {
+      "type": "old-postaffiliatepro",
+      "settings": {
+        "desktop_image": "shopify://shop_images/DSC07282_1b53fa26-6827-4aa6-8ec0-6748a678fd64.jpg",
+        "mobile_image": "shopify://shop_images/H2B-edits-585.jpg"
+      }
+    }
+  },
+  "order": [
+    "16530521437bc846a8",
+    "main"
+  ]
+}

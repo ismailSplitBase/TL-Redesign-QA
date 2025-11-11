@@ -1,0 +1,540 @@
+{% stylesheet %}
+
+
+.sb-product-ingredients__container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sb-product-ingredients__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sb-product-ingredients__heading {
+  color: var(--sb-fg-color, #111314);
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin: 0;
+}
+
+.sb-product-ingredients__description {
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--sb-fg-color, #676767);
+  margin: 0;
+}
+.sb-product-ingredients__description p {
+  margin: 16px 0;
+}
+.sb-product-ingredients__description p:first-child {
+  margin-top: 0;
+}
+.sb-product-ingredients__description p:last-child {
+  margin-bottom: 0;
+}
+
+.sb-product-ingredients__content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.sb-product-ingredients__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.sb-product-ingredients__more-button {
+  background-color: rgba(103, 103, 103, 0.12);
+  border-radius: 440px;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 auto;
+  border: none;
+  transition: background-color 0.2s ease;
+  grid-column: 1 / -1;
+}
+
+.sb-product-ingredients__more-button:hover {
+  background-color: rgba(103, 103, 103, 0.2);
+}
+
+.sb-product-ingredients__more-button:focus {
+  outline: none;
+}
+
+.sb-product-ingredients__more-button svg {
+  width: 25px;
+  height: 25px;
+}
+
+/* Card animation styles */
+.sb-ingredient-card--hidden {
+  display: none;
+}
+
+.sb-ingredient-card--animating {
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.sb-ingredient-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modal overrides for ingredients modal */
+.sb-ingredients-modal .sb-modal__overlay {
+  align-items: flex-start;
+  padding: 0;
+}
+
+.sb-ingredients-modal .sb-modal__dialog {
+  max-width: 100%;
+  width: 100%;
+  max-height: 100vh;
+  height: 100vh;
+  margin: 0;
+  border-radius: 0;
+  background-color: transparent;
+  transform: translateY(100%);
+  box-shadow: none;
+}
+
+.sb-ingredients-modal .sb-modal__dialog--active {
+  transform: translateY(0);
+}
+
+.sb-ingredients-modal .sb-modal__header {
+  display: none;
+}
+
+.sb-ingredients-modal .sb-modal__body {
+  padding: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sb-ingredients-modal .swiper {
+  padding: 0 16px;
+}
+.sb-ingredients-modal .swiper-wrapper {
+  align-items: center;
+  
+}
+.sb-ingredients-modal .sb-pagination-wrapper {
+  margin-left: unset;
+  margin: 0 auto;
+  padding-top:16px;
+  padding-bottom:16px;
+}
+.sb-ingredients-modal .sb-pagination-wrapper,
+.sb-ingredients-modal .sb-pagination-wrapper .sb-pagination-count {
+  color: var(--sb-ch-bg-color, #fff);
+}
+.sb-ingredients-modal .sb-pagination-wrapper .swiper-pagination-bullet {
+  background: var(--sb-ch-bg-color);
+}
+.sb-ingredients-modal .sb-modal__overlay {
+  padding: 0;
+}
+.sb-ingredients-modal .swiper-pagination-lock,
+.sb-ingredients-modal .swiper-pagination-lock + .sb-pagination-count {
+  display: none!important;
+}
+
+.sb-ingredients-modal .swiper-slide {
+    height: auto;
+    align-self: stretch;
+}
+[data-no-pagination] .swiper-slide {
+  max-width: 840px;
+}
+@media screen and (min-width: 750px) {
+  .sb-ingredients-modal .sb-pagination-wrapper {
+    padding-left: unset;
+    padding-right: unset;
+  }
+  .sb-product-ingredients__header {
+    gap: 16px;
+  }
+
+  .sb-product-ingredients__heading {
+    font-size: 40px;
+    line-height: 1.2;
+  }
+
+  .sb-product-ingredients__description {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .sb-product-ingredients__content {
+    flex: 1;
+    max-width: 848px;
+    gap: 48px;
+  }
+
+  .sb-product-ingredients__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+  }
+
+  .sb-product-ingredients__more-button {
+    margin: 0 auto;
+  }
+
+  /* Desktop modal styling */
+  .sb-ingredients-modal .sb-modal__overlay {
+    align-items: center;
+  }
+
+  .sb-ingredients-modal .sb-modal__dialog {
+    width: auto;
+    max-height: 80vh;
+    border-radius: 8px;
+    transform: scale(0.9) translateY(-20px);
+  }
+
+  .sb-ingredients-modal .sb-modal__dialog--active {
+    transform: scale(1) translateY(0);
+  }
+  .sb-ingredients-modal .swiper {
+    padding: unset;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .sb-product-ingredients__container {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(32px, 1fr) minmax(0, 848px);
+    align-items: start;
+    column-gap: 0;
+  }
+  .sb-product-ingredients__header {
+    grid-column: 1;
+    max-width: 360px;
+  }
+  .sb-product-ingredients__cards {
+    grid-column: 3;
+  }
+}
+{% endstylesheet %}
+
+{% liquid
+  assign uses_metafields = false
+  assign blocks = section.blocks | map: 'settings'
+  assign blocks_size = section.blocks.size
+  assign render_section = false
+  if section.settings.use_product_ingredients == true and product.metafields.custom.product_key_ingredients_list.value.count > 0
+    assign uses_metafields = true
+    assign blocks = product.metafields.custom.product_key_ingredients_list.value
+    assign blocks_size = product.metafields.custom.product_key_ingredients_list.value.count
+    assign render_section = true
+  elsif section.settings.use_product_ingredients == false and blocks.size > 0
+    assign render_section = true
+  endif
+
+  assign needs_to_page = false
+  assign card_content = ""
+  assign slide_content = ""
+%}
+
+{%  if render_section %}
+
+  {% liquid
+  for block in blocks
+    if forloop.index > section.settings.ingredients_to_show
+      assign needs_to_page = true
+    endif
+    capture card
+      render 'sb-ingredient-card', settings: block, paged: needs_to_page, index: forloop.index
+    endcapture
+    assign card_content = card_content | append: card
+    capture slide
+      render 'sb-ingredient-slide', settings: block, uses_metafields: uses_metafields
+    endcapture
+    assign slide_attributes = 'data-actual-slide-index="' | append: forloop.index | append: '"'
+    capture slide
+      render 'swiper-slide', children: slide, slide_attributes: slide_attributes
+    endcapture
+    assign slide_content = slide_content | append: slide
+  endfor
+%}
+
+<div class="sb-product-ingredients sb-styled-element" data-section-id="{{ section.id }}" style="{%  render 'style-attributes', settings: section.settings, mobile_multiple: 0.54 %}">
+  <div class="sb-page-width sb-product-ingredients__container">
+    <div class="sb-product-ingredients__header">
+      {% if section.settings.heading != blank %}
+        <h2 class="sb-product-ingredients__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.content != blank %}
+        <div class="sb-product-ingredients__description" {% if section.settings.fg_copy_color.alpha > 0 %} style="--sb-fg-color: {{ section.settings.fg_copy_color }};"{% endif %}>{{ section.settings.content }}</div>
+      {% endif %}
+    </div>
+   
+      {% assign modal_id = 'ingredients-modal-' | append: section.id %}
+      <sb-ingredient-cards 
+        class="sb-product-ingredients__cards"
+        id="sb-ingredient-cards"
+        ingredients-to-show="{{ section.settings.ingredients_to_show }}"
+        modal-id="{{ modal_id }}"
+        {% if needs_to_page %}has-more="true"{% endif %}
+        accent-color="{{ section.settings.ch_accent_color | default: '#1B73B3' }}"
+        fg-color="{{ section.settings.ch_fg_color | default: '#111314' }}"
+        bg-color="{{ section.settings.ch_bg_color | default: '#F8F9FB' }}" 
+        {% if section.settings.ch_fg_copy_color.alpha > 0 %} style="--sb-copy-fg-color: {{ section.settings.ch_fg_copy_color }};"{% endif %}
+      >
+        {{ card_content }}
+        {% if needs_to_page %}
+          <button class="sb-product-ingredients__more-button" aria-label="Load more ingredients">
+            <svg fill="none" viewBox="0 0 25 25">
+              <path d="M12.5 4V21M21 12.5H4" stroke="#111314" stroke-linecap="round"></path>
+            </svg>
+          </button>
+        {% endif %}
+      </sb-ingredient-cards>
+
+      {%  liquid 
+      
+      -%}
+      {%- capture sliderOptions -%}
+        {
+          "centeredSlides": true,
+          "slidesPerView": 1,
+          "spaceBetween": 20,
+          "loop": true,
+          {% if blocks_size > 1 %}
+            "breakpoints": {
+              "768" : {
+                "slidesPerView": 1.7
+              }
+            },
+            "breakpoints": {
+              "1280" : {
+                "slidesPerView": 2,
+                "spaceBetween": 48
+              }
+            },
+          {% endif %}
+          "pagination": {
+            "el": ".swiper-pagination--{{ modal_id }}",
+            "clickable": true
+          }
+        }  
+      {%- endcapture -%}
+
+      {% capture modal_content %}
+        <swiper-slider
+          data-swiper-options='{{ sliderOptions }}'
+          data-slider-id="{{ modal_id }}"
+          data-custom-event="slide-to-index"
+          data-fraction-pagination
+          {% if blocks_size == 1 %}
+          data-no-pagination
+          {% endif %}
+        >
+          <div class="swiper " data-swiper>
+            <div class="swiper-wrapper">
+              {{ slide_content }}
+            </div>
+          </div>
+        </swiper-slider>
+        <div class="sb-pagination-wrapper sb-page-width">
+          <div class="swiper-pagination swiper-pagination--{{ modal_id }}">
+          </div>
+          <div class="sb-pagination-count">
+            <span class="sb-swiper-pagination-current"></span><span class="sb-pagination-slash">/</span><span class="sb-swiper-pagination-total"></span>
+          </div>
+        </div>
+      {% endcapture %}
+  </div>
+  {% render 'sb-modal', 
+    modal_id: modal_id,
+    children: modal_content,
+    class: 'sb-ingredients-modal'
+  %}
+</div>
+
+<script src="{{ 'sb-ingredient-cards.js' | asset_url }}" defer="defer"></script>
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "SB - Product Ingredients",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Key Ingredients"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_product_ingredients",
+      "label": "Use Product Ingredients",
+      "default": true,
+      "info": "Enable this to Product Key Ingredients List of the Product. Will override blocks."
+    },
+    {
+      "type": "range",
+      "id": "ingredients_to_show",
+      "label": "Ingredients To Show",
+      "max": 9,
+      "min": 1,
+      "step": 1,
+      "unit": "Crd",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Main Section Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color",
+      "default": "#111314"
+    },
+    {
+      "type": "color",
+      "id": "fg_copy_color",
+      "label": "Copy custom color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "paragraph",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_color",
+      "default": "#111314",
+      "label": "Color"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_copy_color",
+      "label": "Copy custom color"
+    },
+    {
+      "type": "color_background",
+      "id": "ch_bg_color",
+      "label": "Background Color",
+      "default": "#F8F9FB"
+    },
+    {
+      "type": "color",
+      "id": "ch_accent_color",
+      "label": "Accent Color",
+      "default": "#1B73B3"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "ingredient_title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_weight",
+          "label": "Weight"
+        },
+        {
+          "type": "header",
+          "content": "Images"
+        },
+        {
+          "type": "image_picker",
+          "id": "ingredient_image_small",
+          "label": "Small Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "ingredient_image_large",
+          "label": "Large Image"
+        },
+        {
+          "type": "header",
+          "content": "Descriptions"
+        },
+        {
+          "type": "richtext",
+          "id": "ingredient_short_description",
+          "label": "Short Description"
+        },
+        {
+          "type": "richtext",
+          "id": "ingredient_detailed_description",
+          "label": "Detailed Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB - Product Ingredients"
+    }
+  ]
+}
+{% endschema %}

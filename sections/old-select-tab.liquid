@@ -1,0 +1,188 @@
+<style>
+  .tlselect-tab
+  {
+    display:block;
+    margin:50px 0;
+    background:#f2f1f7;
+    padding:0 15px;
+  }
+  .tlselect-tab-wraper
+  {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .tlselect-tab-wraper li
+  {
+    text-align:center;
+    flex-basis:33.333%;
+    padding:10px 0;
+  }
+  .tlselect-tab-wraper li a
+  {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    font-weight:900;
+    text-transform:uppercase;
+    color:#132836;
+    padding:10px 0;
+    width:100%;
+  }
+  .tlselect-tab-wraper li:first-child a
+  {
+    justify-content:left;
+  }
+  .tlselect-tab-wraper li a:nth-child(2)
+  {
+    
+  }
+  .tlselect-tab-wraper li:last-child a
+  {
+    justify-content:right;
+  }
+  
+  .tlselect-tab-wraper li a img
+  {
+    margin-right:10px;
+    width:24px;
+  }
+  /*.tlselect-tab-wraper li:hover
+  {
+    background:#ce4e27;
+  }
+  .tlselect-tab-wraper li:nth-child(2):hover
+  {
+    background:#fbb03b;
+  }
+  .tlselect-tab-wraper li:nth-child(3):hover
+  {
+    background:#cbd5e1;
+  }
+  .tlselect-tab-wraper li:hover a
+  {
+    color:#000;
+  }*/
+  
+  @media only screen and (max-width:767px)
+  {
+    .tlselect-tab
+    {
+      display:block;
+      margin:50px 0;
+      background:none;
+    }
+    .tlselect-tab-wraper
+    {
+      flex-direction:column;
+    }
+    .tlselect-tab-wraper li
+    {
+      flex-basis:100%;
+      width: 100%;
+      padding:0;
+    }
+    .tlselect-tab-wraper li a
+    {
+      justify-content:center !important;
+      background:#f2f1f7;
+      margin-bottom:10px;
+      font-size:22px;
+      padding:5px 0;
+    }
+    
+  }
+  
+  @media only screen and (min-width:768px) and (max-width:1023px)
+  {
+    .tlselect-tab
+    {
+      margin:50px 0;
+      padding:0 15px;
+    }
+    
+    .tlselect-tab-wraper li a
+    {
+      font-size:17px;
+    }
+  }
+  
+</style>
+<div class="tlselect-tab">
+  <div class="max-w-7xl mx-auto">
+    
+    <ul class="tlselect-tab-wraper">
+      
+      {% if section.settings.tab1 %}
+        {% assign tab1_alt = section.settings.tab1_img | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+        <li><a href="#select"><img src="{{ section.settings.tab1_img | img_url : 'master' }}" alt="{% if section.settings.tab1_img.alt %}{{ section.settings.tab1_img.alt }}{% else %}{{ tab1_alt }}{% endif %}" loading="lazy"> {{ section.settings.tab1 }}</a></li>
+      {% endif %}
+      
+      {% if section.settings.tab2 %}
+        {% assign tab2_alt = section.settings.tab2_img | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+      	<li><a href="#gold"><img src="{{ section.settings.tab2_img | img_url : 'master' }}" alt="{% if section.settings.tab2_img.alt %}{{ section.settings.tab1_img.alt }}{% else %}{{ tab2_alt }}{% endif %}" loading="lazy"> {{ section.settings.tab2 }}</a></li>
+      {% endif %}
+      
+      {% if section.settings.tab3 %}
+        {% assign tab3_alt = section.settings.tab3_img | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+      	<li><a href="#platinum"><img src="{{ section.settings.tab3_img | img_url : 'master' }}" alt="{% if section.settings.tab3_img.alt %}{{ section.settings.tab1_img.alt }}{% else %}{{ tab3_alt }}{% endif %}" loading="lazy"> {{ section.settings.tab3 }}</a></li>
+      {% endif %}
+      
+    </ul>
+    
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "TL Select Tab",
+    "class": "td-legacy",
+    "settings": [
+		{
+			"type":"image_picker",
+			"id":"tab1_img",
+			"label":"Tab One Image"
+		},
+		{
+			"type":"text",
+			"id":"tab1",
+			"label":"Tab One"
+		},
+		{
+			"type":"image_picker",
+			"id":"tab2_img",
+			"label":"Tab Two Image"
+		},
+		{
+			"type":"text",
+			"id":"tab2",
+			"label":"Tab Two"
+		},
+		{
+			"type":"image_picker",
+			"id":"tab3_img",
+			"label":"Tab three Image"
+		},
+		{
+			"type":"text",
+			"id":"tab3",
+			"label":"Tab Three"
+		}
+	],
+	"presets":[
+		{
+			"name": "TL Select Tab"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+ 

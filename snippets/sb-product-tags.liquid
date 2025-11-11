@@ -1,0 +1,46 @@
+{% stylesheet %}
+  .sb-product-tag--best-seller {
+    background: var(--sb-best-seller-tag-bg-color);
+    color: var(--sb-best-seller-tag-fg-color);
+  }
+  .sb-product-tag--new {
+    background: var(--sb-new-tag-bg-color);
+    color: var(--sb-new-tag-fg-color);
+  }
+  .sb-product-tag {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; 
+    padding: 2px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border-radius: 1.6px;
+  }
+  .sb-product-tags {
+    display: flex;
+    flex-wrap: column;
+    gap: 4px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+  }
+{% endstylesheet %}
+{% if product.tags != empty %}
+  <div class="sb-product-tags" style="--sb-best-seller-tag-bg-color: {{ settings.best_seller_tag_bg_color }}; --sb-best-seller-tag-fg-color: {{ settings.best_seller_tag_fg_color }}; --sb-new-tag-bg-color: {{ settings.new_tag_bg_color }}; --sb-new-tag-fg-color: {{ settings.new_tag_fg_color }};">
+    {% assign tags = product.tags %}
+    {% if tags contains "best-seller" %}
+      <div class="sb-product-tag sb-product-tag--best-seller">
+        Best Seller
+      </div>
+    {% endif %}
+    {% if tags contains "new" or tags contains "New" %}
+      <div class="sb-product-tag sb-product-tag--new">
+        New
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

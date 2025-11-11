@@ -1,0 +1,240 @@
+<style>
+  .co_img img {
+    width: auto;
+        
+}
+  .xt-bulk-video
+  {
+    background: linear-gradient(180deg,rgba(229,233,237,1) 14%,rgba(255,255,255,1) 82%);
+    display:block;
+    width:100%;
+    max-width:1460px;
+    margin:0 auto;
+    padding:50px 0;
+  }
+  .xt-bulk-video .wraper
+  {
+    display:flex;
+    align-items:center;
+    gap:100px;
+    justify-content:center;
+  }
+  .xt-bulk-video .text
+  {
+    display:flex;
+    width:40%;
+    text-align:right;
+    flex-direction:column;
+    align-items:flex-end;
+    padding-left:150px;
+  }
+  .xt-bulk-video .text h2
+  {
+    font-size:24px;
+    line-height:38px;
+    color:#333;
+    font-weight: 500;
+    position:relative;
+  }
+  .xt-bulk-video .text h2::after
+  {
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+    top:-30px;
+    left:20px;
+    background:url("https://cdn.shopify.com/s/files/1/0866/7664/files/q-top.png?v=1678737191");
+    background-size:contain;
+    background-repeat:no-repeat;
+  }
+  .xt-bulk-video .text h2::before
+  {
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+    bottom:-30px;
+    right:-10px;
+    background:url("https://cdn.shopify.com/s/files/1/0866/7664/files/q-bot.png?v=1678737191");
+    background-size:contain;
+    background-repeat:no-repeat;
+  }
+  .xt-bulk-video .text .sign
+  {
+    height:66px;
+    margin-top:40px;
+  }
+  .xt-bulk-video .text .name
+  {
+    font-size:18px;
+    color:#41B5E8;
+    text-transform:uppercase;
+    font-weight:bold;
+    
+  }
+  .xt-bulk-video .text .tag
+  {
+    font-size:16px;
+    color:#41B5E8;
+    font-style: italic;
+  }
+  .xt-bulk-video .video
+  {
+    display:block;
+    width:40%;
+  }
+  .xt-bulk-video .video iframe
+  {
+    max-width:100%;
+  }
+
+  .ss_video{width:415px;height:auto;}
+
+
+  @media only screen and (min-width:1024px) and (max-width:1150px)
+  {
+    .xt-bulk-video .wraper
+    {
+      gap:20px;
+    }
+    .xt-bulk-video .text
+    {
+      padding-left:100px;
+    }
+  }
+  @media only screen and (min-width:768px) and (max-width:1023px)
+  {
+    .xt-bulk-video .wraper
+    {
+      gap:20px;
+    }
+    .xt-bulk-video .text
+    {
+      padding-left:0%;
+    }
+    .ss_video
+    {
+      width:auto;
+    }
+  }
+  @media only screen and (max-width:767px)
+  {
+    .ss_video{width:auto;height:auto;}
+    .xt-bulk-video
+    {
+      padding:50px 20px;
+    }
+    .xt-bulk-video .wraper
+    {
+      flex-direction:column;
+      gap:50px;
+    }
+    .xt-bulk-video .text,
+    .xt-bulk-video .video
+    {
+      width:100%;
+      text-align:center;
+    }
+    .xt-bulk-video .text
+    {
+      padding-left:0%;
+      align-items:start;
+      text-align:left;
+    }
+    .xt-bulk-video .video
+    {
+      order:-1;
+    }
+    .xt-bulk-video .video video
+    {
+      margin:0 auto;
+    }
+    .xt-bulk-video .text h2::after
+    {
+      left:0;
+    }
+    .xt-bulk-video .text h2::before
+    {
+      right:0;
+    }
+  }
+</style>
+<div class="xt-bulk-video">
+  <div class="wraper">
+    <div class="text">
+      {% if section.settings.description != blank %}
+        <h2>{{ section.settings.description }}</h2>
+      {% endif %}
+
+      {% if section.settings.auther_sign!=blank %}
+        <img class="sign" src="{{ section.settings.auther_sign | img_url : 'master' }}" alt="{% if section.settings.auther_sign.alt %}{{ section.settings.auther_sign.alt }}{% else %}Auther Sign{% endif %}" height="60" loading="lazy">
+      {% endif %}
+      
+      {% if section.settings.auther != blank %}
+        <div class="name">{{ section.settings.auther }}</div>
+      {% endif %}
+      {% if section.settings.auther_post != blank %}
+        <div class="tag">{{ section.settings.auther_post }}</div>
+      {% endif %}
+    </div>
+    {% if section.settings.video != blank %}
+          <div class="video">
+            <div class="ss_video" style="padding:100% 0 0 0;position:relative;">
+              <iframe src="{{ section.settings.video }}" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          </div>
+<!--       <video controls  autoplay loop playsinline  >
+        <source src="{{ section.settings.video }}" type="video/mp4">
+        <source src="{{ section.settings.video }}" type="video/ogg">
+        Your browser does not support the video tag.
+      </video> -->
+    
+      {% endif %}
+  </div>
+</div>
+{% schema %}
+   {
+    "name": "bulk-affiliate video",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"text",
+        "id":"auther",
+        "label":"Auther name"
+      },
+      {
+        "type":"image_picker",
+        "id":"auther_sign",
+        "label":"Auther Sign Image"
+      },
+      {
+        "type":"text",
+        "id":"auther_post",
+        "label":"Auther sub title"
+      },
+      {
+        "type":"textarea",
+        "id":"description",
+        "label":"Description"
+      },
+      {
+        "type":"url",
+        "id":"video",
+        "label":"Video url"
+        
+      }
+    ],
+    "presets":[
+		{
+			"name": "bulk-affiliate video"
+		}
+	]
+  
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

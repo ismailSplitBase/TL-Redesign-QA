@@ -1,0 +1,291 @@
+{% stylesheet %}
+  .sb-product-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    padding: 16px;
+    overflow: hidden;
+    background: var(--sb-ch-bg-color, var(--sb-bg-color, #fff));
+    color: var(--sb-ch-fg-color, var(--sb-fg-color, #000));
+    position: relative;
+    height: 100%;
+    width: calc((100% - var(--inline-gap, 12px) * var(--gap-count, 0)) / var(--column-count, 1));
+    transition: background 0.2s ease;
+  }
+  .sb-product-card:hover {
+    background: var(--sb-ch-hover-bg-color, var(--sb-ch-bg-color, #fff));
+  }
+
+  @media screen and (max-width: 768px) {
+    .facets-vertical .sb-product-card .sb-product-card__title {
+      font-size: 22px;
+    }
+    .facets-vertical .sb-product-card .sb-product-card__description {
+      font-size: 16px;
+    }
+
+    .facets-vertical .sb-product-card .sb-product-card__price--current {
+      font-size: 18px;
+    }
+    .facets-vertical .sb-product-card .sb-product-card__price--compare {
+      font-size: 16px;
+    }
+
+    .facets-vertical .sb-product-card .sb-button__link--link.sb-button__link {
+      font-size: 16px;
+    }
+  }
+
+  .sb-product-card__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: transparent;
+  }
+
+  .sb-product-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .sb-product-card__arrows {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    z-index: 1;
+  }
+
+  .sb-product-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .sb-product-card__blocks {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sb-product-card__blocks .jdgm-widget {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .sb-product-card .jdgm-star.jdgm--on:before,
+  .sb-product-card .jdgm-star.jdgm--half:before,
+  .sb-product-card .jdgm-star.jdgm--off:before {
+    font-size: 16px;
+  }
+
+  .sb-product-card .jdgm-star {
+    padding-right: 1px !important;
+  }
+
+  .sb-product-card .jdgm-rating-count,
+  .sb-product-card .jdgm-prev-badge__text {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--sb-font-family-body);
+    color: var(--sb-ch-fg-color, var(--sb-fg-color, #111314));
+    opacity: 0.6;
+    line-height: 1.3;
+  }
+
+  .sb-product-card__title {
+    font-size: 22px;
+    font-weight: 600;
+    font-family: var(--sb-font-family-heading);
+    line-height: 1.3;
+    margin: 0;
+    color: var(--sb-ch-fg-color, var(--sb-fg-color, #111314));
+  }
+
+  .sb-product-card__description {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: var(--sb-font-family-body);
+    line-height: 1.3;
+    margin: 0;
+    color: var(--sb-ch-fg-color, var(--sb-fg-color, #111314));
+    opacity: 0.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+    letter-spacing: normal;
+  }
+
+  .sb-product-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .sb-product-card__price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    letter-spacing: 0%;
+  }
+  .sb-product-card .sb-button__text {
+    letter-spacing: 0%;
+  }
+
+  .sb-product-card__price--compare {
+    font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+    font-weight: 400;
+    text-decoration: line-through;
+    color: var(--sb-ch-fg-color, var(--sb-fg-color, #111314));
+    opacity: 0.72;
+    font-family: var(--sb-font-family-heading);
+  }
+
+  .sb-product-card__price--current {
+    font-size: calc(18 / var(--sb-base-font-size, 16) * 1rem);
+    font-weight: 600;
+    font-family: var(--sb-font-family-heading);
+    color: var(--sb-ch-fg-color, var(--sb-fg-color, #111314));
+  }
+
+  .sb-jdgm-widget.jdgm-preview-badge .jdgm-star.jdgm-star {
+    color: #1b73b3;
+  }
+
+  .sb-product-card__content .jdgm-widget {
+    min-height: 24px;
+    display: block !important;
+  }
+{% endstylesheet %}
+{%- capture sliderOptions -%}
+  {
+    "centeredSlides": true,
+    "slidesPerView": 1,
+    "spaceBetween": 10,
+    "loop": false,
+    "navigation": {
+        "nextEl": ".sb-product-card__arrows--{{ section.id }}--{{ product.id }} .sb-next-arrow",
+        "prevEl": ".sb-product-card__arrows--{{ section.id }}--{{ product.id }} .sb-prev-arrow"
+      }
+  }  
+{%- endcapture -%}
+{% assign disable_slider = disable_slider | default: false %}
+<div class="sb-product-card" data-sb="true">
+  <a href="{{ product.url }}" class="sb-product-card__media">
+    {% render 'sb-product-tags', product: product %}
+    {% if product.media.size > 1 and disable_slider != true %}
+      <swiper-slider
+        data-swiper-options="{{ sliderOptions }}"
+        class="swiper-slider-container"
+      >
+        <div class="swiper" data-swiper>
+          <div class="swiper-wrapper">
+            {% comment %} Limitted to 5 images to avoid performance issues {% endcomment %}
+            {% for image in product.images limit: 5 %}
+              {% liquid
+                if forloop.first and first_image_loading == 'eager'
+                  assign image_loading = 'eager'
+                else
+                  assign image_loading = 'lazy'
+                endif
+              %}
+              <div class="swiper-slide swiper-slide--product-card" data-swiper-slide>
+                {{
+                  image
+                  | image_url: width: '800'
+                  | image_tag: class: 'sb-product-card__image', alt: image.alt, loading: image_loading
+                }} 
+
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </swiper-slider>
+      <div class="sb-product-card__arrows sb-product-card__arrows--{{ section.id }}--{{ product.id }}">
+        <svg
+          class="sb-prev-arrow"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="17"
+          viewBox="0 0 16 17"
+          fill="none"
+        >
+          <g clip-path="url(#clip0_9342_71)">
+          <path d="M11.7406 15.925C11.875 15.925 12.0125 15.8719 12.1156 15.7688C12.3219 15.5625 12.3219 15.225 12.1156 15.0188L5.05625 7.95942L12.0125 1.00317C12.2188 0.796924 12.2188 0.459424 12.0125 0.253174C11.8063 0.0469237 11.4688 0.0469237 11.2625 0.253174L3.92813 7.58442C3.72188 7.79067 3.72188 8.12817 3.92813 8.33442L11.3625 15.7688C11.4687 15.875 11.6031 15.925 11.7406 15.925Z" fill="currentColor" fill-opacity="0.6"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_9342_71">
+          <rect width="16" height="16" transform="translate(0 16.0532) rotate(-90)"/>
+          </clipPath>
+          </defs>
+        </svg>
+        <svg
+          class="sb-next-arrow"
+          xmlns="http://www.w3.org/2000/svg"
+          width="10"
+          height="16"
+          viewBox="0 0 10 16"
+          fill="none"
+        >
+          <path d="M1.25939 0.181396C1.12502 0.181396 0.987499 0.234521 0.884375 0.337646C0.678124 0.543896 0.678124 0.881396 0.884375 1.08765L7.94375 8.14702L0.987499 15.1033C0.781248 15.3095 0.781248 15.647 0.987499 15.8533C1.19375 16.0595 1.53125 16.0595 1.7375 15.8533L9.07187 8.52202C9.27812 8.31577 9.27812 7.97827 9.07187 7.77202L1.6375 0.337646C1.53125 0.231396 1.39689 0.181396 1.25939 0.181396Z" fill="currentColor" fill-opacity="0.6"/>
+        </svg>
+      </div>
+    {% else %}
+      {{
+        product.featured_image
+        | image_url: width: '400'
+        | image_tag: class: 'sb-product-card__image', alt: product.title
+      }}
+    {% endif %}
+  </a>
+  <div class="sb-product-card__content">
+    <div class="sb-product-card__blocks">
+      <div class="jdgm-widget sb-jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+        {{ product.metafields.judgeme.badge }}
+        <span class="jdgm-rating-count"></span>
+      </div>
+    </div>
+    <h3 class="sb-product-card__title">
+      {{ product.title }}
+    </h3>
+    {% if product.metafields.custom.plp_product_short_description %}
+      <p class="sb-product-card__description">
+        {{ product.metafields.custom.plp_product_short_description }}
+      </p>
+    {% else %}
+      <p class="sb-product-card__description">Short description of the product placeholder.</p>
+    {% endif %}
+    <div class="sb-product-card__footer">
+      <div class="sb-product-card__price">
+        {% if product.compare_at_price > product.price %}
+          <span class="sb-product-card__price--compare">
+            {{ product.compare_at_price | money }}
+          </span>
+        {% endif %}
+        <span class="sb-product-card__price--current">
+          {{ product.price | money }}
+        </span>
+      </div>
+      {% capture button_text %}
+          {% if simple_label != true %}
+            Shop {% render 'sb-option-text', product: product %}
+          {% else %}
+            Shop Now
+          {% endif %}
+        {% endcapture %}
+      {% render 'sb-button', button_text: button_text, button_url: product.url, button_type: 'link' %}
+    </div>
+  </div>
+</div>

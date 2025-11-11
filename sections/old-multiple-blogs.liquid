@@ -1,0 +1,247 @@
+{% comment %} {{ 'old-multiple-blog-section.css' | asset_url | stylesheet_tag }} {% endcomment %}
+
+{% style %}
+  #section-{{section.id}} {
+    --bg-color: {{section.settings.bg_color}};
+    --text-color: {{section.settings.text_color}};
+    --PT:{{section.settings.padding_top}}px;
+    --PB:{{section.settings.padding_bottom}}px;
+  }
+  
+{% endstyle %}
+{%  stylesheet %}
+   .sb-pagination-wrapper .swiper-pagination {
+    position: unset;
+    width: 231px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+    height: 2px;
+  }
+  .sb-pagination-wrapper .swiper-pagination-bullet {
+    border-radius: 0;
+    height: 1.5px;
+    background: var(--sb-fg-color, #111314);
+    opacity: 0.4;
+    flex-grow: 1;
+    width: auto;
+    margin: 0!important;
+  }
+  .sb-pagination-wrapper .swiper-pagination-bullet-active {
+    opacity: 1;
+    height: 1.5px;
+  }
+{% endstylesheet %}
+<div class="multiple-blog-section" id="section-{{ section.id }}" >
+  <div class="container">
+    <div class="multiple-blog-header">
+      {% if section.settings.custom_title != blank %}
+        <h2>{{ section.settings.custom_title }}</h2>  
+      {% endif %}
+      {% if section.settings.button_url != blank %}
+        <a href="{{ section.settings.button_url }}" class="btn_link link" aria-label="Blog Item Button URL">
+          <span>{{ section.settings.button_text }}</span>
+          {% render 'old-right-arrow' %}
+        </a>
+      {% endif %}
+    </div>
+    <div class="multiple-blog-content"> 
+      {%- capture slider_options -%}
+        {
+          "slidesPerView": 1.2,
+          "spaceBetween": 24,
+          "centeredSlides": true,
+          "loop": false,
+          "pagination": {
+            "el": ".swiper-pagination--{{ section.id }}",
+            "clickable": true
+          },
+          "breakpoints": {
+            "640": {
+              "slidesPerView": 2.2
+            },
+            "768": {
+              "slidesPerView": 2.4
+            },
+            "1024": {
+              "slidesPerView": 4.5
+            }
+          }
+        }  
+      {%- endcapture -%}
+
+
+      <swiper-slider
+        data-swiper-options='{{ slider_options }}'
+        class="swiper-slider-container"
+        data-fraction-pagination
+      >
+        <div class="swiper" data-swiper>
+          <div class="swiper-wrapper">
+          {% if template.name == 'collection' %}
+            {% if collection.metafields.custom.blogs != blank %}
+              {% for refer_article in collection.metafields.custom.blogs.value %}          
+                {% assign article_one_handle = refer_article %}
+                {% assign article = articles[article_one_handle] %}
+                 <div class="multiple-blog-item swiper-slide" data-swiper-slide>
+                  {% render 'old-article-item', 
+                    article: article
+                  %}
+                 </div>
+              {% endfor %}
+            {% else %}
+              {% for block in section.blocks %}
+                {%  if block.setting.select_blog != empty %}
+                  <div class="multiple-blog-item swiper-slide" data-swiper-slide>
+                    {% render 'old-article-item', article: block.settings.select_blog %}
+                  </div>
+                {%  endif %}
+
+              {% endfor %}              
+            {% endif %}
+          {% else %}
+            {% for block in section.blocks %}
+              {%  if block.settings.select_blog != empty %}
+                <div class="multiple-blog-item swiper-slide" data-swiper-slide>
+                  {% render 'old-article-item', article: block.settings.select_blog %}
+                </div>
+              {%  endif %}
+            {% endfor %}
+          {% endif %}
+
+          </div>
+        </div>
+      </swiper-slider>
+      <div class=" sb-page-width">
+        <div class="sb-pagination-wrapper">
+          <div class="swiper-pagination swiper-pagination--{{ section.id }}">
+          </div>
+          <div class="sb-pagination-count">
+            <span class="sb-swiper-pagination-current"></span><span class="sb-pagination-slash">/</span><span class="sb-swiper-pagination-total"></span>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} <div class="multiple-blog-slider swiper">
+        <div class="swiper-wrapper">
+          {% if template.name == 'collection' %}
+            {% if collection.metafields.custom.blogs != blank %}
+              {% for refer_article in collection.metafields.custom.blogs.value %}          
+                {% assign article_one_handle = refer_article %}
+                {% assign article = articles[article_one_handle] %}
+                 <div class="multiple-blog-item swiper-slide">
+                  {% render 'old-article-item', 
+                    article: article
+                  %}
+                 </div>
+              {% endfor %}
+            {% else %}
+              {% for block in section.blocks %}
+                <div class="multiple-blog-item swiper-slide">
+                  {% render 'old-article-item', article: block.settings.select_blog %}
+                </div>
+              {% endfor %}              
+            {% endif %}
+          {% else %}
+            {% for block in section.blocks %}
+              <div class="multiple-blog-item swiper-slide">
+                {% render 'old-article-item', article: block.settings.select_blog %}
+              </div>
+            {% endfor %}
+          {% endif %}
+
+        </div>
+        <div class="multiple-blog-slider-bottom">
+          <div class="multiple-blog-pagination">&nbsp;</div>
+          <!-- Fractional Pagination (Slide Counter) -->
+          <div class="multiple-blog-fraction slider-counter-fraction">&nbsp;</div>
+        </div>
+      </div> {% endcomment %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Multiple Blog",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type": "text",
+        "id": "custom_title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default":"View All"
+      },
+      {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#111314"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+       "type": "header",
+        "content": "section padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "min": 0,
+        "max": 120,
+        "step": 2,
+        "unit": "px",
+        "default": 80
+      },
+      {
+       "type": "range",
+        "id": "padding_bottom",
+        "label": "Paading bottom",
+        "min": 0,
+        "max": 120,
+        "step": 2,
+        "unit": "px",
+        "default": 80
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Add Blog",
+        "settings": [
+          {
+            "type": "article",
+            "id": "select_blog",
+            "label": "Add Blog"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Multiple Blog"
+      }
+    ]
+  }
+{% endschema %}

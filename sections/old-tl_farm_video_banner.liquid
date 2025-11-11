@@ -1,0 +1,88 @@
+<div class="tl_farm_video_banner">
+  <div class="wraper">
+    {% if section.settings.video_url!=blank %}
+      <div class="video">
+        <video poster="{{ section.settings.poster | img_url : '' }}" autoplay playsinline loop muted>
+          <source src="{{ section.settings.video_url }}" type="video/mp4">
+          <source src="{{ section.settings.video_url }}" type="video/ogg">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    {% endif %}
+    
+    <div class="content">
+      <div class="container">
+        
+        {% if section.settings.title!=blank %}
+          <h2>{{ section.settings.title }}</h2>
+        {% endif %}
+      
+        {% if section.settings.subheading!=blank %}
+          <p>{{ section.settings.subheading }}</p>
+        {% endif %}
+  
+        {% if section.settings.btn_text!=blank %}
+          <a href="{{ section.settings.btn_url }}" class="btn">{{ section.settings.btn_text }}</a>
+        {% endif %}
+
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+
+
+            
+
+
+            
+{% schema %}
+  {
+    "name": "Farm Shaker Video Banner",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"text",
+        "id":"title",
+        "label":"Heading"
+      },
+      {
+        "type":"textarea",
+        "id":"subheading",
+        "label":"Subheading"
+      },
+      {
+        "type":"text",
+        "id":"btn_text",
+        "label":"Button Text"
+      },
+      {
+        "type":"url",
+        "id":"btn_url",
+        "label":"Button Link"
+      },
+      {
+        "type":"image_picker",
+        "id":"poster",
+        "label":"Video Cover Image"
+      },
+      {
+        "type":"url",
+        "id":"video_url",
+        "label":"Video URL"
+      }
+    ],
+    "presets":[
+      {
+        "name":"Farm Shaker Video Banner"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

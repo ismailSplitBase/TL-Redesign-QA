@@ -1,0 +1,73 @@
+<div class="max-w-7xl mx-auto px-4 py-8 text-blue-500">
+  <h1 class="border-b-2 border-gray-300 mb-8 pb-4 uppercase md:text-2xl lg:mb-16">
+    Create Account
+  </h1>
+
+  <div class="max-w-sm mx-auto">
+    {% form 'create_customer' %}
+      <div class="mb-4">
+        {{ form.errors | default_errors }}
+      </div>
+
+      <div class="space-y-6">
+        <div>
+          <label class="block" for="first-name">First Name</label>
+          <input
+            class="text-input"
+            id="first-name"
+            name="customer[first_name]"
+            type="text"
+          >
+        </div>
+
+        <div>
+          <label class="block" for="last-name">Last Name</label>
+          <input
+            class="text-input"
+            id="last-name"
+            name="customer[last_name]"
+            type="text"
+          >
+        </div>
+
+        <div>
+          <label class="block" for="email">Email</label>
+          <input
+            class="text-input"
+            id="email"
+            name="customer[email]"
+            type="email"
+          >
+        </div>
+
+        <div>
+          <label class="block" for="password">Password</label>
+          <input
+            class="text-input"
+            id="password"
+            name="customer[password]"
+            type="password"
+          >
+        </div>
+
+        <div>
+          <button
+            class="bg-orange-400 button w-full"
+            type="submit"
+          >
+            Create Account
+          </button>
+        </div>
+
+        <div class="text-center">
+          <a
+            class="text-orange-400 transition-opacity hover:opacity-70"
+            href="{{ routes.account_login_url }}"
+          >
+            Login to Existing Account
+          </a>
+        </div>
+      </div>
+    {% endform %}
+  </div>
+</div>

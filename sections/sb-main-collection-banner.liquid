@@ -1,0 +1,186 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+
+{% stylesheet %}
+  .sb-collection-banner {
+    background-color: var(--sb-bg-color, #FFFFFF);
+    color: var(--sb-fg-color, #111314);
+    padding: var(--sb-padding-top-mobile, 24px) 0 var(--sb-padding-bottom-mobile, 32px);
+    overflow: hidden;
+  }
+  
+  .sb-collection-banner__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-family: var(--sb-font-family-body);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--sb-secondary-fg-color, #676767);
+    margin: 0 0 24px 0;
+  }
+  
+  .sb-collection-banner__breadcrumb a {
+    color: var(--sb-secondary-fg-color, #676767);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .sb-collection-banner__breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  
+  .sb-collection-banner__title {
+    font-family: var(--sb-font-family-heading);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--sb-fg-color, #111314);
+    margin: 0 0 8px 0;
+  }
+  
+  .sb-collection-banner__description {
+    font-family: var(--sb-font-family-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #676767;
+    margin: 0 0 24px 0;
+  }
+  
+  
+  
+  @media screen and (min-width: 768px) {
+    .sb-collection-banner {
+      padding: var(--sb-padding-top, 48px) 0px var(--sb-padding-bottom, 48px);
+    }
+    
+    .sb-collection-banner__breadcrumb {
+      margin-bottom: 24px;
+    }
+    
+    .sb-collection-banner__title {
+      font-size: 40px;
+      margin-bottom: 24px;
+    }
+    
+    .sb-collection-banner__description {
+      display: block;
+      font-size: 18px;
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    .sb-collection-banner__description p {
+      margin: 0;
+    }
+    
+  }
+
+  .mobile-facets__open-label.button-label.medium-hide.large-up-hide{
+    font-size: 16px;
+  }
+{% endstylesheet %}
+
+<div class="sb-collection-banner sb-styled-element" style="{% render 'style-attributes', settings: section.settings %} {% if section.settings.secondary_fg_color != blank %}--sb-secondary-fg-color: {{ section.settings.secondary_fg_color }};{% endif %}">
+  <div class="sb-page-width">
+    
+    {%- if section.settings.show_breadcrumb -%}
+      <nav class="sb-collection-banner__breadcrumb">
+        <a href="{{ routes.root_url }}">Home</a>
+        {%- if collection -%}
+          <span>/</span>
+          <span>{{ collection.title | escape }}</span>
+        {%- endif -%}
+      </nav>
+    {%- endif -%}
+    
+    <h1 class="sb-collection-banner__title">
+      {% assign default_heading = 'Shop ' | append: collection.title %}
+      {{ section.settings.heading | default: default_heading | escape }}
+    </h1>
+
+    {%- if section.settings.description != empty -%}
+      <div class="sb-collection-banner__description">
+        {{ section.settings.description }}
+      </div>
+    {%- endif -%}
+    
+
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SB Collection Banner",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "default": true,
+      "label": "Show breadcrumb"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color",
+      "id": "secondary_fg_color",
+      "label": "Secondary Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Collection Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,198 @@
+{% comment %}
+  Legacy CSS Loader Snippet
+  
+  This snippet conditionally loads legacy CSS files based on the current template
+  to ensure proper styling during theme migration.
+  
+  Usage: {% render 'legacy-css-loader' %}
+  
+  Place this snippet in the <head> section of your theme.liquid file
+  or in a section where you need legacy CSS support.
+{% endcomment %}
+
+{% liquid
+  assign template_name = template | replace: '.', '-'
+  assign legacy_css_file = 'legacy-' | append: template_name | append: '.css'
+  assign has_legacy = false
+  comment
+    Map template names to their corresponding legacy CSS files
+    This ensures we load the correct CSS for each template type
+  endcomment
+  
+  case template_name
+    when '404'
+      assign legacy_css_file = 'legacy-misc-404.css'
+    when 'page-TDEE-calculator'
+      assign legacy_css_file = 'legacy-pages-tdee-calculator.css'
+    when 'page-TL-macro-calculator'
+      assign legacy_css_file = 'legacy-pages-tl-macro-calculator.css'
+    when 'page-TL_Calculators'
+      assign legacy_css_file = 'legacy-pages-tl-calculators.css'
+    when 'page-aboutus'
+      assign legacy_css_file = 'legacy-pages-aboutus.css'
+    when 'page-affiliates'
+      assign legacy_css_file = 'legacy-pages-affiliates.css'
+    when 'page-article-404'
+      assign legacy_css_file = 'legacy-pages-article-404.css'
+    when 'page-asrv'
+      assign legacy_css_file = 'legacy-pages-asrv.css'
+    when 'page-athletes'
+      assign legacy_css_file = 'legacy-pages-athletes.css'
+    when 'page-bulk-black-affiliate'
+      assign legacy_css_file = 'legacy-pages-bulk-black-affiliate.css'
+    when 'page-contact-us'
+      assign legacy_css_file = 'legacy-pages-contact-us.css'
+    when 'page-core-essentials-stack-lp'
+      assign legacy_css_file = 'legacy-pages-core-essentials-stack-lp.css'
+    when 'page-creatine-affiliate'
+      assign legacy_css_file = 'legacy-pages-creatine-affiliate.css'
+    when 'page-dianaconforti'
+      assign legacy_css_file = 'legacy-pages-dianaconforti.css'
+    when 'page-greens-affiliate'
+      assign legacy_css_file = 'legacy-pages-greens-affiliate.css'
+    when 'page-greens-affiliate-dynamic'
+      assign legacy_css_file = 'legacy-pages-greens-affiliate-dynamic.css'
+    when 'page-hafthor-s-summit-template'
+      assign legacy_css_file = 'legacy-pages-hafthor-s-summit-template.css'
+    when 'page-health-blog'
+      assign legacy_css_file = 'legacy-pages-health-blog.css'
+    when 'page-html-sitemap'
+      assign legacy_css_file = 'legacy-pages-html-sitemap.css'
+    when 'page-influencer-paulsklar'
+      assign legacy_css_file = 'legacy-pages-influencer-paulsklar.css'
+    when 'page-kristiesita'
+      assign legacy_css_file = 'legacy-pages-kristiesita.css'
+    when 'page-lean-affiliate-dynamic'
+      assign legacy_css_file = 'legacy-pages-lean-affiliate-dynamic.css'
+    when 'page-marcusfilly'
+      assign legacy_css_file = 'legacy-pages-marcusfilly.css'
+    when 'page-meal-plans-blog'
+      assign legacy_css_file = 'legacy-pages-meal-plans-blog.css'
+    when 'page-motivation-blog'
+      assign legacy_css_file = 'legacy-pages-motivation-blog.css'
+    when 'page-new-macro-calculator'
+      assign legacy_css_file = 'legacy-pages-new-macro-calculator.css'
+    when 'page-new_stack_page'
+      assign legacy_css_file = 'legacy-pages-new-stack-page.css'
+    when 'page-nutrition-blog'
+      assign legacy_css_file = 'legacy-pages-nutrition-blog.css'
+    when 'page-our-story'
+      assign legacy_css_file = 'legacy-pages-our-story.css'
+    when 'page-paul-sklar-bulk-lander'
+      assign legacy_css_file = 'legacy-pages-paul-sklar-bulk-lander.css'
+    when 'page-paul-sklar-coming-soon'
+      assign legacy_css_file = 'legacy-pages-paul-sklar-coming-soon.css'
+    when 'page-postaffiliatepro'
+      assign legacy_css_file = 'legacy-pages-postaffiliatepro.css'
+    when 'page-pre-workout'
+      assign legacy_css_file = 'legacy-pages-pre-workout.css'
+    when 'page-rewards'
+      assign legacy_css_file = 'legacy-pages-rewards.css'
+    when 'page-rewards-page-207218'
+      assign legacy_css_file = 'legacy-pages-rewards-page-207218.css'
+    when 'page-storelocator'
+      assign legacy_css_file = 'legacy-pages-storelocator.css'
+    when 'page-supplementation-blog'
+      assign legacy_css_file = 'legacy-pages-supplementation-blog.css'
+    when 'page-tanner-shuck'
+      assign legacy_css_file = 'legacy-pages-tanner-shuck.css'
+    when 'page-tl-bmr-calculator'
+      assign legacy_css_file = 'legacy-pages-tl-bmr-calculator.css'
+    when 'page-tl-protein-calcuator'
+      assign legacy_css_file = 'legacy-pages-tl-protein-calcuator.css'
+    when 'page-tl_body_fat_calculator'
+      assign legacy_css_file = 'legacy-pages-tl-body-fat-calculator.css'
+    when 'page-tl_farm_to_shaker'
+      assign legacy_css_file = 'legacy-pages-tl-farm-to-shaker.css'
+    when 'page-tl_one_rep_max_calculator'
+      assign legacy_css_file = 'legacy-pages-tl-one-rep-max-calculator.css'
+    when 'page-tl_protein_plus'
+      assign legacy_css_file = 'legacy-pages-tl-protein-plus.css'
+    when 'page-tl_select'
+      assign legacy_css_file = 'legacy-pages-tl-select.css'
+    when 'page-training-blog'
+      assign legacy_css_file = 'legacy-pages-training-blog.css'
+    when 'page-vitality-dynamic'
+      assign legacy_css_file = 'legacy-pages-vitality-dynamic.css'
+    when 'page-wonderment-tracking'
+      assign legacy_css_file = 'legacy-pages-wonderment-tracking.css'
+    when 'page-wpi-affiliate'
+      assign legacy_css_file = 'legacy-pages-wpi-affiliate.css'
+    when 'page-xt-quiz-ability'
+      assign legacy_css_file = 'legacy-pages-xt-quiz-ability.css'
+    else
+      assign legacy_css_file = ''
+  endcase
+  
+  comment
+    Add template class to body for CSS targeting
+    This allows the legacy CSS to target the correct template
+  endcomment
+  if legacy_css_file != '' or template_name contains 'affiliate'
+    assign has_legacy = true
+  endif
+  
+  assign template_class = 'template-' | append: template_name
+  if template.name contains '404'
+    assign template_class = 'template-misc-404'
+  endif
+%}
+
+{% comment %} Add template class to body element {% endcomment %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('{{ template_class }}');
+    
+    {% comment %} Add additional context classes {% endcomment %}
+    {% if template.name contains 'calculator' %}
+      document.body.classList.add('template-type-calculator');
+    {% elsif template.name contains 'blog' %}
+      document.body.classList.add('template-type-blog');
+    {% elsif template.name contains 'affiliate' %}
+      document.body.classList.add('template-type-affiliate');
+    {% elsif template.name contains 'page' %}
+      document.body.classList.add('template-type-page');
+    {% endif %}
+  });
+</script>
+
+{% if has_legacy %}
+{% comment %} Load the legacy CSS file if it exists {% endcomment %}
+{% if legacy_css_file != '' %}
+  {{ legacy_css_file | asset_url | stylesheet_tag }}
+  
+  {% comment %} Debug information in development {% endcomment %}
+  {% if settings.debug_mode or template.name contains 'development' %}
+    <!-- Legacy CSS loaded: {{ legacy_css_file }} for template: {{ template.name }} -->
+  {% endif %}
+{% endif %}
+
+{% comment %} 
+  Performance optimization: Preload critical legacy CSS files 
+  These are templates with Critical or High priority
+{% endcomment %}
+{% assign critical_templates = '404,page.TDEE-calculator,page.TL-macro-calculator,page.asrv,page.bulk-black-affiliate,page.core-essentials-stack-lp,page.creatine-affiliate,page.dianaconforti,page.greens-affiliate,page.greens-affiliate-dynamic,page.hafthor-s-summit-template,page.health-blog,page.influencer-paulsklar,page.kristiesita,page.lean-affiliate-dynamic,page.marcusfilly,page.meal-plans-blog,page.motivation-blog,page.new-macro-calculator,page.new_stack_page,page.nutrition-blog,page.our-story,page.paul-sklar-bulk-lander,page.paul-sklar-coming-soon,page.pre-workout,page.supplementation-blog,page.tanner-shuck,page.tl-bmr-calculator,page.tl_body_fat_calculator,page.tl_farm_to_shaker,page.tl_one_rep_max_calculator,page.tl_protein_plus,page.tl_select,page.training-blog,page.vitality-dynamic,page.wonderment-tracking,page.wpi-affiliate,page.xt-quiz-ability' | split: ',' %}
+{% comment %} Preload critical assets {% endcomment %}
+
+{% if critical_templates contains template.name %}
+  {% if legacy_css_file != '' %}
+    <link rel="preload" href="{{ legacy_css_file | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  {% endif %}
+{% endif %}
+
+{% comment %} TODO Optimize this so it works with all pages {% endcomment %}
+  <script src="{{ 'legacy-custom.js' | asset_url }}" defer="defer"></script>
+  
+  {{ 'bulk-affiliate.css' | asset_url | stylesheet_tag }}
+  {{ 'xgen-stacks.css' | asset_url | stylesheet_tag }}
+  {{ 'compiled.css' | asset_url | stylesheet_tag }}
+  {% if template_name contains "calculator" or template_name contains "calcuator" %}
+    {{ 'multiple-calculators.css' | asset_url | stylesheet_tag }}
+  {% endif %}
+  {% if template_name contains "blog" %}
+    {{ 'multiple-blog-section.css' | asset_url | stylesheet_tag }}
+  {% endif %}
+  
+  {{ 'legacy.css' | asset_url | stylesheet_tag }}
+  {{ 'legacy-product-card.css' | asset_url | stylesheet_tag }}
+{% endif %}

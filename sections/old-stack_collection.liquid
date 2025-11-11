@@ -1,0 +1,352 @@
+<style>
+.slick-prev {    left: 25px !important;    z-index: 1;}
+.slick-next {    right: 25px !important;    z-index: 1;}
+</style>
+<div class="flex xgen-new-collection" id="xgen-new-collection">
+  <div class="flex-1">
+    <div  class="pt-4">
+          <div class="xgen-tagging">
+            {% if section.settings.title != blank %}
+            	<h2>{{ section.settings.title}}</h2>
+            {% endif %}
+            
+            {% if section.settings.subtitle != blank %}
+            	<p>{{ section.settings.subtitle}}</p>
+            {% endif %}
+            
+            <div class="tagging-grid xgenstack-tab">
+              <ul id="tabs-nav">
+              {% for block in section.blocks %}
+              	{% if forloop.first == true %}
+                <li><a   href="#tab_{{forloop.index}}" class="tablinks active" id="protab_{{ forloop.index }}" >{{block.settings.collection_type}}</a></li>
+    			{% else %}
+                <li><a href="#tab_{{forloop.index}}" class="tablinks" id="protab_{{ forloop.index }}">{{block.settings.collection_type}}</a></li>
+  				{% endif %}
+              {% endfor %}
+              </ul>
+            </div>
+          </div>
+      
+      <!--static tagging -->
+      
+      
+      {% for block in section.blocks %}
+      	<div id="tab_{{forloop.index}}" class="xgenstack-tabcontent tab-content">
+          <div class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3">
+		  {% assign product_1 = block.settings.product_1 %}
+          {% assign product_2 = block.settings.product_2 %}
+          {% assign product_3 = block.settings.product_3 %}
+          {% assign product_4 = block.settings.product_4 %}
+          {% assign product_5 = block.settings.product_5 %}
+          {% assign product_6 = block.settings.product_6 %}
+          {% assign product_7 = block.settings.product_7 %}
+          {% assign product_8 = block.settings.product_8 %}
+            
+          
+            {% assign p_type1 = block.settings.product_type %}
+            {% assign p_type2= block.settings.product_type_1 %}
+            {% assign p_type3 = block.settings.product_type_2 %}
+            {% assign p_type4 = block.settings.product_type_3 %}
+            {% assign p_type5 = block.settings.product_type_4 %}
+            {% assign p_type6 = block.settings.product_type_5 %}
+            {% assign p_type7 = block.settings.product_type_6 %}
+            {% assign p_type8 = block.settings.product_type_7 %}
+            
+            
+           {% assign discount_text1 = section.settings.discount_month %}
+           {% assign discount_text2 = section.settings.discount_days %}
+            {% assign percent_text =  section.settings.percent_text %}
+          
+          {% if product_1 != blank %}
+            {% render 'old-stack-product-grid' with product: product_1, block_id: block.id, product_type: p_type1, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text %}
+          {% endif %}
+          {% if product_2 != blank %}
+          	{% render 'old-stack-product-grid' with product: product_2, block_id: block.id, product_type: p_type2, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text  %}
+          {% endif %}
+          {% if product_3 != blank %}
+          	{% render 'old-stack-product-grid' with product: product_3, block_id: block.id, product_type: p_type3, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text   %}
+          {% endif %}
+          {% if product_4 != blank %}
+          	{% render 'old-stack-product-grid' with product: product_4, block_id: block.id, product_type: p_type4, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text   %}
+          {% endif %}
+          {% if product_5 != blank %}
+          	{% render 'old-stack-product-grid' with product: product_5, block_id: block.id, product_type: p_type5, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text   %}
+          {% endif %}
+          {% if product_6 != blank %}
+          	{% render 'old-stack-product-grid' with product: product_6, block_id: block.id, product_type: p_type6, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text   %}
+          {% endif %}
+          {% if product_7 != blank %}
+          	{% render 'old-stack-product-grid' with product: product_7, block_id: block.id, product_type: p_type7, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text   %}
+          {% endif %}
+          {% if product_8 != blank %}
+          	{% render 'old-stack-product-grid' with product: product_8, block_id: block.id, product_type: p_type8, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text   %}
+          {% endif %}
+            </div>
+		</div>
+     {% endfor %}
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  
+// Replace jQuery with vanilla JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  // Set first tab as active
+  const firstTabNav = document.querySelector('#tabs-nav li:first-child');
+  if (firstTabNav) {
+    firstTabNav.classList.add('active');
+  }
+  
+  // Hide all tab content except first
+  const tabContents = document.querySelectorAll('.tab-content');
+  tabContents.forEach((content, index) => {
+    if (index === 0) {
+      content.style.display = 'block';
+    } else {
+      content.style.display = 'none';
+    }
+  });
+  
+  // Add click event listeners to tabs
+  const tabNavs = document.querySelectorAll('#tabs-nav li');
+  tabNavs.forEach(function(tabNav) {
+    tabNav.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Remove active class from all tabs
+      document.querySelectorAll('#tabs-nav li a').forEach(function(link) {
+        link.classList.remove('active');
+      });
+      
+      // Add active class to clicked tab
+      const clickedLink = this.querySelector('a');
+      if (clickedLink) {
+        clickedLink.classList.add('active');
+      }
+      
+      // Hide all tab content
+      tabContents.forEach(function(content) {
+        content.style.display = 'none';
+      });
+      
+      // Show active tab content
+      const activeTabHref = clickedLink.getAttribute('href');
+      const activeTab = document.querySelector(activeTabHref);
+      if (activeTab) {
+        // Use fadeIn effect with CSS transition
+        activeTab.style.display = 'block';
+        activeTab.style.opacity = '0';
+        setTimeout(() => {
+          activeTab.style.transition = 'opacity 0.3s ease';
+          activeTab.style.opacity = '1';
+        }, 10);
+      }
+    });
+  });
+});
+  
+// function openCity(evt, cityName) {
+//   var i, tabcontent, tablinks;
+//   tabcontent = document.getElementsByClassName("xgenstack-tabcontent");
+//   for (i = 0; i < tabcontent.length; i++) {
+//     tabcontent[i].style.display = "none";
+//   }
+//   tablinks = document.getElementsByClassName("tablinks");
+//   for (i = 0; i < tablinks.length; i++) {
+//     tablinks[i].className = tablinks[i].className.replace(" active", "");
+//   }
+//   document.getElementById(cityName).style.display = "block";
+//   evt.currentTarget.className += " active";
+// }
+
+// // Get the element with id="defaultOpen" and click on it
+// document.getElementById("protab_1").click();
+  
+</script>
+
+
+<style>
+  :root {
+    --swiper-navigation-size: 24px;
+    --swiper-theme-color: #41B5E8;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Stack collection",
+    "class": "td-legacy",
+    "settings": [
+	{
+    	"type":"text",
+        "id":"title",
+        "label":"Section Title"
+	},
+    {
+    	"type":"textarea",
+        "id":"subtitle",
+        "label":"Section Subtitle"
+	},
+	{
+    	"type":"text",
+        "id":"discount_month",
+        "label":"Discount text by month",
+		"default":"Deliver Every Month"
+	},
+	{
+    	"type":"text",
+        "id":"discount_days",
+        "label":"Discount text by days",
+		"default":"Deliver Every 45 days"
+	},
+	{
+    	"type":"text",
+        "id":"percent_text",
+        "label":"Subcription percent Off text",
+		"default":"10% Off"
+	}
+],
+	"blocks":[
+		{
+			"name":"product",
+			"type":"text",
+			"settings":[
+				{
+                    "type":"text",
+                    "id":"collection_type",
+                    "label":"collection type"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+				{
+                    "type":"text",
+                    "id":"product_type",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_1",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+				{
+                    "type":"text",
+                    "id":"product_type_1",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_2",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_2",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_3",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_3",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_4",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_4",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_5",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_5",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_6",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_6",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_7",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_7",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_8",
+                    "label":"Select stack product"
+                }
+
+			]
+		}
+	],
+	
+	"presets":[
+		{
+			"name": "Stack Collection"
+		}
+	]
+  }
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+ 

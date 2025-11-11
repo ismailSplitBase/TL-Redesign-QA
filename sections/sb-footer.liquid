@@ -1,0 +1,716 @@
+{% stylesheet %}
+  .sb-footer {
+    --footer-bg: var(--sb-footer-bg, #17323d);
+    --footer-fg: var(--sb-footer-fg, #fff);
+    --footer-link: var(--sb-footer-link, #fff);
+    --footer-link-hover: var(--sb-footer-link-hover, #b3e0ff);
+    --footer-muted: var(--sb-footer-muted, #b3bfc7);
+    --footer-border: var(--sb-footer-border, #2a4756);
+    background: var(--footer-bg);
+    color: var(--footer-fg);
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .sb-footer__container {
+    max-width: 1376px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .sb-footer__columns {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .sb-footer__column {
+    width: 100%;
+  }
+
+  .sb-footer__column-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--footer-fg);
+    font-family: var(--sb-font-family-body);
+  }
+
+  .sb-footer__column-title-heading {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--footer-fg);
+    margin-top: 0;
+  }
+
+  .sb-footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sb-footer__links li {
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  .sb-footer__sublink {
+    display: block;
+    color: var(--footer-link);
+    text-decoration: none;
+    font-weight: 400;
+    font-family: var(--sb-font-family-body);
+    font-size: 16px;
+    margin-bottom: 2px;
+    transition: color 0.2s;
+  }
+
+  .sb-footer__sublink:hover,
+  .sb-footer__sublink:focus {
+    color: var(--footer-link-hover);
+    text-decoration: underline;
+    outline: none;
+  }
+
+  .sb-footer__sublink-desc {
+    color: var(--footer-muted);
+    font-size: 14px;
+  }
+
+  .sb-footer__newsletter {
+    margin-top: 24px;
+  }
+
+  .sb-footer__newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .sb-footer__input {
+    padding: 10px 12px;
+    border: 1px solid var(--footer-border);
+    border-radius: 4px;
+    min-height: 52px;
+    background: #fff;
+    font-family: var(--sb-font-family-body);
+    font-weight: 400;
+    color: #111314;
+    font-size: 1em;
+    transition: border-color 0.2s;
+  }
+
+  /* Newsletter input error state */
+  .sb-footer__input--error {
+    outline: 1px solid #ff6767;
+    outline-offset: 1px;
+  }
+  .sb-footer__newsletter-error {
+    color: #e03e3e;
+    font-size: 0.97em;
+    margin-top: 4px;
+    margin-bottom: 0;
+    min-height: 18px;
+    display: block;
+  }
+
+  /* Newsletter input success state */
+  .sb-footer__input--success {
+    border-color: #2db47d;
+    background: #f3fff7;
+  }
+  .sb-footer__newsletter-success {
+    color: #2db47d;
+    font-size: 0.97em;
+    margin-top: 4px;
+    margin-bottom: 0;
+    min-height: 18px;
+    display: block;
+  }
+
+  /* Button disabled state */
+  .sb-footer__button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Smooth transitions for state changes */
+  .sb-footer__input,
+  .sb-footer__button {
+    transition: border-color 0.2s, background 0.2s, color 0.2s, opacity 0.2s;
+  }
+
+  .sb-footer__button {
+    padding: 10px 0;
+    border: 1px solid var(--footer-link);
+    background: #11131433;
+    color: var(--footer-link);
+    border-radius: 24px;
+    font-size: 1em;
+    min-height: 52px;
+    font-weight: 500;
+    font-family: var(--sb-font-family-body);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .sb-footer__input:focus-visible,
+  .sb-footer__input:focus {
+    outline: 1px solid white;
+    outline-offset: 1px;
+    box-shadow: none;
+  }
+
+  /* Error state focus - maintain error outline when focused */
+  .sb-footer__input--error:focus-visible,
+  .sb-footer__input--error:focus {
+    outline: 1px solid #ff6767;
+    outline-offset: 1px;
+  }
+
+  .sb-footer__button:hover,
+  .sb-footer__button:focus {
+    background: var(--footer-link-hover);
+    color: #17323d;
+    outline: none;
+  }
+
+  .sb-footer__newsletter-desc {
+    color: #fff;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0;
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+
+  .sb-footer__bottom {
+    padding-top: 24px;
+    color: var(--footer-muted);
+    font-size: 0.93em;
+    display: flex;
+    flex-direction: column;
+  }
+  .sb-footer__contact {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0.01em;
+    gap: 2px;
+  }
+  .sb-footer__contact a {
+    color: var(--footer-fg);
+  }
+
+  .sb-footer__column-title-newsletter {
+    margin-bottom: 6px !important;
+  }
+
+  .sb-footer__contact,
+  .sb-footer__address,
+  .sb-footer__disclaimer,
+  .sb-footer__copyright {
+    margin-bottom: 0;
+    color: #ffffff;
+  }
+  .sb-footer__contact,
+  .sb-footer__address,
+  .sb-footer__disclaimer {
+    color: #ffffff;
+  }
+
+  .sb-footer__contact,
+  .sb-footer__address {
+    font-size: 14px;
+  }
+
+  .sb-footer__copyright {
+    padding-top: 16px;
+    font-size: 12px;
+  }
+
+  .sb-footer__disclaimer {
+    padding-top: 12px;
+    font-size: 12px;
+  }
+
+  /* Responsive visibility for mobile/desktop footer layouts */
+  .sb-footer__accordion--mobile {
+    display: block;
+  }
+  .sb-footer__columns--desktop .sb-footer__column:not(.sb-footer__newsletter) {
+    display: none;
+  }
+
+  /* Accessibility: focus-visible for keyboard users */
+  .sb-footer__sublink:focus-visible,
+  .sb-footer__button:focus-visible {
+    outline: 2px solid var(--footer-link-hover);
+    outline-offset: 2px;
+  }
+
+  /* Message States */
+  .sb-footer__newsletter-form__message {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 300;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+
+  .sb-footer__newsletter-form__message--error {
+    color: #ff6464;
+  }
+
+  .sb-footer__newsletter-form__message--success {
+    color: #2db47d;
+  }
+
+  .email-signup-message--hidden {
+    display: none !important;
+  }
+
+  .sb-footer__newsletter-form__message-text {
+    margin: 0;
+    line-height: 140%;
+    font-weight: 300;
+    margin: 0;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+
+  /* Desktop styles */
+  @media (min-width: 900px) {
+    .sb-footer__columns--desktop .sb-footer__column:not(.sb-footer__newsletter) {
+      display: block;
+    }
+    .sb-footer__columns {
+      flex-direction: row;
+      gap: 48px;
+      justify-content: space-between;
+    }
+    .sb-footer__column-title {
+      font-size: 20px;
+      margin: 0 0 24px 0;
+    }
+    .sb-footer__newsletter .sb-footer__column-title {
+      padding-top: 0 !important;
+    }
+    .sb-footer__column {
+      width: 22%;
+      min-width: 180px;
+      max-width: 260px;
+    }
+    .sb-footer__newsletter {
+      margin-top: 0;
+      max-width: 320px;
+    }
+    .sb-footer__container {
+      padding: 0 32px;
+    }
+    .sb-footer__bottom {
+      margin-top: 40px;
+      gap: 0;
+      max-width: 600px;
+    }
+    .sb-footer__contact,
+    .sb-footer__address,
+    .sb-footer__disclaimer,
+    .sb-footer__copyright {
+      margin-bottom: 0;
+      color: #ffffff;
+    }
+    .sb-footer__contact,
+    .sb-footer__address,
+    .sb-footer__disclaimer {
+      color: #ffffff;
+    }
+
+    .sb-footer__contact,
+    .sb-footer__address {
+      font-size: 14px;
+    }
+
+    .sb-footer__copyright {
+      padding-top: 16px;
+      font-size: 12px;
+    }
+
+    .sb-footer__disclaimer {
+      padding-top: 12px;
+      font-size: 12px;
+      opacity: 0.65;
+    }
+
+    .sb-footer__accordion--mobile {
+      display: none !important;
+    }
+    .sb-footer__columns--desktop {
+      display: flex;
+    }
+  }
+
+  /* --- Improved Mobile Styles for SB Footer (Figma April Edits) --- */
+  @media (max-width: 899px) {
+    .sb-footer .sb-accordion__content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+    }
+    .sb-footer__columns {
+      flex-direction: column;
+      gap: 32px;
+    }
+    .sb-footer__column {
+      width: 100%;
+      padding: 0 0 20px 0;
+      margin-bottom: 0;
+      background: none;
+      position: relative;
+    }
+    .sb-footer__column:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .sb-footer__column-title-heading {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--footer-fg);
+    }
+    .sb-footer__column-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      background-color: var(--sb-footer-bg);
+    }
+    .sb-footer__column-title svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.2s;
+    }
+    .sb-accordion__close-icon {
+      display: none;
+    }
+    .sb-footer__column-title.sb-accordion__trigger[aria-expanded='true'] .sb-accordion__close-icon {
+      display: block;
+    }
+    .sb-footer__column-title.sb-accordion__trigger[aria-expanded='true'] .sb-accordion__open-icon {
+      display: none;
+    }
+    .sb-footer__newsletter {
+      border-bottom: none;
+      padding-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      margin-top: 0;
+    }
+    .sb-footer__newsletter-form {
+      gap: 12px;
+    }
+    .sb-footer__input {
+      font-size: 1em;
+      padding: 16px;
+      min-height: 52px;
+      font-size: 14px;
+      line-height: 140%;
+      letter-spacing: 0.01em;
+    }
+    .sb-footer__button {
+      font-size: 16px;
+      padding: 16px 12px;
+      line-height: 140%;
+      margin-top: 6px;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+    .sb-footer {
+      padding: 8px 0 32px !important;
+    }
+  }
+{% endstylesheet %}
+
+<section
+  id="shopify-section-{{ section.id }}"
+  class="sb-footer"
+  style="background: {{ section.settings.bg_color }}; color: {{ section.settings.fg_color }}; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="sb-footer__container sb-footer__layout-{{ section.settings.page_layout }}">
+    <!-- Mobile Accordion -->
+    <sb-accordion class="sb-footer__accordion sb-footer__accordion--mobile">
+      {% assign menu = linklists[section.settings.footer_menu] %}
+      {% for link in menu.links %}
+        <div class="sb-accordion__item">
+          <div class="sb-accordion__trigger sb-footer__column-title" aria-expanded="false">
+            {{ link.title }}
+            <svg
+              class="sb-accordion__open-icon"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M9 0.5V17.5M17.5 9H0.5" stroke="white" stroke-linecap="round"/>
+            </svg>
+            <svg
+              class="sb-accordion__close-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path d="M20.5 12H3.5" stroke="white" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sb-accordion__content">
+            <ul class="sb-footer__links">
+              {% for sublink in link.links %}
+                {% assign parts = sublink.title | split: '|' %}
+                <li>
+                  <a href="{{ sublink.url }}" class="sb-footer__sublink">{{ parts[0] }}</a>
+                  {% if parts.size > 1 %}
+                    <div class="sb-footer__sublink-desc">{{ parts[1] }}</div>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </sb-accordion>
+    <!-- Columns (desktop) and Newsletter (all) -->
+    <div class="sb-footer__columns sb-footer__columns--desktop">
+      {% for link in menu.links %}
+        <div class="sb-footer__column">
+          <h3 class="sb-footer__column-title">{{ link.title }}</h3>
+          <ul class="sb-footer__links">
+            {% for sublink in link.links %}
+              {% assign parts = sublink.title | split: '|' %}
+              <li>
+                <a href="{{ sublink.url }}" class="sb-footer__sublink">{{ parts[0] }}</a>
+                {% if parts.size > 1 %}
+                  <div class="sb-footer__sublink-desc">{{ parts[1] }}</div>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+      <div class="sb-footer__column sb-footer__newsletter">
+        <h3 class="sb-footer__column-title-heading">Newsletter</h3>
+        <h3 class="sb-footer__column-title sb-footer__column-title-newsletter">
+          {{ section.settings.newsletter_heading }}
+        </h3>
+        <div class="sb-footer__newsletter-desc">{{ section.settings.newsletter_description }}</div>
+        <email-signup-form>
+          {%- form 'customer', class: 'sb-footer__newsletter-form', id: 'newsletter-form', novalidate: true -%}
+            <input type="hidden" name="form_type" value="customer">
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input
+              class="sb-footer__input"
+              type="text"
+              name="contact[name]"
+              placeholder="{{ section.settings.newsletter_first_name_placeholder }}"
+              aria-label="{{ section.settings.newsletter_first_name_placeholder }}"
+            >
+            <input
+              class="sb-footer__input"
+              type="email"
+              name="contact[email]"
+              placeholder="{{ section.settings.newsletter_email_placeholder }}"
+              aria-label="{{ section.settings.newsletter_email_placeholder }}"
+              required
+            >
+
+            <!-- Name Error Message -->
+            <div
+              id="Email-signup__message-name-error-{{ section.id }}"
+              class="sb-footer__newsletter-form__message email-signup__message email-signup__message--error email-signup-message--hidden"
+              tabindex="-1"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.99967 13.6668H10.007M9.99967 6.3335V10.9168M19.1663 10.0002C19.1663 4.93741 15.0624 0.833496 9.99967 0.833496C4.93692 0.833496 0.833008 4.93741 0.833008 10.0002C0.833008 15.0629 4.93692 19.1668 9.99967 19.1668C15.0624 19.1668 19.1663 15.0629 19.1663 10.0002Z" stroke="#FF6767" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <p class="sb-footer__newsletter-form__message-text sb-footer__newsletter-form__message--error">
+                Name Missing
+              </p>
+            </div>
+
+            <!-- Email Error Message -->
+            <div
+              id="Email-signup__message-email-error-{{ section.id }}"
+              class="sb-footer__newsletter-form__message email-signup__message email-signup__message--error email-signup-message--hidden"
+              tabindex="-1"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.99967 13.6668H10.007M9.99967 6.3335V10.9168M19.1663 10.0002C19.1663 4.93741 15.0624 0.833496 9.99967 0.833496C4.93692 0.833496 0.833008 4.93741 0.833008 10.0002C0.833008 15.0629 4.93692 19.1668 9.99967 19.1668C15.0624 19.1668 19.1663 15.0629 19.1663 10.0002Z" stroke="#FF6767" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <p class="sb-footer__newsletter-form__message-text sb-footer__newsletter-form__message--error">
+                Email address not valid.
+              </p>
+            </div>
+
+            <!-- Success Message -->
+            {%- if form.posted_successfully? -%}
+              <div
+                id="newsletter-success"
+                class="sb-footer__newsletter-form__message sb-footer__newsletter-form__message--success"
+                tabindex="-1"
+              >
+                <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <mask id="mask0_200_1504" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="18" height="17">
+                    <path d="M9.00001 16.1659C9.9851 16.1671 10.9607 15.9737 11.8708 15.5967C12.7809 15.2197 13.6076 14.6666 14.3033 13.9691C15.0007 13.2735 15.5538 12.4468 15.9308 11.5367C16.3078 10.6266 16.5012 9.65099 16.5 8.6659C16.5012 7.68081 16.3078 6.70518 15.9308 5.79508C15.5538 4.88498 15.0007 4.05834 14.3033 3.36265C13.6076 2.66521 12.7809 2.11211 11.8708 1.73512C10.9607 1.35813 9.9851 1.16468 9.00001 1.1659C8.01491 1.16468 7.03929 1.35813 6.12919 1.73512C5.21909 2.11211 4.39245 2.66521 3.69676 3.36265C2.99932 4.05834 2.44621 4.88498 2.06922 5.79508C1.69223 6.70518 1.49879 7.68081 1.50001 8.6659C1.49879 9.65099 1.69223 10.6266 2.06922 11.5367C2.44621 12.4468 2.99932 13.2735 3.69676 13.9691C4.39245 14.6666 5.21909 15.2197 6.12919 15.5967C7.03929 15.9737 8.01491 16.1671 9.00001 16.1659Z" fill="white" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                    <path d="M6 8.66589L8.25 10.9159L12.75 6.41589" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </mask>
+                  <g mask="url(#mask0_200_1504)">
+                    <path d="M0 -0.334106H18V17.6659H0V-0.334106Z" fill="#28EBA7"/>
+                  </g>
+                </svg>
+                <span class="sb-footer__newsletter-form__message-text sb-footer__newsletter-form__message--success"
+                  >Thank you for subscribing!</span
+                >
+              </div>
+            {%- endif -%}
+
+            {%- if form.errors -%}
+              <div class="sb-footer__newsletter-form__message sb-footer__newsletter-form__message--error">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 0.434448C12.1423 0.434448 15.5 3.7922 15.5 7.93445C15.5 12.0767 12.1423 15.4344 8 15.4344C3.85775 15.4344 0.5 12.0767 0.5 7.93445C0.5 3.7922 3.85775 0.434448 8 0.434448ZM8 10.1844C7.80109 10.1844 7.61032 10.2635 7.46967 10.4041C7.32902 10.5448 7.25 10.7355 7.25 10.9344C7.25 11.1334 7.32902 11.3241 7.46967 11.4648C7.61032 11.6054 7.80109 11.6844 8 11.6844C8.19891 11.6844 8.38968 11.6054 8.53033 11.4648C8.67098 11.3241 8.75 11.1334 8.75 10.9344C8.75 10.7355 8.67098 10.5448 8.53033 10.4041C8.38968 10.2635 8.19891 10.1844 8 10.1844ZM8 3.43445C7.8163 3.43447 7.639 3.50192 7.50172 3.62398C7.36444 3.74605 7.27674 3.91426 7.25525 4.0967L7.25 4.18445V8.68445C7.25021 8.87561 7.32341 9.05947 7.45464 9.19847C7.58586 9.33748 7.76521 9.42112 7.95605 9.43233C8.14688 9.44353 8.33478 9.38144 8.48137 9.25875C8.62796 9.13606 8.72217 8.96202 8.74475 8.7722L8.75 8.68445V4.18445C8.75 3.98554 8.67098 3.79477 8.53033 3.65412C8.38968 3.51347 8.19891 3.43445 8 3.43445Z" fill="currentColor"/>
+                </svg>
+                <span class="sb-footer__newsletter-form__message-text sb-footer__newsletter-form__message--error"
+                  >Error with submission. Please try again.</span
+                >
+              </div>
+            {%- endif -%}
+            <button class="sb-footer__button" type="submit">{{ section.settings.newsletter_button_text }}</button>
+          {% endform %}
+        </email-signup-form>
+      </div>
+    </div>
+    <div class="sb-footer__bottom">
+      {% render 'social-icons' class: 'sb-elx-social' %}
+
+      <div class="sb-footer__contact">
+        {% if section.settings.contact_email %}
+          <span class="sb-footer__contact-email">
+            <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a>
+          </span>
+        {% endif %}
+        {% if section.settings.contact_phone %}
+          <span class="sb-footer__contact-phone">
+            <a href="tel:{{ section.settings.contact_phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">
+              {{- section.settings.contact_phone -}}
+            </a>
+          </span>
+        {% endif %}
+      </div>
+      <div class="sb-footer__address">{{ section.settings.address }}</div>
+      <div class="sb-footer__disclaimer">{{ section.settings.disclaimer }}</div>
+      <div class="sb-footer__copyright">{{ section.settings.copyright }}</div>
+    </div>
+  </div>
+</section>
+
+<!-- Ensure sb-accordion.js is loaded for accordion functionality -->
+<script src="{{ 'sb-accordion.js' | asset_url }}" defer></script>
+<script src="{{ 'component-email-signup.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "SB Footer",
+  "settings": [
+    { "type": "header", "content": "Menu" },
+    { "type": "link_list", "id": "footer_menu", "label": "Footer Menu" },
+    { "type": "header", "content": "Newsletter" },
+    { "type": "text", "id": "newsletter_heading", "label": "Newsletter Heading", "default": "Title Placeholder" },
+    {
+      "type": "textarea",
+      "id": "newsletter_description",
+      "label": "Newsletter Description",
+      "default": "Your guide to better health — sent weekly. Sign up to save 10% on your first order."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_first_name_placeholder",
+      "label": "First Name Placeholder",
+      "default": "First Name"
+    },
+    { "type": "text", "id": "newsletter_email_placeholder", "label": "Email Placeholder", "default": "Email Address" },
+    { "type": "text", "id": "newsletter_button_text", "label": "Button Text", "default": "Sign Up" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "fg_color", "label": "Text Color", "default": "#ffffff" },
+    { "type": "color_background", "id": "bg_color", "label": "Background Color", "default": "#17323D" },
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "select",
+      "id": "page_layout",
+      "label": "Layout",
+      "default": "normal",
+      "options": [
+        { "value": "full-width", "label": "Full width" },
+        { "value": "wide", "label": "Wide" },
+        { "value": "normal", "label": "Normal" },
+        { "value": "narrow", "label": "Narrow" },
+        { "value": "slim", "label": "Slim" }
+      ]
+    },
+    { "type": "header", "content": "Padding" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 60,
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 60,
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px"
+    },
+    { "type": "header", "content": "Footer Bottom Area" },
+    { "type": "text", "id": "contact_email", "label": "Contact Email", "default": "support@transparentlabs.com" },
+    { "type": "text", "id": "contact_phone", "label": "Contact Phone", "default": "1-866-324-9557" },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "Shipping and Returns: 1551 S 400 E #2, American Fork, Utah 84003, United States"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "Statements regarding supplement benefits have not been evaluated by the Food and Drug Administration. Transparent Labs products are not intended to diagnose, treat, cure, or prevent any disease."
+    },
+    { "type": "text", "id": "copyright", "label": "Copyright", "default": "Transparent Labs ©2025" }
+  ],
+  "presets": [
+    {
+      "name": "SB Footer"
+    }
+  ]
+}
+{% endschema %}

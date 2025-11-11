@@ -1,0 +1,24 @@
+{%  stylesheet %}
+  .sb-no-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+    background-color: var(--sb-ch-bg-color, var(--sb-bg-color, #F9FAFB));
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    min-height: 200px;
+  }
+  .sb-no-content p {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--sb-ch-fg-color, var(--sb-fg-color, #6B7280));
+    margin: 0;
+    line-height: 150%;
+  }
+{% endstylesheet %}
+
+<div class="sb-no-content">
+  <p>No {{ context | default: "blocks" }} have been configured</p>
+</div>

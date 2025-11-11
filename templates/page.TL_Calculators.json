@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1657551208afad166c": {
+      "type": "old-stack-banner",
+      "settings": {
+        "image1": "shopify://shop_images/Subscribe_Stack_Desktop_Banner1.jpg",
+        "image2": "shopify://shop_images/Frame_5.png",
+        "heading": "",
+        "text": "",
+        "btn_text": "",
+        "btn_url": ""
+      }
+    },
+    "165754708436fae198": {
+      "type": "old-TL_Calculators",
+      "blocks": {
+        "883680ad-08d7-4654-97c0-552bc1494165": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/image_7_2.png",
+            "name": "BMR Calculator",
+            "text": "Your Basal Metabolic Rate (BMR) determines the calories your body needs to function at rest. Input your height, gender, age, and weight below to determine your BMR.",
+            "btn_text": "Find my BMR",
+            "btn_url": "shopify://pages/bmr-calculator"
+          }
+        },
+        "bbd027e2-6add-4a80-a5f9-17d87745ee2b": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Group.png",
+            "name": "TDEE Calculator",
+            "text": "Our total daily energy expenditure (TDEE) calculator allows you to quickly determine how many calories you expend per day and how many calories to consume based on your fitness goals.",
+            "btn_text": "Calculate TDEE",
+            "btn_url": "shopify://pages/tdee-calculator"
+          }
+        },
+        "810b11d0-16d6-4b56-a4b1-2e796a4e0594": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/image_7.png",
+            "name": "Bodyfat Calculator",
+            "text": "Input your height, neck, waist, and hip measurements to determine your body fat percentage.",
+            "btn_text": "Calculate My Bodyfat",
+            "btn_url": "shopify://pages/bodyfat-calculator"
+          }
+        },
+        "983d3234-5d1b-4807-8689-47d6f2783bf1": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/image_7_1.png",
+            "name": "One-Rep Max Calculator",
+            "text": "Calculate the maximum weight you can lift for a single repetition for any type of lift.",
+            "btn_text": "Calculate One-Rep Max",
+            "btn_url": "shopify://pages/one-rep-max-calculator"
+          }
+        },
+        "1f633fb6-2573-4fc1-b7be-59563362a02c": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/image_6.png",
+            "name": "Protein Calculator",
+            "text": "Calculate the amount of protein you need to maintain muscle mass and strength.",
+            "btn_text": "Calculate Protein",
+            "btn_url": "shopify://pages/protein-calculator"
+          }
+        }
+      },
+      "block_order": [
+        "883680ad-08d7-4654-97c0-552bc1494165",
+        "bbd027e2-6add-4a80-a5f9-17d87745ee2b",
+        "810b11d0-16d6-4b56-a4b1-2e796a4e0594",
+        "983d3234-5d1b-4807-8689-47d6f2783bf1",
+        "1f633fb6-2573-4fc1-b7be-59563362a02c"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "1657551208afad166c",
+    "165754708436fae198"
+  ]
+}

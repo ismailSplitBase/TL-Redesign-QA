@@ -1,0 +1,188 @@
+{% comment %}
+  Renders an article card for predictive search results
+  
+  Accepts:
+  - article: {Object} Article object
+  - index: {Number} The index of the article in the loop
+  - device: {String} Either 'desktop' or 'mobile' for unique IDs
+  
+  Usage:
+  {% render 'predictive-search-article-card', article: article, index: forloop.index, device: 'desktop' %}
+{% endcomment %}
+
+  <a href="{{ article.url }}" class="predictive-search__article-card" tabindex="-1">
+    {%- if article.image != blank -%}
+      <div class="predictive-search__article-card-image-wrapper">
+        {{ article.image | image_url: width: 400 | image_tag: 
+          loading: 'lazy',
+          class: 'predictive-search__article-card-image',
+          alt: article.image.alt | default: article.title
+        }}
+      </div>
+    {%- endif -%}
+    <div class="predictive-search__article-card-content">
+      <h3 class="predictive-search__article-card-title">{{ article.title }}</h3>
+      {%- if article.excerpt != blank -%}
+        <p class="predictive-search__article-card-excerpt">
+          {{ article.excerpt | strip_html | truncatewords: 15 }}
+        </p>
+      {%- elsif article.content != blank -%}
+        <p class="predictive-search__article-card-excerpt">
+          {{ article.content | strip_html | truncatewords: 15 }}
+        </p>
+      {%- endif -%}
+      {%- if article.author != blank -%}
+        <p class="predictive-search__article-card-author">Written By: {{ article.author }}</p>
+      {%- endif -%}
+    </div>
+  </a>
+{% stylesheet %}
+  /* Article Cards Base Styles */
+  .sb-predictive-search__articles-grid.predictive-search__articles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-inline: max(var(--sb-padding-inline), calc((100vw - var(--page-width) - 15px) / 2 + var(--sb-padding-inline)));
+  }
+
+  .predictive-search__list-item--article-card {
+    margin: 0;
+    padding: 0;
+  }
+
+  #predictive-search-option-article-desktop-5, 
+  #predictive-search-option-article-desktop-4 {
+    display: none;
+  }
+
+  .predictive-search__article-card {
+    display: flex;
+    flex-direction: row;
+    background: var(--sb-ch-bg-color, #fff);
+    padding: 16px;
+    gap: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    transition: background 0.2s ease;
+  }
+
+  .sb-articles-grid__item--mb .predictive-search__article-card {
+    gap: 16px;
+  }
+
+  .predictive-search__list-item--article-card .predictive-search__article-card:hover {
+    background-color: var(--sb-ch-hover-bg-color, #e8ebf2);
+  }
+
+  .predictive-search__article-card-image-wrapper {
+    width: auto;
+    height: 72px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+
+  .sb-articles-grid__item--mb .predictive-search__article-card-image-wrapper {
+    border-radius: 4px;
+  }
+
+  .predictive-search__article-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .predictive-search__article-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .predictive-search__article-card-title {
+    font-size: calc(20 / var(--sb-base-font-size, 16) * 1rem);
+    font-weight: 500;
+    font-family: var(--sb-font-family-body);
+    line-height: 1.4;
+    letter-spacing: 0;
+    margin: 0;
+    color: var(--sb-ch-fg-color, var(--sb-fg-color, #111314));
+  }
+
+  .sb-articles-grid__item--mb .predictive-search__article-card-title {
+    font-size: 16px;
+  }
+
+  .predictive-search__article-card-excerpt {
+    font-size: calc(14 / var(--sb-base-font-size, 16) * 1rem);
+    font-weight: 400;
+    font-family: var(--sb-font-family-body);
+    line-height: 1.4;
+    margin: 0;
+    color: var(--sb-ch-fg-color, var(--sb-fg-color, #111314));
+    opacity: 0.72;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sb-articles-grid__item--mb .predictive-search__article-card-excerpt {
+    font-size: 14px;
+  }
+
+  .sb-articles-grid__item--mb .predictive-search__article-card-author {
+    display: none;
+  }
+
+  .sb-articles-grid__item--mb .predictive-search__article-card {
+    padding: 0;
+  }
+
+  .predictive-search__article-card-author {
+    font-size: calc(12 / var(--sb-base-font-size, 16) * 1rem);
+    font-weight: 400;
+    font-family: var(--sb-font-family-body);
+    line-height: 1.3;
+    margin: 0;
+    color: var(--sb-ch-fg-color, var(--sb-fg-color, #111314));
+    opacity: 0.6;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sb-predictive-search__articles-grid.predictive-search__articles-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .sb-predictive-search__articles-grid.predictive-search__articles-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+  }
+
+  @media screen and (min-width: 1240px) {
+    .sb-predictive-search__articles-grid.predictive-search__articles-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    #predictive-search-option-article-desktop-4 {
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    .sb-predictive-search__articles-grid.predictive-search__articles-grid {
+      gap: 40px;
+    }
+  }
+{% endstylesheet %}
+

@@ -1,0 +1,359 @@
+#price .line_thue {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #6c787c;
+  text-decoration: line-through;
+  display: inline-flex;
+  margin-left: 15px;
+}
+
+p#price {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+
+/*USE CSS for Slider*/
+
+.vehicle-detail-banner .car-slider-desc {
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.banner-slider .slider.slider-for {
+  max-width: 84%;
+  padding-right: 35px;
+}
+
+.banner-slider .slider.slider-nav {
+  max-width: 16%;
+}
+
+.banner-slider .slider.slider-for,
+.banner-slider .slider.slider-nav {
+  width: 100%;
+  float: left;
+}
+
+.banner-slider .slider.slider-nav {
+  /*height: 610px;*/
+  overflow: hidden;
+
+}
+
+.slider-banner-image {
+  /*height: 610px;*/
+}
+
+.banner-slider .slider.slider-nav {
+  padding: 20px 0 0;
+}
+
+.slider-nav .slick-slide.thumbnail-image .thumbImg {
+  max-width: 178px;
+  height: 110px;
+  margin: 0 auto;
+  border: 1px solid #EBEBEB;
+}
+
+.slider-banner-image img,
+.slider-nav .slick-slide.thumbnail-image .thumbImg img {
+  /*height: 100%;*/
+  width: 100%;
+  /*object-fit: cover;*/
+}
+
+.slick-vertical .slick-slide:active,
+.slick-vertical .slick-slide:focus,
+.slick-arrow:hover,
+.slick-arrow:focus {
+  border: 0;
+  outline: 0;
+}
+
+.slider-nav .slick-slide.slick-current.thumbnail-image .thumbImg {
+  border: 2px solid #196DB6;
+}
+
+.slider-nav .slick-slide.slick-current span {
+  color: #196DB6;
+}
+
+.slider-nav .slick-slide {
+  text-align: center;
+}
+
+.slider-nav .slick-slide span {
+  font-size: 14px;
+  display: block;
+  padding: 5px 0 15px;
+}
+
+.slick-arrow {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+  height: 18px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.slick-prev {
+  top: 0;
+}
+
+.slick-next {
+  bottom: 0;
+  background-color: #fff;
+}
+
+.slick-prev.slick-arrow {
+  background-image: url(../images/black-up-arrow.png);
+}
+
+.slick-next.slick-arrow {
+  background-image: url(../images/black-down-arrow.png);
+}
+
+/*End USE CSS for Slider*/
+
+@media screen and (max-width : 991px) {
+
+  .banner-slider .slider.slider-for,
+  .banner-slider .slider.slider-nav {
+    max-width: 100%;
+    float: none;
+  }
+
+  .banner-slider .slider.slider-for {
+    padding-right: 0;
+  }
+
+  .banner-slider .slider.slider-nav {
+    height: auto;
+  }
+
+  .slider-banner-image {
+    height: 500px;
+  }
+
+  .slider.slider-nav.thumb-image {
+    padding: 10px 30px 0;
+  }
+
+  .slider-nav .slick-slide span {
+    padding: 5px 0;
+  }
+
+  .slick-arrow {
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    bottom: 0;
+    -webkit-transform: translateY(-50%) rotate(-90deg);
+    -moz-transform: translateY(-50%) rotate(-90deg);
+    -ms-transform: translateY(-50%) rotate(-90deg);
+    transform: translateY(-50%) rotate(-90deg);
+  }
+
+  .slick-prev {
+    left: 0;
+    right: unset;
+  }
+
+  .slick-next {
+    left: unset;
+    right: 0;
+    background-color: transparent;
+  }
+
+  .vehicle-detail-banner .car-slider-desc {
+    max-width: 340px;
+  }
+
+  .bid-tag {
+    padding: 10px 0 15px;
+  }
+
+  .slider.slider-nav.thumb-image {
+    white-space: nowrap;
+  }
+
+  .thumbnail-image.slick-slide {
+    padding: 0px 5px;
+    min-width: 75px;
+    display: inline-block;
+    float: none;
+  }
+}
+
+@media screen and (max-width : 767px) {
+  .slider-banner-image {
+    height: 400px;
+  }
+
+  .slider.slider-nav.thumb-image {
+    padding: 0px 20px 0;
+    margin: 10px 0px 0;
+  }
+
+  .slider-nav .slick-slide.thumbnail-image .thumbImg {
+    max-width: 140px;
+    height: 80px;
+  }
+
+  .slick-prev.slick-arrow {
+    background-position: center 10px;
+  }
+
+  .slick-next.slick-arrow {
+    background-position: center 10px, center;
+  }
+
+  .slider-nav .slick-slide span {
+    font-size: 12px;
+    white-space: normal;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .slider-banner-image {
+    height: 340px;
+  }
+}
+
+@media screen and (max-width : 480px) {
+  .slider-banner-image {
+    height: 280px;
+  }
+}
+
+
+.asrv-gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+  gap: 40px;
+}
+
+.asrv-gallery .banner-slider {
+  width: 60%;
+  display: flex;
+  align-items: start;
+  gap: 20px;
+}
+
+.asrv-gallery .asrv-product-form {
+  width: 40%;
+}
+
+.asrv-gallery .product-card {
+  border: none;
+  box-shadow: none;
+}
+
+.asrv-gallery .xgen-product-img {
+  display: none;
+}
+
+.asrv-gallery .xgen-product-info-in .rctitle-flex {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.asrv-gallery .product-card .xgen-product-info .xgen-ptitle {
+  font-size: 28px;
+}
+
+.asrv-gallery .product-card .price-btn-grid .quant-btn .button-alt {
+  width: 170px;
+}
+
+.asrv-gallery .product-card .package-list-wraper .input-wraper {
+  flex-direction: row;
+  border: none;
+  gap: 30px;
+  align-items: center;
+}
+
+.asrv-gallery .product-card .package-list-wraper .input-wraper label {
+  font-size: 16px;
+  color: #000;
+}
+
+.asrv-gallery .product-card .package-list-wraper .input-wraper select {
+  border: solid 1px #e1e1e1;
+  padding: 5px;
+}
+
+.asrv-gallery .slick-next.slick-arrow {
+  display: none;
+}
+
+.product-card .xgen-product-info .variant-price {
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+}
+
+
+@media only screen and (max-width:1023px) {
+  .asrv-gallery {
+    flex-direction: column;
+  }
+
+  .asrv-gallery .slider-nav {
+    display: none;
+  }
+
+  .asrv-gallery .banner-slider {
+    width: 100%;
+  }
+
+  .asrv-gallery .asrv-product-form {
+    width: 100%;
+  }
+
+  .asrv-gallery .product-card .xgen-product-info .xgen-ptitle {
+    line-height: 34px;
+  }
+}
+
+
+.article-bestseller .TL_ProductCards {
+  box-shadow: none !important;
+}
+
+.article-bestseller h2.font-bold {
+  text-align: center;
+  border-left-width: 0;
+  margin-top: 50px;
+}
+
+@media only screen and (max-width:1023px) {
+  .article-bestseller .TL_ProductCards {
+    margin-right: 0px;
+  }
+
+  .article-bestseller .product-card .price-btn-grid .quant-btn .button-alt {
+    white-space: nowrap;
+  }
+
+  .article-bestseller .product-card .xgen-product-info {
+    padding: 10px;
+  }
+
+  .main .mobile img {
+    width: 100%;
+  }
+}

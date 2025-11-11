@@ -1,0 +1,257 @@
+{% assign is_subscription_customer = false %}
+{% for tag in customer.tags %}
+  {% if tag == 'Active Subscriber' %}
+    {% assign is_subscription_customer = true %}
+    {% break %}
+  {% endif %}
+  {% if tag == 'Inactive Subscriber' %}
+    {% assign is_subscription_customer = false %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% if is_subscription_customer %}
+<!-- Code for subscriber -->
+
+  <script>
+    window.location.href = "https://www.transparentlabs.com/tools/recurring/login/customer/{{customer.id}}?";
+  </script>
+  
+
+{% else %}
+<!-- Code for normal customer  -->
+  <div class="xac-nav">
+  <div class="container">
+    <ul class="xnav">
+      <li><a onclick="letsDoThis(this)" class="recharge-nav active" data-index="1">Subscription</a></li>
+      <li><a onclick="letsDoThis(this)" class="recharge-nav" data-index="2">Order History</a></li>
+      <li><a onclick="letsDoThis(this)" class="recharge-nav" data-index="3">Account</a></li>
+      <li><a href="/pages/contact-us" class="recharge-nav" data-index="4">FAQ</a></li>
+      <li><a href="/pages/contact-us" class="recharge-nav" data-index="5">Support</a></li>
+    </ul>
+  </div>
+</div>
+ 
+  <!--   Start of code Narendra -->
+  <div class="np-coding x-subscription x-hide" style="display:block;">
+    {% section 'recharge-stack-products' %}
+  </div>
+  <div class="np-coding x-orderhistory x-hide" style="display:none;">
+    <div class="max-w-7xl mx-auto px-4 py-8 text-blue-500">
+       <div class="lg:col-span-2">
+          <h2 class="border-b-2 border-gray-300 uppercase mb-8 pb-2">
+            ORDER HISTORY
+          </h2>
+    
+          {% if customer.orders_count == 0 %}
+            <p>You haven't placed any orders.</p>
+          {% else %}
+            <div class="overflow-x-auto">
+              <table class="border-l border-r border-t border-gray-400 border-opacity-50 min-w-max table-auto text-sm w-full">
+                <thead>
+                  <tr class="bg-gray-400 bg-opacity-50 border-b border-gray-400 border-opacity-50">
+                    <th class="text-left p-4">Order</th>
+                    <th class="text-left p-4">Date</th>
+                    <th class="text-left p-4">Payment Status</th>
+                    <th class="text-left p-4">Fulfillment Status</th>
+                    <th class="text-left p-4">Total</th>
+                  </tr>
+                </thead>
+    
+                <tbody>
+                  {% for order in customer.orders %}
+                    <tr class="border-b border-gray-400 border-opacity-50">
+                      <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+                        <a href="{{ order.customer_url }}">
+                          {{ order.name }}
+                        </a>
+                      </td>
+                      <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+                        {{ order.created_at | time_tag: format: 'date' }}
+                      </td>
+                      <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+                        {{ order.financial_status_label }}
+                      </td>
+                      <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+                        {{ order.fulfillment_status_label }}
+                      </td>
+                      <td class="bg-gray-300 p-4">
+                        {{ order.total_price | money }}
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+  <div class="np-coding x-account x-hide" style="display:none;">
+      <!-- Do not delete this code  -->
+      <div class="max-w-7xl mx-auto px-4 py-8 text-blue-500">
+        <div class="border-b-2 border-gray-300 flex items-center justify-between mb-8 pb-4 lg:mb-16">
+          <h1 class="uppercase md:text-2xl">
+            My Account
+          </h1>
+      
+          <a class="flex items-center text-sm" href="{{ routes.account_logout_url }}">
+            <span class="mr-3"> {%- render 'icon-logout' -%}</span>
+            LOGOUT
+          </a>
+        </div>
+        <div class="gap-8 grid grid-cols-1 lg:grid-cols-3">
+          <div>
+            <h2 class="border-b-2 border-gray-300 uppercase mb-8 pb-2">
+              {{ customer.name }}
+            </h2>
+              <!-- Begin ReCharge code -->
+              <p id="rc_link_container">
+                  <a class="bg-blue-light font-bold py-2 rounded text-white w-full" href="/tools/recurring/login">Manage Subscriptions</a>
+              </p>
+              <!-- End ReCharge code -->
+            <div>
+              <p>{{ customer.email }}</p>
+              <p>{{ customer.default_address.address1 }}</p>
+              <p>{{ customer.default_address.address2 }}</p>
+              <p>{{ customer.default_address.city }}, {{ customer.default_address.province }} {{ customer.default_address.zip }}</p>
+              <p>{{ customer.default_address.country }}</p>
+            </div>
+      
+            
+             <a class="block mt-4 text-orange-400" href="{{ routes.account_addresses_url }}">
+              View Addresses ({{ customer.addresses_count }})
+            </a>
+            
+          </div>
+      
+         
+        </div>
+      
+        <div id="talkable-offer"></div>
+      </div>
+  </div>
+  <div class="np-coding x-faq x-hide" style="display:none;">
+    <div class="max-w-7xl mx-auto px-4 py-8 text-blue-500">
+    <h3>Faq</h3>
+    </div>
+  </div>
+  <div class="np-coding x-support x-hide" style="display:none;">
+    <div class="max-w-7xl mx-auto px-4 py-8 text-blue-500">
+    <h3>Support</h3>
+    </div>
+  </div>
+  <!--   End of code Narendra -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  function letsDoThis(e)
+  {
+      $('.recharge-nav').removeClass('active');
+      $(e).addClass('active');
+      var val = e.dataset.index;
+      if(val == 1){$(".x-hide").hide();$(".x-subscription").show();}
+      if(val == 2){$(".x-hide").hide();$(".x-orderhistory").show();}
+      if(val == 3){$(".x-hide").hide();$(".x-account").show();}
+      if(val == 4){$(".x-hide").hide();$(".x-faq").show();}
+      if(val == 5){$(".x-hide").hide();$(".x-support").show();}
+  };
+</script>
+{% endif %}
+{% comment %}
+
+<div class="max-w-7xl mx-auto px-4 py-8 text-blue-500">
+  <div class="border-b-2 border-gray-300 flex items-center justify-between mb-8 pb-4 lg:mb-16">
+    <h1 class="uppercase md:text-2xl">
+      My Account
+    </h1>
+
+    <a
+      class="flex items-center text-sm"
+      href="{{ routes.account_logout_url }}"
+    >
+      <span class="mr-3">
+      {%- render 'icon-logout' -%}
+      </span>
+
+      LOGOUT
+    </a>
+  </div>
+
+  <div class="gap-8 grid grid-cols-1 lg:grid-cols-3">
+    <div>
+      <h2 class="border-b-2 border-gray-300 uppercase mb-8 pb-2">
+        {{ customer.name }}
+      </h2>
+<!-- Begin ReCharge code -->
+<p id="rc_link_container">
+    <a href="/tools/recurring/login">Manage Subscriptions</a>
+</p>
+<!-- End ReCharge code -->
+
+
+      <div>
+        <p>{{ customer.email }}</p>
+        <p>{{ customer.default_address.address1 }}</p>
+        <p>{{ customer.default_address.address2 }}</p>
+        <p>{{ customer.default_address.city }}, {{ customer.default_address.province }} {{ customer.default_address.zip }}</p>
+        <p>{{ customer.default_address.country }}</p>
+      </div>
+
+      {% comment %}
+      <a class="block mt-4 text-orange-400" href="{{ routes.account_addresses_url }}">
+        View Addresses ({{ customer.addresses_count }})
+      </a>
+      {% endcomment %}
+    </div>
+
+    <div class="lg:col-span-2">
+      <h2 class="border-b-2 border-gray-300 uppercase mb-8 pb-2">
+        ORDER HISTORY
+      </h2>
+
+      {% if customer.orders_count == 0 %}
+        <p>You haven't placed any orders.</p>
+      {% else %}
+        <div class="overflow-x-auto">
+          <table class="border-l border-r border-t border-gray-400 border-opacity-50 min-w-max table-auto text-sm w-full">
+            <thead>
+              <tr class="bg-gray-400 bg-opacity-50 border-b border-gray-400 border-opacity-50">
+                <th class="text-left p-4">Order</th>
+                <th class="text-left p-4">Date</th>
+                <th class="text-left p-4">Payment Status</th>
+                <th class="text-left p-4">Fulfillment Status</th>
+                <th class="text-left p-4">Total</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for order in customer.orders %}
+                <tr class="border-b border-gray-400 border-opacity-50">
+                  <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+                    <a href="{{ order.customer_url }}">
+                      {{ order.name }}
+                    </a>
+                  </td>
+                  <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+                    {{ order.created_at | time_tag: format: 'date' }}
+                  </td>
+                  <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+                    {{ order.financial_status_label }}
+                  </td>
+                  <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+                    {{ order.fulfillment_status_label }}
+                  </td>
+                  <td class="bg-gray-300 p-4">
+                    {{ order.total_price | money }}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div id="talkable-offer"></div>
+</div>
+{% endcomment %}

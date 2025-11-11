@@ -1,0 +1,109 @@
+{{ 'old-latest-blog.css' | asset_url | stylesheet_tag }}
+<style>.blog-wraper{flex-wrap:wrap;}
+  .blog-wraper .blog-column.single.featured {    flex-grow: 2;    width: 50%;}
+  .blog-wraper .blog-column {
+    display: flex;
+    flex-direction: column;
+    flex:unset !important;
+    width: 25%;
+}
+  .blog-wraper .blog-column .blog-item .blog-img {
+    height: 200px !important;}
+
+  @media only screen and (min-width:0) and (max-width:900px)
+{
+  .blog-wraper .blog-column {width:100%; min-height: 0 !important;}
+  .blog-wraper .blog-column.single.featured {      width: 100%;}
+  
+}</style>
+<div class="xt-latest-blog">
+  <div class="font-neue pb-12 px-4 mt-4 lg:max-w-7xl lg:mx-auto">
+    {% if section.settings.heading != blank %}
+      <h2
+        {% if section.settings.hnewstyle %}
+           class="font-bold text-blue-500 text-xl md:border-l-8 md:border-blue-500 md:pl-2 md:text-2xl" style="margin-bottom:20px;"
+        {% else %}
+          class="title"
+        {% endif %}
+        
+        
+        >{{ section.settings.heading }}</h2>
+    {% endif %}
+    <div class="blog-wraper">
+  {% for block in section.blocks %}
+    {% assign article = block.settings.article  %}
+      <div class="blog-column single">
+            <div class="blog-item">
+              <a class="blog-img" href="{{ article.url}}" style="background:url('{{ article.image | img_url: "master" }}')"></a>
+              <div class="blog-item-desc">
+                <h2>{{ article.title}}</h2>
+                {% if section.settings.hide_info ==  true %}
+                <div class="author-wraper">
+                  <div class="author-img" style="background:#41b5e8;">
+                     <img src="{{ article.user.image | img_url: 'master' }}" alt="{% if article.user.image.alt %}{{ article.user.image.alt }}{% else %}Article User Image {{ forloop.index }}{% endif %}" loading="lazy" />
+                  </div>
+                  <div class="author-text">
+                    <h4>{{ article.author}}</h4>
+                    <span>M.S.(C), CISSN, CNC</span>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+  {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "blocks": [
+    {
+      "limit": 5,
+      "name": "Popular article",
+      "settings": [
+        {
+          "id": "article",
+          "label": "Article",
+          "type": "article"
+        }
+        
+      ],
+      "type": "Popular_article"
+    }
+  ],
+  "name": "Popular article",
+  "class": "td-legacy",
+  "settings": [
+      {
+          "id": "heading",
+          "info": "Section heading",
+          "label": "Heading",
+          "type": "text",
+          "default":"Popular article"
+        },
+         {
+            "id": "hide_info",
+            "label": "hide author information",
+            "type": "checkbox",
+            "default":true
+        },
+         {
+            "id": "hnewstyle",
+            "label": "Apply Heading Style",
+            "type": "checkbox"
+        }
+  ],
+  "presets": [{
+    "name": "Popular article",
+    "category": "Text"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

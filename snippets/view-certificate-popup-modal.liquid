@@ -1,0 +1,371 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js"></script>
+
+<!-- Modal Structure -->
+<div id="pdfViewerModal" class="pdf-viewer-modal">
+  <div id="pdfViewerContainer" class="visually-hidden">
+    <div class="close_pdp_popup" id="close_pdp_popup">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <g clip-path="url(#clip0_4818_1566)">
+          <path d="M5.98941 5.98959L18.0102 18.0104M18.0102 5.98959L5.98941 18.0104" stroke="#111314" stroke-linecap="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_4818_1566">
+            <rect width="24" height="24" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+    <div id="pdfViewer"></div>
+  </div>
+</div>
+
+{% comment %}
+  <!-- Trigger Button -->
+  <button onclick="openPDFWithJS('https://cdn.shopify.com/s/files/1/0866/7664/files/25021965_-_TPL_PRE_BULK_BLACK_Peach_Mango_30_SERV__Redacted.pdf?v=1742180908')">View PDF</button>
+{% endcomment %}
+
+<script>
+function setLocalStorage(key, value) {
+  localStorage.setItem(key, value);
+}
+
+function getLocalStorage(key) {
+  return localStorage.getItem(key);
+}
+
+function removeLocalStorage(key) {
+  localStorage.removeItem(key);
+}
+
+// ---------------------------------------------------------------------------
+// Open PDF in Modal with PDF.js  (single‑page version – kept for reference)
+// ---------------------------------------------------------------------------
+/*
+async function openPDFWithJS(url, item) {
+  const modal = document.getElementById('pdfViewerModal');
+  const viewer = document.getElementById('pdfViewer');
+
+  modal.style.display = 'flex';
+
+  try {
+    const pdf   = await pdfjsLib.getDocument(url).promise;
+    const page  = await pdf.getPage(1);            // Get the first page
+    const scale = 1;
+    const viewport = page.getViewport({ scale });
+
+    const canvas  = document.createElement('canvas');
+    const context = canvas.getContext('2d', { alpha: false });
+    canvas.width  = viewport.width;
+    canvas.height = viewport.height;
+
+    await page.render({ canvasContext: context, viewport }).promise;
+
+    viewer.innerHTML = '';
+    viewer.appendChild(canvas);
+
+    modal.querySelector("#pdfViewerContainer").classList.remove("visually-hidden");
+    UpdateSearchHistory(item);
+
+  } catch (error) {
+    console.error('Error rendering PDF:', error);
+    viewer.innerHTML = '<p>Error loading PDF. Please try again.</p>';
+  }
+}
+*/
+
+// ---------------------------------------------------------------------------
+// Open PDF in Modal with PDF.js  (MULTI‑PAGE vertical scroll)  ★ UPDATED
+// ---------------------------------------------------------------------------
+async function openPDFWithJS(url, item) {
+  const modal  = document.getElementById('pdfViewerModal');
+  const viewer = document.getElementById('pdfViewer');
+
+  modal.style.display = 'flex';
+
+  try {
+    // Load the PDF document
+    const pdf = await pdfjsLib.getDocument(url).promise;
+
+    // Get window dimensions
+    const windowWidth = window.innerWidth;
+
+    // Set scale based on screen size
+    let scale = 1;
+    if (windowWidth < 768) {
+      // Mobile devices
+      scale = 1.6;
+    }
+    // else if (windowWidth < 1024) {
+    //   scale = 1.2;
+    // } else if (windowWidth < 1440) {
+    //   scale = 1.4;
+    // } else {
+    //   scale = 1.6;
+    // }
+
+    // Clear any previous content
+    viewer.innerHTML = '';
+
+    // Create a scrollable container to hold ALL pages
+    const canvasContainer = document.createElement('div');
+    canvasContainer.style.overflowY   = 'auto';
+    canvasContainer.style.maxHeight   = '80vh';
+    canvasContainer.style.width       = '100%';
+    canvasContainer.style.display     = 'flex';
+    canvasContainer.style.flexDirection = 'column';
+    canvasContainer.style.alignItems  = 'flex-start';
+    canvasContainer.classList.add("pdfViewer-inner");
+
+    // Render each page sequentially
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+      const page     = await pdf.getPage(pageNum);
+      const viewport = page.getViewport({ scale });
+
+      const canvas  = document.createElement('canvas');
+      const context = canvas.getContext('2d', { alpha: false });
+      canvas.width  = viewport.width;
+      canvas.height = viewport.height;
+
+      // For mobile, ensure no constraints are applied to the canvas
+      if (windowWidth < 768) {
+        canvas.style.maxWidth = 'none';
+      }
+
+      // Render the PDF page
+      await page.render({ canvasContext: context, viewport }).promise;
+
+      // Optional spacing between pages
+      canvas.style.marginBottom = '24px';
+
+      // Append each canvas to the container
+      canvasContainer.appendChild(canvas);
+    }
+
+    // Add the filled container to the viewer
+    viewer.appendChild(canvasContainer);
+
+    // Ensure scroll starts at the top
+    canvasContainer.scrollTop  = 0;
+    canvasContainer.scrollLeft = 0;
+
+    // Reveal the modal content
+    modal.querySelector("#pdfViewerContainer").classList.remove("visually-hidden");
+
+    if (location.href.includes("pages/third-party-tests")) {
+      UpdateSearchHistory(item);
+    }
+
+    // Keep scroll position correct after transition
+    const resizeHandler = () => {
+      const currentContainer = viewer.querySelector('div');
+      if (currentContainer) {
+        currentContainer.scrollTop  = 0;
+        currentContainer.scrollLeft = 0;
+      }
+    };
+    modal.addEventListener('transitionend', resizeHandler, { once: true });
+
+    // Re-render on resize (debounced)
+    window.addEventListener('resize', debounce(() => {
+      if (document.querySelector("#pdfViewerContainer canvas")) {
+        openPDFWithJS(url, item);
+      }
+    }, 250));
+
+  } catch (error) {
+    console.error('Error rendering PDF:', error);
+    viewer.innerHTML = '<p>Error loading PDF. Please try again.</p>';
+  }
+}
+
+// Helper function to prevent multiple resize events
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+function UpdateSearchHistory(item) {
+  const decodedItem = decodeURI(item);
+  const decodedItemJson = JSON.parse(decodedItem);
+  
+  // Retrieve viewed analysis from local storage
+  let viewedAnalysis = getLocalStorage("viewed_analysis");
+  let viewedAnalysisArray = viewedAnalysis ? JSON.parse(viewedAnalysis) : [];
+
+  // Filter out any existing items with the same URL
+  viewedAnalysisArray = viewedAnalysisArray.filter(existingItem => 
+    existingItem.pdfurl !== decodedItemJson.pdfurl // Adjust the condition based on your item structure
+  );
+
+  // Add the new item with the current date
+  decodedItemJson['viewedDate'] = new Date().toLocaleDateString('en-US');
+  viewedAnalysisArray.unshift(decodedItemJson);
+  
+  // Save updated array back to local storage
+  setLocalStorage("viewed_analysis", JSON.stringify(viewedAnalysisArray));
+  console.log(viewedAnalysisArray);
+  updatehistoryContainer(viewedAnalysisArray);
+}
+
+// Function to render search results
+function updatehistoryContainer(results) {
+  try {
+    const historyContainer = document.getElementById('search-history-results');
+
+    if (!historyContainer) {
+      // console.error('History container not found.');
+      return;
+    }
+
+    if (!results) {
+      let viewedAnalysis = getLocalStorage("viewed_analysis");
+      let viewedAnalysisArray = viewedAnalysis ? JSON.parse(viewedAnalysis) : [];
+      results = viewedAnalysisArray;
+    }
+
+    if (!Array.isArray(results)) {
+      // console.error('Results should be an array.');
+      return;
+    }
+
+    historyContainer.innerHTML = '';
+
+    if (results.length === 0) {
+      // historyContainer.innerHTML = '<p>No results found.</p>';
+      return;
+    }
+
+    const list = document.createElement('ul');
+    let currentIndex = 0;
+
+    results.forEach((item, index) => {
+      try {
+        currentIndex = index + 1;
+        if (currentIndex <= 10) {
+          const listItem = document.createElement('li');
+
+          const datePart = item?.date ? `${item.date}<icon>&nbsp; &#8212; &nbsp;</icon>` : '';
+
+          listItem.innerHTML = `
+            <div class="history-line-item">
+              <span class="search-results-date">${datePart}</span> 
+              <span class="search-results-product-name">${item?.productName || ''}</span> <icon>&nbsp; &#8212; &nbsp;</icon>
+              <span class="search-results-analysis-type">${item?.AnalysisType || ''}</span>
+            </div>
+            <div class="pdf-file-wrap">
+              <span class="open_pdf" onclick="openPDFWithJS('${item?.pdfurl || ''}', '${encodeURI(JSON.stringify(item))}')">
+                Open PDF
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <g clip-path="url(#clip0_4818_1306)">
+                    <path d="M-1.74846e-07 9.5L16 9.5M16 9.5L11.75 13.5M16 9.5L11.75 5.5" stroke="#111314" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_4818_1306">
+                      <rect width="18" height="18" fill="white" transform="translate(18) rotate(90)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+            </div>
+          `;
+
+          list.appendChild(listItem);
+        }
+      } catch (itemError) {
+        // console.error('Error while processing a result item:', itemError);
+      }
+    });
+
+    historyContainer.innerHTML = `<div class="search-history-title">Search History</div>`;
+    historyContainer.appendChild(list);
+
+    if (typeof renderRecentSearchInRecentContainer === 'function') {
+      renderRecentSearchInRecentContainer();
+    } else {
+      // console.error('renderRecentSearchInRecentContainer function is not defined.');
+    }
+  } catch (error) {
+    // console.error('Error in updatehistoryContainer:', error);
+  }
+}
+
+updatehistoryContainer();
+
+function renderRecentSearchInRecentContainer(results) {
+  const searchResultsContainer = document.getElementById('most-recent-searched');
+
+  if (!results) {
+    let viewedAnalysis = getLocalStorage("viewed_analysis");
+    let viewedAnalysisArray = viewedAnalysis ? JSON.parse(viewedAnalysis) : [];
+    results = viewedAnalysisArray;
+  }
+  
+  searchResultsContainer.innerHTML = '';
+  if (results.length === 0) {
+    // searchResultsContainer.innerHTML = '<p>No results found.</p>';
+    return;
+  }
+  
+  const list = document.createElement('ul');
+  let currentIndex = 0;
+  results.forEach((item, index) => {
+    currentIndex = index + 1;
+    if(currentIndex <= 1){
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `
+            <div class="most-recent-product-inner">   
+            <a href="/products/${ item.productHandle }" class="product__url"></a>
+            <div class="most-recent-product-image">
+              <img src="${ window.coaProductJsonValues[item.productHandle]?.featured_image }" width="100">
+            </div>
+            <div class="most-recent-product-view-link">
+              <div class="product-name"><strong>${item.productName}</strong></div>
+              <div class="product-description" >${ window.coaProductJsonValues[item.productHandle].metafields.plp_product_short_description || stripHtmlAndLimitToWords(window.coaProductJsonValues[item.productHandle]?.description) }</div>
+              <div class="product-link-wrapper" ><div class="product-view-link"><a target="_blank" class="link-expand" href="/products/${ item.productHandle }">View Product <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                <g clip-path="url(#clip0_4818_1119)">
+                  <path d="M-1.74846e-07 10.4131L16 10.4131M16 10.4131L11.75 14.4131M16 10.4131L11.75 6.41309" stroke="#111314" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_4818_1119">
+                    <rect width="18" height="18" fill="white" transform="translate(18 0.913086) rotate(90)"/>
+                  </clipPath>
+                </defs>
+              </svg></a></div>
+            
+            </div>   </div>       </div>     
+          `;
+      list.appendChild(listItem);
+    }
+  });
+  
+  searchResultsContainer.innerHTML = `<div class="most-recent-search-title">Most Recent Search</div>`;
+  searchResultsContainer.appendChild(list);
+}
+
+// Close modal and clear content
+function closePDFJSModal() {
+  const modal = document.getElementById('pdfViewerModal');
+  const viewer = document.getElementById('pdfViewer');
+  modal.style.display = 'none';
+  viewer.innerHTML = '';
+  modal.querySelector("#pdfViewerContainer").classList.add("visually-hidden");
+}
+
+// Close modal when clicking on the background
+document.getElementById('pdfViewerModal').onclick = function (event) {
+  if (event.target === this) {
+    closePDFJSModal();
+  }
+};
+
+document.querySelector("#close_pdp_popup").addEventListener("click", function(e){
+  closePDFJSModal();
+});
+</script>

@@ -1,0 +1,62 @@
+{% comment %}
+  Variables:
+    * crop: crop option to include in img_url filter
+    * height: height of image to render
+    * image: liquid object of image
+    * image_class: additional classes to add to rendered image
+    * width: width of image to render
+{% endcomment %}
+
+{% assign image_size = '' %}
+{% assign image_url = '' %}
+{% assign placeholder_size = '' %}
+{% assign placeholder_url = '' %}
+
+{% if height == blank %}
+  {% assign height = width | divided_by: image.aspect_ratio | round %}
+{% endif %}
+
+{% if width == blank %}
+  {% assign width = height | times: image.aspect_ratio | round %}
+{% endif %}
+
+{% assign aspect_height = height | times: 1.0 %}
+{% assign aspect_ratio = width | divided_by: aspect_height %}
+
+{% assign image_size = width | append: 'x' | append: height %}
+
+{% if aspect_ratio == 1 %}
+  {% assign placeholder_size = '100x100' %}
+{% else %}
+  {% assign placeholder_height = 100 | divided_by: aspect_ratio | round %}
+  {% assign placeholder_size = '100x' | append: placeholder_height %}
+{% endif %}
+
+{% if crop %}
+  {% assign image_url = image | img_url: image_size, crop: crop %}
+  {% assign placeholder_url = image | img_url: placeholder_size, crop: crop %}
+{% else %}
+  {% assign image_url = image | img_url: image_size %}
+  {% assign placeholder_url = image | img_url: placeholder_size %}
+{% endif %}
+
+<lazy-image>
+  <div class="relative">
+    <img
+      class="relative z-10 {{ image_class }}"
+      data-placeholder
+      height="{{ image.height }}"
+      loading="lazy"
+      src="{{ placeholder_url }}"
+      width="{{ image.width }}"
+      alt="{{ image.alt }}"
+    />
+
+    <img
+      alt="{{ image.alt }}"
+      class="absolute h-full inset-0 opacity-0 transition-opacity w-full z-0 {{ image_class }}"
+      data-src="{{ image_url }}"
+      loading="lazy"
+    />
+  </div>
+</lazy-image>

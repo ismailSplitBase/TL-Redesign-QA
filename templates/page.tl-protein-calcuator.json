@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16563557185226d8d5": {
+      "type": "old-TL-protein-calcuator",
+      "settings": {
+        "header_image": "shopify://shop_images/image_6.png",
+        "title": "Protein Calculator",
+        "detail": "This simple, evidence-based protein calculator will instantly show you how much protein to consume per day depending on your fitness goals, body size, and gender.",
+        "resources_heading": "How Does Our Protein Calculator Work?",
+        "resources_detail": "<p>Once you've entered your measurements, the protein calculator will recommend three separate protein intakes: one being the very modest recommended daily allowance (RDA), another for bulking (building muscle), and a third for cutting (fat loss). </p><p>Note that the current RDA for adults is 0.8 grams per kilogram of body weight, or roughly 0.36 grams per pound of body weight. This guideline remains an issue of contention among the scientific community, especially sports nutrition researchers, and is merely the minimum adults are advised to consume for essential biological functions. It's likely that the current RDA for protein is inadequate for active individuals looking to improve body composition.</p><p>As such, our protein calculator logic for building muscle and fat loss is extrapolated from recent studies on optimal protein intake in elite athletes and resistance trainees [1, 2].</p><p><strong>How Much Protein Is \"Too Much?\"</strong></p><p>Most people know all about the benefits of a high-protein diet to <a href=\"https://www.transparentlabs.com/blogs/all/what-is-body-composition-how-to-calculate-body-fat-percentage\" target=\"_blank\">improve body composition</a> and build muscle, but what are the health risks of eating too much protein? Despite the longstanding paradigm of high-protein diets in fitness and bodybuilding subcultures, some evidence suggests that excess protein intake may lead to deleterious long-term health problems and undesirable side effects [3].</p><p>However, for every study that incriminates high-protein diets for conditions like kidney disease, there are equally as many that find no untoward effects of a high-protein intake (at least not in otherwise healthy individuals). In fact, several studies cite a higher protein intake as being prudent for weight loss and promoting athletic performance [4].</p><p>Nonetheless, there is a fine line between eating enough protein and overeating protein. As with just about every substance you put in your body, too much of a \"good thing\" can cause health problems. The question then is, \"How much protein is too much?\"</p><p>There are no hard rules, but if you're eating more than 2 grams of protein per pound of body weight, odds are you're pushing the boundaries.</p><p><strong>Further Protein Intake Resources</strong></p><p>Now that you have a better idea of how much protein to eat, check out the following articles and guides for all things related to protein intake:</p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/how-much-protein-should-i-eat\"><span style=\"text-decoration:underline\">How Much Protein Should You Eat?</span></a></p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/pea-protein-powder-guide\"><span style=\"text-decoration:underline\">Pea Protein Guide</span></a></p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/high-protein-meals\" title=\"https://www.transparentlabs.com/blogs/all/high-protein-meals\"><span style=\"text-decoration:underline\">High-Protein Breakfasts</span></a></p>",
+        "references_heading": "References",
+        "references_detail": "<p>1. Ruiz-Castellano, C., Espinar, S., Contreras, C., Mata, F., Aragon, A. A., & Martínez-Sanz, J. M. (2021). <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8471721/\"><span style=\"text-decoration:underline\">Achieving an Optimal Fat Loss Phase in Resistance-Trained Athletes: A Narrative Review</span></a>. <em>Nutrients</em>, <em>13</em>(9), 3255. </p><p>2. Hector, A. J., & Phillips, S. M. (2018). <a href=\"https://pubmed.ncbi.nlm.nih.gov/29182451/\"><span style=\"text-decoration:underline\">Protein Recommendations for Weight Loss in Elite Athletes: A Focus on Body Composition and Performance</span></a>. <em>International journal of sport nutrition and exercise metabolism</em>, <em>28</em>(2), 170–177. </p><p>3. Kamper, A. L., & Strandgaard, S. (2017). <a href=\"https://pubmed.ncbi.nlm.nih.gov/28637384/\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/28637384/\">Long-Term Effects of High-Protein Diets on Renal Function</a>. <em>Annual review of nutrition</em>, <em>37</em>, 347–369. </p><p>4. Jäger, R., Kerksick, C. M., Campbell, B. I., Cribb, P. J., Wells, S. D., Skwiat, T. M., Purpura, M., Ziegenfuss, T. N., Ferrando, A. A., Arent, S. M., Smith-Ryan, A. E., Stout, J. R., Arciero, P. J., Ormsbee, M. J., Taylor, L. W., Wilborn, C. D., Kalman, D. S., Kreider, R. B., Willoughby, D. S., Hoffman, J. R., … Antonio, J. (2017). <a href=\"https://pubmed.ncbi.nlm.nih.gov/28642676/\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/28642676/\">International Society of Sports Nutrition Position Stand: protein and exercise</a>. <em>Journal of the International Society of Sports Nutrition</em>, <em>14</em>, 20. </p>"
+      }
+    },
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "16563557185226d8d5",
+    "shogun-optimizer"
+  ]
+}

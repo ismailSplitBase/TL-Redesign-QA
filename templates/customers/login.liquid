@@ -1,0 +1,118 @@
+<div class="max-w-7xl mx-auto px-4 py-8 text-blue-500">
+  <h1 class="border-b-2 border-gray-300 uppercase md:text-2xl login-header">
+    Customer Login
+  </h1>
+  <p class="mb-8 pb-4 uppercase md:text-2xl lg:mb-16 login-note">To view or update your subscription, click here: <a href="https://www.transparentlabs.com/a/account/login" style="text-decoration:underline; color:rgb(253 106 76);"> Manage Subscriptions</a></p>
+  <div class="max-w-sm mx-auto" id="login-form">
+    {% form 'customer_login' %}
+      
+      <div class="mb-4">
+        {{ form.errors | default_errors }}
+      </div>
+
+      <div class="space-y-6">
+        <div>
+          <label class="block" for="email">Email</label>
+          <input
+            class="text-input"
+            id="email"
+            name="customer[email]"
+            type="email"
+          >
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="block" for="password">Password</label>
+            <button
+              class="text-orange-400 text-sm transition-opacity hover:opacity-70"
+              id="reset-password"
+              type="button"
+            >
+              Forgot your Password?
+            </button>
+          </div>
+          <input
+            class="text-input"
+            id="password"
+            name="customer[password]"
+            type="password"
+          >
+        </div>
+
+        <div>
+          <button
+            class="bg-orange-400 button w-full"
+            type="submit"
+          >
+            SIGN IN
+          </button>
+        </div>
+
+        <div class="text-center">
+          <a
+            class="text-orange-400 transition-opacity hover:opacity-70"
+            href="{{ routes.account_register_url }}"
+          >
+            Create an Account
+          </a>
+        </div>
+      </div>
+    {% endform %}
+  </div>
+
+  <div class="hidden max-w-sm mx-auto" id="reset-password-form">
+    {% form 'recover_customer_password' %}
+      <div class="mb-4">
+        {{ form.errors | default_errors }}
+      </div>
+
+      <div class="space-y-6">
+        <div>
+          <label class="block" for="reset-email">Email</label>
+          <input
+            class="text-input"
+            id="reset-email"
+            name="email"
+            type="email"
+          >
+        </div>
+
+        <p class="text-sm">
+          <em>We will send you an email to reset your password.</em>
+        </p>
+
+        <div>
+          <button
+            class="bg-orange-400 button w-full"
+            type="submit"
+          >
+            SUBMIT
+          </button>
+        </div>
+
+        <div class="text-center">
+          <button
+            class="text-orange-400 transition-opacity hover:opacity-70"
+            id="cancel-reset-password"
+            type="button"
+          >
+            Return to Login
+          </button>
+        </div>
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+<script>
+  document.getElementById('reset-password').addEventListener('click', function() {
+    document.getElementById('login-form').classList.add('hidden');
+    document.getElementById('reset-password-form').classList.remove('hidden');
+  });
+
+  document.getElementById('cancel-reset-password').addEventListener('click', function() {
+    document.getElementById('login-form').classList.remove('hidden');
+    document.getElementById('reset-password-form').classList.add('hidden');
+  });
+</script>

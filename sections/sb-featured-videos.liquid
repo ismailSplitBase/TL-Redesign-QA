@@ -1,0 +1,620 @@
+{%  stylesheet %}
+.sb-featured-videos {
+  padding-top: var(--sb-padding-top, 64px);
+  padding-bottom: var(--sb-padding-bottom, 64px);
+  background-color: var(--sb-bg-color, #ffffff);
+  color: var(--sb-fg-color, #111314);
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  --grid-desktop-vertical-spacing: 24px;
+  --grid-desktop-horizontal-spacing: 24px;
+  --grid-mobile-vertical-spacing: 24px;
+  --grid-mobile-horizontal-spacing: 24px;
+}
+
+.sb-featured-videos__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.sb-featured-videos__title {
+  font-family: var(--sb-font-family-heading);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--sb-fg-color, #111314);
+  margin: 0;
+}
+
+.sb-featured-videos__view-all {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sb-font-family-body);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--sb-fg-color, #111314);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sb-fg-color, #111314);
+  padding-bottom: 4px;
+  transition: opacity .2s ease;
+}
+
+.sb-featured-videos__view-all:hover {
+  opacity: 0.7;
+}
+
+.sb-featured-videos__view-all-arrow {
+  width: 18px;
+  height: 18px;
+  transform: rotate(90deg);
+}
+
+.sb-featured-videos__container {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.sb-featured-videos__container .sb-video-card {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+.sb-featured-videos__view-all--active,
+.sb-featured-videos__view-all.active .sb-featured-videos__view-all--inactive {
+  display: none;
+}
+
+.sb-featured-videos__view-all.active .sb-featured-videos__view-all--active {
+  display: block;
+}
+
+[data-tab-content="slider"] .sb-featured-videos__grid {
+  display: none;
+}
+[data-tab-content="grid"] .sb-featured-videos__slider {
+  display: none;
+}
+
+sb-featured-videos {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.sb-featured-videos-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+sb-featured-videos[data-loading="true"] .sb-featured-videos-loading {
+  opacity: 1;
+  pointer-events: unset;
+}
+
+.sb-featured-videos-loading .loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top-color: rgb(204, 204, 204);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sb-featured-videos .sb-pagination-wrapper {
+  padding-top: 32px;
+  margin-right: 0;
+}
+
+.sb-pagination-wrapper .swiper-pagination.swiper-pagination-lock,
+.swiper-pagination-lock + .sb-pagination-count {
+  display: none;
+}
+
+sb-modal-youtube {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+sb-modal-youtube .loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top-color: rgb(204, 204, 204);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+}
+sb-modal-youtube .sb-modal-youtube__error {
+  display: none;
+}
+sb-modal-youtube:not(:has(div[data-player-container])) .loading-spinner,
+sb-modal-youtube[data-loading="false"] .loading-spinner {
+  display: none;
+}
+sb-modal-youtube[data-is-error="true"] .sb-modal-youtube__error {
+  display: block;
+}
+
+.sb-modal-youtube__error {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: 'neue-haas-unica', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background: #fff;
+}
+.sb-modal-youtube__error p {
+  margin: 0;
+  padding: 0;
+}
+
+.sb-featured-videos .sb-pagination-wrapper {
+  padding: 48px var(--sb-padding-inline) 0;
+  max-width: var(--page-width, 1420px);
+}
+
+.sb-featured-videos__swiper .swiper-slide {
+  height: auto;
+}
+
+.sb-featured-videos__swiper a.sb-video-card {
+  height: 100%;
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .sb-featured-videos {
+    padding-top: var(--sb-padding-top, 48px);
+    padding-bottom: var(--sb-padding-bottom, 48px);
+  }
+  
+  .sb-featured-videos__title {
+    font-size: 32px;
+  }
+  
+  .sb-featured-videos__container {
+    gap: 20px;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .sb-featured-videos.sb-page-width {
+    padding: 0;
+    padding-top: var(--sb-padding-top-mobile, 30px);
+    padding-bottom: var(--sb-padding-bottom-mobile, 30px);
+  }
+
+  .sb-featured-videos__title {
+    font-size: 28px;
+  }
+  
+  .sb-featured-videos__container {
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: visible;
+  }
+  
+  .sb-featured-videos__container .sb-video-card {
+    scroll-snap-align: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .sb-featured-videos__slider {
+    max-width: calc(100% - ((100% - var(--page-width, 1420px)) / 2));
+    margin-left: auto;
+  }
+  .sb-featured-videos .sb-pagination-wrapper {
+    margin-right: calc((100vw - var(--page-width, 1420px)) / 2);
+  }
+}
+
+
+@media (min-width: 1920px) {
+  .sb-featured-videos__slider {
+    max-width: calc(100% - ((100% - var(--page-width, 1420px) - 128px) / 2));
+  }
+}
+{% endstylesheet %}
+
+<script
+  src="{{ 'section-sb-featured-videos.js' | asset_url }}"
+  defer
+></script>
+<script 
+  src="{{ 'sb-modal-youtube.js' | asset_url }}"
+   defer
+></script>
+
+<sb-featured-videos data-tab-content="slider">
+  <div class="sb-featured-videos-loading">
+    <div class="loading-spinner">&nbsp;</div>
+  </div>
+  <div class="sb-featured-videos sb-styled-element" style="{%  render 'style-attributes', settings: section.settings %}">
+    <div class="sb-featured-videos__header sb-page-width">
+      {% if section.settings.heading != blank %}
+        <h2 class="sb-featured-videos__title">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.blocks.size > 0 and section.blocks.size > section.settings.initial_shown_count %}
+        <a href="#" class="sb-featured-videos__view-all" data-view-all>
+          <span class="sb-featured-videos__view-all--inactive">{{ section.settings.view_more | default: "View All" }}</span>
+          <span class="sb-featured-videos__view-all--active">{{ section.settings.view_less | default: "View Less" }}</span>
+          <svg class="sb-featured-videos__view-all-arrow" viewBox="0 0 22 18" fill="none">
+            <path d="M13.5 18L13.5 2M13.5 2L17.5 6.25M13.5 2L9.5 6.25" stroke="currentColor" stroke-width="1.29" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      {% assign slider_id = 'featured-videos-slider-' | append: section.id %}
+      {% assign autorotate_speed = section.settings.autorotate_speed | times: 1000 %}
+      {% capture sliderOptions %}
+        {
+          "centeredSlides": {{ section.settings.centered_slides }},
+          "slidesPerView": {{ section.settings.slides_per_view_mobile }},
+          "spaceBetween": {{ section.settings.space_between_slides }},
+          "loop": {{ section.settings.loop }},
+          "watchOverflow": true,
+          "slidesOffsetAfter": 16,
+          "slidesOffsetBefore": 16,
+          {% if section.settings.autorotate %}
+            "autoplay": {
+              "delay": {{ autorotate_speed }},
+              "disableOnInteraction": false
+            },
+          {% endif %}
+          {% if section.settings.mousewheel %}
+            "mousewheel": {
+              "forceToAxis": true,
+              "releaseOnEdges": true,
+              "invert": false,
+              "sensitivity": 1
+            },
+          {% endif %}
+          {% if section.settings.show_pagination != 'never' %}
+            "pagination": {
+              "el": ".swiper-pagination--{{ slider_id }}",
+              "clickable": true
+            },
+          {% endif %}
+          "breakpoints": {
+            "768": {
+              "slidesPerView": {{ section.settings.slides_per_view_tablet }}
+            },
+            "1024": {
+              "slidesPerView": {{ section.settings.slides_per_view }}, 
+              "slidesOffsetAfter": 48, 
+              "slidesOffsetBefore": 48
+            },
+            "1440": {
+              "slidesPerView": {{ section.settings.slides_per_view }}, 
+              "slidesOffsetAfter": 64,
+              "slidesOffsetBefore": 64
+            }
+          }
+        }
+      {% endcapture %}
+      <div class="sb-featured-videos__slider">
+        <swiper-slider
+          data-swiper-options='{{ sliderOptions | strip_newlines }}'
+          data-slider-id="{{ slider_id }}"
+          data-fraction-pagination
+          class="swiper-slider-container"
+        >
+          <div class="swiper sb-featured-videos__swiper" data-swiper>
+            <div class="swiper-wrapper">
+              {% assign videos_count = 0 %}
+              {% for block in section.blocks %}
+                {% if block.settings.video_url != blank %}
+                  {% assign videos_count = videos_count | plus: 1 %}
+                  {% capture video_card %}
+                    {% render 'sb-video-card', settings: block.settings, block: block %}
+                  {% endcapture %}
+                  {% render 'swiper-slide', children: video_card %}
+                {% endif %}
+                {% if videos_count == section.settings.initial_shown_count %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </swiper-slider>
+        <div class="sb-pagination-wrapper">
+          <div class="swiper-pagination swiper-pagination--{{ slider_id }}"></div>
+          <div class="sb-pagination-count">
+            <span class="sb-swiper-pagination-current"></span><span class="sb-pagination-slash">/</span><span class="sb-swiper-pagination-total"></span>
+          </div>
+        </div>
+      </div>
+      {% if section.blocks.size > section.settings.initial_shown_count %}
+        <div class="sb-featured-videos__grid sb-page-width">
+          <div class="grid grid--1-col grid--3-col-desktop">
+            {% for block in section.blocks %}
+              {% if block.settings.video_url != blank %}
+                <div class="grid__item">
+                  {% render 'sb-video-card', settings: block.settings, block: block %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    {% else %}
+      {% render 'sb-no-content', context: "videos" %}
+    {% endif %}
+  </div>
+</sb-featured-videos>
+
+{% for block in section.blocks %}
+  {% if block.settings.video_url != blank %}
+    {%- liquid
+      assign video_id = block.settings.video_url.id | default: blank
+      assign modal_id = 'video-modal-' | append: video_id | append: '-' | append: block.id
+    -%}
+    {% if video_id != blank %}
+      {% capture iframe_content %}
+        <sb-modal-youtube data-modal-id="{{ modal_id }}" data-video-id="{{ video_id }}" data-loading="true" data-is-error="false">
+          <div class="loading-spinner">&nbsp;</div>
+          <div class="sb-modal-youtube__error">
+            <p>
+              We're having trouble loading this video. Please try again later.
+            </p>
+          </div>
+          <div data-player-container></div>
+        </sb-modal-youtube>
+      {% endcapture %}
+      
+      {% render 'sb-modal', 
+        modal_id: modal_id,
+        heading: block.settings.heading,
+        children: iframe_content,
+        class: 'sb-video-modal'
+      %}
+    {% endif %}    
+  {% endif %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "SB Featured Videos",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "view_more",
+      "label": "View More Text",
+      "default": "View More"
+    },
+    {
+      "type": "text",
+      "id": "view_less",
+      "label": "View less Text",
+      "default": "View Less"
+    },
+    {
+      "type": "range",
+      "id": "initial_shown_count",
+      "label": "Cards Shown Initially",
+      "max": 6,
+      "min": 1,
+      "step": 1,
+      "unit": "Crd",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view",
+      "label": "Slides Per View",
+      "min": 1,
+      "max": 5,
+      "step": 0.1,
+      "default": 3.5
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_mobile",
+      "label": "Slides Per View (Mobile)",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.2
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_tablet",
+      "label": "Slides Per View (Tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 0.1,
+      "default": 2.2
+    },
+    {
+      "type": "number",
+      "id": "space_between_slides",
+      "label": "Space Between Slides",
+      "default": 24
+    },
+    {
+      "type": "checkbox",
+      "id": "centered_slides",
+      "label": "Center Slides",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop slides",
+      "default": true,
+      "info": "Requires 2x the number of visible slides "
+    },
+    {
+      "type": "checkbox",
+      "id": "autorotate",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "mousewheel",
+      "label": "Enable scroll-to-slide",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autorotate_speed",
+      "label": "Change slides every",
+      "max": 9,
+      "min": 3,
+      "step": 2,
+      "unit": " s",
+      "default": 5
+    },
+    {
+      "type": "select",
+      "id": "show_pagination",
+      "label": "Show pagination",
+      "options": [
+        { "value": "never", "label": "Never" },
+        { "value": "always", "label": "Always" }
+      ],
+      "default": "always"
+    },
+    {
+      "type": "select",
+      "id": "show_page_count",
+      "label": "Show page count",
+      "options": [
+        { "value": "never", "label": "Never" },
+        { "value": "always", "label": "Always" }
+      ],
+      "default": "always",
+      "visible_if": "{{ section.settings.show_pagination == 'always' }}"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Main Section Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "paragraph",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "ch_bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video URL",
+          "accept": [
+            "youtube"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "byline",
+          "label": "Byline"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Featured Videos"
+    }
+  ]
+}
+{% endschema %}

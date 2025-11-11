@@ -1,0 +1,226 @@
+<style>
+  .tlselect-perks img
+  {
+    max-width:100%;
+  }
+  .tlselect-perks
+  {
+    margin-top:50px;
+    padding:0 0 50px 0;
+    
+  }
+  .tlselect-perks .perks-header
+  {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    font-size:50px;
+    letter-spacing:2px;
+    color:#132836;
+    font-weight:900;
+    margin-bottom:30px;
+  }
+  .perks-list
+  {
+    display:flex;
+    flex-direction:column;
+    margin:0;
+    padding:30px 0;
+    list-style:none;
+    justify-content:center;
+    align-items:center;
+    background:#f2f2f2;
+  }
+  .perks-list li
+  {
+    width:45%;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    justify-content:center;
+    padding:0px 30px;
+    font-size:20px;
+    font-weight:bold;
+    letter-spacing: 2px;
+    text-transform:uppercase;
+    color:#132836;
+  }
+  .perks-list li:last-child
+  {
+    border:none;
+  }
+  .perks-list li svg
+  {
+    flex-basis:40px;
+  }
+  .perks-list li span
+  {
+    flex-basis:98%;
+    text-align:left;
+    padding-left:50px;
+  }
+  
+  
+  
+  .perks-apply-btn
+  {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:30px;
+  }
+  .perks-apply-btn a
+  {
+    display:block;
+    padding:15px 50px;
+    background:#ec672f;
+    color:#fff;
+    font-size:24px;;
+    text-transform:uppercase;
+  }
+  
+  
+  @media only screen and (max-width:767px)
+  {
+    .tlselect-perks
+    {
+      margin-top:60px;
+      padding-bottom:50px;
+    }
+    .tlselect-perks .perks-header
+    {
+      font-size:30px;
+      text-align:center;
+      line-height:36px;
+    }
+    .perks-list li
+    {
+      width:90%;
+      font-size:14px;
+      padding: 10px 0px;
+      gap:10px;
+    }
+    .perks-list li svg
+    {
+      flex-basis:25px;
+      width:20px;
+      height:auto;
+    }
+    .perks-list li span
+    {
+      padding-left:0;
+    }
+    .perks-img-list
+    {
+      gap:15px;
+      margin-top:0;
+    }
+    .perks-apply-btn a
+    {
+      font-size:16px;
+      padding: 10px 30px;
+    }
+  }
+  
+  @media only screen and (min-width:768px) and (max-width:1023px)
+  {
+    .tlselect-perks
+    {
+      margin-top:60px;
+      padding-bottom:50px;
+    }
+    .perks-list li
+    {
+      width: 65%;
+    }
+    .perks-apply-btn a
+    {
+      font-size:20px;
+    }
+  }
+  @media only screen and (min-width:1024px) and (max-width:1247px)
+  {
+    .perks-list li
+    {
+      width:55%;
+    }
+  }
+  
+</style>
+
+<div class="tlselect-perks">
+  <div class="">
+    
+    {% if section.settings.heading %}
+    	<h2 class="perks-header">{{ section.settings.heading }}</h2>
+    {% endif %}
+    
+    <ul class="perks-list">
+      {% for block in section.blocks %}
+      <li>{% render 'old-tl-select-check'%} <span>{{ block.settings.text }}</span></li>
+      {% endfor %}
+    </ul>
+    
+    {% if section.settings.btn_text %}
+    <div class="perks-apply-btn">
+      <a href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+    </div>
+    {% endif %}
+    
+    
+    
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "TL Select Perks",
+    "class": "td-legacy",
+    "settings": [
+		{
+			"type":"text",
+			"id":"heading",
+			"label":"Heading"
+		},
+		{
+			"type":"text",
+			"id":"btn_text",
+			"label":"Button Text"
+		},
+		{
+			"type":"url",
+			"id":"btn_url",
+			"label":"Button Link"
+		}
+	],
+	"blocks":[
+		{
+			"name":"list",
+			"type":"text",
+			"settings":[
+				{
+                  "type":"text",
+                  "id":"text",
+                  "label":"Text"
+                    
+				}
+			]
+		}
+	],
+	"presets":[
+		{
+			"name": "TL Select Perks"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+ 

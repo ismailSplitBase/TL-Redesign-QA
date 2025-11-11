@@ -1,0 +1,277 @@
+{%  stylesheet %}
+  .sb-pagination-wrapper {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 24px;
+    width: 300px;
+    margin-left: auto;
+  }
+  .sb-pagination-wrapper .sb-pagination-count {
+    font-size: 16px;
+    line-height: 120%;
+    font-family: var(--sb-font-family-body);
+    color: var(--sb-fg-color, #111314);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .sb-pagination-wrapper .sb-swiper-pagination-current {
+    font-weight: 700;
+  }
+  .sb-pagination-wrapper .sb-swiper-pagination-total,
+  .sb-pagination-wrapper .sb-pagination-slash {
+    font-weight: 400;
+  }
+  .sb-pagination-wrapper .swiper-pagination {
+    position: unset;
+    width: 231px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+    height: 2px;
+  }
+  .sb-pagination-wrapper .swiper-pagination-bullet {
+    border-radius: 0;
+    height: 1.5px;
+    background: var(--sb-fg-color, #111314);
+    opacity: 0.4;
+    flex-grow: 1;
+    width: auto;
+    margin: 0!important;
+    position: relative;
+  }
+  .sb-pagination-wrapper .swiper-pagination-bullet::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    background: transparent;
+  }
+  .sb-pagination-wrapper .swiper-pagination-bullet-active {
+    opacity: 1;
+    height: 1.5px;
+  }
+  .sb-pagination-count {
+    display: flex;
+    align-items: baseline;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .sb-pagination-wrapper {
+      width: 100%;
+      margin-left: 0;
+    }
+    .sb-pagination-wrapper .swiper-pagination {
+      width: 100%;
+      flex: 1;
+    }
+  }
+{% endstylesheet %}
+{%-  liquid
+  assign autorotate_speed = block.settings.autorotate_speed | times: 1000
+  capture breakpoints
+    content_for 'blocks'
+  endcapture
+  assign breakpoints = breakpoints | strip | strip_newlines
+  assign trunc_length = breakpoints.size | minus: 1
+  assign breakpoints = breakpoints | truncate: trunc_length, ''
+-%}
+{%- capture sliderOptions -%}
+  {
+    "centeredSlides": {{ block.settings.centered_slides }},
+    "slidesPerView": {{ block.settings.slides_per_view }},
+    "spaceBetween": {{ block.settings.space_between_slides }},
+    "loop": {{ block.settings.loop }},
+    "slidesOffsetBefore": {{ block.settings.slides_offset }},
+    "slidesOffsetAfter": {{ block.settings.slides_offset }},
+    {% if block.settings.mousewheel %}
+      "mousewheel": {
+        "forceToAxis": true,
+        "releaseOnEdges": true,
+        "invert": false,
+        "sensitivity": 1
+      },
+    {% endif %}
+    {%- if block.settings.autorotate -%}
+      "autoplay": {
+        "delay": {{ autorotate_speed }}
+      },
+    {%- endif -%}
+    {%- if block.settings.show_pagination != 'never' -%}
+      "pagination": {
+        "el": ".swiper-pagination--{{ block.id }}",
+        "clickable": true
+      },
+    {%- endif -%}
+    {%- if mobile_offset != blank -%}
+      "slidesOffsetAfter": 16,
+      "slidesOffsetBefore": 16,
+    {%- endif -%}
+    {% comment %} {%- if block.settings.show_navigation_arrows != 'never' -%}
+      "navigation": {
+        "nextEl": ".swiper-button-next--{{ block.id }}",
+        "prevEl": ".swiper-button-prev--{{ block.id }}"
+      },
+    {%- endif -%} {% endcomment %}
+    "breakpoints": {
+      {{ breakpoints }}
+    }
+  }  
+{%- endcapture -%}
+
+
+<swiper-slider
+  data-swiper-options='{{ sliderOptions }}'
+  class="swiper-slider-container"
+  {% if block.settings.show_pagination != 'never' and block.settings.show_page_count != 'never' %}
+    data-fraction-pagination
+  {% endif %}
+>
+  <div class="swiper {{ classes }}" data-swiper>
+    <div class="swiper-wrapper">
+      {{ children }}
+    </div>
+  </div>
+</swiper-slider>
+
+{%  if block.settings.show_pagination != 'never' %}
+  <div class="sb-pagination-wrapper">
+    <div class="swiper-pagination swiper-pagination--{{ block.id }} {% if block.settings.show_pagination != 'always' %} td__only-{{ block.settings.show_pagination }}{% endif %}">
+    </div>
+    {% if block.settings.show_page_count != 'never' %}
+      <div class="sb-pagination-count {% if block.settings.show_page_count != 'always' %} td__only-{{ block.settings.show_page_count }}{% endif %}">
+        <span class="sb-swiper-pagination-current"></span><span class="sb-pagination-slash">/</span><span class="sb-swiper-pagination-total"></span>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% comment %} {% if block.settings.show_navigation_arrows != 'never' %}
+  <div class="sb-nav-wrapper">
+    <div class="swiper-button-prev--{{ block.id }} {% if block.settings.show_navigation_arrows != 'always' %} td__only-{{ block.settings.show_navigation_arrows }}{% endif %}">
+      &lt;
+    </div>
+
+    <div class="sb-ugcs__next swiper-button-next--{{ block.id }}{% if block.settings.show_navigation_arrows != 'always' %} td__only-{{ block.settings.show_navigation_arrows }}{% endif %}">
+      &gt;
+    </div>
+  </div>
+{%  endif %} {% endcomment %}
+
+{% schema %}
+{
+  "name": "Slider Controls",
+  "tag": null,
+  "settings": [
+    {
+      "type": "number",
+      "id": "slides_per_view",
+      "label": "Slides Per View",
+      "default": 1,
+    },
+    {
+      "type": "number",
+      "id": "space_between_slides",
+      "label": "Space Between Slides",
+      "default": 10,
+    },
+    {
+      "type": "checkbox",
+      "id": "centered_slides",
+      "label": "Center Slides",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Pagination"
+    },
+    {
+      "type": "select",
+      "id": "show_pagination",
+      "label": "Show pagination",
+      "options": [
+        {
+          "value": "never",
+          "label": "Never"
+        },
+        {
+          "value": "always",
+          "label": "Always"
+        }
+      ],
+      "default": "never"
+    },
+    {
+      "type": "select",
+      "id": "show_page_count",
+      "label": "Show page count",
+      "options": [
+        {
+          "value": "never",
+          "label": "Never"
+        },
+        {
+          "value": "always",
+          "label": "Always"
+        }
+      ],
+      "default": "never",
+      "visible_if": "{{ block.settings.show_pagination == 'always' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop slides",
+      "default": true,
+      "info": "Requires 2x the number of visible slides "
+    },
+    {
+      "type": "checkbox",
+      "id": "autorotate",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "mousewheel",
+      "label": "Enable scroll-to-slide",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autorotate_speed",
+      "label": "Change slides every",
+      "max": 9,
+      "min": 3,
+      "step": 2,
+      "unit": " s",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "slides_offset",
+      "label": "Horizontal Offset",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "unit": "px",
+      "info": "The offset of the slides before and after the container. This is useful to create a gap between the slides and the container that the slides still move within."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_slide-breakpoint",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slider Controls",
+    }
+  ]
+}
+{% endschema %}

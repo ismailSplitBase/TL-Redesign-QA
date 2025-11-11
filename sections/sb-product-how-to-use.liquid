@@ -1,0 +1,280 @@
+{%  stylesheet %}
+
+.sb-how-to-use__container {
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.sb-how-to-use__content {
+  margin-bottom: 32px;
+}
+
+.sb-how-to-use__heading {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin: 0 0 32px;
+  text-align: left;
+  color: var(--sb-fg-color, #ffffff);
+}
+
+.sb-how-to-use__timeline {
+  display: none;
+}
+
+.sb-how-to-use__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sb-how-to-use__step-divider {
+  height: 1px;
+  background: currentColor;
+  opacity: 0.3;
+  margin: 32px 0;
+  width: 100%;
+}
+
+.sb-how-to-use__step-divider:last-child {
+  display: none;
+}
+
+.sb-how-to-use__disclaimer {
+  margin-top: 32px;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.sb-how-to-use__disclaimer p {
+  color: var(--sb-fg-color-lightened, rgba(255, 255, 255, 0.8));
+}
+
+@media screen and (min-width: 1024px) {
+
+  .sb-how-to-use__container {
+    padding: 0;
+  }
+
+  .sb-how-to-use__content {
+    margin-bottom: 48px;
+  }
+
+  .sb-how-to-use__heading {
+    font-size: 40px;
+    margin-bottom: 48px;
+  }
+
+  .sb-how-to-use__timeline {
+    display: block;
+    position: relative;
+    margin-bottom: 0;
+    height: 2px;
+  }
+
+  .sb-how-to-use__timeline svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1312px;
+    max-width: 100%;
+  }
+  
+  .sb-how-to-use__cards {
+    flex-direction: row;
+    gap: 48px;
+    position: relative;
+    z-index: 2;
+    padding-top: 40px;
+    margin-bottom: 48px;
+  }
+
+  .sb-how-to-use__step-divider {
+    display: none;
+  }
+
+  .sb-how-to-use__additional-content {
+    display: block;
+    max-width: 972px;
+    margin-bottom: 48px;
+  }
+
+  
+  .sb-how-to-use__disclaimer {
+    margin-top: 16px;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}
+{% endstylesheet %}
+
+{% liquid
+  assign blocks = section.blocks | map: 'settings'
+  assign should_render = false
+  if section.settings.use_product_steps == true and product.metafields.custom.how_to_use_steps.value.count > 0
+    assign blocks = product.metafields.custom.how_to_use_steps.value
+    assign should_render = true
+  elsif section.settings.use_product_steps == false and blocks.size > 0
+    assign should_render = true
+  endif
+%}
+
+{% if should_render %}
+  <div class="sb-how-to-use sb-styled-element" style="{%  render 'style-attributes', settings: section.settings %}">
+    <div class="sb-page-width sb-how-to-use__container">
+      <div class="sb-how-to-use__content">
+        {% if section.settings.heading != blank %}
+          <h2 class="sb-how-to-use__heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+      </div>
+      {% if blocks.size > 0 or blocks != empty %}
+        <div class="sb-how-to-use__timeline">
+          <svg width="1312" height="2" viewBox="0 0 1312 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line opacity="0.3" x1="0.75" y1="1.25" x2="1311.25" y2="1.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="8 6"/>
+          </svg>
+        </div>
+        <div class="sb-how-to-use__cards">
+          {% for block in blocks %}
+            {% render 'sb-how-to-use-step', settings: block, step_count: forloop.index %}
+            {% unless forloop.last %}
+              <div class="sb-how-to-use__step-divider">&nbsp;</div>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      {% else %}
+        {%  render 'sb-no-content', context: "steps" %}
+      {% endif %}
+      {% if section.settings.description != empty %}
+        <div class="sb-how-to-use__additional-content">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+      {% if section.settings.disclaimer != empty %}
+        <div class="sb-how-to-use__disclaimer">
+          {{ section.settings.disclaimer }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "SB How To Use",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+    },
+    {
+      "type": "checkbox",
+      "id": "use_product_steps",
+      "label": "Use Product Steps",
+      "default": true,
+      "info": "Enable this to How To Use Steps of the Product. Will override blocks.",
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Main Section Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "paragraph",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "ch_bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "step_image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "step_number_image",
+          "label": "Step Number Image",
+          "info": "If you want to use a different image for the step number, you can upload it here. If you don't upload an image, the step number will be used."
+        },
+        {
+          "type": "text",
+          "id": "step_title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "step_description",
+          "label": "Content"
+        }
+      ]
+      
+    },
+  ],
+  "presets": [
+    {
+      "name": "SB How To Use"
+    }
+  ]
+}
+{% endschema %}

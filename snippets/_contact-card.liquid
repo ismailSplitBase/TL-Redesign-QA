@@ -1,0 +1,123 @@
+{% stylesheet %}
+  .sb-contact-card {
+    background: var(--sb-bg-color, #F8F9FB);
+    border-radius: 6px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sb-contact-card__contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .sb-contact-card__contact-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .sb-contact-card__contact-icon img,
+  .sb-contact-card__contact-icon svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .sb-contact-card__contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .sb-contact-card__contact-text {
+    font-family: var(--sb-font-family-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--sb-fg-color, #173446);
+  }
+
+  .sb-contact-card__contact-text p {
+    margin: 0;
+  }
+
+  .sb-contact-card__contact-details {
+    font-family: var(--sb-font-family-body);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--sb-fg-color, #173446);
+    margin: 0;
+  }
+
+      
+  .sb-contact-card .sb-button__link--small {
+    border: 1px solid var(--sb-bg-color, #173446);
+  }
+
+  .sb-contact-card .sb-button__link.hidden {
+    display: block !important;
+  }
+
+  @media (min-width: 768px) {
+    .sb-contact-card {
+      width: calc(50% - 8px);
+    }
+
+    .sb-contact-card__contact-info {
+      gap: 16px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sb-contact-card {
+      width: calc(50% - 24px);
+    }
+  }
+
+{% endstylesheet %}
+
+<div class="sb-contact-card" style="{%  render 'style-attributes', settings: block.settings %}" {{ block.shopify_attributes }}>
+  <div class="sb-contact-card__contact-info">
+    {% if block.settings.icon != blank %}
+      <div class="sb-contact-card__contact-icon">
+        <img src="{{ block.settings.icon | image_url }}" alt="Contact icon" width="24" height="24" loading="lazy">
+      </div>
+    {% elsif block.settings.svg_icon != blank %}
+      <div class="sb-contact-card__contact-icon">
+        {{ block.settings.svg_icon }}
+      </div>
+    {% endif %}
+
+    <div class="sb-contact-card__contact-content">
+      {% if block.settings.richtext_content != blank %}
+        <div class="sb-contact-card__contact-text">
+          {{ block.settings.richtext_content }}
+        </div>
+      {% endif %}
+
+      {% if block.settings.contact_details != blank %}
+        
+        <div class="sb-contact-card__contact-details">
+          {{ block.settings.contact_details }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if block.settings.button_text != blank and block.settings.button_url != blank %}
+    {% render 'sb-button', button: block.settings, style: 'small' %}
+  {% endif %}
+</div> 

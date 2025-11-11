@@ -1,0 +1,140 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "disabled": true,
+      "settings": {
+        "heading": "Contact Transparent Labs",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "sb_contact_header_fAAApe": {
+      "type": "sb-contact-header",
+      "blocks": {
+        "contact_card_Bz6XzR": {
+          "type": "contact_card",
+          "settings": {
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<g clip-path=\"url(#clip0_5729_782)\">\n<path d=\"M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z\" stroke=\"#111314\" stroke-width=\"0.67\" stroke-miterlimit=\"10\"><\/path>\n<path d=\"M6.00002 7.33333V7C5.91161 7 5.82683 7.03512 5.76432 7.09763C5.70181 7.16014 5.66669 7.24493 5.66669 7.33333H6.00002ZM18 7.33333H18.3334C18.3334 7.24493 18.2982 7.16014 18.2357 7.09763C18.1732 7.03512 18.0884 7 18 7V7.33333ZM6.00002 7.66667H18V7H6.00002V7.66667ZM17.6667 7.33333V15.3333H18.3334V7.33333H17.6667ZM16.6667 16.3333H7.33335V17H16.6667V16.3333ZM6.33335 15.3333V7.33333H5.66669V15.3333H6.33335ZM7.33335 16.3333C7.06814 16.3333 6.81378 16.228 6.62625 16.0404C6.43871 15.8529 6.33335 15.5985 6.33335 15.3333H5.66669C5.66669 15.7754 5.84228 16.1993 6.15484 16.5118C6.4674 16.8244 6.89133 17 7.33335 17V16.3333ZM17.6667 15.3333C17.6667 15.5985 17.5613 15.8529 17.3738 16.0404C17.1863 16.228 16.9319 16.3333 16.6667 16.3333V17C17.1087 17 17.5326 16.8244 17.8452 16.5118C18.1578 16.1993 18.3334 15.7754 18.3334 15.3333H17.6667Z\" fill=\"#111314\"><\/path>\n<path d=\"M6.00018 7.33331L12.0002 13.3333L18.0002 7.33331\" stroke=\"#111314\" stroke-width=\"0.666667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<\/g>\n<defs>\n<clippath id=\"clip0_5729_782\">\n<rect width=\"24\" height=\"24\" fill=\"white\"><\/rect>\n<\/clippath>\n<\/defs>\n<\/svg>",
+            "richtext_content": "<p>Please send us an email at <\/p>",
+            "contact_details": "support@transparentlabs.com",
+            "button_text": "Get in touch",
+            "button_url": "#sb-contact-form",
+            "button_type": "",
+            "button_color": "#111314",
+            "button_text_color": "#ffffff",
+            "fg_color": "#121212",
+            "bg_color": "#F8F9FB"
+          }
+        },
+        "contact_card_LEhWU9": {
+          "type": "contact_card",
+          "settings": {
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<g id=\"phone.icon\" clip-path=\"url(#clip0_5729_794)\">\n<path id=\"Vector\" d=\"M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z\" stroke=\"#111314\" stroke-width=\"0.67\" stroke-miterlimit=\"10\"><\/path>\n<path id=\"Vector_2\" d=\"M16.6114 13.4616L18.7804 15.6306C18.85 15.6999 18.9052 15.7822 18.9429 15.8729C18.9806 15.9636 19 16.0608 19 16.159C19 16.2572 18.9806 16.3544 18.9429 16.4451C18.9052 16.5357 18.85 16.6181 18.7804 16.6873C18.0177 17.4502 17.0054 17.9123 15.9293 17.9887C14.8533 18.0652 13.7858 17.7508 12.9229 17.1034L11.6327 16.1352C10.2046 15.0641 8.9359 13.7954 7.86477 12.3673L6.89657 11.0771C6.24917 10.2142 5.93483 9.14674 6.01127 8.07069C6.08771 6.99464 6.5498 5.9823 7.31268 5.21958C7.38194 5.14999 7.46427 5.09476 7.55494 5.05708C7.64561 5.0194 7.74283 5 7.84102 5C7.9392 5 8.03642 5.0194 8.12709 5.05708C8.21776 5.09476 8.30009 5.14999 8.36935 5.21958L10.5384 7.38862C10.692 7.54223 10.7782 7.75054 10.7782 7.96774C10.7782 8.18495 10.692 8.39326 10.5384 8.54686L9.70207 9.38319C9.63679 9.44781 9.59369 9.53148 9.57897 9.62215C9.56425 9.71281 9.57867 9.80581 9.62015 9.88777C10.592 11.8318 12.1682 13.408 14.1122 14.3798C14.1942 14.4213 14.2872 14.4357 14.3779 14.421C14.4685 14.4063 14.5522 14.3632 14.6168 14.2979L15.4523 13.4624C15.5284 13.3863 15.6187 13.3259 15.7182 13.2846C15.8176 13.2434 15.9242 13.2222 16.0318 13.2222C16.1395 13.2222 16.2461 13.2434 16.3455 13.2846C16.445 13.3259 16.5353 13.3863 16.6114 13.4624V13.4616Z\" stroke=\"#111314\" stroke-width=\"0.7\" stroke-linejoin=\"round\"><\/path>\n<\/g>\n<defs>\n<clippath id=\"clip0_5729_794\">\n<rect width=\"24\" height=\"24\" fill=\"white\"><\/rect>\n<\/clippath>\n<\/defs>\n<\/svg>",
+            "richtext_content": "<p>You may also contact us at<\/p>",
+            "contact_details": "1-866-324-9557",
+            "button_text": "Call Now",
+            "button_url": "tel:1-866-324-9557",
+            "button_type": "",
+            "button_color": "#039846",
+            "button_text_color": "#ffffff",
+            "fg_color": "#121212",
+            "bg_color": "#F8F9FB"
+          }
+        },
+        "contact_link_PRK6bT": {
+          "type": "contact_link",
+          "settings": {
+            "link_text": "Shipping policy",
+            "link_url": "shopify:\/\/pages\/shipping-tracking-delivery-guide-for-transparent-labs",
+            "hide_divider": false
+          }
+        },
+        "contact_link_xhEWPB": {
+          "type": "contact_link",
+          "settings": {
+            "link_text": "Refund policy",
+            "link_url": "shopify:\/\/policies\/refund-policy",
+            "hide_divider": false
+          }
+        }
+      },
+      "block_order": [
+        "contact_card_Bz6XzR",
+        "contact_card_LEhWU9",
+        "contact_link_PRK6bT",
+        "contact_link_xhEWPB"
+      ],
+      "settings": {
+        "heading": "Contact Us",
+        "richtext_content": "<p>Questions, comments, concerns? We'd love to hear from you.<\/p>",
+        "fg_color": "#173446",
+        "bg_color": "#FFFFFF",
+        "accent_color": "#111314",
+        "padding_top": 80,
+        "padding_bottom": 60
+      }
+    },
+    "sb_contact_form_7pCPhw": {
+      "type": "sb-contact-form",
+      "name": "SB Contact Form",
+      "settings": {
+        "heading": "Contact Transparent Labs",
+        "content": "<p>We respond to inquiries in the order they are received, from oldest to newest. We work Monday through Friday, 7:30am EST to 3:30pm EST, and aim to reply within 24 hours.<\/p>",
+        "disclaimer": "<p><strong>NOTE:<\/strong> The information provided on this website and by our Customer Success team is for general informational purposes only. It is not intended as medical advice, diagnosis, or treatment. Our products are formulated for use by individuals aged 18 and older. Before using any of our products, we strongly recommend consulting with your healthcare provider, particularly if you have underlying medical conditions, are pregnant or nursing, or are taking prescription medications.<\/p><p><\/p><p>Thank you for the support.<\/p>",
+        "button_text": "Send",
+        "button_type": "primary",
+        "subject_options": "Order Status, Returns, Product Information, General Inquiry, Other",
+        "fg_color": "#000000",
+        "bg_color": "",
+        "ch_fg_color": "#ffffff",
+        "ch_bg_color": "#000000",
+        "padding_top": 0,
+        "padding_bottom": 80
+      }
+    },
+    "sb_newsletter_tRUbhb": {
+      "type": "sb-newsletter",
+      "settings": {
+        "heading": "Stay Informed",
+        "content": "Your guide to better health — sent weekly. Sign up to save 10% on your first order.",
+        "media_source": "image",
+        "mobile_img": "shopify:\/\/shop_images\/email_signup.png",
+        "desktop_img": "shopify:\/\/shop_images\/email_signup_1.jpg",
+        "enable_video_looping": true,
+        "show_overlay": false,
+        "overlay_opacity": 0.5,
+        "fg_color": "#ffffff",
+        "overlay_color": "#000000",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "form",
+    "sb_contact_header_fAAApe",
+    "sb_contact_form_7pCPhw",
+    "sb_newsletter_tRUbhb"
+  ]
+}

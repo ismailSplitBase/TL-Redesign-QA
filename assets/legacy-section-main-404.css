@@ -1,0 +1,307 @@
+/* CSS extracted from latest-blog.css for main-404 section */
+/* Used by: misc/404 */
+
+/* css by abhi  */
+.TL_PostTags {
+  display: none;
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.pagination li {
+  display: inline;
+  margin: 0 5px;
+}
+
+.pagination-wrapper {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.pagination li {
+  margin: 0 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+}
+
+.pagination li.disabled {
+  background: #333;
+  padding: 5px 10px;
+  color: #fff;
+}
+
+.pagination li.active {
+  color: #41b5e8;
+  border: 1px solid #41b5e8;
+  padding: 5px 10px;
+}
+
+.pagination li:hover {
+  color: #41b5e8;
+  border: 1px solid #41b5e8;
+  padding: 5px 10px;
+}
+
+/* Style the tab */
+.tltab {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+/* Style the buttons inside the tab */
+.tltab button {
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  display: block;
+  padding: 8px 20px;
+  background: #fff;
+  border-radius: 100px;
+  color: #000;
+  font-weight: 400;
+  font-size: 12px;
+  box-shadow: 0px 0px 13px #efefef;
+}
+
+/* Change background color of buttons on hover */
+.tltab button:hover {
+  background-color: #41B5E8;
+  color: #fff;
+}
+
+/* Create an active/current tablink class */
+.tltab button.active {
+  background-color: #41B5E8;
+  color: #fff;
+}
+
+/* Style the tab content */
+.tltabcontent {
+  display: none;
+  border-top: none;
+}
+
+.tl_mobile .title {
+  display: none;
+}
+
+.tl_mobile {
+  display: none;
+}
+
+.tl_desktop {
+  display: block;
+}
+
+.pt {
+  margin: 20px 0;
+}
+
+.blog-wraper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.blog-wraper .blog-column {
+  display: flex;
+  flex-direction: column;
+  /*flex: 1 0 0%;*/
+  width: 25%;
+}
+
+.blog-wraper .blog-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  padding: 0 15px 30px;
+  gap: 24px;
+  position: relative;
+  /*width:calc(25% - 24px);
+  height:250px;
+  overflow:hidden;*/
+}
+
+.blog-wraper .blog-column.single.featured {
+  flex-grow: 2;
+  width: 50%;
+}
+
+.blog-wraper .blog-column.single .blog-item {
+  height: 100%;
+}
+
+.blog-wraper .blog-column .blog-item .blog-img {
+  height: 200px;
+  background-position: center center !important;
+  background-size: cover !important;
+  border-radius: 16px;
+  display: block;
+}
+
+.blog-wraper .blog-column.single .blog-item .blog-img {
+  height: 100%;
+
+}
+
+.blog-wraper .blog-item-desc h2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  display: block;
+  width: 100%;
+}
+
+.blog-wraper .author-wraper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.blog-wraper .author-wraper .author-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex: 0 0 48px;
+}
+
+.blog-wraper .author-wraper .author-img img {
+  height: 48px;
+  width: 48px;
+}
+
+.blog-wraper .author-wraper .author-text h4 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.blog-wraper .author-wraper .author-text span {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #6C787C;
+}
+
+.blog-wraper .blog-column:last-child .blog-item {
+  height: 50%;
+}
+
+.blog-wraper .blog-column .blog-item.last-blog .blog-img {
+  height: 100%;
+}
+
+.blog-wraper .blog-item .last-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 16px;
+}
+
+.blog-wraper .last-block h3 {
+  font-family: 'Aftika';
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #D9D9D9;
+}
+
+@media only screen and (min-width:768px) and (max-width:1023px) {
+  .blog-wraper {
+    flex-wrap: wrap;
+
+  }
+
+  .blog-wraper .blog-column {
+    flex: 0 0 50%;
+    min-height: 600px;
+  }
+
+  .blog-wraper .blog-column .blog-item .blog-img {
+    flex: 0 0 55%;
+  }
+
+  .blog-wraper .blog-column.single .blog-item .blog-img {
+    flex: 0 0 80%;
+  }
+
+  .blog-wraper .blog-column .blog-item.last-blog .blog-img {
+    flex: 0 0 100%;
+  }
+}
+
+@media only screen and (min-width:0px) and (max-width:767px) {
+  .blog-wraper {
+    flex-wrap: wrap;
+
+  }
+
+  .blog-wraper .blog-column {
+    flex: 0 0 100%;
+    min-height: 700px;
+  }
+
+  .blog-wraper .blog-column .blog-item .blog-img {
+    height: 250px;
+  }
+
+  .blog-wraper .blog-column.single .blog-item .blog-img {
+    /*height:600px;*/
+    height: 250px;
+  }
+
+  .blog-wraper .blog-column .blog-item.last-blog .blog-img {
+    /*flex:0 0 100%;*/
+  }
+
+  .blog-wraper .blog-column:last-child .blog-item {
+    height: auto;
+  }
+
+  .blog-wraper .blog-column .blog-item.last-blog .blog-img {
+    height: 250px;
+  }
+
+  .blog-wraper .blog-item {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .xt-latest-blog .title {
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  .tl_mobile {
+    display: block;
+  }
+
+  .tl_desktop {
+    display: none !important;
+  }
+}

@@ -1,0 +1,24 @@
+{% if block.settings.image != blank %}
+<div class="sb-product-testing__badge">
+  {{ block.settings.image | image_url: width: auto, height: auto | image_tag }}
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Badge",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Badge "
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Badge",
+    }
+  ]
+}
+{% endschema %}

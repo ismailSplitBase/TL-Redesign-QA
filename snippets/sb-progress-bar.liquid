@@ -1,0 +1,150 @@
+{% comment %}
+  @liquidoc
+  name: Progress Bar
+  description: Shows a progress bar for free shipping threshold
+  requires: cart, free_shipping_threshold
+  tags: progress-bar, cart, shipping
+{% endcomment %}
+
+{%- liquid
+  assign free_shipping_threshold = settings.free_shipping_threshold | times: 100
+  assign cart_total = cart.total_price
+  assign is_subscription = false
+  
+  # Check if there's a subscription in the cart
+  for item in cart.items
+    if item.selling_plan_allocation != nil
+      assign is_subscription = true
+      break
+    endif
+  endfor
+
+  # Use different threshold for subscriptions if enabled
+  if settings.different_subscription_threshold and is_subscription
+    assign free_shipping_threshold = settings.subscription_threshold | times: 100
+  endif
+
+  assign amount_remaining = free_shipping_threshold | minus: cart_total
+  assign threshold_met = false
+  
+  if amount_remaining <= 0
+    assign threshold_met = true
+    assign progress_percentage = 100
+    assign transform_value = 0
+  else
+    assign progress_percentage = cart_total | times: 100 | divided_by: free_shipping_threshold
+    assign transform_value = 100 | minus: progress_percentage
+  endif
+-%}
+
+<style>
+  @keyframes sb-progress-fill {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(-{{ transform_value }}%);
+    }
+  }
+
+  @keyframes sb-progress-fill-complete {
+    0% {
+      transform: translateX(-100%);
+      background: {{ settings.in_pb_bg_color }};
+    }
+    70% {
+      background: {{ settings.in_pb_bg_color }};
+    }
+    100% {
+      transform: translateX(0);
+      background: {{ settings.mt_pb_bg_color }};
+    }
+  }
+
+  @keyframes sb-text-color {
+    0%, 70% {
+      color: {{ settings.in_pb_fg_color }};
+    }
+    100% {
+      color: {% if threshold_met %}{{ settings.mt_pb_fg_color }}{% else %}{{ settings.in_pb_fg_color }}{% endif %};
+    }
+  }
+
+  .sb-progress-bar {
+    width: 100%;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .sb-progress-bar__container {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .sb-progress-bar__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: {{ settings.in_pb_sec_bg_color }};
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .sb-progress-bar__fill {
+    position: absolute;
+    border-radius: 999px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateX(-100%);
+    background: {{ settings.in_pb_bg_color }};
+    z-index: 2;
+    animation: sb-progress-fill{% if threshold_met %}-complete{% endif %} 1s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
+    will-change: transform, background-color;
+  }
+
+  .sb-progress-bar__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 3;
+    padding: 0 15px;
+    animation: sb-text-color 1s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
+  }
+
+  .sb-progress-bar__icon {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<div class="sb-progress-bar">
+  <div class="sb-progress-bar__container">
+    <div class="sb-progress-bar__background">&nbsp;</div>
+    <div class="sb-progress-bar__fill">&nbsp;</div>
+    <div class="sb-progress-bar__content">
+      {% if threshold_met %}
+        <span class="sb-progress-bar__icon">
+          {% render 'icon-check' %}
+        </span>
+        <span class="sb-progress-bar__text">{{ settings.progress_met_text }}</span>
+      {% else %}
+        {% capture amount_away %}{{ amount_remaining | money }}{% endcapture %}
+        {% assign in_progress_text = settings.in_progress_text | replace: '[amount_away]', amount_away %}
+        <span class="sb-progress-bar__text">{{ in_progress_text }}</span>
+      {% endif %}
+    </div>
+  </div>
+</div> 

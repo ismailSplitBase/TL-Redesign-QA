@@ -1,0 +1,317 @@
+<style>
+.xt-collection-list
+{
+  display:block;
+  width:100%;
+}
+.xt-collection-list .xt-collection-top
+{
+  display: flex;
+  /*flex-direction: column;*/
+  align-items: center;
+  padding: 24px 0px;
+  gap: 8px;
+  background: #000000;
+  
+  {% if section.settings.mobile_img!=blank %}
+    background:url("{{ section.settings.mobile_img | img_url : 'master' }}");
+    background-size: cover;
+    height:350px;
+  {% endif %}
+}
+.xt-collection-list .xt-collection-top .breadcrumb
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.xt-collection-list .xt-collection-top .breadcrumb li
+{
+  color: #B8B8BD;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+}
+.xt-collection-list .xt-collection-top .breadcrumb li a
+{
+  color: #41B5E8;
+}
+.xt-collection-list .xt-collection-top .breadcrumb li svg
+{
+  width:14px;
+}
+.xt-collection-list .xt-collection-top h1
+{
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  color: #FFFFFF;
+  margin-bottom:6px;
+}
+.xt-collection-list .xt-collection-top p
+{
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #FFFFFF;
+  font-style: normal;
+}
+
+
+.xt-collection-list .collection-wraper
+{
+  margin:68px 0;
+  display:flex;
+  align-items: flex-start;
+  row-gap: 32px;
+  column-gap: 16px;
+  flex-wrap:wrap;
+}
+.xt-collection-list .collection-wraper .collection-item
+{
+  width:calc(50% - 8px);
+}
+.xt-collection-list .collection-wraper .collection-img
+{
+  border-radius: 8px;
+  overflow:hidden;
+  width:100%;
+  height:180px;
+}
+.xt-collection-list .collection-wraper .collection-img img
+{
+  object-fit: cover;
+  width:100%;
+  height:100%;
+}
+.xt-collection-list .collection-wraper .collection-desc
+{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-top:24px;
+}
+.xt-collection-list .collection-wraper .collection-desc h2
+{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+.xt-collection-list .collection-wraper .collection-desc p
+{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #6C787C;
+}
+
+
+
+@media only screen and (min-width:768px) and (max-width:1023px)
+{
+  .xt-collection-list .collection-wraper .collection-item 
+  {
+    width: calc(33.333% - 12px);
+  }
+  .xt-collection-list .collection-wraper .collection-img
+  {
+    height:250px;
+  }
+}
+@media only screen and (min-width:1024px)
+{
+  .xt-collection-list .collection-wraper .collection-item 
+  {
+    width: calc(25% - 12px);
+  }
+  .xt-collection-list .collection-wraper .collection-img
+  {
+    height:350px;
+  }
+}
+
+@media only screen and (min-width:768px)
+{
+  .xt-collection-list .xt-collection-top
+  {
+    
+    {% if section.settings.desktop_img!=blank %}
+      background:url("{{ section.settings.desktop_img | img_url : 'master' }}");
+      background-size: cover;
+      height:450px;
+    {% endif %}
+  }
+}
+
+
+  
+</style>
+
+
+<div class="xt-collection-list">
+  <div class="xt-collection-top">
+    <div class="container">
+      {% if section.settings.breadcrumb == true %}
+      <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li>{% render 'old-icon-chevron-right' %}</li>
+        <li><a href=""><a href="/collections/">Collections</a></li>
+      </ul>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h1>{{ section.settings.title }}</h1>
+      {% endif %}
+
+      {% if section.settings.subtitle != blank %}
+        <p>{{ section.settings.subtitle }}</p>
+      {% endif %}
+      
+    </div>
+  </div>
+  
+  <div class="container">
+    
+    <div class="collection-wraper">
+
+      {% for block in section.blocks %}
+        {% assign collection = block.settings.collection %}
+        {% assign custom_collection_title = block.settings.collection_title %}
+        {% assign custom_collection_desc = block.settings.collection_subtitle %}
+        {% assign custom_collection_img = block.settings.collection_img %}
+         <a class="collection-item" href="{{ collection.url }}">
+          <div class="collection-img">
+            {% if collection.image.src != blank %}
+              <img src="{{ collection.image.src | img_url: "master" }}" alt="{{ collection.title }}">
+            {% else %}
+              <img src="{{ custom_collection_img | img_url: "master" }}" alt="{{ custom_collection_title }}">
+            {% endif %}
+          </div>
+          <div class="collection-desc">
+            {% if collection.title != blank %}
+                <h2>{{ collection.title }}</h2>
+            {% else %}
+              <h2>{{ custom_collection_title }}</h2>
+            {% endif %}
+            {% if collection.description != blank %}
+              <p>{{ collection.description }} </p>
+            {% else %}
+              <p>{{ custom_collection_desc }}</p>
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+     
+
+<!--       <div class="collection-item">
+        <div class="collection-img">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
+        </div>
+        <div class="collection-desc">
+          <h2>Build Muscle</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed </p>
+        </div>
+      </div>
+
+      <div class="collection-item">
+        <div class="collection-img">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
+        </div>
+        <div class="collection-desc">
+          <h2>Collection 3</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed </p>
+        </div>
+      </div>
+
+      <div class="collection-item">
+        <div class="collection-img">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
+        </div>
+        <div class="collection-desc">
+          <h2>Collection 4</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed </p>
+        </div>
+      </div> -->
+      
+    </div>
+
+    
+  </div>
+</div>
+{% schema %}
+{
+  "blocks": [
+    {
+      "name": "Collection list",
+      "settings": [
+        {
+          "id": "collection_img",
+          "label": "Collection Image",
+          "type": "image_picker"
+        },
+        {
+            "id": "collection",
+            "label": "Collection",
+            "type": "collection"
+          },
+        {
+            "id": "collection_title",
+            "label": "Collection title",
+            "type": "text",
+            "default":"Collection title"
+          },
+        {
+            "id": "collection_subtitle",
+            "label": "Collection subtitle",
+            "type": "textarea",
+            "default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
+          }
+      ],
+      "type": "Collection_list"
+    }
+  ],
+  "name": "Collection list template",
+  "class": "td-legacy",
+  "settings": [
+    {
+      "content": "Collection List",
+      "type": "header"
+    },
+    {
+        "id": "breadcrumb",
+        "label": "Enable breadcrumb",
+        "type": "checkbox",
+        "default":true
+    },
+    {
+        "id": "title",
+        "label": "Collection list banner text",
+        "type": "text",
+        "default":"Collections"
+    },
+    {
+        "id": "subtitle",
+        "label": "Collection list banner subtext",
+        "type": "textarea",
+        "default":"All the energy you need before workout. Lorem ipsum dolor sit amet."
+    },
+    {
+        "id": "desktop_img",
+        "label": "Desktop Image",
+        "type": "image_picker"
+    },
+    {
+        "id": "mobile_img",
+        "label": "Mobile Image",
+        "type": "image_picker"
+    }
+    
+  ],
+  "presets":[
+      {
+        "name": "Collection list template"
+      }
+    ]
+}
+{% endschema %}

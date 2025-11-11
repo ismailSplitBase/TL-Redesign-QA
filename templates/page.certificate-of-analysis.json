@@ -1,0 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "sb_third_party_testing_3LCRmH": {
+      "type": "sb-third-party-testing",
+      "name": "SB Third Party Testing",
+      "settings": {
+        "heading": "Transparent Labs 3rd Party Testing",
+        "richtext_content": "<p>Enter a product name below to search for its product purity tests (Certificates of Analysis), ingredient verification tests, or gluten tests.<\/p>",
+        "tooltip": "<h3>Certificate of Analysis<\/h3><p>Confirms a product’s quality and purity by detailing test results from an accredited lab. <\/p><h3>Ingredient Test<\/h3><p>Confirms the identity and dose of an ingredient by verifying it matches the label through specialized analytical testing.<\/p><h3>Gluten Test<\/h3><p>We test for the presence of gluten and ensure it falls below the limit of detection.<br\/><br\/><\/p>",
+        "keep_shopping_text": "Keep Shopping",
+        "keep_shopping_url": "shopify:\/\/collections\/all",
+        "fg_color": "#111314",
+        "bg_color": "#F8F9FB",
+        "ch_fg_color": "#000000",
+        "ch_bg_color": "#ffffff",
+        "tooltip_bg_color": "#173446",
+        "tooltip_text_color": "#ffffff",
+        "padding_top": 90,
+        "padding_bottom": 90
+      }
+    }
+  },
+  "order": [
+    "main",
+    "sb_third_party_testing_3LCRmH"
+  ]
+}

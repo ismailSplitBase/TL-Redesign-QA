@@ -1,0 +1,45 @@
+{% if mobile_multiple == blank %}
+  {% assign mobile_multiple = 0.75 %}
+{% endif %}
+{%  if settings.padding_top != blank %}
+  --sb-padding-top: {{ settings.padding_top }}px;
+  --sb-padding-top-mobile: {{ settings.padding_top | times: mobile_multiple | round: 0 }}px;
+{% endif %}
+{% if settings.padding_bottom != blank %}
+  --sb-padding-bottom: {{ settings.padding_bottom }}px;
+  --sb-padding-bottom-mobile: {{ settings.padding_bottom | times: mobile_multiple | round: 0 }}px;
+{%  endif %}
+{% if settings.fg_color != blank %}
+  --color-foreground: {{ settings.fg_color }};
+  --sb-fg-color: {{ settings.fg_color }};
+  --sb-fg-color-lightened: {{ settings.fg_color | color_lighten: 40 }};
+{%  endif %}
+{% if settings.bg_color != blank %}
+  --sb-bg-color: {{ settings.bg_color }};
+{%  endif %}
+{% if settings.fg_color_desktop != blank %}
+  --sb-fg-color-desktop: {{ settings.fg_color_desktop }};
+{%  endif %}
+{% if settings.bg_color_desktop != blank %}
+  --sb-bg-color-desktop: {{ settings.bg_color_desktop }};
+{%  endif %}
+{% if settings.accent_color != blank %}
+  --sb-acc-color: {{ settings.accent_color }};
+{%  endif %}
+{% if settings.ch_fg_color != blank %}
+  --sb-ch-fg-color: {{ settings.ch_fg_color }};
+  --sb-ch-fg-color-lightened: {{ settings.ch_fg_color | color_lighten: 40 }};
+{%  endif %}
+{% if settings.ch_bg_color != blank %}
+  --sb-ch-bg-color: {{ settings.ch_bg_color }};
+  --sb-ch-hover-bg-color: {{ settings.ch_bg_color | color_darken: 5 }};
+{%  endif %}
+{% if settings.ch_accent_color != blank %}
+  --sb-ch-acc-color: {{ settings.ch_accent_color }};
+{%  endif %}
+{% if settings.ch_tag_bg_color != blank %}
+  --sb-ch-tag-bg-color: {{ settings.ch_tag_bg_color }};
+{%  endif %}
+{% if settings.ch_tag_fg_color != blank %}
+  --sb-ch-tag-fg-color: {{ settings.ch_tag_fg_color }};
+{%  endif %}

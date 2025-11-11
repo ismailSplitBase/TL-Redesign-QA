@@ -1,0 +1,70 @@
+{% style %}
+  .x-csms-container{padding-top: 0;padding-bottom: 0;}
+  .xt-custom-sub-menu-full-main-section ul {display: flex;justify-content: space-around;padding: 8px 0 5px 0;}
+  .xt-custom-sub-menu-full-main-section {border-bottom: 1px solid #eee;}
+  .xt-custom-sub-menu-full-main-section ul li{position: relative;padding:10px;}
+  .xt-custom-sub-menu-full-main-section a {font-size: 14px;}
+
+
+@media only screen and (max-width: 1000px) {
+  .x-csms-container{min-width:100%;}
+  .xt-custom-sub-menu-full-main-section{overflow:scroll;}
+  
+}
+
+  
+{% endstyle %}
+
+
+
+<div class="xt-custom-sub-menu-full-main-section" id="{{ section.id }}" >
+  <div class="max-w-7xl mx-auto pb-4 px-4 pt-12 x-csms-container">
+    <ul>
+      {% for block in section.blocks %}
+        <li>
+          <a href="{{ block.settings.m_link }}">{{ block.settings.m_label }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Custom Sub Menu",
+  "class": "td-legacy",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Add Menu Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "m_label",
+          "label": "Link Label"
+        },
+        {
+          "type": "text",
+          "id": "m_link",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Sub Menu",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

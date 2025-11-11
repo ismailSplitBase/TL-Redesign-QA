@@ -1,0 +1,57 @@
+<div class="xt-new-icon-text">
+  <div class="xgen-inner">
+    <div class="wraper">
+
+      {% for block in section.blocks %}
+        <div class="item">
+  
+          {% if block.settings.icon != blank %}
+            <img src="{{ block.settings.icon | img_url: '' }}" alt="{% if block.settings.icon.alt %}{{ block.settings.icon.alt }}{% else %}Xgen Icon{% endif %}" loading="lazy" >
+          {% endif %}
+                      
+          {% if block.settings.icon_text != blank %}
+            <h4>{{ block.settings.icon_text | newline_to_br }}</h4>
+          {% endif %}
+        
+        </div>
+      {% endfor %}
+      
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "New icon with text",
+    "class": "td-legacy",
+    "settings": [],
+	"blocks":[
+      {
+        "name":"icons",
+        "type":"text",
+        "settings":[
+          {
+            "type":"image_picker",
+            "id":"icon",
+            "label":"Choose icon"
+          },
+          {
+            "type":"textarea",
+            "id":"icon_text",
+            "label":"text"
+          }
+        ]
+      }
+	],
+    "presets":[
+      {
+        "name": "New icon with text"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

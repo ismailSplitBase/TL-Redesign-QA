@@ -1,0 +1,68 @@
+{%  liquid 
+  if gift_block
+    assign free_gift_text = gift_block.settings.free_gift_met_text
+  endif 
+%}
+{% capture skio_settings %}
+  {
+    "form_id":{{ product_form_id | json }}, 
+    "external_price_selector":"#product-price",
+    "show_details":false,
+    "show_without_subscription":false,
+    "show_compare_price":{{ block.settings.show_compare_price }},
+    "legend_content":"{{ block.settings.legend_content | default: "Frequency" }}",
+    "show_legend":{{ block.settings.show_legend }},
+    "layout":"vertical",
+    "dropdownPosition":"inside",
+    "additional_frequency_label":null,
+    "start_onetime":{{ block.settings.start_onetime }},
+    "onetime_first":{{ block.settings.onetime_first }},
+    "show_radio_selector":true,
+    "onetime_title":"{{ block.settings.onetime_title | default: "One-time purchase" }}",
+    "subscription_title":"{{ block.settings.subscription_title | default: "Subscribe" }}",
+    "prepaid_title":"Prepaid",
+    "discount_format":"{{ block.settings.discount_format | default: "percent" }}",
+    "discount_text":"{{ block.settings.discount_text | default: "Save [discount]" }}",
+    "additional_subscription_content":{{ block.settings.additional_subscription_content | json | default: "" }},
+    "selector_type":"dropdown",
+    "default_subscription":"{{ block.settings.default_subscription | default: "30 Days" }}",
+    "future_price_adjustments_text":"\u003csmall\u003eThen [discount] off after the [order_count_ordinal] order\u003c\/small\u003e",
+    "product_handle":"",
+    "combine_groups":false,
+    "combined_group_name":"Subscription",
+    {% if gift_block %}
+      "free_gift_text": "{{ gift_block.settings.free_gift_met_text | default:  "Free Gift Unlocked" }}",
+    {% endif %}
+    "subscription_tag": "{{ block.settings.subscription_tag | default: "" }}",
+    "show_discount_text":{{ block.settings.show_discount_text }}
+  }
+{% endcapture %}
+<skio-plan-picker 
+  key='plan-picker-{{ product.id }}'
+  options='{{ skio_settings | strip_newlines }}'
+  layout="vertical"
+  
+  {% if settings.currency_code_enabled %}
+    moneyFormat='{{ shop.money_with_currency_format }}'
+  {% else %}
+    moneyFormat='{{ shop.money_format }}'
+  {% endif %}
+
+  product='{{ product | json | escape }}'
+  selectedVariant='{{ product.selected_or_first_available_variant | json | escape }}'
+  
+  {% if debug %}
+    debug
+  {% endif %}
+  style="
+    {% if gift_block != blank %}
+    --sb-gift-background: {{ gift_block.settings.free_gift_met_background_color }};
+    --sb-gift-text: {{ gift_block.settings.free_gift_met_text_color }};
+    {% endif %}
+    --tag-text-color: {{ block.settings.tag_color }};
+    --tag-bg-color: {{ block.settings.tag_background_color }};
+  "
+>
+  <input type='hidden' name='selling_plan' {% if product_form_id != blank %}form='{{ product_form_id }}'{% endif %}>
+</skio-plan-picker >
+<script src='{{ 'skio-plan-picker-component.js' | asset_url }}' type='module'></script>

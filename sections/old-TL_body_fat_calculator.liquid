@@ -1,0 +1,796 @@
+
+<div class="main">
+  <div class="xgen-inner">
+    <div class="cal-header">
+      {% if section.settings.header_image != blank %}
+        <img src="{{section.settings.header_image | img_url: 'master'}}" alt="section.settings.header_image">
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h3 style>{{ section.settings.title }}</h3>
+      {% endif %}
+
+      {% if section.settings.detail != blank %}
+        <p>{{ section.settings.detail }}</p>
+      {% endif %}
+
+      <button style="display:none;" class="showmeasure">How to Measure Yourself for Body Fat Testing</button>
+      <p class="measure" style="display:none;">
+        You will need a tape measure to assess the circumference of your waist, hips, and neck. After measuring, enter
+        your respective results (in inches or centimeters) in the body fat calculator above to determine your body fat
+        percentage.
+      </p>
+    </div>
+
+    <form
+      id="email_signup"
+      class="tlc-form klaviyo_styling klaviyo_gdpr_embed_XVaZVT"
+      action="//manage.kmail-lists.com/subscriptions/subscribe"
+      data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
+      method="GET"
+      target="_blank"
+    >
+      <input type="hidden" name="calculator-name" value="bfat">
+      <input type="hidden" name="g" value="XVaZVT">
+      <input type="hidden" name="$fields" value="$consent">
+      <input type="hidden" name="$list_fields" value="$consent" X>
+
+      <div class="form-group gender">
+        <label class="main-label">GENDER</label>
+         <input type="radio" class="fgender" name="fgender" value="female" id="female">
+        <label for="female" class="label2">{% render 'xicon-femail' %} Female</label> 
+        <input type="radio" name="fgender" class="fgender" value="male" checked="" id="male">
+        <label for="male" class="label2">{% render 'xicon-mail' %} Male</label>
+        
+      </div>
+
+      <div style="color:red;font-size:10px;" class="Height_msg"></div>
+      <div class="form-group cominput">
+        <label for="fHeight" class="main-label">Height<super>*</super></label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="fHeight"
+            name="Height"
+            class="form-control"
+            placeholder=""
+            aria-label="Height"
+            aria-describedby="basic-addon2"
+            required=""
+            min="0"
+          >
+          <input type="radio" name="height-unit" value="in"  id="heightin"
+          ><label for="heightin" class="label2">in</label>
+          <input type="radio" name="height-unit" value="cm" checked id="heightcm"
+          ><label for="heightcm" class="label2">cm</label>
+        </div>
+      </div>
+
+      <div style="color:red;font-size:10px;" class="waist_msg"></div>
+      <div class="form-group cominput">
+        <label for="fWaist" class="main-label">Waist Measurement<super>*</super></label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="fWaist"
+            name="Waist"
+            class="form-control"
+            placeholder=""
+            aria-label="Waist"
+            aria-describedby="basic-addon2"
+            required=""
+            min="0"
+          >
+          <input type="radio" name="waist-unit" value="in"  id="waistin"
+          ><label for="waistin" class="label2">in</label> <input type="radio" name="waist-unit" value="cm" checked id="waistcm"
+          ><label for="waistcm" class="label2">cm</label>
+        </div>
+      </div>
+
+      <div style="color:red;font-size:10px;" class="Neck_msg"></div>
+      <div class="form-group cominput">
+        <label for="fNeck" class="main-label">Neck Measurement<super>*</super></label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="fNeck"
+            name="Neck"
+            class="form-control"
+            placeholder=""
+            aria-label="Neck"
+            aria-describedby="basic-addon2"
+            required=""
+            min="0"
+          >
+          <input type="radio" name="neck-unit" value="in"  id="neckin"
+          ><label for="neckin" class="label2">in</label> <input type="radio" name="neck-unit" value="cm" checked id="neckcm"
+          ><label for="neckcm" class="label2">cm</label>
+        </div>
+      </div>
+
+      <div style="color:red;font-size:10px;" class="fHip_msg"></div>
+      <div class="form-group cominput" id="hip-wrapper" style="display:none;">
+        <!-- add hideshow class to make this option available for womens -->
+        <label for="fHip" class="main-label">Hip Measurement<super>*</super></label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="fHip"
+            name="Hip"
+            class="form-control"
+            placeholder=""
+            aria-label="Hip"
+            aria-describedby="basic-addon2"
+            required=""
+            min="0"
+          >
+          <input type="radio" name="hip-unit" value="in"  id="hipin"
+          ><label for="hipin" class="label2">in</label> <input type="radio" name="hip-unit" value="cm" checked id="hipcm"
+          ><label for="hipcm" class="label2">cm</label>
+        </div>
+      </div>
+
+      <div style="color:red;font-size:10px;" class="email_msg"></div>
+      <div class="form-group email">
+        <label for="email" class="main-label">Email Address<super>*</super></label>
+        <div class="input-group">
+          <input type="text" name="email" placeholder="name@example.com" id="email">
+        </div>
+      </div>
+
+      <div class="form-group agree">
+        <div class="input-group">
+          <input type="checkbox" name="term1" value="yes" id="chkboxone"
+          ><label for="chkboxone" class="label2"
+            >I understand that the results provided by this calculator are estimations based on scientific and clinical
+            data and are not intended to replace advice from a qualified healthcare professional. Always consult with a
+            physician or dietitian before starting a new diet or exercise program.</label
+          >
+        </div>
+      </div>
+      <div class="form-group agree">
+        <div class="input-group">
+          <input type="checkbox" name="term2" value="yes" id="chkboxtwo" checked
+          ><label for="chkboxtwo" class="label2"
+            >Transparent Labs can occationally send me product recommendations and promotional emails.</label
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="button" class="bmrbtn" id="calculateBodyFat" disabled>Calculate</button>
+      </div>
+    </form>
+
+    <div class="tlresult">
+      <div id="bodyFatRes"></div>
+      <div id="bodyFatRes2"></div>
+    </div>
+  </div>
+
+ 
+            
+  <div class="max-w-6xl mx-auto px-4 text-blue-500 bmr-resourse-detail">
+    <div class="rich-text py-8 space-y-4">
+      {% if section.settings.resources_heading != blank %}
+        <h2 class="">{{ section.settings.resources_heading }}</h2>
+      {% endif %}
+      {% if section.settings.resources_detail != blank %}
+        <p class="">{{ section.settings.resources_detail }}</p>
+      {% endif %}
+      {% if section.settings.references_heading != blank %}
+        <h2 class="">{{ section.settings.references_heading }}</h2>
+      {% endif %}
+      {% if section.settings.references_detail != blank %}
+        <p class="">{{ section.settings.references_detail }}</p>
+      {% endif %}
+    </div>
+  </div>
+   <div class="tlresult-bodyfat" style="display:none;">
+    <div class="max-w-7xl mx-auto">
+  
+  <div class="xheading bodyfat">
+    <h2 class="fat_percenteage">Your estimated body fat is considered [descriptor provided by chart below] for your age and biological sex</h2>
+    <!--<p>Essential body fat level for an average person like you should have <span class="fat_percenteage">x-x%</span> of body fat.</p> -->
+    </div>
+    
+    <ul class="bodyfat-graph">
+   		<li class="xathletic"><span id="xathletic_inn">1%</span></li>
+      	<li class="xgreen"><span id="xgreen_inn">4%</span></li>
+      	<li class="xsedentary"><span id="xsedentary_inn">7%</span></li>
+      	<li class="xlight"><span id="xlight_inn">15%</span></li>
+      	<li class="xmoderate"><span id="xmoderate_inn">20%</span></li>
+      	<li class="xhigh"><span id="xhigh_inn">28%</span></li>
+    </ul>
+    
+    <div class="xavge">
+      <span>Too Low</span>
+      
+      <span>Obese</span>
+    </div>
+    
+    <div class="xavge1">
+      <p><span class="bfatoutput1">5%</span> <br>Your Body Fat Percent</p>
+      <!-- <p><span class="bfatoutput2">3kg</span> <br>Total Body Fat weight</p> -->
+    </div>
+    
+    <div class="out-wraper">
+      	<div class="xreslist " style="background-color: #efefef;padding: 0;">
+          <h3 class="body-fat-chart"> 
+            IDEAL BODY FAT PERCENTAGE CHART
+            <br>
+            (American Council on Exercise)</h3>
+      	</div>
+      	<div class="xreslist" style="background-color: #efefef;">
+          <span class="xname" style="padding:0 5px;">Description</span> 
+          <span class="xcount" style="padding:0 5px;">Men</span>
+          <span class="xcount" style="padding:0 5px;">Women</span>
+        </div>  
+      	<div class="xreslist">
+          <i class="xathletic"></i> 
+          <span class="xname">Critically low</span> 
+          <span class="xcount">&lt;2%</span>
+          <span class="xcount">&lt;10%</span>
+        </div>
+
+        <div class="xreslist">
+          <i class="xgreen"></i> 
+          <span class="xname">Ultra-lean</span> 
+          <span class="xcount">2-5%</span>
+          <span class="xcount">10-13%</span>
+        </div>
+
+        <div class="xreslist">
+          <i class="xsedentary"></i> 
+          <span class="xname">Very lean</span> 
+          <span class="xcount">6-13%</span>
+          <span class="xcount">14-20%</span>
+        </div>
+      
+      	<div class="xreslist">
+          <i class="xlight"></i> 
+          <span class="xname">Fairly Lean</span> 
+          <span class="xcount">14-17%</span>
+          <span class="xcount">21-24%</span>
+        </div>
+      
+      	<div class="xreslist">
+          <i class="xmoderate"></i> 
+          <span class="xname">Average</span> 
+          <span class="xcount">18-24%</span>
+          <span class="xcount">25-31%</span>
+        </div>
+      
+      	<div class="xreslist">
+          <i class="xhigh"></i> 
+          <span class="xname">Obese</span> 
+          <span class="xcount">25%+</span>
+          <span class="xcount">32%+</span>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  <div class="flex xgen-new-collection" id="xgen-new-collection">
+    <div class="flex-1">
+       <div id="bfat-output" style="display:none;">
+            <div class="xgen-tagging">
+              {% if block.settings.heading != blank %}<h2 class="user_goal">{{block.settings.heading}}</h2>{% endif %}
+              {% if block.settings.detail != blank %}<p class="goal_subtitle">{{block.settings.detail}}</p>{% endif %}
+            </div>
+            <div  class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3" id="bfat-output-one"  style="display:none;">
+              {% assign product_list = 'bulk-preworkout,mass-gainer,fat-burner' | split: ',' %}  
+              {% for product_handle in product_list  %}{% assign product =  all_products[product_handle ]%}{% render 'old-single_product_grid' with product: product %}{% endfor %}
+            </div>
+            <div  class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3" id="bfat-output-two" style="display:none;">
+              {% assign product_list = 'lean-preworkout,proteinseries-100-grass-fed-whey-protein-isolate,fat-burner' | split: ',' %}  
+              {% for product_handle in product_list  %}{% assign product =  all_products[product_handle ]%}{% render 'old-single_product_grid' with product: product %}{% endfor %}
+            </div>
+            <div  class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3" id="bfat-output-three" style="display:none;">
+              {% assign product_list = 'proteinseries-collagen-hydrolysate,non-stim-pre-workout,fat-burner' | split: ',' %}  
+              {% for product_handle in product_list  %}{% assign product =  all_products[product_handle ]%}{% render 'old-single_product_grid' with product: product %}{% endfor %}
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <style>
+    super{
+      color:red;
+    }
+  </style>
+
+
+<script type="text/javascript" src="https://www.klaviyo.com/media/js/public/klaviyo_subscribe.js" defer></script>
+<script>
+/**
+ * Body Fat Calculator - Vanilla JavaScript Implementation
+ * Handles form validation, calculations, and result display
+ */
+class BodyFatCalculator {
+  constructor() {
+    this.form = document.getElementById('email_signup');
+    this.calculateButton = document.getElementById('calculateBodyFat');
+    this.init();
+  }
+
+  /**
+   * Initialize the calculator
+   */
+  init() {
+    this.setupEventListeners();
+    this.setupKlaviyoIntegration();
+  }
+
+  /**
+   * Set up all event listeners
+   */
+  setupEventListeners() {
+    // Checkbox validation for terms agreement
+    const termsCheckbox = document.getElementById('chkboxone');
+    if (termsCheckbox) {
+      termsCheckbox.addEventListener('change', () => {
+        this.calculateButton.disabled = !termsCheckbox.checked;
+      });
+    }
+
+    // Gender radio button handling
+    const genderRadios = document.querySelectorAll('input[name="fgender"]');
+    genderRadios.forEach(radio => {
+      radio.addEventListener('change', (e) => this.handleGenderChange(e));
+    });
+
+    // Field validation event listeners
+    this.setupFieldValidation();
+
+    // Calculate button click handler
+    if (this.calculateButton) {
+      this.calculateButton.addEventListener('click', (e) => this.handleCalculate(e));
+    }
+
+    // View more toggle functionality
+    const viewMoreButton = document.querySelector('.xviewmore1');
+    if (viewMoreButton) {
+      viewMoreButton.addEventListener('click', () => this.toggleLegends());
+    }
+  }
+
+  /**
+   * Handle gender change to show/hide hip measurement
+   */
+  handleGenderChange(event) {
+    const hipWrapper = document.getElementById('hip-wrapper');
+    const hipMsg = document.querySelector('.fHip_msg');
+    
+    if (event.target.value === 'female') {
+      hipWrapper.style.display = 'flex';
+      if (hipMsg) hipMsg.textContent = '';
+    } else {
+      hipWrapper.style.display = 'none';
+      if (hipMsg) hipMsg.textContent = '';
+    }
+  }
+
+  /**
+   * Set up field validation for all input fields
+   */
+  setupFieldValidation() {
+    const fields = [
+      { id: 'fHeight', msgClass: '.Height_msg', validator: this.validatePositiveNumber },
+      { id: 'fWaist', msgClass: '.waist_msg', validator: this.validatePositiveNumber },
+      { id: 'fNeck', msgClass: '.Neck_msg', validator: this.validatePositiveNumber },
+      { id: 'fHip', msgClass: '.fHip_msg', validator: this.validatePositiveNumber },
+      { id: 'email', msgClass: '.email_msg', validator: this.validateEmail }
+    ];
+
+    fields.forEach(field => {
+      const element = document.getElementById(field.id);
+      if (element) {
+        element.addEventListener('change', () => {
+          this.validateField(field.id, field.msgClass, field.validator);
+          this.checkAllFields();
+        });
+      }
+    });
+  }
+
+  /**
+   * Validate a positive number
+   */
+  validatePositiveNumber(value) {
+    const num = parseFloat(value);
+    return !isNaN(num) && num > 0;
+  }
+
+  /**
+   * Validate email format
+   */
+  validateEmail(value) {
+    const regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(value);
+  }
+
+  /**
+   * Validate individual field
+   */
+  validateField(fieldId, msgClass, validator) {
+    const field = document.getElementById(fieldId);
+    const msgElement = document.querySelector(msgClass);
+    
+    if (!field || !msgElement) return;
+
+    const isValid = validator.call(this, field.value);
+    
+    if (!isValid) {
+      const fieldName = fieldId.replace('f', '').toLowerCase();
+      if (fieldId === 'email') {
+        msgElement.textContent = 'Please enter a valid email!';
+      } else {
+        msgElement.textContent = `Please enter a valid ${fieldName} greater than 0!`;
+      }
+      this.calculateButton.disabled = true;
+    } else {
+      msgElement.textContent = '';
+    }
+  }
+
+  /**
+   * Check all required fields and enable/disable calculate button
+   */
+  checkAllFields() {
+    const gender = document.querySelector('input[name="fgender"]:checked')?.value;
+    const height = parseFloat(document.getElementById('fHeight').value);
+    const waist = parseFloat(document.getElementById('fWaist').value);
+    const neck = parseFloat(document.getElementById('fNeck').value);
+    const email = document.getElementById('email').value;
+    const termsChecked = document.getElementById('chkboxone').checked;
+
+    const isEmailValid = this.validateEmail(email);
+
+    let allValid = !isNaN(height) && height > 0 &&
+                   !isNaN(waist) && waist > 0 &&
+                   !isNaN(neck) && neck > 0 &&
+                   isEmailValid &&
+                   termsChecked;
+
+    // Check hip field for females
+    if (gender === 'female') {
+      const hip = parseFloat(document.getElementById('fHip').value);
+      allValid = allValid && !isNaN(hip) && hip > 0;
+    }
+
+    this.calculateButton.disabled = !allValid;
+  }
+
+  /**
+   * Convert inches to centimeters
+   */
+  convertToCm(value, unit) {
+    return unit === 'in' ? value * 2.54 : value;
+  }
+
+  /**
+   * Get measurement value in centimeters
+   */
+  getMeasurement(fieldId, unitName) {
+    const value = parseFloat(document.getElementById(fieldId).value);
+    const isInches = document.getElementById(`${unitName}in`).checked;
+    return this.convertToCm(value, isInches ? 'in' : 'cm');
+  }
+
+  /**
+   * Handle calculate button click
+   */
+  handleCalculate(event) {
+    event.preventDefault();
+    
+    const gender = document.querySelector('input[name="fgender"]:checked')?.value;
+    
+    if (!gender) {
+      alert('Please select your gender!');
+      return;
+    }
+
+    // Get measurements in centimeters
+    const height = this.getMeasurement('fHeight', 'height');
+    const waist = this.getMeasurement('fWaist', 'waist');
+    const neck = this.getMeasurement('fNeck', 'neck');
+
+    // Validate all fields one more time
+    if (!this.validateAllFields(gender, height, waist, neck)) {
+      return;
+    }
+
+    // Calculate body fat percentage
+    let bodyFatPercentage;
+    
+    if (gender === 'male') {
+      const waistNeck = waist - neck;
+      bodyFatPercentage = (86.010 * Math.log10(waistNeck)) - (70.041 * Math.log10(height)) + 36.76;
+    } else {
+      const hip = this.getMeasurement('fHip', 'hip');
+      if (!this.validatePositiveNumber(hip)) {
+        document.querySelector('.fHip_msg').textContent = 'Please enter a valid hip greater than 0!';
+        return;
+      }
+      const waistHip = waist + hip;
+      const waistHipNeck = waistHip - neck;
+      bodyFatPercentage = (163.205 * Math.log10(waistHipNeck)) - (97.684 * Math.log10(height)) - 78.387;
+    }
+
+    // Ensure non-negative result
+    if (bodyFatPercentage < 0) {
+      bodyFatPercentage = 0;
+    }
+
+    this.displayResults(bodyFatPercentage, gender);
+  }
+
+  /**
+   * Validate all fields before calculation
+   */
+  validateAllFields(gender, height, waist, neck) {
+    let isValid = true;
+
+    if (!this.validatePositiveNumber(height)) {
+      document.querySelector('.Height_msg').textContent = 'Please enter a valid height greater than 0!';
+      isValid = false;
+    }
+
+    if (!this.validatePositiveNumber(waist)) {
+      document.querySelector('.waist_msg').textContent = 'Please enter a valid waist greater than 0!';
+      isValid = false;
+    }
+
+    if (!this.validatePositiveNumber(neck)) {
+      document.querySelector('.Neck_msg').textContent = 'Please enter a valid neck greater than 0!';
+      isValid = false;
+    }
+
+    const email = document.getElementById('email').value;
+    if (!this.validateEmail(email)) {
+      document.querySelector('.email_msg').textContent = 'Please enter a valid email!';
+      isValid = false;
+    }
+
+    if (!isValid) {
+      this.calculateButton.disabled = true;
+    }
+
+    return isValid;
+  }
+
+  /**
+   * Display calculation results
+   */
+  displayResults(bodyFatPercentage, gender) {
+    // Update result display
+    const resultElement = document.querySelector('.bfatoutput1');
+    if (resultElement) {
+      resultElement.textContent = `${bodyFatPercentage.toFixed(2)}%`;
+    }
+
+    // Reset all category indicators
+    const categories = ['#xathletic_inn', '#xgreen_inn', '#xsedentary_inn', '#xlight_inn', '#xmoderate_inn', '#xhigh_inn'];
+    categories.forEach(categoryId => {
+      const element = document.querySelector(categoryId);
+      if (element) {
+        element.classList.remove('active');
+        element.textContent = '';
+      }
+    });
+
+    // Activate appropriate category based on body fat percentage
+    this.activateCategory(bodyFatPercentage);
+
+    // Show results sections
+    const resultSection = document.querySelector('.tlresult-bodyfat');
+    const outputSection = document.getElementById('bfat-output');
+    const basicResult = document.querySelector('.tlresult');
+    
+    if (resultSection) resultSection.style.display = null;
+    if (outputSection) outputSection.style.display = null;
+    if (basicResult) {
+      basicResult.textContent = `Your body fat percentage is ${bodyFatPercentage.toFixed(2)}%.`;
+    }
+
+    // Scroll to results
+    this.scrollToResults();
+
+    // Show appropriate product recommendations
+    this.showProductRecommendations(bodyFatPercentage, gender);
+  }
+
+  /**
+   * Activate the appropriate body fat category
+   */
+  activateCategory(bodyFatPercentage) {
+    let categoryElement;
+    
+    if (bodyFatPercentage < 2) {
+      categoryElement = document.querySelector('#xathletic_inn');
+    } else if (bodyFatPercentage <= 5) {
+      categoryElement = document.querySelector('#xgreen_inn');
+    } else if (bodyFatPercentage <= 13) {
+      categoryElement = document.querySelector('#xsedentary_inn');
+    } else if (bodyFatPercentage <= 17) {
+      categoryElement = document.querySelector('#xlight_inn');
+    } else if (bodyFatPercentage <= 24) {
+      categoryElement = document.querySelector('#xmoderate_inn');
+    } else {
+      categoryElement = document.querySelector('#xhigh_inn');
+    }
+
+    if (categoryElement) {
+      categoryElement.textContent = `${bodyFatPercentage.toFixed(2)}%`;
+      categoryElement.classList.add('active');
+    }
+  }
+
+  /**
+   * Show product recommendations based on body fat percentage
+   */
+  showProductRecommendations(bodyFatPercentage, gender) {
+    // Hide all product sections first
+    const productSections = ['#bfat-output-one', '#bfat-output-two', '#bfat-output-three'];
+    productSections.forEach(sectionId => {
+      const section = document.querySelector(sectionId);
+      if (section) section.style.display = 'none';
+    });
+
+    let thresholds;
+    if (gender === 'male') {
+      thresholds = { low: 14, mid: 18 };
+    } else {
+      thresholds = { low: 21, mid: 25 };
+    }
+
+    // Show appropriate section based on body fat percentage
+    let targetSection;
+    if (bodyFatPercentage < thresholds.low) {
+      targetSection = document.querySelector('#bfat-output-one');
+    } else if (bodyFatPercentage < thresholds.mid) {
+      targetSection = document.querySelector('#bfat-output-two');
+    } else {
+      targetSection = document.querySelector('#bfat-output-three');
+    }
+
+    if (targetSection) {
+      targetSection.style.display = null;
+    }
+  }
+
+  /**
+   * Scroll to results section
+   */
+  scrollToResults() {
+    const resultsSection = document.querySelector('.tlresult-bodyfat');
+    if (resultsSection) {
+      const headerOffset = 100;
+      const elementPosition = resultsSection.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  /**
+   * Toggle legends visibility
+   */
+  toggleLegends() {
+    const viewMoreButton = document.querySelector('.xviewmore1');
+    const legendsWrapper = document.querySelector('.out-wraper');
+    
+    if (!viewMoreButton || !legendsWrapper) return;
+
+    const isHidden = legendsWrapper.style.display === 'none' || !legendsWrapper.style.display;
+    
+    if (isHidden) {
+      legendsWrapper.style.display = 'block';
+      viewMoreButton.textContent = 'Hide Legends';
+    } else {
+      legendsWrapper.style.display = 'none';
+      viewMoreButton.textContent = 'Show Legends';
+    }
+  }
+
+  /**
+   * Set up Klaviyo integration
+   */
+  setupKlaviyoIntegration() {
+    if (typeof KlaviyoSubscribe !== 'undefined') {
+      console.log('KlaviyoSubscribe', KlaviyoSubscribe);
+      KlaviyoSubscribe.attachToForms('#email_signup', {
+        success: (form) => {
+          console.log('success');
+          console.log(form);
+          const formData = new FormData(this.form);
+          const params = new URLSearchParams(formData).toString();
+          console.log(`https://www.transparentlabs.com/pages/calculator-results?${params}`);
+          window.location.href = `https://www.transparentlabs.com/pages/calculator-results?${params}`;
+          
+          const email = form.querySelector('[name="email"]').value;
+          if (typeof _learnq !== 'undefined') {
+            _learnq.push(['identify', { $email: email }]);
+            _learnq.push(['track', 'Signed Up for Newsletter']);
+          }
+        },
+        hide_form_on_success: true,
+        extra_properties: {
+          $source: '$embed',
+          $method_type: 'Klaviyo Form',
+          $method_id: 'embed',
+          $consent_version: 'Embed default text'
+        }
+      });
+    } else {
+      console.log('KlaviyoSubscribe not found');
+    }
+  }
+}
+
+// Initialize calculator when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new BodyFatCalculator();
+});
+</script>
+</div>
+
+{% schema %}
+  {
+    "name": "TL_body_fat_calculator",
+    "class": "td-legacy",
+    "settings": [
+	{
+		"type":"image_picker",
+		"id":"header_image",
+		"label":"Choose image"
+	},
+	{
+		"type":"text",
+		"id":"title",
+		"label":"Title"
+	},
+	{
+		"type":"textarea",
+		"id":"detail",
+		"label":"Subtitle"
+	},
+	{
+    	"type":"text",
+        "id":"resources_heading",
+        "label":"Resources heading"
+	},
+    {
+        "type":"richtext",
+        "id":"resources_detail",
+        "label":"Resources details"
+    },
+    {
+        "type":"text",
+        "id":"references_heading",
+        "label":"References heading"
+     },
+    {
+    	"type":"richtext",
+    	"id":"references_detail",
+    	"label":"References details"
+    }
+],
+"presets":[
+		{
+			"name": "TL_body_fat_calculator"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+<!-- Commented out jQuery code has been removed as it was not being used -->
+

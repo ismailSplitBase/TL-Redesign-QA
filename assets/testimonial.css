@@ -1,0 +1,146 @@
+.testimonial-slider {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    padding: 64px 0;
+  }
+  
+  .testimonial-content {
+    display: flex;  
+    align-items: center;
+    gap: 36px;
+  }
+  
+  .testimonial-logo {
+    flex: 0 1 auto;
+  }
+  
+  .testimonial-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    padding: 64px;
+  }
+  
+  .testimonial-logo img,
+  .testimonial-slider .placeholder-image svg {
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .testimonial-slider .placeholder-image svg { 
+    background: var(--white);
+  }
+  
+  .testimonial-text {
+    flex: 1;
+    max-width: 440px;
+  }
+  
+  .testimonial-text * {
+    font-family: var(--font-neue);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    margin: 0;
+  }
+  
+  .testimonial-slider .swiper-wrapper {
+    transition-timing-function: linear; 
+    align-items: center;
+  }
+  
+  .custom-testimonial-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slider-track {
+    display: flex;
+    cursor: grab;
+  }
+  
+  .slider-track:active {
+    cursor: grabbing;
+  }
+  
+  .testimonial-item {
+    flex: 0 0 auto;
+    width: auto;
+    box-sizing: border-box;
+  }
+  
+  .testimonial-content {
+    border-radius: 8px;
+    height: 100%;
+  }
+  
+  .testimonial-logo {
+    max-width: 120px;
+  }
+  
+  .testimonial-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .placeholder-image {
+    width: 120px;
+    height: 60px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media (max-width: 1023px) {
+  
+    .testimonial-slider {
+      padding: 48px 0 66px;
+    }
+  
+    .testimonial-content {
+      gap: 16px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .testimonial-text {
+      flex: 0 1 100%;
+    }
+  
+    .testimonial-item {
+      padding: 78px;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+    
+  }
+  
+  @media (max-width: 767px) {
+    
+    .testimonial-text * {
+      font-size: 15px;
+    }
+  
+    .testimonial-content {
+      max-width: 260px;
+    }
+  
+    .testimonial-item {
+      padding: 57px 32px;
+    }
+  
+  }
+  
+  @media (max-width: 375px) {
+  
+    .testimonial-content {
+      max-width: 260px;
+    }
+    
+  }

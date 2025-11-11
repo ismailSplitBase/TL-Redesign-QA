@@ -1,0 +1,131 @@
+<div class="max-w-7xl mx-auto px-4 py-8 text-blue-500">
+  <h1 class="border-b-2 border-gray-300 mb-8 pb-4 uppercase md:text-2xl">
+    Order Details: {{ order.name }}
+  </h1>
+
+  <h2 class="mb-8">
+    Ordered at: {{ order.created_at | time_tag: format: 'date_at_time' }}
+  </h2>
+
+  <div class="overflow-x-auto">
+    <table class="border-l border-r border-t border-gray-400 border-opacity-50 min-w-max table-auto text-sm w-full">
+      <thead>
+        <tr class="bg-gray-400 bg-opacity-50 border-b border-gray-400 border-opacity-50">
+          <th class="text-left p-4">Product</th>
+          <th class="text-left p-4">SKU</th>
+          <th class="text-left p-4">Price</th>
+          <th class="text-left p-4">Quantity</th>
+          <th class="text-left p-4">Total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for line_item in order.line_items %}
+          <tr class="border-b border-gray-400 border-opacity-50">
+            <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+              <a href="{{ line_item.product.url }}">
+                {{ line_item.title }}
+              </a>
+
+              {% if line_item.fulfillment %}
+                <p>
+                  Fulfilled on {{ line_item.fulfillment.created_at | date: "%b %d" }} by {{ line_item.fulfillment.tracking_company }}
+                </p>
+
+                <p>
+                  Tracking Number:
+                  <a href="{{ line_item.fulfillment.tracking_url }}">
+                    {{ line_item.fulfillment.tracking_number }}
+                  </a>
+                </p>
+              {% endif %}
+            </td>
+            <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+              {{ line_item.sku }}
+            </td>
+            <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+              {{ line_item.final_price | money }}
+            </td>
+            <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4">
+              {{ line_item.quantity }}
+            </td>
+            <td class="bg-gray-300 p-4">
+              {{ line_item.final_line_price | money }}
+            </td>
+          </tr>
+        {% endfor %}
+
+        <tr class="border-b border-gray-400 border-opacity-50">
+          <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4" colspan="4">
+            Subtotal
+          </td>
+          <td class="bg-gray-300 p-4">
+            {{ order.subtotal_price | money }}
+          </td>
+        </tr>
+        <tr class="border-b border-gray-400 border-opacity-50">
+          <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4" colspan="4">
+            Discount
+          </td>
+          <td class="bg-gray-300 p-4">
+            -{{ order.total_discounts | money }}
+          </td>
+        </tr>
+        <tr class="border-b border-gray-400 border-opacity-50">
+          <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4" colspan="4">
+            Shipping
+          </td>
+          <td class="bg-gray-300 p-4">
+            {{ order.shipping_price | money }}
+          </td>
+        </tr>
+        <tr class="border-b border-gray-400 border-opacity-50">
+          <td class="bg-gray-300 border-r border-gray-400 border-opacity-50 p-4" colspan="4">
+            Total
+          </td>
+          <td class="bg-gray-300 p-4">
+            {{ order.total_price | money }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gap-8 grid grid-cols-1 mt-8 sm:grid-cols-2 sm:mt-12">
+    <div>
+      <h2 class="border-b-2 border-gray-300 uppercase mb-4 pb-2">
+        BILLING ADDRESS
+      </h2>
+
+      <p class="mb-4">
+        Payment Status: {{ order.financial_status_label }}
+      </p>
+
+      <div>
+        <p>{{ order.billing_address.name }}</p>
+        <p>{{ order.billing_address.address1 }}</p>
+        <p>{{ order.billing_address.address2 }}</p>
+        <p>{{ order.billing_address.city }}, {{ order.billing_address.province }} {{ order.billing_address.zip }}</p>
+        <p>{{ order.billing_address.country }}</p>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="border-b-2 border-gray-300 uppercase mb-4 pb-2">
+        SHIPPING ADDRESS
+      </h2>
+
+      <p class="mb-4">
+        Shipping Status: {{ order.fulfillment_status_label }}
+      </p>
+
+      <div>
+        <p>{{ order.shipping_address.name }}</p>
+        <p>{{ order.shipping_address.address1 }}</p>
+        <p>{{ order.shipping_address.address2 }}</p>
+        <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province }} {{ order.shipping_address.zip }}</p>
+        <p>{{ order.shipping_address.country }}</p>
+      </div>
+    </div>
+  </div>
+</div>

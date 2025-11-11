@@ -1,0 +1,190 @@
+{% stylesheet %}
+.sb-drawer-accordion {
+  width: 100%;
+}
+
+.sb-drawer-accordion .sb-accordion__item {
+  border-bottom: 1px solid var(--sb-border-color, #11131429);
+}
+.sb-menu-drawer__menu-item:last-child .sb-drawer-accordion .sb-accordion__item {
+  border-bottom: none;
+}
+
+.sb-drawer-accordion .sb-accordion__trigger svg {
+  transition: transform 0.3s ease-in-out;
+}
+
+.sb-drawer-accordion .sb-accordion__item--expanded .sb-accordion__trigger svg {
+  transform: rotate(180deg);
+}
+
+.sb-drawer-accordion .sb-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  letter-spacing: 0;
+  font-family: var(--sb-font-family-body);
+  font-size: calc(18 / var(--sb-base-font-size, 16) * 1rem);
+  font-weight: 400;
+  color: var(--sb-fg-color, #111314);
+  cursor: pointer;
+}
+.sb-menu-drawer__menu-item--bold .sb-accordion__trigger {
+  font-weight: 600;
+}
+
+.sb-accordion__trigger-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.sb-drawer-accordion .sb-accordion__content {
+  background: var(--sb-bg-color, #fff);
+  max-height: 0;
+  transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1);
+  overflow: hidden;
+}
+
+.sb-drawer-accordion__products {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sb-drawer-accordion__product {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 4px 0;
+}
+
+.sb-drawer-accordion__product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sb-drawer-accordion__product-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+.sb-drawer-accordion__product-image {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--sb-bg-color, #f8f9fb);
+  flex-shrink: 0;
+}
+
+.sb-drawer-accordion__product-title {
+  font-family: var(--font-body-family), sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #111314;
+  margin: 0;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+.sb-drawer-accordion__product-description {
+  font-family: var(--font-body-family), sans-serif;
+  font-size: 14px;
+  color: var(--sb-fg-color, #111314);
+  opacity: 0.72;
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.sb-drawer-accordion__view-all {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  text-decoration: none !important;
+  margin-bottom: 22px;
+}
+
+.sb-drawer-accordion__view-all div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 12px 0 0 0;
+  border-bottom: 1px solid var(--sb-fg-color, #111314);
+}
+
+.sb-drawer-accordion__view-all span {
+  font-family: var(--font-body-family), sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--sb-fg-color, #111314);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.sb-drawer-accordion__view-all svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 4px;
+}
+{% endstylesheet %}
+
+<sb-accordion class="sb-drawer-accordion">
+  <div class="sb-accordion__item">
+    <div class="sb-accordion__trigger" aria-expanded="false">
+      {{ link.title | escape }}
+      <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.00003 5.49398L1.90928 0.540315C1.86825 0.49953 1.81955 0.467287 1.76598 0.44545C1.71241 0.423614 1.65504 0.412617 1.5972 0.413098C1.53935 0.413578 1.48217 0.425526 1.42897 0.44825C1.37578 0.470973 1.32761 0.504021 1.28727 0.545482C1.24693 0.586942 1.21521 0.635991 1.19395 0.689791C1.17269 0.74359 1.16231 0.801074 1.16341 0.858911C1.16451 0.916749 1.17707 0.973794 1.20036 1.02675C1.22366 1.0797 1.25722 1.1275 1.29911 1.1674L6.69494 6.4174C6.77662 6.49686 6.88608 6.54132 7.00003 6.54132C7.11398 6.54132 7.22344 6.49686 7.30511 6.4174L12.7009 1.1674C12.7428 1.1275 12.7764 1.0797 12.7997 1.02674C12.823 0.973793 12.8355 0.916748 12.8366 0.858911C12.8377 0.801073 12.8274 0.74359 12.8061 0.68979C12.7848 0.635991 12.7531 0.586942 12.7128 0.545481C12.6724 0.504021 12.6243 0.470973 12.5711 0.448249C12.5179 0.425526 12.4607 0.413578 12.4029 0.413097C12.345 0.412617 12.2876 0.423614 12.2341 0.44545C12.1805 0.467287 12.1318 0.49953 12.0908 0.540314L7.00003 5.49398Z" fill="#111314" stroke="#111314" stroke-width="0.4"/>
+        </svg>
+    </div>
+    <div class="sb-accordion__content">
+      <ul class="sb-drawer-accordion__products">
+        {% for product in block.settings.collection.products limit: block.settings.mobile_item_count %}
+          <li class="sb-drawer-accordion__product">
+            <a class="sb-drawer-accordion__product-link" href="{{ product.url }}">
+              {{ product.featured_image | image_url: width: "64" | image_tag: class: 'sb-drawer-accordion__product-image', alt: product.title }}
+              <div class="sb-drawer-accordion__product-info">
+                <h3 class="sb-drawer-accordion__product-title">
+                  {{ product.title }}
+                </h3>
+                {% if product.metafields.custom.plp_product_short_description != blank %}
+                  <div class="sb-drawer-accordion__product-description">
+                    <span>
+                      {{ product.metafields.custom.plp_product_short_description }}
+                    </span>
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ block.settings.collection.url }}" class="sb-drawer-accordion__view-all">
+        <div>
+          <span>
+            View All
+          </span>
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M-1.74846e-07 5.5L16 5.5M16 5.5L11.75 9.5M16 5.5L11.75 1.5" stroke="#111314" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</sb-accordion>

@@ -1,0 +1,106 @@
+{{ 'legacy-section-main-404.css' | asset_url | stylesheet_tag }}
+{{ 'legacy-snippet-product-card.css' | asset_url | stylesheet_tag }}
+{{ 'legacy-snippet-lazy-image.css' | asset_url | stylesheet_tag }}
+{{ 'legacy-snippet-icon-search.css' | asset_url | stylesheet_tag }}
+{{ 'legacy-section-Popular-products.css' | asset_url | stylesheet_tag }}
+<style>
+  .page-content{ max-width: 661px;    margin: auto;}
+  .error-image {    margin: 20px auto;}
+  .ser-form{ padding: 30px 10px;}
+</style>
+<div class="{% if page.handle == 'search-results-page' %}bg-gray-300{% endif %} py-8">
+  <div class="max-w-6xl mx-auto px-4 text-blue-500">
+    <h1 class="mb-8 text-center text-xl md:text-2xl lg:text-3xl">
+      {{ page.title }}
+    </h1>
+    
+    <div class="text-center {% unless page.handle == 'search-results-page' %}page-content space-y-4{% endunless %}">
+      {% if section.settings.image != blank %}
+        <img class="error-image" src="{{ section.settings.image | img_url: "master" }}" alt="Error Image" loading="lazy">
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p>{{ section.settings.subheading }}</p>
+      {% endif %}
+      {% if section.settings.show_serchbox == true %}
+        <predictive-search>
+        <form action="{{ routes.search_url }}" method="get" role="search" class="ser-form">
+          <div class="bg-white border-2 border-gray-400 border-opacity-20 flex relative rounded-md">
+            <input
+              class="border-0 flex-1 outline-none pl-4 py-3 text-blue-500 text-sm focus:ring-blue-400 focus:ring-2"
+              name="q"
+              placeholder="Search"
+              type="search"
+              value="{{ search.terms | escape }}"
+              {%- if settings.predictive_search_enabled -%}
+                role="combobox"
+                aria-expanded="false"
+                aria-owns="predictive-search-results-list"
+                aria-controls="predictive-search-results-list"
+                aria-haspopup="listbox"
+                aria-autocomplete="list"
+                autocorrect="off"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+              {%- endif -%}
+            >
+
+            <input name="options[prefix]" type="hidden" value="last">
+
+            {%- if settings.predictive_search_enabled -%}
+              <div id="predictive-search" tabindex="-1"></div>
+            {%- endif -%}
+
+            
+
+            <button class="text-gray-400 px-4 py-3 transition-colors hover:text-orange-400" type="submit">
+              {% render 'old-icon-search' %}
+            </button>
+          </div>
+        </form>
+      </predictive-search>
+      {% endif %}
+
+      
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Article 404 page",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"text",
+        "id":"heading",
+        "label":"Heading"
+      },
+      {
+        "type":"text",
+        "id":"subheading",
+        "label":"Sub heading"
+      },
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Choose 404 image"
+      },
+      {
+        "type":"checkbox",
+        "id":"show_serchbox",
+        "label":"Show search box",
+        "default":true
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

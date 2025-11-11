@@ -1,0 +1,77 @@
+{% style %}
+  .xt-mc-inner-main-outer-div {display: flex;flex-wrap: wrap;justify-content: space-between;}
+  .xt-mc-single-sec {width: 23%;}
+  .xt-mc-single-sec img {width: 100%;border-radius: 15px;}
+  .xt-mc-single-sec h3 {font-weight: normal;margin-top: 11px;}
+
+  @media only screen and (max-width: 767px) {
+    .xt-mc-single-sec {width: 48%;margin-bottom: 30px;}
+  }
+  
+{% endstyle %}
+
+<div class="xt-multiple-collection-section-main max-w-7xl mx-auto pb-4 px-4 pt-12" id="{{ section.id }}" >
+  {% if section.settings.custom_title != blank %}
+    <h2 class="font-bold text-blue-500 text-xl md:border-l-8 md:border-blue-500 md:pl-2 md:text-2xl" style="margin-bottom:20px;">{{ section.settings.custom_title }}</h2>  
+  {% endif %}
+  <div class="xt-mc-inner-main-outer-div">
+  {% for block in section.blocks %}
+    
+    {% assign collection = block.settings.collection_Select %}
+    
+      <div class="xt-mc-single-sec">
+        <div class="xt-mc-s-image">
+          <a href="{{ collection.url }}">
+            {% if collection and collection.image %}
+              <img src="{{ collection.image | img_url: 'medium' }}" alt="{{ collection.title }}" loading="lazy">
+            {% else %}
+              <img src="{{ block.settings.cimage | img_url: 'medium' }}" alt="{{ collection.title }}" loading="lazy" />
+            {% endif %}
+          </a>
+        </div>
+        <a href="{{ collection.url }}">
+          <h3>{{ collection.title }}</h3>
+        </a>
+      </div>
+    
+  {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Multiple Collection",
+  "class": "td-legacy",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Add Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection_Select",
+          "label": "Select Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "cimage",
+          "label": "Collection Image Placeholder"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multiple Collection",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

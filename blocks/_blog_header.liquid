@@ -1,0 +1,152 @@
+{% stylesheet %}
+  .sb-blog-header__wrapper {
+    position: relative;
+    padding-left: 26px;
+  }
+
+  .sb-blog-header__wrapper::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: var(--sb-fg-color, #ffffff);
+  }
+
+  .sb-blog-header__title {
+    color: var(--sb-fg-color, #ffffff);
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .sb-blog-header__description {
+    color: var(--sb-fg-color, #ffffff);
+    opacity: 0.72;
+    margin-top: 4px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  .sb-blog-header__description p {
+    margin: 0;
+    font-weight: 400;
+    padding-bottom: 4px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sb-blog-header {
+      padding-top: 22px !important;
+      padding-bottom: 22px !important;
+    }
+
+    .sb-blog-header__title {
+      font-size: 22px;
+    }
+    
+    .sb-blog-header__description {
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .sb-blog-header__wrapper {
+      padding-left: 12px;
+    }
+  }
+{% endstylesheet %}
+
+<div class="sb-blog-header sb-styled-element" style="{%  render 'style-attributes', settings: block.settings %}">
+  <div class="sb-page-width">
+    <div class="sb-blog-header__wrapper">
+      <h1 class="sb-blog-header__title">
+        {% if block.settings.blog_title != blank %}
+          {{ block.settings.blog_title }}
+        {% else %}
+          {{ blog.title }}
+        {% endif %}
+      </h1>
+      {% if block.settings.show_blog_description and block.settings.blog_description != blank %}
+        <div class="sb-blog-header__description">
+          {{ block.settings.blog_description }}
+        </div>
+      {%  endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Blog Header",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "blog_title",
+      "label": "Blog Title"
+    },
+    {
+      "type":"checkbox",
+      "id":"show_blog_description",
+      "label":"Show Blog Description",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "blog_description",
+      "label": "Blog Description",
+      "visible_if": "{{ block.settings.show_blog_description == true }}",
+      "default": "<p>Your source of truth for health and fitness</p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0c2a3a"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 36,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 36,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Header",
+      "settings": {
+        "show_blog_description": true,
+        "bg_color": "#0c2a3a",
+        "fg_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  ]
+}
+{% endschema %}

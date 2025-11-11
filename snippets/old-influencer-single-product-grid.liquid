@@ -1,0 +1,302 @@
+<product-grid-item class="{% for tag in product.tags %}{% if tag contains 'TLsvegan' %} vegan_class {% elsif tag contains "StimulantFree" %} StimulantFree {% endif %} {% endfor %}bg-white flex flex-col p-4 rounded-xl text-blue-500 xgen-new-product stack-products_{{block_id}}_{{product.id}}">
+  <div class="xgan-ptag" style="background:#FF5D0D;">{{product_type}}</div>
+  <div class="xgen-product-img">
+  
+    {% assign split_title = product.title | split: '|' %}
+    {% if product.variants.size == 1 or product.tags contains 'use-featured-image' %}
+      <a class="block mx-auto w-64" href="{{ product.url | within: collection }}">
+          <img src="{{product.featured_image | img_url: 'master'}}" alt="{{ product.featured_image.alt }}" loading="lazy"/>
+      </a>
+    {% else %}
+      <div class="swiper render-swiper">
+        <div class="swiper-wrapper">
+          {% for variant in product.variants %}
+            {% if variant.option2 == '2 Tub' or variant.option2 == '3 Tub' %}
+              {% continue %}
+            {% endif %}
+            <div class="swiper-slide" data-variant-id="{{ variant.id }}">
+              <a class="block mx-auto w-64" href="{{ product.url | within: collection }}">
+                <img src="{{product.featured_image | img_url: 'master'}}" alt="{{ product.featured_image.alt }}" loading="lazy"/>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="xgen-product-info">
+    <div class="xgen-product-info-in" style="height:95px;">
+      <div class="flex rctitle-flex">
+
+      <!--<h3 class="font-normal">
+        {{ split_title[1] }}
+      </h3>-->
+        <h2 class="font-semibold text-xl xgen-ptitle">
+        {{ split_title[0] }}
+      </h2>
+        <div class="font-semibold  text-blue-400 text-xl variant-price">
+                <div class="price_black real_price2_{{block_id}}_{{product.id}}">{{product.price | money }} </div>
+                <del class="com_price2_{{block_id}}_{{product.id}}" style="display:none;"></del>
+          </div> 
+      </div>
+      {% comment %}
+       <div class="flex items-center text-sm">
+              <div class="flex space-x-1 text-orange-400">
+                {%- assign review_average = product.metafields.yotpo.reviews_average | times: 1 -%}
+                {%- for i in (1..5) -%}
+                  {%- assign index_minus_one = i | minus: 1 -%}
+                  {%- assign mod = review_average | modulo: index_minus_one -%}
+
+                  {%- if review_average >= i -%}
+                    <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m47.961 48h-47.945l39.914 31.543-15.941 48.441 40.059-29.871 39.938 29.871-15.871-48.863 39.918-31.121h-47.945l-16.094-47.996z" fill="currentColor"></path>
+                    </svg>
+                  {%- elsif mod >= 0.5 -%}
+                    <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m128.02 48h-47.953l-16.094-48-16.031 48h-47.969l39.937 31.555-15.953 48.445 39.984-29.812 0.09375-0.0625 39.938 29.875-15.875-48.867zm-39.594 58.531-24.371-18.547-0.058594 0.0625v-56.953l10.164 24.906h29.812l-25.453 19.43z" fill="currentColor"></path>
+                    </svg>
+                  {%- else -%}
+                    <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m64.008 31.113 10.172 24.887h29.809l-25.449 19.426 9.9023 31.105-24.387-18.543-24.387 18.109 9.8711-30.156-25.539-19.941h29.871l10.137-24.887m-16.043 16.887h-47.949l39.914 31.551-15.93 48.445 40.055-29.867 39.934 29.871-15.875-48.871 39.918-31.129h-47.945l-16.094-47.996z" fill="currentColor"></path>
+                    </svg>
+                  {%- endif %}
+                {%- endfor -%}
+              </div>
+
+              <p class="ml-3 text-gray-500">
+                <span class="font-bold text-black">{{ product.metafields.yotpo.reviews_average }}</span>/5.0
+              </p>
+            </div>
+       
+                    
+      <div class="xtags">
+         <span>Bestseller</span>
+         <span>15% off</span>
+         <span>Free Shipping</span>
+         
+                    {% if txt1 != blank %}
+                      <span>{{txt1}}</span>
+                    {% endif %}
+                    {% if txt2 != blank %}
+                      <span>{{txt2}}</span>
+                    {% endif %}
+                    {% if txt3 != blank %}
+                      <span>{{txt3}}</span>
+                    {% endif %}
+                    {% if txt4 != blank %}
+                      <span>{{txt4}}</span>
+                    {% endif %}
+                  </div>
+
+                    {% if txt5 != blank %}
+                     <ul class="xstacklist">
+                      {{txt5}}
+                      </ul>
+                    {% endif %}
+        {% endcomment %}
+       
+      {% comment %}{% endcomment %}
+    </div>
+<div class="xgen-pdesc">
+        {{ detail }}
+      </div> 
+    
+           <!-- <div class="package-list-wraper stack-text stack-text2">
+                  {% if product.variants.size > 0 %}
+                    {% if product.options[0] %}
+                       <div class="package-list   ">
+                      <div class="input-wraper">
+                          {% assign used = '' %}
+                          <label for="select-one_{{product.id}}{{product.id}}">{{ product.options[0] }}</label>
+                          <select id='select-one2_{{product.id}}{{product.id}}' onchange="letsDoThis2_{{product.id}}_{{product.id}}()">
+                          {% for variant in product.variants %}
+                              {% unless variant.inventory_quantity == 0 %}
+                              {% unless used contains variant.option1 %}
+                                <option value="{{ variant.option1 }}">{{ variant.option1 }}</option>
+                                {% capture used %}{{ used }} {{ variant.option1 }}{% endcapture %}
+                              {% endunless %}
+                              {% endunless %}
+                            
+                          {% endfor %}
+                          </select>
+                         </div>
+                       </div>
+                    {% endif %}
+                    {% if product.options[1] %}
+                       <div class="package-list   ">
+                     <div class="input-wraper">        
+                      {% assign used = '' %}
+                      <label for="select-one_{{product.id}}{{product.id}}">{{ product.options[1] }}</label>
+                      <select id='select-two2_{{product.id}}{{product.id}}' onchange="letsDoThis2_{{product.id}}_{{product.id}}()">
+                          {% for variant in product.variants %}
+                          {% unless variant.inventory_quantity == 0 %}
+                              {% unless used contains variant.option2 %}
+                                  <option value="{{ variant.option2 }}">{{ variant.option2 }}</option>
+                                  {% capture used %}{{ used }} {{ variant.option2 }}{% endcapture %}
+                              
+                          {% endunless %}
+                          {% endunless %}
+                          {% endfor %}
+                      </select>
+                    </div>
+                       </div>
+                  {% endif %}
+                  {% if product.options[2] %}
+                     <div class="package-list   ">
+                  <div class="input-wraper">        
+                      {% assign used = '' %}
+                      <label for="select-one_{{product.id}}{{product.id}}">{{ product.options[2] }}</label>
+                      <select id='select-three2_{{product.id}}{{product.id}}' onchange="letsDoThis2_{{product.id}}_{{product.id}}()">
+                          {% for variant in product.variants %}
+                        {% unless variant.inventory_quantity == 0 %}
+                              {% unless used contains variant.option3 %}
+                                  <option value="{{ variant.option3 }}">{{ variant.option3 }}</option>
+                                  {% capture used %}{{ used }} {{ variant.option3 }}{% endcapture %}
+                              {% endunless %}
+                        {% endunless %}
+                          {% endfor %}
+                      </select>
+                  </div>
+                     </div>
+                  {% endif %}
+              {% endif %}
+      <input type="hidden" name="id" id="product-select2_{{product.id}}_{{product.id}}" class="stack_vid2" value="{{ product.selected_or_first_available_variant.id }}" /> 
+      
+              <div class="p1_selling_plan2_{{product.id}}_{{block_id}}_{{product.id}}" style="display:none;"></div>                
+              <div class="package-list np_last" style="display:none;">
+              <p>Delivery Frequency</p>
+              <select class="selling_plan2_{{block_id}}_{{ product.id }}">
+                <option value="onetime"></option>
+              </select>
+            </div>
+      
+        <script type="text/javascript">
+        function letsDoThis2_{{product.id}}_{{product.id}}() 
+        {
+        ////console.log("clicked!");
+        {% if product.options[0] %}
+                        var opt1 = document.getElementById("select-one2_{{product.id}}{{product.id}}").value;
+                    {% endif %}
+          
+                                                           
+                    {% if product.options[1] %}
+                        var opt2 = document.getElementById("select-two2_{{product.id}}{{product.id}}").value;
+                    {% endif %}
+          
+                                                           
+                    {% if product.options[2] %}
+                        var opt3 = document.getElementById("select-three2_{{product.id}}{{product.id}}").value;
+                    {% endif %}
+                                                           
+                    var id = "";
+          
+                    {% for v in product.variants %}
+                     {% unless v.inventory_quantity == 0 %}
+                  
+                          if(opt1=="{{ v.option1 }}" {% if product.options[1] %} && opt2 =="{{ v.option2 }}" {% endif %} {% if product.options[2] %} && opt3 == "{{ v.option3 }}" {% endif %}) 
+                          {
+                              var id = {{ v.id }};
+                              var price = "{{ v.price | money }}";
+                          }
+                      {% endunless %}
+                    {% endfor %}
+                    if(id!='') 
+                    {
+                        document.getElementById("product-select2_{{product.id}}_{{product.id}}").value = id;
+                    } 
+                    else 
+                    {
+                        document.getElementById("product-select2_{{product.id}}_{{product.id}}").value = '';
+                    }
+                }
+                </script>
+          </div>-->
+           <div class="gap-8 grid grid-cols-2 items-center mt-4 price-btn-grid">
+                <!--<h6 class="update_main_price_{{block_id}}_{{product.id}}">
+            {{ product.price | money }}
+              </h6> -->
+               <div class=" pricetext">
+                 <div class="flex items-center quant-btn">
+                <div class="mr-4 md:mr-8">
+                  <!--<quantity-input>
+                    <div class="flex items-center text-blue-500">
+                      <button
+                        class="bg-gray-300 flex h-10 items-center justify-center rounded-full text-blue-light w-10"
+                        type="button"
+                      >
+                        {% render 'old-icon-minus' %}
+                      </button>
+
+                      <input
+                        class="border-2 border-gray-300 bg-transparent hide-selectors outline-none mx-2 rounded text-center w-16 focus:ring-0"
+                        min="1"
+                        name="quantity"
+                        type="number"
+                        value="1"
+                        id="stack-products_qty2_{{block_id}}_{{product.id}}"
+                      />
+
+                      <button
+                        class="bg-gray-300 flex h-10 items-center justify-center rounded-full text-blue-light w-10"
+                        type="button"
+                      >
+                        {% render 'old-icon-plus' %}
+                      </button>
+                    </div>
+                  </quantity-input>-->
+                </div>
+                <div class="w-full" id="add-to-cart-button-container">
+                  <a href="{{product.url}}" style="display:block;" class="submit-stack-products2_{{block_id}}_{{product.id}} button-alt" >Shop Now</a>
+                </div>
+             </div>
+          </div>
+        </div>
+
+  
+    </div>
+  
+</product-grid-item>
+<!--<script type="text/javascript">
+    
+  
+  document.addEventListener('DOMContentLoaded', function()
+  {
+    function format(num) {  return (num / 100).toFixed(2);}
+    var freq_val = document.querySelector("input[name='purchaseoption_{{block_id}}_{{product.id}}']:checked");
+    var freq_val_text = freq_val ? freq_val.dataset.text : '';
+    var freq_val2 = freq_val ? freq_val.value : '';
+      
+     document.querySelector(".submit-stack-products2_{{block_id}}_{{product.id}}").addEventListener("click", function ()
+     {
+            var selling_plan_val = document.querySelector(".selling_plan2_{{block_id}}_{{ product.id }}").value;
+            if(document.querySelector(".selling_plan2_{{block_id}}_{{ product.id }}").value == "onetime")
+          {
+              var variant_id = parseInt(document.querySelector('.stack_vid2').value);
+              var quantity = document.querySelector("#stack-products_qty2_{{block_id}}_{{product.id}}").value;
+                data = {
+                    "id": variant_id,
+                    "quantity": quantity
+                  }
+            }
+               
+          this.textContent = "Adding...";
+           
+           var xhr = new XMLHttpRequest();
+           xhr.open('POST', '/cart/add.js', true);
+           xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+           xhr.onreadystatechange = function() {
+             if (xhr.readyState === 4) {
+               if (xhr.status === 200) {
+                 window.location = "/cart";
+               } else {
+                 //console.log("error");
+               }
+             }
+           };
+           xhr.send('quantity=' + quantity + '&id=' + variant_id);
+      
+});
+});
+  
+   
+</script>-->

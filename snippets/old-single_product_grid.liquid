@@ -1,0 +1,172 @@
+{% if product != blank %}
+<product-grid-item class="bg-white flex flex-col p-4 rounded-xl text-blue-500 xgen-new-product">
+  <div class="xgen-product-img">
+    {% assign split_title = product.title | split: '|' %}
+
+    {% if product.variants.size == 1 or product.tags contains 'use-featured-image' %}
+      <a class="block mx-auto w-64" href="{{ product.url | within: collection }}">
+        {% render 'old-lazy-image', height: 256, image: product.featured_image, width: 256 %}
+      </a>
+    {% else %}
+      <a class="block mx-auto w-64" href="{{ product.url | within: collection }}">
+        {% render 'old-lazy-image', height: 256, image: product.featured_image, width: 256 %}
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="xgen-product-info">
+    <h3 class="font-normal">
+      {{ split_title[1] }}
+    </h3>
+
+    <h2 class="font-semibold text-xl xgen-ptitle">
+      {{ split_title[0] }}
+    </h2>
+
+    <div class="flex items-center priceg">
+      <div class="my-4">
+        <div class="font-bold text-xl variant-price">
+          {{ product.price | money }}
+        </div>
+      </div>
+
+      <div class="cal-stars">
+        <svg class="h-4 text-orange-400 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+          <path d="m47.961 48h-47.945l39.914 31.543-15.941 48.441 40.059-29.871 39.938 29.871-15.871-48.863 39.918-31.121h-47.945l-16.094-47.996z" fill="currentColor"/>
+        </svg>&nbsp;<span class="font-bold text-black">{{ product.metafields.yotpo.reviews_average }}</span>/5.0
+      </div>
+    </div>
+
+    <div class="xgen-pdesc" style="display:none;">
+      {% if product.metafields.my_fields.sub_coll_product_details != blank %}
+        {{ product.metafields.my_fields.sub_coll_product_details }}
+      {% endif %}
+    </div>
+
+    {% unless product.tags contains 'stack' %}
+      {% form 'product', product, data-productid: product.id %}
+        <div class="my-2">
+          <label for="variant-select-{{ product.id }}" class="block mb-1 text-sm font-medium text-gray-700">
+            Choose an option
+          </label>
+          <select
+            style="border: 1px solid #ccc;margin: 10px 0;max-height: 400px;scroll-behavior: auto;"
+            id="variant-select-{{ product.id }}"
+            name="id"
+            class="block w-full border border-gray-300 rounded-md shadow-sm p-2 text-sm"
+            data-productid="{{ product.id }}"
+          >
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                {% if variant.option2 == '2 Tub' or variant.option2 == '3 Tub' %}
+                  {% continue %}
+                {% endif %}
+                <option
+                  value="{{ variant.id }}"
+                  {% if forloop.index0 == 0 %}
+                    selected
+                  {% endif %}
+                  data-available="{{ variant.available }}"
+                >
+                  {{ variant.title | replace: '/ 1 Tub', '' }}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="gap-8 grid grid-cols-2 items-center mt-4 btng">
+          <div>
+            <legacy-quantity-input>
+              <div class="flex items-center text-blue-500">
+                <button
+                  class="quantity-button"
+                  type="button"
+                >
+                  {% render 'old-icon-minus' %}
+                </button>
+
+                <input
+                  class="border-0 bg-transparent hide-selectors outline-none text-center w-12"
+                  min="1"
+                  name="quantity"
+                  readonly
+                  type="number"
+                  value="1"
+                >
+
+                <button
+                  class="quantity-button"
+                  type="button"
+                >
+                  {% render 'old-icon-plus' %}
+                </button>
+              </div>
+            </legacy-quantity-input>
+          </div>
+
+          {% assign default_variant = product.variants[0] %}
+
+          {% comment %}
+            class="border-2 px-4 py-3 rounded-md text-sm transition-opacity hover:opacity-70 {% if default_variant.available %}border-blue-400 text-blue-400{% else %}border-gray-400 opacity-70 text-gray-400{% endif %}"
+          {% endcomment %}
+          <button
+            class="button-alt"
+            type="submit"
+            {% unless default_variant.available %}
+              disabled="disabled"
+            {% endunless %}
+          >
+            {% if default_variant.available %}Quick Add{% else %}Sold Out{% endif %}
+          </button>
+        </div>
+      {% endform %}
+    {% endunless %}
+  </div>
+</product-grid-item>
+<script>
+  document.querySelector('#product_form_{{product.id}}').addEventListener('submit', function(event)
+    { 	
+      event.preventDefault();
+      const config = {
+        headers: {
+          'Accept': 'application/javascript',
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        'X-Requested-With': 'XMLHttpRequest',
+      };
+
+      config.body = JSON.stringify({
+        id: this.querySelector('select[name="id"]').value,
+        quantity: this.querySelector('input[name="quantity"]').value,
+      });
+
+      let url = '/cart/add.js';
+      const cartElement = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+      if (cartElement && cartElement.getSectionsToRender) {
+        const sections = cartElement.getSectionsToRender().map((section) => section.id);
+        url += `?sections=${sections.join(',')}`;
+      }
+
+      fetch(url, config)
+        .then((response) => response.json())
+        .then((response) => {
+          if (response.status) {
+            console.error(response);
+          }
+          if (cartElement && cartElement.renderContents) {
+            cartElement.renderContents(response);
+            publish(PUB_SUB_EVENTS.cartUpdate, {source: 'tl-farm-product'});
+            if (cartElement.openCartDrawer) {
+              cartElement.openCartDrawer();
+            }
+          }
+        })
+        .catch((e) => {
+          console.error(e);
+        })
+
+  });
+</script>
+{% endif %}

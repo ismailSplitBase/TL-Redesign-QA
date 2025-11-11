@@ -1,0 +1,94 @@
+<div class="xt-protein-ingredients" id="xt-protein-ingredients">
+  <script src="{{ 'flickity.pkgd.min.js' | asset_url }}" defer></script>
+  <link rel="stylesheet" href="{{ 'flickity.min.css' | asset_url }}">
+  {% if section.settings.title!=blank %}
+    <h2 class="title">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  {% if section.blocks !=blank %}
+    <div class="carousel" data-flickity='{ "wrapAround": true, "pageDots": false }'>
+      
+      {% for block in section.blocks %}
+        <div class="items">
+          <div class="itemsin">
+            {% if block.settings.image1 !=blank %}
+              <div class="img-group">
+                <img class="img1" src="{{ block.settings.image1 | img_url : '' }}" alt="{% if block.settings.image1.alt %}{{ block.settings.image1.alt }}{% else %}Protein Ingredients Image 1{% endif %}" loading="lazy">
+                {% if block.settings.image2 !=blank %}
+                  <img class="img2" src="{{ block.settings.image2 | img_url : '' }}" alt="{% if block.settings.image2.alt %}{{ block.settings.image2.alt }}{% else %}Protein Ingredients Image 2{% endif %}" loading="lazy">
+                {% endif %}
+              </div>
+            {% endif %}
+  
+            <div class="desc-group">
+              {% if block.settings.title !=blank %}
+                <h3>{{ block.settings.title }}</h3>
+              {% endif %}
+  
+              {% if block.settings.desc !=blank %}
+                <p>{{ block.settings.desc }}</p>
+              {% endif %}
+            </div>
+          
+          </div>
+        </div>
+      {% endfor %}
+    
+    </div>
+  {% endif %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "Protein plus ingredients",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"textarea",
+        "id":"title",
+        "label":"Heading",
+        "info":"Use <span> tag for change title color"
+      }
+    ],
+    "blocks":[
+      {
+        "name":"Slide",
+        "type":"image",
+        "settings":[
+          {
+            "type":"image_picker",
+            "id":"image1",
+            "label":"Back Image"
+          },
+          {
+            "type":"image_picker",
+            "id":"image2",
+            "label":"Front Image"
+          },
+          {
+            "type":"text",
+            "id":"title",
+            "label":"Title"
+          },
+          {
+            "type":"textarea",
+            "id":"desc",
+            "label":"Description"
+          }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name": "Protein plus ingredients"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

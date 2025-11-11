@@ -1,0 +1,127 @@
+{%  liquid
+  assign product = block.settings.default_product
+  unless block.settings.use_default_product
+    assign product = block.settings.dynamic_product.value
+  endunless
+%}
+
+{% stylesheet %}
+  .sb-blog-featured-product {
+    padding: var(--sb-padding-top-mobile, 24px) 16px var(--sb-padding-bottom-mobile, 24px);
+    background-color: var(--sb-bg-color, #ffffff);
+    color: var(--sb-fg-color, #000000);
+  }
+  
+  .sb-blog-featured-product__heading {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    margin-top: 0;
+    color: var(--sb-fg-color, #000000);
+  }
+
+{% endstylesheet %}
+
+{% if product != blank %}
+  <div class="sb-blog-featured-product sb-styled-element" style="{% render 'style-attributes', settings: block.settings %}">
+    {% if block.settings.heading != empty %}
+      <h2 class="sb-blog-featured-product__heading">{{ block.settings.heading }}</h2>
+    {% endif %}
+    {% render 'product-card-blog', product: product, section: block %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "SB - Blog Feature Product",
+  "tag": "section",
+  "class": "sb-blog-featured-product-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Product"
+    },
+    {
+      "type": "header",
+      "content": "Product Selection"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_default_product",
+      "label": "Use Default Product",
+      "default": true,
+      "info": "Use this to show the same product on all blog posts"
+    },
+    {
+      "type": "product",
+      "id": "dynamic_product",
+      "label": "Product"
+    },
+    {
+      "type": "product",
+      "id": "default_product",
+      "label": "Default Product"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Text Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_color",
+      "label": "Card Text Color"
+    },
+    {
+      "type": "color_background",
+      "id": "ch_bg_color",
+      "label": "Card Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB - Blog Featured Product"
+    }
+  ]
+}
+{% endschema %}

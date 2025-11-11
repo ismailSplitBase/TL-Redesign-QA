@@ -1,0 +1,73 @@
+<style>
+  .xt-sitemap-main h1{text-align:center;font-size:30px;padding: 20px 0;}
+  .xt-sitemap-main ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom:40px;
+}
+ .html-sitemap ul li {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 12px;
+    list-style: disc;
+    margin-left: 16px;
+    padding-right: 20px;
+}
+  .html-sitemap ul li a {
+    font-size: 14px;
+}
+  .xt-sitemap-main h2{font-size:22px;margin-bottom:12px;}
+</style>
+
+
+<div class="max-w-7xl mx-auto xl:px-4 xt-sitemap-main">
+  <h1>{{ page.title }}</h1>
+  <div class="html-sitemap">
+    <h2>Products</h2>
+    <ul>
+      {% for product in collections.all.products %}
+        <li><a href="{{ product.url }}">{{ product.title }}</a></li>
+      {% endfor %}
+    </ul>
+
+    <h2>Pages</h2>
+    <ul>
+      {% for page in pages %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a> </li>
+      {% endfor %}
+    </ul>
+
+    <h2>Blogs</h2>
+    <ul>
+      
+      {% assign blog_handle = 'all' %}
+      {% assign blog = blogs[blog_handle] %}
+
+      {% for article in blog.articles %}
+         <li> <a href="{{ article.url }}">{{ article.title }}</a></li>
+      {% endfor %}
+    </ul>
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "HTML Sitemap",
+  "class": "td-legacy",
+  "settings": [
+  ],
+   "presets": [
+    {
+      "name": "HTML Sitemap"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,272 @@
+
+<style>
+  .tlselect-slider
+  {
+    display:block;
+    margin:0 0 50px 0;
+  }
+  
+  .tlselect-slider .regular .slick-prev,
+  .tlselect-slider .regular .slick-next
+  {
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 70px;
+    height: 70px;;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+  .tlselect-slider .regular .slick-prev::before,
+  .tlselect-slider .regular .slick-next::before
+  {
+    content:none;
+  }
+  .tlselect-slider .regular .slick-prev img,
+  .tlselect-slider .regular .slick-next img
+  {
+    width:20px;
+  }
+  .tlselect-slider .regular .slick-next
+  {
+    right:-10px;
+  }
+  .tlselect-slider .regular .slick-prev
+  {
+    left:-10px;
+    z-index:1;
+    transform:rotate(180deg);
+    transform-origin:center 27%;;
+    /*display:none !important;*/
+  }
+  .tlselect-slider .regular .items img
+  {
+    width:100%;
+  }
+  .tlselect-slider .regular .items
+  {
+    position:relative;
+  }
+  .tlselect-slider .regular .items .jslide-text
+  {
+    position:absolute;
+    left:100px;
+    max-width:350px;
+    z-index:1;
+    color:#fff;
+    top: 50%;
+  	-webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
+  
+  .tlselect-slider .regular .items .jslide-text h2
+  {
+    color:#fff;
+    font-size:35px;
+    margin-bottom:10px;
+  }
+  .tlselect-slider .regular .items .jslide-text h3
+  {
+    color:#fff;
+    font-size:26px;
+    font-weight:100;
+    letter-spacing:2px;
+    margin-top: 20px;
+  }
+  
+  .tlselect-slider .regular .items .jslide-text h4
+  {
+    color:#4e95c3;
+    font-size:18px;
+    font-weight:100;
+  }
+  .tlselect-slider .regular .items .jslide-text p
+  {
+    font-weight:100;
+    line-height:28px;
+  }
+  
+  .d_img
+  {
+    display:block !important;
+  }
+  .m_img
+  {
+    display:none !important;
+  }
+  
+  @media only screen and (max-width:767px)
+  {
+    .tlselect-slider
+    {
+      
+    }
+    .tlselect-slider .regular .items .jslide-text
+    {
+      /*position:unset;*/
+      display:block;
+      /*background:#162b39;*/
+      background: linear-gradient(360deg, rgba(22,43,57,1) 0%, rgba(0,0,0,0) 100%);
+      transform:none;
+      padding:20px;
+      max-width:100%;
+      left:0;
+    }
+    .tlselect-slider .regular .slick-prev,
+  	.tlselect-slider .regular .slick-next
+    {
+      /*top:20%;*/
+      width:40px;
+      height:40px;
+    }
+    .tlselect-slider .regular .slick-next img,
+    .tlselect-slider .regular .slick-prev img
+    {
+      width:20px
+    }
+    .tlselect-slider .regular .slick-prev
+    {
+      left:5px;
+    }
+    .tlselect-slider .regular .slick-next
+    {
+      right:5px;
+    }
+    .d_img
+    {
+      display:none !important;
+    }
+    .m_img
+    {
+      display:block !important;
+    }
+  }
+  
+  @media only screen and (min-width:768px) and (max-width:1023px)
+  {
+    .tlselect-slider .regular .slick-prev, .tlselect-slider .regular .slick-next
+    {
+      width:70px;
+      height:70px;
+    }
+  }
+  
+  
+</style>
+
+<div class="tlselect-slider">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="regular slider">
+      
+      {% for block in section.blocks %}
+        <div class="items">
+          {% if block.settings.image!=blank %}
+            {% assign image_desktop = block.settings.image | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+          	<img src="{{ block.settings.image | img_url : 'master' }}" class="d_img" alt="{% if block.settings.image.alt %}{{ block.settings.image.alt }}{% else %}{{ image_desktop }}{% endif %}" loading="lazy" />
+          {% endif %}
+          {% if block.settings.image1!=blank %}
+            {% assign image_mobile = block.settings.image1 | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+          	<img src="{{ block.settings.image1 | img_url : 'master' }}" class="m_img" alt="{% if block.settings.image1.alt %}{{ block.settings.image1.alt }}{% else %}{{ image_mobile }}{% endif %}" loading="lazy">
+          {% endif %}
+          
+          <div class="jslide-text">
+            
+            {% if block.settings.name %}
+            	<h2>{{ block.settings.name }}</h2>
+            {% endif %}
+            
+            {% if block.settings.text %}
+            	<p>{{ block.settings.text }}</p>
+            {% endif %}
+            
+            
+            
+            {% if block.settings.text2 %}
+            	<h3>{{ block.settings.text2 }}</h3>
+            {% endif %}
+            
+            {% if block.settings.text3 %}
+            	<h4>{{ block.settings.text3 }}</h4>
+            {% endif %}
+            
+          </div>
+          
+        </div>
+      {% endfor %}
+      
+      
+    </div>
+    
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "TL Select Slider",
+    "class": "td-legacy",
+    "settings": [],
+	"blocks":[
+		{
+			"name":"slide",
+			"type":"image",
+      "limit": 1,
+			"settings":[
+				{
+					"type":"image_picker",
+					"id":"image",
+					"label":"Choose Desktop Image"
+				},
+				{
+					"type":"image_picker",
+					"id":"image1",
+					"label":"Choose Mobile Image"
+				},
+				{
+					"type":"textarea",
+					"id":"text",
+					"label":"Enter Text"
+				},
+				{
+					"type":"text",
+					"id":"name",
+					"label":"Enter Name"
+				},
+				{
+					"type":"text",
+					"id":"text2",
+					"label":"Enter Text"
+				},
+				{
+					"type":"text",
+					"id":"text3",
+					"label":"Enter Text"
+				}
+			]
+		}
+	],
+	"presets":[
+		{
+			"name": "TL Select Slider"
+		}
+	]
+  }
+{% endschema %}
+

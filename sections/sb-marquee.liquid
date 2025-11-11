@@ -1,0 +1,243 @@
+<script src='{{ 'section-sb-marquee.js' | asset_url }}' defer></script>
+
+{% comment %} 
+  Count the number of blocks for track duplication logic 
+  Pre-render duplicate tracks with aria-hidden if we have fewer than min_tracks_needed blocks
+  The liquid duplicates prevent a flash of empty space before JS generates n tracks based on the window width
+  6 is an estimated number of tracks needed to fill the screen on most devices, change as needed
+{% endcomment %}
+{% liquid
+  assign marquee_items = section.blocks | where: 'type', 'item'
+  assign block_count = marquee_items.size
+  assign min_tracks_needed = 6
+  assign tracks_to_duplicate = 0
+  if block_count > 0 and block_count < min_tracks_needed
+    assign tracks_to_duplicate = min_tracks_needed | minus: block_count
+  endif
+  assign has_filled_items = false
+  for item in marquee_items
+    if item.settings.icon != blank or item.settings.text != blank
+      assign has_filled_items = true
+      break
+    endif
+  endfor
+%}
+    
+{% if has_filled_items %}
+  <div class="sb-marquee__section-wrapper sb-styled-element section-{{ section.id }}" style="{%  render 'style-attributes', settings: section.settings %} --marquee-speed: {{ section.settings.speed }}s;">
+    <sb-marquee class="sb-marquee">
+      {% comment %} Main track - visible to all users including screen readers {% endcomment %}
+      <div class="sb-track sb-track--marquee">
+        {% for item in marquee_items %}
+          <span class='sb-track__content sb-text'>
+            {% if item.settings.icon != blank %}
+              {{ item.settings.icon | image_url: width: 50 | image_tag }}
+            {% endif %}
+            {% if item.settings.text != blank %}
+              {{ item.settings.text }}
+            {% endif %}
+          </span>
+        {% endfor %}
+      </div>
+      
+      {% comment %} 
+        Duplicate tracks - hidden from screen readers
+      {% endcomment %}
+      {% if tracks_to_duplicate > 0 %}
+        {% for i in (1..tracks_to_duplicate) %}
+          <div class="sb-track sb-track--marquee" aria-hidden="true">
+            {% for item in marquee_items %}
+              <span class='sb-track__content sb-text'>
+                {% if item.settings.icon != blank %}
+                  {{ item.settings.icon | image_url: width: 50 | image_tag }}
+                {% endif %}
+                {% if item.settings.text != blank %}
+                  {{ item.settings.text }}
+                {% endif %}
+              </span>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </sb-marquee>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .sb-marquee {
+    --iteration-reduction: 2;
+    --_iteration-count: calc(var(--track-count) - var(--iteration-reduction));
+    --inline-spacing: 22px;
+    --_inline-slide-margin: calc(var(--inline-spacing) / 2);
+    position: relative;
+    height: auto;
+    background-color: var(--sb-bg-color);
+    display: flex;
+    overflow: hidden;
+  }
+
+  .sb-track--marquee {
+    display: flex;
+    gap: var(--inline-spacing);
+    padding-inline: var(--_inline-slide-margin);
+    width: auto;
+    height: 100%;
+    animation: scroll-left calc(var(--marquee-speed, 30s) * var(--_iteration-count))
+      linear infinite;
+    color: var(--sb-text-color, revert);
+    background-color: var(--sb-bg-color);
+  }
+
+  .sb-marquee--reverse .sb-track--marquee {
+    animation-name: scroll-right;
+  }
+
+  .sb-track--marquee .sb-track__content {
+    padding-inline: 0;
+  }
+
+  .sb-track--marquee span {
+    padding: 13px 30px 15px;
+    gap: 8px;
+    font-family: var(--sb-font-family-body, revert);
+    font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+    font-weight: 400;
+    color: var(--sb-text-color, revert);
+    text-align: center;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-around;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .sb-track--marquee img {
+    max-height: 25px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .sb-marquee:hover .sb-track--marquee,
+  .sb-marquee:focus-within .sb-track--marquee {
+    animation-play-state: paused;
+  }
+
+  /* 
+  * Two separate keyframes for left and right scrolling directions
+  * scroll-left: Content moves from right to left (default)
+  * scroll-right: Content moves from left to right (reverse)
+  */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% * var(--_iteration-count)));
+    }
+  }
+
+  @keyframes scroll-right {
+    0% {
+      /* Start position is negative to ensure content is visible immediately */
+      transform: translateX(calc(-100% * var(--_iteration-count)));
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @media screen and (min-width: 767px){
+    .sb-marquee{
+      --inline-spacing: 64px;
+    }
+  }
+  @media screen and (min-width: 1280px){
+    .sb-marquee{
+      --inline-spacing: 100px;
+    }
+  }
+  @media screen and (min-width: 1440px){
+    .sb-marquee{
+      --inline-spacing: 135px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SB Marquee",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "s",
+      "label": "Speed",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Marquee"
+    }
+  ]
+}
+{% endschema %}

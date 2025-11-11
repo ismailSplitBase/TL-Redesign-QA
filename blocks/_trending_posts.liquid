@@ -1,0 +1,137 @@
+{% stylesheet %}
+.sb-trending-posts {
+  padding-top: var(--sb-padding-top, 0);
+  padding-bottom: var(--sb-padding-bottom, 0);
+  color: var(--sb-fg-color);
+  background-color: var(--sb-bg-color);
+}
+
+.sb-trending-posts__container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sb-trending-posts__title {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--sb-fg-color, #000);
+  line-height: 1.2;
+}
+
+.sb-trending-posts__container.sb-trending-posts__container--cards {
+  gap: 16px;
+}
+
+.sb-trending-posts__container.sb-trending-posts__container--cards .sb-trending-posts__title {
+  margin-bottom: 16px;
+}
+.sb-blog-post-section__sidebar .sb-trending-posts {
+  padding-left: 0;
+  padding-right: 0;
+}
+@media screen and (max-width: 990px) {
+
+  .sb-blog-post-section__sidebar .sb-trending-posts {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .sb-trending-posts {
+    padding-top: var(--sb-padding-top-mobile, 0);
+    padding-bottom: var(--sb-padding-bottom-mobile, 0);
+  }
+  
+  .sb-trending-posts__title {
+    font-size: 24px;
+    margin: 0;
+  }
+}
+{% endstylesheet %}
+
+<div class="sb-trending-posts sb-styled-element" style="{%  render 'style-attributes', settings: block.settings, mobile_multiple: 0.63 %}">
+  <div class="sb-trending-posts__container {% if block.settings.ch_bg_color != blank %} sb-trending-posts__container--cards{% endif %}">
+    {% if block.settings.heading != empty %}
+      <h2 class="sb-trending-posts__title">
+        {{ block.settings.heading }}
+      </h2>
+    {% endif  %}
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trending Posts",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What's Trending"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Text Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_color",
+      "label": "Card Text Color"
+    },
+    {
+      "type": "color_background",
+      "id": "ch_bg_color",
+      "label": "Card Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 40,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 40,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_trending_post",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trending Posts",
+      "settings": {
+        "heading": "What's Trending"
+      }
+    }
+  ]
+}
+{% endschema %}

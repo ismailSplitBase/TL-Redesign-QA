@@ -1,0 +1,180 @@
+<style>
+
+  h2.mbsubheading {
+    text-align: left;      
+  }
+  
+  {% if section.settings.image_only!=blank %}
+
+    .TL_aff_hero_inner{display:none}
+  
+    .TL_aff_content
+    {
+      overflow:unset;
+    }
+    .TL_aff_content .TL_aff_hero
+    {
+      width:100%;
+      min-height:unset;
+      padding: 0;
+    }
+    /*.TL_aff_content .TL_aff_hero img
+    {
+      position:relative;
+      top:40px;
+    }*/
+    .TL_aff_content .TL_aff_hero .mobile
+    {  
+      display:none;
+    }
+    .TL_aff_hero-banner
+    {
+      display:none;
+    }
+
+    @media only screen and (max-width: 600px)
+    {
+      .TL_aff_content .TL_aff_hero .desktop
+      {
+        display:none;
+      }
+      .TL_aff_content .TL_aff_hero .mobile
+      {
+        display:block;
+      }
+    }
+
+  
+  {% else %}
+    
+    #shopify-section-{{ section.id }} .TL_aff_hero 
+    {
+      {% if section.settings.image != blank %}
+        background-image: url("{{ section.settings.image | img_url : 'master' }}");
+        background-size: cover;
+        background-position: 51% 16%;
+      {% endif %}
+    }
+    @media only screen and (max-width: 600px)
+    {
+      #shopify-section-{{ section.id }} .TL_aff_hero 
+      {
+        {% if section.settings.image != blank %}
+          background-image: url("{{ section.settings.mobile_image | img_url : 'master' }}");
+          background-size: cover;
+          background-position: 51% 16%;
+        {% endif %}
+      }
+      
+    }
+  {% endif %}
+
+  
+</style>
+
+<section class="TL_aff_content">
+    <a href="{{ section.settings.btn_link }}">
+  <div class="TL_aff_hero">
+
+    {% if section.settings.image_only != blank %}
+      
+    <img class="desktop" src="{{ section.settings.image | img_url : 'master' }}" alt="{% if section.settings.image.alt %}{{ section.settings.image.alt }}{% else %}Affiliate Banner Image{% endif %}" loading="lazy">
+    <img class="mobile" src="{{ section.settings.mobile_image | img_url : 'master' }}" alt="{% if section.settings.mobile_image.alt %}{{ section.settings.mobile_image.alt }}{% else %}Affiliate Banner Image{% endif %}" loading="lazy">
+
+    {% endif %}
+
+    {% if section.settings.top_heading != blank %}
+      <div class="TL_aff_hero-banner">{{ section.settings.top_heading }}</div>
+    {% endif %}
+
+<!--     <div class="darken_it"></div> -->
+
+    <div class="TL_aff_hero_inner">
+    
+
+      {% if section.settings.heading!=blank %}
+        <h1>{{ section.settings.heading }}</h1>
+      {% endif %}
+
+      {% if section.settings.mbsubheading !=blank %}
+        <h2 class="mobile mbsubheading">{{ section.settings.mbsubheading }}</h2>
+      {% endif %}
+      
+      {% if section.settings.subheading!=blank %}
+        <p>{{ section.settings.subheading }}</p>
+      {% endif %}
+
+      {% if section.settings.btn_text != blank %}
+      <a href="{{ section.settings.btn_link }}" class="TL_aff_button">{{ section.settings.btn_text }}</a>
+      {% endif %}
+    
+
+    </div>
+
+  </div>
+  </a>
+</section>
+{% schema %}
+  {
+    "name": "bulk-affiliate-mainbanner",
+    "class": "td-legacy",
+    "settings": [
+       {
+        "type":"checkbox",
+        "id":"image_only",
+        "label":"Image Only"
+      },
+      {
+        "type":"text",
+        "id":"top_heading",
+        "label":"Top Text"
+      },
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Banner Image"
+      },
+       {
+        "type":"image_picker",
+        "id":"mobile_image",
+        "label":"Mobile Banner Image"
+      },
+      {
+        "type":"text",
+        "id":"heading",
+        "label":"Heading"
+      },
+      {
+        "type":"text",
+        "id":"mbsubheading",
+        "label":"Sub Heading"
+      },
+      {
+        "type":"textarea",
+        "id":"subheading",
+        "label":"Description"
+      },
+      {
+        "type":"text",
+        "id":"btn_text",
+        "label":"Button Text"
+      },
+      {
+        "type":"url",
+        "id":"btn_link",
+        "label":"Button Link"
+      }
+    ],
+    "presets":[
+		{
+			"name": "bulk-affiliate-mainbanner"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

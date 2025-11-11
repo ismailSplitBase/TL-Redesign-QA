@@ -1,0 +1,22 @@
+.sb-section-page-width,
+.sb-section-page-width-wide,
+.sb-section-page-width-narrow,
+.sb-section-page-width-slim {
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--block-gap, 16px);
+}
+.sb-section-page-width {
+  max-width: var(--page-width, 1420px);
+}
+.sb-section-page-width-wide {
+  max-width: 1620px;
+}
+.sb-section-page-width-narrow {
+  max-width: 1120px;
+}
+.sb-section-page-width-slim {
+  max-width: 920px;
+}

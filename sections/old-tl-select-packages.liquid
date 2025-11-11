@@ -1,0 +1,241 @@
+<style>
+  .tlselect-package
+  {
+    display:block;
+    width:100%;
+    padding:100px 15px;
+    {% if section.settings.bg_img!=blank %}
+      background:url("{{ section.settings.bg_img | img_url : 'master' }}");
+      background-size:cover;
+    {% endif %}
+  }
+  .tlselect-package .package-wraper
+  {
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:50px;
+    align-items:start;
+    justify-content:center;
+  }
+  .tlselect-package .package-in
+  {
+    padding:40px 15px;
+    border-radius:30px;
+    color:#fff;
+    text-align:center;
+    border:solid 1px #b8e5f2;
+  }
+  .tlselect-package .package-in h3 {color:#fff}
+  .tlselect-package .package-in:nth-child(2)
+  {
+    border:solid 1px #eba741;
+  }
+  .tlselect-package .package-in:nth-child(3)
+  {
+    border:solid 1px #afc1c8;
+  }
+  .tlselect-package .package-in svg
+  {
+    width:40px;
+    display:inline-block;
+    margin-bottom:10px;
+  }
+  .tlselect-package .package-in svg path
+  {
+    fill:#fff;
+  }
+  .tlselect-package .package-in h3
+  {
+    font-size:24px;
+    position:relative;
+    margin-bottom:25px;
+    font-weight:700;
+    text-transform:uppercase;
+    text-align:center;
+  }
+  /*.tlselect-package .package-in h3::after
+  {
+    position:absolute;
+    content:"";
+    bottom:-10px;
+    left:0;
+    height:10px;
+    width:70px;
+    background:#ce4e27;
+  }
+  .tlselect-package .package-in.gold h3::after
+  {
+    background:#fbb03b;
+  }
+  .tlselect-package .package-in.platinum h3::after
+  {
+    background:#cbd5e1;
+  }*/
+  .tlselect-package .package-in .package-text
+  {
+    font-size: 16px;
+    line-height: 22px;
+    text-align:left;
+    
+  }
+  .tlselect-package .package-in .package-text p
+  {
+    margin-bottom:20px;
+    padding-left:40px;
+    background:url("https://cdn.shopify.com/s/files/1/0866/7664/files/blue_check.png?v=1656341609");
+    background-repeat:no-repeat;
+    background-size:25px;
+  }
+  .tlselect-package .package-in:nth-child(2) .package-text p
+  {
+    background:url("https://cdn.shopify.com/s/files/1/0866/7664/files/gold_check.png?v=1656342137");
+    background-repeat:no-repeat;
+    background-size:25px;
+  }
+  .tlselect-package .package-in:nth-child(3) .package-text p
+  {
+    background:url("https://cdn.shopify.com/s/files/1/0866/7664/files/platinum_check.png?v=1656342127");
+    background-repeat:no-repeat;
+    background-size:25px;
+  }
+  
+  @media only screen and (max-width:767px)
+  {
+    .tlselect-package
+    {
+      padding:50px 15px;
+    }
+  	.tlselect-package .package-wraper
+    {
+      grid-template-columns:1fr;
+      padding:15px;
+    }
+    .tlselect-package .package-wraper .package-in
+    {
+      padding:20px 15px;
+    }
+  }
+  
+  @media only screen and (min-width:768px) and (max-width:1023px)
+  {
+    .tlselect-package
+    {
+      padding:50px 0;
+    }
+    .tlselect-package .package-in h3
+    {
+      font-size:30px;
+    }
+    .tlselect-package .package-wraper
+    {
+      gap:30px;
+      grid-template-columns:1fr 1fr;
+      padding:0 15px;
+    }
+  }
+  
+</style>
+
+<div id="tlselect-package" class="tlselect-package">
+  <div class="max-w-7xl mx-auto">
+    <div class="package-wraper">
+      
+      <div id="select" class="package-in select1">
+        {% if section.settings.heading1 %}
+        	{% render 'old-short-logo' %}
+        	<h3>{{ section.settings.heading1 }}</h3>
+        {% endif %}
+        
+        {% if section.settings.text1 %}
+          <div class="package-text">
+            {{ section.settings.text1 | newline_to_br }}
+          </div>
+        {% endif %}
+      </div>
+      
+      <div id="gold" class="package-in gold">
+        {% if section.settings.heading2 %}
+        	{% render 'old-short-logo' %}
+        	<h3>{{ section.settings.heading2 }}</h3>
+        {% endif %}
+        
+        {% if section.settings.text2 %}
+          <div class="package-text">
+            {{ section.settings.text2 | newline_to_br }}
+          </div>
+        {% endif %}
+        
+      </div>
+      
+      <div id="platinum" class="package-in platinum">
+        {% if section.settings.heading3 %}
+        	{% render 'old-short-logo' %}
+        	<h3>{{ section.settings.heading3 }}</h3>
+        {% endif %}
+        
+        {% if section.settings.text3 %}
+          <div class="package-text">
+            {{ section.settings.text3 | newline_to_br }}
+          </div>
+        {% endif %}
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "TL Select Packages",
+    "class": "td-legacy",
+    "settings": [
+		{
+            "type":"image_picker",
+            "id":"bg_img",
+            "label":"Background Image"
+        },
+		{
+            "type":"text",
+            "id":"heading1",
+            "label":"Select Heading"
+        },
+        {
+            "type":"richtext",
+            "id":"text1",
+            "label":"Select Text"
+		},
+		{
+            "type":"text",
+            "id":"heading2",
+            "label":"Gold Heading"
+        },
+        {
+            "type":"richtext",
+            "id":"text2",
+            "label":"Gold Text"
+		},
+		{
+            "type":"text",
+            "id":"heading3",
+            "label":"Platinum Heading"
+        },
+        {
+            "type":"richtext",
+            "id":"text3",
+            "label":"Platinum Text"
+		}
+	],
+	"presets":[
+		{
+			"name": "TL Select Packages"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+ 

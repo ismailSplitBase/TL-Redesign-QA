@@ -1,0 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "collection-list",
+      "blocks": {
+        "fd3cfdab-5812-4182-8af7-deb35e7c2151": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "build-muscle",
+          }
+        },
+        "cb781d87-8c5d-4d06-8327-148b6801785b": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bulk-black-pre-workout",
+          }
+        },
+      },
+      "block_order": [
+        "fd3cfdab-5812-4182-8af7-deb35e7c2151",
+        "cb781d87-8c5d-4d06-8327-148b6801785b",
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Collections"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

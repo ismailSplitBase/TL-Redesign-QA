@@ -1,0 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1656355579d5f07a59": {
+      "type": "old-BMR-calculator",
+      "settings": {
+        "header_image": "shopify://shop_images/image_7_2.png",
+        "title": "BMR Calculator",
+        "detail": "This basal metabolic rate (BMR) calculator will quickly estimate how many calories you burn at rest per day. Note that your BMR doesn’t take into account activity level, thermic effect of feeding (TEF), or non-exercise activity thermogenesis (NEAT).",
+        "resources_heading": "Further Nutrition and Training Resources",
+        "resources_detail": "<p>Now that you have a better idea of how many calories your body burns at rest every day, it’s time to put that information to good use. If you haven’t already, check out the resources below to help reach your fitness goals:</p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/how-much-protein-should-i-eat\"><span style=\"text-decoration:underline\">How Much Protein Should You Eat?</span></a></p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/a-beginner-s-guide-to-counting-macros\" title=\"https://www.transparentlabs.com/blogs/all/a-beginner-s-guide-to-counting-macros\"><span style=\"text-decoration:underline\">Counting Macros 101</span></a></p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/body-recomposition-how-to-lose-fat-and-gain-muscle\"><span style=\"text-decoration:underline\">8-Week Body Recomposition Guide</span></a></p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/clean-bulk-vs-dirty-bulk\" title=\"https://www.transparentlabs.com/blogs/all/clean-bulk-vs-dirty-bulk\"><span style=\"text-decoration:underline\">Clean Eating vs. Flexible Dieting</span></a></p>",
+        "references_heading": "",
+        "references_detail": ""
+      }
+    }
+  },
+  "order": [
+    "1656355579d5f07a59"
+  ]
+}

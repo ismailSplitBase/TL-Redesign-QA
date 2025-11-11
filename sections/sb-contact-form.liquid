@@ -1,0 +1,604 @@
+<div class="sb-contact-form sb-page-width sb-styled-element" id="sb-contact-form" style="{%  render 'style-attributes', settings: section.settings %}">
+    {%- liquid
+      assign contact_form_class = 'isolate'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
+      endif
+    -%}
+    <div class="sb-contact-form__container">
+      <div class="sb-contact-form__content-container">
+        {% if section.settings.heading != blank %}
+          <h2 class="sb-contact-form__heading">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+        {% if section.settings.content != blank %}
+          <div class="sb-contact-form__description">{{ section.settings.content }}</div>
+        {% endif %}
+      </div>
+
+      {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+        {%- if form.posted_successfully? -%}
+          <h2 class="sb-contact-form__message sb-contact-form__message--success" tabindex="-1" autofocus>
+            {{- 'icon-success.svg' | inline_asset_content -}}
+            {{ 'templates.contact.form.post_success' | t }}
+          </h2>
+        {%- elsif form.errors -%}
+          <div class="sb-contact-form__message sb-contact-form__message--error">
+            <h2 class="sb-contact-form__error-heading" role="alert" tabindex="-1" autofocus>
+              {{- 'icon-error.svg' | inline_asset_content -}}
+              {{ 'templates.contact.form.error_heading' | t }}
+            </h2>
+          </div>
+          <ul class="sb-contact-form__error-list" role="list">
+            <li>
+              <a href="#ContactForm-email" class="link">
+                {{ form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}
+              </a>
+            </li>
+          </ul>
+        {%- endif -%}
+
+        <div class="sb-contact-form__fields">
+          <div class="sb-contact-form__field-row">
+            <div class="sb-contact-form__field">
+              <input
+                class="sb-contact-form__input"
+                autocomplete="name"
+                type="text"
+                id="ContactForm-name"
+                name="contact[{{ 'templates.contact.form.name' | t }}]"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                placeholder="{{ 'templates.contact.form.name' | t }}*"
+                required
+              >
+              <label class="sb-contact-form__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}*</label>
+            </div>
+
+            <div class="sb-contact-form__field sb-contact-form__field--with-error">
+              <input
+                autocomplete="email"
+                type="email"
+                id="ContactForm-email"
+                class="sb-contact-form__input"
+                name="contact[email]"
+                spellcheck="false"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="ContactForm-email-error"
+                {% endif %}
+                placeholder="{{ 'templates.contact.form.email' | t }}*"
+                required
+              >
+              <label class="sb-contact-form__label" for="ContactForm-email">
+                {{- 'templates.contact.form.email' | t }}*</label
+              >
+              {%- if form.errors contains 'email' -%}
+                <small class="sb-contact-form__field-error" id="ContactForm-email-error">
+                  <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                  <span class="sb-contact-form__error-message">
+                    <span class="svg-wrapper">
+                      {{- 'icon-error.svg' | inline_asset_content -}}
+                    </span>
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email -}}
+                  </span>
+                </small>
+              {%- endif -%}
+            </div>
+          </div>
+
+          <div class="sb-contact-form__field-row">
+            <div class="sb-contact-form__field">
+              <input
+                type="tel"
+                id="ContactForm-phone"
+                class="sb-contact-form__input"
+                autocomplete="tel"
+                name="contact[{{ 'templates.contact.form.phone' | t }}]"
+                pattern="[0-9\-]*"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                placeholder="{{ 'templates.contact.form.phone' | t }}"
+              >
+              <label class="sb-contact-form__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+            </div>
+
+            <div class="sb-contact-form__field">
+              <input
+                type="text"
+                id="ContactForm-order"
+                class="sb-contact-form__input"
+                name="contact[order_number]"
+                value="{% if form["order_number"] %}{{ form["order_number"] }}{% endif %}"
+                placeholder="Order Number"
+              >
+              <label class="sb-contact-form__label" for="ContactForm-order">Order Number</label>
+            </div>
+          </div>
+
+          <div class="sb-contact-form__field sb-contact-form__field--full-width">
+            <sb-custom-select id="ContactForm-subject">
+              <select
+                id="ContactForm-subject"
+                class="sb-contact-form__select"
+                name="contact[subject]"
+                required
+              >
+                <option value="" disabled selected>Subject*</option>
+                {% assign subject_options = section.settings.subject_options | split: ',' %}
+                {% for option in subject_options %}
+                  <option value="{{ option | strip }}">{{ option | strip }}</option>
+                {% endfor %}
+              </select>
+              </sb-custom-select>
+          </div>
+
+          <div class="sb-contact-form__field sb-contact-form__field--full-width">
+            <textarea
+              rows="4"
+              id="ContactForm-body"
+              class="sb-contact-form__textarea"
+              name="contact[{{ 'templates.contact.form.comment' | t }}]"
+              placeholder="Message*"
+              required
+            >{{- form.body -}}</textarea>
+            <label class="sb-contact-form__label" for="ContactForm-body">
+              {{- 'templates.contact.form.comment' | t -}}*
+            </label>
+          </div>
+
+          <div class="sb-contact-form__button">
+            <button type="submit" class="sb-button__link sb-button__link--{{ section.settings.button_type }}">
+              {{ section.settings.button_text | default: 'Send' }}
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.16699 10H15.8337" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 4.16699L15.8333 10.0003L10 15.8337" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      {%- endform -%}
+    </div>
+    {% if section.settings.disclaimer != blank %}
+      <div class="sb-contact-form__disclaimer">
+        {{ section.settings.disclaimer }}
+      </div>
+    {% endif %}
+</div>
+
+{% stylesheet %}
+  #sb-contact-form {
+    scroll-margin-top: 100px;
+  }
+
+  .sb-contact-form {
+    color: var(--sb-fg-color, #142835);
+    padding-top: var(--sb-padding-top-mobile, 24px);
+    padding-bottom: var(--sb-padding-bottom-mobile, 24px);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .sb-contact-form__container {
+    background-color: var(--sb-bg-color, #f8f9fb);
+    border-radius: 6px;
+    max-width: 928px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sb-contact-form__content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .sb-contact-form__heading {
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 700;
+    margin: 0;
+    color: #142835;
+  }
+
+  .sb-contact-form__description {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0;
+    color: #142835;
+  }
+
+  .sb-contact-form__description p {
+    margin: 0;
+  }
+
+  .sb-contact-form__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sb-contact-form__field-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sb-contact-form__field {
+    position: relative;
+    width: 100%;
+  }
+
+  .sb-contact-form__input,
+  .sb-contact-form__textarea,
+  .sb-contact-form__select {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--sb-fg-color, #142835);
+    font-family: inherit;
+    border: 1px solid transparent;
+  }
+  .sb-contact-form *::placeholder, .sb-custom-select:has(li.sb-custom-select__option--selected.sb-custom-select__option--disabled) .sb-custom-select__display {
+    color: var(--sb-fg-color, #142835);
+    opacity: 0.62;
+  }
+  .sb-custom-select__option--disabled.sb-custom-select__option{
+    display: none;
+  }
+
+  .sb-contact-form__input:focus,
+  .sb-contact-form__input:not(:placeholder-shown) {
+    opacity: 1;
+  }
+
+  .sb-contact-form__textarea {
+    min-height: 325px;
+    resize: vertical;
+  }
+
+  .sb-contact-form__textarea:focus,
+  .sb-contact-form__textarea:not(:placeholder-shown) {
+    opacity: 1;
+  }
+
+  .sb-contact-form__input:focus,
+  .sb-contact-form__textarea:focus,
+  .sb-contact-form__select:focus {
+    outline: none;
+    box-shadow: none;
+    outline-offset: 0;
+    border: 1px solid #173446;
+  }
+
+  /* Remove label styling since we're using placeholder-only design */
+  .sb-contact-form__label {
+    display: none;
+  }
+
+  .sb-contact-form__select {
+    appearance: none;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  .sb-contact-form__select:focus,
+  .sb-contact-form__select:not([value=""]) {
+    opacity: 1;
+  }
+
+  /* Custom select styling */
+  sb-custom-select {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  .sb-contact-form__button .sb-button__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 52px;
+    padding: 12px 10px 14px;
+    border-radius: 40px;
+    font-size: 16px;
+    line-height: 1;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .sb-contact-form__button .sb-button__link:hover {
+    opacity: 0.8;
+  }
+
+  .sb-contact-form__button  .sb-button__link--primary {
+    background-color: var(--sb-ch-bg-color, #111314);
+    color: var(--sb-ch-fg-color, #FFFFFF);
+  }
+
+  .sb-contact-form__button .sb-button__link--secondary {
+    background-color: transparent;
+    color: var(--sb-ch-bg-color, #111314);
+    border: 1px solid var(--sb-ch-bg-color, #111314);
+  }
+
+  .sb-button__link--link {
+    background-color: transparent;
+    color: var(--sb-ch-bg-color, #111314);
+    padding: 0;
+    text-decoration: underline;
+  }
+
+  .sb-contact-form__button .sb-button__link--link:hover {
+    text-decoration: none;
+  }
+
+  .sb-contact-form__button .sb-button__link--primary:hover {
+    background-color: var(--sb-ch-bg-color, #111314);
+    color: var(--sb-ch-fg-color, #FFFFFF);
+  }
+
+  .sb-contact-form__button .sb-button__link--secondary:hover {
+    background-color: transparent;
+    color: var(--sb-ch-bg-color, #111314);
+    border: 1px solid var(--sb-ch-bg-color, #111314);
+  }
+
+  .sb-contact-form__message {
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sb-contact-form__message--success svg {
+    max-width: 35px;
+  }
+
+  .sb-contact-form__message--success {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+    font-size: 18px;
+    line-height: 1.2;
+    justify-content: center;
+  }
+  .sb-contact-form__message--success:focus-visible {
+    outline: none!important;
+    box-shadow: none!important;
+  }
+
+  .sb-contact-form__message--error {
+    background-color: #FFEBEE;
+    color: #C62828;
+  }
+
+  .sb-contact-form__error-heading {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .sb-contact-form__error-list {
+    padding-left: 16px;
+    margin: 8px 0 16px;
+  }
+
+  .sb-contact-form__field-error {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #C62828;
+    margin-top: 4px;
+  }
+
+  .sb-contact-form__disclaimer {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--sb-fg-color, #142835);
+  }
+
+  .sb-contact-form__disclaimer-heading {
+    font-weight: 700;
+  }
+
+  @media (min-width: 768px) {
+    .sb-contact-form {
+      padding-top: var(--sb-padding-top, 80px);
+      padding-bottom: var(--sb-padding-bottom, 80px);
+      gap: 64px;
+    }
+
+    .sb-contact-form__container {
+      padding: 32px 56px;
+    }
+
+    .sb-contact-form__heading {
+      text-align: center;
+    }
+
+    .sb-contact-form__description {
+      text-align: center;
+    }
+
+    .sb-contact-form__fields {
+      gap: 24px;
+    }
+
+    .sb-contact-form__field-row {
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    .sb-contact-form__field-row .sb-contact-form__field {
+      flex: 1;
+    }
+
+    /* Full width fields for subject and message */
+    .sb-contact-form__field--full-width {
+      width: 100%;
+    }
+
+    .sb-button__link {
+      max-width: none;
+      width: 100%;
+    }
+
+    .sb-contact-form__disclaimer {
+      text-align: center;
+      max-width: 928px;
+      margin: 0 auto;
+    }
+  }
+{% endstylesheet %}
+
+<script src="{{ 'sb-custom-select.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "SB Contact Form",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Contact Transparent Labs"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>We respond to inquiries in the order they are received, from oldest to newest. We work Monday through Friday, 7:30am EST to 3:30pm EST, and aim to reply within 24 hours.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "<p>The information provided on this website and by our Customer Success team is for general informational purposes only. It is not intended as medical advice, diagnosis, or treatment. Our products are formulated for use by individuals aged 18 and older. Before using any of our products, we strongly recommend consulting with your healthcare provider, particularly if you have underlying medical conditions, are pregnant or nursing, or are taking prescription medications.</p><p>Thank you for the support.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Send"
+    },
+    {
+      "type": "select",
+      "id": "button_type",
+      "label": "Button Type",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "link",
+          "label": "Link"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "header",
+      "content": "Form Options"
+    },
+    {
+      "type": "textarea",
+      "id": "subject_options",
+      "label": "Subject Options (comma-separated)",
+      "default": "Order Status, Returns, Product Information, General Inquiry, Other"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Text Color",
+      "default": "#142835"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f8f9fb"
+    },
+    {
+      "type": "paragraph",
+      "content": "Form"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color_background",
+      "id": "ch_bg_color",
+      "label": "Button Color",
+      "default": "#111314"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 80,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 80,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Contact Form"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,244 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "old-main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "custom_sub_menu_9DhFRy": {
+      "type": "old-custom-sub-menu",
+      "blocks": {
+        "block_jCEftJ": {
+          "type": "block",
+          "settings": {
+            "m_label": "Athletes",
+            "m_link": "https://www.transparentlabs.com/blogs/athletes"
+          }
+        },
+        "block_Rr6QNy": {
+          "type": "block",
+          "settings": {
+            "m_label": "Health",
+            "m_link": "https://www.transparentlabs.com/blogs/health"
+          }
+        },
+        "block_4XAgi9": {
+          "type": "block",
+          "settings": {
+            "m_label": "Meal Plans",
+            "m_link": "https://www.transparentlabs.com/blogs/meal-plans"
+          }
+        },
+        "block_jeMVxq": {
+          "type": "block",
+          "settings": {
+            "m_label": "Motivation",
+            "m_link": "https://www.transparentlabs.com/blogs/motivation"
+          }
+        },
+        "block_XKCh3e": {
+          "type": "block",
+          "settings": {
+            "m_label": "Nutrition",
+            "m_link": "https://www.transparentlabs.com/blogs/nutrition"
+          }
+        },
+        "block_eywNag": {
+          "type": "block",
+          "settings": {
+            "m_label": "Supplementation",
+            "m_link": "https://www.transparentlabs.com/blogs/supplements"
+          }
+        },
+        "block_xBrWcr": {
+          "type": "block",
+          "settings": {
+            "m_label": "Training",
+            "m_link": "https://www.transparentlabs.com/blogs/training"
+          }
+        }
+      },
+      "block_order": [
+        "block_jCEftJ",
+        "block_Rr6QNy",
+        "block_4XAgi9",
+        "block_jeMVxq",
+        "block_XKCh3e",
+        "block_eywNag",
+        "block_xBrWcr"
+      ],
+      "settings": {
+        "custom_title": ""
+      }
+    },
+    "new_breadcrumb_aXfjDq": {
+      "type": "old-new-breadcrumb",
+      "settings": {}
+    },
+    "custom_content_Vf8cW3": {
+      "type": "old-custom-content",
+      "settings": {
+        "custom_title": "{{ page.title }}",
+        "headingh1": false,
+        "custom_content": "<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page </p>"
+      }
+    },
+    "multiple_blogs_jqk8be": {
+      "type": "old-multiple-blogs",
+      "blocks": {
+        "block_nUJPwP": {
+          "type": "block",
+          "settings": {
+            "select_blog": "all/stress-anxiety-weight-loss"
+          }
+        },
+        "block_HM7BAm": {
+          "type": "block",
+          "settings": {
+            "select_blog": "all/hiit-vs-steady-state-cardio-for-weight-loss"
+          }
+        },
+        "block_Apbdfg": {
+          "type": "block",
+          "settings": {
+            "select_blog": "all/75-hard-challenge-rules"
+          }
+        },
+        "block_KGL8Vy": {
+          "type": "block",
+          "settings": {
+            "select_blog": "all/what-is-casein-protein"
+          }
+        },
+        "block_CzjmNx": {
+          "type": "block",
+          "settings": {
+            "select_blog": "all/how-to-run-faster"
+          }
+        },
+        "block_6Qnxz3": {
+          "type": "block",
+          "settings": {
+            "select_blog": "all/how-to-get-shredded-for-summer"
+          }
+        }
+      },
+      "block_order": [
+        "block_nUJPwP",
+        "block_HM7BAm",
+        "block_Apbdfg",
+        "block_KGL8Vy",
+        "block_CzjmNx",
+        "block_6Qnxz3"
+      ],
+      "custom_css": [
+        ".xt-inner-main-multiple-blog-main {margin-bottom: 50px;}"
+      ],
+      "settings": {
+        "custom_title": "Guides"
+      }
+    },
+    "multiple_products_HamGtV": {
+      "type": "old-multiple-products",
+      "settings": {
+        "custom_title": "Recommendations",
+        "products_Select": [
+          "pea-protein-isolate",
+          "stim-free-fat-burner",
+          "creatine-hmb",
+          "casein-protein"
+        ]
+      }
+    },
+    "wonderment_faq_AAChd6": {
+      "type": "old-wonderment-faq",
+      "blocks": {
+        "section_heading_DG9bwy": {
+          "type": "section_heading",
+          "settings": {
+            "title": "Frequently Asked Questions",
+            "hnewstyle": true
+          }
+        },
+        "question_kybfy8": {
+          "type": "question",
+          "settings": {
+            "title": "Where are your products manufactured?",
+            "text": "<p>We are a local company and all merchandise is made with love here on the moon.</p>"
+          }
+        },
+        "question_AbNCYQ": {
+          "type": "question",
+          "settings": {
+            "title": "How do your sizes work?",
+            "text": "<p>Please take a look at our size chart for more information and how to take accurate measurements.</p>"
+          }
+        },
+        "question_pd6H6W": {
+          "type": "question",
+          "settings": {
+            "title": "Do you ship internationally?",
+            "text": "<p>Currently we are only shipping to USA and Canada.</p>"
+          }
+        },
+        "question_nf7JV8": {
+          "type": "question",
+          "settings": {
+            "title": "How much is shipping?",
+            "text": "<p>If you spend over $100, shipping is always free. For any other purchases, shipping will be calculated at checkout.</p>"
+          }
+        },
+        "question_drbhe8": {
+          "type": "question",
+          "settings": {
+            "title": "What is your return policy?",
+            "text": "<p>Merchandise that is unworn and in the original packaging can be returned within 30 days with the packing slip included with the product.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "section_heading_DG9bwy",
+        "question_kybfy8",
+        "question_AbNCYQ",
+        "question_pd6H6W",
+        "question_nf7JV8",
+        "question_drbhe8"
+      ],
+      "settings": {
+        "show_answers": false,
+        "text_size": 100,
+        "alignment": "center",
+        "text_color": "#121212",
+        "background_color": "linear-gradient(184deg, rgba(255, 255, 255, 1) 7%, rgba(255, 255, 255, 1) 94%)",
+        "border_color": "#121212",
+        "base_width": 100,
+        "max_width": "",
+        "inner_padding": 50,
+        "outer_margin": 0,
+        "custom_css": ".wndr-sxn__sizer.wndr-sxn__faq__expanded-false {\n    max-width: 1280px;\n    padding-left: 1rem;\n    padding-right: 1rem;\n}",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "sans-serif"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_sub_menu_9DhFRy",
+    "new_breadcrumb_aXfjDq",
+    "custom_content_Vf8cW3",
+    "multiple_blogs_jqk8be",
+    "multiple_products_HamGtV",
+    "wonderment_faq_AAChd6"
+  ]
+}

@@ -1,0 +1,426 @@
+{% comment %} Opacity overlay is applied using the CSS brightness filter. To keep the input intuitive we flip the opacity setting's value in the liquid {% endcomment %}
+{% liquid
+  assign overlay_opacity = 1
+  if section.settings.overlay_enable
+    assign overlay_opacity = 1 | minus: section.settings.overlay_opacity 
+  endif
+  if section.settings.fg_color.alpha > 0
+    assign border_color = section.settings.fg_color | color_modify: 'alpha', 0.3
+  endif
+  if section.settings.fg_color_desktop.alpha > 0
+    assign border_color_desktop = section.settings.fg_color_desktop | color_modify: 'alpha', 0.3
+  endif
+%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }}{
+    --sb-overlay: {{ overlay_opacity }};
+    {% if border_color %}
+      --sb-border-color: {{ border_color }};
+    {% endif %}
+    {% if border_color_desktop %}
+      --sb-border-color-desktop: {{ border_color_desktop }};
+    {% endif %}
+  }
+{%- endstyle -%}
+
+{% stylesheet %}
+  .sb-clean-mean {
+    position: relative;
+    display: flex;
+    min-height: 510px;
+    --clean-mean-padding-top-mobile: calc(var(--sb-padding-top, 0) * 0.54);
+    --clean-mean-padding-bottom-mobile: calc(var(--sb-padding-bottom, 0) * 0.54);
+  }
+
+  .sb-clean-mean.sb-styled-element{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  .sb-clean-mean__background {
+    position: relative;
+  }
+
+  .sb-clean-mean__wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .sb-clean-mean__background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(var(--sb-overlay));
+  }
+  
+  .sb-clean-mean__content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-block: var(--clean-mean-padding-top-mobile, 0) var(--clean-mean-padding-bottom-mobile, 0);
+    height: 100%;
+  }
+  
+  .sb-clean-mean__text-content{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .sb-clean-mean__heading {
+    font-family: var(--sb-font-family-heading);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--sb-fg-color);
+    margin: 0 0 auto 0;
+    text-transform: capitalize;
+  }
+  
+  .sb-clean-mean__items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .sb-clean-mean__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 0 12px;
+    border-bottom: 1px solid var(--sb-border-color);
+  }
+  .sb-clean-mean__item:last-child {
+    border-bottom: none;
+  }
+  
+  .sb-clean-mean__item-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  
+  .sb-clean-mean__item-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+  
+  .sb-clean-mean__item-content-text {
+    font-family: var(--sb-font-family-body);
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--sb-fg-color);
+    margin: 0;
+    flex: 1;
+  }
+  
+  .sb-clean-mean__desktop-image {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .sb-clean-mean {
+      min-height: auto;
+    }
+    .sb-clean-mean.sb-styled-element{
+      padding-top: var(--sb-padding-top, 0);
+      padding-bottom: var(--sb-padding-bottom, 0);
+    }
+    .sb-clean-mean__wrapper{
+      position: relative;
+    }
+    .sb-clean-mean__background--mobile {
+      display: none;
+    }
+    
+    .sb-clean-mean__background--desktop {
+      display: none;
+    }
+    
+    .sb-clean-mean__overlay {
+      display: none;
+    }
+    
+    .sb-clean-mean__content {
+      min-height: auto;
+      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 365px auto;
+      gap: 40px;
+    }
+    
+    .sb-clean-mean__text-content {
+      width: 100%;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+    
+    .sb-clean-mean__heading {
+      font-size: 40px;
+      color: var(--sb-fg-color-desktop, var(--sb-fg-color));
+      margin: 0;
+    }
+    
+    .sb-clean-mean__items {
+      gap: 16px;
+    }
+    
+    .sb-clean-mean__item {
+      padding: 0 0 16px;
+      border-bottom: 1px solid var(--sb-border-color-desktop, var(--sb-border-color));
+    }
+    
+    .sb-clean-mean__item-icon img {
+      filter: none;
+    }
+    
+    .sb-clean-mean__item-content-text {
+      color: var(--sb-fg-color-desktop, var(--sb-fg-color));
+    }
+    
+    .sb-clean-mean__desktop-image {
+      display: flex;
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .sb-clean-mean__desktop-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .sb-clean-mean__background--mobile {
+      display: block;
+      width: 100%;
+    }
+    
+    .sb-clean-mean__background--desktop {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 1280px){
+    .sb-clean-mean__content{
+      padding: 0;
+      gap: 80px
+    }
+  }
+{% endstylesheet %}
+
+<div class="sb-clean-mean sb-styled-element" style="{%  render 'style-attributes', settings: section.settings %}">
+  {% comment %} Mobile Background Images {% endcomment %}
+  {% if section.settings.mobile_img != blank %}
+    <div class="sb-clean-mean__background sb-clean-mean__background--mobile">
+      {{ section.settings.mobile_img | image_url: width: 768 | image_tag: loading: 'lazy' }}
+    </div>
+  {% endif %}
+  
+  <div class="sb-page-width sb-clean-mean__wrapper">
+    <div class="sb-clean-mean__content">
+      <div class="sb-clean-mean__text-content">
+        {% if section.settings.heading != blank %}
+          <h2 class="sb-clean-mean__heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+        
+        {% if section.blocks.size > 0 %}
+          <div class="sb-clean-mean__items">
+            {% for block in section.blocks %}
+              <div class="sb-clean-mean__item" {{ block.shopify_attributes }}>
+                {% if block.settings.image != blank %}
+                  <div class="sb-clean-mean__item-icon">
+                    {{ block.settings.image | image_url: width: 60 | image_tag }}
+                  </div>
+                {% endif %}
+                {% if block.settings.content != blank %}
+                  <div class="sb-clean-mean__item-content-text">
+                    {{ block.settings.content }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      
+      {% comment %} Desktop Image {% endcomment %}
+      {% if section.settings.desktop_img != blank %}
+        <div class="sb-clean-mean__desktop-image">
+          {{ section.settings.desktop_img | image_url: width: 1696 | image_tag: loading: 'lazy' }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SB What Does Clean Mean",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Does \"Clean\" Really Mean?"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_img",
+      "label": "Mobile Background Image",
+      "info": "Full-screen background image for mobile. Recommended size: 768x1024px or larger"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_img",
+      "label": "Desktop Image",
+      "info": "Side image for desktop layout. Recommended size: 1696x800px or larger"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Overlay Settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "Overlay settings only apply to mobile layout where text appears over the background image."
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_enable",
+      "label": "Enable Mobile Overlay",
+      "default": true,
+      "info": "Adds an opacity overlay to improve text readability on mobile"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "default": 0.5,
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "visible_if": "{{ section.settings.overlay_enable == true }}"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Desktop Background Color"
+    },
+    {
+      "type": "color",
+      "id": "fg_color_desktop",
+      "label": "Desktop Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Clean Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Icon",
+          "info": "Icon automatically converts to white on mobile, dark on desktop"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content",
+          "placeholder": "Enter the clean benefit text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB What Does Clean Mean",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "content": "No Artificial Sweeteners"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "content": "No Artificial Colors or Fillers"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "content": "No Hormones or Antibiotics"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "content": "Gluten Free & Non-GMO"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

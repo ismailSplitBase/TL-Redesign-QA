@@ -1,0 +1,63 @@
+
+{% style %}
+  {% comment %}
+ .xt-custom-content-section-main > h2 {text-align: center;font-size: 30px;margin-bottom: 25px;font-weight: normal;text-decoration: underline;}
+ .xt-custom-content-section-main > h1 {text-align: center;font-size: 30px;margin-bottom: 25px;font-weight: normal;text-decoration: underline;}
+{% endcomment %}
+ .xt-cc-section-content p {margin-bottom: 15px;text-align: left;}
+
+
+  
+{% endstyle %}
+<div class="xt-custom-content-section-main max-w-7xl mx-auto pb-4 px-4 pt-12" id="{{ section.id }}" >
+  {% if section.settings.custom_title != blank %}
+    {% if section.settings.headingh1 %}
+      <h1 class="font-bold text-blue-500 text-xl md:border-l-8 md:border-blue-500 md:pl-2 md:text-2xl" style="margin-bottom:20px;">{{ section.settings.custom_title }}</h1>  
+    {% else %}
+      <h2 class="font-bold text-blue-500 text-xl md:border-l-8 md:border-blue-500 md:pl-2 md:text-2xl" style="margin-bottom:20px;">{{ section.settings.custom_title }}</h2>  
+    {% endif %}
+  {% endif %}
+
+  {% if section.settings.custom_content != blank %}
+    <div class="xt-cc-section-content">
+      {{ section.settings.custom_content }}
+    </div>
+  {% endif %}
+  
+</div>
+
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Custom Content",
+  "class": "td-legacy",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Title"
+    },
+    {
+      "type": "checkbox",
+      "id": "headingh1",
+      "label": "Make heading in H1"
+    },
+    {
+      "type": "richtext",
+      "id": "custom_content",
+      "label": "Content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Content",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

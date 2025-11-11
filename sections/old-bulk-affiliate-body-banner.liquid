@@ -1,0 +1,37 @@
+<style>
+  #shopify-section-{{ section.id }} .aff_compare_hero 
+  {
+    min-height: 350px;
+    background: url("{{ section.settings.image | img_url : 'master' }}");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
+<section class="TL_aff_content">
+  <div class="aff_compare_hero">
+</div>
+</section>
+{% schema %}
+  {
+    "name": "bulk-affiliate-bodybanner",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Banner Image"
+      }
+    ],
+    "presets":[
+		{
+			"name": "bulk-affiliate-bodybanner"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

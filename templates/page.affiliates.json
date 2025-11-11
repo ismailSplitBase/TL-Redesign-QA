@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "affiliates": {
+      "type": "old-affiliates-page",
+      "blocks": {
+        "7af7de1a-9e27-435e-812d-9a3ec3492d17": {
+          "type": "content",
+          "settings": {
+            "title": "TL AMBASSADOR PROGRAM",
+            "image": "shopify://shop_images/TL_02-01.png",
+            "content": "<p><strong>WHAT IS IT?</strong></p><p>AMBASSADOR PROGRAM</p><p><strong>HOW WILL YOU BE PROMOTING?</strong></p><p>PRIMARILY THROUGH SOCIAL (INSTAGRAM, YOUTUBE, TIKTOK) OR BLOGS</p><p><strong>WHO IS THIS BEST FOR?</strong></p><p>INFLUENCERS + BRAND ADVOCATES</p><p><strong>THE PERKS</strong></p><p>FREE PRODUCT + COMMISSION  EARNING POTENTIAL</p>",
+            "button_text": "APPLY",
+            "button_url": "https://transparentlabs.grin.live/"
+          }
+        },
+        "d633a365-b4f0-4ae3-8268-a3068d26f755": {
+          "type": "content",
+          "settings": {
+            "title": "POST AFFILIATE PRO",
+            "image": "shopify://shop_images/Screen_Shot_2021-05-28_at_10.19.43_AM.jpg",
+            "content": "<p><strong>WHAT IS IT?</strong></p><p>AFFILIATE MARKETING PLATFORM</p><p><strong>HOW WILL YOU BE PROMOTING?</strong></p><p>ONLINE PUBLICATIONS, EMAIL NEWSLETTERS, CONTENT MARKETING</p><p><strong>WHO IS THIS BEST FOR?</strong></p><p>MEDIA PLATFORMS + APPLICATIONS</p><p><strong>PAYMENT METHODS</strong></p><p>COMMISSION ON SALES</p>",
+            "button_text": "SIGN UP",
+            "button_url": "https://transparentlabs.postaffiliatepro.com/affiliates/"
+          }
+        }
+      },
+      "block_order": [
+        "7af7de1a-9e27-435e-812d-9a3ec3492d17",
+        "d633a365-b4f0-4ae3-8268-a3068d26f755"
+      ],
+      "settings": {
+        "desktop_image": "shopify://shop_images/TL_Athelte_banner_1920x600_b4c6ab9f-88a4-4980-9b6e-1d3152a170a3.jpg",
+        "mobile_image": "shopify://shop_images/TL_Athelte_banner_1920x600_b4c6ab9f-88a4-4980-9b6e-1d3152a170a3.jpg"
+      }
+    }
+  },
+  "order": [
+    "affiliates"
+  ]
+}

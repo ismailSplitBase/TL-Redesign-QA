@@ -1,0 +1,617 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{%- if predictive_search.performed -%}
+  {% assign first_column_results_size = predictive_search.resources.queries.size
+    | plus: predictive_search.resources.collections.size
+    | plus: predictive_search.resources.pages.size
+    | plus: predictive_search.resources.articles.size
+  %}
+  <div id="predictive-search-results" role="listbox">
+    {%- if first_column_results_size > 0 or predictive_search.resources.products.size > 0 -%}
+      <div
+        id="predictive-search-results-groups-wrapper"
+        class="sb-predictive-search__results-groups-wrapper predictive-search__results-groups-wrapper{% unless predictive_search.resources.products.size > 0 %} predictive-search__results-groups-wrapper--no-products{% endunless %}{% unless predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 %} predictive-search__results-groups-wrapper--no-suggestions{% endunless %}"
+      >
+    {%- endif -%}
+    {%- if first_column_results_size > 0 -%}
+      <div class="sb-predictive-search__result-group predictive-search__result-group">
+    {%- endif -%}
+    {%- if predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 -%}
+      <div>
+        <div class="predictive-search__heading-wrapper">
+          <h2 id="predictive-search-queries" class="predictive-search__heading text-body caption-with-letter-spacing">
+            {{- 'templates.search.suggestions' | t -}}
+          </h2>
+          <a href="{{ routes.search_url }}?q={{ predictive_search.terms }}&type=product,article,page,collection" class="predictive-search__item predictive-search__view-all-button">
+            <span>View All</span>
+            <div class="sb-button__arrow">
+              {% render 'sb-icon--right-arrow' %}
+            </div>
+          </a>
+        </div>
+        <ul
+          id="predictive-search-results-queries-list"
+          class="predictive-search__results-list list-unstyled"
+          role="group"
+          aria-labelledby="predictive-search-queries"
+        >
+          {%- for query in predictive_search.resources.queries -%}
+            <li
+              id="predictive-search-option-query-{{ forloop.index }}"
+              class="predictive-search__list-item"
+              role="option"
+              aria-selected="false"
+            >
+              <a href="{{ query.url }}" class="predictive-search__item link link--text" tabindex="-1">
+                <div class="predictive-search__item-content predictive-search__item-content--centered">
+                  <p
+                    class="predictive-search__item-heading predictive-search__item-query-result h5"
+                    aria-label="{{ query.text }}"
+                  >
+                    {{ query.styled_text }}
+                  </p>
+                </div>
+              </a>
+            </li>
+          {%- endfor -%}
+          {%- for collection in predictive_search.resources.collections -%}
+            <li
+              id="predictive-search-option-collection-{{ forloop.index }}"
+              class="predictive-search__list-item"
+              role="option"
+              aria-selected="false"
+            >
+              <a href="{{ collection.url }}" class="predictive-search__item link link--text" tabindex="-1">
+                <div class="predictive-search__item-content predictive-search__item-content--centered">
+                  <p class="predictive-search__item-heading h5">{{ collection.title | escape }}</p>
+                </div>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+    {%- if predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 -%}
+      <div class="predictive-search__pages-wrapper">
+        <div class="predictive-search__heading-wrapper">
+          <h2
+            id="predictive-search-pages-desktop"
+            class="predictive-search__heading text-body caption-with-letter-spacing"
+          >
+            Articles
+          </h2>
+          <a href="{{ routes.search_url }}?q={{ predictive_search.terms }}&type=product,article#grid-articles" class="predictive-search__item predictive-search__view-all-button">
+            <span>View All</span>
+            <div class="sb-button__arrow">
+              {% render 'sb-icon--right-arrow' %}
+            </div>
+          </a>
+        </div>
+        <ul
+          id="predictive-search-results-pages-list-desktop"
+          class="predictive-search__results-list list-unstyled"
+          role="group"
+          aria-labelledby="predictive-search-pages-desktop"
+        >
+          {%- for page in predictive_search.resources.pages -%}
+            <li
+              id="predictive-search-option-page-desktop-{{ forloop.index }}"
+              class="predictive-search__list-item"
+              role="option"
+              aria-selected="false"
+            >
+              <a href="{{ page.url }}" class="predictive-search__item link link--text" tabindex="-1">
+                <div class="predictive-search__item-content predictive-search__item-content--centered">
+                  <p class="predictive-search__item-heading h5">{{ page.title | escape }}</p>
+                </div>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+        {%- if predictive_search.resources.articles.size > 0 -%}
+          <ul
+            id="predictive-search-results-articles-list-desktop"
+            class="predictive-search__results-list list-unstyled sb-predictive-search__articles-grid predictive-search__articles-grid"
+            role="group"
+            aria-labelledby="predictive-search-pages-desktop"
+          >
+            {%- for article in predictive_search.resources.articles limit: 4 -%}
+              <li
+                id="predictive-search-option-article-desktop-{{ forloop.index }}"
+                class="predictive-search__list-item predictive-search__list-item--article-card"
+                role="option"
+                aria-selected="false"
+              >
+                {% render 'sb-predictive-search-article-card', article: article %}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if first_column_results_size > 0 -%}
+      </div>
+    {%- endif -%}
+    {%- if predictive_search.resources.products.size > 0
+      or predictive_search.resources.articles.size > 0
+      or predictive_search.resources.pages.size > 0
+    -%}
+      <div class="sb-predictive-search__result-group predictive-search__result-group">
+        {%- if predictive_search.resources.products.size > 0 -%}
+          <div>
+            <div class="predictive-search__heading-wrapper">
+              <h2
+                id="predictive-search-products"
+                class="predictive-search__heading text-body caption-with-letter-spacing"
+              >
+                {{- 'templates.search.products' | t -}}
+              </h2>
+              <a href="{{ routes.search_url }}?q={{ predictive_search.terms }}&type=product,article" class="predictive-search__item predictive-search__view-all-button">
+                <span>View All</span>
+                <div class="sb-button__arrow">
+                  {% render 'sb-icon--right-arrow' %}
+                </div>
+              </a>
+            </div>
+            <ul
+              id="predictive-search-results-products-list"
+              class="predictive-search__results-list list-unstyled predictive-search__products-grid"
+              role="group"
+              aria-labelledby="predictive-search-products"
+            >
+              {%- for product in predictive_search.resources.products limit: 5 -%}
+                <li
+                  id="predictive-search-option-product-{{ forloop.index }}"
+                  class="predictive-search__list-item predictive-search__list-item--card"
+                  role="option"
+                  aria-selected="false"
+                >
+                  <div class="predictive-search__card predictive-search__card--mb">
+                    {% render 'product-card--mb-search', product: product %}
+                  </div>
+                  <div class="predictive-search__card predictive-search__card--dt">
+                    {% render 'product-card', product: product, disable_slider: true, first_image_loading: 'lazy', simple_label: true %}
+                  </div>
+                </li>
+              {%- endfor -%}
+            </ul>
+            <a href="{{ routes.search_url }}?q={{ predictive_search.terms }}&type=product,article" class="predictive-search__item predictive-search__view-all-button predictive-search__view-all-button--mb">
+              <span>View All</span>
+              <div class="sb-button__arrow">
+                {% render 'sb-icon--right-arrow' %}
+              </div>
+            </a>
+          </div>
+        {%- endif -%}
+        {%- if predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 -%}
+          <div class="predictive-search__pages-wrapper">
+            <div class="predictive-search__heading-wrapper">
+              <h2
+                id="predictive-search-pages-mobile"
+                class="predictive-search__heading text-body caption-with-letter-spacing"
+              >
+                Articles
+              </h2>
+              <a href="{{ routes.search_url }}?q={{ predictive_search.terms }}&type=product,article#grid-articles" class="predictive-search__item predictive-search__view-all-button">
+                <span>View All</span>
+                <div class="sb-button__arrow">
+                  {% render 'sb-icon--right-arrow' %}
+                </div>
+              </a>
+            </div>
+            <ul
+              id="predictive-search-results-pages-list-mobile"
+              class="predictive-search__results-list list-unstyled"
+              role="group"
+              aria-labelledby="predictive-search-pages-mobile"
+            >
+              {%- for page in predictive_search.resources.pages -%}
+                <li
+                  id="predictive-search-option-page-mobile-{{ forloop.index }}"
+                  class="predictive-search__list-item"
+                  role="option"
+                  aria-selected="false"
+                >
+                  <a href="{{ page.url }}" class="predictive-search__item link link--text" tabindex="-1">
+                    <div class="predictive-search__item-content predictive-search__item-content--centered">
+                      <p class="predictive-search__item-heading h5">{{ page.title | escape }}</p>
+                    </div>
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+            {%- if predictive_search.resources.articles.size > 0 -%}
+              <ul
+                id="predictive-search-results-articles-list-mobile"
+                class="predictive-search__results-list list-unstyled sb-predictive-search__articles-grid predictive-search__articles-grid"
+                role="group"
+                aria-labelledby="predictive-search-pages-mobile"
+              >
+                {%- for article in predictive_search.resources.articles limit: 4 -%}
+                  <li
+                    id="predictive-search-option-article-mobile-{{ forloop.index }}"
+                    class="predictive-search__list-item predictive-search__list-item--article-card"
+                    role="option"
+                    aria-selected="false"
+                  >
+                    {% render 'featured-post',
+                      article: article,
+                      show_image: true,
+                      show_blog_title: true
+                    %}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+            <a href="{{ routes.search_url }}?q={{ predictive_search.terms }}&type=product,article#grid-articles" class="predictive-search__item predictive-search__view-all-button predictive-search__view-all-button--mb">
+              <span>View All</span>
+              <div class="sb-button__arrow">
+                {% render 'sb-icon--right-arrow' %}
+              </div>
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if first_column_results_size > 0 or predictive_search.resources.products.size > 0 -%}
+      </div>
+    {%- endif -%}
+    {% comment %} {%- if predictive_search.terms != blank and settings.search_collection and collections[settings.search_collection].products.size > 0 -%}
+      <div class="predictive-search__featured-products">
+        <h2 id="predictive-search-featured-products" class="predictive-search__heading text-body caption-with-letter-spacing">
+          Featured Products
+        </h2>
+        <div 
+          class="predictive-search__featured-products-grid"
+          role="group"
+          aria-labelledby="predictive-search-featured-products"
+        >
+          {%- liquid
+            assign featured_products = collections[settings.search_collection].products
+            assign product_limit = 3
+          -%}
+          {%- for product in featured_products limit: product_limit -%}
+            <div 
+              class="predictive-search__featured-product-item"
+              role="option"
+              aria-selected="false"
+              id="predictive-search-featured-product-{{ forloop.index }}"
+            >
+              {% render 'product-card', product: product, disable_slider: true, first_image_loading: 'lazy' %}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%} {% endcomment %}
+
+    {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+
+    {% comment %} <div id="predictive-search-option-search-keywords" class="predictive-search__search-for-button">
+      <button
+        class="predictive-search__item predictive-search__item--term link link--text h5 animate-arrow"
+        tabindex="-1"
+        role="option"
+        aria-selected="false"
+      >
+        <span data-predictive-search-search-for-text>
+          {{- 'templates.search.search_for' | t: terms: predictive_search.terms -}}
+        </span>
+        <span class="svg-wrapper">
+          {{- 'icon-arrow.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    </div> {% endcomment %}
+  </div>
+
+  <span class="hidden" data-predictive-search-live-region-count-value>
+    {% liquid
+      assign featured_products_count = 0
+      if predictive_search.terms != blank and settings.search_collection and collections[settings.search_collection].products.size > 0
+        assign featured_products_count = collections[settings.search_collection].products.size
+        if featured_products_count > 3
+          assign featured_products_count = 3
+        endif
+      endif
+      
+      assign total_results = predictive_search.resources.products.size | plus: first_column_results_size | plus: featured_products_count
+      
+      if total_results == 0
+        echo 'templates.search.no_results' | t: terms: predictive_search.terms
+      else
+        echo 'templates.search.results_with_count' | t: count: total_results | append: ': '
+        
+        if featured_products_count > 0
+          echo 'Featured products: ' | append: featured_products_count | append: ', '
+        endif
+        
+        if predictive_search.resources.queries.size > 0
+          assign count = predictive_search.resources.queries.size | plus: predictive_search.resources.collections.size
+          echo 'templates.search.results_suggestions_with_count' | t: count: count | append: ', '
+        endif
+        if predictive_search.resources.pages.size > 0
+          assign count = predictive_search.resources.pages.size | plus: predictive_search.resources.articles.size
+          echo 'templates.search.results_pages_with_count' | t: count: count | append: ', '
+        endif
+        if predictive_search.resources.products.size > 0
+          echo 'templates.search.results_products_with_count' | t: count: predictive_search.resources.products.size
+        endif
+      endif
+    %}
+  </span>
+{%- endif -%}
+
+{%- stylesheet -%}
+.sb-predictive-search__result-group.predictive-search__result-group{
+  gap: 0;
+}
+.sb-predictive-search__results-groups-wrapper.predictive-search__results-groups-wrapper{
+  border: none;
+  padding-bottom: 48px;
+}
+.sb-search-modal__form .predictive-search{
+  border: none;
+}
+.sb-predictive-search__result-group .predictive-search__heading{
+  font-size: calc(18 / var(--sb-base-font-size, 16) * 1rem);
+  line-height: 140%;
+  font-weight: 600;
+  color: #111314;
+  font-family: var(--sb-font-family-heading);
+  text-transform: none;
+  padding: 16px;
+  margin: 0;
+}
+.predictive-search__view-all-button.predictive-search__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: var(--sb-ch-fg-color, var(--sb-fg-color, #111314));
+  border: none;
+  padding: 0;
+  border-bottom: 1px solid var(--sb-ch-fg-color, var(--sb-fg-color, #111314));
+  border-radius: 0;
+  min-width: 0;
+  width: fit-content;
+  white-space: nowrap;
+  font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+  font-weight: 500;
+  font-family: var(--sb-font-family-body);
+}
+.predictive-search__view-all-button .sb-button__arrow {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1px;
+}
+.predictive-search__view-all-button:hover .sb-button__arrow {
+  transform: translateX(4px);
+}
+.predictive-search__view-all-button.predictive-search__item{
+  display: none;
+}
+.predictive-search__view-all-button--mb.predictive-search__item{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: var(--sb-padding-inline);
+  margin-left: auto;
+  margin-top: 16px;
+}
+#predictive-search-pages-mobile{
+  padding: 22px 0 24px;
+  margin: 22px 16px 0;
+  border-top: 1px solid rgba(17, 19, 20, 0.16);
+}
+#predictive-search-results-products-list.predictive-search__products-grid {
+  --sb-ch-hover-bg-color: #e8ebf2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#predictive-search-results-products-list .predictive-search__card--dt{
+  display: none;
+}
+@media screen and (min-width: 750px){
+  .sb-predictive-search__result-group .predictive-search__heading {
+    padding: 0;
+    font-size: 28px;
+  }
+  predictive-search.sb-search-modal__form.search-modal__form{
+    position: absolute;
+  }
+  .predictive-search__results-groups-wrapper{
+    flex-direction: column-reverse;
+  }
+  .sb-predictive-search__result-group .predictive-search__heading-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: max(var(--sb-padding-inline), calc((100vw - var(--page-width) - 15px) / 2 + var(--sb-padding-inline)));
+    padding-block: 32px 40px;
+  }
+  #predictive-search-results-products-list .predictive-search__card--dt{
+    display: block;
+  }
+  #predictive-search-results-products-list .predictive-search__card--mb{
+    display: none;
+  }
+  #predictive-search-results-products-list.predictive-search__products-grid{
+    display: flex;
+    flex-direction: row;
+    --column-count: 3;
+    --inline-gap: 20px;
+    --gap-count: calc(var(--column-count) - 1);
+    gap: 0 var(--inline-gap);
+    flex-wrap: wrap;
+    justify-content: stretch;
+    margin-inline: max(var(--sb-padding-inline), calc((100vw - var(--page-width) - 15px) / 2 + var(--sb-padding-inline)));
+  }
+  #predictive-search-results-products-list.predictive-search__products-grid .predictive-search__list-item--card{
+    width: calc((100% - var(--inline-gap, 12px) * var(--gap-count, 1)) / var(--column-count, 2));
+    padding: 0;
+  }
+  #predictive-search-results-products-list.predictive-search__products-grid .predictive-search__list-item--card .sb-product-card{
+    width: 100%;
+  }
+  #predictive-search-option-product-5, #predictive-search-option-product-4{
+    display: none;
+  }
+}
+.predictive-search.sb-search-modal__form.search-modal__form{
+  padding-bottom: 0;
+}
+@media screen and (min-width: 990px){
+  .sb-search-modal__form .predictive-search{
+    margin-top: 0;
+  }
+  .sb-predictive-search__results-groups-wrapper.predictive-search__results-groups-wrapper {
+    padding-bottom: 0;
+  }
+  .sb-predictive-search__results-groups-wrapper.predictive-search__results-groups-wrapper > div:first-of-type .predictive-search__results-list{
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+  }
+  .sb-predictive-search__result-group:has(#predictive-search-pages-desktop){
+    background-color: #F8F9FB;
+  }
+  .sb-predictive-search__result-group:has(#predictive-search-products){
+    padding-bottom: 48px;
+  }
+  .sb-predictive-search__result-group .predictive-search__heading{
+    font-size: calc(28 / var(--sb-base-font-size, 16) * 1rem);
+    line-height: 120%;
+    padding: 0;
+  }
+  .predictive-search__view-all-button.predictive-search__item{
+    display: inline-flex;
+  }
+  .predictive-search__view-all-button--mb.predictive-search__item{
+    display: none;
+  }
+  .sb-predictive-search__result-group:has(#predictive-search-pages-desktop) .predictive-search__heading-wrapper {
+    padding-top: 48px;
+  }
+}
+
+/* PRODUCT CARDS */
+
+@media screen and (max-width: 990px){
+  #predictive-search-results-products-list .sb-product-tags{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 990px){
+  #predictive-search-results-products-list.predictive-search__products-grid{
+    --column-count: 4;
+    flex-direction: row;
+  }
+  #predictive-search-option-product-4{
+    display: flex;
+  }
+  #predictive-search-results-products-list .sb-product-card{
+    padding: 8px 12px 16px;
+  }
+  #predictive-search-results-products-list .sb-product-card__content{
+    gap: 5px;
+  }
+  #predictive-search-results-products-list .predictive-search__card .sb-product-card__price{
+    gap: 1px;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  #predictive-search-results-products-list.predictive-search__products-grid{
+    --column-count: 5;
+  }
+  #predictive-search-option-product-5{
+    display: block;
+  }
+  #predictive-search-results-products-list .sb-product-card .jdgm-prev-badge__text {
+    font-size: calc(12 / var(--sb-base-font-size, 16) * 1rem);
+  }
+  #predictive-search-results-products-list .sb-product-card .jdgm-star.jdgm--on:before,
+  #predictive-search-results-products-list .sb-product-card .jdgm-star.jdgm--half:before,
+  #predictive-search-results-products-list .sb-product-card .jdgm-star.jdgm--off:before {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 1350px){
+  #predictive-search-results-products-list .sb-product-card__price *{
+    font-size: inherit;
+  }
+  #predictive-search-results-products-list .sb-product-card .sb-button__text{
+    font-size: inherit;
+  } 
+}
+
+@media screen and (min-width: 1440px){
+  #predictive-search-results-products-list.predictive-search__products-grid{
+    --inline-gap: 24px;
+  }
+  #predictive-search-results-products-list .sb-product-card{
+    padding: 16px;
+  }
+  #predictive-search-results-products-list .sb-product-card .jdgm-star.jdgm--on:before,
+  #predictive-search-results-products-list .sb-product-card .jdgm-star.jdgm--half:before,
+  #predictive-search-results-products-list .sb-product-card .jdgm-star.jdgm--off:before {
+    font-size: 14px;
+  }
+  #predictive-search-results-products-list .sb-product-card .jdgm-star {
+    padding-right: 4px !important;
+  }
+  #predictive-search-results-products-list .sb-product-card__blocks .jdgm-rating-count {
+    font-size: calc(14 / var(--sb-base-font-size, 16) * 1rem);
+  }
+}
+
+#predictive-search-results-products-list .predictive-search__list-item--card {
+  margin: 0;
+  padding: 8px 16px;
+}
+#predictive-search-results-products-list .predictive-search__card {
+  height: 100%;
+}
+#shopify-section-predictive-search .predictive-search__heading {
+  margin-bottom: 0.75rem;
+}
+#shopify-section-predictive-search .predictive-search__results-list.list-unstyled {
+  margin: 0;
+}
+
+/* ARTICLE CARDS - MOBILE */
+#predictive-search-results-articles-list-mobile.sb-predictive-search__articles-grid {
+  --color-background: #F8F9FB;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 16px;
+  padding-bottom: 8px;
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+#predictive-search-results-articles-list-mobile.sb-predictive-search__articles-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+#predictive-search-results-articles-list-mobile .predictive-search__list-item--article-card {
+  flex: 0 0 auto;
+  width: 280px;
+  max-width: 80vw;
+}
+
+@media screen and (min-width: 990px) {
+  #predictive-search-results-articles-list-mobile {
+    display: none;
+  }
+  #predictive-search-results-articles-list-desktop .predictive-search__article-card{
+    --sb-ch-bg-color: #fff;
+  }
+}
+{%- endstylesheet -%}

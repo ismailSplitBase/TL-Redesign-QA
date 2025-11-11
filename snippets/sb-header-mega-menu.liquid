@@ -1,0 +1,713 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+{% liquid
+  assign megamenu_labels = ""
+  for block in section.blocks
+    if block.type == "megamenu" and block.settings.menu_item != blank
+      assign megamenu_label_downcased = block.settings.menu_item | downcase
+      assign megamenu_labels = megamenu_labels | append: megamenu_label_downcased | append: ","
+    endif
+  endfor
+%}
+
+{% stylesheet %}
+  @media screen and (min-width: 990px){
+    /* Nav items */
+    .sb-header__inline-menu.header__inline-menu{
+      display: flex;
+      justify-content: flex-end;
+      height: 100%;
+    }
+
+    .header--middle-left .sb-header__inline-menu.header__inline-menu {
+      justify-content: center;
+    }
+
+    .sb-header__inline-menu .list-menu--inline{
+      gap: 0 14px;
+      justify-content: flex-end;
+    }
+
+    .header--middle-left > * {
+        min-width: 100px;
+    }
+  }
+
+  @media screen and (min-width: 1280px){
+    .sb-header__inline-menu .list-menu--inline{
+      gap: 0 22px;
+    }
+  }
+
+  .sb-header__inline-menu .header__menu-item, .sb-header__inline-menu .header__menu-item a {
+    font-size: calc(12 / var(--sb-base-font-size, 16) * 1rem);
+    color: var(--sb-fg-color);
+    text-decoration: none;
+  }
+  .sb-header__inline-menu .header__menu-item:hover{
+    color: var(--sb-fg-color);
+  }
+  @media screen and (min-width: 1280px){
+    .sb-header__inline-menu .header__menu-item {
+      font-size: calc(14 / var(--sb-base-font-size, 16) * 1rem);
+    }
+    .sb-header__inline-menu .header__menu-item a {
+      font-size: 14px;
+    }
+  }
+  .sb-header__bold-link.header__menu-item{
+    font-weight: 700;
+  }
+
+  .sb-header__inline-menu summary.list-menu__item, .sb-header__inline-menu .header__menu-item{
+    padding-inline: 0;
+  }
+
+  /* Mega menu */
+  .sb-mega-menu .mega-menu__content{
+    border: none;
+  }
+  
+  .sb-mega-menu, .sb-header__inline-menu .header__menu-item{
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .sb-mega-menu .header__menu-item{
+    padding-block: 0;
+  }
+
+  /* Product Cards Megamenu Styling */
+  .sb-megamenu-cards, .sb-megamenu-feature {
+    padding: 40px var(--sb-padding-inline) 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: var(--sb-bg-color);
+  }
+
+  @media screen and (min-width: 1024px){
+    .sb-megamenu-cards, .sb-megamenu-feature {
+      padding-inline: max(var(--sb-padding-inline), calc((100% - var(--page-width)) / 2));
+    }
+  }
+
+  .sb-megamenu-cards__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .sb-megamenu-cards__title {
+    font-family: var(--sb-font-heading-family);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--sb-fg-color);
+    margin: 0;
+  }
+
+  .sb-megamenu-cards__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 0 4px;
+    font-family: var(--sb-font-body-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--sb-fg-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sb-fg-color);
+  }
+
+  .sb-megamenu-cards__link:hover {
+    opacity: 0.72;
+  }
+
+  .sb-megamenu-cards__link svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .sb-megamenu-cards__container {
+    display: flex;
+    --column-count: 4;
+    --inline-gap: 20px;
+    --gap-count: calc(var(--column-count) - 1);
+    gap: 0 var(--inline-gap);
+    flex-wrap: wrap;
+    justify-content: stretch;
+  }
+  .sb-megamenu-cards__container .sb-product-card:nth-of-type(5){
+    display: none;
+  }
+  @media screen and (min-width: 1280px){
+    .sb-megamenu-cards__container {
+      --column-count: 5;
+    }
+    .sb-megamenu-cards__container .sb-product-card:nth-of-type(5){
+      display: flex;
+    }
+  }
+  @media screen and (min-width: 1440px){
+    .sb-megamenu-cards__container {
+      --inline-gap: 40px;
+    }
+  }
+
+  /* Product Card Styling */
+  .sb-megamenu-cards .sb-product-card {
+    padding: 8px 12px 16px;
+    background-color: var(--sb-ch-bg-color);
+  }
+  .sb-megamenu-cards .sb-product-card:hover {
+    background-color: var(--sb-ch-hover-bg-color, var(--sb-ch-bg-color, #fff))
+  }
+  .sb-megamenu-cards .sb-product-card__content{
+    gap: 5px;
+  }
+  .sb-megamenu-cards .sb-product-card__title{
+    font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+  }
+  .sb-megamenu-cards .sb-product-card__description{
+    font-size: calc(14 / var(--sb-base-font-size, 16) * 1rem);
+  }
+
+  .sb-megamenu-cards .sb-product-card {
+    height: auto;
+    align-self: stretch;
+  }
+  @media screen and (min-width: 1440px){
+    .sb-megamenu-cards .sb-product-card__content{
+      gap: 10px;
+    }
+    .sb-megamenu-cards .sb-product-card__title {
+      font-size: calc(18 / var(--sb-base-font-size, 16) * 1rem);
+    }
+    .sb-megamenu-cards .sb-product-card__description{
+      font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+    }
+  }
+
+  @media screen and (min-width: 1024px){
+      .sb-megamenu-cards .sb-product-card .jdgm-star.jdgm--on:before,
+      .sb-megamenu-cards .sb-product-card .jdgm-star.jdgm--half:before,
+      .sb-megamenu-cards .sb-product-card .jdgm-star.jdgm--off:before {
+        font-size: 10px;
+      }
+      .sb-megamenu-cards .sb-product-card .jdgm-prev-badge__text {
+        font-size: calc(10 / var(--sb-base-font-size, 16) * 1rem);
+      }
+      .sb-megamenu-cards .sb-product-card{
+        -webkit-line-clamp: 3;
+      }
+    }
+
+    @media screen and (min-width: 1280px) {
+      .sb-megamenu-cards .sb-product-card .jdgm-prev-badge__text {
+        font-size: calc(12 / var(--sb-base-font-size, 16) * 1rem);
+      }
+      .sb-megamenu-cards .sb-product-card .jdgm-star.jdgm--on:before,
+      .sb-megamenu-cards .sb-product-card .jdgm-star.jdgm--half:before,
+      .sb-megamenu-cards .sb-product-card .jdgm-star.jdgm--off:before {
+        font-size: 12px;
+      }
+    }
+    @media screen and (min-width: 1440px) {
+      .sb-megamenu-cards .sb-product-card .jdgm-star.jdgm--on:before,
+      .sb-megamenu-cards .sb-product-card .jdgm-star.jdgm--half:before,
+      .sb-megamenu-cards .sb-product-card .jdgm-star.jdgm--off:before {
+        font-size: 14px;
+      }
+      .sb-megamenu-cards .sb-product-card .jdgm-star {
+        padding-right: 4px !important;
+      }
+      .sb-megamenu-cards .sb-product-card__blocks .jdgm-rating-count {
+        font-size: calc(14 / var(--sb-base-font-size, 16) * 1rem);
+      }
+    }
+
+
+  /* Single Feature Megamenu Styling */
+  .sb-megamenu-feature__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .sb-megamenu-feature__title {
+    font-family: var(--sb-font-heading-family);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.2;
+    color: #111314;
+    margin: 0;
+  }
+
+  .sb-megamenu-feature__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 0 4px;
+    font-family: var(--sb-font-body-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+    color: #111314;
+    text-decoration: none;
+    border-bottom: 1px solid #111314;
+  }
+
+  .sb-megamenu-feature__link svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .sb-megamenu-feature__link:hover {
+    opacity: 0.72;
+  }
+
+  .sb-megamenu-feature__container {
+    display: flex;
+    justify-content: space-between;
+    gap: 85px;
+  }
+
+  .sb-megamenu-feature__content {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .sb-megamenu-feature__products {
+    display: grid;
+    grid-template-columns: repeat(2, 250px);
+    grid-template-rows: repeat(3, auto);
+    gap: 24px 8px;
+    width: fit-content;
+  }
+
+  .sb-megamenu-feature__product {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .sb-megamenu-feature__product a {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0 14px;
+    grid-template-areas: 
+      "image title"
+      "image description";
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    align-items: start;
+  }
+
+  .sb-megamenu-feature__product a:hover h3 {
+    text-decoration: underline;
+  }
+
+  .sb-megamenu-feature__product-image,
+  .sb-megamenu-feature__product img {
+    grid-area: image;
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    background-color: #F8F9FB;
+    object-fit: cover;
+  }
+
+  .sb-megamenu-feature__product-title {
+    grid-area: title;
+    font-family: var(--sb-font-body-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: var(--sb-fg-color);
+    margin: 0;
+    align-self: start;
+  }
+
+  .sb-megamenu-feature__product-description {
+    grid-area: description;
+    align-self: start;
+  }
+
+  .sb-megamenu-feature__product-description {
+    font-family: var(--sb-font-body-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: var(--sb-fg-color);
+    opacity: 0.72;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: 3;
+    box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .sb-megamenu-feature__cards {
+    flex-shrink: 0;
+  }
+
+  .sb-megamenu-feature__card {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    width: 100%;
+    background-color: var(--sb-ch-bg-color, var(--sb-bg-color, #F8F9FB));
+    border-radius: 6px;
+    overflow: hidden;
+    gap: 5px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .sb-megamenu-feature__card-title span {
+    font-family: var(--sb-font-heading-family);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: 0;
+    color: var(--sb-ch-fg-color);
+    margin: 0 0 2px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .sb-megamenu-feature__card-description {
+    margin: 0 0 12px;
+    flex: 1;
+  }
+
+  .sb-megamenu-feature__card-description span {
+    font-family: var(--sb-font-body-family);
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 1.3;
+    color: var(--sb-ch-fg-color);
+    opacity: 0.72;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .sb-megamenu-feature__card .sb-megamenu-feature__card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0 0 6px 6px;
+    margin-top: auto;
+  }
+
+  /* Create padding area for the card content */
+  .sb-megamenu-feature__card-title,
+  .sb-megamenu-feature__card-description {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .sb-megamenu-feature__card-title {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+  }
+
+  .sb-megamenu-feature__card-title svg {
+    width: 18px;
+    min-width: 18px;
+    height: 18px;
+    align-self: flex-start;
+    margin-top: 3px;
+  }
+
+  .sb-megamenu-feature__card:hover .sb-megamenu-feature__card-title span {
+    text-decoration: underline;
+  }
+
+  /* Double feature specific styles */
+  .sb-megamenu-feature__container--double .sb-megamenu-feature__content {
+    gap: 8px;
+  }
+
+  .sb-megamenu-feature__container--double .sb-megamenu-feature__products {
+    grid-template-columns: 343px;
+    grid-template-rows: repeat(3, auto);
+    gap: 24px;
+  }
+
+  .sb-megamenu-feature__container--double .sb-megamenu-feature__cards {
+    display: flex;
+    gap: 32px;
+  }
+
+  /* Responsive adjustments */
+  @media screen and (max-width: 1023px) {
+    .sb-megamenu-feature__container,
+    .sb-megamenu-feature__container--double {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .sb-megamenu-feature__content {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .sb-megamenu-feature__products {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .sb-megamenu-feature__card {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .sb-megamenu-feature__container--double .sb-megamenu-feature__cards {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Product cards responsive */
+    .sb-megamenu-cards__container {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .sb-megamenu-cards__container .card {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .sb-megamenu-cards__container {
+      gap: 16px;
+    }
+  }
+
+  @media screen and (min-width: 1280px){
+    .sb-megamenu-feature__products {
+      grid-template-columns: repeat(2, 343px);
+      gap: 24px 65px;
+    }
+    .sb-megamenu-feature__content{
+      gap: 28px;
+    }
+  }
+
+  @media screen and (min-width: 1440px){
+    .sb-megamenu-feature__container--double .sb-megamenu-feature__content{
+      gap: 88px;
+    }
+    .sb-megamenu-feature__content{
+      gap: 85px;
+    }
+    .sb-megamenu-feature__products {
+      grid-template-columns: repeat(2, 343px);
+      gap: 24px 85px;
+    }
+  }
+
+  /* Mega menu animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-1.5rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-1.5rem);
+    }
+  }
+
+  /* Override component-mega-menu.css with increased specificity */
+  .sb-header__inline-menu .js .mega-menu__content,
+  .sb-header__inline-menu .mega-menu .mega-menu__content {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+    animation: fadeOut 0.15s ease-in-out forwards;
+  }
+
+  .sb-header__inline-menu .mega-menu.sb-open .mega-menu__content {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeIn 0.15s ease-in-out forwards;
+  }
+{% endstylesheet %}
+
+<nav class="header__inline-menu sb-header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {% comment %} Megamenu blocks {% endcomment %}
+        {% assign link_downcased = link.title | downcase %}
+        {% if megamenu_labels contains link_downcased %}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="sb-mega-menu mega-menu">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset{% if forloop.first and section.settings.bold_first_link %} sb-header__bold-link{% endif %}"
+              >
+                <a
+                  href="{{ link.url }}"
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </a>
+              </summary>
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content sb-mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                tabindex="-1"
+              >
+                {% for block in section.blocks %}
+                  {% if block.type == "megamenu" and block.settings.menu_item == link.title %}
+                    {% case block.settings.desktop_menu_type %}
+                      {% when "product_cards" %}
+                        {% render 'sb-megamenu-cards', block: block, link: link %}
+                      {% when "single_feature" %}
+                        {% render 'sb-megamenu-feature', block: block, link: link %}
+                      {% when "double_feature" %}
+                        {% render 'sb-megamenu-feature', block: block, link: link %}
+                    {% endcase %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </details>
+          </header-menu>
+        {% comment %} Theme megamenu {% endcomment %}
+        {%- elsif link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset{% if forloop.first and section.settings.bold_first_link %} sb-header__bold-link{% endif %}"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary>
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content sb-mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                tabindex="-1"
+              >
+                <ul
+                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  role="list"
+                >
+                  {%- for childlink in link.links -%}
+                    <li>
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url }}"
+                        class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title | escape }}
+                      </a>
+                      {%- if childlink.links != blank -%}
+                        <ul class="list-unstyled" role="list">
+                          {%- for grandchildlink in childlink.links -%}
+                            <li>
+                              <a
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchildlink.url }}"
+                                class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ grandchildlink.title | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </details>
+          </header-menu>
+        {% comment %} Normal link {% endcomment %}
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item{% if forloop.first and section.settings.bold_first_link %} sb-header__bold-link{% endif %} list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

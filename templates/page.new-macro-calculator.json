@@ -1,0 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "old-new-macro-calculator",
+      "settings": {
+        "header_image": "shopify://shop_images/Group.png",
+        "title": "Macro Calculator",
+        "detail": "Compute your specific calorie and macronutrient needs based on personal information, lifestyle habits, and nutritional preferences."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

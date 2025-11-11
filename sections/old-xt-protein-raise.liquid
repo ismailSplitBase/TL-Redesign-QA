@@ -1,0 +1,162 @@
+
+<div class="xt-protein-raise">
+  <div class="xgen-inner">
+    <div class="wraper">
+      {% if section.settings.heading %}
+        <h2 class="title">{{ section.settings.heading }}</h2>
+      {% endif %}
+      <div class="video">
+        <video controls  autoplay loop playsinline mute  >
+          <source src="{{ section.settings.video }}" type="video/mp4">
+          <source src="{{ section.settings.video }}" type="video/ogg">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="colleps">
+        {% if section.settings.heading %}
+          <h2 class="title">{{ section.settings.heading }}</h2>
+        {% endif %}
+        <ul id="accordion" class="accordion">
+          {% for block in section.blocks %}
+          <li>
+            <div class="flink">{{ block.settings.question }}</div>
+            <ul class="submenu">
+              <p>
+                {{ block.settings.answer | newline_to_br }}
+              </p>
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+
+        {% if section.settings.btn_text !=blank %}
+          <a href="{{ section.settings.btn_url }}" class="btn">{{ section.settings.btn_text }}</a>
+        {% endif %}
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Protein Raise",
+    "class": "td-legacy", 
+    "settings": [
+      {
+        "type":"text",
+        "id":"heading",
+        "label":"Heading"
+      },
+      {
+        "type":"url",
+        "id":"video",
+        "label":"Video url"
+        
+      },
+      {
+        "type":"text",
+        "id":"btn_text",
+        "label":"Button Label"
+        
+      },
+      {
+        "type":"url",
+        "id":"btn_url",
+        "label":"Button Link"
+        
+      }
+    ],
+	"blocks":[
+      {
+        "name":"FAQ",
+        "type":"text",
+        "settings":[
+          {
+            "type":"text",
+            "id":"question",
+            "label":"Question"
+          },
+          {
+            "type":"richtext",
+            "id":"answer",
+            "label":"Answer"
+          }
+        ]
+      }
+	],
+    "presets":[
+      {
+        "name": "Protein Raise"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+  .xt-protein-raise .accordion .submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block !important;
+  }
+  
+  .xt-protein-raise .accordion li.open .submenu {
+    max-height: 200px; /* Reduced to more realistic content height */
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .xt-protein-raise .accordion .flink {
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+  
+  .xt-protein-raise .accordion .flink:hover {
+    opacity: 0.8;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', function() {
+    var Accordion = function(el, multiple) {
+      this.el = el || {};
+      this.multiple = multiple || false;
+    
+      // Get all .flink elements
+      var links = this.el.querySelectorAll('.flink');
+      
+      // Add event listeners
+      var self = this;
+      links.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          self.dropdown.call(this, e, self.el, self.multiple);
+        });
+      });
+    }
+  
+    Accordion.prototype.dropdown = function(e, accordionEl, multiple) {
+      var clickedLink = this;
+      var parentLi = clickedLink.parentElement;
+      
+      // If not multiple, close other accordion items first
+      if (!multiple) {
+        var allParents = accordionEl.querySelectorAll('li');
+        
+        allParents.forEach(function(parent) {
+          if (parent !== parentLi) {
+            parent.classList.remove('open');
+          }
+        });
+      }
+      
+      // Toggle the 'open' class on the clicked parent li
+      parentLi.classList.toggle('open');
+    };
+  
+    var accordionElement = document.querySelector('.accordion');
+    if (accordionElement) {
+      var accordion = new Accordion(accordionElement, false);
+    }
+  });
+{% endjavascript %}

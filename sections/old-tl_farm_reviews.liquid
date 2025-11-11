@@ -1,0 +1,150 @@
+<div class="tl_farm_reviews">
+  <script src="{{ 'flickity.pkgd.min.js' | asset_url }}" defer></script>
+  <link rel="stylesheet" href="{{ 'flickity.min.css' | asset_url }}">
+  <div class="xgen-inner">
+  
+  {% if section.settings.title!=blank %}
+    <h2 class="title">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  {% if section.settings.rating!=blank %}
+    <div class="rating">
+      <div class="starg">
+        {% for i in (1..5) %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#47B6E6" viewBox="0 0 24 24">
+            <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+          </svg>
+        {% endfor %}
+      </div>
+      <h3>{{ section.settings.rating }}</h3>
+    </div>
+  {% endif %}
+
+  {% if section.blocks !=blank %}
+    <div class="carousel" data-flickity='{"contain": true, "pageDots": false }'>
+      
+      {% for block in section.blocks %}
+        <div class="items">
+          <div class="itemsin">
+
+            <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e9edf2">
+              <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z"/>
+            </svg>
+            
+            {% if block.settings.image !=blank %}
+              <div class="img">
+                {% assign image_name = block.settings.image | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+                <img class="img1" src="{{ block.settings.image | img_url : '' }}" alt="{% if block.settings.image.alt %}{{ block.settings.image.alt }}{% else %}{{ image_name }}{% endif %}">
+              </div>
+            {% endif %}
+  
+            <div class="desc-group">
+              {% if block.settings.name !=blank %}
+                <h3>{{ block.settings.name }}</h3>
+              {% endif %}
+
+              {% if block.settings.date !=blank %}
+                <div class="date">{{ block.settings.date }}</div>
+              {% endif %}
+        
+              {% if block.settings.title !=blank %}
+                <h4>{{ block.settings.title }}</h4>
+              {% endif %}
+  
+              {% if block.settings.desc !=blank %}
+                <p>{{ block.settings.desc }}</p>
+              {% endif %}
+
+              {% if block.settings.ratting !=blank %}
+                {% assign rate = block.settings.ratting %}
+                <div class="srating">
+                  {% for i in (1..rate) %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#47b6e6">
+                      <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+                    </svg>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          
+          </div>
+        </div>
+      {% endfor %}
+    
+    </div>
+  {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Farm Shaker Reviews",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"text",
+        "id":"title",
+        "label":"Heading"
+      },
+      {
+        "type":"text",
+        "id":"rating",
+        "label":"Rating Text"
+      }
+    ],
+    "blocks":[
+      {
+        "name":"Slide",
+        "type":"image",
+        "settings":[
+          {
+            "type":"image_picker",
+            "id":"image",
+            "label":"Back Image"
+          },
+          {
+            "type":"text",
+            "id":"name",
+            "label":"Name"
+          },
+          {
+            "type":"text",
+            "id":"date",
+            "label":"Date"
+          },
+          {
+            "type":"text",
+            "id":"title",
+            "label":"Title"
+          },
+          {
+            "type":"textarea",
+            "id":"desc",
+            "label":"Review"
+          },
+          {
+            "type": "range",
+            "id": "ratting",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "label": "Rating",
+            "default": 1
+          }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name": "Farm Shaker Reviews"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

@@ -1,0 +1,11 @@
+<div class="{% if page.handle == 'search-results-page' %}bg-gray-300{% endif %} py-8 default-page-wrapper td-legacy">
+  <div class="max-w-6xl mx-auto px-4 text-blue-500">
+    <h1 class="mb-8 text-center text-xl md:text-2xl lg:text-3xl">
+      {{ page.title }}
+    </h1>
+
+    <div class="{% unless page.handle == 'search-results-page' %}page-content space-y-4{% endunless %}">
+      {{ page.content }}
+    </div>
+  </div>
+</div>

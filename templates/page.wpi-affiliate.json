@@ -1,0 +1,362 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "f338a9c2-3168-494e-b4e7-b08979119509": {
+      "type": "old-bulk-affiliate-main-banner",
+      "settings": {
+        "top_heading": "100% GRASS-FED WHEY PROTEIN ISOLATE",
+        "image": "shopify://shop_images/desktop_header.png",
+        "mobile_image": "shopify://shop_images/mobile_header.png",
+        "heading": "",
+        "subheading": "",
+        "btn_text": "",
+        "btn_link": "#xgen-new-collection"
+      }
+    },
+    "c70dec47-0c2c-46fa-a7f6-efa1df957373": {
+      "type": "old-bulk-affiliate-icons",
+      "blocks": {
+        "e5f6ecdd-bd06-4e0b-b4c3-ddbdd91539c4": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/muscle_growth_7b77d677-1d83-4fa1-bd74-15512457c181.png",
+            "title": "LEAN MUSCLE GROWTH"
+          }
+        },
+        "b0962df3-6584-49ab-bc75-2cd89389c880": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/light_on_the_stomach.png",
+            "title": "LIGHT ON THE STOMACH"
+          }
+        },
+        "463078b3-9a15-439e-b00f-18ff2054b39e": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/accelerate_recovery.png",
+            "title": "ACCELERATE RECOVERY"
+          }
+        },
+        "ab09a7c5-a665-4eed-84cd-58414ddcb8ee": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/taste_bud_1.png",
+            "title": "TASTEBUD FRIENDLY"
+          }
+        }
+      },
+      "block_order": [
+        "e5f6ecdd-bd06-4e0b-b4c3-ddbdd91539c4",
+        "b0962df3-6584-49ab-bc75-2cd89389c880",
+        "463078b3-9a15-439e-b00f-18ff2054b39e",
+        "ab09a7c5-a665-4eed-84cd-58414ddcb8ee"
+      ],
+      "settings": {}
+    },
+    "1a9b2478-a05d-4c94-bdc0-0cf466ca7f06": {
+      "type": "old-bulk-affiliate-ingrediants",
+      "blocks": {
+        "64f9369c-4c8c-46b2-a8da-8199fefb813b": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/caffeine.png",
+            "title": "28g WHEY PROTEIN ISOLATE",
+            "desc": "Contains one of the industry’s highest protein-by-weight ratios at 88% with 28 grams of protein per 32 gram scoop."
+          }
+        },
+        "5bd4f26a-f488-491d-8619-b464bc6390f0": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/beta_alanine.png",
+            "title": "4 to 6 All Natural Ingredients",
+            "desc": "Contains only key natural ingredients making it one of the cleanest proteins on the market."
+          }
+        },
+        "a168efc7-f15a-4b87-bc00-5d85f88e730d": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/malate_bolt.png",
+            "title": "No Artificial Ingredients",
+            "desc": "Grass-Fed Whey Protein Isolate is free from artificial sweeteners, food dyes, gluten, and preservatives."
+          }
+        },
+        "36e94a24-53ed-4fdf-bd05-49451468503a": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_2_4fe05c94-9dad-455d-9d9d-9e1e3f9f0821.png",
+            "title": "100% Grass Fed Whey Protein Isolate ",
+            "desc": "Made from grass-fed and grass-finished, hormone-free American cows."
+          }
+        }
+      },
+      "block_order": [
+        "64f9369c-4c8c-46b2-a8da-8199fefb813b",
+        "5bd4f26a-f488-491d-8619-b464bc6390f0",
+        "a168efc7-f15a-4b87-bc00-5d85f88e730d",
+        "36e94a24-53ed-4fdf-bd05-49451468503a"
+      ],
+      "settings": {
+        "title": "PURE & NATURAL INGREDIENTS",
+        "dimage": "shopify://shop_images/whey_render.png",
+        "mimage": "shopify://shop_images/WPI_FRENCH_VANILLA_FINAL_VIEW1_1.png",
+        "btn_text": "View Full Ingredients",
+        "pimage": "shopify://shop_images/WPI_ProductImage_2_1.png"
+      }
+    },
+    "b45048cd-f528-475a-8264-4f948b471942": {
+      "type": "old-bulk-affiliate-product",
+      "blocks": {
+        "bcb9ce21-18c1-46b0-8c85-660b280e6d68": {
+          "type": "text",
+          "settings": {
+            "collection_type": "",
+            "product_type": "BEST DEAL",
+            "product_1": "whey-protein-isolate",
+            "detail_1": "• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_1": "MAXIMUM RESULTS",
+            "product_2": "muscle-building-stacks",
+            "detail_2": "• <strong>OPTIMIZED BUNDLE MAXIMIZES GAINS</strong><br>\n• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_2": "ONE-TIME PURCHASE",
+            "product_3": "whey-protein-isolate",
+            "detail_3": "<span style=\"text-decoration: line-through;\">• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time</span>"
+          }
+        }
+      },
+      "block_order": [
+        "bcb9ce21-18c1-46b0-8c85-660b280e6d68"
+      ],
+      "settings": {
+        "title": "",
+        "subtitle": "YOUR CHOICE: SOLO, SUBSCRIPTION, OR STACK SUBSCRIPTION",
+        "discount_month": "Deliver Every Month",
+        "discount_days": "Deliver Every 45 days",
+        "percent_text": "15% Off"
+      }
+    },
+    "main": {
+      "type": "old-bulk-affiliate",
+      "blocks": {
+        "3df6f53c-b737-4255-b6b0-710b24dfc82c": {
+          "type": "text",
+          "settings": {
+            "collection_type": "",
+            "product_type": "BEST DEAL",
+            "product_1": "bulk-preworkout",
+            "detail_1": "• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_1": "MAXIMUM RESULTS",
+            "product_2": "muscle-building-stacks",
+            "detail_2": "• <strong>OPTIMIZED BUNDLE MAXIMIZES GAINS</strong><br>\n• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_2": "ONE-TIME PURCHASE",
+            "product_3": "bulk-preworkout",
+            "detail_3": "<span style=\"text-decoration: line-through;\">• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time</span>"
+          }
+        },
+        "93ca6462-e912-43f1-8601-09a6d098b432": {
+          "type": "text",
+          "settings": {
+            "collection_type": "",
+            "product_type": "",
+            "product_1": "",
+            "detail_1": "",
+            "product_type_1": "",
+            "product_2": "",
+            "detail_2": "",
+            "product_type_2": "",
+            "product_3": "",
+            "detail_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "3df6f53c-b737-4255-b6b0-710b24dfc82c",
+        "93ca6462-e912-43f1-8601-09a6d098b432"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "YOUR CHOICE: SOLO, SUBSCRIPTION, OR STACK SUBSCRIPTION",
+        "subtitle": "",
+        "discount_month": "Deliver Every Month",
+        "discount_days": "Deliver Every 45 days",
+        "percent_text": "10% Off"
+      }
+    },
+    "d5dae2ee-29b0-4b3e-9fa5-433d1cdde0e0": {
+      "type": "old-bulk-affiliate-body-banner",
+      "settings": {
+        "image": "shopify://shop_images/2nd_banner.png"
+      }
+    },
+    "878a4b2f-ae66-4ef6-a4c0-13b5c7b649c4": {
+      "type": "old-bulk-affiliate-scoop",
+      "blocks": {
+        "97e103d6-7070-46e6-8a76-471c464747f0": {
+          "type": "text",
+          "settings": {
+            "title": "28 GRAMS OF PROTEIN"
+          }
+        },
+        "1e01f3cb-136f-417b-a2c2-8012a65f03a7": {
+          "type": "text",
+          "settings": {
+            "title": "NO ARTIFICIAL COLORS"
+          }
+        },
+        "99f06647-47f8-41ea-8ef1-4ed4c8bd36f4": {
+          "type": "text",
+          "settings": {
+            "title": "4-6 NATURAL INGREDIENTS"
+          }
+        },
+        "303e639d-3b4c-4f14-a38f-ebe7f04eb890": {
+          "type": "text",
+          "settings": {
+            "title": "24 GRAMS OF PROTEIN"
+          }
+        },
+        "60956d7a-8c96-4f4b-8f7d-303d37f30ac3": {
+          "type": "text",
+          "settings": {
+            "title": "ARTIFICIAL COLORS"
+          }
+        },
+        "e37237aa-035e-459f-b434-699ee8c86945": {
+          "type": "text",
+          "settings": {
+            "title": "9-10 INGREDIENTS"
+          }
+        }
+      },
+      "block_order": [
+        "97e103d6-7070-46e6-8a76-471c464747f0",
+        "1e01f3cb-136f-417b-a2c2-8012a65f03a7",
+        "99f06647-47f8-41ea-8ef1-4ed4c8bd36f4",
+        "303e639d-3b4c-4f14-a38f-ebe7f04eb890",
+        "60956d7a-8c96-4f4b-8f7d-303d37f30ac3",
+        "e37237aa-035e-459f-b434-699ee8c86945"
+      ],
+      "settings": {
+        "heading": "THE REAL SCOOP",
+        "subheading": "<span>WHEY PROTEIN ISOLATE</span> vs. the others",
+        "limage": "shopify://shop_images/whey_render.png",
+        "rimage": "shopify://shop_images/competitor_render.png",
+        "btn_text": "SHOP NOW",
+        "btn_link": "#xgen-new-collection"
+      }
+    },
+    "a6d8a429-db3b-4902-b34e-eca0a36a6aaf": {
+      "type": "old-index-pertner-icons",
+      "blocks": {
+        "12b15581-3a2d-4dd0-a28f-f7cc94d48ed9": {
+          "type": "text",
+          "settings": {
+            "icon_text": "AS SEEN ON"
+          }
+        },
+        "a565879d-c6c4-4c9d-946d-58494f22b423": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Group_352.png",
+            "icon_text": ""
+          }
+        },
+        "7ebf789f-0951-416e-8a4e-6f7d661d3d42": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/2560px-Healthline_logo.png",
+            "icon_text": ""
+          }
+        },
+        "77109622-4312-42b4-b9f1-242d38fe7ca3": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/logo1200x630.png",
+            "icon_text": ""
+          }
+        },
+        "3acc0958-bf37-47c7-addf-d80007f12f8d": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/livestrong-logo.png",
+            "icon_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "12b15581-3a2d-4dd0-a28f-f7cc94d48ed9",
+        "a565879d-c6c4-4c9d-946d-58494f22b423",
+        "7ebf789f-0951-416e-8a4e-6f7d661d3d42",
+        "77109622-4312-42b4-b9f1-242d38fe7ca3",
+        "3acc0958-bf37-47c7-addf-d80007f12f8d"
+      ],
+      "settings": {
+        "index-partner-icons": "index partner icons"
+      }
+    },
+    "7f6173d9-5234-4e26-ba01-d7c495dac4b0": {
+      "type": "old-bulk-affiliate-body-banner",
+      "settings": {
+        "image": "shopify://shop_images/3rd_banner.png"
+      }
+    },
+    "42981725-61f5-4256-a388-54f731e0ba6d": {
+      "type": "old-bulk-affiliate-reviews",
+      "blocks": {
+        "da50697f-8e87-4bb5-8fe5-c0b15dfa57da": {
+          "type": "text",
+          "settings": {
+            "rating": "5",
+            "review": "“I've tried other brands of protein but this has been the best. It's very light and not too sweet at all. I will definitely order again!\"",
+            "name": "Luis M."
+          }
+        },
+        "aa1eb5a1-f64e-4cfe-89e0-506e013ca7d4": {
+          "type": "text",
+          "settings": {
+            "rating": "5",
+            "review": "“Cleanest protein on the market and it just happens to be the best tasting too! Cinnamon french toast taste great. It is amazing in oats.\"",
+            "name": "Dana S."
+          }
+        },
+        "cedd8563-f887-4f56-80c3-649593bd5442": {
+          "type": "text",
+          "settings": {
+            "rating": "5",
+            "review": "“The best protein powder I have ever had. And I've tried a lot. It's not too sweet. It doesn't foam up. And there is no funny business. I know what I'm putting in my body.”",
+            "name": "Erica H."
+          }
+        }
+      },
+      "block_order": [
+        "da50697f-8e87-4bb5-8fe5-c0b15dfa57da",
+        "aa1eb5a1-f64e-4cfe-89e0-506e013ca7d4",
+        "cedd8563-f887-4f56-80c3-649593bd5442"
+      ],
+      "settings": {
+        "heading": "DON'T JUST TAKE OUR WORD FOR IT",
+        "subheading": "Read what fitness enthusiasts and avid gym-goers are saying about 100% Whey Protein Isolate:",
+        "btn_text": "SHOP NOW",
+        "btn_link": ""
+      }
+    }
+  },
+  "order": [
+    "f338a9c2-3168-494e-b4e7-b08979119509",
+    "c70dec47-0c2c-46fa-a7f6-efa1df957373",
+    "1a9b2478-a05d-4c94-bdc0-0cf466ca7f06",
+    "b45048cd-f528-475a-8264-4f948b471942",
+    "main",
+    "d5dae2ee-29b0-4b3e-9fa5-433d1cdde0e0",
+    "878a4b2f-ae66-4ef6-a4c0-13b5c7b649c4",
+    "a6d8a429-db3b-4902-b34e-eca0a36a6aaf",
+    "7f6173d9-5234-4e26-ba01-d7c495dac4b0",
+    "42981725-61f5-4256-a388-54f731e0ba6d"
+  ]
+}

@@ -1,0 +1,129 @@
+{% stylesheet %}
+.sb-trending-post {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sb-trending-post__image-wrapper {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.sb-trending-post__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sb-trending-post__content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sb-trending-post__title {
+  font-size: calc(20 / var(--sb-base-font-size, 16) * 1rem);
+  font-weight: 500;
+  font-family: var(--sb-font-family-body);
+  margin: 0;
+  color: var(--sb-fg-color, #000);
+}
+
+.sb-trending-post__excerpt {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
+  color: var(--sb-fg-color, #000);
+  opacity: 0.8;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sb-trending-post__author {
+  font-size: 12px;
+  margin: 0;
+  color: var(--sb-fg-color, #000);
+  opacity: 0.7;
+}
+
+.sb-trending-posts__container.sb-trending-posts__container--cards .sb-trending-post {
+  padding: 16px;
+  background-color: var(--sb-ch-fg-color, #fff);
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 990px) {
+  .sb-trending-post__author {
+    display: none;
+  }
+  .sb-trending-post__image-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .sb-trending-post__title {
+    font-size: 16px;
+  }
+
+  .sb-trending-post {
+    gap: 14px;
+  }
+}
+{% endstylesheet %}
+
+{%  if block.settings.article != empty %}
+  {% assign article = block.settings.article %}
+  <a href="{{ article.url }}" class="sb-trending-post">
+    <div class="sb-trending-post__image-wrapper">
+      {% if article.image != blank %}
+        {{ article.image | image_url: width: 160 | image_tag: 
+          loading: 'lazy',
+          class: 'sb-trending-post__image',
+          height: 160,
+          width: 160,
+          alt: article.image.alt | default: article.title
+        }}
+      {% endif %}
+    </div>
+    <div class="sb-trending-post__content">
+      <h4 class="sb-trending-post__title">{{ article.title }}</h4>
+      {% if article.excerpt != blank %}
+        <p class="sb-trending-post__excerpt">{{ article.excerpt | strip_html | truncate: 80 }}</p>
+      {% else %}
+        <p class="sb-trending-post__excerpt">{{ article.content | strip_html | truncate: 80 }}</p>
+      {% endif %}
+      {% if article.author != blank %}
+        <p class="sb-trending-post__author">By: {{ article.author }}</p>
+      {% endif %}
+    </div>
+  </a>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Trending Post",
+  "tag": null,
+  "settings": [
+    {
+      "type": "article",
+      "label": "Article",
+      "id": "article"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trending Post"
+    }
+  ]
+}
+{% endschema %}

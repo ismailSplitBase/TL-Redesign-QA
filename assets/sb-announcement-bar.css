@@ -1,0 +1,8 @@
+.announcement-bar a.sb-announcement-bar__link:hover {
+    text-decoration: none !important;
+    color: #fff;
+}
+
+.announcement-bar__message.sb-announcement-bar__message span {
+    font-size: 14px;
+}

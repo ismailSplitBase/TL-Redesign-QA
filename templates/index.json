@@ -1,0 +1,952 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sb_hero_BTAPiM": {
+      "type": "sb-hero--alt",
+      "blocks": {
+        "subscribers_bgDajC": {
+          "type": "subscribers",
+          "settings": {
+            "image": "shopify://shop_images/active-subscriber-list.png",
+            "content": "<p><strong>75,000+</strong> Active Subscribers</p>",
+            "fg_color": "#ffffff",
+            "bg_color": "transparent",
+            "fg_color_desktop": "#111314",
+            "bg_color_desktop": "transparent"
+          }
+        },
+        "heading_jRNPNE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Hold your supplements to a higher standard."
+          }
+        },
+        "text_LifaTg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Reach your health and fitness goals with clean ingredients and transparent labels, so you know exactly what you're putting in your body.</p>"
+          }
+        },
+        "button_Ncgydt": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Supplements",
+            "button_url": "shopify://collections/all",
+            "button_type": "",
+            "button_arrow": true,
+            "button_color": "#ffffff",
+            "button_text_color": "#111314",
+            "button_color_desktop": "#111314",
+            "button_text_color_desktop": "#ffffff"
+          }
+        },
+        "button_PcGLBb": {
+          "type": "button",
+          "settings": {
+            "button_text": "Find my Supplement Routine",
+            "button_url": "shopify://pages/transparent-labs-quiz",
+            "button_type": "outline",
+            "button_arrow": false,
+            "button_color": "",
+            "button_text_color": "#ffffff",
+            "button_color_desktop": "",
+            "button_text_color_desktop": "#111314"
+          }
+        }
+      },
+      "block_order": [
+        "subscribers_bgDajC",
+        "heading_jRNPNE",
+        "text_LifaTg",
+        "button_Ncgydt",
+        "button_PcGLBb"
+      ],
+      "name": "SB Hero - Alt",
+      "settings": {
+        "media_source": "image",
+        "mobile_img": "shopify://shop_images/hero-alt.png",
+        "desktop_img": "shopify://shop_images/hero-alt.png",
+        "mobile_video": "shopify://files/videos/Hero Video - Mobile - 720p (1).mp4",
+        "desktop_video": "shopify://files/videos/Hero Video - Desktop.mp4",
+        "desktop_media_height": "full",
+        "mobile_media_height": "large",
+        "show_overlay": true,
+        "bg_overlay_mobile": "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 30.2%, rgba(0, 0, 0, 0.40) 51.25%), linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%)",
+        "bg_overlay_desktop": "",
+        "fg_color": "#ffffff",
+        "bg_color": "#F8F9FB",
+        "fg_color_desktop": "#000000"
+      }
+    },
+    "sb_icons_with_text_VEfyEm": {
+      "type": "sb-icons-with-text",
+      "blocks": {
+        "icon_with_text_WB4HJ8": {
+          "type": "icon-with-text",
+          "settings": {
+            "icon": "shopify://shop_images/Natural-Grass-Fed_Ingredients.svg",
+            "text": "Natural & Grass-Fed Ingredients"
+          }
+        },
+        "icon_with_text_6aaePA": {
+          "type": "icon-with-text",
+          "settings": {
+            "icon": "shopify://shop_images/Complete-Label_-Transparency.svg",
+            "text": "Complete Label Transparency"
+          }
+        },
+        "icon_with_text_PmBpTe": {
+          "type": "icon-with-text",
+          "settings": {
+            "icon": "shopify://shop_images/tl-dosed-icon.png",
+            "text": "Clinically-Dosed Formulas"
+          }
+        },
+        "icon_with_text_Udjecn": {
+          "type": "icon-with-text",
+          "settings": {
+            "icon": "shopify://shop_images/tl-tpt-icon.png",
+            "text": "3rd-Party Lab Tested"
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_WB4HJ8",
+        "icon_with_text_6aaePA",
+        "icon_with_text_PmBpTe",
+        "icon_with_text_Udjecn"
+      ],
+      "name": "Sb Icons With Text",
+      "settings": {}
+    },
+    "sb_marquee_3BFhrk": {
+      "type": "sb-marquee",
+      "blocks": {
+        "item_PUziRD": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/Natural-Grass-Fed_Ingredients.svg",
+            "text": "Natural & Grass-Fed Ingredients"
+          }
+        },
+        "item_QQCUNA": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/trans-icon-512.png",
+            "text": "Complete Label Transparency"
+          }
+        },
+        "item_DyMTNx": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/tl-dosed-icon.png",
+            "text": "Clinically-Dosed Formulas"
+          }
+        },
+        "item_YGFY7a": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/tl-tpt-icon.png",
+            "text": "3rd-Party Lab Tested"
+          }
+        }
+      },
+      "block_order": [
+        "item_PUziRD",
+        "item_QQCUNA",
+        "item_DyMTNx",
+        "item_YGFY7a"
+      ],
+      "disabled": true,
+      "name": "SB Marquee",
+      "settings": {
+        "speed": 43,
+        "fg_color": "#121212",
+        "bg_color": "#F8F9FB",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "sb_tabbed_collections_yqeBXG": {
+      "type": "sb-tabbed-collections",
+      "blocks": {
+        "static-slider": {
+          "type": "_slider",
+          "static": true,
+          "settings": {
+            "slides_per_view": 1.3,
+            "space_between_slides": 24,
+            "centered_slides": false,
+            "show_pagination": "always",
+            "show_page_count": "always",
+            "loop": false,
+            "autorotate": false,
+            "mousewheel": true,
+            "autorotate_speed": 5,
+            "slides_offset": 16
+          },
+          "blocks": {
+            "slide_breakpoint_4dnDaj": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 640,
+                "slides_per_view": 2.2,
+                "space_between_slides": 24,
+                "slides_offset": 16
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_DCNfPx": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1020,
+                "slides_per_view": 3.2,
+                "space_between_slides": 24,
+                "slides_offset": 48
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_EwQprU": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1180,
+                "slides_per_view": 3.8,
+                "space_between_slides": 24,
+                "slides_offset": 48
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_KzKnCn": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1440,
+                "slides_per_view": 4.4,
+                "space_between_slides": 24,
+                "slides_offset": 64
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_eJkULk": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1920,
+                "slides_per_view": 5.1,
+                "space_between_slides": 36,
+                "slides_offset": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_breakpoint_4dnDaj",
+            "slide_breakpoint_DCNfPx",
+            "slide_breakpoint_EwQprU",
+            "slide_breakpoint_KzKnCn",
+            "slide_breakpoint_eJkULk"
+          ]
+        }
+      },
+      "name": "SB Tabbed Collections",
+      "settings": {
+        "heading": "Find Your Clean Supplements",
+        "link_text": "View All",
+        "collections": [
+          "bestsellers",
+          "proteinseries",
+          "build-muscle",
+          "preseries",
+          "health-wellness",
+          "weight-loss"
+        ],
+        "products_to_show": 8,
+        "disable_slider": false,
+        "fg_color": "#121212",
+        "bg_color": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
+        "accent_color": "",
+        "ch_fg_color": "#121212",
+        "ch_bg_color": "#F8F9FB",
+        "ch_accent_color": "",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "sb_shop_by_goal_H7eWEK": {
+      "type": "sb-shop-by-goal",
+      "blocks": {
+        "card_8qB3DM": {
+          "type": "card",
+          "settings": {
+            "heading": "Build Lean Muscle",
+            "byline": "Support and maximize muscle growth",
+            "image": "shopify://shop_images/Build_Muscle_3_65d6aa32-53e5-4841-bafd-cbbdb36fa350.jpg",
+            "link_url": "shopify://collections/build-lean-muscle"
+          }
+        },
+        "card_cQKMak": {
+          "type": "card",
+          "settings": {
+            "heading": "Improve Performance",
+            "byline": "Boost energy, strength and focus.",
+            "image": "shopify://shop_images/Performance_cf5d5050-7083-4b49-b527-22a29ec5afb3.jpg",
+            "link_url": "shopify://collections/improve-performance"
+          }
+        },
+        "card_9H9C47": {
+          "type": "card",
+          "settings": {
+            "heading": "Support Health & Longevity",
+            "byline": "Enhance overall wellness through nutrition and hormone support.",
+            "image": "shopify://shop_images/Longevity_b9c7b516-f196-486a-9255-45dc74fb043b.jpg",
+            "link_url": "shopify://collections/support-health-longevity"
+          }
+        },
+        "card_44argb": {
+          "type": "card",
+          "settings": {
+            "heading": "Body Recomposition",
+            "byline": "Reduce body fat and improve physique.",
+            "image": "shopify://shop_images/BodyComposition.jpg",
+            "link_url": "shopify://collections/body-recomposition"
+          }
+        }
+      },
+      "block_order": [
+        "card_8qB3DM",
+        "card_cQKMak",
+        "card_9H9C47",
+        "card_44argb"
+      ],
+      "name": "SB Shop By Goal",
+      "settings": {
+        "heading": "Shop By Goal",
+        "content": "Find the right supplements to reach your health and fitness goals with ease.",
+        "link_text": "",
+        "link_url": "",
+        "button_text": "",
+        "button_url": "",
+        "button_type": "outline",
+        "fg_color": "#111314",
+        "bg_color": "linear-gradient(136deg, rgba(248, 249, 251, 1) 11%, rgba(248, 249, 251, 1) 36%)",
+        "button_color": "#ffffff",
+        "button_text_color": "#000000",
+        "ch_fg_color": "#111314",
+        "ch_bg_color": "radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%)",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "testimonial_KHYMVz": {
+      "type": "testimonial",
+      "blocks": {
+        "testimonial_aA9AHm": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/forbes_logo.svg",
+            "testimonial_text": "“If you’re looking for a clean whey protein powder that’s easy on the body, this is the one to get.”"
+          }
+        },
+        "testimonial_XrVR69": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Men_s_Health_-_Fitness_Nutrition_Health_Sex_Style_Weight_Loss_Tips_for_Men-2_1.svg",
+            "testimonial_text": "“Transparent Labs' Bulk Pre-Workout has everything you need to increase your reps, energy, and focus during your workouts.”"
+          }
+        },
+        "testimonial_apeFCH": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/healthline_1.svg",
+            "testimonial_text": "“Because Transparent Labs Whey Isolate packs 28g of protein, it’s a great choice for anyone who needs to boost protein intake or jumpstart post-workout recovery.”"
+          }
+        },
+        "testimonial_3DiMJd": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/GQ_logo_1.svg",
+            "testimonial_text": "“It’s always refreshing when you take a look at the nutrition facts label and can actually pronounce all the ingredients listed.\""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_aA9AHm",
+        "testimonial_XrVR69",
+        "testimonial_apeFCH",
+        "testimonial_3DiMJd"
+      ],
+      "name": "Testimonial Slider",
+      "settings": {
+        "bg_color": "#173446",
+        "content_color": "#ffffff"
+      }
+    },
+    "sb_press_bar_zxarRh": {
+      "type": "sb-press-bar",
+      "blocks": {
+        "item_wLmjKQ": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/forbes_logo.svg",
+            "text": "“If you’re looking for a clean whey protein powder that’s easy on the body, this is the one to get.”"
+          }
+        },
+        "item_933Ben": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/MH-logo.png",
+            "text": "“Transparent Labs' Bulk Pre-Workout has everything you need to increase your reps, energy, and focus during your workouts.”"
+          }
+        },
+        "item_8wXfa9": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/GQ_logo.svg",
+            "text": "“It’s always refreshing when you take a look at the nutrition facts label and can actually pronounce all the ingredients listed.\""
+          }
+        },
+        "item_jLH6em": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/healthline_1.svg",
+            "text": "“Because Transparent Labs Whey Isolate packs 28g of protein, it’s a great choice for anyone who needs to boost protein intake or jumpstart post-workout recovery.”"
+          }
+        }
+      },
+      "block_order": [
+        "item_wLmjKQ",
+        "item_933Ben",
+        "item_8wXfa9",
+        "item_jLH6em"
+      ],
+      "disabled": true,
+      "name": "SB Press Bar",
+      "settings": {
+        "speed": 43,
+        "fg_color": "",
+        "bg_color": "",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "sb_clean_mean_7FVyYQ": {
+      "type": "sb-clean-mean",
+      "blocks": {
+        "item_rHAwdL": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Value_Prop_-_No_Artificial_Preservatives.svg",
+            "content": "No Artificial Sweeteners"
+          }
+        },
+        "item_w3Fa6T": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/tl-filler.png",
+            "content": "No Artificial Colors or Fillers"
+          }
+        },
+        "item_zTGJbe": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/tl-no-hromones.png",
+            "content": "No Hormones or Antibiotics"
+          }
+        },
+        "item_jdMa9J": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/tl-no-gluten.png",
+            "content": "Gluten Free & Non-GMO"
+          }
+        }
+      },
+      "block_order": [
+        "item_rHAwdL",
+        "item_w3Fa6T",
+        "item_zTGJbe",
+        "item_jdMa9J"
+      ],
+      "name": "SB What Does Clean Mean",
+      "settings": {
+        "heading": "What does \"Clean\" really mean?",
+        "mobile_img": "shopify://shop_images/Clean-mobile.jpg",
+        "desktop_img": "shopify://shop_images/Clean-desktop.jpg",
+        "overlay_enable": true,
+        "overlay_opacity": 0.4,
+        "fg_color": "#ffffff",
+        "bg_color": "#fff",
+        "fg_color_desktop": "#121212",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "sb_featured_reviews_dUiNaF": {
+      "type": "sb-featured-reviews",
+      "blocks": {
+        "featured_review_NrdyXa": {
+          "type": "_featured-review",
+          "name": "Featured Review Card",
+          "settings": {
+            "author": "Daniel Jon Orozco",
+            "heading": "The Real Deal",
+            "review": "“Creatine HMB definitely will increase your reps due to the strength increase. It unquestionably works!”",
+            "product": "creatine-hmb"
+          },
+          "blocks": {}
+        },
+        "featured_review_LMpiat": {
+          "type": "_featured-review",
+          "name": "Featured Review Card",
+          "settings": {
+            "author": "Sean Montgomery",
+            "heading": "Clean Protein",
+            "review": "“I use TL creatine which I love so I decided to give their protein a shot, and I am a big fan. It mixes easily in my shaker cup and doesn’t make you feel bloated after you drink it. Love how clean the product is and will be buying again soon!”",
+            "product": "whey-protein-isolate"
+          },
+          "blocks": {}
+        },
+        "featured_review_yX9QVR": {
+          "type": "_featured-review",
+          "name": "Featured Review Card",
+          "settings": {
+            "author": "Austin Reed",
+            "heading": "Everything Feels Clean",
+            "review": "“I’ve used many pre-workouts, and this one is hands down the best if you’re looking for good ingredients and a great workout! The stimulant isn’t overwhelming at all and I get a great pump every time!”",
+            "product": "lean-preworkout"
+          },
+          "blocks": {}
+        },
+        "featured_review_njkRji": {
+          "type": "_featured-review",
+          "name": "Featured Review Card",
+          "settings": {
+            "author": "Travis",
+            "heading": "Impressive",
+            "review": "I am thoroughly impressed with how good these taste, while also not compromising on the ingredients. These bars have the cleanest ingredients I have found in a protein bar, and taste better then 95% of the other bars I have tried.",
+            "product": "protein-bars"
+          },
+          "blocks": {}
+        },
+        "featured_review_Gdy7Tc": {
+          "type": "_featured-review",
+          "name": "Featured Review Card",
+          "settings": {
+            "author": "Ray Circo",
+            "heading": "Mighty Greens",
+            "review": "These are the first greens I’ve ever purchased and they definitely set the bar high. You can feel them working from your very first serving to the very last. Will definitely buy these again!",
+            "product": "greens"
+          },
+          "blocks": {}
+        },
+        "static-slider": {
+          "type": "_slider",
+          "static": true,
+          "settings": {
+            "slides_per_view": 1.2,
+            "space_between_slides": 24,
+            "centered_slides": false,
+            "show_pagination": "always",
+            "show_page_count": "always",
+            "loop": true,
+            "autorotate": false,
+            "mousewheel": true,
+            "autorotate_speed": 5,
+            "slides_offset": 16
+          },
+          "blocks": {
+            "slide_breakpoint_m6BaEq": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1000,
+                "slides_per_view": 2.6,
+                "space_between_slides": 25,
+                "slides_offset": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_breakpoint_m6BaEq"
+          ]
+        }
+      },
+      "block_order": [
+        "featured_review_NrdyXa",
+        "featured_review_LMpiat",
+        "featured_review_yX9QVR",
+        "featured_review_njkRji",
+        "featured_review_Gdy7Tc"
+      ],
+      "name": "SB Featured Reviews",
+      "settings": {
+        "heading": "58,934 Verified 5 Star Reviews From Our Customers",
+        "fg_color": "#111314",
+        "bg_color": "linear-gradient(0deg, rgba(248, 249, 251, 1), rgba(248, 249, 251, 1) 100%)",
+        "accent_color": "#334fb4",
+        "ch_fg_color": "#000000",
+        "ch_bg_color": "linear-gradient(54deg, rgba(255, 255, 255, 1) 5%, rgba(255, 255, 255, 1) 21%, rgba(255, 255, 255, 1) 46%)",
+        "ch_accent_color": "#334fb4",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "sb_supporting_you_8AJGmz": {
+      "type": "sb-supporting-you",
+      "blocks": {
+        "data_TkPrNP": {
+          "type": "data",
+          "settings": {
+            "heading": "50,000+",
+            "content": "Active monthly subscribers who are committed to healthy routine."
+          }
+        },
+        "data_NGpYfQ": {
+          "type": "data",
+          "settings": {
+            "heading": "31,000+",
+            "content": "5-star reviews from customers who have seen the results."
+          }
+        },
+        "data_6jMhRi": {
+          "type": "data",
+          "settings": {
+            "heading": "45+",
+            "content": "Rigorously formulated, effective products."
+          }
+        },
+        "data_6Vpxt4": {
+          "type": "data",
+          "settings": {
+            "heading": "100+",
+            "content": "Clinical studies that support our formulas."
+          }
+        },
+        "data_JxcJyx": {
+          "type": "data",
+          "settings": {
+            "heading": "2,000",
+            "content": "3rd-party lab tests performed to verify purity and potency."
+          }
+        }
+      },
+      "block_order": [
+        "data_TkPrNP",
+        "data_NGpYfQ",
+        "data_6jMhRi",
+        "data_6Vpxt4",
+        "data_JxcJyx"
+      ],
+      "name": "SB Supporting You",
+      "settings": {
+        "heading": "Supporting You With Science",
+        "page_layout": "slim",
+        "fg_color": "#ffffff",
+        "bg_color": "linear-gradient(228deg, rgba(23, 52, 70, 1) 14%, rgba(23, 52, 70, 1) 84%)",
+        "padding_top": 80,
+        "padding_bottom": 68
+      }
+    },
+    "sb_partners_gKWAMd": {
+      "type": "sb-partners",
+      "blocks": {
+        "performance_partner_HKnwTe": {
+          "type": "_performance-partner",
+          "name": "Performance Partner Card",
+          "settings": {
+            "image": "shopify://shop_images/Paul_1.jpg",
+            "quote": "\"I choose TL products because I won't settle for anything that uses junk like artificial sweeteners, colors, or flavors. It's simple. TL has the best-tasting, cleanest products on the planet.\"",
+            "partner": "Paul Sklar",
+            "partner_byline": "Athlete, Professional Trainer & Fitness Influencer"
+          },
+          "blocks": {}
+        },
+        "performance_partner_f4RQiF": {
+          "type": "_performance-partner",
+          "name": "Performance Partner Card",
+          "settings": {
+            "image": "shopify://shop_images/Diana_3.jpg",
+            "quote": "\"TL is the only brand I trust to bring me high-quality ingredients that will fuel my physical & mental performance both in and outside the gym.\"",
+            "partner": "Diana Conforti",
+            "partner_byline": "Personal Trainer & Content Creator"
+          },
+          "blocks": {}
+        },
+        "performance_partner_gndfCg": {
+          "type": "_performance-partner",
+          "name": "Performance Partner Card",
+          "settings": {
+            "image": "shopify://shop_images/Max_1.jpg",
+            "quote": "\"I was taking TL before we even got to be a partnership with them. I love what they stand for—just clean, great stuff for your body, and I can feel it in my training.\"",
+            "partner": "Max Holloway",
+            "partner_byline": "UFC Fighter"
+          },
+          "blocks": {}
+        },
+        "performance_partner_HzK8cQ": {
+          "type": "_performance-partner",
+          "name": "Performance Partner Card",
+          "settings": {
+            "image": "shopify://shop_images/Marcus_1.jpg",
+            "quote": "\"TL makes the highest-quality, science-backed formulations that support performance, recovery, and longevity—aligning perfectly with my Functional Bodybuilding philosophy and training approach.\"",
+            "partner": "Marcus Filly",
+            "partner_byline": "Pioneer of Functional Bodybuilding"
+          },
+          "blocks": {}
+        },
+        "performance_partner_9rYrWk": {
+          "type": "_performance-partner",
+          "name": "Performance Partner Card",
+          "settings": {
+            "image": "shopify://shop_images/Keiani_2.jpg",
+            "quote": "\"Whether I'm looking for protein, pre-workout, or any other supplement, Transparent Labs delivers exactly what I need with clean ingredients and tasty options.\"",
+            "partner": "Keiani Mabe",
+            "partner_byline": "Fitness Enthusiast/Influencer"
+          },
+          "blocks": {}
+        },
+        "performance_partner_fDeBya": {
+          "type": "_performance-partner",
+          "name": "Performance Partner Card",
+          "settings": {
+            "image": "shopify://shop_images/Deb_1.jpg",
+            "quote": "\"TL supplements are an easy choice for me because I value clean, pure & effective performance-based supplements that are science-backed.\"",
+            "partner": "Deborah Moore",
+            "partner_byline": "Mindset, Macros, & Habit Coach for Midlife Women"
+          },
+          "blocks": {}
+        },
+        "performance_partner_3Qyhjq": {
+          "type": "_performance-partner",
+          "name": "Performance Partner Card",
+          "settings": {
+            "image": "shopify://shop_images/Thor_2.jpg",
+            "quote": "\"I choose Transparent Labs for their clean, high-quality supplements with no artificial junk—which are perfect for fueling my world-record lifts, strongman training, and recovery.\"",
+            "partner": "Hafþór Júlíus Björnsson",
+            "partner_byline": "Strongman Athlete"
+          },
+          "blocks": {}
+        },
+        "performance_partner_TcTf3n": {
+          "type": "_performance-partner",
+          "name": "Performance Partner Card",
+          "settings": {
+            "image": "shopify://shop_images/Ava_2.jpg",
+            "quote": "\"I appreciate that they are open about the ingredients and their sourcing, ensuring I’m always making an informed choice. For me, it's not just about gaining strength—it's about trusting what I put in my body to support my goals.\"",
+            "partner": "Ava Chemutai",
+            "partner_byline": "Full-time Powerlifter"
+          },
+          "blocks": {}
+        },
+        "performance_partner_6bjptW": {
+          "type": "_performance-partner",
+          "name": "Performance Partner Card",
+          "settings": {
+            "image": "shopify://shop_images/Q_1.jpg",
+            "quote": "\"TL has clean, tested products with clinically dosed formulas to help me and the athletes I work with achieve fitness and wellness goals.\"",
+            "partner": "Quentin Willey",
+            "partner_byline": "Collegiate Performance Coach and Physical Therapist"
+          },
+          "blocks": {}
+        },
+        "static-slider": {
+          "type": "_slider",
+          "static": true,
+          "settings": {
+            "slides_per_view": 1.2,
+            "space_between_slides": 25,
+            "centered_slides": false,
+            "show_pagination": "always",
+            "show_page_count": "always",
+            "loop": true,
+            "autorotate": false,
+            "mousewheel": false,
+            "autorotate_speed": 5,
+            "slides_offset": 16
+          },
+          "blocks": {
+            "slide_breakpoint_rgzGMR": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 991,
+                "slides_per_view": 2.5,
+                "space_between_slides": 25,
+                "slides_offset": 0
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_yhrdqy": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1921,
+                "slides_per_view": 4.5,
+                "space_between_slides": 25,
+                "slides_offset": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_breakpoint_rgzGMR",
+            "slide_breakpoint_yhrdqy"
+          ]
+        }
+      },
+      "block_order": [
+        "performance_partner_HKnwTe",
+        "performance_partner_f4RQiF",
+        "performance_partner_gndfCg",
+        "performance_partner_HzK8cQ",
+        "performance_partner_9rYrWk",
+        "performance_partner_fDeBya",
+        "performance_partner_3Qyhjq",
+        "performance_partner_TcTf3n",
+        "performance_partner_6bjptW"
+      ],
+      "name": "SB Performance Partners",
+      "settings": {
+        "heading": "TL Performance Partners",
+        "content": "Meet our team of athletes, coaches, and fitness professionals.",
+        "fg_color": "#121212",
+        "bg_color": "",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "sb_featured_media_jyLNgg": {
+      "type": "sb-featured-media",
+      "name": "SB Featured Media",
+      "settings": {
+        "heading": "Every Ingredient Matters to Make Every Effort Count",
+        "button_text": "Shop Best Sellers",
+        "button_url": "shopify://collections/bestsellers",
+        "button_type": "outline",
+        "media_source": "video",
+        "mobile_img": "shopify://shop_images/Kelsey_lean.png",
+        "desktop_img": "shopify://shop_images/Kelsey_lean.png",
+        "mobile_video": "shopify://files/videos/Ingredient Section - 1200 x 960.mp4",
+        "desktop_video": "shopify://files/videos/Ingredient Section - 1200 x 960 (1).mp4",
+        "enable_video_looping": true,
+        "show_overlay": false,
+        "bg_color_desktop": "linear-gradient(270deg, rgba(0, 0, 0, 0) 46.56%, rgba(0, 0, 0, 0.5) 66.28%),\nlinear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))",
+        "bg_color_mobile": "linear-gradient(356.06deg, rgba(0, 0, 0, 0) 53.22%, rgba(0, 0, 0, 0.7) 72.51%)",
+        "fg_color": "",
+        "button_color": "rgba(0,0,0,0)",
+        "button_text_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "sb_featured_blog_zxTtac": {
+      "type": "sb-featured-blog",
+      "blocks": {
+        "static-blog-card": {
+          "type": "_blog-card",
+          "static": true,
+          "settings": {
+            "show_blog_title": true,
+            "fg_color": "#111314",
+            "bg_color": "#fff"
+          },
+          "blocks": {}
+        },
+        "static-slider": {
+          "type": "_slider",
+          "static": true,
+          "settings": {
+            "slides_per_view": 1.3,
+            "space_between_slides": 24,
+            "centered_slides": false,
+            "show_pagination": "always",
+            "show_page_count": "always",
+            "loop": false,
+            "autorotate": false,
+            "mousewheel": true,
+            "autorotate_speed": 3,
+            "slides_offset": 16
+          },
+          "blocks": {
+            "slide_breakpoint_ikqhiP": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1024,
+                "slides_per_view": 3.7,
+                "space_between_slides": 24,
+                "slides_offset": 48
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_DmehyQ": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1440,
+                "slides_per_view": 3.7,
+                "space_between_slides": 24,
+                "slides_offset": 64
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_RqYRwP": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1920,
+                "slides_per_view": 4.3,
+                "space_between_slides": 24,
+                "slides_offset": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_breakpoint_ikqhiP",
+            "slide_breakpoint_DmehyQ",
+            "slide_breakpoint_RqYRwP"
+          ]
+        }
+      },
+      "name": "SB Featured Blog Posts",
+      "settings": {
+        "heading": "Start Learning",
+        "link_text": "Read More",
+        "featured_blog": "all",
+        "max_articles": 10,
+        "fg_color": "#121212",
+        "bg_color": "#F8F9FB",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "sb_hero_BTAPiM",
+    "sb_icons_with_text_VEfyEm",
+    "sb_marquee_3BFhrk",
+    "sb_tabbed_collections_yqeBXG",
+    "sb_shop_by_goal_H7eWEK",
+    "testimonial_KHYMVz",
+    "sb_press_bar_zxarRh",
+    "sb_clean_mean_7FVyYQ",
+    "sb_featured_reviews_dUiNaF",
+    "sb_supporting_you_8AJGmz",
+    "sb_partners_gKWAMd",
+    "sb_featured_media_jyLNgg",
+    "sb_featured_blog_zxTtac"
+  ]
+}

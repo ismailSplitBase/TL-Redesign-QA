@@ -1,0 +1,19 @@
+
+  <a href="{{ product.url }}">
+    <div class="items">
+      <div class="itemswrap">
+          
+        <div class="itimg">
+            <img src="{{product.featured_image | img_url : 'master'}}" alt="{{ product.featured_image.alt }}" loading="lazy">
+        
+        </div>
+        <div class="stack-text">
+          <div class="ctag"> {{block.settings.subtitle}}</div>
+          <h2>{{product.title}}</h2>
+          <p>{{block.settings.summary}}</p>
+
+
+        </div>
+      </div>
+    </div>
+  </a>

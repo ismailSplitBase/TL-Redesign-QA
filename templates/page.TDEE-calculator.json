@@ -1,0 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "old-TDEE-calculator",
+      "settings": {
+        "header_image": "shopify://shop_images/image_7_2.png",
+        "title": "TDEE Calculator",
+        "detail": "Our total daily energy expenditure (TDEE) calculator allows you to quickly determine how many calories you expend per day and how many calories to consume based on your fitness goals.",
+        "resources_heading": "Why Use a TDEE Calculator?",
+        "resources_detail": "<p>Total daily energy expenditure (TDEE) is an essential metric to know regardless of your fitness goals. By using our TDEE Calculator, you can quickly estimate how many calories you burn per day. In turn, you'll have a better idea of how many calories to consume to lose weight, maintain weight, or gain weight.</p><p><strong>How Does Our TDEE calculator Estimate Your Calorie Needs?</strong></p><p>This TDEE calculator uses the Mifflin-St.Jeor basal metabolic rate (BMR) equation, which is widely regarded as the most accurate formula [<a href=\"https://pubmed.ncbi.nlm.nih.gov/28323025/\">1</a>]. From there, an activity factor is used to approximate how many calories you expend from lifestyle choices. </p><p>Finally, your fitness goals are factored in to compute your calorie needs. </p><p><strong>What Are Calories?</strong></p><p>The thermal (heat) energy in food is a form of potential energy stored within the chemical bonds of macronutrients (e.g. protein, carbs, and fat). When the body metabolizes (breaks down) these nutrients, chemical bonds are split, and the energy contained within those bonds is released. Chemists refer to the resulting thermal energy as calories.</p><p>A calorie is the amount of energy (joules) needed to increase the temperature of one gram of water at atmospheric pressure by one degree Celsius. As such, the relationship between calories and joules is proportionate. One kilocalorie (kcal) is equal to 4.184 joules. </p><p>The calories in food are best quantified as \"kilocalories\" (kilo-is the prefix for thousandfold), but most food labels in the United States list calories as being synonymous with kilocalories for simplicity. Technically, a can of soda that contains 120 calories (by U.S. food-label standards) actually contains 120 kcal, or 120,000 cals.</p><p>In any case, \"calorie\" and \"kilocalorie\" are often used interchangeably outside scientific contexts.</p><p><strong>What's the Difference Between a BMR Calculator and TDEE Calculator?</strong></p><p>A basal metabolic rate (BMR) calculator tells you how many calories your body burns per day at rest. For example, if a BMR calculator says you burn 2,000 calories per day, that's roughly the amount you expend without any physical activity, non-exercise activity thermogenesis (NEAT), and thermic effects of feeding (TEF).</p><p>As such, your BMR is factored into TDEE calculations and comprises a major proportion of your calorie expenditure.</p><p><strong>How to Increase TDEE?</strong></p><p>Increasing your TDEE can be as simple as exercising more frequently, being more active outside the gym (e.g., walking around the neighborhood a few times a day), and eating more protein.</p><p>In contrast, increasing your BMR takes considerable time and generally happens in response to building muscle mass. Losing weight and doing excessive amounts of cardio typically cause BMR to drop. Hence, resistance training is a prudent lifestyle choice for just about everyone that wants to get fit and stay lean. </p><p>For further guidance on nutrition, training, and supplementation, check out the following resources:</p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/a-beginner-s-guide-to-counting-macros\" title=\"https://www.transparentlabs.com/blogs/all/a-beginner-s-guide-to-counting-macros\"><span style=\"text-decoration:underline\">Counting Macros 101</span></a></p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/body-recomposition-how-to-lose-fat-and-gain-muscle\"><span style=\"text-decoration:underline\">8-Week Body Recomposition Guide</span></a></p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/clean-bulk-vs-dirty-bulk\" title=\"https://www.transparentlabs.com/blogs/all/clean-bulk-vs-dirty-bulk\"><span style=\"text-decoration:underline\">Clean Eating vs. Flexible Dieting</span></a></p><p>→ <a href=\"https://www.transparentlabs.com/blogs/all/push-pull-legs-routine-guide-to-ppl\"><span style=\"text-decoration:underline\">Push-Pull-Legs Routine</span></a></p>",
+        "references_heading": "References",
+        "references_detail": "<p>1. Karlsson, M., Olsson, E., Becker, W., Karlström, B., Cederholm, T., & Sjögren, P. (2017). <a href=\"https://pubmed.ncbi.nlm.nih.gov/28323025/\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/28323025/\">Ability to predict resting energy expenditure with six equations compared to indirect calorimetry in octogenarian men</a>. <em>Experimental gerontology</em>, <em>92</em>, 52–55.</p>"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,340 @@
+<div class="{% if page.handle == 'search-results-page' %}bg-gray-300{% endif %} certificate-of-analysis ">
+  <div class="container">
+
+    <div class="{% unless page.handle == 'search-results-page' %}page-content{% endunless %}">
+      <div class="section-wrapper">        
+        <div class="search-input-wrapper">
+          <div class="section-header">
+            <h1 class="section-title">
+              {% if section.settings.section_title != blank %}
+                {{ section.settings.section_title }}
+              {% else %}
+                {{ page.title }}
+              {% endif %}
+            </h1>
+        
+            {% if section.settings.section_description != blank %}
+              <div class="section-description">
+                <span>{{ section.settings.section_description }}</span>
+                
+                <span class="learn-more-info-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9.00002 5.66663H9.00669M9.00002 12.3333V8.16663M17.3334 8.99996C17.3334 13.6025 13.6025 17.3333 9.00002 17.3333C4.39752 17.3333 0.666687 13.6025 0.666687 8.99996C0.666687 4.39746 4.39752 0.666626 9.00002 0.666626C13.6025 0.666626 17.3334 4.39746 17.3334 8.99996Z" stroke="#676767" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  
+                  <!-- Modal moved inside the icon span -->
+                  <div class="learn-more-modal">
+                    <div class="learn-more-close">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M0.989595 0.989592L13.0104 13.0104M13.0104 0.989592L0.989595 13.0104" stroke="white" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                    <div class="learn-more-item-wrapper">
+                      {% for block in section.blocks %}
+                        <div class="learn-more-item">
+                          <div class="item-title">{{ block.settings.title }}</div>
+                          <div class="item-description">{{ block.settings.description }}</div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </span>
+              </div>
+            {% endif %}
+
+
+                     {% comment %}
+            {% if section.settings.link_url != blank %}
+              <div class="learn-more-wrapper section-link">
+                <a href="{{ section.settings.link_url }}">{{ section.settings.learn_more_text }}</a>
+                <div class="learn-more-info-icon">
+                  {% render 'old-icon-information' %}
+                  <div class="learn-more-modal">
+                    <div class="learn-more-close">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M0.989595 0.989592L13.0104 13.0104M13.0104 0.989592L0.989595 13.0104" stroke="white" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                    <div class="learn-more-item">
+                      <div class="item-title">Certificate of Analysis</div>
+                      <div class="item-description">Description lorem ipsum...</div>
+                    </div>
+                    <div class="learn-more-item">
+                      <div class="item-title">Certificate of Analysis</div>
+                      <div class="item-description">Description lorem ipsum...</div>
+                    </div>
+                    <div class="learn-more-item">
+                      <div class="item-title">Certificate of Analysis</div>
+                      <div class="item-description">Description lorem ipsum...</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+                     {% endcomment %}
+                          
+                          
+          </div>
+          <div class="search-input-form-wrapper">
+            <div class="search--form">
+              <input type="text" id="coa-search" placeholder="Enter Product Name" /> <button id="coa-search-submit" class="btn button"> Search {% render 'old-right-arrow' %} </button>
+              <div class="keep-shopping desktop--hide">
+                <a target="_blank" href="/collections/all">Keep Shopping {% render 'old-icon-right-arrow' %}</a>
+              </div>
+            </div>
+            <div id="coa-results"></div>
+            <div id="most-recent-searched"></div>
+            <div id="coa-results-searched"></div>
+          </div>
+
+          <div class="keep-shopping mobile--hide">
+            <a target="_blank" href="/collections/all" class="link-expand">Keep Shopping {% render 'old-icon-right-arrow' %}</a>
+          </div>
+        </div>
+        <div class="search-history-wrapper">
+          <div>
+            <div id="search-history-results">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% comment %}
+        {% capture certificate_of_analysis %}{% render 'old-certificate-of-analysis' %}{% endcapture %}
+        {{- certificate_of_analysis | strip_newlines -}}
+      {% endcomment %}
+      <script>
+
+        window.coaProductJsonValues = []
+        {% for prod in collections["all"].products %}
+          window.coaProductJsonValues[`{{ prod.handle }}`] = {{ prod | json }}
+          window.coaProductJsonValues[`{{ prod.handle }}`][`metafields`] = {{ prod.metafields.custom | json }}
+        {% endfor %}
+        let tempArray = JSON.parse(window.coajd)
+          window.coaData = tempArray;
+          
+          const searchInput = document.getElementById('coa-search');
+          const resultsContainer = document.getElementById('coa-results');
+          const resultsContainerSubmitted = document.getElementById('coa-results-searched');
+          const searchSubmitBtn = document.getElementById('coa-search-submit');
+          const data = window.coaData || [];
+
+          document.addEventListener("click", function(e){
+            if(!e.target.closest("#coa-results") && e.target != searchInput && !e.target.closest("#pdfViewerModal")){
+              resultsContainer.style.display = "none";
+            }
+          })
+
+          searchInput.addEventListener("focus", function(){
+            resultsContainer.style.display = "block";
+          })
+          
+          function renderResults(results) {
+            resultsContainer.innerHTML = '';
+          
+            if (results.length === 0) {
+              resultsContainer.innerHTML = '<div class="no-results-text">No results found.</div>';
+              return;
+            }
+          
+            const list = document.createElement('ul');
+            results.forEach(item => {
+              const listItem = document.createElement('li');
+              listItem.innerHTML = `<div class="coa-result-items" onclick="openPDFWithJS('${item.pdfurl}', '${ encodeURI(JSON.stringify(item)) }')"><img src="${ window.coaProductJsonValues[item.productHandle]?.featured_image }" width="50"> <div class="open_pdf product-title">${ item.productName } <icon>&nbsp; &#8212 &nbsp;</icon> <strong>${ item.AnalysisType }</strong><div class="item_date">${ item.date }</div></div> </div>
+              `;
+              list.appendChild(listItem);
+            });
+            resultsContainer.appendChild(list);
+          }
+          
+          function stripHtmlAndLimitToWords(html, wordLimit = 18) {
+            let tmp = document.createElement("DIV");
+            tmp.innerHTML = html;
+          
+            let inputString = tmp.textContent || tmp.innerText || "";
+          
+            const words = inputString.split(/\s+/);
+            if (words.length > wordLimit) {
+              return words.slice(0, wordLimit).join(' ') + '...';
+            }
+            return inputString;
+          }
+          
+          function renderResultsInContainer(results) {
+            resultsContainerSubmitted.innerHTML = '';
+          
+            if (results.length === 0) {
+              return;
+            }
+          
+            // Create a list or table
+            const list = document.createElement('ul');
+            results.forEach(item => {
+              const listItem = document.createElement('li');
+              
+              listItem.innerHTML = `
+                <div class="most-recent-product-inner" onclick="openPDFWithJS('${item.pdfurl}', '${ encodeURI(JSON.stringify(item)) }')">   <div class="most-recent-product-image">
+                  <img src="${ window.coaProductJsonValues[item.productHandle]?.featured_image }" width="100">
+                </div>
+                <div class="most-recent-product-view-link">
+                  <div class="product-name"><strong>${item.productName}</strong></div>
+                  <div class="product-description" >${ window.coaProductJsonValues[item.productHandle].metafields.plp_product_short_description || stripHtmlAndLimitToWords(window.coaProductJsonValues[item.productHandle]?.description) }</div>
+                  <div class="product-link-wrapper" ><div class="product-view-link"><a target="_blank" class="link-expand" href="/products/${ item.productHandle }">View Product <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                    <g clip-path="url(#clip0_4818_1119)">
+                      <path d="M-1.74846e-07 10.4131L16 10.4131M16 10.4131L11.75 14.4131M16 10.4131L11.75 6.41309" stroke="#111314" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_4818_1119">
+                        <rect width="18" height="18" fill="white" transform="translate(18 0.913086) rotate(90)"/>
+                      </clipPath>
+                    </defs>
+                  </svg></a></div>
+                
+                </div>   </div>       </div>     
+              `;
+              list.appendChild(listItem);
+            });
+            resultsContainerSubmitted.innerHTML = `<div class="most-recent-search-title search-results-title">Search Results </div>`
+            resultsContainerSubmitted.appendChild(list);
+          }
+          
+          // Filter function
+          function filterData(query) {
+            return data.filter(item => {
+              const combinedText = (item.productName + ' ' + item.lotNumber).toLowerCase();
+              return combinedText.includes(query.toLowerCase());
+            });
+          }
+          
+          // Event listener
+          searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim();
+            if (query.length === 0) {
+              resultsContainer.innerHTML = '';
+              return;
+            }
+            const filtered = filterData(query);
+            resultsContainer.style.display = "block";
+            renderResults(filtered);
+          });
+          
+          searchSubmitBtn.addEventListener("click", function(e) {
+            const query = searchInput.value.trim();
+            if (query.length === 0) {
+              resultsContainer.innerHTML = '';
+              return;
+            }
+            const filtered = filterData(query);
+            renderResultsInContainer(filtered);
+            document.querySelector("#coa-search").value = "";
+            document.querySelector("#coa-results").innerHTML = "";
+            
+          })
+
+          document.addEventListener("DOMContentLoaded", function () {
+            const infoIcons = document.querySelectorAll(".learn-more-info-icon");
+            infoIcons.forEach((infoIcon) => {
+              const closeButton = infoIcon.querySelector(".learn-more-close");
+              infoIcon.addEventListener("click", function (event) {
+                event.stopPropagation(); // Prevent immediate document click event
+                this.classList.toggle("active");
+              });
+            
+              if (closeButton) {
+                closeButton.addEventListener("click", function (event) {
+                  event.stopPropagation(); // Prevent bubbling to infoIcon
+                  infoIcon.classList.remove("active");
+                });
+              }
+            });
+
+            document.addEventListener("click", function (event) {
+              infoIcons.forEach((infoIcon) => {
+                if (!infoIcon.contains(event.target)) {
+                  infoIcon.classList.remove("active");
+                }
+              });
+            });
+          });
+          
+          // document.addEventListener("keydown", function(e) {
+          //   if (e.key === "Enter") {
+          //     try {
+          //       const searchInput = document.querySelector("#coa-search");
+          //       if (!searchInput) {
+          //         throw new Error("Search input not found.");
+          //       }
+          //       if (document.activeElement === searchInput) {
+          //         const searchSubmitButton = document.getElementById("coa-search-submit");
+          //         if (!searchSubmitButton) {
+          //           throw new Error("Search submit button not found.");
+          //         }
+          //         searchSubmitButton.click();
+          //       }
+          //     } catch (error) {
+          //       console.error("Error occurred:", error.message);
+          //     }
+          //   }
+          // });
+      </script>
+      {% render 'old-view-certificate-popup-modal' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Third Party Tests",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Title",
+        "default": "Title"
+      },
+      {
+        "type": "text",
+        "id": "section_description",
+        "label": "Description",
+        "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      },
+      {
+        "type": "text",
+        "id": "learn_more_text",
+        "label": "Link Text",
+        "default": "Learn More"
+      },
+      {
+        "type": "url",
+        "id": "link_url",
+        "label": "Link URL"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Learn More Items",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Certificate of Analysis"
+          },
+          {
+            "type": "text",
+            "id": "description",
+            "label": "Description",
+            "default": "Description lorem ipsum..."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "TL Info"
+      }
+    ]
+  }
+{% endschema %}

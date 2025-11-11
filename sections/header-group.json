@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement_bar_B7Bxkk": {
+      "type": "sb-announcement-bar",
+      "blocks": {
+        "announcement_tr9Mfa": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free USA Shipping Over $99",
+            "link": "shopify:\/\/collections\/bestsellers"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_tr9Mfa"
+      ],
+      "name": "SB Announcement Bar",
+      "settings": {
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "color_scheme": "scheme-4",
+        "show_line_separator": true,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "sb-header",
+      "blocks": {
+        "megamenu_qEJnjc": {
+          "type": "megamenu",
+          "settings": {
+            "menu_item": "Best Sellers",
+            "desktop_menu_type": "product_cards",
+            "mobile_menu_type": "swiper",
+            "collection": "bestsellers",
+            "mobile_item_count": 8,
+            "mobile_default_open": false,
+            "image_one_title": "",
+            "image_one_description": "",
+            "image_one_link": "",
+            "image_two_title": "",
+            "image_two_description": "",
+            "image_two_link": ""
+          }
+        },
+        "megamenu_jhA9q6": {
+          "type": "megamenu",
+          "settings": {
+            "menu_item": "Protein",
+            "desktop_menu_type": "single_feature",
+            "mobile_menu_type": "accordion",
+            "collection": "proteinseries",
+            "mobile_item_count": 3,
+            "mobile_default_open": false,
+            "image_one": "shopify:\/\/shop_images\/tl-protein.png",
+            "image_one_title": "Protein Calculator",
+            "image_one_description": "This simple, evidence-based protein calculator will instantly show you how much protein to consume per day depending on your fitness goals, body size, and gender.",
+            "image_one_link": "shopify:\/\/pages\/protein-calculator",
+            "image_two_title": "",
+            "image_two_description": "",
+            "image_two_link": ""
+          }
+        },
+        "megamenu_EdxBYN": {
+          "type": "megamenu",
+          "settings": {
+            "menu_item": "Build Muscle & Recover",
+            "desktop_menu_type": "single_feature",
+            "mobile_menu_type": "accordion",
+            "collection": "build-muscle",
+            "mobile_item_count": 3,
+            "mobile_default_open": false,
+            "image_one": "shopify:\/\/shop_images\/tl-recover.png",
+            "image_one_title": "When to Take Creatine Supplements, According to Science",
+            "image_one_description": "If you recently picked up a tub of Transparent Labs Creatine HMB, you might be wondering when the best time is to take creatine. Well, there's good news: The timing of creatine supplementation is much less important than gym-goers presume. Consistency, form, and dosing are the most important factors for reaping the benefits of creatine supplements.",
+            "image_one_link": "shopify:\/\/blogs\/all\/creatine-timing-how-long-until-you-see-results",
+            "image_two_title": "",
+            "image_two_description": "",
+            "image_two_link": ""
+          }
+        },
+        "megamenu_J6z8xq": {
+          "type": "megamenu",
+          "settings": {
+            "menu_item": "Pre-Workout",
+            "desktop_menu_type": "single_feature",
+            "mobile_menu_type": "accordion",
+            "collection": "preseries",
+            "mobile_item_count": 3,
+            "mobile_default_open": false,
+            "image_one": "shopify:\/\/shop_images\/tl-pre-workout.png",
+            "image_one_title": "Pre-Workout",
+            "image_one_description": "Transparent Labs offers a collection of evidence-based pre-workout formulas for gym-goers, athletes, and bodybuilders looking to take their performance and results to the next level. If you're new to TL supplements and want to know the difference between pre-workouts like BULK, LEAN, and PUMP, this guide is for you! We'll break down each TL pre-workout formula and highlight key benefits so you can pick the right supplement for your needs. ",
+            "image_one_link": "shopify:\/\/blogs\/all\/pre-workout-vs-energy-drinks",
+            "image_two_title": "",
+            "image_two_description": "",
+            "image_two_link": ""
+          }
+        },
+        "megamenu_ynU69W": {
+          "type": "megamenu",
+          "settings": {
+            "menu_item": "Health & Wellness",
+            "desktop_menu_type": "single_feature",
+            "mobile_menu_type": "accordion",
+            "collection": "health-wellness",
+            "mobile_item_count": 3,
+            "mobile_default_open": false,
+            "image_one": "shopify:\/\/shop_images\/tl-wellness.png",
+            "image_one_title": "A Science-Based Upgrade to Daily Multivitamins | Inside the New TL Multivitamin",
+            "image_one_description": "At Transparent Labs, we continually strive to offer the most effective, transparent, and natural supplements for our customers. Our Multivitamin has been a staple product for health-conscious individuals, but we saw an opportunity to make it even better.",
+            "image_one_link": "shopify:\/\/blogs\/all\/inside-the-new-tl-multivitamin",
+            "image_two_title": "",
+            "image_two_description": "",
+            "image_two_link": ""
+          }
+        },
+        "megamenu_YQ4aCq": {
+          "type": "megamenu",
+          "settings": {
+            "menu_item": "Weight Loss",
+            "desktop_menu_type": "double_feature",
+            "mobile_menu_type": "accordion",
+            "collection": "weight-loss",
+            "mobile_item_count": 3,
+            "mobile_default_open": false,
+            "image_one": "shopify:\/\/shop_images\/tl-macro.png",
+            "image_one_title": "Macro Calculator",
+            "image_one_description": "Compute your specific calorie and macronutrient needs based on personal information, lifestyle habits, and nutritional preferences.",
+            "image_one_link": "shopify:\/\/pages\/macro-calculator",
+            "image_two": "shopify:\/\/shop_images\/tl-recomposition.png",
+            "image_two_title": "8-Week Body Recomposition Guide: Lose Fat & Gain Muscle (2024)",
+            "image_two_description": "Can You Lose Fat and Gain Muscle at the Same Time?",
+            "image_two_link": "shopify:\/\/blogs\/all\/body-recomposition-how-to-lose-fat-and-gain-muscle"
+          }
+        }
+      },
+      "block_order": [
+        "megamenu_qEJnjc",
+        "megamenu_jhA9q6",
+        "megamenu_EdxBYN",
+        "megamenu_J6z8xq",
+        "megamenu_ynU69W",
+        "megamenu_YQ4aCq"
+      ],
+      "settings": {
+        "mobile_logo_position": "center",
+        "menu": "development-desktop",
+        "bold_first_link": true,
+        "mobile_menu": "development-mobile-head",
+        "mobile_menu_footer": "development-mobile-foot",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "always",
+        "fg_color": "#000000",
+        "bg_color": "#fff",
+        "ch_fg_color": "#111314",
+        "ch_bg_color": "#F8F9FB",
+        "mobile_foot_color": "#ffffff",
+        "mobile_foot_bg_color": "#173446",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": true,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "announcement_bar_B7Bxkk",
+    "header"
+  ]
+}

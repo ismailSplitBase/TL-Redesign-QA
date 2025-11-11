@@ -1,0 +1,50 @@
+{%- if block.settings.breakpoint > 0 -%}
+  "{{ block.settings.breakpoint }}" : {
+    "slidesPerView": {{ block.settings.slides_per_view }},
+    "slidesOffsetBefore": {{ block.settings.slides_offset }},
+    "slidesOffsetAfter": {{ block.settings.slides_offset }},
+    "spaceBetween": {{ block.settings.space_between_slides }}
+  },
+{%- endif -%}
+{% schema %}
+{
+  "name": "Break Point",
+  "tag": null,
+  "settings": [
+    {
+      "type": "number",
+      "id": "breakpoint",
+      "label": "Screen Size",
+      "default": 300,
+      "info": "The screen size at which the slider will change to this breakpoint. The default is 300px."
+    },
+    {
+      "type": "number",
+      "id": "slides_per_view",
+      "label": "Slides Per View",
+      "default": 1,
+    },
+    {
+      "type": "number",
+      "id": "space_between_slides",
+      "label": "Space Between Slides",
+      "default": 10,
+    },
+    {
+      "type": "range",
+      "id": "slides_offset",
+      "label": "Horizontal Offset",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "unit": "px",
+      "info": "The offset of the slides before and after the container. This is useful to create a gap between the slides and the container that the slides still move within."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Break Point",
+    }
+  ]
+}
+{% endschema %}

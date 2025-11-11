@@ -1,0 +1,196 @@
+<div class="swiper swiper-section">
+  <div class="swiper-wrapper">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'slide' -%}
+        <div class="swiper-slide">
+          {%- if block.settings.add_overlay == true -%}
+            <div class="absolute bg-black bg-opacity-50 inset-0 z-20">&nbsp;</div>
+          {%- endif -%}
+
+          <div class="block sm:hidden">
+            {% render 'old-lazy-image',
+              crop: 'center',
+              height: 900,
+              image: block.settings.mobile_image,
+              width: 640
+            %}
+          </div>
+
+          <div class="hidden sm:block">
+            {% render 'old-lazy-image',
+              crop: 'center',
+              height: 900,
+              image: block.settings.desktop_image,
+              width: 2560
+            %}
+          </div>
+
+          {%- if block.settings.alignment == 'top_left' -%}
+            <div class="absolute left-4 max-w-lg top-8 z-[21] sm:left-8">
+          {%- elsif block.settings.alignment == 'center_left' -%}
+            <div class="absolute left-4 max-w-lg top-1/2 -translate-y-1/2 z-[21] sm:left-8">
+          {%- elsif block.settings.alignment == 'bottom_left' -%}
+            <div class="absolute bottom-16 left-4 max-w-lg z-[21] sm:left-8">
+          {%- elsif block.settings.alignment == 'top_center' -%}
+            <div class="absolute left-4 max-w-lg right-4 text-center top-8 z-[21] sm:left-1/2 sm:right-auto sm:-translate-x-1/2">
+          {%- elsif block.settings.alignment == 'center' -%}
+            <div class="absolute left-4 max-w-lg right-4 text-center top-1/2 -translate-y-1/2 z-[21] sm:left-1/2 sm:right-auto sm:-translate-x-1/2">
+          {%- elsif block.settings.alignment == 'bottom_center' -%}
+            <div class="absolute bottom-16 left-4 max-w-lg right-4 text-center z-[21] sm:left-1/2 sm:right-auto sm:-translate-x-1/2">
+          {%- elsif block.settings.alignment == 'top_right' -%}
+            <div class="absolute max-w-lg right-4 text-right top-8 z-[21] sm:right-8">
+          {%- elsif block.settings.alignment == 'center_right' -%}
+            <div class="absolute max-w-lg right-4 text-right top-1/2 -translate-y-1/2 z-[21] sm:right-8">
+          {%- elsif block.settings.alignment == 'bottom_right' -%}
+            <div class="absolute bottom-16 max-w-lg right-4 text-right z-[21] sm:right-8">
+          {%- else -%}
+            <div class="absolute max-w-lg z-[21]">
+          {%- endif -%}
+            
+		{%- if block.settings.text != 'blank' -%}
+        	<div class="space-y-4 text-3xl lg:text-4xl xl:text-5xl" style="color: {{ block.settings.text_color }}">
+            	{{ block.settings.text }}
+            </div>
+        {%- endif -%}
+              <br>
+		{%- if block.settings.text_2 != 'blank' -%}
+        	<div class="mb-8 space-y-4 text-xl lg:text-2xl xl:text-3xl" style="color: {{ block.settings.text_2_color }}">
+                {{ block.settings.text_2 }}
+        	</div>
+		{%- endif -%}
+		{%- if block.settings.button_text.size > 0 -%}
+        	<a class="button inline-block mt-8 px-12" href="{{ block.settings.button_url }}" style="background: {{ block.settings.button_color }}">
+                {{ block.settings.button_text }}
+			</a>
+        {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
+    <div class="swiper-section__pagination"></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "blocks": [
+    {
+      "name": "postaffiliatepro banner",
+      "settings": [
+        {
+          "id": "desktop_image",
+          "info": "Ideal resolution would be 2560x900",
+          "label": "Desktop Image",
+          "type": "image_picker"
+        },
+        {
+          "id": "mobile_image",
+          "info": "Ideal resolution would be 640x900",
+          "label": "Mobile Image",
+          "type": "image_picker"
+        },
+        {
+          "default": "center_left",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "label": "Top Left",
+              "value": "top_left"
+            },
+            {
+              "label": "Center Left",
+              "value": "center_left"
+            },
+            {
+              "label": "Bottom Left",
+              "value": "bottom_left"
+            },
+            {
+              "label": "Top Center",
+              "value": "top_center"
+            },
+            {
+              "label": "Center",
+              "value": "center"
+            },
+            {
+              "label": "Bottom Center",
+              "value": "bottom_center"
+            },
+            {
+              "label": "Top Right",
+              "value": "top_right"
+            },
+            {
+              "label": "Center Right",
+              "value": "center_right"
+            },
+            {
+              "label": "Bottom Right",
+              "value": "bottom_right"
+            }
+          ],
+          "type": "select"
+        },
+        {
+          "id": "text_color",
+          "label": "Header 1 Color",
+          "type": "color"
+        },
+        {
+          "id": "text_2_color",
+          "label": "Header 2 Color",
+          "type": "color"
+        },
+        {
+          "id": "text",
+          "label": "Header 1",
+          "type": "richtext"
+        },
+        {
+          "id": "text_2",
+          "label": "Header 2",
+          "type": "richtext"
+        },
+        {
+          "id": "button_color",
+          "label": "Button Color",
+          "type": "color"
+        },
+        {
+          "id": "button_text",
+          "label": "Button Text",
+          "type": "text"
+        },
+        {
+          "id": "button_url",
+          "label": "Button Link",
+          "type": "url"
+        },
+        {
+          "id": "add_overlay",
+          "label": "Add Overlay?",
+          "type": "checkbox"
+        }
+      ],
+      "type": "slide"
+    }
+  ],
+  "name": "postaffiliatepro banner",
+  "class": "td-legacy",
+  "settings": [],
+              "presets": [{
+    "name": "postaffiliatepro banner",
+    "category": "Text"
+  }]
+}
+{% endschema %}
+
+              
+              <style>
+                #shopify-section-template--14614680076381__1650381454bb46d9cd {display:none;}
+              </style>

@@ -1,0 +1,55 @@
+/* CSS for icon-search snippet */
+/* Used by: misc/404 */
+
+/* General icon styles for search functionality */
+.icon-search {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding-right: 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.search-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button:hover .icon-search {
+  color: #41B5E8;
+}
+
+/* Mobile responsive */
+@media only screen and (max-width: 767px) {
+  .icon-search {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .search-input {
+    font-size: 12px;
+  }
+}

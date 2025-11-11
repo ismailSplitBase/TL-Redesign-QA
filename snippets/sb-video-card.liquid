@@ -1,0 +1,212 @@
+{%- liquid
+  assign video_id = settings.video_url.id | default: blank
+  assign modal_id = 'video-modal-' | append: video_id | append: '-' | append: block.id
+-%}
+
+<a onclick="document.dispatchEvent(new CustomEvent('sb-modal:open', { detail: { modalId: '{{ modal_id }}' } }))" class="sb-video-card"  role="button" tabindex="0">
+  {% if video_id != blank %}
+    <div class="sb-video-card__media">
+      <img 
+        class="sb-video-card__poster" 
+        src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" 
+        alt="{{ settings.heading | default: 'Video thumbnail' | escape }}"
+        width="480"
+        height="360"
+        loading="lazy"
+      >
+      <div class="sb-video-card__overlay"></div>
+      <div class="sb-video-card__play-button" role="button" tabindex="0">
+        <svg class="sb-video-card__play-icon" viewBox="0 0 64 64" fill="none">
+          <path d="M21.3333 13.7067V51.04L50.6667 32.3733L21.3333 13.7067Z" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  {% endif %}
+  
+  {% if settings.byline != empty or settings.heading != empty %}
+    <div class="sb-video-card__content">
+      <div class="sb-video-card__text">
+        {% if settings.heading != empty %}
+          <h2 class="sb-video-card__heading">{{ settings.heading }}</h2>
+        {% endif %}
+        {% if settings.byline != empty %}
+          <div class="sb-video-card__byline">{{ settings.byline }}</div>
+        {% endif %}
+      </div>
+      <div class="sb-video-card__arrow">
+        <svg viewBox="0 0 22 18" fill="none">
+          <path d="M13.5 18L13.5 2M13.5 2L17.5 6.25M13.5 2L9.5 6.25" stroke="currentColor" stroke-width="1.29" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  {% endif %}
+</a>
+
+{% stylesheet %}
+.sb-video-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--sb-ch-bg-color, #f8f9fb);
+  color: var(--sb-ch-fg-color, #111314);
+  width: 100%;
+  cursor: pointer;
+}
+
+.sb-video-card__media {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.sb-video-card__media:hover {
+  transform: scale(1.02);
+}
+
+.sb-video-card__poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sb-video-card__overlay {
+  position: absolute;
+  display: block !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.sb-video-card__play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  z-index: 2;
+}
+
+.sb-video-card__media:hover .sb-video-card__play-button {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.sb-video-card__play-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.sb-video-card__content {
+  padding: 24px 16px;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  cursor: pointer;
+}
+
+.sb-video-card__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 8px;
+  flex-direction: column-reverse;
+}
+
+.sb-video-card__byline {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0;
+  opacity: 0.6;
+}
+
+.sb-video-card__heading {
+  font-family: var(--sb-font-family-heading);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--sb-ch-fg-color, #111314);
+  margin: 0;
+}
+
+.sb-video-card__arrow {
+  width: 18px;
+  height: 22px;
+  flex-shrink: 0;
+  transform: rotate(90deg);
+  color: var(--sb-ch-fg-color, #111314);
+  margin-top: 2px;
+}
+
+.sb-video-card__arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Video modal styling */
+.sb-video-modal {
+  --sb-modal-max-width: 900px;
+}
+
+.sb-video-modal iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+/* Tablet responsive adjustments */
+@media (max-width: 1024px) {
+  .sb-video-card {
+    width: 300px;
+  }
+  
+  .sb-video-card__media {
+    height: 180px;
+  }
+  
+  .sb-video-card__content {
+    padding: 18px 14px 22px;
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .sb-video-card {
+    width: 100%;
+  }
+  
+  .sb-video-card__media {
+    height: 160px;
+  }
+  
+  .sb-video-card__play-button {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .sb-video-modal {
+    --sb-modal-max-width: calc(100vw - 2rem);
+  }
+
+  .sb-video-card__text {
+    flex-direction: column;
+  }
+}
+{% endstylesheet %}

@@ -1,0 +1,581 @@
+<!-- 
+{% comment %}
+  Influencer Stack Product Grid Component
+  
+  Renders a product grid item for influencer stack/bundle products with subscription options.
+  Supports multiple product variants and subscription frequencies specific to influencer products.
+  
+  @param {object} product - The product object
+  @param {string} block_id - Unique block identifier
+  @param {string} collection - Collection context
+  @param {string} product_type - Product type display text
+  @param {string} detail - Product description
+  @param {string} dis_text_month - Monthly delivery text
+  @param {string} dis_text_days - 45-day delivery text
+  @param {string} sub_percent_text - Subscription discount text
+  @param {string} txt1-txt5 - Custom text fields for tags and lists
+{% endcomment %}
+-->
+
+<product-grid-item style="max-width:600px; margin-left:auto; margin-right:auto;" class="{% for tag in product.tags %}{% if tag contains 'TLsvegan' %} vegan_class {% elsif tag contains 'StimulantFree' %} StimulantFree {% endif %} {% endfor %}bg-white flex flex-col p-4 rounded-xl text-blue-500 xgen-new-product stack-products_{{block_id}}_{{product.id}}">
+ <div class="xgan-ptag">{{product_type}}</div>
+  <div class="xgen-product-img">
+    {% assign split_title = product.title | split: '|' %}
+    
+    {% if product.variants.size == 1 or product.tags contains 'use-featured-image' %}
+      <a class="block mx-auto w-64" href="{{ product.url | within: collection }}">
+          {{ product.featured_image | image_url: width: 500, height: 500 | image_tag: loading: 'lazy', width: 500, height: 500, alt: product.featured_image.alt }}
+      </a>
+    {% else %}
+      <div class="swiper render-swiper">
+        <div class="swiper-wrapper">
+          {% for variant in product.variants %}
+            {% if variant.option2 == '2 Tub' or variant.option2 == '3 Tub' %}
+              {% continue %}
+            {% endif %}
+
+            <div class="swiper-slide" data-variant-id="{{ variant.id }}">
+              <a class="block mx-auto w-64" href="{{ product.url | within: collection }}">
+                {{ product.featured_image | image_url: width: 500, height: 500 | image_tag: loading: 'lazy', width: 500, height: 500, alt: product.featured_image.alt }}
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="xgen-product-info">
+    <div class="xgen-product-info-in">
+     <div class="flex rctitle-flex">
+      <h3 class="font-normal">
+        {{ split_title[1] }}
+      </h3>
+
+      <h2 class="font-semibold text-xl xgen-ptitle">
+        {{ split_title[0] }}
+      </h2>
+      <div class="font-semibold  text-blue-400 text-xl variant-price">
+                <div class="real_price_{{block_id}}_{{product.id}}"></div>
+                <del class="com_price_{{block_id}}_{{product.id}}"></del>
+      </div> 
+     </div>
+       <div class="xtags">
+         <span>Bestseller</span>
+         <span>10% off</span>
+         <span>Free Shipping</span>
+         
+                    {% if txt1 != blank %}
+                      <span>{{txt1}}</span>
+                    {% endif %}
+                    {% if txt2 != blank %}
+                      <span>{{txt2}}</span>
+                    {% endif %}
+                    {% if txt3 != blank %}
+                      <span>{{txt3}}</span>
+                    {% endif %}
+                    {% if txt4 != blank %}
+                      <span>{{txt4}}</span>
+                    {% endif %}
+                  </div>
+
+                    {% if txt5 != blank %}
+                     <ul class="xstacklist">
+                      {{txt5}}
+                      </ul>
+                    {% endif %}
+    </div>
+    <div class="xgen-pdesc">
+        {{ detail }}
+      </div>
+    <div class="package-list-wraper">
+       <div class="package-list accordions  sb-accordions--legacy">
+          <p>Deliver</p>
+           <h5><div class="freq_text  freq_text_{{block_id}}_{{product.id}}"></div>
+            {% render 'sdark-arrow'%}</h5>
+        </div>
+      
+		 <div class="package-list panel">
+          <div class="stack-row">
+            <div class="stack-row-item stack-row-item_{{block_id}}_{{product.id}}">
+              <input id="{{block_id}}_{{product.id}}_a" type="radio" data-text="One-Time Order" class="stack-radio-2" name="purchaseoption_{{block_id}}_{{product.id}}" value="onetime"> 
+              <label for="{{block_id}}_{{product.id}}_a" class="">One-Time Order <br> <small>Give it a try</small></label>
+              <span class="pass_otp_{{block_id}}_{{product.id}} take_price"></span>
+            </div>
+
+            <div class="stack-row-item stack-row-item_{{block_id}}_{{product.id}} active_class">
+              <input id="{{block_id}}_{{product.id}}_b" type="radio" data-text="Deliver Every Month" class="stack-radio ddoption1" name="purchaseoption_{{block_id}}_{{product.id}}" value="selling_plan_0" checked>
+              <label for="{{block_id}}_{{product.id}}_b" class=""> {{dis_text_month}}<br> <small>{{sub_percent_text}}</small></label>
+              <span class="sub_price take_price"></span>
+            </div>
+
+            <div class="stack-row-item stack-row-item_{{block_id}}_{{product.id}}">
+              <input id="{{block_id}}_{{product.id}}_c" type="radio" data-text="Deliver Every 45 days" class="stack-radio ddoption1" name="purchaseoption_{{block_id}}_{{product.id}}" value="selling_plan_1" > 
+              <label for="{{block_id}}_{{product.id}}_c" class=""> {{dis_text_days}} <br> <small>{{sub_percent_text}}</small></label>
+              <span class="sub_price take_price"></span>
+            </div>
+            <div class="stack-row-item stack-row-item_{{block_id}}_{{product.id}}">
+              <input id="{{block_id}}_{{product.id}}_d" type="radio" data-text="Deliver Every 60 days" class="stack-radio ddoption1" name="purchaseoption_{{block_id}}_{{product.id}}" value="selling_plan_2" > 
+              <label for="{{block_id}}_{{product.id}}_d" class=""> Deliver Every 60 days <br> <small>{{sub_percent_text}}</small></label>
+              <span class="sub_price take_price"></span>
+            </div>
+          </div>
+        </div>
+      <div class="package-list  accordions np_last  sb-accordions--legacy">
+        {% assign stack_products = product.metafields.my_fields.stack_products | split:',' %}
+        {% assign stack_products_length =  stack_products.size %}
+        <p>Package Includes</p>
+        <h5>{{stack_products_length}} Pre-selected Items {% render 'sdark-arrow' %}</h5>
+        </div>
+      <div class="panel">
+        <div class="packageslide slider ">
+		{% assign stack_products = product.metafields.my_fields.stack_products | split:',' %}
+        {% assign stack_products_length =  stack_products.size %}
+		{% if stack_products_length > 0 %}
+        {% for product_handle in stack_products %}
+          
+          {% assign pro_handle = product_handle | strip %}
+          	{% for pure_product in collections.all.products %}
+          {% if pure_product.handle == pro_handle %}
+              <div class="items stack-item">
+                <div class="items-img">
+                  {{ pure_product.featured_image | image_url: width: 300, height: 300 | image_tag: width: 300, height: 300, alt: pure_product.featured_image.alt }}
+                </div>
+                <div class="stack-text">
+                  <h3>{{ pure_product.title }}</h3>
+                  {% if pure_product.variants.size > 0 %}
+                  	{% if pure_product.options[0] %}
+                  		<div class="input-wraper">
+                          {% assign used = '' %}
+                          <label for="select-one_{{product.id}}{{pure_product.id}}">{{ pure_product.options[0] }}</label>
+                          <select id='select-one_{{product.id}}{{pure_product.id}}' onchange="updateInfluencerStackProduct_{{product.id}}_{{pure_product.id}}()">
+                          {% for variant in pure_product.variants %}
+                            	{% unless variant.inventory_quantity == 0 %}
+                          		{% unless used contains variant.option1 %}
+                            		<option value="{{ variant.option1 }}">{{ variant.option1 }}</option>
+                            		{% capture used %}{{ used }} {{ variant.option1 }}{% endcapture %}
+                            	{% endunless %}
+                            	{% endunless %}
+                          {% endfor %}
+                          </select>
+                         </div>
+                    {% endif %}
+                  	{% if pure_product.options[1] %}
+                     <div class="input-wraper">        
+                      {% assign used = '' %}
+                      <label for="select-two_{{product.id}}{{pure_product.id}}">{{ pure_product.options[1] }}</label>
+                      <select id='select-two_{{product.id}}{{pure_product.id}}' onchange="updateInfluencerStackProduct_{{product.id}}_{{pure_product.id}}()">
+                          {% for variant in pure_product.variants %}
+                        	{% unless variant.inventory_quantity == 0 %}
+                              {% unless used contains variant.option2 %}
+                                  <option value="{{ variant.option2 }}">{{ variant.option2 }}</option>
+                                  {% capture used %}{{ used }} {{ variant.option2 }}{% endcapture %}
+                              
+                        	{% endunless %}
+                        	{% endunless %}
+                          {% endfor %}
+                      </select>
+                  	</div>
+                  {% endif %}
+                  {% if pure_product.options[2] %}
+                  <div class="input-wraper">        
+                      {% assign used = '' %}
+                      <label for="select-three_{{product.id}}{{pure_product.id}}">{{ pure_product.options[2] }}</label>
+                      <select id='select-three_{{product.id}}{{pure_product.id}}' onchange="updateInfluencerStackProduct_{{product.id}}_{{pure_product.id}}()">
+                          {% for variant in pure_product.variants %}
+                        {% unless variant.inventory_quantity == 0 %}
+                              {% unless used contains variant.option3 %}
+                                  <option value="{{ variant.option3 }}">{{ variant.option3 }}</option>
+                                  {% capture used %}{{ used }} {{ variant.option3 }}{% endcapture %}
+                              {% endunless %}
+                        {% endunless %}
+                          {% endfor %}
+                      </select>
+                  </div>
+                  {% endif %}
+              {% endif %}
+			<input type="hidden" name="id" id="product-select_{{product.id}}_{{pure_product.id}}" class="stack_vid" value="{{ pure_product.selected_or_first_available_variant.id }}" />	
+       		<div class="p1_selling_plan_{{product.id}}_{{block_id}}_{{pure_product.id}}" style="display:none;"></div>                
+         </div>
+       </div>
+         {% endif %}  
+          {% endfor %}
+	{% endfor %}
+	{% else %}
+	<p>No products available in this stack.</p>
+	{% endif %}
+    </div>
+</div>
+        
+        {% assign stack_products = product.metafields.my_fields.stack_products | split:',' %}
+        {% assign stack_products_length =  stack_products.size %}
+		{% if stack_products_length > 0 %}
+          {% for product_handle in stack_products %}
+              
+      		{% assign pro_handle = product_handle | strip %}
+			{% for pure_product in collections.all.products %}
+				{% if pure_product.handle == pro_handle %}
+        		<script type="text/javascript">
+                /**
+                 * Update influencer stack product variant selection
+                 * Handles option changes for individual products in the influencer stack
+                 */
+                function updateInfluencerStackProduct_{{product.id}}_{{pure_product.id}}() {
+                    {% if pure_product.options[0] %}
+                        var opt1 = document.getElementById('select-one_{{product.id}}{{pure_product.id}}').value;
+                    {% endif %}
+                    {% if pure_product.options[1] %}
+                        var opt2 = document.getElementById('select-two_{{product.id}}{{pure_product.id}}').value;
+                    {% endif %}
+                    {% if pure_product.options[2] %}
+                        var opt3 = document.getElementById('select-three_{{product.id}}{{pure_product.id}}').value;
+                    {% endif %}
+                    
+                    var id = '';
+                    {% for v in pure_product.variants %}
+						 {% unless v.inventory_quantity == 0 %}
+                        	if(opt1=="{{ v.option1 }}" {% if pure_product.options[1] %} && opt2 =="{{ v.option2 }}" {% endif %} {% if pure_product.options[2] %} && opt3 == "{{ v.option3 }}" {% endif %}) {
+                            	id = {{ v.id }};
+                        	}
+                   		{% endunless %}
+                    {% endfor %}
+                    
+                    const productSelect = document.getElementById('product-select_{{product.id}}_{{pure_product.id}}');
+                    if (productSelect) {
+                        productSelect.value = id || '';
+                    }
+                }
+
+                // Initialize variant data and selling plans for influencer products
+                (function() {
+                    const variantValues = {{ pure_product.variants | json }};
+                    const productJson = {{ pure_product | json }};
+                    const rechargeSellingPlanGroup = {{ pure_product.selling_plan_groups | where: "app_id", "SKIO" | json }};
+                    
+                    if (rechargeSellingPlanGroup.length > 0) {
+                        const plans = variantValues[0].selling_plan_allocations.filter(allocation => 
+                            allocation.selling_plan_group_id == rechargeSellingPlanGroup[0].id
+                        );
+                        
+                        const planContainer = document.querySelector(".p1_selling_plan_{{product.id}}_{{block_id}}_{{pure_product.id}}");
+                        if (planContainer) {
+                            plans.forEach((plan, index) => {
+                                const input = document.createElement('input');
+                                input.className = `onetime selling_plan_${index}`;
+                                input.setAttribute('data-stack', '{{block.id}}_{{product.id}}');
+                                input.setAttribute('data-price', plan.price);
+                                input.setAttribute('data-otp', plan.compare_at_price);
+                                input.name = 'selling_plan';
+                                input.value = plan.selling_plan_id;
+                                input.type = 'hidden';
+                                planContainer.appendChild(input);
+                            });
+                        }
+                    }
+                })();
+                </script>
+      			{% endif %}
+      			{% endfor%}
+          {% endfor%}
+        {% endif %}
+        	
+      </div>
+        <div class="gap-8 grid grid-cols-2 items-center mt-4 price-btn-grid">
+               <div class=" pricetext">
+                 <div class="flex items-center quant-btn">
+                <div class="mr-4 md:mr-8">
+                  <legacy-quantity-input>
+                    <div class="flex items-center text-blue-500">
+                      <button
+                        class="bg-gray-300 flex h-10 items-center justify-center rounded-full text-blue-light w-10"
+                        type="button"
+                      >
+                        {% render 'old-icon-minus' %}
+                      </button>
+
+                      <input
+                        class="border-2 border-gray-300 bg-transparent hide-selectors outline-none mx-2 rounded text-center w-16 focus:ring-0"
+                        min="1"
+                        name="quantity3"
+                        type="number"
+                        value="1"
+                        id="stack-products_qty_{{block_id}}_{{product.id}}"
+                      />
+
+                      <button
+                        class="bg-gray-300 flex h-10 items-center justify-center rounded-full text-blue-light w-10"
+                        type="button"
+                      >
+                        {% render 'old-icon-plus' %}
+                      </button>
+                    </div>
+                  </legacy-quantity-input>
+                </div>
+                <div class="w-full" id="add-to-cart-button-container">
+                  <button class="submit-stack-products_{{block_id}}_{{product.id}} button-alt" >Subscribe</button>
+                </div>
+             </div>
+          </div>
+      	</div>
+    </div>
+	
+</product-grid-item>
+
+<script type="text/javascript">
+/**
+ * Influencer Stack Product Grid Functionality
+ * Handles influencer stack/bundle product subscriptions and cart management with vanilla JavaScript
+ * Features monthly, 45-day, and 60-day subscription options specific to influencer products
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  
+  /**
+   * Format price from cents to dollars
+   * @param {number} num - Price in cents
+   * @returns {string} Formatted price with 2 decimal places
+   */
+  function formatPrice(num) {  
+    return (num / 100).toFixed(2);
+  }
+
+  /**
+   * Update cart count display in header
+   * @param {number} count - Number of items in cart
+   */
+  function updateCartCount(count) {
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+      if (count < 1) {
+        cartCountElement.innerHTML = "";
+      } else {
+        cartCountElement.innerHTML = `<number class='number'>${count}</number>`;
+      }
+    }
+  }
+
+  /**
+   * Calculate and update total price for influencer stack products
+   * @param {string} sellingPlanValue - Selected selling plan value
+   */
+  function updateInfluencerStackPricing(sellingPlanValue) {
+    const stackContainer = document.querySelector(".stack-products_{{block_id}}_{{product.id}}");
+    const realPriceElement = document.querySelector(".real_price_{{block_id}}_{{product.id}}");
+    const comparePriceElement = document.querySelector(".com_price_{{block_id}}_{{product.id}}");
+    
+    if (!stackContainer || !realPriceElement || !comparePriceElement) return;
+    
+    const stackItems = stackContainer.querySelectorAll(".stack-item");
+    let total = 0;
+    let otpTotal = 0;
+    
+    if (sellingPlanValue === "selling_plan_0" || sellingPlanValue === "selling_plan_1" || sellingPlanValue === "selling_plan_2") {
+      // Subscription pricing
+      stackItems.forEach(item => {
+        const planElement = item.querySelector(`.${sellingPlanValue}`);
+        if (planElement) {
+          const price = parseInt(planElement.getAttribute('data-price'));
+          const otpPrice = parseInt(planElement.getAttribute('data-otp'));
+          
+          if (!isNaN(price)) total += price;
+          if (!isNaN(otpPrice)) otpTotal += otpPrice;
+        }
+      });
+      
+      realPriceElement.textContent = "$" + formatPrice(total);
+      comparePriceElement.textContent = "$" + formatPrice(otpTotal);
+    } else {
+      // One-time pricing
+      stackItems.forEach(item => {
+        const planElement = item.querySelector('.selling_plan_0') || item.querySelector('.onetime');
+        if (planElement) {
+          const otpPrice = parseInt(planElement.getAttribute('data-otp'));
+          if (!isNaN(otpPrice)) total += otpPrice;
+        }
+      });
+      
+      realPriceElement.textContent = "$" + formatPrice(total);
+      comparePriceElement.textContent = "";
+    }
+  }
+
+  /**
+   * Initialize pricing display on page load
+   */
+  function initializeInfluencerPricing() {
+    const checkedOption = document.querySelector("input[name='purchaseoption_{{block_id}}_{{product.id}}']:checked");
+    const freqTextElement = document.querySelector(".freq_text_{{block_id}}_{{product.id}}");
+    
+    if (checkedOption) {
+      const freqVal = checkedOption.getAttribute('data-text');
+      const sellingPlanVal = checkedOption.value;
+      
+      if (freqTextElement && freqVal) {
+        freqTextElement.textContent = freqVal;
+      }
+      
+      updateInfluencerStackPricing(sellingPlanVal);
+    }
+  }
+
+  /**
+   * Handle purchase option changes for influencer products
+   */
+  function setupInfluencerPurchaseOptionListeners() {
+    const purchaseOptions = document.querySelectorAll(`input[name='purchaseoption_{{block_id}}_{{product.id}}']`);
+    
+    purchaseOptions.forEach(option => {
+      option.addEventListener('change', function() {
+        const freqTextElement = document.querySelector(".freq_text_{{block_id}}_{{product.id}}");
+        const stackRowItems = document.querySelectorAll(".stack-row-item_{{block_id}}_{{product.id}}");
+        
+        // Update frequency text
+        if (freqTextElement) {
+          freqTextElement.textContent = this.getAttribute('data-text');
+        }
+        
+        // Update active class
+        stackRowItems.forEach(item => item.classList.remove("active_class"));
+        const parentItem = this.closest('.stack-row-item');
+        if (parentItem) {
+          parentItem.classList.add("active_class");
+        }
+        
+        // Update pricing
+        updateInfluencerStackPricing(this.value);
+      });
+    });
+  }
+
+  /**
+   * Process cart additions for influencer stack products
+   * @param {Array} items - Array of items to Add To Cart
+   * @param {HTMLElement} submitButton - Submit button element
+   */
+  async function processInfluencerStackCartAdditions(items, submitButton) {
+    if (!items.length) return;
+    
+    const originalText = submitButton.textContent;
+    submitButton.textContent = "Subscribing...";
+    
+    try {
+      const cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+      
+      // Prepare request body
+      const requestBody = {
+        items: items.map(item => {
+          const cartItem = {
+            id: item.id,
+            quantity: item.quantity
+          };
+          
+          if (item.selling_plan) {
+            cartItem.selling_plan = item.selling_plan;
+          }
+          
+          if (item.properties) {
+            cartItem.properties = item.properties;
+          }
+          
+          return cartItem;
+        })
+      };
+      
+      if (cart) {
+        requestBody.sections = cart.getSectionsToRender().map(section => section.id);
+      }
+      
+      // Add items to cart
+      const response = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody)
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      // Update cart display and publish events
+      if (cart && data.sections) {
+        cart.renderContents(data);
+        publish(PUB_SUB_EVENTS.cartUpdate, {source: 'influencer-stack-product-grid'});
+        cart.openCartDrawer();
+      } else {
+        // Fallback: redirect to cart page
+        window.location = "/cart";
+      }
+      
+    } catch (error) {
+      console.error('Error adding influencer stack products to cart:', error);
+      // Fallback: redirect to cart page on error
+      window.location = "/cart";
+    } finally {
+      submitButton.textContent = "Subscribe";
+    }
+  }
+
+  /**
+   * Setup submit button functionality for influencer products
+   */
+  function setupInfluencerSubmitButton() {
+    const submitButton = document.querySelector(".submit-stack-products_{{block_id}}_{{product.id}}");
+    if (!submitButton) return;
+    
+    submitButton.addEventListener("click", async function() {
+      const checkedOption = document.querySelector("input[name='purchaseoption_{{block_id}}_{{product.id}}']:checked");
+      const quantityInput = document.querySelector("#stack-products_qty_{{block_id}}_{{product.id}}");
+      const stackContainer = document.querySelector(".stack-products_{{block_id}}_{{product.id}}");
+      
+      if (!checkedOption || !stackContainer) return;
+      
+      const sellingPlanVal = checkedOption.value;
+      const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+      const stackItems = stackContainer.querySelectorAll(".stack-item");
+      
+      const items = [];
+      
+      if (sellingPlanVal === "selling_plan_0" || sellingPlanVal === "selling_plan_1" || sellingPlanVal === "selling_plan_2") {
+        // Subscription purchase
+        stackItems.forEach(item => {
+          const variantInput = item.querySelector('.stack_vid');
+          const planInput = item.querySelector(`.${sellingPlanVal}`);
+          
+          if (variantInput && planInput) {
+            const stackId = planInput.getAttribute('data-stack');
+            items.push({
+              id: parseInt(variantInput.value),
+              quantity: quantity,
+              selling_plan: parseInt(planInput.value),
+              properties: { 
+                stack_id: stackId, 
+                stack_product: '{{product.handle}}' 
+              }
+            });
+          }
+        });
+      } else if (sellingPlanVal === "onetime") {
+        // One-time purchase
+        stackItems.forEach(item => {
+          const variantInput = item.querySelector('.stack_vid');
+          if (variantInput) {
+            items.push({
+              id: parseInt(variantInput.value),
+              quantity: quantity
+            });
+          }
+        });
+      }
+      
+      await processInfluencerStackCartAdditions(items, this);
+    });
+  }
+
+  // Initialize all influencer-specific functionality
+  initializeInfluencerPricing();
+  setupInfluencerPurchaseOptionListeners();
+  setupInfluencerSubmitButton();
+});
+</script>

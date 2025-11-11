@@ -1,0 +1,253 @@
+
+<style>
+  .tlselect-faq
+  {
+    margin-top:50px;
+    padding:0 0 50px 0;
+  }
+  .tlselect-faq .tlselect-faq-wraper h2
+  {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    font-size:50px;
+    letter-spacing:2px;
+    color:#132836;
+    font-weight:900;
+  }
+  .tlselect-faq .tlselect-faq-wraper .accordion
+  {
+    width:100%;
+    display:block;
+    list-style:none;
+    margin:30px 0 0 0;
+    padding:0;
+    border:solid 1px #dfdfe1;
+  }
+  .tlselect-faq .tlselect-faq-wraper .accordion .flink 
+  {
+    cursor: pointer;
+    display:block;
+    color: #132836;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    width:100%;
+    font-size:20px;
+    padding: 20px;
+    border-top:solid 1px #dfdfe1;
+    border-bottom:solid 1px #dfdfe1;
+    background:#f4f3f8;
+  }
+
+
+  .tlselect-faq .tlselect-faq-wraper .accordion li .flink::after
+  {
+      position: absolute;
+      top: 0px;
+      font-size: 40px;
+      color: #626262;
+      right: 20px;
+      content:"\002b";
+      -webkit-transition: all 0.4s ease;
+      -o-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+
+  }
+
+
+  .tlselect-faq .tlselect-faq-wraper .accordion li.open .flink::after
+  {
+      content:"\2212";
+  }
+
+  .tlselect-faq .tlselect-faq-wraper .accordion .submenu 
+  {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block !important;
+    font-size: 18px;
+    text-align: left;
+    padding: 0 20px;
+    line-height:24px;
+    margin:0;
+  }
+  .tlselect-faq .tlselect-faq-wraper .accordion .submenu :first-child {
+    padding-top: 20px;
+  }
+  .tlselect-faq .tlselect-faq-wraper .accordion .submenu :last-child {
+    display: block;
+    padding-bottom: 20px;
+  }
+  .tlselect-faq .tlselect-faq-wraper .accordion li.open .submenu
+  {
+    max-height: 200px;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .tlselect-faq .tlselect-faq-wraper .accordion .flink
+  {
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+  .tlselect-faq .tlselect-faq-wraper .accordion .flink:hover
+  {
+    opacity: 0.8;
+  }
+  
+  
+  @media only screen and (max-width:767px)
+  {
+    .tlselect-faq
+    {
+      margin-top:60px;
+      padding-bottom:50px;
+    }
+    .tlselect-faq .tlselect-faq-wraper h2
+    {
+      font-size:30px;
+      /*top: -15px;*/
+    }
+    .tlselect-faq .tlselect-faq-wraper .accordion .flink
+    {
+      font-size:14px;
+      padding-right:40px;
+    }
+    .tlselect-faq .tlselect-faq-wraper .accordion .submenu p
+    {
+      font-size:14px;
+    }
+    
+  }
+  
+  @media only screen and (min-width:768px) and (max-width:1023px)
+  {
+    .tlselect-faq
+    {
+      margin-top:60px;
+      padding-bottom:50px;
+    }
+    /*.footer__content-top .grid
+    {
+      margin-left:0 !important;
+    }*/
+  }
+  
+</style>
+
+
+<div class="tlselect-faq">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="tlselect-faq-wraper">
+      
+      {% if section.settings.heading %}
+      	<h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      <ul id="accordion" class="accordion">
+        {% for block in section.blocks %}
+        <li>
+          <div class="flink">{{ block.settings.question }}<i class=""></i></div>
+          <ul class="submenu">
+            <p>
+              {{ block.settings.answer | newline_to_br }}
+            </p>
+
+          </ul>
+        </li>
+        {% endfor %}
+
+      </ul>
+    </div>
+    
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "TL Select FAQ",
+    "class": "td-legacy",
+    "settings": [
+		{
+          	"type":"text",
+          	"id":"heading",
+          	"label":"Heading"
+		}
+	],
+	"blocks":[
+		{
+			"name":"FAQ",
+			"type":"text",
+			"settings":[
+				{
+					"type":"text",
+                  	"id":"question",
+                  	"label":"Question"
+				},
+				{
+					"type":"richtext",
+                  	"id":"answer",
+                  	"label":"Answer"
+				}
+			]
+		}
+	],
+	"presets":[
+		{
+			"name": "TL Select FAQ"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %} 
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', function() {
+    var Accordion = function(el, multiple) {
+      this.el = el || {};
+      this.multiple = multiple || false;
+    
+      // Get all .flink elements
+      var links = this.el.querySelectorAll('.flink');
+      
+      // Add event listeners
+      var self = this;
+      links.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          self.dropdown.call(this, e, self.el, self.multiple);
+        });
+      });
+    }
+  
+    Accordion.prototype.dropdown = function(e, accordionEl, multiple) {
+      var clickedLink = this;
+      var parentLi = clickedLink.parentElement;
+      
+      // If not multiple, close other accordion items first
+      if (!multiple) {
+        var allParents = accordionEl.querySelectorAll('li');
+        
+        allParents.forEach(function(parent) {
+          if (parent !== parentLi) {
+            parent.classList.remove('open');
+          }
+        });
+      }
+      
+      // Toggle the 'open' class on the clicked parent li
+      parentLi.classList.toggle('open');
+    };
+  
+    var accordionElement = document.querySelector('.accordion');
+    if (accordionElement) {
+      var accordion = new Accordion(accordionElement, false);
+    }
+  });
+{% endjavascript %}

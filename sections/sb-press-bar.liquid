@@ -1,0 +1,302 @@
+{% liquid
+  assign press_items = section.blocks | where: 'type', 'item'
+  assign has_filled_items = true
+  for item in press_items
+    if item.settings.icon == blank and item.settings.text == blank
+      assign has_filled_items = false
+      break
+    endif
+  endfor
+%}
+
+{% comment %} 
+  Count the number of blocks for track duplication logic 
+  Pre-render duplicate tracks with aria-hidden if we have fewer than min_tracks_needed blocks
+  The liquid duplicates prevent a flash of empty space before JS generates n tracks based on the window width
+  6 is an estimated number of tracks needed to fill the screen on most devices, change as needed
+{% endcomment %}
+{% liquid
+  assign block_count = press_items.size
+  assign min_tracks_needed = 6
+  assign tracks_to_duplicate = 0
+  if block_count > 0 and block_count < min_tracks_needed
+    assign tracks_to_duplicate = min_tracks_needed | minus: block_count
+  endif
+%}
+
+<script src='{{ 'section-sb-marquee.js' | asset_url }}' defer></script>
+
+{% if has_filled_items %}
+  <div class="sb-quotes__section-wrapper sb-styled-element section-{{ section.id }}" style="{%  render 'style-attributes', settings: section.settings %} --marquee-speed: {{ section.settings.speed }}s;">
+    <sb-marquee class="sb-quotes">
+      {% comment %} Main track - visible to all users including screen readers {% endcomment %}
+      <div class="sb-track sb-track--press-bar">
+        {% for item in press_items %}
+          {% liquid
+            assign has_text = true
+            assign has_icon = true
+            if item.settings.icon == blank
+              assign has_icon = false
+            endif
+            if item.settings.text == blank
+              assign has_text = false
+            endif
+          %}
+          {% if has_icon or has_text %}
+            <div class="sb-quotes__item">
+              {% if has_icon %}
+                <div class="sb-quotes__item-icon">
+                  {{ item.settings.icon | image_url: width: 160 | image_tag }}
+                </div>
+              {% endif %}
+              {% if has_text %}
+                <div class="sb-quotes__item-text">
+                  {{ item.settings.text }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      {% comment %} 
+        Duplicate tracks - hidden from screen readers
+      {% endcomment %}
+      {% if tracks_to_duplicate > 0 %}
+        {% for i in (1..tracks_to_duplicate) %}
+          <div class="sb-track sb-track--press-bar" aria-hidden="true">
+            {% for item in press_items %}
+              {% liquid
+                assign has_text = true
+                assign has_icon = true
+                if item.settings.icon == blank
+                  assign has_icon = false
+                endif
+                if item.settings.text == blank
+                  assign has_text = false
+                endif
+              %}
+              {% if has_icon or has_text %}
+                <div class="sb-quotes__item">
+                  {% if has_icon %}
+                    <div class="sb-quotes__item-icon">
+                      {{ item.settings.icon | image_url: width: 160 | image_tag }}
+                    </div>
+                  {% endif %}
+                  {% if has_text %}
+                    <div class="sb-quotes__item-text">
+                      {{ item.settings.text }}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </sb-marquee>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .sb-quotes__section-wrapper {
+    background-color: var(--sb-bg-color, #173446) !important;
+  }
+  .sb-quotes {
+    --_iteration-count: calc(var(--track-count) - 2);
+    --inline-spacing: 32px;
+    --_inline-slide-margin: calc(var(--inline-spacing) / 2);
+    position: relative;
+    height: auto;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .sb-track--press-bar {
+    display: flex;
+    gap: var(--inline-spacing);
+    padding-inline: var(--_inline-slide-margin);
+    width: auto;
+    height: 100%;
+    animation: scroll-left calc(var(--marquee-speed, 30s) * var(--_iteration-count))
+      linear infinite;
+    color: var(--sb-fg-color, #ffffff);
+    background-color: var(--sb-bg-color, #173446);
+    align-items: center;
+  }
+
+  .sb-quotes:hover .sb-track--press-bar,
+  .sb-quotes:focus-within .sb-track--press-bar {
+    animation-play-state: paused;
+  }
+
+  .sb-quotes--reverse .sb-track--press-bar {
+    animation-name: scroll-right;
+  }
+
+  .sb-quotes__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+    flex-shrink: 0;
+    align-items: flex-start;
+    width: 260px;
+  }
+
+  .sb-quotes__item-icon {
+    display: flex;
+    align-items: center;
+    height: 18px;
+  }
+
+  .sb-quotes__item-icon img {
+    max-height: 16px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .sb-quotes__item-text {
+    font-family: var(--sb-font-family-body, sans-serif);
+    font-size: calc(15 / var(--sb-base-font-size, 16) * 1rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--sb-fg-color, #ffffff);
+    text-align: left;
+  }
+
+  /* 
+  * Two separate keyframes for left and right scrolling directions
+  * scroll-left: Content moves from right to left (default)
+  * scroll-right: Content moves from left to right (reverse)
+  */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% * var(--_iteration-count)));
+    }
+  }
+
+  @keyframes scroll-right {
+    0% {
+      /* Start position is negative to ensure content is visible immediately */
+      transform: translateX(calc(-100% * var(--_iteration-count)));
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .sb-quotes {
+      --inline-spacing: 64px;
+    }
+
+    .sb-quotes__item {
+      flex-direction: row;
+      align-items: center;
+      width: auto;
+      gap: 36px;
+    }
+
+    .sb-quotes__item-icon img{
+      max-height: 18px;
+    }
+
+    .sb-quotes__item-text {
+      font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+      width: 440px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .sb-quotes {
+      --inline-spacing: 64px;
+    }
+    .sb-quotes__item-text{
+      width: 548px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SB Press Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "s",
+      "label": "Speed",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Quote Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Logo"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Quote"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Press Bar"
+    }
+  ]
+}
+{% endschema %}

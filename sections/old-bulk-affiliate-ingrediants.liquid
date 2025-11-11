@@ -1,0 +1,189 @@
+<style>
+  .TL_aff_content h2 {margin-bottom: 0;}
+  .TL_aff_highlight_callouts {max-width: 1400px;}
+  .product-card {  text-align: left;width: 100%;}
+  
+  .TL_aff_highlight_cols {  width: 33.333%; max-width:unset;}
+  
+   @media only screen and (max-width:767px)
+  {
+    .TL_aff_highlight_cols:last-child { order: -1;}
+    .TL_aff_content h2 {margin-bottom: 20px;text-align: center;}
+    .product-card {  text-align: left;width:100%;}
+    .TL_aff_highlight_callouts svg {    margin: 0;}
+    .TL_aff_highlight_callouts {gap: 40px;}
+    .TL_aff_highlight_cols {  width: 100%; max-width:unset;}
+  }
+</style>
+<section class="TL_aff_content" id="product-section">
+  <div class="TL_aff_highlight">
+    {% if section.settings.title!=blank %}
+      <h2>{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.mimage!=blank %}
+      {% assign mimage = section.settings.mimage | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+      <div class="TL_aff_mobile"><img src="{{ section.settings.mimage | img_url : 'master' }}" alt="{{ mimage }}" loading="lazy"></div>
+    {% endif %}
+    
+    <div class="TL_aff_highlight_callouts">
+      <div class="TL_aff_highlight_cols">
+        {% if template.suffix == 'paul-sklar-bulk-lander' %}
+          {% for block1 in section.blocks limit: 4 %}
+            
+            <div class="TL_aff_highlight_callout">
+              <div>
+                <h3>{{ block1.settings.title }}</h3>
+                <p>{{ block1.settings.desc }}</p>
+              </div>
+              {% assign icon_name1 = block1.settings.icon | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+              <img class="icon" src="{{ block1.settings.icon | img_url : 'master' }}" alt="{{ icon_name1 }}" loading="lazy">
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for block1 in section.blocks limit: 2 %}
+            
+            <div class="TL_aff_highlight_callout">
+              <div>
+                <h3>{{ block1.settings.title }}</h3>
+                <p>{{ block1.settings.desc }}</p>
+              </div>
+              {% assign icon_name1 = block1.settings.icon | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+              <img class="icon" src="{{ block1.settings.icon | img_url : 'master' }}" alt="{{ icon_name1 }}" loading="lazy" >
+            </div>
+          {% endfor %}
+        {% endif %}
+          
+      </div>
+
+      {% if section.settings.dimage!=blank %}
+        <div class="TL_aff_highlight_cols co_img">
+          {% assign dimage = section.settings.dimage | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+          <img src="{{ section.settings.dimage | img_url : 'master' }}" alt="{{ dimage }}" loading="lazy">
+        </div>
+      {% endif %}
+    
+      <div class="TL_aff_highlight_cols">
+        {% if template.suffix == 'paul-sklar-bulk-lander' %}
+          {% if section.settings.product != blank %}
+          {% assign product = section.settings.product %}
+          {% assign product_title = section.settings.product_title %}
+            {% assign product_sub_title = section.settings.product_sub_title %}
+            {% if product.tags contains 'stack'  %}
+                
+            {% else %}
+              {% render 'old-affiliate-product-card' with product: product,  product_title: product_title,  product_sub_title: product_sub_title%}
+            {% endif %}
+            {% endif %}
+          {% else %}
+          {% for block2 in section.blocks offset:2 %}
+            <div class="TL_aff_highlight_callout co_alt">
+              {% assign icon_name2 = block2.settings.icon | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+              <img class="icon" src="{{ block2.settings.icon | img_url : 'master' }}" alt="{{ icon_name2 }}" loading="lazy">
+              <div>
+                <h3>{{ block2.settings.title }}</h3>
+                <p>{{ block2.settings.desc }}</p>
+              </div>
+              
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.btn_text!=blank %}
+    <a href="#aff_ing" class="ing_pop">{{ section.settings.btn_text }}</a>
+    {% endif %}
+
+    {% if section.settings.pimage!=blank %}
+      <!-- lightbox container hidden with CSS -->
+      <a href="#" class="lightbox" id="aff_ing">
+        <span style="background-image: url('{{ section.settings.pimage | img_url: 'master' }}')"></span>
+      </a>
+    {% endif %}
+    
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "bulk-affiliate ingrediant",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"text",
+        "id":"title",
+        "label":"Title"
+      },
+      {
+        "type":"image_picker",
+        "id":"dimage",
+        "label":"Desktop Image"
+      },
+      {
+        "type":"image_picker",
+        "id":"mimage",
+        "label":"Mobile Image"
+      },
+      {
+        "type":"text",
+        "id":"btn_text",
+        "label":"Button Text"
+      },
+      {
+        "type":"image_picker",
+        "id":"pimage",
+        "label":"Popup Image"
+      },
+      {
+        "type":"product",
+        "id":"product",
+        "label":"Select product without subscription"
+      },
+      {
+        "type":"text",
+        "id":"product_title",
+        "label":"Product title"
+      },
+      {
+        "type":"text",
+        "id":"product_sub_title",
+        "label":"Product sub title"
+      }
+    ],
+    "blocks":[
+      {
+        "name":"Icons",
+        "type":"image",
+        "limit":4,
+        "settings":[
+          {
+            "type":"image_picker",
+            "id":"icon",
+            "label":"Icon"
+          },
+          {
+            "type":"text",
+            "id":"title",
+            "label":"Title"
+          },
+          {
+            "type":"textarea",
+            "id":"desc",
+            "label":"Description"
+          }
+        ]
+      }
+    ],
+    "presets":[
+		{
+			"name": "bulk-affiliate ingrediant"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

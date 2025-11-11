@@ -1,0 +1,102 @@
+<div class="sb-icons-with-text">
+  {% for block in section.blocks %}
+    <div class="sb-icons-with-text__item">
+      {% if block.settings.icon != blank %}
+        {{ block.settings.icon | image_url: width: 50 | image_tag: alt: block.settings.icon.alt, loading: 'lazy', class: 'sb-icons-with-text__icon' }}
+      {% endif %}
+      {% if block.settings.text != blank %}
+        <span class="sb-icons-with-text__text">{{ block.settings.text }}</span>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+{% stylesheet %}
+  .sb-icons-with-text {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+    --column-count: 2;
+    --inline-gap: 16px;
+    --gap-count: calc(var(--column-count) - 1);
+    gap: 16px var(--inline-gap);
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--sb-bg-color, #F8F9FB);
+    padding: 16px var(--sb-padding-inline);
+  }
+  .sb-icons-with-text__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: calc((100% - var(--inline-gap, 12px) * var(--gap-count, 1)) / var(--column-count, 2));
+  }
+  .sb-icons-with-text__icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+  .sb-icons-with-text__text {
+    font-size: calc(12 / var(--sb-base-font-size, 12) * 1rem);
+    line-height: 1.3;
+    font-family: var(--sb-font-family-body);
+    font-weight: 400;
+    color: var(--sb-fg-color, #111314);
+    text-align: center;
+  }
+  @media screen and (min-width: 1024px){
+    .sb-icons-with-text {
+      --inline-gap: 24px;
+      padding-block: 22px;
+      justify-content: space-between;
+    }
+    .sb-icons-with-text__item {
+      flex-direction: row;
+      width: fit-content;
+    }
+    .sb-icons-with-text__text {
+      font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+    }
+  }
+  @media screen and (min-width: 1550px){
+    .sb-icons-with-text__text {
+      font-size: calc(18 / var(--sb-base-font-size, 18) * 1rem);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Sb Icons With Text",
+  "tag": "section",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "name": "Icon with text",
+      "type": "icon-with-text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sb Icons With Text"
+    }
+  ]
+}
+{% endschema %}

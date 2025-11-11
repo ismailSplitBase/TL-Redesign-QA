@@ -1,0 +1,665 @@
+{% liquid
+  assign buttons = section.blocks | where: 'type', 'button'
+  assign subscribers_block = section.blocks | where: 'type', 'subscribers' | first
+%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }}{
+    --bg-overlay--mobile: {{ section.settings.bg_overlay_mobile }};
+    --bg-overlay--desktop: {{ section.settings.bg_overlay_desktop }};
+  }
+
+  {% if subscribers_block != blank %}
+    .sb-hero-content__subscribers--{{ subscribers_block.id }} {
+        --sb-fg-color: {{ subscribers_block.settings.fg_color }};
+        --bg-color: {{ subscribers_block.settings.bg_color }};
+      }
+      @media (min-width: 768px) {
+        .sb-hero-content__subscribers--{{ subscribers_block.id }} {
+          {% if subscribers_block.settings.fg_color_desktop.alpha > 0 %}--sb-fg-color: {{ subscribers_block.settings.fg_color_desktop }};{% endif %}
+          --bg-color: {{ subscribers_block.settings.bg_color_desktop }};
+        }
+      }
+  {% endif %}
+{%- endstyle -%}
+
+{% stylesheet %}
+  .sb-hero.sb-hero--alt {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Media heights */
+  .sb-hero.sb-hero--alt .sb-hero--mobile-small {
+    --mobile-media-height: 250px;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero--mobile-medium {
+    --mobile-media-height: 300px;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero--mobile-large {
+    --mobile-media-height: 400px;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero--mobile-full {
+    --mobile-media-height: auto;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero--desktop-small {
+    --desktop-media-height: 400px;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero--desktop-medium {
+    --desktop-media-height: 550px;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero--desktop-large {
+    --desktop-media-height: 650px;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero--desktop-full {
+    --desktop-media-height: auto;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero__media {
+    position: relative;
+    width: 100%;
+    height: var(--mobile-media-height);
+    overflow: hidden;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero__media-overlay {
+    position: absolute;
+    display: block !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background: var(--bg-overlay--mobile, transparent);
+    pointer-events: none;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero__media-mobile {
+    display: flex;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero__media-desktop {
+    display: none;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero__image,
+  .sb-hero.sb-hero--alt .sb-hero__video {
+    width: 100%;
+    height: var(--mobile-media-height);
+    object-fit: cover;
+  }
+
+  /* Subscribers block */
+  .sb-hero.sb-hero--alt .sb-hero-content__subscribers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 14px 4px 4px;
+    background-color: var(--bg-color);
+    color: var(--sb-fg-color);
+    border-radius: 9999px;
+    width: fit-content;
+    margin-bottom: 10px; 
+  }
+  .sb-hero.sb-hero--alt .sb-hero-content__subscribers-content{
+    font-size: calc(14 / var(--sb-base-font-size, 16) * 1rem);
+    white-space: nowrap;
+  }
+  .sb-hero.sb-hero--alt .sb-hero-content__subscribers-content *:first-child {
+    margin-top: 0;
+  }
+  .sb-hero.sb-hero--alt .sb-hero-content__subscribers-content *:last-child {
+    margin-bottom: 0;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero-content__subscribers img {
+    max-width: 106px;
+    height: auto;
+  }
+  
+  @media screen and (min-width: 370px){
+    .sb-hero.sb-hero--alt .sb-hero-content__subscribers-content{
+      font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+    }
+  }
+
+  /* Content containers */
+
+  .sb-hero.sb-hero--alt .sb-hero-content__container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-block: 40px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-inline: 0;
+    padding-inline: var(--sb-padding-inline);
+    z-index: 3;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero-content__heading {
+    font-size: calc(28 / var(--sb-base-font-size, 16) * 1rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-block: 0;
+    color: var(--sb-fg-color);
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero-content__text {
+    font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+    line-height: 1.3;
+    margin-block: 8px 0;
+    color: var(--sb-fg-color);
+    display: none;
+  }
+  .sb-hero.sb-hero--alt .sb-hero-content__text *:first-child {
+    margin-top: 0;
+  }
+  .sb-hero.sb-hero--alt .sb-hero-content__text *:last-child {
+    margin-bottom: 0;
+  }
+
+  .sb-hero.sb-hero--alt .sb-hero-content__buttons {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sb-hero.sb-hero--alt .sb-button__link{
+    width: 100%;
+  }
+
+  /* Desktop Layout */
+  @media (min-width: 768px) {
+    .sb-hero.sb-hero--alt {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero__media {
+      height: var(--desktop-media-height);
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero__media-overlay {
+      background: var(--bg-overlay--desktop, var(--bg-overlay--mobile, transparent));
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero__image,
+    .sb-hero.sb-hero--alt .sb-hero__video{
+      height: var(--desktop-media-height);
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero__media-mobile {
+      display: none;
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero__media-desktop {
+      display: flex;
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero-content__container .sb-hero-content__subscribers{
+      margin-bottom: 10px;
+    }
+    .sb-hero.sb-hero--alt .sb-hero-content__container{
+      position: relative;
+      padding-block: 40px;
+      max-width: 600px;
+      width: auto;
+      margin-inline: var(--sb-padding-inline) 10px;
+      padding-inline: 0;
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero-content__heading {
+      font-size: calc(40 / var(--sb-base-font-size, 16) * 1rem);
+      color: var(--sb-fg-color-desktop);
+      margin-bottom: 10px;
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero-content__text {
+      font-size: calc(22 / var(--sb-base-font-size, 16) * 1rem);
+      color: var(--sb-fg-color-desktop);
+      display: block;
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero-content__buttons{
+      margin-top: 32px;
+    }
+
+    .sb-hero.sb-hero--alt .sb-button__link{
+      max-width: 360px;
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero-content__subscribers img {
+      max-width: 130px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sb-hero.sb-hero--alt .sb-hero-content__heading {
+      font-size: calc(48 / var(--sb-base-font-size, 16) * 1rem);
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero-content__buttons{
+      margin-top: 40px;
+    }
+  }
+
+  @media screen and (min-width: 1440px){
+    .sb-hero.sb-hero--alt .sb-hero-content__container{
+      min-width: 600px;
+    }
+  }
+
+  @media screen and (min-width: 1920px){
+    .sb-hero.sb-hero--alt .sb-hero--desktop-small {
+      --desktop-media-height: 600px;
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero--desktop-medium {
+      --desktop-media-height: 800px;
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero--desktop-large {
+      --desktop-media-height: 900px;
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero-content__container{
+      --sb-padding-inline: calc((100vw - var(--page-width) - 15px) / 2);
+    }
+
+    .sb-hero.sb-hero--alt .sb-hero-content__heading{
+      margin-bottom: 14px;
+    }
+
+    .sb-hero.sb-hero--alt .sb-button__link{
+      max-width: 400px;
+    }
+  }
+{% endstylesheet %}
+
+<div 
+  id="Hero-{{ section.id }}"
+  class="sb-hero sb-hero--alt sb-styled-element sb-hero--mobile-{{ section.settings.mobile_media_height }} sb-hero--desktop-{{ section.settings.desktop_media_height }}" 
+  style="{% render 'style-attributes', settings: section.settings %}"
+>
+  {% comment %} Main content {% endcomment %}
+  <div class="sb-hero-content__container">
+    {% for block in section.blocks %}
+      {% if block.type == 'subscribers' %}
+        <div
+          class="sb-hero-content__subscribers sb-hero-content__subscribers--{{ subscribers_block.id }}"
+          {{ subscribers_block.shopify_attributes }}
+        >
+          {% if subscribers_block.settings.image != blank %}
+            {{ subscribers_block.settings.image | image_url: width: 260 | image_tag: class: 'sb-hero-content__subscribers-image' }}
+          {% endif %}
+          {% if subscribers_block.settings.content != blank %}
+            <div class="sb-hero-content__subscribers-content">
+              {{ subscribers_block.settings.content }}
+            </div>
+          {% endif %}
+        </div>
+      {% elsif block.type == 'heading' %}
+        {% if block.settings.heading != empty %}
+          <h1 class="sb-hero-content__heading" {{ block.shopify_attributes }}>{{ block.settings.heading }}</h1>
+        {% endif %}
+      {% elsif block.type == 'text' %}
+        {% if block.settings.text != empty %}
+          <div class="sb-hero-content__text" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% if buttons.size > 0 %}
+      <div class="sb-hero-content__buttons">
+        {% for button in buttons %}
+          {% render 'sb-button' with button: button.settings, block_attributes: button.shopify_attributes %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  
+  {% comment %} Background Media {% endcomment %}
+  {% if section.settings.desktop_img != blank or section.settings.mobile_img != blank %}
+    <div class="sb-hero__media">
+      {% if section.settings.media_source == 'image' %}
+        {% if section.settings.mobile_img != blank %}
+          <div class="sb-hero__media-mobile">
+            {{ section.settings.mobile_img | image_url: width: 800 | image_tag: class: 'sb-hero__image', loading: 'eager' }}
+          </div>
+        {% endif %}
+        {% if section.settings.desktop_img != blank %}
+          <div class="sb-hero__media-desktop">
+            {{ section.settings.desktop_img | image_url: width: 1920 | image_tag: class: 'sb-hero__image', loading: 'eager' }}
+          </div>
+        {% endif %}
+      {% elsif section.settings.media_source == 'video' %}
+        {% if section.settings.mobile_video != blank %}
+          <div class="sb-hero__media-mobile">
+            {{ section.settings.mobile_video | video_tag: class: 'sb-hero__video', autoplay: true, loop: true, muted: true }}
+          </div>
+        {% endif %}
+        {% if section.settings.desktop_video != blank %}
+          <div class="sb-hero__media-desktop">
+            {{ section.settings.desktop_video | video_tag: class: 'sb-hero__video', autoplay: true, loop: true, muted: true }}
+          </div>
+        {% endif %}
+      {% endif %}
+
+      {% comment %} Gradient Overlay {% endcomment %}
+      {% if section.settings.show_overlay == true %}
+        <div class="sb-hero__media-overlay"></div>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "SB Hero - Alt",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "select",
+      "id": "media_source",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "image",
+      "label": "Media Source"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_img",
+      "label": "Mobile Image",
+      "visible_if": "{{ section.settings.media_source == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_img",
+      "label": "Desktop Image",
+      "visible_if": "{{ section.settings.media_source == 'image' }}"
+    },
+    {
+      "type": "video",
+      "id": "mobile_video",
+      "label": "Mobile Video",
+      "visible_if": "{{ section.settings.media_source == 'video' }}"
+    },
+    {
+      "type": "video",
+      "id": "desktop_video",
+      "label": "Desktop Video",
+      "visible_if": "{{ section.settings.media_source == 'video' }}"
+    },
+    {
+      "type": "select",
+      "id": "desktop_media_height",
+      "label": "Desktop Media Height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "full",
+          "label": "Fit Content"
+        }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "select",
+      "id": "mobile_media_height",
+      "label": "Mobile Media Height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "full",
+          "label": "Fit Content"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show Overlay on Media",
+      "default": true
+    },
+    {
+      "type": "color_background",
+      "id": "bg_overlay_mobile",
+      "label": "Mobile Overlay Gradient",
+      "info": "Use gradient for darkening effect on mobile",
+      "visible_if": "{{ section.settings.show_overlay == true }}"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_overlay_desktop",
+      "label": "Desktop Overlay Gradient",
+      "info": "Use gradient for darkening effect on desktop. Leave transparent to disable overlay on desktop.",
+      "visible_if": "{{ section.settings.show_overlay == true }}"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Text Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "fg_color_desktop",
+      "label": "Desktop Text Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subscribers",
+      "name": "Subscribers",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Profile Images",
+          "info": "Upload an image showing multiple profile pictures"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>44,213+ Active Subscribers</p>"
+        },
+        {
+          "type": "color",
+          "id": "fg_color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color_background",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "rgba(255, 255, 255, 0.1)"
+        },
+        {
+          "type": "color",
+          "id": "fg_color_desktop",
+          "label": "Desktop Text Color"
+        },
+        {
+          "type": "color_background",
+          "id": "bg_color_desktop",
+          "label": "Desktop Background Color"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Natural Supplements That Get You to Your Goal"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Transparent, science-backed supplements made with natural ingredients.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        },
+        {
+          "type": "select",
+          "id": "button_type",
+          "label": "Button Type",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "outline",
+              "label": "Outline"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_arrow",
+          "label": "Show Arrow",
+          "default": false,
+          "info": "The arrow will always display for 'Link' buttons"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Mobile Button Color"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Mobile Button Text Color"
+        },
+        {
+          "type": "color",
+          "id": "button_color_desktop",
+          "label": "Desktop Button Color"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color_desktop",
+          "label": "Desktop Button Text Color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Hero - Alt",
+      "blocks": [
+        {
+          "type": "subscribers"
+        },
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Supplements",
+            "button_type": ""
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "button_text": "Find my supplement routine",
+            "button_type": "secondary"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

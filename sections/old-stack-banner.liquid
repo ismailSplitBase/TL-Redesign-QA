@@ -1,0 +1,82 @@
+
+<div class="xgen-stack-banner">
+  
+    <div class="stack-banner">
+      <a href="{{ section.settings.btn_url }}">
+      {% if section.settings.image1!=blank %}
+        <img src="{{ section.settings.image1 | img_url : 'master' }}" alt="{% if section.settings.image1.alt %}{{ section.settings.image1.alt }}{% else %}Xgen Stack Banner 1{% endif %}"  loading="lazy" class="bdesktop">
+      {% endif %}
+      {% if section.settings.image2!=blank %}
+        <img src="{{ section.settings.image2 | img_url : 'master' }}" alt="{% if section.settings.image2.alt %}{{ section.settings.image2.alt }}{% else %}Xgen Stack Banner 2{% endif %}" loading="lazy" class="bmobile">
+      {% endif %}
+      </a>
+      <div class="xgen-inner">
+        <div class="stack-banner-text">
+          {% if section.settings.heading  != blank %}
+            <h4>{{ section.settings.heading }}</h4>
+          {% endif %}
+
+          {% if section.settings.text  != blank %}
+            <p>{{ section.settings.text }}</p>
+          {% endif %}
+
+          {% if section.settings.btn_text != blank %}
+            <a class="btn" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }} {% render 'old-icon-arrow-right' %}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+{% schema %}
+  {
+    "name": "Stack Banner",
+    "class": "td-legacy",
+    "settings": [
+		{
+			"type":"image_picker",
+			"id":"image1",
+			"label":"Desktop Image"
+		},
+		{
+			"type":"image_picker",
+			"id":"image2",
+			"label":"Mobile Image"
+		},
+		{
+			"type":"text",
+			"id":"heading",
+			"label":"Heading"
+		},
+		{
+			"type":"textarea",
+			"id":"text",
+			"label":"Text"
+		},
+		{
+			"type":"text",
+			"id":"btn_text",
+			"label":"Button Text"
+		},
+		{
+			"type":"url",
+			"id":"btn_url",
+			"label":"Button URL"
+		}
+		
+	],
+	"presets":[
+		{
+			"name": "Stack Banner"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+ 

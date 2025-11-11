@@ -1,0 +1,2262 @@
+{% assign productn = section.settings.prod %}
+{% assign product = section.settings.prod %}
+
+<style>
+  .active_class .sb-slide-down{
+    display: block!important;
+  }
+  .new-product-grid:has(.active_class > .sb-slide-down){
+    min-height: 800px
+  }
+  .unique-{{ template.suffix }} {
+    background: #E8EEF2;
+  }
+
+  a.open-ingradiant-details:hover {
+    cursor: pointer;
+  }
+
+  .product_slider {
+    display: none;
+  }
+
+  .slick-initialized {
+    display: block;
+  }
+
+  /* #product-thumbnails-2{display:none;} */
+  /* .swiper-initialized{display:block !important;} */
+  #product-thumbnails-2 .swiper-wrapper {
+    justify-content: center;
+  }
+
+  button#add-to-cart-button:disabled {
+    cursor: not-allowed;
+  }
+
+  #price .line_thue {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #6c787c;
+    text-decoration: line-through;
+    display: inline-flex;
+    margin-left: 15px;
+  }
+
+  p#price {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
+    cursor: pointer;
+  }
+
+  .row {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  /* .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  } */
+
+  .column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Add a transparency effect for thumnbail images */
+  .demo {
+    opacity: 0.6;
+  }
+
+  .active,
+  .demo:hover {
+    opacity: 1;
+  }
+
+  .xt-mobile #overview-tab-panel-1 > div.gap-4 {
+    display: none;
+  }
+
+  .mobile_show {
+    display: none;
+  }
+
+  .tl-badge-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 1279px) {
+    .mobile_show {
+      display: flex;
+    }
+
+    .tl-badge-mobile {
+      display: block;
+    }
+  }
+
+  /* Disabled option styling */
+  .variant-selector option:disabled {
+    color: #999;
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  /* Vanilla JS slide animations */
+  .sb-slide-up {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .sb-slide-down {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in;
+  }
+</style>
+
+{%- liquid
+  assign current_variant = productn.selected_or_first_available_variant
+  assign short_title = productn.metafields.product_details.title
+  assign subtitle = productn.metafields.product_details.subtitle
+-%}
+
+{% if productn.selected_or_first_available_selling_plan_allocation != blank %}
+  {{ 'old-new-product-hero.css' | asset_url | stylesheet_tag }}
+
+  <div id="new-product-template" style="">
+    <div class="new-product-grid xt-product flex flex-col-reverse xl:block xt-protein-product tl-farm-product">
+      <div class="grid new-grid grid-cols-1 max-w-7xl pt-4 relative top-0 w-full xl:absolute xl:grid-cols-3 xl:h-full xl:left-1/2 xl:pt-16 xl:-translate-x-1/2">
+        <div class="col-span-2">
+          &nbsp;
+        </div>
+
+        <div class=" xl:top-4 xl:h-max right-dbox">
+          <div class="right-tag desktop">
+            {% if section.settings.tag != blank %}
+              <p class="">{{ section.settings.tag | capitalize }}</p>
+            {% endif %}
+
+            {% comment %}
+              {%- for tag in product.tags -%}
+                {%- liquid
+                  assign start_series = tag | slice: 0, 7 | downcase
+                  assign start_badge = tag | slice: 0, 6 | downcase
+                -%}
+
+                {%- if start_badge == 'badge-' -%}
+                  <p class="">
+                    {%- liquid
+                      assign split_tag = tag | split: 'badge-'
+                      assign split_words = split_tag[1] | split: '-'
+                    -%}
+
+                    {%- for word in split_words -%}
+                      {{ word | capitalize }}
+                    {%- endfor -%}
+                  </p>
+                {%- elsif start_series == 'series-' -%}
+                  <p class="">
+                    {%- liquid
+                      assign split_tag = tag | split: 'series-'
+                      assign split_words = split_tag[1] | split: '-'
+                    -%}
+
+                    {%- for word in split_words -%}
+                      {{ word | capitalize }}
+                    {%- endfor -%}
+
+                    Series
+                  </p>
+                {%- endif -%}
+              {%- endfor -%}
+            {% endcomment %}
+          </div>
+
+          <div class="right-dboxin">
+            <div class="pt-6 xl:px-6">
+              <div class="flex items-center text-sm xtreview">
+                <div class="flex space-x-1 text-orange-400">
+                  {%- assign review_average = productn.metafields.yotpo.reviews_average | times: 1 -%}
+                  {%- for i in (1..5) -%}
+                    {%- assign index_minus_one = i | minus: 1 -%}
+                    {%- assign mod = review_average | modulo: index_minus_one -%}
+
+                    {%- if review_average >= i -%}
+                      <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m47.961 48h-47.945l39.914 31.543-15.941 48.441 40.059-29.871 39.938 29.871-15.871-48.863 39.918-31.121h-47.945l-16.094-47.996z" fill="currentColor"/>
+                      </svg>
+                    {%- elsif mod >= 0.5 -%}
+                      <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m128.02 48h-47.953l-16.094-48-16.031 48h-47.969l39.937 31.555-15.953 48.445 39.984-29.812 0.09375-0.0625 39.938 29.875-15.875-48.867zm-39.594 58.531-24.371-18.547-0.058594 0.0625v-56.953l10.164 24.906h29.812l-25.453 19.43z" fill="currentColor"/>
+                      </svg>
+                    {%- else -%}
+                      <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m64.008 31.113 10.172 24.887h29.809l-25.449 19.426 9.9023 31.105-24.387-18.543-24.387 18.109 9.8711-30.156-25.539-19.941h29.871l10.137-24.887m-16.043 16.887h-47.949l39.914 31.551-15.93 48.445 40.055-29.867 39.934 29.871-15.875-48.871 39.918-31.129h-47.945l-16.094-47.996z" fill="currentColor"/>
+                      </svg>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+
+                <p class="ml-3 text-gray-500">
+                  <span class="font-bold text-black">{{ productn.metafields.yotpo.reviews_average }}</span>/5.0
+                  <a class="open-review-details">{{ productn.metafields.yotpo.reviews_count }} Reviews</a>
+                </p>
+              </div>
+
+              <h1 class="">
+                {{ short_title }}
+              </h1>
+              <h2 class="mb-2 text-gray-500">
+                {{ subtitle }}
+              </h2>
+
+              <div class="desc">
+                <div class="gap-4 flex flex-col uppercase">
+                  {%- if section.settings.no_sweetners -%}
+                    <div class="flex items-center">
+                      <div class="">
+                        {% render 'old-no-sweeteners-icon' %}
+                      </div>
+                      <p class="font-bold ml-3 text-xs">No Artificial Sweeteners</p>
+                    </div>
+                  {%- endif -%}
+
+                  {%- if section.settings.no_artificial_coloring -%}
+                    <div class="flex items-center">
+                      <div class="">
+                        {% render 'old-no-artificial-coloring-icon' %}
+                      </div>
+                      <p class="font-bold ml-3 text-xs">No Artificial Coloring</p>
+                    </div>
+                  {%- endif -%}
+
+                  {%- if section.settings.gluten_free -%}
+                    <div class="flex items-center">
+                      <div class="">
+                        {% render 'old-gluten-free-icon' %}
+                      </div>
+                      <p class="font-bold ml-3 text-xs">Gluten-Free and Non-GMO</p>
+                    </div>
+                  {%- endif -%}
+
+                  {%- if section.settings.no_preservatives -%}
+                    <div class="flex items-center">
+                      <div class="">
+                        {% render 'old-no-preservatives-icon' %}
+                      </div>
+                      <p class="font-bold ml-3 text-xs">No Artificial Preservatives</p>
+                    </div>
+                  {%- endif -%}
+                </div>
+
+                {% comment %}
+                  {% if section.settings.prod_desc!=blank %}
+                    {{ section.settings.prod_desc }}
+                    <p><a href="#xt-protein-ingredients" class="open-ingradiant-details">View Ingredient Breakdown</a></p>
+                  {% else %}
+                    <p>
+                      {{ productn.metafields.custom.product_overview_detail | truncate: 205 }}
+                      <a href="#xt-protein-ingredients" class="open-ingradiant-details">View Ingredient Breakdown</a>
+                    </p>
+                  {% endif %}
+                {% endcomment %}
+              </div>
+
+              {% comment %}
+                <div class="my-6 md:my-3">
+                  <p id="price" class="product-price font-bold text-xl md:text-2xl">{{ current_variant.price | money }}</p>
+                  <p class="compare-at-price text-sm text-gray-500">
+                    <s>{{ current_variant.compare_at_price | money }}</s>
+                  </p>
+                </div>
+              {% endcomment %}
+            </div>
+
+            <div class="bg-white pt-0 relative xl:relative">
+              {% form 'product', productn, data-productid: productn.id %}
+                <div class="p1_selling_plan"></div>
+                <select class="hidden" name="id" data-productid="{{ productn.id }}">
+                  {% for variant in productn.variants %}
+                    <option
+                      data-available="{{ variant.available }}"
+                      data-option-1="{{ variant.option1 }}"
+                      data-option-2="{{ variant.option2 }}"
+                      data-price="{{ variant.price }}"
+                      {% if current_variant.id == variant.id %}selected{% endif %}
+                      value="{{ variant.id }}"
+                    >
+                      {{ variant.title }}
+                    </option>
+                  {% endfor %}
+                </select>
+
+                <input
+                  type="hidden"
+                  name="id"
+                  id="product-select_{{ productn.id }}"
+                  class="stack_vid"
+                  value="{{ productn.selected_or_first_available_variant.id }}"
+                >
+                <input type="hidden" name="sp" id="selected_selling_plan" class="" value="">
+
+                <div class="stack-row" {{ productn.variants.size }}>
+                  {% if productn.variants.size > 1 %}
+                    <div class="stack-row-item flavor">
+                      <div class="take_price_sss" style="display:block;">
+                        {% if productn.options[0] %}
+                          {% assign used = '' %}
+                          <div class="input-wraper ">
+                            <label for="select-one1_{{ productn.id }}">Select {{ productn.options[0] }}:</label>
+                            <select
+                              data-option-position="1"
+                              id="select-one1_{{ productn.id }}"
+                              dataval="{{ productn.variants.first.id }}"
+                              onchange="lletsDoThis_{{ productn.id }}()"
+                              class="variant-selector"
+                            >
+                              {% for variant in productn.variants %}
+                                {% unless variant.metafields.secomapp.freegifts %}
+                                  {% unless variant.title contains '(Freegifts)' %}
+                                    {% unless used contains variant.option1 %}
+                                      {% comment %} Check if this option1 value has any available variants {% endcomment %}
+                                      {% assign option_available = false %}
+                                      {% for check_variant in productn.variants %}
+                                        {% if check_variant.option1 == variant.option1 and check_variant.available %}
+                                          {% assign option_available = true %}
+                                          {% break %}
+                                        {% endif %}
+                                      {% endfor %}
+                                      
+                                      {% if productn.selected_or_first_available_variant.id == variant.id %}
+                                        <option value="{{ variant.option1 }}" selected {% unless option_available %}disabled{% endunless %}>
+                                          {{ variant.option1 }}{% unless option_available %} (Sold Out){% endunless %}
+                                        </option>
+                                      {% else %}
+                                        <option value="{{ variant.option1 }}" {% unless option_available %}disabled{% endunless %}>
+                                          {{ variant.option1 }}{% unless option_available %} (Sold Out){% endunless %}
+                                        </option>
+                                      {% endif %}
+                                      {% capture used %}{{ used }} {{ variant.option1 }}{% endcapture %}
+                                    {% elsif used contains 'Peanut Butter' %}
+                                      {% comment %} Check if this option1 value has any available variants {% endcomment %}
+                                      {% assign option_available = false %}
+                                      {% for check_variant in productn.variants %}
+                                        {% if check_variant.option1 == variant.option1 and check_variant.available %}
+                                          {% assign option_available = true %}
+                                          {% break %}
+                                        {% endif %}
+                                      {% endfor %}
+                                      
+                                      {% if productn.selected_or_first_available_variant.id == variant.id %}
+                                        <option value="{{ variant.option1 }}" selected {% unless option_available %}disabled{% endunless %}>
+                                          {{ variant.option1 }}{% unless option_available %} (Sold Out){% endunless %}
+                                        </option>
+                                      {% else %}
+                                        <option value="{{ variant.option1 }}" {% unless option_available %}disabled{% endunless %}>
+                                          {{ variant.option1 }}{% unless option_available %} (Sold Out){% endunless %}
+                                        </option>
+                                      {% endif %}
+                                    {% endunless %}
+                                  {% endunless %}
+                                {% endunless %}
+                              {% endfor %}
+                            </select>
+                          </div>
+                        {% endif %}
+
+                        {% if productn.options[1] %}
+                          <div
+                            class="input-wraper"
+                            {%- for value in productn.options_by_name.quantity.values -%}
+                              {% if value == '1 Tub' or value == '2 Tub' %}style="display:none;"{% endif %}
+                            {%- endfor -%}
+                          >
+                            {% assign used = '' %}
+                            <label for="select-two2_{{ productn.id }}">Select {{ productn.options[1] }}:</label>
+                            <select
+                              id="select-two2_{{ productn.id }}"
+                              dataval="{{ productn.variants.first.id }}"
+                              onchange="lletsDoThis_{{ productn.id }}()"
+                              class="variant-selector"
+                            >
+                              {% for variant in productn.variants %}
+                                {% unless variant.metafields.secomapp.freegifts %}
+                                  {% unless variant.title contains '(Freegifts)' %}
+                                    {% unless used contains variant.option2 %}
+                                      {% comment %} Check if this option2 value has any available variants {% endcomment %}
+                                      {% assign option_available = false %}
+                                      {% for check_variant in productn.variants %}
+                                        {% if check_variant.option2 == variant.option2 and check_variant.available %}
+                                          {% assign option_available = true %}
+                                          {% break %}
+                                        {% endif %}
+                                      {% endfor %}
+                                      
+                                      {% if productn.selected_or_first_available_variant.id == variant.id %}
+                                        <option {{ used }} value="{{ variant.option2 }}" selected {% unless option_available %}disabled{% endunless %}>
+                                          {{ variant.option2 }}{% unless option_available %} (Sold Out){% endunless %}
+                                        </option>
+                                      {% else %}
+                                        <option value="{{ variant.option2 }}" {% unless option_available %}disabled{% endunless %}>
+                                          {{ variant.option2 }}{% unless option_available %} (Sold Out){% endunless %}
+                                        </option>
+                                      {% endif %}
+                                      {% capture used %}{{ used }} {{ variant.option2 }}{% endcapture %}
+                                    {% endunless %}
+                                  {% endunless %}
+                                {% endunless %}
+                              {% endfor %}
+                            </select>
+                          </div>
+                        {% endif %}
+
+                        {% if productn.options[2] %}
+                          <div class="input-wraper">
+                            {% assign used = '' %}
+                            <label for="select-three3_{{ productn.id }}">Select {{ productn.options[2] }}:</label>
+                            <select
+                              id="select-three3_{{ productn.id }}"
+                              dataval="{{ productn.variants.first.id }}"
+                              onchange="lletsDoThis_{{ productn.id }}()"
+                              class="variant-selector"
+                            >
+                              {% for variant in productn.variants %}
+                                {% unless variant.metafields.secomapp.freegifts %}
+                                  {% unless variant.title contains '(Freegifts)' %}
+                                    {% unless used contains variant.option3 %}
+                                      {% comment %} Check if this option3 value has any available variants {% endcomment %}
+                                      {% assign option_available = false %}
+                                      {% for check_variant in productn.variants %}
+                                        {% if check_variant.option3 == variant.option3 and check_variant.available %}
+                                          {% assign option_available = true %}
+                                          {% break %}
+                                        {% endif %}
+                                      {% endfor %}
+                                      
+                                      {% if productn.selected_or_first_available_variant.id == variant.id %}
+                                        <option value="{{ variant.option3 }}" selected {% unless option_available %}disabled{% endunless %}>
+                                          {{ variant.option3 }}{% unless option_available %} (Sold Out){% endunless %}
+                                        </option>
+                                      {% else %}
+                                        <option value="{{ variant.option3 }}" {% unless option_available %}disabled{% endunless %}>
+                                          {{ variant.option3 }}{% unless option_available %} (Sold Out){% endunless %}
+                                        </option>
+                                      {% endif %}
+                                      {% capture used %}{{ used }} {{ variant.option3 }}{% endcapture %}
+                                    {% endunless %}
+                                  {% endunless %}
+                                {% endunless %}
+                              {% endfor %}
+                            </select>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+
+                  <div class="stack-row-item active_class">
+                    <input
+                      type="radio"
+                      id="onetime"
+                      data-text="One-Time Purchase"
+                      class="stack-radio-2"
+                      name="newpurchaseoption"
+                      value="onetime"
+                      checked
+                    >
+                    <label for="onetime" class="stack-100">
+                      {% if section.settings.onetimetext %}
+                        {{ section.settings.onetimetext }}
+                      {% endif %}
+                    </label>
+                    <span class="pass_otp take_price onetimeprice"> </span>
+                  </div>
+
+                  <div class="stack-row-item">
+                    <input
+                      type="radio"
+                      id="subsave"
+                      data-text="Deliver Every Month"
+                      class="stack-radio ddoption1"
+                      name="newpurchaseoption"
+                      value="subsave"
+                    >
+                    <label for="subsave" class="stack-100">
+                      {% if section.settings.subscribetext %}
+                        {{ section.settings.subscribetext }}
+                        <span class="save_price"></span>
+                      {% endif %}
+                    </label>
+
+                    <div class="take_price_ss" style="display:none;">
+                      <span class="sub_price take_price sub_price1"></span>
+                      <!-- <span class=" save_price_text"></span> -->
+                      <div class="xtags">
+                        {% if section.settings.sdetail != blank %}
+                          <span>{{ section.settings.sdetail }}</span>
+                        {% endif %}
+                        {% if section.settings.sdetail1 != blank %}
+                          <span>{{ section.settings.sdetail1 }}</span>
+                        {% endif %}
+                        {% if section.settings.sdetail2 != blank %}
+                          <span>{{ section.settings.sdetail2 }}</span>
+                        {% endif %}
+                      </div>
+
+                      {% if section.settings.slistinformation != blank %}
+                        <ul class="xstacklist">
+                          {{ section.settings.slistinformation }}
+                        </ul>
+                      {% endif %}
+
+                      <div class="input-wraper">
+                        <label class="rc-selling-plans__label" for="selling_plan_{{ productn.id }}">
+                          Select Frequency:
+                          <small class="selected_freq">
+                            {% for group in productn.selling_plan_groups %}
+                              {% for plan in group.selling_plans limit:1 %}
+                                {{ plan.name | remove:"Delivery" }}
+                              {% endfor %}
+                            {% endfor %}
+                          </small>
+                        </label>
+
+                        {% comment %}
+                          <select
+                            id="selling_plan_{{ product.id }}"
+                            class="rc_widget__option__plans__dropdown rc-selling-plans__dropdown"
+                          ></select>
+                        {% endcomment %}
+
+                        {% for group in productn.selling_plan_groups %}
+                          <div class="d-flex">
+                            {% for plan in group.selling_plans %}
+                              <div class="selling_plan">
+                                <input
+                                  type="radio"
+                                  id="{{ plan.id }}"
+                                  name="pro_selling_plan"
+                                  value="{{ plan.id }}"
+                                  data-name="{{ plan.name | remove:'Delivery' }}"
+                                  {% if forloop.index == 1 %}checked{% endif %}
+                                >
+                                <label for="{{ plan.id }}">{{ plan.name | remove:"Delivery every" }}</label>
+                              </div>
+                            {% endfor %}
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center quant-btn">
+                  <div class="">
+                    <legacy-quantity-input>
+                      <div class="flex items-center text-blue-500 quant-box">
+                        <button
+                          class=" flex h-10 items-center justify-center rounded-full w-10"
+                          type="button"
+                        >
+                          -
+                        </button>
+
+                        <input
+                          class="bg-transparent hide-selectors mx-2 rounded text-center w-16 focus:ring-0"
+                          min="1"
+                          name="quantity"
+                          type="number"
+                          value="1"
+                        >
+
+                        <button
+                          class=" flex h-10 items-center justify-center rounded-full w-10"
+                          type="button"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </legacy-quantity-input>
+                  </div>
+
+                  <div class="w-full" id="add-to-cart-button-container">
+                    <button
+                      class="bg-blue-light font-bold py-2 rounded text-white w-full {% unless current_variant.available %}opacity-70{% endunless %}"
+                      id="add-to-cart-button"
+                      type="button"
+                    >
+                      <span id="product-availability" {{ current_variant.available }}>
+                        {%- if current_variant.available -%}Add To Cart{%- else -%}Sold Out{%- endif -%}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              {% endform %}
+            </div>
+
+            <a style="display:none;" id="hideme" class="klaviyo-bis-trigger" href="#">
+              <span>Notify Me When Available</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="xt-mobile xt-accor max-w-7xl mx-auto px-5 xl:px-4">
+          <div class="">
+            <div class="col-span-2 relative">
+              &nbsp;
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:py-8 xl:py-16">
+        <div class="max-w-7xl mx-auto xl:px-4">
+          <div class="gap-8 grid grid-cols-1 xl:grid-cols-3">
+            <div class="relative xl:col-span-2">
+              <div class="right-tag tl-badge-desktop desktop">
+                {% if productn.metafields.custom.trust_badge != blank %}
+                  <p class="tl-badge-img">
+                    <img
+                      loading="lazy"
+                      src="{{ productn.metafields.custom.trust_badge.value | img_url: 'master' }}"
+                      width="100px"
+                      height="100px"
+                      alt="Trust Badge"
+                    >
+                  </p>
+                {% endif %}
+              </div>
+
+              <div class="right-tag mobile">
+                {% if section.settings.tag != blank %}
+                  <p class="">{{ section.settings.tag | capitalize }}</p>
+                {% endif %}
+
+                {% comment %}
+                  {%- for tag in product.tags -%}
+                    {%- liquid
+                      assign start_series = tag | slice: 0, 7 | downcase
+                      assign start_badge = tag | slice: 0, 6 | downcase
+                    -%}
+
+                    {%- if start_badge == 'badge-' -%}
+                      <p class="">
+                        {%- liquid
+                          assign split_tag = tag | split: 'badge-'
+                          assign split_words = split_tag[1] | split: '-'
+                        -%}
+
+                        {%- for word in split_words -%}
+                          {{ word | capitalize }}
+                        {%- endfor -%}
+                      </p>
+                    {%- elsif start_series == 'series-' -%}
+                      <p class="">
+                        {%- liquid
+                          assign split_tag = tag | split: 'series-'
+                          assign split_words = split_tag[1] | split: '-'
+                        -%}
+
+                        {%- for word in split_words -%}
+                          {{ word | capitalize }}
+                        {%- endfor -%}
+
+                        Series
+                      </p>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {% endcomment %}
+              </div>
+
+              <div class="grid grid-flow-col auto-cols-[minmax(0,_auto)]">
+                <div>
+                  <div class="swiper xl:bg-none" id="product-images-2">
+                    <div class="swiper-wrapper">
+                      {%- if current_variant.featured_image -%}
+                        <div class="swiper-slide swiper-slide1" data-variant-image="{{ current_variant.featured_image.alt | default: 'default' }}">
+                          <lazy-image>
+                            <div class="relative">
+                              <img
+                                class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0"
+                                data-placeholder=""
+                                height="960"
+                                loading="lazy"
+                                src="{{ current_variant.featured_image | img_url: 'master' }}"
+                                width="960"
+                                alt="{{ current_variant.featured_image.alt | default: productn.title }}"
+                              >
+                              <img
+                                class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]"
+                                data-src="{{ current_variant.featured_image | img_url: 'master' }}"
+                                loading="lazy"
+                                src="{{ current_variant.featured_image | img_url: 'master' }}"
+                                width="960"
+                                height="960"
+                                alt="{{ current_variant.featured_image.alt | default: productn.title }}"
+                              >
+                            </div>
+                          </lazy-image>
+                        </div>
+                      {%- endif -%}
+
+                      {%- for media in productn.media -%}
+                        {%- if media.alt != blank -%}
+                          {%- assign alt_parts = media.alt | split: '-' -%}
+                          {%- assign show_for_current = false -%}
+
+                          {%- if alt_parts[0] == 'all' -%}
+                            {%- assign show_for_current = true -%}
+                          {%- elsif productn.options.size == 1 -%}
+                            {%- if media.alt == current_variant.option1 -%}
+                              {%- assign show_for_current = true -%}
+                            {%- endif -%}
+                          {%- elsif productn.options.size >= 2 -%}
+                            {%- if alt_parts[0] == current_variant.option1 and alt_parts[1] == current_variant.option2 -%}
+                              {%- assign show_for_current = true -%}
+                            {%- elsif media.alt == current_variant.option1 -%}
+                              {%- assign show_for_current = true -%}
+                            {%- endif -%}
+                          {%- endif -%}
+
+                          {%- if show_for_current -%}
+                            <div class="swiper-slide swiper-slide1" data-media-alt="{{ media.alt }}">
+                              <lazy-image>
+                                <div class="relative">
+                                  <img
+                                    class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0"
+                                    data-placeholder=""
+                                    height="960"
+                                    loading="lazy"
+                                    src="{{ media | img_url: 'master' }}"
+                                    width="960"
+                                    alt="{{ media.alt | default: productn.title }}"
+                                  >
+                                  <img
+                                    class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]"
+                                    data-src="{{ media | img_url: 'master' }}"
+                                    loading="lazy"
+                                    src="{{ media | img_url: 'master' }}"
+                                    width="960"
+                                    height="960"
+                                    alt="{{ media.alt | default: productn.title }}"
+                                  >
+                                </div>
+                              </lazy-image>
+                            </div>
+                          {%- endif -%}
+                        {%- else -%}
+                          <div class="swiper-slide swiper-slide1" data-media-alt="default">
+                            <lazy-image>
+                              <div class="relative">
+                                <img
+                                  class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0"
+                                  data-placeholder=""
+                                  height="960"
+                                  loading="lazy"
+                                  src="{{ media | img_url: 'master' }}"
+                                  width="960"
+                                  alt="{{ productn.title }}"
+                                >
+                                <img
+                                  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]"
+                                  data-src="{{ media | img_url: 'master' }}"
+                                  loading="lazy"
+                                  src="{{ media | img_url: 'master' }}"
+                                  width="960"
+                                  height="960"
+                                  alt="{{ productn.title }}"
+                                >
+                              </div>
+                            </lazy-image>
+                          </div>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+
+                    <div class="swiper-prev absolute bg-white left-1/2 p-1 rounded-md text-blue-400 -translate-x-1/2 transition-opacity top-4 z-10 hover:opacity-70">
+                      {% render 'old-new-pdp-arrow-left' %}
+                    </div>
+                    <div class="swiper-next absolute bg-white bottom-4 left-1/2 p-1 rounded-md text-blue-400 -translate-x-1/2 transition-opacity z-10 hover:opacity-70">
+                      {% render 'old-new-pdp-arrow-right' %}
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                  </div>
+
+                  <div class="max-h-max badge-mobile w-70 m-auto xl:block rrrr">
+                    <div class="swiper" id="product-thumbnails-2" style="max-height: 677px;">
+                      <div class="swiper-wrapper">
+                        {%- if current_variant.featured_image -%}
+                          <div class="swiper-slide swiper-slide2" data-variant-image="{{ current_variant.featured_image.alt | default: 'default' }}">
+                            <div class="h-36 xt-thumb object-contain w-36">
+                              <lazy-image>
+                                <div class="relative">
+                                  <img
+                                    class="relative z-0 h-36 object-contain opacity-0"
+                                    data-placeholder=""
+                                    height="1200"
+                                    loading="lazy"
+                                    src="{{ current_variant.featured_image | img_url: 'master' }}"
+                                    width="1200"
+                                    alt="{{ current_variant.featured_image.alt | default: productn.title }}"
+                                  >
+                                  <img
+                                    class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain"
+                                    data-src="{{ current_variant.featured_image | img_url: 'master' }}"
+                                    loading="lazy"
+                                    src="{{ current_variant.featured_image | img_url: 'master' }}"
+                                    width="1200"
+                                    height="1200"
+                                    alt="{{ current_variant.featured_image.alt | default: productn.title }}"
+                                  >
+                                </div>
+                              </lazy-image>
+                            </div>
+                          </div>
+                        {%- endif -%}
+
+                        {%- for media in productn.media -%}
+                          {%- if media.alt != blank -%}
+                            {%- assign alt_parts = media.alt | split: '-' -%}
+                            {%- assign show_for_current = false -%}
+
+                            {%- if alt_parts[0] == 'all' -%}
+                              {%- assign show_for_current = true -%}
+                            {%- elsif productn.options.size == 1 -%}
+                              {%- if media.alt == current_variant.option1 -%}
+                                {%- assign show_for_current = true -%}
+                              {%- endif -%}
+                            {%- elsif productn.options.size >= 2 -%}
+                              {%- if alt_parts[0] == current_variant.option1 and alt_parts[1] == current_variant.option2 -%}
+                                {%- assign show_for_current = true -%}
+                              {%- elsif media.alt == current_variant.option1 -%}
+                                {%- assign show_for_current = true -%}
+                              {%- endif -%}
+                            {%- endif -%}
+
+                            {%- if show_for_current -%}
+                              <div class="swiper-slide swiper-slide2" data-media-alt="{{ media.alt }}">
+                                <div class="h-36 xt-thumb object-contain w-36">
+                                  <lazy-image>
+                                    <div class="relative">
+                                      <img
+                                        class="relative z-0 h-36 object-contain opacity-0"
+                                        data-placeholder=""
+                                        height="1200"
+                                        loading="lazy"
+                                        src="{{ media | img_url: 'master' }}"
+                                        width="1200"
+                                        alt="{{ media.alt | default: productn.title }}"
+                                      >
+                                      <img
+                                        class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain"
+                                        data-src="{{ media | img_url: 'master' }}"
+                                        loading="lazy"
+                                        src="{{ media | img_url: 'master' }}"
+                                        width="1200"
+                                        height="1200"
+                                        alt="{{ media.alt | default: productn.title }}"
+                                      >
+                                    </div>
+                                  </lazy-image>
+                                </div>
+                              </div>
+                            {%- endif -%}
+                          {%- else -%}
+                            <div class="swiper-slide swiper-slide2" data-media-alt="default">
+                              <div class="h-36 xt-thumb object-contain w-36">
+                                <lazy-image>
+                                  <div class="relative">
+                                    <img
+                                      class="relative z-0 h-36 object-contain opacity-0"
+                                      data-placeholder=""
+                                      height="1200"
+                                      loading="lazy"
+                                      src="{{ media | img_url: 'master' }}"
+                                      width="1200"
+                                      alt="{{ productn.title }}"
+                                    >
+                                    <img
+                                      class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain"
+                                      data-src="{{ media | img_url: 'master' }}"
+                                      loading="lazy"
+                                      src="{{ media | img_url: 'master' }}"
+                                      width="1200"
+                                      height="1200"
+                                      alt="{{ productn.title }}"
+                                    >
+                                  </div>
+                                </lazy-image>
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </div>
+                    </div>
+
+                    <div class="tl-badge-mobile mobile">
+                      {% if productn.metafields.custom.trust_badge != blank %}
+                        <p class="tl-badge-img">
+                          <img
+                            loading="lazy"
+                            src="{{ productn.metafields.custom.trust_badge.value | img_url: 'master' }}"
+                            width="100px"
+                            height="100px"
+                            alt="Trust Badge"
+                          >
+                        </p>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  <script>
+                    // Wait for Swiper to be defined before initializing
+                    function initializeSwiper() {
+                      if (typeof Swiper !== 'undefined') {
+                        var swiper = new Swiper("#product-thumbnails-2", {
+                          spaceBetween: 8,
+                          slidesPerView: 5,
+                          freeMode: true,
+                          watchSlidesProgress: true,
+                        });
+                        var swiper2 = new Swiper("#product-images-2", {
+                          spaceBetween: 10,
+                          navigation: {
+                            nextEl: ".swiper-next",
+                            prevEl: ".swiper-prev",
+                          },
+                          thumbs: {
+                            swiper: swiper,
+                          },
+                        });
+
+                        // Store swiper instances globally for use in other scripts
+                        window.productSwiper = swiper;
+                        window.productSwiper2 = swiper2;
+                      } else {
+                        // Retry after a short delay if Swiper is not yet defined
+                        setTimeout(initializeSwiper, 100);
+                      }
+                    }
+
+                    // Start initialization
+                    initializeSwiper();
+                  </script>
+
+                  <div class="xt-accor max-w-7xl mx-auto px-5 xl:px-4">
+                    <div class="">
+                      <div class="col-span-2 relative">
+                        &nbsp;
+                      </div>
+                      <div></div>
+                    </div>
+                  </div>
+
+                  <div class="hidden" id="raw-faq-content">
+                    {{ productn.metafields.product_details.faq }}
+                  </div>
+
+                  <div class="hidden" id="raw-ingredients-content">
+                    {{ productn.metafields.product_details.ingredients }}
+                  </div>
+
+                  {% raw %}
+                    <script id="faq-template" type="text/x-handlebars-template">
+                      {{#each items}}
+                      <div>
+                        <custom-accordion>
+                          <div class="bg-white rounded-xl text-blue-500">
+                            <button
+                              aria-controls="faq-{{index}}"
+                              class="border-2 border-transparent flex items-center justify-between p-4 rounded-xl text-left transition-all w-full hover:border-blue-400 hover:opacity-70"
+                              type="button"
+                            >
+                              <div class="flex items-center">
+                                <div class="bg-orange-400 bg-opacity-20 font-semibold py-2 rounded-md text-center text-orange-400 w-8">
+                                  Q.
+                                </div>
+                                <div class="flex-1 mx-3 text-sm sm:text-base">{{{header}}}</div>
+                              </div>
+                              <div class="plus-icon text-blue-400 transition-transform">
+                                {% render 'old-icon-plus' %}
+                              </div>
+                            </button>
+
+                            <div
+                              aria-labelled-by="faq-{{index}}"
+                              class="max-h-0 overflow-hidden text-sm"
+                              role="region"
+                            >
+                              <div class="p-4">
+                                <div class="flex h-full">
+                                  <div class="bg-blue-400 bg-opacity-20 font-semibold mr-3 py-2 rounded-md text-blue-400 text-center w-8">
+                                    A.
+                                  </div>
+
+                                  <div class="flex-1 font-semibold">
+                                    {{{description}}}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </custom-accordion>
+                      </div>
+                      {{/each}}
+                    </script>
+                  {% endraw %}
+
+                  {% raw %}
+                    <script id="ingredients-template" type="text/x-handlebars-template">
+                      {{#each items}}
+                      <div class="ingredients-element">
+                        <custom-accordion>
+                          <div class="bg-white rounded-xl text-blue-500">
+                            <button
+                              aria-controls="ingredient-acc-{{index}}"
+                              class="border-2 border-transparent flex items-center justify-between p-4 rounded-xl text-left transition-all w-full hover:border-blue-400 hover:opacity-70"
+                              type="button"
+                            >
+                              <span class="text-sm sm:text-base">{{{title}}}</span>
+                              {{#unless emptyDescription}}
+                              <div class="plus-icon text-blue-400 transition-transform">
+                                {% render 'old-icon-plus' %}
+                              </div>
+                              {{/unless}}
+                            </button>
+
+                            <div
+                              aria-labelled-by="ingredient-acc-{{index}}"
+                              class="max-h-0 overflow-hidden text-sm"
+                              role="region"
+                            >
+                              <div class="p-6 rich-text">
+                                {{{description}}}
+                              </div>
+                            </div>
+                          </div>
+                        </custom-accordion>
+                      </div>
+                      {{/each}}
+                    </script>
+                  {% endraw %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+      var variant_values = {{ productn.variants | json }};
+      var len = variant_values.length;
+      
+      for (var i = 0; i < len; i++) {
+        ////console.log(variant_values[i].id);
+        var len2 = variant_values[i].selling_plan_allocations.length;
+        var plans = variant_values[i].selling_plan_allocations;
+        
+        for (var j = 0; j < len2; j++) {
+          if (i == 0) {
+            const sellingPlanSelect = document.getElementById('selling_plan_{{ productn.id }}');
+            if (sellingPlanSelect) {
+              if (j == 0) {
+                sellingPlanSelect.insertAdjacentHTML('beforeend', '<option value="selling_plan_00">30 days</option>');
+              }
+              if (j == 1) {
+                sellingPlanSelect.insertAdjacentHTML('beforeend', '<option value="selling_plan_11">45 days</option>');
+              }
+              if (j == 2) {
+                sellingPlanSelect.insertAdjacentHTML('beforeend', '<option value="selling_plan_22">60 days</option>');
+              }
+              if (j == 3) {
+                sellingPlanSelect.insertAdjacentHTML('beforeend', '<option value="selling_plan_33">75 days</option>');
+              }
+              if (j == 4) {
+                sellingPlanSelect.insertAdjacentHTML('beforeend', '<option value="selling_plan_44">90 days</option>');
+              }
+            }
+          }
+          
+          const p1SellingPlan = document.querySelector('.p1_selling_plan');
+          if (p1SellingPlan) {
+            p1SellingPlan.insertAdjacentHTML('beforeend',
+              '<input type="hidden" data-stack="' + variant_values[i].id + 
+              '" data-price="' + Shopify.formatMoney(plans[j].price) + 
+              '" data-otp="' + Shopify.formatMoney(plans[j].compare_at_price) + 
+              '" class="selling_plan_' + j + j + 
+              '" name="selling_plan" value="' + plans[j].selling_plan_id + '">');
+          }
+        }
+        }
+      });
+    </script>
+
+    <script type="text/javascript">
+      // Function to update option availability based on current selections
+      function updateOptionAvailability_{{ productn.id }}() {
+        var variants = {{ productn.variants | json }};
+        
+        {% if productn.options[0] %}
+          const selectOne1 = document.getElementById("select-one1_{{ productn.id }}");
+          var opt1 = selectOne1 ? selectOne1.value || "" : "";
+        {% else %}
+          var opt1 = "";
+        {% endif %}
+        {% if productn.options[1] %}
+          const selectTwo2 = document.getElementById("select-two2_{{ productn.id }}");
+          var opt2 = selectTwo2 ? selectTwo2.value || "" : "";
+        {% else %}
+          var opt2 = "";
+        {% endif %}
+        {% if productn.options[2] %}
+          const selectThree3 = document.getElementById("select-three3_{{ productn.id }}");
+          var opt3 = selectThree3 ? selectThree3.value || "" : "";
+        {% else %}
+          var opt3 = "";
+        {% endif %}
+
+        // Update option1 availability based on option2 and option3 selections
+        {% if productn.options[0] %}
+          const selectOne1Options = document.querySelectorAll("#select-one1_{{ productn.id }} option");
+          selectOne1Options.forEach(function(option) {
+            var optionValue = option.value;
+            var isAvailable = false;
+            
+            for (var i = 0; i < variants.length; i++) {
+              var variant = variants[i];
+              if (variant.available && 
+                  variant.option1 === optionValue &&
+                  {% if productn.options[1] %}(opt2 === "" || variant.option2 === opt2) &&{% endif %}
+                  {% if productn.options[2] %}(opt3 === "" || variant.option3 === opt3){% endif %}
+                  true) {
+                isAvailable = true;
+                break;
+              }
+            }
+            
+            option.disabled = !isAvailable;
+            var originalText = option.textContent.replace(' (Sold Out)', '');
+            option.textContent = originalText + (isAvailable ? '' : ' (Sold Out)');
+          });
+        {% endif %}
+
+        // Update option2 availability based on option1 and option3 selections
+        {% if productn.options[1] %}
+          const selectTwo2Options = document.querySelectorAll("#select-two2_{{ productn.id }} option");
+          selectTwo2Options.forEach(function(option) {
+            var optionValue = option.value;
+            var isAvailable = false;
+            
+            for (var i = 0; i < variants.length; i++) {
+              var variant = variants[i];
+              if (variant.available && 
+                  variant.option2 === optionValue &&
+                  {% if productn.options[0] %}(opt1 === "" || variant.option1 === opt1) &&{% endif %}
+                  {% if productn.options[2] %}(opt3 === "" || variant.option3 === opt3){% endif %}
+                  true) {
+                isAvailable = true;
+                break;
+              }
+            }
+            
+            option.disabled = !isAvailable;
+            var originalText = option.textContent.replace(' (Sold Out)', '');
+            option.textContent = originalText + (isAvailable ? '' : ' (Sold Out)');
+          });
+        {% endif %}
+
+        // Update option3 availability based on option1 and option2 selections
+        {% if productn.options[2] %}
+          const selectThree3Options = document.querySelectorAll("#select-three3_{{ productn.id }} option");
+          selectThree3Options.forEach(function(option) {
+            var optionValue = option.value;
+            var isAvailable = false;
+            
+            for (var i = 0; i < variants.length; i++) {
+              var variant = variants[i];
+              if (variant.available && 
+                  variant.option3 === optionValue &&
+                  {% if productn.options[0] %}(opt1 === "" || variant.option1 === opt1) &&{% endif %}
+                  {% if productn.options[1] %}(opt2 === "" || variant.option2 === opt2){% endif %}
+                  true) {
+                isAvailable = true;
+                break;
+              }
+            }
+            
+            option.disabled = !isAvailable;
+            var originalText = option.textContent.replace(' (Sold Out)', '');
+            option.textContent = originalText + (isAvailable ? '' : ' (Sold Out)');
+          });
+        {% endif %}
+      }
+
+      function lletsDoThis_{{ productn.id }}() {
+        {% if productn.options[0] %}
+          const selectOne1 = document.getElementById("select-one1_{{ productn.id }}");
+          var opt1 = selectOne1 ? selectOne1.value : '';
+        {% endif %}
+        {% if productn.options[1] %}
+          const selectTwo2 = document.getElementById("select-two2_{{ productn.id }}");
+          var opt2 = selectTwo2 ? selectTwo2.value : '';
+        {% endif %}
+        {% if productn.options[2] %}
+          const selectThree3 = document.getElementById("select-three3_{{ productn.id }}");
+          var opt3 = selectThree3 ? selectThree3.value : '';
+        {% endif %}
+
+        var id = '';
+        {% for v in productn.variants %}
+          {% unless v.metafields.secomapp.freegifts %}
+            {% unless v.title contains '(Freegifts)' %}
+              if (opt1 == "{{ v.option1 }}"{% if productn.options[1] %} && opt2 == "{{ v.option2 }}"{% endif %}{% if productn.options[2] %} && opt3 == "{{ v.option3 }}"{% endif %}) {
+                var id = {{ v.id }};
+                var price = "{{ v.price | money }}";
+                var condition = "{{ v.available }}";
+                var com_at_price = "{{ productn.price }}";
+                var feature_image = "{{ v.featured_image | img_url : 'master' }}";
+              }
+            {% endunless %}
+          {% endunless %}
+        {% endfor %}
+
+        // Handle image switching for variant changes - using dynamic slide management like xt-protein-product
+        if (typeof opt1 !== 'undefined' && typeof opt2 !== 'undefined') {
+          var media = {{ productn.media | json }};
+          var variants = {{ productn.variants | json }};
+          var product_title = "{{ productn.title }}";
+          var flag = false;
+          var x = 1;
+          
+          for (var j = 0; j < media.length; j++) {
+            // Remove existing slides
+            const lastSlide2 = document.querySelector('.swiper-slide2:last-child');
+            const lastSlide1 = document.querySelector('.swiper-slide1:last-child');
+            if (lastSlide2) lastSlide2.remove();
+            if (lastSlide1) lastSlide1.remove();
+            if (window.productSwiper2 && window.productSwiper2.update) {
+              window.productSwiper2.update();
+            }
+            if (window.productSwiper && window.productSwiper.update) {
+              window.productSwiper.update();
+            }
+          }
+          
+          /* Add selected variant image at first position */
+          if (feature_image == null) {
+            //console.log("Variant image is not defined. Please define variant image.")
+          } else {
+            var htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + feature_image + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + feature_image + `" loading="lazy" src="` + feature_image + `"></div></lazy-image></div>`;
+            if (window.productSwiper && window.productSwiper.appendSlide) {
+              window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+            }
+            
+            var mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + feature_image + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + feature_image + `" loading="lazy" src="` + feature_image + `"></div></lazy-image>`;
+            if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+              window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+            }
+          }
+          
+          for (var i = 0; i < media.length; i++) {
+            if (media[i].alt !== null) {
+              var text = media[i].alt;
+              var text1 = text.split('-');
+              if (opt1 === text1[0] && opt2 === text1[1]) {
+                flag = true;
+                htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+                if (window.productSwiper && window.productSwiper.appendSlide) {
+                  window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+                }
+                mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+                if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+                  window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+                }
+                x = x + 1;
+              } else if (opt1 === text && opt2 !== text1[1]) {
+                flag = true;
+                htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+                if (window.productSwiper && window.productSwiper.appendSlide) {
+                  window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+                }
+                mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+                if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+                  window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+                }
+                x = x + 1;
+              } else if (text1[0] === 'all') {
+                flag = true;
+                htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+                if (window.productSwiper && window.productSwiper.appendSlide) {
+                  window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+                }
+                mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+                if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+                  window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+                }
+                x = x + 1;
+              }
+            }
+          }
+        }
+
+        if (typeof opt1 !== 'undefined' && typeof opt2 === 'undefined') {
+          var media = {{ productn.media | json }};
+          var variants = {{ productn.variants | json }};
+          
+          var product_title = "{{ productn.title }}";
+          var flag = false;
+          var x = 1;
+          
+          for (var j = 0; j < media.length; j++) {
+            // Remove existing slides
+            const lastSlide2 = document.querySelector('.swiper-slide2:last-child');
+            const lastSlide1 = document.querySelector('.swiper-slide1:last-child');
+            if (lastSlide2) lastSlide2.remove();
+            if (lastSlide1) lastSlide1.remove();
+            if (window.productSwiper2 && window.productSwiper2.update) {
+              window.productSwiper2.update();
+            }
+            if (window.productSwiper && window.productSwiper.update) {
+              window.productSwiper.update();
+            }
+          }
+          
+          for (var i = 0; i < media.length; i++) {
+            if (media[i].alt !== null) {
+              var text = media[i].alt;
+              var text1 = text.split('-');
+              
+              if (opt1 === text) {
+                flag = true;
+                htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+                if (window.productSwiper && window.productSwiper.appendSlide) {
+                  window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+                }
+                mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+                if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+                  window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+                }
+                x = x + 1;
+              } else if (text1[0] === 'all') {
+                flag = true;
+                htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+                if (window.productSwiper && window.productSwiper.appendSlide) {
+                  window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+                }
+                mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+                if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+                  window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+                }
+                x = x + 1;
+              }
+            }
+          }
+        }
+
+        if (typeof opt1 === 'undefined' && typeof opt2 === 'undefined') {
+          var media = {{ productn.media | json }};
+          var product_title = "{{ productn.title }}";
+          var flag = false;
+          var x = 1;
+          var y = 1;
+
+          for (var i = 0; i < media.length; i++) {
+            if (media[i].alt !== null) {
+              var text = media[i].alt;
+              var text1 = text.split('-');
+              if (opt1 === text) {
+                flag = true;
+                htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+                if (window.productSwiper && window.productSwiper.appendSlide) {
+                  window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+                }
+                mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+                if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+                  window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+                }
+                x = x + 1;
+              } else if (text1[0] === '') {
+                flag = true;
+                htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+                if (window.productSwiper && window.productSwiper.appendSlide) {
+                  window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+                }
+                mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+                if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+                  window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+                }
+                x = x + 1;
+              }
+            } else {
+              // Handle media with no alt attribute
+              flag = true;
+              htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+              if (window.productSwiper && window.productSwiper.appendSlide) {
+                window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+              }
+              mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+              if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+                window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+              }
+              x = x + 1;
+            }
+          }
+        }
+
+        // Initial load for products with no options - all images shown by default
+
+        if (condition == 'true') {
+          document.getElementById('product-select_{{ productn.id }}').value = id;
+          var selling_plan_val = document.querySelector("input[name='newpurchaseoption']:checked")?.value;
+          
+          document.querySelectorAll(".p1_selling_plan [data-stack]").forEach(function(Data, i) {
+            var vid = parseInt(Data.dataset.stack);
+            if (vid == id) {
+              var otpprice = Data.dataset.otp;
+              var new_price = Data.dataset.price;
+
+              var oldprice = otpprice.split("$");
+              var discounted_price = new_price.split("$");
+
+              var save_price = parseFloat(oldprice[1]) - parseFloat(discounted_price[1]);
+
+              const savePriceTexts = document.querySelectorAll('.save_price_text');
+              savePriceTexts.forEach(el => el.textContent = "save $" + save_price.toFixed());
+              const onetimePrices = document.querySelectorAll('.onetimeprice');
+              onetimePrices.forEach(el => el.textContent = otpprice);
+              const subPrices = document.querySelectorAll(".sub_price");
+              subPrices.forEach(el => el.innerHTML = new_price + "<br><span class='line_thue'>" + otpprice + "</span>");
+              const savePrices = document.querySelectorAll('.save_price');
+              savePrices.forEach(el => el.textContent = "& save $" + save_price.toFixed() + " + Free Shipping");
+            }
+          });
+          
+          if (selling_plan_val == "onetime") {
+            const productAvailability = document.getElementById("product-availability");
+            if (productAvailability) productAvailability.textContent = "Add To Cart";
+            const addToCartButton = document.getElementById("add-to-cart-button");
+            if (addToCartButton) {
+              addToCartButton.classList.remove("opacity-70");
+              addToCartButton.disabled = false;
+            }
+          } else {
+            const productAvailability = document.getElementById("product-availability");
+            if (productAvailability) productAvailability.textContent = "Subscribe";
+            const addToCartButton = document.getElementById("add-to-cart-button");
+            if (addToCartButton) {
+              addToCartButton.classList.remove("opacity-70");
+              addToCartButton.disabled = false;
+            }
+          }
+        } else if (condition == 'false') {
+          var selling_plan_val = document.querySelector("input[name='newpurchaseoption']:checked")?.value;
+          
+          document.querySelectorAll(".p1_selling_plan [data-stack]").forEach(function(Data, i) {
+            var vid = parseInt(Data.dataset.stack);
+            if (vid == id) {
+              var otpprice = Data.dataset.otp;
+              var new_price = Data.dataset.price;
+
+              var oldprice = otpprice.split("$");
+              var discounted_price = new_price.split("$");
+
+              var save_price = parseFloat(oldprice[1]) - parseFloat(discounted_price[1]);
+
+              const savePriceTexts = document.querySelectorAll('.save_price_text');
+              savePriceTexts.forEach(el => el.textContent = "save $" + save_price.toFixed());
+              const onetimePrices = document.querySelectorAll('.onetimeprice');
+              onetimePrices.forEach(el => el.textContent = otpprice);
+              const subPrices = document.querySelectorAll(".sub_price");
+              subPrices.forEach(el => el.innerHTML = new_price + "<br><span class='line_thue'>" + otpprice + "</span>");
+              const savePrices = document.querySelectorAll('.save_price');
+              savePrices.forEach(el => el.textContent = "& save $" + save_price.toFixed() + " + Free Shipping");
+            }
+          });
+          
+          document.getElementById('product-select_{{ productn.id }}').value = '';
+          const productAvailability = document.getElementById("product-availability");
+          if (productAvailability) productAvailability.textContent = "Sold Out";
+          const addToCartButton = document.getElementById("add-to-cart-button");
+          if (addToCartButton) {
+            addToCartButton.classList.add("opacity-70");
+            addToCartButton.disabled = true;
+          }
+        } else {
+          document.getElementById('product-select_{{ productn.id }}').value = "000";
+          const productAvailability = document.getElementById("product-availability");
+          if (productAvailability) productAvailability.textContent = "Unavailable";
+          const addToCartButton = document.getElementById("add-to-cart-button");
+          if (addToCartButton) {
+            addToCartButton.classList.add("opacity-70");
+            addToCartButton.disabled = true;
+          }
+        }
+      }
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var feature_image = "{{ current_variant.featured_image | img_url: 'master' }}";
+
+        var selectOne = document.getElementById("select-one1_{{ productn.id }}");
+        var selectTwo = document.getElementById("select-two2_{{ productn.id }}");
+        var opt1 = selectOne ? selectOne.value : undefined;
+        var opt2 = selectTwo ? selectTwo.value : undefined;
+
+        document.querySelectorAll(".accordion-tab").forEach(function(tab) {
+          tab.addEventListener('click', function() {
+            this.classList.toggle("active");
+          });
+        });
+        
+        document.querySelectorAll(".accordion-tab-1").forEach(function(tab) {
+          tab.addEventListener('click', function() {
+            this.classList.toggle("active");
+          });
+        });
+
+        document.querySelectorAll('input[type=radio][name=newpurchaseoption]').forEach(function(radio) {
+          radio.addEventListener('change', function() {
+            document.querySelectorAll(".stack-row-item").forEach(item => item.classList.remove("active_class"));
+            if (this.parentNode) this.parentNode.classList.add("active_class");
+          });
+        });
+
+        document.querySelectorAll('input[name="pro_selling_plan"]').forEach(function(input) {
+          input.addEventListener('change', function() {
+            document.querySelectorAll(".selected_freq").forEach(el => el.textContent = this.dataset.name);
+          });
+        });
+
+        // Additional event listeners for variant changes
+        document.querySelectorAll('.variant-selector').forEach(function(selector) {
+          selector.addEventListener('change', function() {
+            setTimeout(function() {
+              updateOptionAvailability_{{ productn.id }}();
+              lletsDoThis_{{ productn.id }}();
+            }, 50);
+          });
+        });
+
+        // Also trigger on product select change
+        document.querySelectorAll('select[name="id"]').forEach(function(select) {
+          select.addEventListener('change', function() {
+            setTimeout(function() {
+              updateOptionAvailability_{{ productn.id }}();
+              lletsDoThis_{{ productn.id }}();
+            }, 50);
+          });
+        });
+
+        var productSelect = document.getElementById("product-select_{{ productn.id }}");
+        var idd = productSelect ? productSelect.value : null;
+
+        document.querySelectorAll('div[data-variant-sfp]').forEach((elem) => {
+          if (elem.dataset.variantSfp == idd) {
+            elem.classList.remove('hidden');
+          } else {
+            elem.classList.add('hidden');
+          }
+        });
+
+        // Initial availability check on page load
+        updateOptionAvailability_{{ productn.id }}();
+
+        // Initial load for products with multiple options - use dynamic slide management like xt-protein-product
+        // if (typeof opt1 !== 'undefined' && typeof opt2 !== 'undefined') {
+        //   var media = {{ productn.media | json }};
+        //   var product_title = "{{ productn.title }}";
+        //   var flag = false;
+        //   var x = 1;
+        //   var y = 1;
+          
+        //   /* Add variant featured image first */
+        //   if (feature_image == null) {
+        //     //console.log("Variant image is not defined. Please define variant image.")
+        //   } else {
+        //     var htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + feature_image + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + feature_image + `" loading="lazy" src="` + feature_image + `"></div></lazy-image></div>`;
+        //     if (window.productSwiper && window.productSwiper.appendSlide) {
+        //       window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+        //     }
+            
+        //     var mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + feature_image + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + feature_image + `" loading="lazy" src="` + feature_image + `"></div></lazy-image>`;
+        //     if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+        //       window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+        //     }
+        //   }
+          
+        //   for (var i = 0; i < media.length; i++) {
+        //     if (media[i].alt !== null) {
+        //       var text = media[i].alt;
+        //       var text1 = text.split('-');
+        //       if (opt1 === text1[0] && opt2 === text1[1]) {
+        //         flag = true;
+        //         var htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+        //         if (window.productSwiper && window.productSwiper.appendSlide) {
+        //           window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+        //         }
+        //         var mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+        //         if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+        //           window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+        //         }
+        //         x = x + 1;
+        //       } else if (opt1 === text && opt2 !== text1[1]) {
+        //         flag = true;
+        //         var htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+        //         if (window.productSwiper && window.productSwiper.appendSlide) {
+        //           window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+        //         }
+        //         var mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+        //         if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+        //           window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+        //         }
+        //         x = x + 1;
+        //       } else if (text1[0] === 'all') {
+        //         flag = true;
+        //         var htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+        //         if (window.productSwiper && window.productSwiper.appendSlide) {
+        //           window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+        //         }
+        //         var mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+        //         if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+        //           window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+        //         }
+        //         x = x + 1;
+        //       }
+        //     }
+        //   }
+        // }
+
+        // // Initial load for products with single option
+        // if (typeof opt1 !== 'undefined' && typeof opt2 === 'undefined') {
+        //   var media = {{ productn.media | json }};
+        //   var product_title = "{{ productn.title }}";
+        //   var flag = false;
+        //   var x = 1;
+        //   var y = 1;
+          
+        //   for (var i = 0; i < media.length; i++) {
+        //     if (media[i].alt !== null) {
+        //       var text = media[i].alt;
+        //       var text1 = text.split('-');
+        //       if (opt1 === text) {
+        //         flag = true;
+        //         htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+        //         if (window.productSwiper && window.productSwiper.appendSlide) {
+        //           window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+        //         }
+        //         mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+        //         if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+        //           window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+        //         }
+        //         x = x + 1;
+        //       } else if (text1[0] === 'all') {
+        //         flag = true;
+        //         htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+        //         if (window.productSwiper && window.productSwiper.appendSlide) {
+        //           window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+        //         }
+        //         mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+        //         if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+        //           window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+        //         }
+        //         x = x + 1;
+        //       }
+        //     }
+        //   }
+        // }
+
+        // // Initial load for products with no options - show all images
+        // if (typeof opt1 === 'undefined' && typeof opt2 === 'undefined') {
+        //   var media = {{ productn.media | json }};
+        //   var product_title = "{{ productn.title }}";
+        //   var flag = false;
+        //   var x = 1;
+        //   var y = 1;
+
+        //   for (var i = 0; i < media.length; i++) {
+        //     if (media[i].alt !== null) {
+        //       var text = media[i].alt;
+        //       var text1 = text.split('-');
+        //       if (opt1 === text) {
+        //         flag = true;
+        //         htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+        //         if (window.productSwiper && window.productSwiper.appendSlide) {
+        //           window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+        //         }
+        //         mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+        //         if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+        //           window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+        //         }
+        //         x = x + 1;
+        //       } else if (text1[0] === 'all') {
+        //         flag = true;
+        //         htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+        //         if (window.productSwiper && window.productSwiper.appendSlide) {
+        //           window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+        //         }
+        //         mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img  class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+        //         if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+        //           window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+        //         }
+        //         x = x + 1;
+        //       }
+        //     } else {
+        //       flag = true;
+        //       htmlString = `<div class="h-36 xt-thumb object-contain w-36"><lazy-image><div class="relative"><img class="relative z-0 h-36 object-contain opacity-0" data-placeholder="" height="1200" loading="lazy" src="` + media[i].src + `" width="1200"><img class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 h-36 object-contain" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image></div>`;
+        //       if (window.productSwiper && window.productSwiper.appendSlide) {
+        //         window.productSwiper.appendSlide(`<div class="swiper-slide swiper-slide2">` + htmlString + `</div>`);
+        //       }
+        //       mainhtmlstring = `<lazy-image><div class="relative"><img class="relative z-0 max-h-[300px] object-contain lg:max-h-[600px] opacity-0" data-placeholder="" height="960" loading="lazy" src="` + media[i].src + `" width="960"><img class="absolute h-full inset-0 opacity-100 transition-opacity w-full z-10 max-h-[300px] object-contain lg:max-h-[600px]" data-src="` + media[i].src + `" loading="lazy" src="` + media[i].src + `"></div></lazy-image>`;
+        //       if (window.productSwiper2 && window.productSwiper2.appendSlide) {
+        //         window.productSwiper2.appendSlide(`<div class="swiper-slide swiper-slide1">` + mainhtmlstring + `</div>`);
+        //       }
+        //       x = x + 1;
+        //     }
+        //   }
+        // }
+
+        var selling_plan_val = document.querySelector("input[name='newpurchaseoption']:checked")?.value;
+        // var available = document.getElementById('product-select_{{productn.id}}').value;
+        // var available = $('product-select_{{productn.id}}').find(':selected').data('available');
+
+        if (selling_plan_val == "onetime") {
+          var current_variant_id = document.querySelector("input[name='id']")?.value;
+          
+          // if(available == "")
+          // {
+          //   $("#product-availability").text("Sold Out");
+          //   $("#add-to-cart-button").addClass("opacity-70");
+          //   $("#add-to-cart-button").prop('disabled', true);
+          // }
+          // else if(available == "000")
+          // {
+          //   $("#product-availability").text("Unavailable");
+          //   $("#add-to-cart-button").addClass("opacity-70");
+          //   $("#add-to-cart-button").prop('disabled', true);
+          // }
+          // else
+          // {
+          //   $("#product-availability").text("Add To Cart");
+          //   $("#add-to-cart-button").removeClass("opacity-70");
+          //   $("#add-to-cart-button").prop('disabled', false);
+          // }
+          
+          document.querySelectorAll(".p1_selling_plan [data-stack]").forEach(function(Data, i) {
+            var vid = parseInt(Data.dataset.stack);
+            if (vid == current_variant_id) {
+              var otpprice = Data.dataset.otp;
+              var new_price = Data.dataset.price;
+              var oldprice = otpprice.split("$");
+              var discounted_price = new_price.split("$");
+              var save_price = parseFloat(oldprice[1]) - parseFloat(discounted_price[1]);
+
+              const savePriceTexts = document.querySelectorAll('.save_price_text');
+              savePriceTexts.forEach(el => el.textContent = "save $" + save_price.toFixed());
+              const onetimePrices = document.querySelectorAll('.onetimeprice');
+              onetimePrices.forEach(el => el.textContent = otpprice);
+              const subPrices = document.querySelectorAll(".sub_price");
+              subPrices.forEach(el => el.innerHTML = new_price + "<br><span class='line_thue'>" + otpprice + "</span>");
+              const savePrices = document.querySelectorAll('.save_price');
+              savePrices.forEach(el => el.textContent = "& save $" + save_price.toFixed() + " + Free Shipping");
+            }
+          });
+        } else {
+          var current_variant_id = document.querySelector("input[name='id']")?.value;
+          
+          // if(available == "")
+          // {
+          //   $("#product-availability").text("Sold Out");
+          //   $("#add-to-cart-button").addClass("opacity-70");
+          //   $("#add-to-cart-button").prop('disabled', true);
+          // }
+          // else if(available == "000")
+          // {
+          //   $("#product-availability").text("Unavailable");
+          //   $("#add-to-cart-button").addClass("opacity-70");
+          //   $("#add-to-cart-button").prop('disabled', true);
+          // }
+          // else
+          // {
+          //   $("#product-availability").text("Subscribe");
+          //   $("#add-to-cart-button").removeClass("opacity-70");
+          //   $("#add-to-cart-button").prop('disabled', false);
+          // }
+          
+          document.querySelectorAll(".p1_selling_plan [data-stack]").forEach(function(Data, i) {
+            var vid = parseInt(Data.dataset.stack);
+            ////console.log(vid);
+            if (vid == current_variant_id) {
+              var otpprice = Data.dataset.otp;
+              var new_price = Data.dataset.price;
+              var oldprice = otpprice.split("$");
+              var discounted_price = new_price.split("$");
+              var save_price = parseFloat(oldprice[1]) - parseFloat(discounted_price[1]);
+
+              const savePriceTexts = document.querySelectorAll('.save_price_text');
+              savePriceTexts.forEach(el => el.textContent = "save $" + save_price.toFixed());
+              const subPrices = document.querySelectorAll(".sub_price");
+              subPrices.forEach(el => el.innerHTML = new_price + "<br><span class='line_thue'>" + otpprice + "</span>");
+              const savePrices = document.querySelectorAll('.save_price');
+              savePrices.forEach(el => el.textContent = "& save $" + save_price.toFixed() + " + Free Shipping");
+            }
+          });
+        }
+
+        const sellingPlanElement = document.getElementById('selling_plan_{{ productn.id }}');
+        if (sellingPlanElement) {
+          sellingPlanElement.addEventListener('change', function() {
+            var selected_plan_val = this.value;
+            var selling_plan_val = document.querySelector("input[name='newpurchaseoption']:checked")?.value;
+          
+          if (selling_plan_val == "subsave") {
+            var total = 0;
+            var otptotal = 0;
+            
+            if (selected_plan_val == "selling_plan_00") {
+              var sellingPlan00 = document.querySelector(".selling_plan_00");
+              var selling_plan = sellingPlan00 ? parseInt(sellingPlan00.value) : 0;
+              const selectedSellingPlan = document.getElementById("selected_selling_plan");
+              if (selectedSellingPlan) selectedSellingPlan.value = selling_plan;
+            }
+            if (selected_plan_val == "selling_plan_11") {
+              var sellingPlan11 = document.querySelector(".selling_plan_11");
+              var selling_plan = sellingPlan11 ? parseInt(sellingPlan11.value) : 0;
+              const selectedSellingPlan = document.getElementById("selected_selling_plan");
+              if (selectedSellingPlan) selectedSellingPlan.value = selling_plan;
+            }
+            if (selected_plan_val == "selling_plan_22") {
+              var sellingPlan22 = document.querySelector(".selling_plan_22");
+              var selling_plan = sellingPlan22 ? parseInt(sellingPlan22.value) : 0;
+              const selectedSellingPlan = document.getElementById("selected_selling_plan");
+              if (selectedSellingPlan) selectedSellingPlan.value = selling_plan;
+            }
+            if (selected_plan_val == "selling_plan_33") {
+              var sellingPlan33 = document.querySelector(".selling_plan_33");
+              var selling_plan = sellingPlan33 ? parseInt(sellingPlan33.value) : 0;
+              const selectedSellingPlan = document.getElementById("selected_selling_plan");
+              if (selectedSellingPlan) selectedSellingPlan.value = selling_plan;
+            }
+            if (selected_plan_val == "selling_plan_44") {
+              var sellingPlan44 = document.querySelector(".selling_plan_44");
+              var selling_plan = sellingPlan44 ? parseInt(sellingPlan44.value) : 0;
+              const selectedSellingPlan = document.getElementById("selected_selling_plan");
+              if (selectedSellingPlan) selectedSellingPlan.value = selling_plan;
+            }
+          } else {
+
+          }
+          });
+        }
+
+        document.querySelectorAll('input[type=radio][name=newpurchaseoption]').forEach(function(radio) {
+          radio.addEventListener('change', function() {
+            // Handle slide animations with CSS classes
+            document.querySelectorAll(".take_price_ss").forEach(el => {
+              el.classList.add('sb-slide-up');
+              el.classList.remove('sb-slide-down');
+            });
+            const siblings = this.parentNode.querySelectorAll(".take_price_ss");
+            siblings.forEach(el => {
+              el.classList.remove('sb-slide-up');
+              el.classList.add('sb-slide-down');
+            });
+
+            var selling_plan_val = document.querySelector("input[name='newpurchaseoption']:checked")?.value;
+          
+          if (selling_plan_val == "onetime") {
+            var current_variant_id = document.querySelector("input[name='id']")?.value;
+            const productAvailability = document.getElementById("product-availability");
+            if (productAvailability) productAvailability.textContent = "Add To Cart";
+            
+            document.querySelectorAll(".p1_selling_plan [data-stack]").forEach(function(Data, i) {
+              var vid = parseInt(Data.dataset.stack);
+            
+              if (vid == current_variant_id) {
+                var otpprice = Data.dataset.otp;
+                var new_price = Data.dataset.price;
+                var oldprice = otpprice.split("$");
+                var discounted_price = new_price.split("$");
+                var save_price = parseFloat(oldprice[1]) - parseFloat(discounted_price[1]);
+
+                const savePriceTexts = document.querySelectorAll('.save_price_text');
+                savePriceTexts.forEach(el => el.textContent = "save $" + save_price.toFixed());
+                const onetimePrices = document.querySelectorAll('.onetimeprice');
+                onetimePrices.forEach(el => el.textContent = otpprice);
+                const subPrices = document.querySelectorAll(".sub_price");
+                subPrices.forEach(el => el.innerHTML = new_price + "<br><span class='line_thue'>" + otpprice + "</span>");
+                const savePrices = document.querySelectorAll('.save_price');
+                savePrices.forEach(el => el.textContent = "& save $" + save_price.toFixed() + " + Free Shipping");
+              }
+            });
+            
+            document.querySelector('select[name="id"]', 'input[name="id"]').dispatchEvent(new Event('change'));
+          } else {
+            var current_variant_id = document.querySelector("input[name='id']")?.value;
+            const productAvailability = document.getElementById("product-availability");
+            if (productAvailability) productAvailability.textContent = "Subscribe";
+            
+            document.querySelectorAll(".p1_selling_plan [data-stack]").forEach(function(Data, i) {
+              var vid = parseInt(Data.dataset.stack);
+              if (vid == current_variant_id) {
+                var otpprice = Data.dataset.otp;
+                var new_price = Data.dataset.price;
+                var oldprice = otpprice.split("$");
+                var discounted_price = new_price.split("$");
+                var save_price = parseFloat(oldprice[1]) - parseFloat(discounted_price[1]);
+
+                const savePriceTexts = document.querySelectorAll('.save_price_text');
+                savePriceTexts.forEach(el => el.textContent = "save $" + save_price.toFixed());
+                const subPrices = document.querySelectorAll(".sub_price");
+                subPrices.forEach(el => el.innerHTML = new_price + "<br><span class='line_thue'>" + otpprice + "</span>");
+                const savePrices = document.querySelectorAll('.save_price');
+                savePrices.forEach(el => el.textContent = "& save $" + save_price.toFixed() + " + Free Shipping");
+              }
+            });
+            
+            document.querySelector('select[name="id"]', 'input[name="id"]').dispatchEvent(new Event('change'));
+          }
+          });
+        });
+
+        const addToCartBtn = document.getElementById("add-to-cart-button");
+        if (addToCartBtn) {
+          addToCartBtn.addEventListener("click", function() {
+            var selling_plan_val = "";
+            var items = [];
+            var sellingPlanEl = document.getElementById('selling_plan_{{ productn.id }}');
+            var selected_plan_val = sellingPlanEl ? sellingPlanEl.value : '';
+            var selling_plan_val = document.querySelector("input[name='newpurchaseoption']:checked")?.value;
+          
+          if (selling_plan_val == "subsave") {
+            var total = 0;
+            var otptotal = 0;
+            var data = {
+              id: parseInt(document.querySelector('.stack_vid')?.value || 0),
+              quantity: document.querySelector("input[name='quantity']")?.value || 1,
+              selling_plan: parseInt(document.querySelector('input[name="pro_selling_plan"]:checked')?.value || 0)
+            }
+
+            let url = '/cart/add.js';
+            const cartElement = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+            if (cartElement && cartElement.getSectionsToRender) {
+              const sections = cartElement.getSectionsToRender().map((section) => section.id);
+              url += `?sections=${sections.join(',')}`;
+            }
+
+            // call ajax
+            fetch(url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(function(response) {
+                if (cartElement && cartElement.renderContents) {
+                  cartElement.renderContents(response);
+                  publish(PUB_SUB_EVENTS.cartUpdate, {source: 'tl-farm-product'});
+                  if (cartElement.openCartDrawer) {
+                    cartElement.openCartDrawer();
+                  }
+                } else {
+                  fetch('/cart.js')
+                    .then(response => response.json())
+                    .then(function(cart) {
+                      const cartCount = document.getElementById('cart-count');
+                      if (cartCount) {
+                        if (cart.item_count < 1) {
+                          cartCount.innerHTML = "";
+                        } else {
+                          cartCount.innerHTML = "<number class='number'>" + cart.item_count + "</number>";
+                        }
+                      }
+                    });
+                  publish(PUB_SUB_EVENTS.cartUpdate, {source: 'tl-farm-product'});
+                }
+            })
+            .catch(function(error) {
+              console.error('Add To Cart failed:', error);
+              // Fallback to basic cart update
+              fetch('/cart.js')
+                .then(response => response.json())
+                .then(function(cart) {
+                  const cartCount = document.getElementById('cart-count');
+                  if (cartCount) {
+                    if (cart.item_count < 1) {
+                      cartCount.innerHTML = "";
+                    } else {
+                      cartCount.innerHTML = "<number class='number'>" + cart.item_count + "</number>";
+                    }
+                  }
+                });
+              publish(PUB_SUB_EVENTS.cartUpdate, {source: 'tl-farm-product'});
+            });
+          } else {
+            var data = {
+              id: parseInt(document.querySelector('.stack_vid')?.value || 0),
+              quantity: document.querySelector("input[name='quantity']")?.value || 1
+            }
+
+            let url = '/cart/add.js';
+            const cartElement = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+            if (cartElement && cartElement.getSectionsToRender) {
+              const sections = cartElement.getSectionsToRender().map((section) => section.id);
+              url += `?sections=${sections.join(',')}`;
+            }
+            
+            fetch(url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(function(response) {
+                if (cartElement && cartElement.renderContents) {
+                  cartElement.renderContents(response);
+                  publish(PUB_SUB_EVENTS.cartUpdate, {source: 'tl-farm-product'});
+                  if (cartElement.openCartDrawer) {
+                    cartElement.openCartDrawer();
+                  }
+                } else {
+                  fetch('/cart.js')
+                    .then(response => response.json())
+                    .then(function(cart) {
+                      const cartCount = document.getElementById('cart-count');
+                      if (cartCount) {
+                        if (cart.item_count < 1) {
+                          cartCount.innerHTML = "";
+                        } else {
+                          cartCount.innerHTML = "<number class='number'>" + cart.item_count + "</number>";
+                        }
+                      }
+                    });
+                  publish(PUB_SUB_EVENTS.cartUpdate, {source: 'tl-farm-product'});
+                }
+            })
+            .catch(function(error) {
+              console.error('Add To Cart failed:', error);
+              // Fallback to basic cart update
+              fetch('/cart.js')
+                .then(response => response.json())
+                .then(function(cart) {
+                  const cartCount = document.getElementById('cart-count');
+                  if (cartCount) {
+                    if (cart.item_count < 1) {
+                      cartCount.innerHTML = "";
+                    } else {
+                      cartCount.innerHTML = "<number class='number'>" + cart.item_count + "</number>";
+                    }
+                  }
+                });
+              publish(PUB_SUB_EVENTS.cartUpdate, {source: 'tl-farm-product'});
+            });
+          }
+          });
+        }
+      });
+      
+      document.querySelectorAll('.open-ingradiant-details').forEach(link => {
+        link.addEventListener('click', function() {
+          document.querySelectorAll('.accordion-tab-1').forEach(tab => tab.classList.remove('active'));
+          document.querySelectorAll('.accordion-tab').forEach(tab => tab.classList.remove('active'));
+          document.querySelectorAll('.accor-cont').forEach(cont => cont.classList.add('hidden'));
+          document.querySelectorAll('.ingred-btn').forEach(btn => btn.classList.add('active'));
+          document.querySelectorAll('.ingred-con').forEach(con => con.classList.remove('hidden'));
+
+          const ingredientsPanel = document.getElementById('ingredients-tab-panel');
+          const ingredientsPanel1 = document.getElementById('ingredients-tab-panel-1');
+          if (ingredientsPanel) {
+            ingredientsPanel.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+          if (ingredientsPanel1) {
+            ingredientsPanel1.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll('.open-review-details').forEach(link => {
+        link.addEventListener('click', function() {
+          document.querySelectorAll('.accordion-tab-1').forEach(tab => tab.classList.remove('active'));
+          document.querySelectorAll('.accordion-tab').forEach(tab => tab.classList.remove('active'));
+          document.querySelectorAll('.accor-cont').forEach(cont => cont.classList.add('hidden'));
+          document.querySelectorAll('.review-btn').forEach(btn => btn.classList.add('active'));
+          document.querySelectorAll('.review-con').forEach(con => con.classList.remove('hidden'));
+
+          const reviewsPanel = document.getElementById('reviews-tab-panel');
+          const reviewsPanel1 = document.getElementById('reviews-tab-panel-1');
+          if (reviewsPanel) {
+            reviewsPanel.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+          if (reviewsPanel1) {
+            reviewsPanel1.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    </script>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Farm Shaker Product",
+  "class": "td-legacy",
+  "settings": [
+    {
+      	"type":"product",
+      	"id":"prod",
+      	"label":"Product"
+      },
+    {
+      	"type":"richtext",
+      	"id":"prod_desc",
+      	"label":"Product Description"
+      },
+    {
+      	"type":"text",
+      	"id":"tag",
+      	"label":"Paroduct tag",
+		"default":"Product tag"
+      },
+      {
+      	"type":"text",
+      	"id":"sdetail",
+      	"label":"Badge 1",
+		"default":"NEW!"
+      },
+      {
+      	"type":"text",
+      	"id":"sdetail1",
+      	"label":"Badge 2",
+		"default":"15% off"
+      },
+      {
+      	"type":"text",
+      	"id":"sdetail2",
+      	"label":"Badge 3",
+		"default":"Free Shipping"
+      },
+      {
+      	"type":"textarea",
+      	"id":"slistinformation",
+      	"label":"information"
+      },{
+    	"type":"text",
+        "id":"title",
+        "label":"Section Title"
+	},
+    {
+    	"type":"textarea",
+        "id":"subtitle",
+        "label":"Section Subtitle"
+	},
+	{
+    	"type":"text",
+        "id":"onetimetext",
+        "label":"One time purchase text",
+		"default":"One-Time Purchase"
+	},
+	{
+    	"type":"text",
+        "id":"subscribetext",
+        "label":"Subscribe and Save text",
+		"default":"Subscribe & Save",
+        "info":"Use <span></span> tag to make text in other color"
+	},
+    {
+      "content": "Accordian Section",
+      "type": "header"
+    },
+    {
+      "id": "overview",
+      "label": "Overview",
+      "type": "richtext"
+    },
+    {
+      "default": true,
+      "id": "no_sweetners",
+      "label": "No Artificial Sweetners?",
+      "type": "checkbox"
+    },
+    {
+      "default": true,
+      "id": "no_artificial_coloring",
+      "label": "No Artificial Coloring?",
+      "type": "checkbox"
+    },
+    {
+      "default": true,
+      "id": "gluten_free",
+      "label": "Gluten Free?",
+      "type": "checkbox"
+    },
+    {
+      "default": true,
+      "id": "no_preservatives",
+      "label": "No Artificial Preservatives?",
+      "type": "checkbox"
+    }
+],
+"blocks": [
+    {
+      "name": "Frequently Asked Question",
+      "settings": [
+        {
+          "id": "question",
+          "label": "Question",
+          "type": "textarea"
+        },
+        {
+          "id": "answer",
+          "label": "Answer",
+          "type": "richtext"
+        }
+      ],
+      "type": "faq"
+    }
+  ],
+"presets":[
+		{
+			"name": "Farm Shaker Product"
+		}
+	]
+}
+{% endschema %}

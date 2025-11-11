@@ -1,0 +1,730 @@
+	 @font-face {
+	 font-family: aftika;
+	 src: url(https://cdn.shopify.com/s/files/1/0866/7664/t/140/assets/Aftika-Bold.otf);
+	}
+
+	@font-face {
+	 font-family: aftika-light;
+	 src: url(https://cdn.shopify.com/s/files/1/0866/7664/t/140/assets/Aftika-Regular.otf);
+	}
+	
+    .TL_aff_content {
+    max-width:1460px;
+    margin:0 auto;
+    overflow:hidden;
+    }
+    .TL_aff_hero .TL_aff_hero_inner .mobile{
+        display: block;
+    text-transform: uppercase;
+    font-weight: bold;  
+     color:#fff;
+     margin:20px 0;
+    }
+    @media (min-width:768px)
+    {
+      .TL_aff_hero .TL_aff_hero_inner .mobile
+      {
+        font-size:32px;
+      }
+    }
+
+.TL_aff_hero {
+    display: flex;
+    min-height: 500px;
+    align-items: center;
+    justify-content: flex-start;
+    background: #212121a8;
+    padding: 50px 70px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.TL_aff_hero_inner {
+    max-width: 550px;
+    position: relative;
+    z-index: 2;
+    top: 32px;
+}
+
+.TL_aff_hero h1 {
+    font-family: 'aftika';
+    font-size: 44px;
+    line-height: 46px;
+    color: #ffffff;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.TL_aff_hero p {
+    font-family: 'aftika-light';
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+    margin-bottom: 32px;
+    margin-top: 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.TL_aff_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 32px;
+    gap: 16px;
+    background: #47B6E6;
+    border-radius: 4px;
+    color: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    max-width: 270px;
+    font-family: 'aftika';
+    font-weight: 400;
+}
+
+.TL_aff_icon_cont {
+display:flex;
+align-items:start;
+justify-content:space-between;
+padding:50px 75px;
+background:#e5e9ed;
+font-family:'aftika';
+color:#355c7e;
+font-size:14px;
+}
+
+.TL_aff_icon {
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:space-between;
+padding:15px 75px;
+font-family:'aftika';
+color:#355c7e;
+font-size:14px;
+text-align:center;
+border-right:1px solid #385b8030;
+}
+
+.TL_aff_icon:last-of-type {
+border-right:0px;
+}
+
+.TL_aff_icon svg,
+.TL_aff_icon img{
+max-height:50px;
+margin-bottom:24px;
+fill:#142937;
+}
+
+.TL_aff_highlight {
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+font-family:'aftika';
+color:#355c7e;
+font-size:14px;
+text-align:center;
+background: rgb(229,233,237);
+background: linear-gradient(180deg, rgba(229,233,237,1) 14%, rgba(255,255,255,1) 82%);
+padding:15px;
+}
+.TL_aff_content h2 {
+font-size:34px;
+text-align:center;
+font-weight:900;
+color:#132836;
+margin-bottom:50px;
+font-family:'aftika';
+}
+
+.TL_aff_highlight_callouts {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+    padding-bottom: 35px;
+}
+
+ .ing_pop {
+    margin-bottom: 30px;
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+.TL_aff_highlight_callout {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+    margin-bottom: 20px;
+  align-items: start;
+}
+
+.TL_aff_highlight_cols {
+    max-width: 30%;
+    text-align: end;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+.co_alt {
+    text-align: start;
+}
+
+.TL_aff_highlight_callouts h3 {
+    color: #132836;
+    font-size: 18px;
+    margin-bottom: 0px;
+    line-height: 1.1em;
+    text-transform: uppercase;
+}
+
+.TL_aff_highlight_callouts .icon {
+    min-width:32px;
+    /*min-height:32px;*/
+    width:32px;
+    /*height:32px;*/
+    margin-left:16px;
+    fill:#142937;
+    margin:15px 25px;
+    /*height: fit-content;*/
+}
+
+.TL_aff_highlight_callout:after {
+    content:'';
+    width:90px;
+    height:2px;
+    background:#5aaadf;
+    position:absolute;
+    right: -75px;
+    top:30px;
+}
+
+
+.co_alt.TL_aff_highlight_callout:after  {
+    display:none;
+}
+
+.co_img.TL_aff_highlight_callout:after, .co_img.TL_aff_highlight_callout:before  {
+    display:none;
+}
+
+.co_alt.TL_aff_highlight_callout:before {
+    content:'';
+    width:90px;
+    height:2px;
+    background:#5aaadf;
+    position:absolute;
+    left: -75px;
+    top:30px;
+}
+
+.TL_aff_highlight_callouts p {
+    font-family: 'aftika-light';
+    color: #385b80;
+    margin-top: 5px;
+    line-height: 16px;
+    font-size: 12px;
+}
+.unique-paul-sklar-bulk-lander .TL_aff_highlight_callouts h3 {
+    text-transform:capitalize;
+}
+.unique-paul-sklar-bulk-lander .TL_aff_highlight_callouts p {
+    width: 80%;
+    float: right;
+}
+
+.co_img  {
+    padding-top:0px
+}
+
+/* .co_img img {
+    width: 300px;
+} */
+
+#ShopNow {
+background:#f7f9fc;
+min-height:300px;
+padding:35px 0px;
+}
+
+.ShopNow_inner {
+max-width:700px;
+margin:0 auto;
+}
+
+.TL_aff_info {
+min-height:300px;
+padding:35px 0px;
+}
+
+.TL_aff_hero-banner {
+    position: absolute;
+    top: 0;
+    font-family: 'aftika';
+    padding-left: 10px;
+    background: #000000;
+    width: -webkit-fill-available;
+    color: #ffffff;
+    line-height: 1.8em;
+    display: flex;
+    left: 0;
+    align-items: center;
+    padding: 8px;
+    padding-left: 32px;
+    padding-top:10px;
+    z-index:1;
+}
+
+.TL_aff_mobile {display:none;}
+
+.darken_it {
+    position: absolute;
+    width: 100%;
+    background: #0000005c;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+}
+
+@media only screen and (max-width: 1165px) {
+.TL_aff_icon {
+    font-size: 12px;
+    text-align: center;
+    border-right: 1px solid #385b8030;
+    padding:15px 25px;
+    width: 25%;
+}
+.TL_aff_icon svg {
+width:32px;
+height:32px;
+margin-bottom:16px;
+}
+
+}
+
+  @media only screen and (max-width: 940px) {
+.TL_aff_mobile {display:block;}
+.TL_aff_mobile img {
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+    .co_img {
+    display: none;
+}
+.TL_aff_highlight_callouts {
+    padding-bottom: 25px;
+    flex-direction: column;
+}
+.TL_aff_highlight_callout:after, .TL_aff_highlight_callout:before  {
+    display:none;
+}
+.TL_aff_highlight_callout {
+    width: 100%;
+    flex-direction: row-reverse;
+    text-align: initial;
+    justify-content: flex-end;
+    align-items: center;
+}
+.co_alt.TL_aff_highlight_callout {
+    flex-direction: row;
+}
+.TL_aff_highlight_cols {
+    width: 100% !important;
+    padding: 0px 0px;
+}
+.TL_aff_highlight_callouts svg {
+    margin: 15px 15px;
+}
+    .unique-paul-sklar-bulk-lander .TL_aff_highlight_callouts p {
+    width: 80%;
+    float: left;
+}
+  }
+
+
+@media only screen and (max-width: 600px) {
+
+
+.TL_aff_highlight {
+    padding-top: 25px;
+}
+
+.TL_aff_hero {
+    min-height: 360px;
+    padding: 32px 32px;
+}
+.TL_aff_hero p {
+    display:none;
+}
+.TL_aff_button {
+    max-width: -webkit-fill-available;
+}
+
+.TL_aff_icon_cont {
+    padding: 5px 0px;
+    border-bottom: 1px solid #c4ceda;
+}
+.TL_aff_icon {
+    font-size: 10px;
+    text-align: center;
+    border-right: 1px solid #385b8030;
+    padding: 10px;
+    width: 25%;
+    line-height: 12px;
+}
+.TL_aff_icon svg {
+width:24px;
+height:24px;
+margin-bottom:8px;
+}
+.TL_aff_content h2 {
+    font-size: 26px;
+    line-height: 28px;
+    margin-bottom: 16px;
+}
+.TL_aff_content h1, .TL_aff_content h2 {
+    letter-spacing: -.5px;
+}
+
+.TL_aff_content h1 {
+    font-size: 32px;
+    line-height: 34px;
+    max-width: 65%;
+    margin-bottom: 20px;
+}
+
+}
+
+
+.TL_ing_table {
+max-width:1100px;
+margin:0 auto;
+}
+
+.TL_aff_info table tr td, .TL_aff_info table tr {
+border-collapse:collapse;
+border:0px;
+}
+
+
+.TL_aff_info table tr {
+display:inline-flex;
+flex-direction:column;
+}
+
+.TL_aff_info table tr td {
+text-align:left;
+}
+
+.TL_aff_info table tr td:nth-child(2) {
+font-size:14px;
+font-weight:300;
+}
+
+
+
+   .aff_compare_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:50px;
+    background: rgb(244,244,244);
+background: linear-gradient(180deg, rgba(244,244,244,1) 80%, rgba(255,255,255,1) 100%);
+}
+
+.aff_compare_section h2, .aff_section h2 {
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+}
+
+
+.aff_button_main {
+    background: #41B5E8;
+    max-width: 220px;
+    line-height: 32px;
+    height: 44px;
+    display: flex;
+    border-radius: 4px;
+    color: #ffffff;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    font-family: 'aftika';
+    font-weight: 400;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+.aff_chart {
+    display: flex;
+    margin: 0 auto;
+    max-width: 900px;
+    margin-bottom: 20px;
+}
+
+.aff_compare {
+    display: flex;
+    font-size: 16px;
+    font-family: 'aftika';
+    align-items: center;
+    max-width: 500px;
+    padding-right: 10px;
+}
+
+.aff_compare_comp {
+    flex-direction:row-reverse;
+}
+
+.aff_compare_comp svg {
+    width: 18px;
+    height: 18px;
+    fill: #f90a0a !important;
+}
+
+
+
+.aff_compare_stats {
+    position: relative;
+}
+
+.aff_stars {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.aff_compare_stat {
+    background: #ffffff;
+    margin-bottom: 15px;
+    padding: 10px;
+    padding-left: 50px;
+    font-size: 10px;
+    line-height: 1.1em;
+    display: flex;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.aff_compare_stat_comp {
+    padding-left: 10px;
+    padding-right:50px;
+}
+
+.aff_compare_stat svg {
+    width: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 15px;
+    fill: #47B6E6;
+}
+
+
+
+.aff_compare_hero_2 {
+    background: url(https://cdn.shopify.com/s/files/1/0866/7664/files/test_aff.jpg?v=1660745127);
+}
+
+.aff_section {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    align-items: center;
+    flex-direction: column;
+    background: #f5f5f5;
+    overflow: hidden;
+}
+
+.aff_section h4, .aff_compare_section h4 {
+    font-family: aftika-light;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    line-height: 24px;
+    color:#385B80;
+    text-align:center;
+}
+
+.aff_compare_section h4 span {
+    font-family: 'aftika';
+}
+
+
+
+.TL_PressBar {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid #d7d7d7;
+    border-bottom: 0px solid #212121;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 50px 0px;
+}
+.TL_PressBar img {
+    height: 24px;
+}
+
+.aff_quotes {
+    font-family: 'aftika-light';
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    overflow: scroll;
+}
+
+.aff_quote {
+    width: 30%;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 14px 2px #0000000d;
+}
+.aff_quotes span {
+    font-family: 'aftika';
+}
+
+.aff_stars svg {
+width:18px;
+fill:#FF5D0D;
+}
+
+
+   .lightbox {
+  /* Default to hidden */
+  display: none;
+
+  /* Overlay entire screen */
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  /* A bit of padding around image */
+  padding: 1em;
+
+  /* Translucent background */
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Unhide the lightbox when it's the target */
+.lightbox:target {
+  display: block;
+}
+
+.lightbox span {
+  /* Full width and height */
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /* Size and position background image */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+.aff_chart {
+    flex-direction: column;
+}
+.aff_compare_comp_img {
+    width: 246px;
+    height: 194px;
+    margin-left: -40px;
+}
+.aff_compare_section {
+    padding: 50px 10px;
+}
+.aff_compare_hero {
+    min-height: 200px!important;
+    background-position: center!important;
+}
+.TL_PressBar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: none;
+    padding: 0px;
+    margin-top: 25px;
+    margin-bottom: 35px;
+}
+.TL_PressBar div {
+    text-align: center;
+    width: 100%;
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    gap: 30px;
+}
+.TL_PressBar div:nth-of-type(1) {
+    max-width: 80%;
+    width: -webkit-fill-available;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.TL_PressBar div:nth-of-type(2) {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.TL_PressBar div:nth-of-type(3) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.TL_PressBar div:nth-of-type(4) {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.TL_PressBar div:nth-of-type(5) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.aff_quote {
+    min-width: 220px;
+}
+.aff_section {
+    padding: 50px 20px;
+}
+}
+
+
+
+   .xgen-new-collection .xgen-new-product .xgen-ptitle {
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

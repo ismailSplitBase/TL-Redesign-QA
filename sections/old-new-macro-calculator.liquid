@@ -1,0 +1,1115 @@
+{{ 'old-multiple-calculators.css' | asset_url | stylesheet_tag }}
+<style>
+/*   @media (min-width: 640px){
+	.sm\:max-w-lg {
+    max-width: 60rem;
+    }} */
+  
+  @media only screen and (max-width: 600px) {.grid-cols-2 {    grid-template-columns: repeat(1,minmax(0,1fr));}}  .bmrbtn:disabled{    background-color:#bddeed;    cursor:not-allowed;  }super{    color:red;  }	.range-container {  position: relative;}	input[type="range"] + label { padding: 5px 0;}</style>
+<div class="main default-page-wrapper">
+  <div class="xgen-inner">
+  <div class="cal-header">
+    {% if section.settings.header_image != blank %}
+  		<img src="{{section.settings.header_image | img_url: section.settings.header_image.width }}" alt="{% if section.settings.header_image.alt %}{{ section.settings.header_image.alt }}{% else %}Calculator Header Image{% endif %}" loading="lazy" height="auto">
+    {% endif %}
+  	
+    {% if section.settings.title != blank %}
+    	<h3 style>{{section.settings.title}}</h3>
+    {% endif %}
+    
+    {% if section.settings.detail != blank %}
+    	<p>{{section.settings.detail}}</p>
+    {% endif %}
+  </div>
+  
+	<form id="signup-form" class="tlc-form klaviyo_styling klaviyo_gdpr_embed_PQWfMq" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank">
+      	<input type="hidden" name="calculator-name" value="tl-macro">
+      	<input type="hidden" name="g" value="PQWfMq">
+	  	<input type="hidden" name="$fields" value="calculator_goal, calculator_result">
+      	<input type="hidden" name="calculator_goal" value="" id="calculator-goal-field">
+      	<input type="hidden" name="calculator_result" value="" id="calculator-result-field">
+    	<div class="form-group mygoal">
+			<label class="main-label">My Goal</label>
+          	<div class="input-group">
+              <input class="" id="goal-lose-weight" name="goal" type="radio" value="lose-weight">
+              <label for="goal-lose-weight" class="label2">{% render 'old-xicon-lose-weight' %} Lose Weight {% render 'old-xicon-check' %}</label>
+              
+               <input class="" id="goal-get-shredded" name="goal" checked type="radio" value="get-shredded">
+              <label for="goal-get-shredded" class="label2">{% render 'old-xicon-get-shredded' %} Get Shredded {% render 'old-xicon-check' %}</label>
+              
+              <input class="" id="goal-body-recomposition" name="goal" type="radio" value="body-recomposition">
+              <label for="goal-body-recomposition" class="label2">{% render 'old-xicon-body-recomposition' %} Body Recomposition {% render 'old-xicon-check' %}</label>
+              
+              <input class="" id="goal-bulk-up" name="goal" type="radio" value="bulk-up">
+              <label for="goal-bulk-up" class="label2">{% render 'old-xicon-bulk-up' %} Bulk Up {% render 'old-xicon-check' %}</label>
+            </div>
+		</div>
+    	<div class="form-group mygoal">
+            <label class="main-label">MY LIFESTYLE</label>
+          	<div class="input-group">
+              <input class="" id="lifestyle-sedentary" name="lifestyle" checked type="radio" value="sedentary">
+              <label for="lifestyle-sedentary" class="label2">
+                {% render 'old-xicon-sedentary' %} 
+                <p>Sedentary<br><span>Spend most of the day sitting (i.e. desk job)</span></p>
+                {% render 'old-xicon-check' %}
+              </label>
+              
+               <input class="" id="lifestyle-light-activity" name="lifestyle" type="radio" value="light-activity">
+              <label for="lifestyle-light-activity" class="label2">
+                {% render 'old-xicon-light-activity' %} 
+                <p>Light Activity <br><span>Spend a good part of the day on my feet (e.g. teacher or cashier)</span></p>
+                {% render 'old-xicon-check' %}
+              </label>
+              
+              <input class="" id="lifestyle-active" name="lifestyle" type="radio" value="active">
+              <label for="lifestyle-active" class="label2">
+                {% render 'old-xicon-active' %} 
+                <p>Active <br><span>Spend a good part of the day doing moderate physical activity (e.g. server/food runner or parcel driver)</span></p> 
+                {% render 'old-xicon-check' %}
+              </label>
+              
+              <input class="" id="lifestyle-very-active" name="lifestyle" type="radio" value="very-active">
+              <label for="lifestyle-very-active" class="label2">
+                {% render 'old-xicon-very-active' %} 
+                <p>Very Active <br><span>Spend a good part of the day doing heavy physical activites (e.g. construction worker or mover)</span></p> 
+                {% render 'old-xicon-check' %}
+              </label>
+              
+            </div>
+		</div>
+    
+    <div class="form-group mygoal">
+		<!-- add hideshow class to make this option available for womens -->
+            <label class="main-label">MY WORKOUT STYLE</label>
+          	<div class="input-group">
+              <input class="" id="workout-light" name="workout-style" type="radio" value="light">
+              <label for="workout-light" class="label2">
+                {% render 'old-xicon-sedentary' %} 
+                <p>Light<br><span>Light resistance training and/or low-intensity, steady-state cardio (~130 BPM)</span></p>
+                {% render 'old-xicon-check' %}
+              </label>
+              
+              <input class="" id="workout-moderate" name="workout-style" checked type="radio" value="moderate">
+              <label for="workout-moderate" class="label2">
+                {% render 'old-xicon-light-activity' %} 
+                <p>Moderate <br><span>Moderately intense resistance training and/or cardiovascular exercise (~150 BPM)</span></p>
+                {% render 'old-xicon-check' %}
+              </label>
+              
+              <input class="" id="workout-heavy" name="workout-style" type="radio" value="heavy">
+              <label for="workout-heavy" class="label2">
+                {% render 'old-xicon-active' %} 
+                <p>Heavy <br><span>Intense resistance training and/or high-intensity interval training (e.g. sprinting) </span></p> 
+                {% render 'old-xicon-check' %}
+              </label>
+            </div>
+		</div>
+    
+    
+    	 <div class="form-group mygoal">
+		<!-- add hideshow class to make this option available for womens -->
+            <label class="main-label">CURRENT DIET (PROTEIN : CARBS : FAT)</label>
+          	<div class="input-group">
+              <input class="" id="diet-low-carb" name="diet" type="radio" value="low-carb">
+              <label for="diet-low-carb" class="label2">
+                {% render 'old-xicon-sedentary' %} 
+                <p>Low Carb/High Protein<br><span>50% Protein : 20% Carb : 30% Fat</span></p>
+                {% render 'old-xicon-check' %}
+              </label>
+              
+              <input class="" id="diet-vegan" name="diet" type="radio" value="vegan">
+              <label for="diet-vegan" class="label2">
+                 {% render 'old-xicon-light-activity' %} 
+                <p>Vegan <br><span>40% Protein : 30% Carb : 30% Fat</span></p>
+                {% render 'old-xicon-check' %}
+              </label>
+              
+              <input class="" id="diet-keto" checked name="diet" type="radio" value="keto">
+              <label for="diet-keto" class="label2">
+                {% render 'old-xicon-active' %} 
+                <p>Keto <br><span>30% Protein : 5% Carb : 65% Fat</span></p> 
+                {% render 'old-xicon-check' %}
+              </label>
+              
+              <input class="" id="diet-the-zone" name="diet" type="radio" value="the-zone">
+              <label for="diet-the-zone" class="label2">
+                {% render 'old-xicon-very-active' %} 
+                <p>The Zone <br><span>40% Protein : 30% Carb : 30% Fat</span></p> 
+                {% render 'old-xicon-check' %}
+              </label>
+              
+              <input class="" id="diet-undecided" name="diet" type="radio" value="undecided">
+              <label for="diet-undecided" class="label2">
+                {% render 'old-xicon-very-active' %} 
+                <p>Balanced / Average <br><span>25% Protein : 50% Carb : 25% Fat</span></p> 
+                {% render 'old-xicon-check' %}
+              </label>
+            </div>
+		</div>
+    
+    <div class="form-group gender">
+		<label class="main-label">GENDER</label>
+        <input type="radio" class="gender" name="gender" value="female" id="gender-female"><label for="gender-female" class="label2">{% render 'old-xicon-femail' %} Female</label>
+        <input type="radio" class="gender" name="gender" value="male" checked id="gender-male"><label for="gender-male" class="label2">{% render 'old-xicon-mail' %} Male</label>
+        <input type="radio" class="gender" name="gender" value="other" id="other"><label for="other" class="label2">{% render 'old-xicon-other' %} Other</label>
+    </div>
+    
+    <div style="color:red;font-size:10px;" class="age_msg"></div>
+    <div class="form-group">
+      <label class="main-label">AGE<super>*</super></label>
+      <div class="input-group">
+        <input type="number" id="age" name="age" value="" required="">
+        <span>Years</span>
+      </div>
+    </div>
+    
+    <div style="color:red;font-size:10px;" class="height_msg"></div>    
+    <div class="form-group cominput">
+      <label class="main-label">HEIGHT<super>*</super></label>
+      <div class="input-group">
+        <input type="number" name="height" value="" required="" id="height" min="0">
+        <input type="radio" name="height-unit" value="cm" id="heightcm"><label for="heightcm" class="label2">cm</label>
+        <input type="radio" name="height-unit" value="inch" checked id="heightin"><label for="heightin" class="label2">in</label>
+      </div>
+    </div>
+    
+    <div style="color:red;font-size:10px;" class="weight_msg"></div>
+    <div class="form-group cominput">
+      <label class="main-label">CURRENT WEIGHT<super>*</super></label>
+      <div class="input-group">
+        <input type="number" name="weight" value="" required="" id="current-weight" min="0">
+        <input type="radio" name="weight-unit" value="kg" id="weightkg" checked ><label for="weightkg" class="label2">kg</label>
+        <input type="radio" name="weight-unit" value="lbs" id="weightlbs"><label for="weightlbs" class="label2">lbs</label>
+      </div>
+    </div>
+    
+    <div style="color:red;font-size:10px;" class="goal_weight_msg"></div>
+    <div class="form-group cominput">
+      <label class="main-label">TARGET WEIGHT<super>*</super></label>
+      <div class="input-group">
+        <input type="number" name="weight" value="" required="" id="goal-weight" min="0">
+        <input type="radio" name="goal-weight-unit" value="kg" id="goal-weight-kg" checked ><label for="goal-weight-kg" class="label2">kg</label>
+        <input type="radio" name="goal-weight-unit" value="lbs" id="goal-weight-lbs"><label for="goal-weight-lbs" class="label2">lbs</label>
+      </div>
+    </div>
+    
+    
+    <div class="form-group range">
+          <label for="range" class="main-label" style="font-weight:400">My Weekly workout Routine</label>
+            <div class="range-container input-group">
+              <div class="rangemm">
+                <span>0</span>
+                <span>7</span>
+              </div>
+              <input type="range" id="daysrange"  min="0" max="7" value="1" step="1">
+              <label for="daysrange" id="daysrangelabel">1</label>
+              <input type="hidden" id="workout-duration-days" name="days" value="1">
+              <div class="range-badge">Days per week</div>
+            </div>
+          	<div class="range-container input-group">
+              <div class="rangemm">
+                <span>0</span>
+                <span>360</span>
+              </div>
+              <input type="range" id="minsrange"  min="0" max="360" value="40" step="1">
+              <label for="minsrange" id="minsrangelabel">40</label>
+              <input type="hidden" id="workout-duration-minutes" name="mins" value="40">
+              <div class="range-badge">minutes per day</div>
+            </div>
+        </div>
+    <script>
+    const range = document.getElementById("daysrange");
+	range.addEventListener("input", (e) => {
+    const value = +e.target.value;
+    const label = e.target.nextElementSibling;
+
+    const range_width = getComputedStyle(e.target).getPropertyValue("width");
+    const label_width = getComputedStyle(label).getPropertyValue("width");
+
+    const num_range_width = +range_width.substring(0, range_width.length - 2);
+    const num_label_width = +label_width.substring(0, label_width.length - 2);
+
+    const max = +e.target.max;
+    const min = +e.target.min;
+
+    const left =
+      value * (num_range_width / max) -
+      num_label_width / 2 +
+      scale(value, min, max, 10, -10);
+
+    label.style.left = `${left}px`;
+
+    label.innerHTML = value;
+    document.getElementById("workout-duration-days").value = value;
+    });
+
+	// https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
+	const scale = (num, in_min, in_max, out_min, out_max) => {	
+  	return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+	};
+    </script>
+    
+    
+    <script>
+    const range2 = document.getElementById("minsrange");
+	range2.addEventListener("input", (e) => {
+    const value = +e.target.value;
+    const label = e.target.nextElementSibling;
+
+    const range_width = getComputedStyle(e.target).getPropertyValue("width");
+    const label_width = getComputedStyle(label).getPropertyValue("width");
+
+    const num_range_width = +range_width.substring(0, range_width.length - 2);
+    const num_label_width = +label_width.substring(0, label_width.length - 2);
+
+    const max = +e.target.max;
+    const min = +e.target.min;
+
+    const left =
+      value * (num_range_width / max) -
+      num_label_width / 2 +
+      scale2(value, min, max, 10, -10);
+
+    label.style.left = `${left}px`;
+
+    label.innerHTML = value;
+    
+     document.getElementById("workout-duration-minutes").value = value;
+    });
+
+	// https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
+	const scale2 = (num, in_min, in_max, out_min, out_max) => {	
+  	return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+	};
+    </script>
+	
+      	
+    
+    
+    
+      <div style="color:red;font-size:10px;" class="email_msg"></div>
+     	<div class="form-group email">
+          <label class="main-label">Enter Your Email For Results<super>*</super></label>
+          	<div class="input-group">
+              <input class="" id="k_id_email" name="email" placeholder="name@example.com" required type="email">
+<!--               <input type="text" name="email" placeholder="name@example.com"  id="email"> -->
+            </div>
+		</div>
+      	<div class="form-group agree">
+          	<div class="input-group">
+              <input type="checkbox" name="term1" id="chkboxone"><label for="chkboxone" class="label2">I understand that the results provided by this calculator are estimations based on scientific and clinical data and are not intended to replace advice from a qualified healthcare professional. Always consult with a physician or dietitian before starting a new diet or exercise program.</label>
+            </div>
+		</div>
+      	<div class="form-group agree">
+          	<div class="input-group">
+              <input type="checkbox" name="term2"  id="chkboxtwo" checked><label for="chkboxtwo" class="label2">Transparent Labs can occationally send me product recommendations and promotional emails.</label>
+            </div>
+		</div>
+    
+    <div class="form-group">
+    	<button class="bmrbtn px-12 disabled:bg-gray-400" id="calculateMacros" disabled type="button">Calculate</button>
+    </div>
+  	</form>
+<!--     <div class="klaviyo_messages">
+          <div class="success_message" style="display:none;"></div>
+          <div class="error_message" style="display:none;"></div>
+    </div> -->
+	<div class="bmranswer"></div>
+  
+   </div>
+    	
+  <div class="max-w-6xl mx-auto px-4 text-blue-500 bmr-resourse-detail xgen-new-collection" id="xgen-new-collection">
+  <div class="hidden mb-8 space-y-8  " id="results">
+    <div class="bg-gray-300 p-4 space-y-4 text-center">
+      <h2 class="text-2xl">Your Macro Calculator Results</h2>
+
+      <p>Recommended Diet: <span id="diet-recommendation"></span></p>
+
+      <p>
+        Recommended Calories: <span class="font-bold" id="calculated-calories"></span> Calories Per Day. (TDEE: <span id="calculated-tdee"></span>)
+      </p>
+
+      <div class="gap-8 grid grid-cols-1 sm:grid-cols-3">
+        <div class="bg-blue-500 p-4 text-white">
+          <div id="calculated-protein"></div>
+        </div>
+
+        <div class="bg-blue-500 p-4 text-white">
+          <div id="calculated-carbs"></div>
+        </div>
+
+        <div class="bg-blue-500 p-4 text-white">
+          <div id="calculated-fat"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-4 text-center">
+      <h3 class="text-xl">Totally Doable. Here's Your Game Plan.</h3>
+    </div>
+
+    <div class="flex">
+      <div class="flex-1">
+        <div id="macro-output" style="display:none;">
+          <!-- Lose Weight Products -->
+          <div class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3" id="macro-output-lose-weight" style="display:none;">
+            {% assign product_list = 'fat-burner,proteinseries-100-grass-fed-whey-protein-isolate,preseries-lean-pre-workout,krill-oil' | split: ',' %}  
+            {% for product_handle in product_list %}{% assign product = all_products[product_handle] %}{% render 'old-single_product_grid' with product: product %}{% endfor %}
+          </div>
+          
+          <!-- Get Shredded Products -->
+          <div class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3" id="macro-output-get-shredded" style="display:none;">
+            {% assign product_list = 'fat-burner,proteinseries-100-grass-fed-whey-protein-isolate,preseries-lean-pre-workout' | split: ',' %}  
+            {% for product_handle in product_list %}{% assign product = all_products[product_handle] %}{% render 'old-single_product_grid' with product: product %}{% endfor %}
+          </div>
+          
+          <!-- Body Recomposition Products -->
+          <div class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3" id="macro-output-body-recomposition" style="display:none;">
+            {% assign product_list = 'fat-burner,proteinseries-100-grass-fed-whey-protein-isolate,bulk-preworkout' | split: ',' %}  
+            {% for product_handle in product_list %}{% assign product = all_products[product_handle] %}{% render 'old-single_product_grid' with product: product %}{% endfor %}
+          </div>
+          
+          <!-- Bulk Up Products -->
+          <div class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3" id="macro-output-bulk-up" style="display:none;">
+            {% assign product_list = 'proteinseries-mass-gainer,proteinseries-100-grass-fed-whey-protein-concentrate,bulk-preworkout' | split: ',' %}  
+            {% for product_handle in product_list %}{% assign product = all_products[product_handle] %}{% render 'old-single_product_grid' with product: product %}{% endfor %}
+          </div>
+          
+          <!-- Vegan Products -->
+          <div class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3" id="macro-output-vegan" style="display:none;">
+            {% assign product_list = 'organic-vegan-protein-powder,preseries-lean-pre-workout,coreseries-bcaa-glutamine' | split: ',' %}  
+            {% for product_handle in product_list %}{% assign product = all_products[product_handle] %}{% render 'old-single_product_grid' with product: product %}{% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <h3 class="text-xl">Frequently Asked Questions</h3>
+
+      <div>
+        {% render 'old-accordion',
+          answer: "Macronutrients, or 'macros' for short, are a few various nutrients your body needs in relatively large amounts for optimal health. The three main macros you should know about are carbohydrates (carbs), protein, and fats. (Water is also a macronutrient, albeit devoid of energy/calories.) Understanding exactly how many macros you should aim to consume is a daunting task. This is why we created an accurate, easy to use macro calculator that's tailored to effectively help you reach your goals."
+          id: 'what-are-macros',
+          question: 'What are macronutrients?',
+        %}
+      </div>
+
+      <div>
+        {% capture answer %}
+          <div class="space-y-4">
+            <p>Our macro calculator is designed to offer a simple selection of 4 distinct workout routines. Whether you're looking to drop some pounds, bulk up, get shredded or re-composition (bulk muscle, shred fat) you're physique, you'll find there's a macro routine that's right for you.</p>
+            <p><strong>Lose A Lot of Weight -</strong></p>
+            <p>In today's day and age, losing pounds has never been easier. This fitness diet helps encourage safe and steady weight loss by moderately decreasing your total protein, carb, and fat intake. For the best weight loss results, we suggest following it alongside a quality fat-burner and consistent workout schedule.</p>
+            <p><strong>Get Shredded -</strong></p>
+            <p>Get Shredded is primarily used by those looking to prevent fat gain, improve fat loss, and promote lean muscle growth. This is done by moderately lowering general carb intake whilst simultaneously raising both protein and fat intake, resulting in a naturally enhanced physique.</p>
+            <p><strong>Body Re-composition -</strong></p>
+            <p>This dietary routine is largely ideal for those who want to cut body fat and build lean muscle at the same time. Body Re-composition calculates a well-balanced intake of carbs, protein, and fat resulting in less overall gained calories.</p>
+            <p><strong>Bulk Up -</strong></p>
+            <p>Bulk Up's routine is designed to help boost your overall caloric intake by providing more protein, fat, and carbs. It's especially helpful for strength trainers, hard-gainers, and those wanting to increase their body mass in general. If you find yourself struggling to meet daily macro goals, a mass gainer may be able to help.</p>
+          </div>
+        {% endcapture %}
+
+        {% render 'old-accordion',
+          answer: answer,
+          id: 'which-workout-routine',
+          question: 'Which workout routine is the best for me?',
+        %}
+      </div>
+
+      <div>
+        {% capture answer %}
+          <div class="space-y-4">
+            <p>Your TDEE (Total daily energy expenditure) is your personal benchmark of daily activity. Basically, it's how much you burn in a day.</p>
+            <p>A heightened TDEE means you'll need to meet a higher daily macro goal in order to maintain and/or build your physique. You'll see this in our macro calculator.</p>
+            <p>If you're trying to lose weight, you'll instead need to burn slightly more macros than you consume. This will cause a small but consistent macro net loss, resulting in a steady loss of unwanted weight over time.</p>
+            <p>There are four separate categories your TDEE can fall under. They are:</p>
+            <ul class="list-disc pl-4 space-y-4">
+              <li>Sedentary: You spend most of the day sitting and don't usually exercise. (Working on a computer)</li>
+              <li>Light Activity: You spend a good part of the day active on your feet. (Teacher or real estate agent)</li>
+              <li>Active: You spend a good part of the day doing physical activities. (Waitress, mail delivery)</li>
+              <li>Very Active: You spend a good part of the day doing strong physical activities. (Construction worker, Athlete)</li>
+            </ul>
+            <p>For example: if you're sedentary and your goal is to burn fat, your daily macro burn goal may be above average. However, if you raise your TDEE and begin exercising, your body will begin metabolizing additional macros, like fat, to provide the necessary energy for your workout. This causes your net caloric expenditure to rise, enabling you to safely lose weight in the process.</p>
+          </div>
+        {% endcapture %}
+
+        {% render 'old-accordion',
+          answer: answer,
+          id: 'tdee-levels-explained',
+          question: 'TDEE Activity levels explained / What are TDEE activity levels, and how do they help?',
+        %}
+      </div>
+
+      <div>
+        {% capture answer %}
+          <div class="space-y-4">
+            <p>What macros don't provide the body, micronutrients do. Micronutrients, or micros, make up a wide range of distinct nutrients your body requires in small amounts to function properly. Essential nutrients such as vitamins, minerals, and antioxidants are the most common micros.</p>
+            <p>The most popular source of micros are whole foods like fruit and vegetables. This is because of their inherently high micro to macronutrient ratio, making them great value meal options.</p>
+            <p>Overall, following the basic and bland IIFYM (if it fits your macros) will work. But if you want to feel better, perform better, and look overall healthier - then taking time to get in macro nutrient dense foods like vegetables is a must.</p>
+            <p>Likewise, avoiding processed foods and general 'junk food' will help.</p>
+            <p>So what's next?</p>
+            <p>Simply fill out the free macro calculator above, and we'll send you what nutritional goals you should strive for to meet your goals. Easy as that.</p>
+          </div>
+        {% endcapture %}
+
+        {% render 'old-accordion',
+          answer: answer,
+          id: 'what-about-micronutrients',
+          question: 'What about micronutrients?',
+        %}
+      </div>
+    </div>
+  </div>
+
+  <div class="space-y-4 rich-text">
+    <h2 class="text-2xl">What Are Macronutrients ("Macros")?</h2>
+    <p>Macronutrients (aka "macros") are nutrients that a living organism needs in relatively large amounts for proper biological function. For humans, these nutrients are water, fat, carbohydrate (carbs), and protein.</p>
+    <blockquote>The primary function of macronutrients, aside from water, is to provide energy (calories) for life-sustaining processes. However, macronutrients play expansive roles that go well beyond their energy provisions in the body.</blockquote>
+    <p>For example, fat and protein are biologically "essential" for humans since they provide fatty acids and amino acids, respectively, that are necessary for cellular integrity and synthesizing and repairing body tissues. In other words, we must consume fat and protein regularly to survive. The same goes for water.</p>
+    <p>Carbohydrates and alcohol are not considered "essential" macronutrients for humans since the body can create glucose and ethanol endogenously from other substrates.</p>
+    <p>Below, you can learn more about protein, carbs, and fat and how these macronutrients work in the body:</p>
+
+    <h3 class="text-xl">Protein</h3>
+    <p>Protein is an essential macronutrient comprised of organic molecules called amino acids. Each gram of protein contains 4 calories.</p>
+    <p>Muscle tissue in the human body is the largest reservoir of amino acids, and most bodily tissues are frameworks of protein fibers synthesized by amino acids. Naturally, protein is a crucial component of a healthy diet. </p>
+    <p>Amino acids in protein are integral to numerous physiological processes, notably:</p>
+
+    <ul>
+      <li>Muscle development</li>
+      <li>Energy production</li>
+      <li>Neurotransmitter synthesis</li>
+      <li>Cardiovascular function</li>
+      <li>Immune response</li>
+    </ul>
+
+    <p>A complete protein source, such as eggs, dairy milk, and <a target="_blank" href="https://www.healthcanal.com/life-style-fitness/best-protein-shakes-and-protein-powders">whey protein powder</a>, provides all nine <a target="_blank" href="https://www.transparentlabs.com/blogs/all/eaas-vs-bcaas-which-is-best-for-athletic-performance-and-building-muscle">essential amino acids</a> (EAAs) necessary for protein synthesis. Incomplete protein, like the protein in beans, lacks one or more of the EAAs.</p>
+    <blockquote>While adequate protein intake is undoubtedly vital to building and maintaining muscle tissue, it is not advisable to eat tons of protein in hopes of building "extra" muscle. Most active gym-goers and athletes should aim for about 0.8 - 1.1 grams of protein per pound of body weight [<a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/29182451/">2</a>]. For more on optimal protein intake, <a target="_blank" href="https://www.transparentlabs.com/blogs/all/how-much-protein-should-i-eat">read this</a>.</blockquote>
+
+    <h3 class="text-xl">Fat</h3>
+    <p>With 9 calories per gram, fat has more than double the energy content of carbohydrates and protein. Therefore, fatty foods like nuts and red meat are typically calorie-dense. </p>
+    <p>Like protein, fat plays extensive roles throughout the body. Fat is essential for cellular integrity since fatty acids are core molecules of phospholipids in the cell membrane. Cholesterol, a special type of lipid (fat), serves as a precursor to steroid hormones. And, of course, fat is an important insulator for the body.</p>
+    <blockquote>Fatty acids come in either saturated or unsaturated forms; the former tend to be abundant in animal foods like pork, steak, butter, and whole milk. The latter occurs primarily in plant foods like avocado, nuts, and seeds.</blockquote>
+    <p>But there are some exceptions. Coconut is a rich source of medium-chain triglycerides (MCTs), which are saturated fats. The oft-lauded <a target="_blank" href="https://www.transparentlabs.com/blogs/all/krill-oil-vs-fish-oil">omega-3 fatty acids</a> are polyunsaturated and found primarily in seafood.</p>
+    <p>Nonetheless, it's best to limit your intake of saturated fats and emphasize unsaturated fat sources in your diet.</p>
+
+    <h3 class="text-xl">Carbohydrates</h3>
+    <p>Similar to protein, every gram of carbohydrate (not including fiber) contains 4 calories. Carbs are typically categorized as either simple (mono and disaccharides) or complex (polysaccharides).</p>
+    <p>Simple carbs are mostly found in foods like table sugar (sucrose), fruit, corn syrup, and honey. Complex carbohydrates are abundant in whole grains and starchy vegetables, such as oats and sweet potatoes.</p>
+    <blockquote>Carbs are technically not essential for humans because we can produce glucose endogenously. But that doesn't necessarily mean a low-carb diet is optimal.</blockquote>
+    <p>Numerous studies have shown that insulin augments the muscle protein synthetic response to a modest bolus of amino acids [<a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/27525440/" rel="noopener noreferrer">3</a>]. In non-nerd terminology, this means carbohydrates can help improve muscle growth and preservation.</p>
+
+    <h3 class="text-xl">Fiber</h3>
+    <blockquote>Fiber is a subclass of carbohydrates that the body does not fully metabolize. Thus, fibers generally contain less than 2 calories per gram.</blockquote>
+    <p>There are two classes of dietary fiber — soluble and insoluble. Soluble fiber forms a viscous gel-like substance when mixed in aqueous solutions, whereas insoluble fiber is immiscible in water. In the body, soluble fiber slows the digestive process by binding to liquid in the digestive tract. Consequently, soluble fiber can help promote satiety and enhance nutrient absorption.</p>
+    <p>On the other hand, insoluble fiber passes through the digestive tract undissolved and adds bulk to waste in the intestines. Hence, insoluble fiber has a laxative effect and is generally good for staying regular.</p>
+    <p>Most people should consume at least 10 grams of dietary fiber (as both soluble and insoluble fiber) per 1,000 calories. If you follow a <a target="_blank" href="https://www.transparentlabs.com/blogs/all/low-carb-vs-keto">low-carb or ketogenic diet</a>, your fiber intake may end up being well above that to reduce net carb load (i.e. total carbs less fiber).</p>
+
+    <h3 class="text-xl">Micronutrients</h3>
+    <div>
+      {% render 'old-lazy-image',
+        image: images['shutterstock_1113790910.jpg'],
+        width: 1024,
+      %}
+    </div>
+
+    <p>Micronutrients are nutrients that humans (and other animals) require in relatively small quantities for proper health and longevity. We typically classify micronutrients as being either <a target="_blank" href="https://www.transparentlabs.com/blogs/all/how-do-multivitamins-work">vitamins</a>, minerals, or polyphenols, many of which have antioxidant properties in the body.</p>
+    <p>In contrast to macronutrients, micronutrients do not contain calories. Instead of being metabolized for energy, they function as cofactors and coenzymes (think: "helper molecules") for complex substrates like protein.</p>
+    <p>While most people don't need to track their micronutrient intake rigorously, these nutrients are just as essential as macronutrients for overall wellness. It's crucial to include plenty of fruits and vegetables in your diet to help meet your needs of vitamins, minerals, and antioxidant polyphenols. Supplementing with a <a target="_blank" href="https://www.transparentlabs.com/products/multivitamin">quality multivitamin</a> may also be prudent.</p>
+
+    <h2 class="text-2xl">Tips to Make the Most of Your Diet</h2>
+    <ul>
+      <li>Plan and prepare your meals in advance to help stay on track with your nutrition goals (remember: failing to plan is planning to fail!).</li>
+      <li><a target="_blank" href="https://www.transparentlabs.com/blogs/all/a-beginner-s-guide-to-counting-macros">Track your macros and calorie intake</a> by using a food logging app like <a target="_blank" href="https://www.myfitnesspal.com/">MyFitnessPal</a></li>
+      <li>Include a quality protein source with every meal</li>
+      <li>Aim for at least 3-4 meals/snack spread throughout the day</li>
+      <li>Eat the majority of your carbs pre- and post-workout to refuel muscle glycogen and promote recovery</li>
+      <li>Consume about 10 grams of fiber per 1,000 calories in your diet</li>
+      <li>Don't skimp on fruits and vegetables — these are packed with vitamins and minerals.</li>
+    </ul>
+
+    <h2 class="text-2xl">Best Foods to Meet Your Macronutrient Needs</h2>
+    <p>Barring any <a target="_blank" href="https://www.transparentlabs.com/blogs/all/celiac-gluten-intolerance">food allergies or intolerances</a>, here are some of the best nutrient-dense foods to help you meet your protein, carb, and fat needs:</p>
+
+    <h2 class="text-2xl">Complete Protein Sources</h2>
+    <div>
+      {% render 'old-lazy-image',
+        image: images['shutterstock_1043899834.jpg'],
+        width: 1024,
+      %}
+    </div>
+
+    <ul>
+      <li>Chicken breast (skinless)</li>
+      <li>Ground chicken</li>
+      <li>Ground turkey (&gt;93% lean)</li>
+      <li>Lean steak cuts</li>
+      <li>Ground beef (&gt;93% lean)</li>
+      <li>Ground bison</li>
+      <li>Freshwater fish</li>
+      <li>Eggs</li>
+      <li>Plain Greek yogurt</li>
+      <li>Cottage cheese</li>
+      <li><a target="_blank" href="https://www.transparentlabs.com/products/organic-vegan-protein-powder">TL Organic Vegan Protein</a></li>
+      <li><a target="_blank" href="https://www.transparentlabs.com/products/proteinseries-100-grass-fed-whey-protein-isolate">TL Grass-fed Whey Protein</a></li>
+      <li><a target="_blank" href="https://www.transparentlabs.com/products/casein-protein">TL Grass-fed Casein Protein</a></li>
+    </ul>
+
+    <p>Note: These may also count as fat sources (e.g. steak, whole eggs, and 4% cottage cheese)</p>
+
+    <h2 class="text-2xl">Complex Carbohydrate Sources</h2>
+    <div>
+      {% render 'old-lazy-image',
+        image: images['shutterstock_1168594204_2.jpg'],
+        width: 1024,
+      %}
+    </div>
+
+    <ul>
+      <li>Rolled oats and oat bran</li>
+      <li>Cream of Rice</li>
+      <li>Cream of Wheat</li>
+      <li>Potatoes (sweet, red-skin, etc.)</li>
+      <li>Yams</li>
+      <li>Rice and rice cakes</li>
+      <li>Quinoa</li>
+      <li>Barley</li>
+      <li>Couscous</li>
+      <li>Pasta (preferably whole-grain varieties)</li>
+      <li>Bread (preferably whole-grain varieties)</li>
+      <li>Fruits and vegetables (note: limit fruit to 3-4 servings per day)</li>
+    </ul>
+
+    <h2 class="text-2xl">Quality Fat Sources</h2>
+    <div>
+      {% render 'old-lazy-image',
+        image: images['variety-of-brown-nuts-on-brown-wooden-panel-high-angle-photo-1295572.jpg'],
+        width: 1024,
+      %}
+    </div>
+
+    <ul>
+      <li>Avocados</li>
+      <li>Nuts: almonds, cashews, walnuts, macadamia nuts, etc.</li>
+      <li>Nut butter: peanut butter, cashew butter, almond butter, etc.</li>
+      <li>Seeds: chia, sesame, flax, pumpkin, etc.</li>
+      <li>Coconut flakes (unsweetened) and coconut oil</li>
+      <li>Olive oil, macadamia nut oil, and avocado oil</li>
+      <li><a target="_blank" href="https://www.transparentlabs.com/products/krill-oil" rel="noopener noreferrer">Krill oil</a> (great source of omega-3 phospholipids)</li>
+      <li>Low-fat cheese (preferably fresh, aged varieties)</li>
+    </ul>
+
+    <h2 class="text-2xl">Sample Meal Plan for Building Muscle and Burning Body Fat</h2>
+    <p>If you're curious what a balanced meal plan for active gym-goers might look like, here's an example:</p>
+
+    <ul>
+      <li><b>Breakfast</b> — Omelet made with 4 egg whites + 2 whole eggs, 3 slices of whole-grain toast, 1 cup of fresh blueberries</li>
+      <li><b>Pre-workout Meal</b> — 5 oz roast turkey breast, 1 cup (cooked) brown rice, 150 g steamed spinach, 1 tbsp macadamia nut oil</li>
+      <li><b>Post-workout Protein Smoothie</b> — 1 scoop of TL Grass-Fed Whey Protein Isolate vanilla flavor blended with 8 fl. oz of skim milk and a large banana</li>
+      <li><b>Dinner</b> — 5 ounces lean beef/steak, black beans, asparagus</li>
+      <li><b>Evening Snack</b> — 1 scoop <a target="_blank" href="https://www.transparentlabs.com/products/casein-protein">TL Grass-Fed Casein</a> mixed with 6 oz cottage cheese and 1 tbsp of almond butter</li>
+    </ul>
+
+    <p>Note: the amounts of each food are to illustrate portion sizes; you will need to adjust them accordingly since portions will be relative to your specific macronutrient needs.</p>
+
+    <h2 class="text-2xl">Still Not Sure What to Eat to Reach Your Goals?</h2>
+    <p>We have a variety of nutrition guides to help you make the most of your healthy lifestyle:</p>
+
+    <p><a target="_blank" href="https://www.transparentlabs.com/blogs/all/lean-bulking-guide">NUTRITION AND SUPPLEMENT GUIDE FOR LEAN BULKING</a></p>
+    <p><a target="_blank" href="https://www.transparentlabs.com/blogs/all/powerlifting-diet-performance-nutrition-strength-athlete">POWERLIFTING DIET 101: PERFORMANCE NUTRITION FOR THE STRENGTH ATHLETE</a></p>
+    <p><a target="_blank" href="https://www.transparentlabs.com/blogs/all/pre-workout-nutrition-how-to-fuel-your-body">EVIDENCE-BASED PRE-WORKOUT NUTRITION: WHAT'S THE OPTIMAL FUEL FOR YOUR BODY?</a></p>
+    <p><a target="_blank" href="https://www.transparentlabs.com/blogs/all/clean-bulk-vs-dirty-bulk">CLEAN EATING VS. FLEXIBLE DIETING (IIFYM): WHICH IS BEST TO LOSE WEIGHT &amp; BUILD MUSCLE?</a></p>
+    <p><a target="_blank" href="https://www.transparentlabs.com/blogs/all/are-cheat-days-good-for-weight-loss">ARE CHEAT DAYS GOOD FOR WEIGHT LOSS?</a></p>
+    <p><a target="_blank" href="https://www.transparentlabs.com/blogs/all/how-to-eat-healthier-on-a-limited-food-budget">HOW TO EAT HEALTHIER ON A LIMITED FOOD BUDGET</a></p>
+  </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://www.klaviyo.com/media/js/public/klaviyo_subscribe.js" defer></script>
+
+<script>
+  function getInput() {
+  const hunits = document.querySelector('input[name="height-unit"]:checked').value;
+  console.log(hunits);
+  const wunits = document.querySelector('input[name="weight-unit"]:checked').value;
+  console.log(wunits);
+  const gwunits = document.querySelector('input[name="goal-weight-unit"]:checked').value;
+  console.log(gwunits);
+  
+
+  
+  const gender = document.querySelector('input[name="gender"]:checked')?.value;
+  console.log(gender);
+  const lifestyle = document.querySelector('input[name="lifestyle"]:checked')?.value;
+  console.log(lifestyle);
+  const workoutStyle = document.querySelector('input[name="workout-style"]:checked')?.value;
+  console.log(workoutStyle);
+  const goal = document.querySelector('input[name="goal"]:checked')?.value;
+  console.log(goal);
+  const diet = document.querySelector('input[name="diet"]:checked')?.value;
+  console.log(diet);
+
+  const age = document.getElementById('age').value;
+  console.log(age);
+  const heightFt = document.getElementById('height').value;
+  console.log(heightFt);
+  const currentWeight = document.getElementById('current-weight').value;
+  console.log(currentWeight);
+  const goalWeight = document.getElementById('goal-weight').value;
+  console.log(goalWeight);
+  const workoutDurationMinutes = document.getElementById('workout-duration-minutes').value;
+  console.log(workoutDurationMinutes);
+  const workoutDurationDays = document.getElementById('workout-duration-days').value;
+  console.log(workoutDurationDays);
+
+  return {
+    hunits,
+    wunits,
+    gwunits,
+    gender,
+    lifestyle,
+    workoutStyle,
+    goal,
+    diet,
+    age: age ? parseFloat(age) : undefined,
+    heightFt: heightFt ? parseFloat(heightFt) : undefined,
+    currentWeight: currentWeight ? parseFloat(currentWeight) : undefined,
+    goalWeight: goalWeight ? parseFloat(goalWeight) : undefined,
+    workoutDurationMinutes: workoutDurationMinutes ? parseFloat(workoutDurationMinutes) : undefined,
+    workoutDurationDays: workoutDurationDays ? parseFloat(workoutDurationDays) : undefined,
+  };
+}
+
+function checkForm() {
+  let valid = true;
+
+  const {
+    hunits,
+    wunits,
+    gwunits,
+    gender,
+    lifestyle,
+    workoutStyle,
+    goal,
+    diet,
+    age,
+    heightFt,
+    currentWeight,
+    goalWeight,
+    workoutDurationMinutes,
+    workoutDurationDays,
+  } = getInput();
+
+  if (!gender
+  || !lifestyle
+  || !workoutStyle
+  || !goal
+  || !diet
+  || !age
+  || !currentWeight
+  || !goalWeight
+  || !workoutDurationMinutes
+  || !workoutDurationDays
+  ) {
+    valid = false;
+  }
+
+  // Enable/disable calculate button based on validation
+  const calculateButton = document.getElementById('calculateMacros');
+  const termsChecked = document.getElementById('chkboxone').checked;
+  
+  if (calculateButton) {
+    calculateButton.disabled = !valid || !termsChecked;
+  }
+
+  return valid;
+}
+
+function setDietRecommendation(diet) {
+  if (diet === 'low-carb') {
+    document.getElementById('diet-recommendation').innerText = 'Low Carb/High Protein: (50 : 20 : 30)';
+  } else if (diet === 'vegan') {
+    document.getElementById('diet-recommendation').innerText = 'Vegan (40 : 30 : 30)';
+  } else if (diet === 'keto') {
+    document.getElementById('diet-recommendation').innerText = 'Keto (30 : 5 : 65)';
+  } else if (diet === 'the-zone') {
+    document.getElementById('diet-recommendation').innerText = 'The Zone (40 : 30 : 30)';
+  }else if (diet === 'undecided') {
+    document.getElementById('diet-recommendation').innerText = 'The Zone (50 : 25 : 25)';
+  }
+}
+
+function setMacros(calories, protein, carbs, fat ) {
+  document.getElementById('calculated-protein').innerHTML = `
+    <p>
+      <span class="font-bold">Protein: ${protein * 100}%</span>
+      <br>
+      <span class="text-xl">${Math.round(protein * calories / 4)}g</span>
+    </p>
+  `;
+
+  document.getElementById('calculated-carbs').innerHTML = `
+    <p>
+      <span class="font-bold">Carbs: ${carbs * 100}%</span>
+      <br>
+      <span class="text-xl">${Math.round(carbs * calories / 4)}g</span>
+    </p>
+  `;
+
+  document.getElementById('calculated-fat').innerHTML = `
+    <p>
+      <span class="font-bold">Fat: ${fat * 100}%</span>
+      <br>
+      <span class="text-xl">${Math.round(fat * calories / 9)}g</span>
+    </p>
+  `;
+}
+
+function getDietMacroPercentages(diet) {
+  if (diet === 'low-carb') {
+    return {
+      protein: .50,
+      carbs: .20,
+      fat: .30,
+    };
+  } else if (diet === 'vegan') {
+    return {
+      protein: .30,
+      carbs: .40,
+      fat: .30,
+    };
+  } else if (diet === 'keto') {
+    return {
+      protein: .35,
+      carbs: .05,
+      fat: .60,
+    };
+  } else if (diet === 'the-zone') {
+    return {
+      protein: .30,
+      carbs: .40,
+      fat: .30,
+    };
+  }else if (diet === 'undecided') {
+    return {
+      protein: .25,
+      carbs: .50,
+      fat: .25,
+    };
+  }
+}
+
+function calculateMacros() {
+  const {
+    hunits,
+    wunits,
+    gwunits,
+    gender,
+    lifestyle,
+    workoutStyle,
+    goal,
+    diet,
+    age,
+    heightFt,
+    currentWeight,
+    goalWeight,
+    workoutDurationMinutes,
+    workoutDurationDays,
+  } = getInput();
+
+  let height = heightFt;
+  let weight = currentWeight;
+  let tdee = 0;
+  let supplementRecommendations = [];
+  let calculatorResultField = '';
+
+	if(wunits == 'lbs')
+	{
+    	weight = weight/2.2046;
+      console.log(weight);
+    }
+	if(hunits == 'inch')
+    {
+    	height = height*2.54;	
+    }
+
+  
+  tdee = 10 * weight + 6.25 * height - 5 * age;
+
+  console.log(tdee);
+
+  if (gender === 'male') 
+  {
+    tdee += 5;
+  } else if (gender === 'female') 
+  {
+    tdee -= 161;
+  }
+
+  if (lifestyle === 'sedentary') {
+    tdee *= 1.2;
+  } 
+  else if (lifestyle === 'light-activity') 
+  {
+    tdee *= 1.375;
+  } 
+  else if (lifestyle === 'active') 
+  {
+    tdee *= 1.55;
+  } 
+  else if (lifestyle === 'very-active') 
+  {
+    tdee *= 1.725;
+  }
+
+  tdee = tdee.toFixed(0);
+
+  document.getElementById('calculated-tdee').innerText = tdee.toLocaleString();
+
+  if (goal === 'lose-weight') 
+  {
+    document.getElementById('calculated-calories').innerText = Math.floor(tdee * 0.8).toLocaleString();
+
+    if (diet === 'undecided') {
+      setDietRecommendation('low-carb');
+      setMacros(Math.floor(tdee * 0.8), .50, .30, .20);
+    } else {
+      const { protein, fat, carbs } = getDietMacroPercentages(diet);
+      setDietRecommendation(diet);
+      setMacros(Math.floor(tdee * 0.8), protein, carbs, fat );
+    }
+
+    if (diet === 'vegan') {
+      supplementRecommendations = ['fat_burner', 'vegan', 'lean'];
+      calculatorResultField = 'Fat Burner, Organic Vegan, LEAN';
+    } else {
+      supplementRecommendations = ['fat_burner', 'protein_isolate', 'lean', 'krill'];
+      calculatorResultField = 'Fat Burner, Protein Isolate, LEAN, Krill';
+    }
+  } else if (goal === 'get-shredded') 
+  {
+    document.getElementById('calculated-calories').innerText = Math.floor(tdee * 0.8).toLocaleString();
+
+    if (diet === 'undecided') 
+    {
+      setDietRecommendation('low-carb');
+      setMacros(Math.floor(tdee * 0.8), .50, .30, .20);
+    } else 
+    {
+      const { protein, fat, carbs } = getDietMacroPercentages(diet);
+      setDietRecommendation(diet);
+      setMacros(Math.floor(tdee * 0.8), protein, carbs, fat);
+    }
+
+    if (diet === 'vegan') 
+    {
+      supplementRecommendations = ['bcaa', 'fat_burner', 'vegan', 'lean'];
+      calculatorResultField = 'BCAA, Fat Burner, Organic Vegan, LEAN';
+    } else 
+    {
+      supplementRecommendations = ['fat_burner', 'protein_isolate', 'lean'];
+      calculatorResultField = 'Fat Burner, Protein Isolate, LEAN';
+    }
+  } else if (goal === 'body-recomposition') 
+  {
+      document.getElementById('calculated-calories').innerText = Math.floor(tdee * 0.9).toLocaleString();
+
+    if (diet === 'undecided') 
+    {
+      setDietRecommendation('the-zone');
+      setMacros(Math.floor(tdee * 0.9), .40, .30, .30);
+    } 
+    else 
+    {
+      const { protein, fat, carbs } = getDietMacroPercentages(diet);
+      setDietRecommendation(diet);
+      setMacros(Math.floor(tdee * 0.9), protein, carbs, fat);
+    }
+
+    if (diet === 'vegan') 
+    {
+      supplementRecommendations = ['bcaa', 'vegan', 'bulk'];
+      calculatorResultField = 'BCAA, Organic Vegan, BULK';
+    } else 
+    {
+      supplementRecommendations = ['fat_burner', 'protein_isolate', 'bulk'];
+      calculatorResultField = 'Fat Burner, Protein Isolate, BULK';
+    }
+  } else if (goal === 'bulk-up') 
+  {
+    document.getElementById('calculated-calories').innerText = Math.floor(tdee * 1.2).toLocaleString();
+
+    if (diet === 'undecided') 
+    {
+      setDietRecommendation('the-zone');
+      setMacros(Math.floor(tdee * 1.2), .40, .30, .30);
+    } else 
+    {
+      setDietRecommendation(diet);
+      const { protein, fat, carbs } = getDietMacroPercentages(diet);
+      setDietRecommendation(diet);
+      setMacros(Math.floor(tdee * 1.2), protein, carbs, fat);
+    }
+
+    if (diet === 'vegan') 
+    {
+      supplementRecommendations = ['bcaa', 'vegan', 'bulk'];
+      calculatorResultField = 'BCAA, Organic Vegan, BULK';
+    } else 
+    {
+      supplementRecommendations = ['mass', 'protein_concentrate', 'bulk'];
+      calculatorResultField = 'Mass Gainer, Protein Concentrate, BULK';
+    }
+  }
+
+  if (gender === 'male' && diet !== 'vegan') {
+    supplementRecommendations.push('zmo');
+    calculatorResultField += ', ZMO';
+  }
+
+
+  if (goal === 'lose-weight') 
+  {
+    document.getElementById('calculator-goal-field').value = 'Lose Weight';
+  } else if (goal === 'get-shredded') {
+    document.getElementById('calculator-goal-field').value = 'Get Shredded';
+  } else if (goal === 'body-recomposition') {
+    document.getElementById('calculator-goal-field').value = 'Body Recomposition';
+  } else if (goal === 'bulk-up') {
+    document.getElementById('calculator-goal-field').value = 'Bulk Up';
+  }
+
+  document.getElementById('calculator-result-field').value = calculatorResultField;
+  document.getElementById('results').classList.remove('hidden');
+  
+  // Show product recommendations
+  showProductRecommendations(goal, diet);
+  
+  $('html, body').animate({       scrollTop: $("#results").offset().top    }, 2000);
+}
+
+function showProductRecommendations(goal, diet) {
+  // Hide all product sections first
+  const productSections = [
+    '#macro-output-lose-weight',
+    '#macro-output-get-shredded', 
+    '#macro-output-body-recomposition',
+    '#macro-output-bulk-up',
+    '#macro-output-vegan'
+  ];
+  
+  productSections.forEach(sectionId => {
+    const section = document.querySelector(sectionId);
+    if (section) section.style.display = 'none';
+  });
+
+  // Show the main output container
+  const outputSection = document.getElementById('macro-output');
+  if (outputSection) {
+    outputSection.style.display = null;
+  }
+
+  // Show appropriate section based on goal and diet
+  let targetSection;
+  
+  if (diet === 'vegan') {
+    targetSection = document.querySelector('#macro-output-vegan');
+  } else {
+    switch (goal) {
+      case 'lose-weight':
+        targetSection = document.querySelector('#macro-output-lose-weight');
+        break;
+      case 'get-shredded':
+        targetSection = document.querySelector('#macro-output-get-shredded');
+        break;
+      case 'body-recomposition':
+        targetSection = document.querySelector('#macro-output-body-recomposition');
+        break;
+      case 'bulk-up':
+        targetSection = document.querySelector('#macro-output-bulk-up');
+        break;
+      default:
+        targetSection = document.querySelector('#macro-output-lose-weight');
+    }
+  }
+
+  if (targetSection) {
+    targetSection.style.display = null;
+  }
+
+  scrollToResults();
+}
+
+function scrollToResults() {
+  const results = document.getElementById('xgen-new-collection');
+  if (results) {
+    results.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// Add event listeners to all form inputs for validation
+document.querySelectorAll('#signup-form input').forEach((elem) => {
+  if (elem.getAttribute('type') === 'number') {
+    elem.addEventListener('keyup', checkForm);
+  } else {
+    elem.addEventListener('change', checkForm);
+  }
+});
+
+// Add click event handler for calculate button
+document.getElementById('calculateMacros').addEventListener('click', function(event) {
+  event.preventDefault();
+  calculateMacros();
+});
+
+document.getElementById('signup-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  calculateMacros();
+});
+
+if (window.KlaviyoSubscribe) {
+  KlaviyoSubscribe.attachToForms('#signup-form', {
+    hide_form_on_success: false,
+    success: function () {
+      console.log('signup success');
+    }
+  });
+}
+  document.addEventListener('DOMContentLoaded', function() {
+    const checkboxOne = document.getElementById('chkboxone');
+    const calculateButton = document.getElementById('calculateMacros');
+    
+    if (checkboxOne && calculateButton) {
+      checkboxOne.addEventListener('change', function() {
+        // Re-run form validation to update button state
+        checkForm();
+      });
+    }
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "TL-macro-calculator",
+    "class": "td-legacy",
+    "settings": [
+	{
+		"type":"image_picker",
+		"id":"header_image",
+		"label":"Choose image"
+	},
+	{
+		"type":"text",
+		"id":"title",
+		"label":"Title"
+	},
+	{
+		"type":"textarea",
+		"id":"detail",
+		"label":"Subtitle"
+	}
+]
+  }
+{% endschema %}
+

@@ -1,0 +1,299 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<div class="flex best-seller-section" >
+  <div class="flex-1">
+    <div  class="pt-4">
+          <div class="xgen-tagging">
+            {% if section.settings.title != blank %}
+            	<h2>{{ section.settings.title}}</h2>
+            {% endif %}
+            
+            {% if section.settings.subtitle != blank %}
+            	<p>{{ section.settings.subtitle}}</p>
+            {% endif %}
+            
+            <div class="tagging-grid xgenstack-tab">
+              <ul id="tabs-nav">
+              {% for block in section.blocks %}
+              	{% if forloop.first == true %}
+                <li><a   href="#tab_{{forloop.index}}" class="tablinks active" id="protab_{{ forloop.index }}" >{{block.settings.collection_type}}</a></li>
+    			{% else %}
+                <li><a href="#tab_{{forloop.index}}" class="tablinks" id="protab_{{ forloop.index }}">{{block.settings.collection_type}}</a></li>
+  				{% endif %}
+              {% endfor %}
+              </ul>
+            </div>
+          </div>
+      
+      <!--static tagging -->
+      
+      {% for block in section.blocks %}
+      	<div id="tab_{{forloop.index}}" class="xgenstack-tabcontent tab-content">
+          <div class="product_slider">
+<!--         gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4 -->
+      
+            {% assign product_1 = block.settings.product_1 %}
+            {% assign product_2 = block.settings.product_2 %}
+            {% assign product_3 = block.settings.product_3 %}
+            {% assign product_4 = block.settings.product_4 %}
+            {% assign product_5 = block.settings.product_5 %}
+            {% assign product_6 = block.settings.product_6 %}
+            {% assign product_7 = block.settings.product_7 %}
+            {% assign product_8 = block.settings.product_8 %}
+              
+            {% for i in (1..8) %}
+              {% assign b_s_name = "product_" | append: i %}
+              {% assign product = block.settings[b_s_name] %}
+              {% if product != blank %}
+                {% render 'old-product-card' with product: product, block_id: block.id %}
+              {% endif %}
+            {% endfor %}
+
+          </div>
+		</div>
+     {% endfor %}
+      
+    </div>
+  </div>
+</div>
+<style>
+  :root {
+    --swiper-navigation-size: 24px;
+    --swiper-theme-color: #41B5E8;
+  }
+</style>
+<script>
+
+  
+  $('#tabs-nav li:first-child').addClass('active');
+  $('.tab-content').hide();
+  $('.tab-content:first').show();
+
+  // Click function
+  $('#tabs-nav li').click(function()
+  {
+      $('.product_slider').slick('refresh');
+      $('#tabs-nav li a').removeClass('active');
+      $(this).find("a").addClass('active');
+      $('.tab-content').hide();
+      
+      var activeTab = $(this).find('a').attr('href');
+      $(activeTab).fadeIn();
+      return false;
+  });
+  
+</script>
+
+<script>
+  $(".product_slider").slick({
+    dots: false,
+    infinite: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows:false,
+    prevArrow:"<button class='slick-prev slick-arrow' aria-label='Previous' type='button'><img src='https://cdn.shopify.com/s/files/1/0866/7664/files/chevron_right.png?v=1660762411'></button>",
+    nextArrow:"<button class='slick-next slick-arrow' aria-label='Previous' type='button'><img src='https://cdn.shopify.com/s/files/1/0866/7664/files/chevron_right.png?v=1660762411'></button>",
+    responsive:[
+      {
+            breakpoint: 1366,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+        {
+            breakpoint: 1023,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 1,
+                arrows:false,
+                centerMode:true
+            }
+        }
+    ]
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Index best seller",
+    "class": "td-legacy",
+    "settings": [
+	{
+    	"type":"text",
+        "id":"title",
+        "label":"Section Title"
+	},
+    {
+    	"type":"textarea",
+        "id":"subtitle",
+        "label":"Section Subtitle"
+	},
+	{
+    	"type":"text",
+        "id":"discount_month",
+        "label":"Discount text by month",
+		"default":"Deliver Every Month"
+	},
+	{
+    	"type":"text",
+        "id":"discount_days",
+        "label":"Discount text by days",
+		"default":"Deliver Every 45 days"
+	},
+	{
+    	"type":"text",
+        "id":"percent_text",
+        "label":"Subcription percent Off text",
+		"default":"10% Off"
+	}
+],
+	"blocks":[
+		{
+			"name":"product",
+			"type":"text",
+			"settings":[
+				{
+                    "type":"text",
+                    "id":"collection_type",
+                    "label":"collection type"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+				{
+                    "type":"text",
+                    "id":"product_type",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_1",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+				{
+                    "type":"text",
+                    "id":"product_type_1",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_2",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_2",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_3",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_3",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_4",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_4",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_5",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_5",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_6",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_6",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_7",
+                    "label":"Select stack product"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+{
+                    "type":"text",
+                    "id":"product_type_7",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_8",
+                    "label":"Select stack product"
+                }
+
+			]
+		}
+	],
+	
+	"presets":[
+		{
+			"name": "Index best seller"
+		}
+	]
+  }
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+ 

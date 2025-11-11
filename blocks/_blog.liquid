@@ -1,0 +1,31 @@
+{% if block.settings.blog != blank %}
+  {%  assign handle = block.settings.blog.handle %}
+  {%  assign tab = block.settings.tab_text | default: block.settings.blog.title %}
+  handle: {{ handle }},
+  tab: {{ tab }}
+{% else %}
+{% endif %}
+sb-DELIM
+{% schema %}
+{
+  "name": "Blog Card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type":"text",
+      "id":"tab_text",
+      "label":"Tab Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog",
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,425 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "logo": "shopify://shop_images/transparent-logo.png",
+    "logo_width": 50,
+    "favicon": "shopify://shop_images/Favicon.png",
+    "type_header_font": "assistant_n4",
+    "alt_type_header_font": true,
+    "heading_scale": 100,
+    "type_body_font": "instrument_sans_n4",
+    "alt_type_body_font": true,
+    "body_scale": 100,
+    "page_width": 1300,
+    "use_custom_page_width": true,
+    "custom_page_width": 1440,
+    "spacing_sections": 0,
+    "spacing_grid_horizontal": 8,
+    "spacing_grid_vertical": 8,
+    "buttons_border_thickness": 1,
+    "buttons_border_opacity": 100,
+    "buttons_radius": 0,
+    "buttons_shadow_opacity": 0,
+    "buttons_shadow_horizontal_offset": 0,
+    "buttons_shadow_vertical_offset": 4,
+    "buttons_shadow_blur": 5,
+    "variant_pills_border_thickness": 1,
+    "variant_pills_border_opacity": 55,
+    "variant_pills_radius": 40,
+    "variant_pills_shadow_opacity": 0,
+    "variant_pills_shadow_horizontal_offset": 0,
+    "variant_pills_shadow_vertical_offset": 4,
+    "variant_pills_shadow_blur": 5,
+    "inputs_border_thickness": 1,
+    "inputs_border_opacity": 55,
+    "inputs_radius": 0,
+    "inputs_shadow_opacity": 0,
+    "inputs_shadow_horizontal_offset": 0,
+    "inputs_shadow_vertical_offset": 4,
+    "inputs_shadow_blur": 5,
+    "card_style": "standard",
+    "card_image_padding": 0,
+    "card_text_alignment": "left",
+    "card_color_scheme": "scheme-2",
+    "card_border_thickness": 0,
+    "card_border_opacity": 10,
+    "card_corner_radius": 0,
+    "card_shadow_opacity": 0,
+    "card_shadow_horizontal_offset": 0,
+    "card_shadow_vertical_offset": 4,
+    "card_shadow_blur": 5,
+    "collection_card_style": "standard",
+    "collection_card_image_padding": 0,
+    "collection_card_text_alignment": "left",
+    "collection_card_color_scheme": "scheme-2",
+    "collection_card_border_thickness": 0,
+    "collection_card_border_opacity": 10,
+    "collection_card_corner_radius": 0,
+    "collection_card_shadow_opacity": 0,
+    "collection_card_shadow_horizontal_offset": 0,
+    "collection_card_shadow_vertical_offset": 4,
+    "collection_card_shadow_blur": 5,
+    "blog_card_style": "standard",
+    "blog_card_image_padding": 0,
+    "blog_card_text_alignment": "left",
+    "blog_card_color_scheme": "scheme-2",
+    "blog_card_border_thickness": 0,
+    "blog_card_border_opacity": 10,
+    "blog_card_corner_radius": 0,
+    "blog_card_shadow_opacity": 0,
+    "blog_card_shadow_horizontal_offset": 0,
+    "blog_card_shadow_vertical_offset": 4,
+    "blog_card_shadow_blur": 5,
+    "text_boxes_border_thickness": 0,
+    "text_boxes_border_opacity": 10,
+    "text_boxes_radius": 0,
+    "text_boxes_shadow_opacity": 0,
+    "text_boxes_shadow_horizontal_offset": 0,
+    "text_boxes_shadow_vertical_offset": 4,
+    "text_boxes_shadow_blur": 5,
+    "media_border_thickness": 1,
+    "media_border_opacity": 5,
+    "media_radius": 0,
+    "media_shadow_opacity": 0,
+    "media_shadow_horizontal_offset": 0,
+    "media_shadow_vertical_offset": 4,
+    "media_shadow_blur": 5,
+    "popup_border_thickness": 1,
+    "popup_border_opacity": 10,
+    "popup_corner_radius": 0,
+    "popup_shadow_opacity": 5,
+    "popup_shadow_horizontal_offset": 0,
+    "popup_shadow_vertical_offset": 4,
+    "popup_shadow_blur": 5,
+    "drawer_border_thickness": 1,
+    "drawer_border_opacity": 10,
+    "drawer_shadow_opacity": 0,
+    "drawer_shadow_horizontal_offset": 0,
+    "drawer_shadow_vertical_offset": 4,
+    "drawer_shadow_blur": 5,
+    "badge_position": "bottom left",
+    "badge_corner_radius": 40,
+    "sale_badge_color_scheme": "scheme-5",
+    "sold_out_badge_color_scheme": "scheme-3",
+    "social_facebook_link": "https://www.facebook.com/transparentlabs/",
+    "social_instagram_link": "https://www.instagram.com/transparentlabs/",
+    "social_youtube_link": "",
+    "social_tiktok_link": "https://www.youtube.com/channel/UCVZTzxFOTySeTpmzJ5ufgBQ",
+    "social_twitter_link": "",
+    "social_snapchat_link": "",
+    "social_pinterest_link": "",
+    "social_tumblr_link": "",
+    "social_vimeo_link": "",
+    "predictive_search_enabled": true,
+    "search_collection": "",
+    "currency_code_enabled": true,
+    "cart_type": "drawer",
+    "cart_drawer_collection": "",
+    "cart_bg_color": "radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%)",
+    "cart_sec_bg_color": "#F8F9FB",
+    "show_progress_bar": true,
+    "free_shipping_threshold": 99,
+    "different_subscription_threshold": true,
+    "in_pb_bg_color": "linear-gradient(90deg, rgba(255, 140, 0, 1), rgba(255, 196, 124, 1) 100%)",
+    "in_pb_sec_bg_color": "linear-gradient(90deg, rgba(255, 140, 0, 1), rgba(255, 196, 124, 1) 100%)",
+    "mt_pb_fg_color": "#FFFFFF",
+    "mt_pb_bg_color": "linear-gradient(90deg, rgba(3, 152, 70, 1), rgba(0, 110, 49, 1) 100%)",
+    "show_stock_threshold": true,
+    "stock_threshold": 59,
+    "show_call_out_1": true,
+    "call_out_1_text": "45 Day Satisfaction Guarantee",
+    "call_out_1_image": "shopify://shop_images/Desktop-Icon-4.png",
+    "call_out_1_svg": "<svg width=\"20\" height=\"20\" viewbox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g opacity=\"0.72\">\n<path d=\"M17.5 9.16668C17.5 13.7917 14.3 18.1167 10 19.1667C5.7 18.1167 2.5 13.7917 2.5 9.16668V4.16668L10 0.833344L17.5 4.16668V9.16668ZM10 17.5C13.125 16.6667 15.8333 12.95 15.8333 9.35001V5.25001L10 2.65001L4.16667 5.25001V9.35001C4.16667 12.95 6.875 16.6667 10 17.5ZM12.5417 13.3333L9.975 11.7917L7.41667 13.3333L8.09167 10.4167L5.83333 8.46668L8.81667 8.20834L9.975 5.45834L11.1417 8.20001L14.125 8.45834L11.8583 10.4167L12.5417 13.3333Z\" fill=\"#111314\"></path>\n</g>\n</svg>",
+    "show_call_out_2": true,
+    "call_out_2_text": "Discount Available for Military and Veterans",
+    "call_out_2_url": "https://auth.govx.com/register?returnUrl=https%3A%2F%2Fauth.govx.com%2Foauth%2Fauthorize%3Fclient_id%3D941363d5-2678-e911-80e8-14187735bc96%26redirect_uri%3Dhttps%253A%252F%252Fauth.govx.com%252Fshopify%252Fcallback%26scope%3Duser_profile%2520user_demographics%2520verification%26response_type%3Dcode%26goTo%3Dregister%26campaign_id%3D10751%26state%3DeyJUaW1lc3RhbXAiOiIyMDI1LTA2LTE4VDE2OjIyOjU1LjM5NDMzNDRaIiwiTXlTaG9waWZ5RG9tYWluIjoidHJhbnNwYXJlbnQtbGFicy5teXNob3BpZnkuY29tIiwiUmVmZXJlciI6Imh0dHBzOi8vd3d3LnRyYW5zcGFyZW50bGFicy5jb20vIiwiR292WENhbXBhaWduSWQiOjEwNzUxLCJEaXNjb3VudERpc3BsYXkiOm51bGwsIlZlcmlmeSI6Ii9PUDR3Sk9kclFzVldGY0NZa0VWNFZ1VE0yR3FxREhTUVlObTArTjM1NG89IiwiQ1ZFIjoiQ2ZESjhQdXhQRldROFFsT21Dd1JSTVRnWm5zUnRhWnVTQjFiQjYxbVNoRDBtVExhOHpaOEJ2NC9mK0xXc1RmOFkyN0RheXRUQ0xOdnZWeTNiT2l6ZzFiQWlSRmZvNzNWbG1OWkFmcUthMmJ1UEZzaU9kL0tOSThZTW1jbTRFR2d0T3hFRmZwZ0dEWlBrQ21FUmVmV0NSbjVPblJ6YmZ6d2tsRGdKT2VjZnlWMENId1QifQ%253D%253D%26code_challenge%3D54o48XRLxKuYNCm8UFPEt6RbiVlGbe4lmSfpoGQE8Hw%253D%26code_challenge_method%3DS256%26x_signed_url%3DUMTQYGjKgSyL1qevqvCG9QgvBULVQdK5kIOiqqdaFUY%253D",
+    "call_out_2_image": "shopify://shop_images/Citrulline_Icon_144277c8-1c47-48e8-b479-a13e62bdfd05.png",
+    "call_out_2_svg": "<svg width=\"22\" height=\"18\" viewbox=\"0 0 22 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M11.5146 7.81654L11.0007 6.56813L10.501 7.78229C10.4482 7.95157 10.2939 8.07952 10.105 8.09263L8.75322 8.19137L9.78913 9.06094C9.91405 9.16573 9.976 9.33501 9.93436 9.5043L9.61038 10.8142L10.758 10.1089C10.8982 10.0192 11.084 10.0111 11.2353 10.1038L12.3911 10.8142L12.0732 9.52746C12.0234 9.36322 12.0722 9.17882 12.2123 9.06093L13.2482 8.19136L11.8965 8.09262V8.09161C11.732 8.07952 11.5807 7.97877 11.5146 7.81654ZM11.4141 5.23113L12.2357 7.2262L14.404 7.38541C14.6508 7.40254 14.8366 7.61514 14.8194 7.85998C14.8102 7.99097 14.7452 8.10382 14.6488 8.17839L13.0005 9.56084L13.5184 11.6577C13.5763 11.8955 13.429 12.1353 13.1894 12.1927C13.0645 12.2229 12.9385 12.1978 12.839 12.1323L11.0008 11.0027L9.15135 12.1393C8.94112 12.2673 8.66589 12.2028 8.53691 11.9952C8.47191 11.8904 8.45566 11.7695 8.48308 11.6587L9.00104 9.56183L7.34055 8.16831C7.15165 8.01012 7.12829 7.73001 7.28774 7.54258C7.36898 7.44787 7.48171 7.39446 7.59749 7.3864L9.76578 7.2272L10.5874 5.23212C10.6798 5.00541 10.9408 4.89658 11.1683 4.98929C11.2841 5.03665 11.3694 5.12532 11.4131 5.23212L11.4141 5.23113ZM16.2281 12.8829C15.6462 13.6527 14.8926 14.2905 14.0242 14.7419C13.1183 15.2125 12.0895 15.4785 11.0008 15.4785C9.91205 15.4785 8.88329 15.2125 7.97734 14.7419C7.10798 14.2905 6.35543 13.6527 5.77349 12.8829H5.34999C4.87061 12.8829 4.38518 12.8648 3.91394 12.8204C4.54463 13.9691 5.44951 14.9485 6.54221 15.6679C7.81778 16.5093 9.35143 17 11.0006 17C12.6497 17 14.1824 16.5093 15.4589 15.6679C16.5517 14.9475 17.4566 13.9691 18.0872 12.8204C17.6159 12.8658 17.1315 12.8829 16.6511 12.8829H16.2281ZM5.18362 6.05734C5.7107 5.03359 6.50388 4.16706 7.47277 3.54938C8.49142 2.89948 9.702 2.52161 11.0009 2.52161C12.314 2.52161 13.5378 2.90753 14.5625 3.57154C15.5385 4.20331 16.3337 5.08598 16.8537 6.12582H18.5284C17.9749 4.70006 17.0233 3.47179 15.8076 2.5749C14.466 1.58544 12.8023 1 11.0008 1C9.21137 1 7.55802 1.57737 6.2214 2.55473C5.01184 3.43942 4.06021 4.64956 3.49954 6.05612H5.18341L5.18362 6.05734ZM5.42025 9.7785C5.404 9.54675 5.21002 9.36436 4.97338 9.36436H4.39143C3.78412 9.36436 3.17272 9.32607 2.60601 9.22229C2.59992 9.22128 2.59383 9.22028 2.58773 9.21927C2.10633 9.12959 1.65847 8.99155 1.27355 8.78901C0.600219 8.43433 0.116789 7.85697 0 6.9471H5.46192C5.6559 6.9471 5.82246 6.82418 5.8834 6.65289C6.33534 5.68659 7.05742 4.86941 7.95419 4.2971C8.83166 3.73686 9.8767 3.41241 11 3.41241C12.1354 3.41241 13.1927 3.74493 14.0752 4.31624C14.9801 4.90165 15.7052 5.73998 16.1501 6.73048C16.214 6.89774 16.3776 7.01665 16.5685 7.01665H22C21.8832 7.92751 21.3998 8.50387 20.7265 8.85855C20.3425 9.06108 19.8957 9.19812 19.4163 9.2878C19.4041 9.28982 19.392 9.29183 19.3808 9.29486C18.8181 9.39663 18.2118 9.43391 17.6096 9.43391H17.0185C16.7707 9.43391 16.5706 9.63342 16.5706 9.87828C16.5706 10.1241 16.7717 10.3226 17.0185 10.3226H21.0159C20.8676 10.9081 20.4177 11.294 19.8084 11.5429C19.5067 11.6668 19.1655 11.7585 18.8009 11.827C18.7806 11.829 18.7593 11.8331 18.74 11.8381C18.091 11.954 17.3679 11.9943 16.6519 11.9943H15.9999C15.8404 11.9943 15.7013 12.0769 15.6221 12.2008C15.1041 12.9364 14.4135 13.541 13.6112 13.9581C12.8333 14.3622 11.9456 14.5909 11.0011 14.5909C10.0566 14.5909 9.169 14.3622 8.39108 13.9581C7.58877 13.542 6.89916 12.9364 6.38019 12.2008C6.30098 12.0769 6.16082 11.9943 6.0024 11.9943H5.35039C4.63338 11.9943 3.91128 11.954 3.26234 11.8381C3.24202 11.8331 3.22171 11.829 3.2014 11.827C2.83681 11.7585 2.49557 11.6668 2.19393 11.5429C1.58456 11.294 1.13466 10.9081 0.986391 10.3226H4.98378C5.23158 10.3226 5.43167 10.1231 5.43167 9.87828C5.43167 9.84603 5.42862 9.8148 5.42151 9.78457V9.78356L5.4205 9.77953L5.42025 9.7785Z\" fill=\"#111314\"></path>\n</svg>",
+    "new_tag_fg_color": "#ffffff",
+    "new_tag_bg_color": "linear-gradient(90deg,#ff8c00,#ffc47c)",
+    "best_seller_tag_fg_color": "#ffffff",
+    "best_seller_tag_bg_color": "#1B73B3",
+    "predictive_search_show_vendor": false,
+    "predictive_search_show_price": false,
+    "show_vendor": false,
+    "show_cart_note": false,
+    "sections": {
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "color_scheme": "scheme-1"
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "scheme-1"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      }
+    },
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "#132836",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "logo_width": 90,
+      "color_schemes": {
+        "scheme-1": {
+          "settings": {
+            "background": "#FFFFFF",
+            "background_gradient": "",
+            "text": "#121212",
+            "button": "#121212",
+            "button_label": "#FFFFFF",
+            "secondary_button_label": "#121212",
+            "shadow": "#121212"
+          }
+        },
+        "scheme-2": {
+          "settings": {
+            "background": "#F3F3F3",
+            "background_gradient": "",
+            "text": "#121212",
+            "button": "#121212",
+            "button_label": "#F3F3F3",
+            "secondary_button_label": "#121212",
+            "shadow": "#121212"
+          }
+        },
+        "scheme-3": {
+          "settings": {
+            "background": "#242833",
+            "background_gradient": "",
+            "text": "#FFFFFF",
+            "button": "#FFFFFF",
+            "button_label": "#000000",
+            "secondary_button_label": "#FFFFFF",
+            "shadow": "#121212"
+          }
+        },
+        "scheme-4": {
+          "settings": {
+            "background": "#121212",
+            "background_gradient": "",
+            "text": "#FFFFFF",
+            "button": "#FFFFFF",
+            "button_label": "#121212",
+            "secondary_button_label": "#FFFFFF",
+            "shadow": "#121212"
+          }
+        },
+        "scheme-5": {
+          "settings": {
+            "background": "#334FB4",
+            "background_gradient": "",
+            "text": "#FFFFFF",
+            "button": "#FFFFFF",
+            "button_label": "#334FB4",
+            "secondary_button_label": "#FFFFFF",
+            "shadow": "#121212"
+          }
+        }
+      },
+      "type_header_font": "assistant_n4",
+      "heading_scale": 100,
+      "type_body_font": "assistant_n4",
+      "body_scale": 100,
+      "page_width": "1200",
+      "spacing_sections": 0,
+      "spacing_grid_horizontal": 8,
+      "spacing_grid_vertical": 8,
+      "buttons_border_thickness": 1,
+      "buttons_border_opacity": 100,
+      "buttons_radius": 0,
+      "buttons_shadow_opacity": 0,
+      "buttons_shadow_horizontal_offset": 0,
+      "buttons_shadow_vertical_offset": 4,
+      "buttons_shadow_blur": 5,
+      "variant_pills_border_thickness": 1,
+      "variant_pills_border_opacity": 55,
+      "variant_pills_radius": 40,
+      "variant_pills_shadow_opacity": 0,
+      "variant_pills_shadow_horizontal_offset": 0,
+      "variant_pills_shadow_vertical_offset": 4,
+      "variant_pills_shadow_blur": 5,
+      "inputs_border_thickness": 1,
+      "inputs_border_opacity": 55,
+      "inputs_radius": 0,
+      "inputs_shadow_opacity": 0,
+      "inputs_shadow_horizontal_offset": 0,
+      "inputs_shadow_vertical_offset": 4,
+      "inputs_shadow_blur": 5,
+      "card_style": "standard",
+      "card_image_padding": 0,
+      "card_text_alignment": "left",
+      "card_color_scheme": "scheme-2",
+      "card_border_thickness": 0,
+      "card_border_opacity": 10,
+      "card_corner_radius": 0,
+      "card_shadow_opacity": 0,
+      "card_shadow_horizontal_offset": 0,
+      "card_shadow_vertical_offset": 4,
+      "card_shadow_blur": 5,
+      "collection_card_style": "standard",
+      "collection_card_image_padding": 0,
+      "collection_card_text_alignment": "left",
+      "collection_card_color_scheme": "scheme-2",
+      "collection_card_border_thickness": 0,
+      "collection_card_border_opacity": 10,
+      "collection_card_corner_radius": 0,
+      "collection_card_shadow_opacity": 0,
+      "collection_card_shadow_horizontal_offset": 0,
+      "collection_card_shadow_vertical_offset": 4,
+      "collection_card_shadow_blur": 5,
+      "blog_card_style": "standard",
+      "blog_card_image_padding": 0,
+      "blog_card_text_alignment": "left",
+      "blog_card_color_scheme": "scheme-2",
+      "blog_card_border_thickness": 0,
+      "blog_card_border_opacity": 10,
+      "blog_card_corner_radius": 0,
+      "blog_card_shadow_opacity": 0,
+      "blog_card_shadow_horizontal_offset": 0,
+      "blog_card_shadow_vertical_offset": 4,
+      "blog_card_shadow_blur": 5,
+      "text_boxes_border_thickness": 0,
+      "text_boxes_border_opacity": 10,
+      "text_boxes_radius": 0,
+      "text_boxes_shadow_opacity": 0,
+      "text_boxes_shadow_horizontal_offset": 0,
+      "text_boxes_shadow_vertical_offset": 4,
+      "text_boxes_shadow_blur": 5,
+      "media_border_thickness": 1,
+      "media_border_opacity": 5,
+      "media_radius": 0,
+      "media_shadow_opacity": 0,
+      "media_shadow_horizontal_offset": 0,
+      "media_shadow_vertical_offset": 4,
+      "media_shadow_blur": 5,
+      "popup_border_thickness": 1,
+      "popup_border_opacity": 10,
+      "popup_corner_radius": 0,
+      "popup_shadow_opacity": 5,
+      "popup_shadow_horizontal_offset": 0,
+      "popup_shadow_vertical_offset": 4,
+      "popup_shadow_blur": 5,
+      "drawer_border_thickness": 1,
+      "drawer_border_opacity": 10,
+      "drawer_shadow_opacity": 0,
+      "drawer_shadow_horizontal_offset": 0,
+      "drawer_shadow_vertical_offset": 4,
+      "drawer_shadow_blur": 5,
+      "badge_position": "bottom left",
+      "badge_corner_radius": 40,
+      "sale_badge_color_scheme": "scheme-5",
+      "sold_out_badge_color_scheme": "scheme-3",
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tiktok_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "predictive_search_enabled": true,
+      "predictive_search_show_vendor": false,
+      "predictive_search_show_price": false,
+      "currency_code_enabled": true,
+      "cart_type": "notification",
+      "show_vendor": false,
+      "show_cart_note": false,
+      "cart_drawer_collection": "",
+      "sections": {
+        "main-password-header": {
+          "type": "main-password-header",
+          "settings": {
+            "color_scheme": "scheme-1"
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
+            "color_scheme": "scheme-1"
+          }
+        }
+      }
+    }
+  }
+}

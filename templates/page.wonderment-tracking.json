@@ -1,0 +1,344 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "track_your_order_heading": {
+      "type": "old-wonderment-custom-html",
+      "blocks": {
+        "track_your_order": {
+          "type": "html",
+          "settings": {
+            "section_html": "<style>\n  .wndr-sx--heading {\n    font-size: 2.5rem;\n    text-align: center;\n  }\n  .wonderment-ab-container > div > form {\n     margin-top: 20px;\n  }\n  .tp-form-header.tp-search-header {\n    display: none !important;\n  }\n</style>\n<h2 class=\"wndr-sx--heading\">Track your order</h2>"
+          }
+        }
+      },
+      "block_order": [
+        "track_your_order"
+      ],
+      "settings": {
+        "show_when": "always",
+        "width": "regular"
+      }
+    },
+    "main": {
+      "type": "apps",
+      "blocks": {
+        "wonderment": {
+          "type": "shopify://apps/wonderment/blocks/wonderBlock/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "wonderment"
+      ],
+      "settings": {}
+    },
+    "hero": {
+      "type": "old-wonderment-hero",
+      "disabled": true,
+      "settings": {
+        "width_override": true,
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "faq": {
+      "type": "old-wonderment-faq",
+      "blocks": {
+        "faq-getting-started": {
+          "type": "section_heading",
+          "settings": {
+            "title": "Getting started"
+          }
+        },
+        "product-where-made-question": {
+          "type": "question",
+          "settings": {
+            "title": "Where are your products manufactured?",
+            "text": "<p>We are a local company and all merchandise is made with love here in Toronto, Canada.</p>"
+          }
+        },
+        "sizes-question": {
+          "type": "question",
+          "settings": {
+            "title": "How do your sizes work?",
+            "text": "<p>Please take a look at our size chart for more information and how to take accurate measurements.</p>"
+          }
+        },
+        "shipping-heading": {
+          "type": "section_heading",
+          "settings": {
+            "title": "Shipping"
+          }
+        },
+        "when-shipping-question": {
+          "type": "question",
+          "settings": {
+            "title": "When will my order ship?",
+            "text": "<p>Usually in 1-2 business days</p>"
+          }
+        },
+        "when-arriving-question": {
+          "type": "question",
+          "settings": {
+            "title": "When will my order arrive?",
+            "text": "<p>Usually in 3-10 business days</p>"
+          }
+        },
+        "ship-international-question": {
+          "type": "question",
+          "settings": {
+            "title": "Do you ship internationally?",
+            "text": "<p>Currently we are only shipping to USA and Canada.</p>"
+          }
+        },
+        "shipping-cost-question": {
+          "type": "question",
+          "settings": {
+            "title": "How much is shipping?",
+            "text": "<p>If you spend over $100, shipping is always free. For any other purchases, shipping will be calculated at checkout.</p>"
+          }
+        },
+        "return-policy-question": {
+          "type": "question",
+          "settings": {
+            "title": "What is your return policy?",
+            "text": "<p>Merchandise that is unworn and in the original packaging can be returned within 30 days with the packing slip included with the product.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq-getting-started",
+        "product-where-made-question",
+        "sizes-question",
+        "shipping-heading",
+        "when-shipping-question",
+        "when-arriving-question",
+        "ship-international-question",
+        "shipping-cost-question",
+        "return-policy-question"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_answers": false,
+        "text_size": 100,
+        "alignment": "center",
+        "text_color": "#121212",
+        "background_color": "linear-gradient(184deg, rgba(255, 255, 255, 1) 7%, rgbargba(255, 255, 255, 1) 94%)",
+        "border_color": "#121212",
+        "base_width": 80,
+        "max_width": "",
+        "inner_padding": 100,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "sans-serif"
+      }
+    },
+    "rebuy": {
+      "type": "old-wonderment-rebuy",
+      "disabled": true,
+      "settings": {
+        "rebuy-widget-id": ""
+      }
+    },
+    "fairing": {
+      "type": "old-wonderment-fairing",
+      "disabled": true,
+      "settings": {
+        "fairing-key": "",
+        "fairing-padding-tb": 10,
+        "fairing-padding-lr": 10,
+        "fairing-border-color": "#000000",
+        "fairing-border-size": 0,
+        "fairing-border-radius": 0,
+        "fairing-title-text-align": "center",
+        "fairing-title-margin-top": 20,
+        "fairing-title-margin-bottom": 20,
+        "fairing-title-max-width": 100,
+        "fairing-response-border-color": "#000000",
+        "fairing-response-border-size": 0,
+        "fairing-response-border-radius": 0,
+        "fairing-response-padding": 5,
+        "fairing-responses-margin": 20
+      }
+    },
+    "kno": {
+      "type": "old-wonderment-kno",
+      "disabled": true,
+      "settings": {
+        "shop-key": "",
+        "survey-id": ""
+      }
+    },
+    "tl_select_faq_QLVbtq": {
+      "type": "old-tl-select-faq",
+      "blocks": {
+        "text_TKUGkH": {
+          "type": "text",
+          "settings": {
+            "question": "WHEN WILL MY ORDER SHIP?",
+            "answer": "<p>All orders placed Sunday-Thursday are shipped on the FOLLOWING business day that the order was received. All orders placed Friday-Saturday will ship on the following Monday.</p>"
+          }
+        },
+        "text_r34cn6": {
+          "type": "text",
+          "settings": {
+            "question": "I WANT TO CHANGE THE FLAVOR OF ONE OF THE PRODUCTS IN A STACK, IS THIS POSSIBLE?",
+            "answer": "<p>Yes, it is possible to modify the flavor of a product in any of our stacks.  You will need to contact our Customer Support Team at support@transparentlabs.com.  </p><p>However, you must remember that they will need enough time to make the change to your order. All orders are shipped around 6:00am MST, so please make sure that you send your email between the hours of 1:00pm - 1:00 am PST to ensure that your order has enough time to be updated.</p><p>If you have any additional questions related to the shipping, tracking, or delivery of your Transparent Labs order, please contact our wonderful Customer Support team:</p><p><strong>Email: </strong>Support@TransparentLabs.com</p>"
+          }
+        },
+        "text_XjDedK": {
+          "type": "text",
+          "settings": {
+            "question": "ACCORDING TO MY TRACKING LINK, MY ORDER WAS DELIVERED, BUT I HAVE NOT RECEIVED ANYTHING",
+            "answer": "<p>Before contacting our Customer Service Team, we recommend that you first look all over your property as the USPS may have left your package in a safe location, away from the view of the public. Also, please check with your family members and neighbors to see if they have seen your package.  </p><p>If you live in an apartment complex, your package may have been delivered to either: a “Parcel Locker,”  (you should have been given a key by the USPS for this Parcel Locker) or to your Leasing Office or Manager’s Office).</p><p>If you do not find your package, we suggest contacting your local Post Office, make sure to give them your tracking number, and explain that according to tracking your order has was delivered, but you have not received anything.</p><p>If none of the above help you, please contact our Customer Service Team at support@transparentlabs.com for assistance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_TKUGkH",
+        "text_r34cn6",
+        "text_XjDedK"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "FAQs"
+      }
+    },
+    "index_bestseller_products_JLDttn": {
+      "type": "old-index-bestseller-products",
+      "blocks": {
+        "text_zcyRQx": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Bestsellers",
+            "product_type": "Bestsellers",
+            "product_1": "whey-protein-isolate",
+            "product_type_1": "Bestsellers",
+            "product_2": "creatine-hmb",
+            "product_type_2": "Bestsellers",
+            "product_3": "bulk-preworkout",
+            "product_type_3": "Bestsellers",
+            "product_4": "greens",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        },
+        "text_pLnLqc": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Protein",
+            "product_type": "Protein",
+            "product_1": "whey-protein-isolate",
+            "product_type_1": "Protein",
+            "product_2": "mass-gainer",
+            "product_type_2": "Protein",
+            "product_3": "protein-bars",
+            "product_type_3": "Protein",
+            "product_4": "grass-fed-whey-protein-isolate-4lbs",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        },
+        "text_w4bA6b": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Pre-Workout",
+            "product_type": "Pre-Workout",
+            "product_1": "bulk-preworkout",
+            "product_type_1": "Pre-Workout",
+            "product_2": "lean-preworkout",
+            "product_type_2": "Pre-Workout",
+            "product_3": "bulk-black-pre-workout",
+            "product_type_3": "",
+            "product_4": "",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        },
+        "text_tW7WD3": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Build Muscle & Recover",
+            "product_type": "Build Muscle & Recover",
+            "product_1": "creatine-hmb",
+            "product_type_1": "Build Muscle & Recover",
+            "product_2": "coreseries-bcaa-glutamine",
+            "product_type_2": "Build Muscle & Recover",
+            "product_3": "testosterone-booster",
+            "product_type_3": "Build Muscle & Recover",
+            "product_4": "zmo",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_zcyRQx",
+        "text_pLnLqc",
+        "text_w4bA6b",
+        "text_tW7WD3"
+      ],
+      "settings": {
+        "title": "Explore Our Products",
+        "subtitle": "",
+        "discount_month": "Deliver Every Month",
+        "discount_days": "Deliver Every 45 days",
+        "percent_text": "10% Off"
+      }
+    }
+  },
+  "order": [
+    "track_your_order_heading",
+    "main",
+    "hero",
+    "faq",
+    "rebuy",
+    "fairing",
+    "kno",
+    "tl_select_faq_QLVbtq",
+    "index_bestseller_products_JLDttn"
+  ]
+}

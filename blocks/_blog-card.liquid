@@ -1,0 +1,120 @@
+{% stylesheet %}
+  .sb-blog-card {
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    color: var(--sb-fg-color);
+    background: var(--sb-bg-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .sb-blog-card__image {
+    height: 160px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .sb-blog-card__content-wrapper {
+    gap: 20px;
+    flex: 1;
+  }
+  .sb-blog-card__content {
+    padding: 18px 0 24px 12px;
+    background-color: var(--sb-ch-bg-color, var(--sb-bg-color)); 
+    letter-spacing: 0;
+    line-height: 1.3;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+  }
+  .sb-blog-card__blog-title {
+    font-size: 14px;
+    color: var(--sb-ch-fg-color, var(--sb-fg-color));
+    opacity: 0.6;
+    padding: 0;
+    margin: 0;
+  }
+  .sb-blog-card__article-title {
+    color: var(--sb-ch-fg-color, var(--sb-fg-color));
+    font-size: 22px;
+    padding: 0;
+    margin: 4px 0 0;
+    font-weight: 400;
+  }
+
+  @media screen and (min-width: 768px) {
+    .sb-blog-card__content {
+      flex-direction: column-reverse;
+      padding: 16px 16px 24px;
+    }
+    .sb-blog-card__content-wrapper {
+      gap: 24px;
+    }
+  }
+  @media screen and (min-width: 1024px){
+    .sb-blog-card__image{
+      height: 170px;
+    }
+  }
+  @media screen and (min-width: 1240px){
+    .sb-blog-card__image{
+      height: 200px;
+    }
+  }
+{% endstylesheet %}
+
+<a href="{{ article.url }}" class="sb-blog-card sb-alignment--left" style="{%  render 'style-attributes', settings: block.settings %}">
+  {% if article.image != blank %}
+    {{ article.image | image_url: width: 900  | image_tag: 
+      loading: 'lazy',
+      class: 'sb-blog-card__image',
+      height: article.image.height,
+      alt: article.image.alt | default: article.title
+    }}
+  {% endif %}
+  <div class="sb-blog-card__content-wrapper">
+    <div class="sb-blog-card__content">
+      <h4 class="sb-blog-card__article-title">{{ article.title }}</h4>
+      {% if blog != blank and block.settings.show_blog_title  %}
+        <h3 class="sb-blog-card__blog-title">{{ blog.title }}</h3>
+      {% endif %}
+    </div>
+    {% render 'sb-icon--right-arrow' %}
+  </div>
+  
+</a>
+{% schema %}
+{
+  "name": "Blog Card",
+  "tag": null,
+  "settings": [
+    {
+      "type":"checkbox",
+      "id":"show_blog_title",
+      "label":"Show Blog Title",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Card",
+    }
+  ]
+}
+{% endschema %}

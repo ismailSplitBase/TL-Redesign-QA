@@ -1,0 +1,182 @@
+{{ 'old-contact-info.css' | asset_url | stylesheet_tag }}
+
+
+<section class="contact-info-section" id="contact-info-section">
+  <div class="container">
+    <div class="contact-info-section-wrap">
+        <div class="contact-info-section-top">
+          {%- if section.settings.title != blank -%}
+            <h1 class="h2" style="color:{{ section.settings.heading_color }}">{{ section.settings.title | escape }}</h1>
+          {%- endif -%}
+          {%- if section.settings.content != blank -%}
+            <div class="rte" style="color:{{ section.settings.content_color }};">
+              {{ section.settings.content }}
+            </div>
+          {%- endif -%}
+        </div>
+        <div class="contact-info-section-center">
+          <div class="contact-info-wrap">
+            {% for block in section.blocks %}
+              <div class="contact-info-item" id="{{ block.id }}" style="background-color:{{ block.settings.block_background_color }};">
+                <div class="contact-info-item-icon">
+                  {{ block.settings.icon }}
+                </div>
+                <h3 style="color:{{ block.settings.caption_color }};">{{ block.settings.caption }}</h3>
+                <div class="contact-info-Number-Email">
+                  <a style="color:{{ block.settings.Number-Email-color }};" href="{{ block.settings.link }}">{{ block.settings.Number-Email }}</a>
+                </div>
+                <div class="contact-info-button">
+                  <a class="button" href="{{ block.settings.link_button }}">{{ block.settings.button }}</a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="contact-info-section-bottom">
+          <ul>
+            <li>
+              <a href="{{ section.settings.shipping_policy_url }}" style="color:{{ section.settings.policy_color }};">
+              {{ section.settings.shipping_policy }}
+              <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="iconoir:arrow-up" clip-path="url(#clip0_5729_808)"><path id="Vector" d="M-1.74846e-07 10L16 10M16 10L11.75 14M16 10L11.75 6" stroke="#111314" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_5729_808"><rect width="18" height="18" fill="white" transform="translate(18 0.5) rotate(90)"/></clipPath></defs></svg>
+              </a>
+            </li>
+            <li>
+              <a href="{{ section.settings.refund_policy_url }}" style="color:{{ section.settings.policy_color }};">
+                {{ section.settings.refund_policy }}
+                <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="iconoir:arrow-up" clip-path="url(#clip0_5729_808)"><path id="Vector" d="M-1.74846e-07 10L16 10M16 10L11.75 14M16 10L11.75 6" stroke="#111314" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_5729_808"><rect width="18" height="18" fill="white" transform="translate(18 0.5) rotate(90)"/></clipPath></defs></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% schema %}
+  {
+    "name": "Contact Info Section",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Contact Us"
+      },
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Heading Below Content",
+        "default": "<p>Questions, comments, concerns? We'd love to hear from you.</p>"
+      },
+      {
+        "type": "text",
+        "id": "shipping_policy",
+        "label": "Shipping policy text",
+        "default": "Shipping policy"
+      },
+      {
+        "type": "url",
+        "id": "shipping_policy_url",
+        "label": "Shipping policy url",
+      },
+      {
+        "type": "text",
+        "id": "refund_policy",
+        "label": "Refund policy text",
+        "default": "Refund policy"
+      },
+      {
+        "type": "url",
+        "id": "refund_policy_url",
+        "label": "Refund policy url",
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#173446"
+      },
+      {
+        "type": "color",
+        "id": "content_color",
+        "label": "Content Color",
+        "default": "#142835"
+      },
+      {
+        "type": "color",
+        "id": "policy_color",
+        "label": "Policy Color",
+        "default": "#111314"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "contact_info",
+        "name": "Contact Info",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "icon",
+            "label": "Icon"
+          },
+          {
+            "type": "text",
+            "id": "caption",
+            "label": "Caption"
+          },
+          {
+            "type": "text",
+            "id": "Number-Email",
+            "label": "Number/Email"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "button",
+            "label": "Button Text"
+          },
+          {
+            "type": "url",
+            "id": "link_button",
+            "label": "Button Link"
+          },
+          {
+            "type": "color",
+            "id": "block_background_color",
+            "label": "Block Background Color",
+            "default": "#F8F9FB"
+          },
+          {
+            "type": "color",
+            "id": "caption_color",
+            "label": "Caption Color",
+            "default": "#142835"
+          },
+          {
+            "type": "color",
+            "id": "Number-Email-color",
+            "label": "Number-Email Color",
+            "default": "#173446"
+          },
+          {
+            "type": "color",
+            "id": "button_background_color",
+            "label": "Button Background Color",
+            "default": "#111314"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+        "name": "Contact Info Section"
+    }]
+  }
+{% endschema %}

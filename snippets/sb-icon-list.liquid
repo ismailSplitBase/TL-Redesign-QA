@@ -1,0 +1,83 @@
+{%  liquid
+  assign icon_list_items = product.metafields.custom.product_info_text_icon_new.value
+  unless block.settings.use_product_icons
+    assign icon_list_items = block.settings.source
+  endunless
+
+  assign has_one_filled = false
+  for item in icon_list_items
+    if item.list_icon != blank or item.list_item_name != blank
+      assign has_one_filled = true
+      break
+    endif
+  endfor
+%}
+{% if has_one_filled %}
+  <div class="sb-icon-list__wrapper">
+    {% for item in icon_list_items %}
+      {% if item.list_icon != blank or item.list_item_name != blank %}
+        <div class="sb-icon-list__item">
+          {% if item.list_icon != blank %}
+            <div class="sb-icon-list__item-icon">
+              {{ item.list_icon | image_url: width: 50 | image_tag }}
+            </div>
+          {% endif %}
+          {% if item.list_item_name != blank %}
+            <div class="sb-icon-list__item-text">
+              {{ item.list_item_name }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% style %}
+    .sb-icon-list__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      margin: 0 0 20px;
+    }
+
+    .sb-icon-list__item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sb-icon-list__item-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sb-icon-list__item-icon img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .sb-icon-list__item-text {
+      font-size: 13px;
+      line-height: 1.4;
+      letter-spacing: 0;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Desktop layout */
+    @media (min-width: 768px) {
+      .sb-icon-list__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 32px;
+        max-width: 432px; /* (200px + 200px + 32px gap) */
+      }
+    }
+  {% endstyle %}
+{% endif %}

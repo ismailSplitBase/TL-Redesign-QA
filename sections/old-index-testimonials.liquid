@@ -1,0 +1,82 @@
+<section class="TL_Testimonials">
+  {% for block in section.blocks %}
+  <div class="TL_Testimonials_inner">
+    <div class="TL_Testimonials_text">
+      {% if block.settings.testimonial != blank %}
+        <p class="quote">{{ block.settings.testimonial }}</p>
+      {% endif %}
+      <div style="margin-top: 10px; margin-bottom: 10px;">
+        <svg height="25" viewbox="0 0 150 25" width="150" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 18.1701L18.18 21.9001L16.54 14.8701L22 10.1401L14.81 9.53015L12 2.90015L9.19 9.53015L2 10.1401L7.46 14.8701L5.82 21.9001L12 18.1701Z" fill="#FF5D0D"></path>
+          <path d="M36 18.1701L42.18 21.9001L40.54 14.8701L46 10.1401L38.81 9.53015L36 2.90015L33.19 9.53015L26 10.1401L31.46 14.8701L29.82 21.9001L36 18.1701Z" fill="#FF5D0D"></path>
+          <path d="M60 18.1701L66.18 21.9001L64.54 14.8701L70 10.1401L62.81 9.53015L60 2.90015L57.19 9.53015L50 10.1401L55.46 14.8701L53.82 21.9001L60 18.1701Z" fill="#FF5D0D"></path>
+          <path d="M84 18.1701L90.18 21.9001L88.54 14.8701L94 10.1401L86.81 9.53015L84 2.90015L81.19 9.53015L74 10.1401L79.46 14.8701L77.82 21.9001L84 18.1701Z" fill="#FF5D0D"></path>
+          <path d="M108 18.1701L114.18 21.9001L112.54 14.8701L118 10.1401L110.81 9.53015L108 2.90015L105.19 9.53015L98 10.1401L103.46 14.8701L101.82 21.9001L108 18.1701Z" fill="#FF5D0D"></path>
+          <path d="M132.455 11.1404V11.1462C133.303 11.1462 133.996 11.3982 134.535 11.9021C135.074 12.406 135.344 13.113 135.344 14.0232C135.344 14.9177 135.033 15.6501 134.412 16.2205C133.787 16.7908 132.982 17.0759 131.998 17.0759C131.541 17.0759 131.111 17.0115 130.709 16.8826C130.314 16.7576 129.984 16.6013 129.719 16.4138C129.461 16.2302 129.238 16.0486 129.051 15.8689C128.859 15.6853 128.725 15.531 128.646 15.406L128.529 15.2126L129.584 14.1345C129.604 14.158 129.633 14.2029 129.672 14.2693C129.703 14.324 129.791 14.4255 129.936 14.574C130.072 14.7146 130.223 14.8435 130.387 14.9607C130.535 15.0662 130.744 15.1677 131.014 15.2654C131.271 15.3591 131.541 15.406 131.822 15.406C132.307 15.406 132.699 15.2673 133 14.99C133.301 14.7126 133.451 14.3552 133.451 13.9177C133.451 13.4646 133.297 13.113 132.988 12.863C132.676 12.6091 132.252 12.4822 131.717 12.4822C131.377 12.4822 131.031 12.5388 130.68 12.6521C130.34 12.7615 130.088 12.865 129.924 12.9626L128.992 12.3181L129.52 8.11694H134.699V9.72241H131.078L130.838 11.4275C131.283 11.2361 131.822 11.1404 132.455 11.1404Z" fill="black"></path>
+          <path d="M135.707 18.5173L140.975 6.92749H142.363L137.084 18.5173H135.707ZM146.541 11.1404V11.1462C147.389 11.1462 148.082 11.3982 148.621 11.9021C149.16 12.406 149.43 13.113 149.43 14.0232C149.43 14.9177 149.119 15.6501 148.498 16.2205C147.873 16.7908 147.068 17.0759 146.084 17.0759C145.627 17.0759 145.197 17.0115 144.795 16.8826C144.4 16.7576 144.07 16.6013 143.805 16.4138C143.547 16.2302 143.324 16.0486 143.137 15.8689C142.945 15.6853 142.811 15.531 142.732 15.406L142.615 15.2126L143.67 14.1345C143.689 14.158 143.719 14.2029 143.758 14.2693C143.789 14.324 143.877 14.4255 144.021 14.574C144.158 14.7146 144.309 14.8435 144.473 14.9607C144.621 15.0662 144.83 15.1677 145.1 15.2654C145.357 15.3591 145.627 15.406 145.908 15.406C146.393 15.406 146.785 15.2673 147.086 14.99C147.387 14.7126 147.537 14.3552 147.537 13.9177C147.537 13.4646 147.383 13.113 147.074 12.863C146.762 12.6091 146.338 12.4822 145.803 12.4822C145.463 12.4822 145.117 12.5388 144.766 12.6521C144.426 12.7615 144.174 12.865 144.01 12.9626L143.078 12.3181L143.605 8.11694H148.785V9.72241H145.164L144.924 11.4275C145.369 11.2361 145.908 11.1404 146.541 11.1404Z" fill="#6C787C"></path></svg>
+      </div>
+      {% if block.settings.auther_name != blank %}
+        <p class="name">{{ block.settings.auther_name }}</p>
+      {% endif %}
+      {% if block.settings.auther_detail != blank %}
+        <p class="title">{{ block.settings.auther_detail }}</p>
+      {% endif %}
+    </div>
+    <div class="TL_Testimonials_pics">
+      {% if block.settings.image != blank %}
+        {% assign image_name = block.settings.image | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+        <img src="{{ block.settings.image | img_url: 'master' }}" alt="{% if block.settings.image.alt %}{{ block.settings.image.alt }}{% else %}{{ image_name }}{% endif %}" loading="lazy">
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+
+{% schema %}
+{
+  "name": "index testimonials",
+  "class": "index-testimonials td-legacy",
+  "settings": [
+    {
+      "id": "index-testimonials",
+      "type": "text",
+      "label": "title",
+      "default": "testimonials"
+    }
+  ],"blocks":[
+		{
+			"name":"testimonials",
+			"type":"text",
+			"settings":[
+  				{
+                    "type":"image_picker",
+                    "id":"image",
+                    "label":"Choose auther image"
+                },
+    			{
+                    "type":"textarea",
+                    "id":"testimonial",
+                    "label":"Testimonial",
+                    "default":"Transparent Labs helps me recover like no other. I’m convinced these products have a huge impact on my training. I would definitely recommend TL to anyone looking to improve their workouts, training, running, and recovery."
+                },
+              {
+                    "type":"text",
+                    "id":"auther_name",
+                    "label":"auther name",
+                    "default":"Scotty S."
+                },
+              {
+                    "type":"text",
+                    "id":"auther_detail",
+                    "label":"auther detail",
+                    "default":"TL Select Athlete"
+                }
+			]
+		}
+	],
+  "presets": [{
+    "name": "index testimonials"
+  }]
+}
+{% endschema %}

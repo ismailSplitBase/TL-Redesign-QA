@@ -1,0 +1,88 @@
+{{ 'old-multiple-calculators.css' | asset_url | stylesheet_tag }}
+<div class="all-calculator">
+  
+  <div class="xgen-inner">
+    <div class="cal-wraper">
+      {% for block in section.blocks %}
+        <a class="cal-items" href="{{ block.settings.btn_url }}">
+        {% if block.settings.icon!=blank %}
+        <img src="{{ block.settings.icon | img_url : 'master' }}" alt="Calculator Icon {{ forloop.index }}" loading="lazy" >
+        {% endif %}
+        
+        {% if block.settings.name %}
+          <h2>{{ block.settings.name }}</h2>
+        {% endif %}
+        
+        {% if block.settings.text %}
+          <p>{{ block.settings.text }}</p>
+        {% endif %}
+        
+        {% if block.settings.btn_text %}
+        <span>{{ block.settings.btn_text }}</span>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "TL Calculators",
+    "class": "td-legacy",
+    "settings": [],
+	"blocks":
+	[
+      {
+        "name":"List",
+        "type":"image",
+        "settings":[
+			{
+				"type":"image_picker",
+                "id":"icon",
+                "label":"Choose Icon"
+			},
+			{
+				"type":"text",
+                "id":"name",
+                "label":"Name"
+			},
+			{
+				"type":"textarea",
+                "id":"text",
+                "label":"Text"
+			},
+			{
+				"type":"text",
+                "id":"btn_text",
+                "label":"Button Name"
+			},
+			{
+				"type":"url",
+                "id":"btn_url",
+                "label":"Button URL"
+			}
+
+			]
+		}
+	],
+	"presets":
+    [
+      {
+          "name": "TL Calculators"
+      }
+    ]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+ 

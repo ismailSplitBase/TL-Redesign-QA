@@ -1,0 +1,54 @@
+<div class="max-w-7xl mx-auto px-4 py-8 text-blue-500">
+  <div class="border-b-2 border-gray-300 flex items-center justify-between mb-8 pb-4 lg:mb-16">
+    <h1 class="uppercase md:text-2xl">
+      Activate Account
+    </h1>
+  </div>
+
+  <div class="max-w-sm mx-auto">
+    {% form 'activate_customer_password' %}
+      <div class="mb-4">
+        {{ form.errors | default_errors }}
+      </div>
+
+      <div class="space-y-6">
+        <div>
+          <label class="block" for="password">Password</label>
+          <input
+            class="text-input"
+            id="password"
+            name="customer[password]"
+            type="password"
+          >
+        </div>
+
+        <div>
+          <label class="block" for="password_confirmation">Password Confirmation</label>
+          <input
+            class="text-input"
+            id="password_confirmation"
+            name="customer[password_confirmation]"
+            type="password"
+          >
+        </div>
+
+        <div>
+          <input
+            class="bg-orange-400 button w-full"
+            type="submit"
+            value="Activate Account"
+          >
+
+          <div class="mt-4 text-center">
+            <input
+              class="bg-transparent cursor-pointer text-orange-400 transition-opacity hover:opacity-70"
+              name="decline"
+              type="submit"
+              value="Decline Invitation"
+            >
+          </div>
+        </div>
+      </div>
+    {% endform %}
+  </div>
+</div>

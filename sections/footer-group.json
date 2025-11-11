@@ -1,0 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "sb-footer",
+      "settings": {
+        "footer_menu": "td-footer",
+        "newsletter_heading": "",
+        "newsletter_description": "Sign up to get the latest on sales, new releases and more.",
+        "newsletter_first_name_placeholder": "First Name",
+        "newsletter_email_placeholder": "Email Address",
+        "newsletter_button_text": "Sign Up",
+        "fg_color": "#ffffff",
+        "bg_color": "#173446",
+        "page_layout": "normal",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "contact_email": "support@transparentlabs.com",
+        "contact_phone": "1-866-324-9557",
+        "address": "Shipping and Returns: 1551 S 400 E #2, American Fork, Utah 84003, United States",
+        "disclaimer": "Statements regarding supplement benefits have not been evaluated by the Food and Drug Administration. Transparent Labs products are not intended to diagnose, treat, cure, or prevent any disease.",
+        "copyright": "Transparent Labs ©2025"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

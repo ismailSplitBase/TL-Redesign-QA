@@ -1,0 +1,7 @@
+<div class="sb-breadcrumbs__container">
+  <a class="sb-breadcrumb__previous" href="/">Home</a>
+  {%- if collection -%}
+    <span class="">/</span><a class="sb-breadcrumb__previous" href="{{ collection.url }}">{{ collection.title }}</a>
+  {%- endif -%}
+  <span>/</span><span>{{ product.title }}</span>
+</div>

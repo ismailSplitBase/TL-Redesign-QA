@@ -1,0 +1,432 @@
+<div class="main">
+  <div class="xgen-inner">
+  <div class="cal-header">
+    {% if section.settings.header_image != blank %}
+  		<img src="{{section.settings.header_image | img_url: section.settings.header_image.width }}" alt="section.settings.header_image">
+    {% endif %}
+  	
+    {% if section.settings.title != blank %}
+    	<h3 style>{{section.settings.title}}</h3>
+    {% endif %}
+    
+    {% if section.settings.detail != blank %}
+    	<p>{{section.settings.detail}}</p>
+    {% endif %}
+  
+  </div>
+  
+  <form id="email_signup" class="tlc-form klaviyo_styling klaviyo_gdpr_embed_VDcQnv" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank">
+    <input type="hidden" name="calculator-name" value="bmr">
+    
+    <input type="hidden" name="g" value="VDcQnv">
+    <input type="hidden" name="$fields" value="$consent">
+    <input type="hidden" name="$list_fields" value="$consent">
+    
+    
+    <div class="form-group gender">
+      	<label class="main-label">GENDER</label>
+        <input type="radio" class="fgender" name="fgender" value="female" id="female"><label for="female" class="label2">{% render 'xicon-femail' %} Female</label>
+        <input type="radio" class="fgender" name="fgender" value="male" checked="" id="male"><label for="male" class="label2">{% render 'xicon-mail' %} Male</label>
+        <!-- <input type="radio" class="fgender" name="fgender" value="other" id="other"><label for="other" class="label2">{% render 'xicon-other' %} Other</label> -->
+    </div>
+    
+    
+    <span style="color:red;font-size:10px;" class="height_msg"></span>
+	<div class="form-group cominput">
+      <label for="height" class="main-label">Height<super>*</super></label>
+      <div class="input-group">
+        <input type="number" name="height" value="" required="" placeholder="" id="height" min="1">
+        <input type="radio" name="height-unit" value="in" checked id="heightin"><label for="heightin" class="label2">in</label>
+        <input type="radio" name="height-unit" value="cm" id="heightcm" ><label for="heightcm" class="label2">cm</label>
+      </div>
+    </div>
+    <span style="color:red;font-size:10px;" class="weight_msg"></span>
+    <div class="form-group cominput">
+      <label for="weight" class="main-label">Weight<super>*</super></label>
+      <div class="input-group">
+        <input type="number" id="weight" name="weight" value="" placeholder="" required=""  min="1">
+        <input type="radio" name="weight-unit" value="lbs" required="" id="weightlbs"><label for="weightlbs" class="label2">lbs</label>
+        <input type="radio" name="weight-unit" value="kg" required="" checked id="weightkg"><label for="weightkg" class="label2">kg</label>
+        
+      </div>
+    </div>
+    
+    
+    <span style="color:red;font-size:10px;" class="age_msg"></span>
+    <div class="form-group">
+      <label for="age" class="main-label">Age<super>*</super></label>
+      <div class="input-group">
+        <input type="number" name="age" value="" id="age" placeholder="" required=""  min="1">
+        <span>years</span>
+      </div>
+    </div>
+    <div class="form-group mygoal">
+		<!-- add hideshow class to make this option available for womens -->
+            <label class="main-label">My Lifestyle</label>
+          	<div class="input-group">
+              <input type="radio" name="Lifestyle" value="1.2" checked id="Lifestyleone">
+              <label for="Lifestyleone" class="label2">
+                {% render 'xicon-sedentary' %} 
+                <p>Sedentary<br><span>Spend most of the day sitting ie. Working on computer, no exercise)</span></p>
+                {% render 'xicon-check' %}
+              </label>
+              
+              <input type="radio" name="Lifestyle" value="1.375"  id="Lifestyletwo">
+              <label for="Lifestyletwo" class="label2">
+                {% render 'xicon-light-activity' %} 
+                <p>Light Activity <br><span>Spend a good part of the day on my feet (ie. Teacher, Real Estate)</span></p>
+                {% render 'xicon-check' %}
+              </label>
+              
+              
+              <input type="radio" name="Lifestyle" value="1.55"  id="Lifestylethree">
+              <label for="Lifestylethree" class="label2">
+                {% render 'xicon-active' %} 
+                <p>Active <br><span>Spend a good part of the day doing physical activites (ie. Waitress, UPS Driver)</span></p> 
+                {% render 'xicon-check' %}
+              </label>
+              
+              
+              <input type="radio" name="Lifestyle" value="1.725"  id="Lifestylefour">
+              <label for="Lifestylefour" class="label2">
+                {% render 'xicon-very-active' %} 
+                <p>Very Active <br><span>Spend a good part of the day doing heavy physical activites (ie. Brick Layer, Mover)</span></p> 
+                {% render 'xicon-check' %}
+              </label>
+              
+            </div>
+		</div>
+    	<span style="color:red;font-size:10px;" class="email_msg"></span>
+     	<div class="form-group email">
+            <label for="email" class="main-label">Email Address<super>*</super></label>
+          	<div class="input-group">
+              <input type="text" name="email" placeholder="name@example.com"  id="email">
+            </div>
+		</div>
+      	<div class="form-group agree">
+          	<div class="input-group">
+              <input type="checkbox" name="term1" id="chkboxone"><label for="chkboxone" class="label2">I understand that the results provided by this calculator are estimations based on scientific and clinical data and are not intended to replace advice from a qualified healthcare professional. Always consult with a physician or dietitian before starting a new diet or exercise program.</label>
+            </div>
+		</div>
+      	<div class="form-group agree">
+          	<div class="input-group">
+              <input type="checkbox" name="term2"  id="chkboxtwo" checked><label for="chkboxtwo" class="label2">Transparent Labs can occationally send me product recommendations and promotional emails.</label>
+            </div>
+		</div>
+
+    
+    <div class="form-group">
+      <button type="button" class="bmrbtn" disabled>Calculate</button>
+      <!-- <input type="button" class="bmrbtn button w-full" value="Calculate" disabled> -->
+    </div>
+    
+  </form>
+	<div class="results" style="display:none;">
+      <p>Output (Results)</p>
+      <p class="bmranswer"></p>
+  	</div>
+	</div> 
+  <div class="max-w-6xl mx-auto px-4 text-blue-500 bmr-resourse-detail">
+        	<div class="rich-text py-8 space-y-4">
+             	{% if section.settings.resources_heading != blank %}<h2 class="">{{section.settings.resources_heading}}</h2>{% endif %}
+             	{% if section.settings.resources_detail != blank %}<p class="">{{section.settings.resources_detail}}</p>{% endif %}
+              	{% if section.settings.references_heading != blank %}<h2 class="">{{section.settings.references_heading}}</h2>{% endif %}
+                {% if section.settings.references_detail != blank %}<p class="">{{section.settings.references_detail}}</p>{% endif %}
+            </div>
+		</div>
+</div>
+<style>
+  .bmrbtn:disabled{background-color:#6fc6ed;cursor: no-drop;}
+  super{color:red;}
+  .bmrbtn:disabled {    background-color: #bddeed;    cursor: no-drop;}
+  
+</style>
+<script type="text/javascript" src="https://www.klaviyo.com/media/js/public/klaviyo_subscribe.js" defer></script>
+
+<script>
+  /**
+   * Converts form data to URL encoded string
+   * @param {HTMLFormElement} form - The form element
+   * @returns {string} URL encoded form data
+   */
+  function serializeForm(form) {
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+    
+    for (const [key, value] of formData.entries()) {
+      params.append(key, value);
+    }
+    
+    return params.toString();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const chkboxone = document.getElementById('chkboxone');
+    const bmrBtn = document.querySelector('.bmrbtn');
+    const emailInput = document.getElementById('email');
+    const weightInput = document.getElementById('weight');
+    const heightInput = document.getElementById('height');
+    const ageInput = document.getElementById('age');
+    const emailMsg = document.querySelector('.email_msg');
+    const weightMsg = document.querySelector('.weight_msg');
+    const heightMsg = document.querySelector('.height_msg');
+    const ageMsg = document.querySelector('.age_msg');
+
+    // Initial checkbox change handler
+    chkboxone.addEventListener('change', function() {
+      if (this.checked) {
+        bmrBtn.disabled = false;
+      } else {
+        bmrBtn.disabled = true;
+      }
+    });
+
+    // Klaviyo integration
+    if (typeof KlaviyoSubscribe !== 'undefined') {
+      KlaviyoSubscribe.attachToForms('#email_signup', {
+        success: function($form) {
+          console.log($form);
+          const form = document.getElementById('email_signup');
+          const formdata = serializeForm(form);
+          window.location.href = "https://www.transparentlabs.com/pages/calculator-results?" + formdata;
+          
+          // Get email for tracking
+          const email = form.querySelector('[name="email"]').value;
+          _learnq.push(['identify', { $email: email }]);
+          _learnq.push(['track', 'Signed Up for Newsletter']);
+        },
+        hide_form_on_success: true,
+        extra_properties: {
+          $source: '$embed',
+          $method_type: "Klaviyo Form",
+          $method_id: 'embed',
+          $consent_version: 'Embed default text'
+        }
+      });
+    }
+
+    /**
+     * Validates email format
+     * @param {string} email - Email to validate
+     * @returns {boolean} True if email is valid
+     */
+    function validateEmail(email) {
+      const regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return regex.test(email);
+    }
+
+    /**
+     * Checks all form fields and enables/disables submit button
+     */
+    function checkAllFields() {
+      const height = parseFloat(heightInput.value);
+      const weight = parseFloat(weightInput.value);
+      const age = parseFloat(ageInput.value);
+      const email = emailInput.value;
+      const emailValid = validateEmail(email);
+
+      // Enable button only if all fields are valid and checkbox is checked
+      if (!isNaN(height) && height > 0 &&
+          !isNaN(weight) && weight > 0 &&
+          !isNaN(age) && age > 0 &&
+          emailValid && chkboxone.checked) {
+        bmrBtn.disabled = false;
+      } else {
+        bmrBtn.disabled = true;
+      }
+    }
+
+    // Height validation
+    heightInput.addEventListener('change', function() {
+      const height = parseFloat(this.value);
+      if (isNaN(height) || height <= 0) {
+        heightMsg.textContent = "Please enter a valid height greater than 0!";
+        bmrBtn.disabled = true;
+      } else {
+        heightMsg.textContent = "";
+        checkAllFields();
+      }
+    });
+
+    // Weight validation
+    weightInput.addEventListener('change', function() {
+      const weight = parseFloat(this.value);
+      if (isNaN(weight) || weight <= 0) {
+        weightMsg.textContent = "Please enter a valid weight greater than 0!";
+        bmrBtn.disabled = true;
+      } else {
+        weightMsg.textContent = "";
+        checkAllFields();
+      }
+    });
+
+    // Age validation
+    ageInput.addEventListener('change', function() {
+      const age = parseFloat(this.value);
+      if (isNaN(age) || age <= 0) {
+        ageMsg.textContent = "Please enter a valid age greater than 0!";
+        bmrBtn.disabled = true;
+      } else {
+        ageMsg.textContent = "";
+        checkAllFields();
+      }
+    });
+
+    // Email validation
+    emailInput.addEventListener('change', function() {
+      const email = this.value;
+      const emailValid = validateEmail(email);
+
+      if (!emailValid) {
+        emailMsg.textContent = "Please enter a valid email!";
+        bmrBtn.disabled = true;
+      } else {
+        emailMsg.textContent = "";
+        checkAllFields();
+      }
+    });
+
+    // Checkbox validation
+    chkboxone.addEventListener('change', function() {
+      checkAllFields();
+    });
+
+    /**
+     * Calculates BMR based on user inputs
+     * @param {number} age - User's age
+     * @param {string} gender - User's gender (male/female)
+     * @param {number} weight - User's weight
+     * @param {number} height - User's height
+     * @param {string} weightUnit - Weight unit (lbs/kg)
+     * @param {string} heightUnit - Height unit (in/cm)
+     * @returns {string|null} BMR calculation result or null if invalid
+     */
+    function calculateBMR(age, gender, weight, height, weightUnit, heightUnit) {
+      console.log(age, gender, weight, height, weightUnit, heightUnit);
+      
+      // Convert weight from lbs to kg if needed
+      if (weightUnit === "lbs") {
+        weight = weight / 2.205;
+      }
+
+      // Convert height from inches to cm if needed
+      if (heightUnit === "in") {
+        height = height * 2.54;
+      }
+
+      // Calculate BMR based on gender
+      let bmr;
+      if (gender === "male") {
+        bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+      } else if (gender === "female") {
+        bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+      }
+
+      // Return BMR only if it was calculated, otherwise return null
+      return bmr ? bmr.toFixed(1) + " kcal/day" : null;
+    }
+
+    // Handle BMR button click event
+    bmrBtn.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      const gender = document.querySelector('input[name="fgender"]:checked').value;
+      const heightUnit = document.querySelector('input[name="height-unit"]:checked').value;
+      const weightUnit = document.querySelector('input[name="weight-unit"]:checked').value;
+      const height = parseFloat(heightInput.value);
+      const weight = parseFloat(weightInput.value);
+      const age = parseFloat(ageInput.value);
+      const email = emailInput.value;
+
+      // Initialize flag to check if there are validation errors
+      let flag = 0;
+
+      // Check each field for final validation
+      if (isNaN(height) || height <= 0) {
+        heightMsg.textContent = "Please enter a valid height greater than 0!";
+        flag = 1;
+      }
+      if (isNaN(weight) || weight <= 0) {
+        weightMsg.textContent = "Please enter a valid weight greater than 0!";
+        flag = 1;
+      }
+      if (isNaN(age) || age <= 0) {
+        ageMsg.textContent = "Please enter a valid age greater than 0!";
+        flag = 1;
+      }
+      if (!validateEmail(email)) {
+        emailMsg.textContent = "Please enter a valid email!";
+        flag = 1;
+      }
+
+      // Submit the form if no validation errors
+      if (flag === 0) {
+        // Calculate BMR and display result
+        const bmrResult = calculateBMR(age, gender, weight, height, weightUnit, heightUnit);
+        const resultsDiv = document.querySelector('.results');
+        const bmrAnswer = document.querySelector('.bmranswer');
+        
+        if (resultsDiv) resultsDiv.style.display = 'block';
+        if (bmrAnswer) bmrAnswer.textContent = "Your BMR is: " + bmrResult;
+      }
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "BMR-calculator",
+    "class": "td-legacy",
+    "settings": [
+	
+	{
+		"type":"image_picker",
+		"id":"header_image",
+		"label":"Choose image"
+	},
+	{
+		"type":"text",
+		"id":"title",
+		"label":"Title"
+	},
+	{
+		"type":"textarea",
+		"id":"detail",
+		"label":"Subtitle"
+	},
+	{
+    	"type":"text",
+        "id":"resources_heading",
+        "label":"Resources heading"
+	},
+    {
+        "type":"richtext",
+        "id":"resources_detail",
+        "label":"Resources details"
+    },
+    {
+        "type":"text",
+        "id":"references_heading",
+        "label":"References heading"
+     },
+    {
+    	"type":"richtext",
+    	"id":"references_detail",
+    	"label":"References details"
+    }
+	
+],
+"presets":[
+		{
+			"name": "BMR-calculator"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 
+

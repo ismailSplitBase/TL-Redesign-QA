@@ -1,0 +1,164 @@
+<style>
+.xt-asrv-gallery
+{
+  display:block;
+  width:100%;
+}
+.xt-asrv-gallery .asrv-gallery-wraper
+{
+  align-item:stratch;
+  flex-wrap:wrap;
+  gap:0;
+}
+.xt-asrv-gallery .asrv-gallery-wraper.desktop
+{
+  display:flex;
+}
+.xt-asrv-gallery .asrv-gallery-wraper.mobile
+{
+  display:none;
+}
+.xt-asrv-gallery .gallery-item
+{
+  display:flex;
+}
+.xt-asrv-gallery .gallery-item:first-child
+{
+  width:100%;
+}
+.xt-asrv-gallery .gallery-item:nth-child(2)
+{
+  width:60%;
+}
+.xt-asrv-gallery .gallery-item:last-child
+{
+  width:40%;
+}
+.xt-asrv-gallery .gallery-item img
+{
+  width:100%;
+}
+
+@media only screen and (max-width:767px)
+{
+  .xt-asrv-gallery .asrv-gallery-wraper.desktop
+  {
+    display:none;
+  }
+  .xt-asrv-gallery .asrv-gallery-wraper.mobile
+  {
+    display:flex;
+    flex-direction:column;
+  }
+  .xt-asrv-gallery .gallery-item
+  {
+    width:100% !important;
+  }
+}
+</style>
+
+
+
+<div class="xt-asrv-gallery">
+  
+  <div class="asrv-gallery-wraper desktop">
+
+    {% if section.settings.image_1!=blank %}
+      <div class="gallery-item">
+        <img src="{{ section.settings.image_1 | img_url : 'master' }}" alt="Banner Image 1" loading="lazy">
+      </div>1
+    {% endif %}
+
+    {% if section.settings.image_2!=blank %}
+      <div class="gallery-item">
+        <img src="{{ section.settings.image_2 | img_url : 'master' }}" alt="Banner Image 2" loading="lazy">
+      </div>
+    {% endif %}
+
+    {% if section.settings.image_3!=blank %}
+      <div class="gallery-item">
+        <img src="{{ section.settings.image_3 | img_url : 'master' }}" alt="Banner Image 3" loading="lazy">
+      </div>
+    {% endif %}
+    
+  </div>
+
+  <div class="asrv-gallery-wraper mobile">
+
+    {% if section.settings.image_mob_1!=blank %}
+      <div class="gallery-item">
+        <img src="{{ section.settings.image_mob_1 | img_url : 'master' }}" alt="Banner Image 1" loading="lazy">
+      </div>
+    {% endif %}
+
+    {% if section.settings.image_mob_2!=blank %}
+      <div class="gallery-item">
+        <img src="{{ section.settings.image_mob_2 | img_url : 'master' }}" alt="Banner Image 2" loading="lazy">
+      </div>
+    {% endif %}
+
+    {% if section.settings.image_mob_3!=blank %}
+      <div class="gallery-item">
+        <img src="{{ section.settings.image_mob_3 | img_url : 'master' }}" alt="Banner Image 3" loading="lazy">
+      </div>
+    {% endif %}
+    
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Asrv Gallery",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"header",
+        "content":"Desktop gallery images"
+      },
+      {
+        "type":"image_picker",
+        "id":"image_1",
+        "label":"image"
+      },
+      {
+        "type":"image_picker",
+        "id":"image_2",
+        "label":"image"
+      },
+      {
+        "type":"image_picker",
+        "id":"image_3",
+        "label":"image"
+      }
+      ,{
+        "type":"header",
+        "content":"Mobile gallery images"
+      }, 
+      {
+        "type":"image_picker",
+        "id":"image_mob_1",
+        "label":"image"
+      },
+      {
+        "type":"image_picker",
+        "id":"image_mob_2",
+        "label":"image"
+      },
+      {
+        "type":"image_picker",
+        "id":"image_mob_3",
+        "label":"image"
+      }
+    ],
+    "presets":[
+      {
+        "name":"Asrv Gallery"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

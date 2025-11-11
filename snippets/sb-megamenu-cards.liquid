@@ -1,0 +1,15 @@
+<div class="sb-megamenu-cards">
+  <div class="sb-megamenu-cards__head">
+    <h2 class="sb-megamenu-cards__title">
+      {{ link.title }}
+    </h2>
+    {% render 'sb-button', button_text: 'View All', button_type: 'link', button_url: link.url %}
+  </div>
+  {% if block.settings.collection.products.size > 0 %}
+    <div class="sb-megamenu-cards__container">
+      {% for product in block.settings.collection.products, limit: 5 %}
+        {% render 'product-card', product: product, disable_slider: true, simple_label: true %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>

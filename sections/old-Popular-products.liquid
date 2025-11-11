@@ -1,0 +1,149 @@
+
+{{ 'old-latest-blog.css' | asset_url | stylesheet_tag }}
+
+<style>.blog-wraper{flex-wrap:wrap;}
+  .blog-wraper .blog-column.single.featured {    flex-grow: 2;    width: 50%;}
+  .blog-wraper .blog-column {    display: flex;    flex-direction: column;    flex:unset !important;    width: 25%;}
+  .blog-wraper .blog-column .blog-item .blog-img {height: 200px !important;}
+  .blog-wraper .author-wraper {    margin-bottom: 16px;}
+  .blog-column1.single {
+    display: inline-block;
+    width: 25%;
+}
+  @media only screen and (min-width:0) and (max-width:900px)
+  {
+
+     .blog-column1.single {width: 100%;display: block;}
+    .blog-wraper {     text-align: center;}
+    .xt-latest-blog .title {   font-size: 35px; text-align:center;}
+    .blog-wraper .blog-column {width:100%; min-height: 0 !important;}
+    .blog-wraper .blog-column.single.featured {      width: 100%;}
+    .blog-wraper .author-wraper {    justify-content: center;}
+  }
+</style>
+ 
+ <div class="xt-latest-blog">
+    <div class="font-neue pb-12 px-4 mt-4 lg:max-w-7xl lg:mx-auto">
+      {% if section.settings.heading != blank %}
+        <h2 class="title">{{ section.settings.heading }}</h2>
+      {% endif %}
+      <div class="blog-wraper product_slider">
+       
+          {% for block in section.blocks %}
+            {% assign product = block.settings.product  %}
+            {% if product.tags contains 'stack'  %}
+                
+                 {% else %}
+                 {% render 'old-product-card' with product: product %}
+                {% endif %}
+<!--               <div class="blog-column1 single">
+                    <div class="blog-item">
+                        <img src="{{ product.featured_image | img_url: "master" }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+                      <div class="blog-item-desc">
+                        <h2>{{ product.title}}</h2>
+                  
+                        <div class="author-wraper">
+                       <div class="flex space-x-1 text-orange-400">
+                        {%- assign review_average = product.metafields.yotpo.reviews_average | times: 1 -%}
+                        {%- for i in (1..5) -%}
+                          {%- assign index_minus_one = i | minus: 1 -%}
+                          {%- assign mod = review_average | modulo: index_minus_one -%}
+        
+                          {%- if review_average >= i -%}
+                            <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                              <path d="m47.961 48h-47.945l39.914 31.543-15.941 48.441 40.059-29.871 39.938 29.871-15.871-48.863 39.918-31.121h-47.945l-16.094-47.996z" fill="currentColor"></path>
+                            </svg>
+                          {%- elsif mod >= 0.5 -%}
+                            <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                              <path d="m128.02 48h-47.953l-16.094-48-16.031 48h-47.969l39.937 31.555-15.953 48.445 39.984-29.812 0.09375-0.0625 39.938 29.875-15.875-48.867zm-39.594 58.531-24.371-18.547-0.058594 0.0625v-56.953l10.164 24.906h29.812l-25.453 19.43z" fill="currentColor"></path>
+                            </svg>
+                          {%- else -%}
+                            <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                              <path d="m64.008 31.113 10.172 24.887h29.809l-25.449 19.426 9.9023 31.105-24.387-18.543-24.387 18.109 9.8711-30.156-25.539-19.941h29.871l10.137-24.887m-16.043 16.887h-47.949l39.914 31.551-15.93 48.445 40.055-29.867 39.934 29.871-15.875-48.871 39.918-31.129h-47.945l-16.094-47.996z" fill="currentColor"></path>
+                            </svg>
+                          {%- endif %}
+                        {%- endfor -%}
+                      </div>
+                        </div>
+                        <div class="price">
+                          {{ product.price | money }}
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+          {% endfor %}
+    </div>
+ </div>
+            <div class="container my-8 mx-auto px-4 text-blue-500 text-center" style="padding-top: 20px;padding-bottom: 20px;">
+            <p>Still Can’t find what you were looking for? Return to <a style=" color: rgb(13, 135, 221); text-decoration: underline;" href="https://www.transparentlabs.com">Homepage</a> to start from Begining.</p>
+          </div>
+
+</div>
+{% schema %}
+{
+  "blocks": [
+    {
+      "limit": 5,
+      "name": "Popular products",
+      "settings": [
+        {
+          "id": "product",
+          "label": "Product",
+          "type": "product"
+        }
+        
+      ],
+      "type": "Popular_products"
+    }
+  ],
+  "name": "Popular products",
+  "class": "td-legacy",
+  "settings": [
+      {
+          "id": "heading",
+          "info": "Section heading",
+          "label": "Heading",
+          "type": "text",
+          "default":"Popular products"
+        }
+  ],
+  "presets": [{
+    "name": "Popular products",
+    "category": "Text"
+  }]
+}
+{% endschema %}
+
+<script>
+  $(".product_slider").slick({
+    dots: false,
+    infinite: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows:false,
+    prevArrow:"<button class='slick-prev slick-arrow' aria-label='Previous' type='button'><img src='https://cdn.shopify.com/s/files/1/0866/7664/files/chevron_right.png?v=1660762411'></button>",
+    nextArrow:"<button class='slick-next slick-arrow' aria-label='Previous' type='button'><img src='https://cdn.shopify.com/s/files/1/0866/7664/files/chevron_right.png?v=1660762411'></button>",
+    responsive:[
+      {
+            breakpoint: 1366,
+            settings: {
+                slidesToShow: 4
+            }
+        },
+        {
+            breakpoint: 1023,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 1,
+                arrows:false,
+                centerMode:true
+            }
+        }
+    ]
+  });
+</script>

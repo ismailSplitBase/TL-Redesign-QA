@@ -1,0 +1,682 @@
+<product-grid-item class=" 899 product-card {% for tag in product.tags %}{% if tag contains 'TLsvegan' %} vegan_class {% elsif tag contains "StimulantFree" %} StimulantFree {% endif %} {% endfor %}bg-white flex flex-col p-4 rounded-xl text-blue-500 xgen-new-product stack-products_{{block_id}}_{{product.id}}">
+  <div class="xgen-product-img">
+    <div class="product-images-slider swiper A-B-images">
+        <div class="swiper-wrapper">
+          {% assign counter = 0 %}
+          {% assign featuredImamgeadded = false %}
+          {% assign productOptionSize = product.options | size %}
+          {% assign selectedOrFirstVariant = product.selected_or_first_available_variant %}
+          {% assign option2Size = product.options_with_values[1].values | size %}
+          
+          {%- for media in product.media -%}
+            {% if selectedOrFirstVariant.featured_image and featuredImamgeadded == false %}
+                <div class="swiper-slide" data-variant-id="{{ variant.id }}">
+                  <a class="65 block mx-auto w-64" href="{{ product.url }}">
+                    {% if parentForLoopIndex > 4 %}
+                      <link rel="preload" href="{{ selectedOrFirstVariant.featured_image | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ selectedOrFirstVariant.featured_image | img_url: '400x' }}" data-src="{{selectedOrFirstVariant.featured_image | img_url: '400x'}}" loading="eager" alt="product image {{ selectedOrFirstVariant.featured_image.alt }} {{ forloop.index }}"  />
+                    {% else %}
+                      <link rel="preload" href="{{ selectedOrFirstVariant.featured_image | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ selectedOrFirstVariant.featured_image | img_url: '400x' }}" data-src="{{ selectedOrFirstVariant.featured_image | img_url: '400x' }}"  loading="eager" alt="product image {{ selectedOrFirstVariant.featured_image | json }} {{ forloop.index }}" />
+                    {% endif %}
+                  </a>
+                </div>
+                {% assign featuredImamgeadded = true %}
+                {% assign counter = counter | plus: 1 %}
+              {% endif %}
+              {% if selectedOrFirstVariant.featured_image != media and productOptionSize == 2 and media.alt contains selectedOrFirstVariant.option1 and media.alt contains selectedOrFirstVariant.option2 %}
+                <div class="swiper-slide" data-variant-id="{{ variant.id }}">
+                  <a class="45 block mx-auto w-64" href="{{ product.url }}">
+                    {% if parentForLoopIndex > 4 %}
+                      <link rel="preload" href="{{ media | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ selectedOrFirstVariant.featured_image | img_url: '400x' }}" data-src="{{media | img_url: '400x'}}" loading="eager" alt="product image {{ media.alt }} {{ forloop.index }}"  />
+                    {% else %}
+                      <link rel="preload" href="{{ media | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ media | img_url: '400x' }}" data-src="{{ media | img_url: '400x' }}"  loading="eager" alt="product image {{ selectedOrFirstVariant.featured_image | json }} {{ forloop.index }}" />
+                    {% endif %}
+                  </a>
+                </div>
+                {% assign counter = counter | plus: 1 %}
+              {% elsif selectedOrFirstVariant.featured_image != media and productOptionSize == 2 and option2Size == 1 and media.alt contains selectedOrFirstVariant.option1 %}
+                <div class="swiper-slide" data-variant-id="{{ variant.id }}">
+                  <a class="85 block mx-auto w-64" href="{{ product.url }}">
+                    {% if parentForLoopIndex > 4 %}
+                      <link rel="preload" href="{{ media | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ selectedOrFirstVariant.featured_image | img_url: '400x' }}" data-src="{{media | img_url: '400x'}}" loading="eager" alt="product image {{ media.alt }} {{ forloop.index }}"  />
+                    {% else %}
+                      <link rel="preload" href="{{ media | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ media | img_url: '400x' }}" data-src="{{ media | img_url: '400x' }}"  loading="eager" alt="product image {{ selectedOrFirstVariant.featured_image | json }} {{ forloop.index }}" />
+                    {% endif %}
+                  </a>
+                </div>
+                {% assign counter = counter | plus: 1 %}
+              {% elsif selectedOrFirstVariant.featured_image != media and productOptionSize == 1 and media.alt contains selectedOrFirstVariant.option1 %}
+                <div class="95 swiper-slide" data-variant-id="{{ variant.id }}">
+                  <a class="95 block mx-auto w-64" href="{{ product.url }}">
+                    {% if parentForLoopIndex > 4 %}
+                      <link rel="preload" href="{{ media | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ selectedOrFirstVariant.featured_image | img_url: '400x' }}" data-src="{{media | img_url: '400x'}}" loading="eager" alt="product image {{ media.alt }} {{ forloop.index }}"  />
+                    {% else %}
+                      <link rel="preload" href="{{ media | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ media | img_url: '400x' }}" data-src="{{ media | img_url: '400x' }}"  loading="eager" alt="product image {{ selectedOrFirstVariant.featured_image | json }} {{ forloop.index }}" />
+                    {% endif %}
+                  </a>
+                </div>
+                {% assign counter = counter | plus: 1 %}
+              {% elsif media.alt contains "all" and selectedOrFirstVariant.featured_image != media  %}
+                <div class="75 swiper-slide" data-variant-id="{{ variant.id }}">
+                  <a class="75 block mx-auto w-64" href="{{ product.url }}">
+                    {% if parentForLoopIndex > 4 %}
+                      <link rel="preload" href="{{ media | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ selectedOrFirstVariant.featured_image | img_url: '400x' }}"  data-src="{{media | img_url: '400x'}}" loading="eager" alt="product image {{ media.alt }} {{ forloop.index }}"  />
+                    {% else %}
+                      <link rel="preload" href="{{ media | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ media | img_url: '400x' }}" data-src="{{ media | img_url: '400x' }}"  loading="eager" alt="product image {{ selectedOrFirstVariant.featured_image | json }} {{ forloop.index }}" />
+                    {% endif %}
+                  </a>
+                </div>
+                {% assign counter = counter | plus: 1 %}
+              {% endif %}
+            {% if counter == 3 %} {% break %} {% endif %}
+          {% endfor %}
+
+          {% if counter < 2 %}
+            {%- for media in product.media -%}
+              {% if selectedOrFirstVariant.featured_image == media %} {% continue %} {% endif %}
+              {% assign valueToMatch = product.title | split: '|' | first %}
+              {% if media.alt contains valueToMatch %}
+                <div class="swiper-slide" data-variant-id="{{ variant.id }}">
+                  <a class="35 block mx-auto w-64" href="{{ product.url }}">
+                    {% if parentForLoopIndex > 4 %}
+                      <link rel="preload" href="{{ media | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ selectedOrFirstVariant.featured_image | img_url: '400x' }}" data-src="{{media | img_url: '400x'}}" loading="eager" alt="product image {{ media.alt }} {{ forloop.index }}"  />
+                    {% else %}
+                      <link rel="preload" href="{{ media | image_url: width: '400' }}" as="image" crossorigin="anonymous">
+                      <img width="" height="" src="{{ media | img_url: '400x' }}" data-src="{{ media | img_url: '400x' }}"  loading="eager" alt="product image {{ selectedOrFirstVariant.featured_image | json }} {{ forloop.index }}" />
+                    {% endif %}
+                  </a>
+                </div>
+                {% assign counter = counter | plus: 1 %}
+                {% if counter == 3 %} {% break %} {% endif %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="swiper-arrows"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <!-- <div class="swiper-pagination"></div> -->
+      </div>  
+    {% assign split_title = product.title | split: '|' %}
+    <!-- {% if product.variants.size <= 1 or product.tags contains 'use-featured-image' %}
+      <a class="65 block mx-auto w-64" href="{{ product.url }}">
+        <img width="" height="" src="{{product.featured_image | img_url: 'master'}}" loading="lazy">
+      </a>
+    {% else %}
+      <div class="swiper render-swiper">
+        <div class="swiper-wrapper">
+          {% for variant in product.variants %}
+            {% if variant.option2 == '2 Tub' or variant.option2 == '3 Tub' %}
+              {% continue %}
+            {% endif %}
+            <div class="swiper-slide" data-variant-id="{{ variant.id }}">
+              <a class="85 block mx-auto w-64" href="{{ product.url }}">
+                <img width="" height="" src="{{product.featured_image | img_url: 'master'}}" loading="lazy">
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %} -->
+  </div>
+
+  <div class="xgen-product-info">
+    <div class="xgen-product-info-in">
+      <a href="{{ product.url }}" class="flex rctitle-flex">
+        <!--
+          <h3 class="font-normal">
+            {{ split_title[1] }}
+          </h3>
+        -->
+        <h2 class="font-semibold text-xl xgen-ptitle">
+          {{ split_title[0] | truncate: 40 }}
+        </h2>
+        <div class="font-semibold  text-blue-400 text-xl variant-price">
+          {% if product.selected_or_first_available_selling_plan_allocation == blank %}
+            <div id="singlereal_price_{{product.id}}{{block_id}}">{{ product.first_available_variant.price | money }}</div>
+            <del id="singlecom_price_{{product.id}}{{block_id}}">{{ product.first_available_variant.compare_at_price | money }}</del>
+          {% else %}
+            <div class=" com_price_{{product.id}}{{block_id}}" data-price="{{ product.first_available_variant.price | money }}"> {{ product.first_available_variant.price | money }} </div>
+            <del class=" real_price_{{product.id}}{{block_id}}">{{ product.first_available_variant.compare_at_price | money }}</del>
+          {% endif %}
+        </div>
+      </a>
+
+      <div class="flex items-center text-sm prating space-between">
+        <div class="flex space-x-1 text-orange-400">
+          <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+            {{ product.metafields.judgeme.badge }}
+          </div> 
+        </div>
+        <p class="ml-3 text-gray-500">
+          <span class="font-bold text-black">{{ product.metafields.reviews.rating.value }}</span>/5.0
+        </p>
+     
+      </div>
+
+      {% if product.metafields.custom.hide_best_seller_text == true %}
+          <div class="xgan-aptag" style="" 77>     
+            <span>Bestseller</span>  
+          </div>
+      {% endif %}
+      
+    </div>
+    <div class="xgen-pdesc product_detail_{{ product.id }}">
+      {% if product.metafields.custom.product_overview_detail != blank %}
+        {% assign string = product.metafields.custom.product_overview_detail | strip_html %}
+        {{ string | truncate: 120 }}
+      {% endif %}
+    </div>
+    <div class="available-flavors">
+      <a href="{{ product.url }}">
+         {% if product.options[0] == 'Title' or  product.options[0] == 'title' or  product.options[0] == 'Gift Card' %} 
+          {% if product.variants.size > 1 %}
+            Available in {{ product.variants.size }} options
+          {% else %}
+           Available in {{ product.variants.size }} option
+          {% endif %}
+        {% else %} 
+            {% for option in product.options_with_values %}
+            {% if option.name == "Flavor" %}
+              {% assign flavor_count = option.values | size %}
+            {% endif %}
+          {% endfor %}
+          
+          {% if flavor_count > 0 %}
+            <p>Available in {{ flavor_count }} flavors</p>
+          {% else %}
+            <p>No flavors available</p>
+          {% endif %}
+        {% endif %}
+      
+      </a>
+    </div>
+
+     <input
+        type="hidden"
+        name="id"
+        id="product-select_{{product.id}}{{block_id}}"
+        class="stack_vid3"
+        value="{{ product.selected_or_first_available_variant.id }}"
+      >
+
+      <input
+        type="hidden"
+        name="available"
+        id="product-available_{{product.id}}{{ block_id }}"
+        value="{% if  product.selected_or_first_available_variant.available  %}true{% else %}false{% endif %}"
+      >
+    {% if product.selected_or_first_available_selling_plan_allocation == blank %}
+    
+    {% else %}
+      <div class="p1_selling_plan_{{product.id}}{{block_id}}" style="display:none;"></div>
+    {% endif %}
+ {% comment %}
+    <div class="package-list-wraper stack-text">
+      {% if product.variants.size > 1 %}
+        {% if product.options[0] %}
+          <div class="package-list   ">
+            <div class="input-wraper">
+              {% assign used = '' %}
+              {% assign splitted_block_id = block_id | split: '-' %}
+              <label for="select-one_{{product.id}}{{product.id}}">{{ product.options[0] }}</label>
+              <select
+                id="select-one_{{product.id}}{{product.id}}"
+                onchange="letsDoThis_{{product.id}}{{splitted_block_id}}()"
+              >
+                {% for variant in product.variants %}
+                  {% unless used contains variant.option1 %}
+                    {% if product.selected_or_first_available_variant.id == variant.id %}
+                      <option value="{{ variant.option1 }}" selected>{{ variant.option1 }}</option>
+                    {% else %}
+                      <option value="{{ variant.option1 }}">{{ variant.option1 }}</option>
+                    {% endif %}
+                    {% capture used %}{{ used }} {{ variant.option1 }}{% endcapture %}
+                  {% endunless %}
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        {% endif %}
+        {% if product.options[1] %}
+          <div
+            class="package-list"
+            {% if product.options[1] == 'Quantity' %}
+              style="display:none;"
+            {% endif %}
+          >
+            <div class="input-wraper">
+              {% assign used = '' %}
+              {% assign splitted_block_id = block_id | split: '-' %}
+              <label for="select-one_{{product.id}}{{product.id}}">{{ product.options[1] }}</label>
+              <select
+                id="select-two_{{product.id}}{{product.id}}"
+                onchange="letsDoThis_{{product.id}}{{splitted_block_id}}()"
+              >
+                {% for variant in product.variants %}
+                  {% unless used contains variant.option2 %}
+                    {% if product.selected_or_first_available_variant.id == variant.id %}
+                      <option value="{{ variant.option2 }}" selected>{{ variant.option2 }}</option>
+                    {% else %}
+                      <option value="{{ variant.option2 }}">{{ variant.option2 }}</option>
+                    {% endif %}
+                    {% capture used %}{{ used }} {{ variant.option2 }}{% endcapture %}
+                  {% endunless %}
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        {% endif %}
+        {% if product.options[2] %}
+          <div
+            class="package-list"
+            {% if product.options[2] == 'Quantity' %}
+              style="display:none;"
+            {% endif %}
+          >
+            <div class="input-wraper">
+              {% assign used = '' %}
+              {% assign splitted_block_id = block_id | split: '-' %}
+              <label for="select-one_{{product.id}}{{product.id}}">{{ product.options[2] }}</label>
+              <select
+                id="select-three_{{product.id}}{{product.id}}"
+                onchange="letsDoThis_{{product.id}}{{splitted_block_id}}()"
+              >
+                {% for variant in product.variants %}
+                  {% unless used contains variant.option3 %}
+                    {% if product.selected_or_first_available_variant.id == variant.id %}
+                      <option value="{{ variant.option3 }}" selected>{{ variant.option3 }}</option>
+                    {% else %}
+                      <option value="{{ variant.option3 }}">{{ variant.option3 }}</option>
+                    {% endif %}
+                    {% capture used %}{{ used }} {{ variant.option3 }}{% endcapture %}
+                  {% endunless %}
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+
+      <input
+        type="hidden"
+        name="id"
+        id="product-select_{{product.id}}{{block_id}}"
+        class="stack_vid3"
+        value="{{ product.selected_or_first_available_variant.id }}"
+      >
+
+      <input
+        type="hidden"
+        name="available"
+        id="product-available_{{product.id}}{{ block_id }}"
+        value="{% if  product.selected_or_first_available_variant.available  %}true{% else %}false{% endif %}"
+      >
+
+      {% if product.selected_or_first_available_selling_plan_allocation == blank %}
+      {% else %}
+        <div class="p1_selling_plan_{{product.id}}{{block_id}}" style="display:none;"></div>
+
+        <!--
+          <div class="package-list deliveryf">
+            <p>Delivery Frequency</p>
+            <select class="selling_plan_{{ product.id }}"></select>
+          </div>
+        -->
+
+        <div class="deliveryf deliveryf_{{ product.id }}">
+          <label
+            ><input
+              type="radio"
+              name="purchase_option_{{product.id}}_{{block_id}}"
+              class="onetimeoption"
+              value="onetime"
+              checked="checked"
+            >
+            <div class="dtext"><span class="ltext">One time order</span><span class="stext">Give it a Try</span></div>
+          </label>
+        </div>
+
+        <div class="deliveryf dlast">
+          <label>
+            <input type="radio" name="purchase_option_{{product.id}}_{{block_id}}" value="subsave">
+            <span class="ltext">Deliver Every</span>
+            {% for group in product.selling_plan_groups %}
+              <select class="selling_plan_{{block_id}}_{{ product.id }}">
+                {% for plan in group.selling_plans %}
+                  <option value="selling_plan_{{ forloop.index0}}">{{ plan.name | remove: 'Delivery every' }}</option>
+                {% endfor %}
+              </select>
+            {% endfor %}
+          </label>
+          <div class="xtags">
+            {% if product.metafields.custom.add_percentage_text != blank %}
+              <span>{{ product.metafields.custom.add_percentage_text }}</span>
+            {% else %}
+              <span>10% Off</span>
+            {% endif %}
+            {% if product.metafields.custom.hide_free_shipping_badge == true %}
+              <span>Free Shipping</span>
+            {% elsif product.metafields.custom.hide_free_shipping_badge == false %}
+
+            {% else %}
+              <span>Free Shipping</span>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% assign frequency_text = product.metafields.custom.subscription_frequency_text | split: ',' %}
+      {% assign f_text_zero = frequency_text[0] %}
+      {% assign f_text_one = frequency_text[1] %}
+      {% assign f_text_two = frequency_text[2] %}
+      {% assign f_text_three = frequency_text[3] %}
+      {% assign splitted_block_id = block_id | split: '-' %}
+
+      <script type="text/javascript">
+          function letsDoThis_{{product.id}}{{splitted_block_id}}()
+          {
+
+
+              $(".p1_selling_plan_{{product.id}}{{block_id}}").empty();
+            var variant_values = {{ product.variants | json }};
+                // //console.log(variant_values);
+                var len = variant_values.length;
+                for(var i = 0; i < len; i++)
+                {
+                    ////console.log(variant_values[i].id);
+                    var len2 = variant_values[i].selling_plan_allocations.length;
+                    var plans = variant_values[i].selling_plan_allocations;
+                    for(var j=0; j < len2; j++)
+                    {
+
+                        $(".p1_selling_plan_{{product.id}}{{block_id}}").append('<input type=hidden data-stack="'+variant_values[i].id+'" data-price='+ Shopify.formatMoney(plans[j].price) +' data-otp= '+ Shopify.formatMoney(plans[j].compare_at_price)+'  class="selling_plan_'+j+'" name="selling_plan" value="'+plans[j].selling_plan_id+'">');
+                    }
+
+
+                }
+
+          {% if product.options[0] %}
+            var opt1 = document.getElementById("select-one_{{product.id}}{{product.id}}").value;
+          {% endif %}
+          {% if product.options[1] %}
+             var opt2 = document.getElementById("select-two_{{product.id}}{{product.id}}").value;
+          {% endif %}
+          {% if product.options[2] %}
+            var opt3 = document.getElementById("select-three_{{product.id}}{{product.id}}").value;
+          {% endif %}
+
+          var id = "";
+
+
+          {% for v in product.variants %}
+            {% unless v.metafields.secomapp.freegifts %}
+              {% unless v.title contains '(Freegifts)' %}
+                if(opt1=="{{ v.option1 }}" {% if product.options[1] %} && opt2 =="{{ v.option2 }}" {% endif %} {% if product.options[2] %} && opt3 == "{{ v.option3 }}" {% endif %})
+                {
+                  var id = {{ v.id }};
+                  var price = "{{ v.price | money }}";
+                  var availablity = "{{ v.available }}";
+                  var condition = "{{ v.available }}";
+                  var com_at_price = "{{ product.price }}";
+                }
+              {% endunless %}
+            {% endunless %}
+          {% endfor %}
+
+
+          if(condition == 'true')
+          {
+              document.getElementById('product-select_{{product.id}}{{block_id}}').value = id;
+
+              var selling_plan_val = $('input[name="purchase_option_{{product.id}}_{{block_id}}"]:checked').val();
+              //console.log(selling_plan_val);
+                if(selling_plan_val == "onetime")
+                {
+                  $(".p1_selling_plan_{{product.id}}{{block_id}} [data-stack]").each(function(i,Data)
+                  {
+                      var vid = parseInt($(Data).data("stack"));
+                      if(vid == id)
+                      {
+                          var otpprice = $(Data).data("otp");
+                          var new_price = $(Data).data("price");
+                          $(".real_price_{{product.id}}{{block_id}}").text("");
+                          $(".com_price_{{product.id}}{{block_id}}").text(otpprice);
+                      }
+                    });
+                  $(".submit-stack-products_{{block_id}}_{{product.id}}").text("Add To Cart");
+                  $(".submit-stack-products_{{block_id}}_{{product.id}}").removeClass("opacity-70");
+                  $(".submit-stack-products_{{block_id}}_{{product.id}}").prop('disabled', false);
+                }
+                else
+                {
+                  $(".p1_selling_plan_{{product.id}}{{block_id}} [data-stack]").each(function(i,Data)
+                  {
+                      var vid = parseInt($(Data).data("stack"));
+                      if(vid == id)
+                      {
+                          var otpprice = $(Data).data("otp");
+                          var new_price = $(Data).data("price");
+                          $(".real_price_{{product.id}}{{block_id}}").text(otpprice);
+                          $(".com_price_{{product.id}}{{block_id}}").text(new_price);
+                      }
+                    });
+                  $(".submit-stack-products_{{block_id}}_{{product.id}}").text("Subscribe");
+                  $(".submit-stack-products_{{block_id}}_{{product.id}}").removeClass("opacity-70");
+                  $(".submit-stack-products_{{block_id}}_{{product.id}}").prop('disabled', false);
+                }
+          }
+          else if(condition == 'false')
+          {
+            var selling_plan_val = $("input[name='purchase_option_{{product.id}}_{{block_id}}']:checked").val();
+              $(".p1_selling_plan_{{product.id}}{{block_id}} [data-stack]").each(function(i,Data)
+              {
+                var vid = parseInt($(Data).data("stack"));
+                if(vid == id)
+                {
+                  var otpprice = $(Data).data("otp");
+                  var new_price = $(Data).data("price");
+                  $(".real_price_{{product.id}}{{block_id}}").text(otpprice);
+                  $(".com_price_{{product.id}}{{block_id}}").text(new_price);
+                }
+              });
+              document.getElementById('product-select_{{product.id}}{{block_id}}').value = '';
+              $(".submit-stack-products_{{block_id}}_{{product.id}}").text("Sold Out");
+              $(".submit-stack-products_{{block_id}}_{{product.id}}").addClass("opacity-70");
+              $(".submit-stack-products_{{block_id}}_{{product.id}}").prop('disabled', true);
+          }
+          else
+          {
+              $(".real_price_{{product.id}}{{block_id}}").text("");
+              $(".com_price_{{product.id}}{{block_id}}").text("");
+              document.getElementById('product-select_{{product.id}}{{block_id}}').value = "000";
+              $(".submit-stack-products_{{block_id}}_{{product.id}}").text("Unavailable");
+              $(".submit-stack-products_{{block_id}}_{{product.id}}").addClass("opacity-70");
+              $(".submit-stack-products_{{block_id}}_{{product.id}}").prop('disabled', true);
+          }
+
+
+        }
+      </script>
+    </div>
+
+    <div class="price-btn-grid">
+      <!--
+        <h6 class="update_main_price_{{product.id}}">
+        {{ product.price | money }}
+            </h6>
+      -->
+      <div class=" pricetext">
+        {% if product.tags contains 'stack' %}
+          <div class="w-full" id="add-to-cart-button-container">
+            <a href="{{ product.url }}" class="view_link">VIEW</a>
+          </div>
+        {% else %}
+          <div class="flex items-center quant-btn">
+            <div class="">
+              <quantity-input>
+                <div class="flex items-center text-blue-500">
+                  <button
+                    class="bg-gray-300 flex h-10 items-center justify-center rounded-full text-blue-light w-10"
+                    type="button"
+                  >
+                    {% render 'old-icon-minus' %}
+                  </button>
+
+                  <input
+                    class="border-2 border-gray-300 bg-transparent hide-selectors outline-none mx-2 rounded text-center w-16 focus:ring-0"
+                    min="1"
+                    name="quantity"
+                    type="number"
+                    value="1"
+                    id="stack-products_qty_{{block_id}}_{{product.id}}"
+                  >
+
+                  <button
+                    class="bg-gray-300 flex h-10 items-center justify-center rounded-full text-blue-light w-10"
+                    type="button"
+                  >
+                    {% render 'old-icon-plus' %}
+                  </button>
+                </div>
+              </quantity-input>
+            </div>
+            <div class="w-full" id="add-to-cart-button-container">
+              <button
+                data-product="{{product.id}}"
+                id="submit-stack-products_{{block_id}}_{{product.id}}"
+                class="submit-stack-products_{{block_id}}_{{product.id}} button-alt"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+     {% endcomment %}
+  </div>
+ 
+  <div style="display:none">
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var variant_values = {{ product.variants | json }};
+           var len = variant_values.length;
+      // get recharge selling plan group
+      var rechargeSellingPlanGroup = {{ product.selling_plan_groups | where: "app_id", "SKIO" | json }}
+
+          for(var i = 0; i < len; i++)
+          {
+            ////console.log(variant_values[i].id);
+
+            // create array of selling plan allocations that are recharge's
+            var rechargeAllocations = variant_values[i].selling_plan_allocations.filter(allocation => allocation.selling_plan_group_id == rechargeSellingPlanGroup[0].id)
+
+            var len2 = rechargeAllocations.length;
+            var plans = rechargeAllocations;
+            for(var j=0; j < len2; j++)
+              {
+                var sellingPlanContainer = document.querySelector(".p1_selling_plan_{{product.id}}{{block_id}}");
+                if (sellingPlanContainer) {
+                  var hiddenInput = document.createElement('input');
+                  hiddenInput.type = 'hidden';
+                  hiddenInput.setAttribute('data-stack', variant_values[i].id);
+                  hiddenInput.setAttribute('data-price', Shopify.formatMoney(plans[j].price));
+                  hiddenInput.setAttribute('data-otp', Shopify.formatMoney(plans[j].compare_at_price));
+                  hiddenInput.className = 'selling_plan_' + j;
+                  hiddenInput.name = 'selling_plan';
+                  hiddenInput.value = plans[j].selling_plan_id;
+                  sellingPlanContainer.appendChild(hiddenInput);
+                }
+              }
+            }
+            var collection_pid = "{{ product.id }}";
+            var purchasecollection_pid = "{{ product.id }}{{ block_id }}";
+
+            function format(num) {  return (num / 100).toFixed(2);}
+        		var checkedOption = document.querySelector("input[name='purchase_option_purchase_option_{{product.id}}_{{block_id}}']:checked");
+        		var freq_val = checkedOption ? checkedOption.dataset.text : '';
+      		var freq_val2 = checkedOption ? checkedOption.value : '';
+             //alert(freq_val2);
+              var selling_plan_input = document.querySelector(".selling_plan_{{product.id}}");
+              var selling_plan_val = selling_plan_input ? selling_plan_input.value : '';
+
+              var availInput = document.querySelector("#product-available_{{product.id}}{{ block_id }}");
+              var avail = availInput ? availInput.value : '';
+             //alert(avail);
+              var idInput = document.querySelector("#product-select_{{product.id}}{{block_id}}");
+              var id = idInput ? idInput.value : '';
+              if(avail == 'true')
+              {
+                  if (idInput) {
+                    idInput.value = id;
+                  }
+                  var checkedPurchaseOption = document.querySelector("input[name='purchase_option_{{product.id}}_{{block_id}}']:checked");
+                  var selling_plan_val = checkedPurchaseOption ? checkedPurchaseOption.value : '';
+                    var stackElements = document.querySelectorAll(".p1_selling_plan_{{product.id}}{{block_id}} [data-stack]");
+                    stackElements.forEach(function(element) {
+                      var vid = parseInt(element.dataset.stack);
+                      if(vid == id)
+                      {
+                        var otpprice = element.dataset.otp;
+                        var new_price = element.dataset.price;
+                        // var realPriceEl = document.querySelector(".real_price_{{product.id}}{{block_id}}");
+                        // if (realPriceEl) realPriceEl.textContent = otpprice;
+                        // var comPriceEl = document.querySelector(".com_price_{{product.id}}{{block_id}}");
+                        // if (comPriceEl) comPriceEl.textContent = new_price;
+                      }
+                    });
+              }
+                else if(avail == 'false')
+                {
+                  //console.log("not available ")
+                    var checkedPurchaseOption = document.querySelector("input[name='purchase_option_{{product.id}}_{{block_id}}']:checked");
+                    var selling_plan_val = checkedPurchaseOption ? checkedPurchaseOption.value : '';
+                    var stackElements = document.querySelectorAll(".p1_selling_plan_{{product.id}}{{block_id}} [data-stack]");
+                    stackElements.forEach(function(element) {
+                      var vid = parseInt(element.dataset.stack);
+                      if(vid == id)
+                      {
+                        var otpprice = element.dataset.otp;
+                        var new_price = element.dataset.price;
+                        //var realPriceEl = document.querySelector(".real_price_{{product.id}}{{block_id}}");
+                        //if (realPriceEl) realPriceEl.textContent = otpprice;
+                        //var comPriceEl = document.querySelector(".com_price_{{product.id}}{{block_id}}");
+                        //if (comPriceEl) comPriceEl.textContent = new_price;
+                      }
+                    });
+                }
+                else
+                {
+                    var realPriceEl = document.querySelector(".real_price_{{product.id}}{{block_id}}");
+                    if (realPriceEl) realPriceEl.textContent = "";
+                    var comPriceEl = document.querySelector(".com_price_{{product.id}}{{block_id}}");
+                    if (comPriceEl) comPriceEl.textContent = "";
+                  
+                }
+      })
+
+      // All the commented event handlers below would be converted similarly:
+      // document.querySelectorAll('input[type=radio][name=purchase_option_{{product.id}}_{{block_id}}]').forEach(function(radio) {
+      //   radio.addEventListener('change', function() {
+      //     // conversion logic here
+      //   });
+      // });
+
+      // document.querySelector(".submit-stack-products_{{block_id}}_{{product.id}}").addEventListener("click", function() {
+      //   // AJAX conversion with XMLHttpRequest or fetch
+      // });
+    </script>
+  </div>
+
+</product-grid-item>

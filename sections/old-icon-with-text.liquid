@@ -1,0 +1,72 @@
+{% style %}
+  .xt-iconwith-text-main-section > h2{width:100%;font-size:30px;text-align:center;margin-bottom:20px;}
+  .xt-iconwith-text-main-section {padding-top: 0;}
+{% endstyle %}
+
+
+<div class="xt-iconwith-text-main-section max-w-7xl mx-auto pb-4 px-4 pt-12" id="{{ section.id }}">
+  {% if section.settings.custom_title != blank %}
+    <h2>{{ section.settings.custom_title }}</h2>  
+  {% endif %}
+
+
+<div class="xt-iwtimain gap-4 flex flex-col mt-4 uppercase md:gap-8 md:grid md:grid-flow-col md:auto-cols-fr">
+  {% for block in section.blocks %}
+    <div class="flex items-center">
+    <div class="">
+      {% assign icon_name = block.settings.icon | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+      <img src="{{ block.settings.icon | image_url }}" alt="{% if block.settings.icon.alt %}{{ block.settings.icon.alt }}{% else %}{{ icon_name }}{% endif %}" />
+    </div>
+     <p class="font-bold ml-3 text-xs">{{ block.settings.icon_text }}</p>
+  </div>
+  {% endfor %}
+  
+  
+</div>
+
+
+
+
+  
+</div>
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Icon with text",
+  "class": "xt-icon-with-text td-legacy",
+  "settings": [
+    {
+      "id": "custom_title",
+      "type": "text",
+      "label": "title",
+      "default": "Icon with text"
+    }
+  ],
+	"blocks":[
+		{
+			"name":"icons",
+			"type":"text",
+			"settings":[
+  				{
+                    "type":"image_picker",
+                    "id":"icon",
+                    "label":"Choose icon"
+                },
+    			{
+                    "type":"text",
+                    "id":"icon_text",
+                    "label":"text"
+                }
+			]
+		}
+	],
+  "presets": [{
+    "name": "Icon with text"
+  }]
+}
+{% endschema %}

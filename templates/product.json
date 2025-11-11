@@ -1,0 +1,495 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "sb-main-product",
+      "blocks": {
+        "breadcrumbs_YTEziW": {
+          "type": "breadcrumbs",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "judge_me_reviews_preview_badge_pfGx6f": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "caption": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ product.metafields.custom.short_description | metafield_tag }}</p>",
+            "text_style": "subtitle"
+          }
+        },
+        "icon_list_PpiNHd": {
+          "type": "icon-list",
+          "settings": {
+            "use_product_icons": true,
+            "source": []
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "custom_skio_plan_picker_mUG6Vz": {
+          "type": "custom-skio-plan-picker",
+          "settings": {
+            "subscription_title": "Subscribe",
+            "subscription_tag": "Free Shipping",
+            "show_discount_text": true,
+            "discount_text": "and Save [discount]",
+            "discount_format": "absolute",
+            "additional_subscription_content": "<ul><li><strong>Save 10% on every order</strong></li><li>Free Shipping</li><li>Cancel or pause anytime</li></ul>",
+            "onetime_title": "One-time Purchase",
+            "start_onetime": false,
+            "onetime_first": false,
+            "show_legend": true,
+            "legend_content": "Frequency",
+            "show_compare_price": true,
+            "tag_color": "#ffffff",
+            "tag_background_color": "#173446"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "include_quantity": true,
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "addtitional_button_PAfjcJ": {
+          "type": "addtitional-button",
+          "settings": {
+            "button_text": "Compare Similar Products",
+            "button_url": "#sb-compare-products",
+            "button_type": "secondary",
+            "button_color": "#111314",
+            "button_text_color": "#ffffff",
+            "button_color_mb": "#173446",
+            "button_text_color_mb": "#ffffff"
+          }
+        },
+        "estimated_delivery_MzQUyx": {
+          "type": "estimated_delivery",
+          "settings": {
+            "text": "<p>Order now to receive by [max_delivery_date]</p>",
+            "max_days": 5,
+            "min_days": 3,
+            "background_color": ""
+          }
+        },
+        "free_gift_tNL7hL": {
+          "type": "free-gift",
+          "settings": {
+            "use_product_gift": true,
+            "source": "greens-welcome-kit",
+            "fg_color": "#111314",
+            "bg_color": "#F8F9FB",
+            "free_gift_text": "Subscribe to Unlock Your <strong>Free Starter Kit!</strong>",
+            "free_gift_text_color": "#111314",
+            "free_gift_background_color": "linear-gradient(90deg, rgba(255, 140, 0, 1), rgba(255, 196, 124, 1) 100%)",
+            "free_gift_met_text": "<strong>Free Starter Kit</strong> Unlocked!",
+            "free_gift_met_text_color": "#ffffff",
+            "free_gift_met_background_color": "linear-gradient(90deg, rgba(3, 152, 70, 1), rgba(0, 110, 49, 1) 100%)"
+          }
+        }
+      },
+      "block_order": [
+        "breadcrumbs_YTEziW",
+        "title",
+        "judge_me_reviews_preview_badge_pfGx6f",
+        "caption",
+        "icon_list_PpiNHd",
+        "price",
+        "variant_picker",
+        "custom_skio_plan_picker_mUG6Vz",
+        "buy_buttons",
+        "addtitional_button_PAfjcJ",
+        "estimated_delivery_MzQUyx",
+        "free_gift_tNL7hL"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "enable_sticky_add_to_cart": true,
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "enable_video_looping": true,
+        "fg_color": "#111314",
+        "bg_color": "",
+        "accent_color": "#1b73b3",
+        "ch_fg_color": "#ffffff",
+        "ch_bg_color": "#111314",
+        "ch_fg_color_sticky": "#111314",
+        "ch_bg_color_sticky": "linear-gradient(136deg, rgba(250, 13, 253, 1), rgba(255, 255, 255, 1) 11%)",
+        "ch_acc_color_sticky": "#1b73b3",
+        "ch_fg_color_sticky_button": "#ffffff",
+        "ch_bg_color_sticky_button": "#173446",
+        "padding_top": 64,
+        "padding_bottom": 16
+      }
+    },
+    "sb_product_details_dCV7r7": {
+      "type": "sb-product-details",
+      "blocks": {
+        "static-product-testing": {
+          "type": "_product_testing",
+          "static": true,
+          "settings": {
+            "heading": "<p>Third-Party Testing</p>",
+            "content": "<p>We believe trust is earned through transparency. That’s why we provide full access to our third-party test results, so you can feel confident in what you’re taking. <a href=\"/pages/third-party-tests\" target=\"_blank\" title=\"Third-Party Tests\"><span style=\"text-decoration:underline\">View all third-party tests</span></a><span style=\"text-decoration:underline\">.</span></p>",
+            "use_description_links": true,
+            "source_links": [
+              "test-1",
+              "test-2"
+            ],
+            "use_badges": true,
+            "padding_top": 24,
+            "padding_bottom": 24,
+            "fg_color": "#ffffff",
+            "bg_color": "#173446"
+          },
+          "blocks": {}
+        },
+        "static-product-details": {
+          "type": "_product_details_accordion",
+          "static": true,
+          "settings": {
+            "padding_top": 8,
+            "padding_bottom": 24,
+            "multiple_open": true,
+            "fg_color": "#111314",
+            "bg_color": "#F8F9FB"
+          },
+          "blocks": {
+            "product_detail_accordion_item_g3RtcP": {
+              "type": "_product_detail_accordion_item",
+              "name": "Accordion Item",
+              "settings": {
+                "open_by_default": true,
+                "heading": "Description",
+                "content_type": "metafield",
+                "content": "<p>{{ closest.product.metafields.custom.product_overview_detail | metafield_tag }}</p>",
+                "metafield": "custom.product_overview_detail"
+              },
+              "blocks": {}
+            },
+            "product_detail_accordion_item_xpnLVw": {
+              "type": "_product_detail_accordion_item",
+              "name": "Accordion Item",
+              "settings": {
+                "open_by_default": false,
+                "heading": "Nutrition & Supplement Facts",
+                "content_type": "image",
+                "content": "",
+                "image": "{{ closest.product.metafields.product_details.sfp.value }}",
+                "metafield": ""
+              },
+              "blocks": {}
+            },
+            "product_detail_accordion_item_WPnH4T": {
+              "type": "_product_detail_accordion_item",
+              "name": "Accordion Item",
+              "settings": {
+                "open_by_default": false,
+                "heading": "Shipping & Returns",
+                "content_type": "text",
+                "content": "<p><strong>Orders in the US over $99 ship free.<br/><br/></strong>Once your order has shipped out from our fulfillment center, you will receive a Shipping Confirmation email. If you selected a tracked shipping method, you will receive your tracking information, along with the necessary steps to track your order, within this email. Please note, orders are generally fulfilled same day or next business day.<br/><br/><a href=\"/pages/shipping-tracking-delivery-guide-for-transparent-labs\" target=\"_blank\" title=\"/pages/shipping-tracking-delivery-guide-for-transparent-labs\">Click here for the full shipping and delivery guide »<br/><br/></a>45 Day Satisfaction Guarantee<br/><br/>If you are not satisfied with your product, we will offer you a full refund or store credit for the value of the item within 45 days of delivery.<br/><br/><a href=\"/policies/refund-policy\" target=\"_blank\" title=\"/policies/refund-policy\">Click here for the full refund policy »</a></p>",
+                "metafield": ""
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_detail_accordion_item_g3RtcP",
+            "product_detail_accordion_item_xpnLVw",
+            "product_detail_accordion_item_WPnH4T"
+          ]
+        }
+      },
+      "name": "SB Product Details",
+      "settings": {
+        "fg_color": "#ffffff",
+        "bg_color": "",
+        "padding_top": 0,
+        "padding_bottom": 64
+      }
+    },
+    "sb_product_benefits_KQUrie": {
+      "type": "sb-product-benefits",
+      "blocks": {
+        "card_9RAGAy": {
+          "type": "card",
+          "settings": {
+            "heading": "Heading",
+            "description": "Bpdu",
+            "image": "shopify://shop_images/thor_protein.png"
+          }
+        }
+      },
+      "block_order": [
+        "card_9RAGAy"
+      ],
+      "name": "SB Product Benefits",
+      "settings": {
+        "heading": "Why Use {{ product.title }}",
+        "content": "<p>{{ product.metafields.custom.product_benefit_section_description.value }}</p>",
+        "use_product_benefits": true,
+        "fg_color": "#111314",
+        "fg_copy_color": "#676767",
+        "bg_color": "#F8F9FB",
+        "ch_fg_color": "#111314",
+        "ch_fg_copy_color": "#676767",
+        "ch_bg_color": "#fff",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "sb_product_ingredients_yT3w7g": {
+      "type": "sb-product-ingredients",
+      "blocks": {
+        "ingredient_apqHbE": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_title": "Test",
+            "ingredient_weight": "Test 2",
+            "ingredient_image_small": "shopify://shop_images/smores_protein.png",
+            "ingredient_short_description": "",
+            "ingredient_detailed_description": "<p>A bunch of random content</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_apqHbE"
+      ],
+      "name": "SB Product Ingredients",
+      "settings": {
+        "heading": "Key Ingredients",
+        "content": "<p>Our formulas are made with clean, natural ingredients, with clinically-validated dosages to support health and performance.</p>",
+        "use_product_ingredients": true,
+        "ingredients_to_show": 4,
+        "fg_color": "#000000",
+        "fg_copy_color": "#676767",
+        "bg_color": "#fff",
+        "ch_fg_color": "#000000",
+        "ch_fg_copy_color": "#676767",
+        "ch_bg_color": "#F8F9FB",
+        "ch_accent_color": "#1b73b3",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "sb_product_complete_your_stack_Dz4XpC": {
+      "type": "sb-product-complete-your-stack",
+      "blocks": {
+        "product_Nkatat": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "pea-protein-isolate",
+            "tag": "Testing"
+          }
+        }
+      },
+      "block_order": [
+        "product_Nkatat"
+      ],
+      "name": "SB Complete Your Stack",
+      "settings": {
+        "heading": "Complete Your Stack",
+        "content": "<p>Pair {{ product.title }} with these products for a complete foundational stack.</p>",
+        "use_product_suggestions": true,
+        "fg_color": "#111314",
+        "bg_color": "#F8F9FB",
+        "ch_fg_color": "#111314",
+        "ch_bg_color": "#fff",
+        "ch_acc_color": "",
+        "ch_tag_fg_color": "#173446",
+        "ch_tag_bg_color": "#E8EEFA",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "175978084866fd5124": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_z4Fkxr": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_z4Fkxr"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "sb_product_how_to_use_QfPJQb": {
+      "type": "sb-product-how-to-use",
+      "name": "SB How To Use",
+      "settings": {
+        "heading": "How To Use",
+        "description": "<p>{{ product.metafields.custom.how_to_use_section_description | metafield_tag }}</p>",
+        "disclaimer": "<p>{{ product.metafields.custom.how_to_use_section_desclaimer | metafield_tag }}</p>",
+        "use_product_steps": true,
+        "fg_color": "#ffffff",
+        "bg_color": "radial-gradient(rgba(23, 52, 70, 1), rgba(23, 52, 70, 1) 100%)",
+        "ch_fg_color": "",
+        "ch_bg_color": "",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "sb_faq_ifVUar": {
+      "type": "sb-faq",
+      "blocks": {
+        "question_DcrhPG": {
+          "type": "question",
+          "settings": {
+            "question": "TEST",
+            "answer": "<p>Random Test</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_DcrhPG"
+      ],
+      "name": "SB FAQ",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "use_template_faq": true,
+        "link": "",
+        "cta": "",
+        "fg_color": "",
+        "bg_color": "",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "sb_compare_products_VEReaW": {
+      "type": "sb-compare-products",
+      "blocks": {
+        "static-slider": {
+          "type": "_slider",
+          "static": true,
+          "settings": {
+            "slides_per_view": 1.6,
+            "space_between_slides": 0,
+            "centered_slides": false,
+            "show_pagination": "always",
+            "show_page_count": "always",
+            "loop": false,
+            "autorotate": false,
+            "mousewheel": false,
+            "autorotate_speed": 5,
+            "slides_offset": 0
+          },
+          "blocks": {
+            "slide_breakpoint_MnQEXa": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 768,
+                "slides_per_view": 2.4,
+                "space_between_slides": 0,
+                "slides_offset": 0
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_YqcR7m": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1024,
+                "slides_per_view": 5,
+                "space_between_slides": 0,
+                "slides_offset": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_breakpoint_MnQEXa",
+            "slide_breakpoint_YqcR7m"
+          ]
+        }
+      },
+      "name": "SB Compare Products",
+      "settings": {
+        "heading": "Compare Protein",
+        "use_product_comparison": true,
+        "products_to_show": [],
+        "fg_color": "#111314",
+        "bg_color": "#F8F9FB",
+        "accent_color": "",
+        "ch_fg_color": "#111314",
+        "ch_fg_copy_color": "#676767",
+        "ch_bg_color": "#fff",
+        "ch_accent_color": "#334fb4",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "main",
+    "sb_product_details_dCV7r7",
+    "sb_product_benefits_KQUrie",
+    "related-products",
+    "sb_product_ingredients_yT3w7g",
+    "sb_product_complete_your_stack_Dz4XpC",
+    "175978084866fd5124",
+    "sb_product_how_to_use_QfPJQb",
+    "sb_faq_ifVUar",
+    "sb_compare_products_VEReaW"
+  ]
+}

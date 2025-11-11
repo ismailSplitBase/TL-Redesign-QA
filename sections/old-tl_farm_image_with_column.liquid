@@ -1,0 +1,102 @@
+<div class="tl_farm_image_column">
+  
+  <div class="xgen-inner">
+    <div class="wraper">
+      <div class="items img">
+        {% if section.settings.image!=blank %}
+          {% assign image_alt = section.settings.image | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+          <img src="{{ section.settings.image | img_url : 'master' }}" alt="{% if section.settings.image.alt %}{{ section.settings.image.alt }}{% else %}{{ image_alt }}{% endif %}" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="items text">
+        {% if section.settings.heading!=blank %}
+          <h2>{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.desc!=blank %}
+          <p>{{ section.settings.desc }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% if section.blocks!=blank %}
+    <div class="xgen-inner second">
+      <div class="wraper">
+        {% for block in section.blocks %}
+          <div class="item">
+            {% if block.settings.icon!=blank %}
+              {% assign image_alt1 = block.settings.icon | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+              <img src="{{ block.settings.icon | img_url : 'master' }}" alt="{% if block.settings.icon.alt %}{{ block.settings.icon.alt }}{% else %}{{ image_alt1 }}{% endif %}" loading="lazy">
+            {% endif %}
+
+            {% if block.settings.heading!=blank %}
+              <h4>{{ block.settings.heading }}</h4>
+            {% endif %}
+            {% if block.settings.text!=blank %}
+              <p>{{ block.settings.text }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  
+</div>
+{% schema %}
+  {
+    "name": "Farm Shaker Image Column",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Image"
+      },
+      {
+        "type":"text",
+        "id":"heading",
+        "label":"Heading"
+      },
+      {
+        "type":"textarea",
+        "id":"desc",
+        "label":"Description"
+      }
+    ],
+    "blocks":[
+      {
+        "name":"list",
+        "type":"text",
+        "limit":3,
+        "settings":[
+          {
+            "type":"image_picker",
+            "id":"icon",
+            "label":"Icon"
+          },
+          {
+            "type":"text",
+            "id":"heading",
+            "label":"Block Heading"
+          },
+          {
+            "type":"textarea",
+            "id":"text",
+            "label":"Block Text"
+          }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name":"Farm Shaker Image Column"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,222 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "old-main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "fb10c378-8f59-404f-be27-6e53dbbb087c": {
+      "type": "old-our-story-banner-and-video",
+      "settings": {
+        "vidURL": "https://player.vimeo.com/video/789120173?h=be832e66f2",
+        "type": "Video",
+        "videourl": "https://cdn.shopify.com/videos/c/o/v/3922a54df87648329093ac0b6a76ecd7.mp4",
+        "heading": "Superior Sports Nutrition",
+        "subheading": "Designed by science & nature to fuel elite performance",
+        "btn_text": "Learn More",
+        "btn_link": "#story_richtext",
+        "bannerheading": "Labdoor Certified",
+        "bannersubheading": "The Purest Whey Protein in the world. Certified by Labdoor."
+      }
+    },
+    "00d5e88e-a15e-4897-816e-9ac27a36cf87": {
+      "type": "old-our-story-richtext",
+      "settings": {
+        "heading": "",
+        "title": "It’s no secret that the supplement industry is suspect.",
+        "text": "<p>We built Transparent Labs to deliver science-backed supplements with clinically effective dosages and natural ingredients. All with 100% transparent labelling.<br/><br/>We will always support our claims with the most up to date scientific research, and we strive to be a trusted source of knowledge and information.</p>"
+      }
+    },
+    "a735921b-f544-449c-83fe-44a324c5703b": {
+      "type": "old-bulk-affiliate-icons",
+      "blocks": {
+        "0e49bce0-3bda-4513-b0e6-80929a721fe8": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Desktop-Icon-1.png",
+            "title": "Clinically Dosed Formulas"
+          }
+        },
+        "4e34686f-430d-4ef7-a5a2-1b68199f75a2": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Desktop-Icon-2.png",
+            "title": "No Artificial Sweeteners or Coloring"
+          }
+        },
+        "5935dfb6-62d2-41f7-9ce3-cf906a33f90e": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Desktop-Icon-3.png",
+            "title": "Natural & Grass-Fed Ingredients"
+          }
+        },
+        "cb984bf7-2775-4ac8-aee9-11c9bc855031": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Desktop-Icon-4.png",
+            "title": "Third Party Lab Tested"
+          }
+        }
+      },
+      "block_order": [
+        "0e49bce0-3bda-4513-b0e6-80929a721fe8",
+        "4e34686f-430d-4ef7-a5a2-1b68199f75a2",
+        "5935dfb6-62d2-41f7-9ce3-cf906a33f90e",
+        "cb984bf7-2775-4ac8-aee9-11c9bc855031"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "d0ba6f73-2d76-4d51-8757-1486c6657118": {
+      "type": "old-xt-our-story-gallery",
+      "blocks": {
+        "9dd0bf10-76a7-449b-a1db-e5be05bbb1b9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Clinically_Dosed_Image.png",
+            "icon_image": "shopify://shop_images/Clinically_Dosed_Icon_Overlay.png",
+            "heading": "Clinically Dosed Formulas",
+            "subheading": "Every Transparent Lab product delivers scientifically backed dosages of each ingredient so you end up with a product that is actually effective."
+          }
+        },
+        "321b877b-4209-4d2b-b3d2-507f900d7df8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Grass_Fed_Image.png",
+            "icon_image": "shopify://shop_images/Grass_Fed_Icon_Overlay.png",
+            "heading": "Natural & Grass-fed ingredients",
+            "subheading": "Sourcing ingredients from natural sources means you get the cleanest products to fuel your body for peak performance."
+          }
+        },
+        "c61d1a94-e63d-4d65-8e9a-1f2590fd0b9c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3rd_Party_Tested_Image.png",
+            "icon_image": "shopify://shop_images/3rd_Party_Tested_Icon_Overlay.png",
+            "heading": "3rd Party Lab Tested",
+            "subheading": "Each of our products go through rigorous 3rd party testing from organizations like Labdroo to ensure the accuracy of label claims (including protein content) and the quality of the natural ingredients across all of our products."
+          }
+        },
+        "3234bbdd-aa48-43f8-9b34-8ad11ff88d0a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/No_Artificial_Sweetners_Image.png",
+            "icon_image": "shopify://shop_images/No_Artificial_Sweetners_Icon_Overlay.png",
+            "heading": "No Artificial Sweeteners or Coloring",
+            "subheading": "Transparent Labs products are free from artificial ingredients, fillers, and coloring so you can rest assured that you do not end up consuming harmful ingredients that impact your health and performance."
+          }
+        }
+      },
+      "block_order": [
+        "9dd0bf10-76a7-449b-a1db-e5be05bbb1b9",
+        "321b877b-4209-4d2b-b3d2-507f900d7df8",
+        "c61d1a94-e63d-4d65-8e9a-1f2590fd0b9c",
+        "3234bbdd-aa48-43f8-9b34-8ad11ff88d0a"
+      ],
+      "settings": {}
+    },
+    "5f2c5fc5-d7da-49dc-90c5-54a9b1bc3940": {
+      "type": "old-our-story-richtext",
+      "settings": {
+        "heading": "Our Mission",
+        "title": "To empower health & fitness enthusiasts with tools to transform their body, prepare their mind, and optimize their performance.",
+        "text": ""
+      }
+    },
+    "c6e99fa1-7423-41a0-90b5-8e42c6822a1a": {
+      "type": "old-index-pertner-icons",
+      "blocks": {
+        "190da8cc-fd53-4fb9-b8b2-1334753a1e98": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Desktop-Logo-MensJournal_58dd4eaf-13c0-4b1c-8321-17f319bc7a8f.png",
+            "icon_text": ""
+          }
+        },
+        "0df500c1-5178-4069-b303-c913f4aa1916": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Desktop-Logo-Labdoor.png",
+            "icon_text": ""
+          }
+        },
+        "cde716d6-bb79-4b5f-affe-4e5b8bc6c42d": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Desktop-Logo-Healthline.png",
+            "icon_text": ""
+          }
+        },
+        "f0ee8087-ef51-494f-8b10-71c25e26a57e": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Desktop-Logo-GQ.png",
+            "icon_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "190da8cc-fd53-4fb9-b8b2-1334753a1e98",
+        "0df500c1-5178-4069-b303-c913f4aa1916",
+        "cde716d6-bb79-4b5f-affe-4e5b8bc6c42d",
+        "f0ee8087-ef51-494f-8b10-71c25e26a57e"
+      ],
+      "settings": {
+        "index-partner-icons": "index partner icons"
+      }
+    },
+    "b15d1fc7-3544-4bb1-848b-bc39d2e7559c": {
+      "type": "old-our-story-banner-and-video",
+      "settings": {
+        "vidURL": "Video URL",
+        "type": "Banner",
+        "videourl": "",
+        "heading": "",
+        "subheading": "",
+        "btn_text": "",
+        "btn_link": "",
+        "image": "shopify://shop_images/Desktop-Banner-2.jpg",
+        "mobile_image": "shopify://shop_images/Mobile-Banner-2.jpg",
+        "logo_image": "shopify://shop_images/Desktop-Labdoor-TestedForAccuracy.png",
+        "bannerheading": "Labdoor Certified",
+        "bannersubheading": "The Purest Whey Protein in the world. Certified by Labdoor."
+      }
+    },
+    "aba8706c-decc-4803-af6a-66e21cc514c8": {
+      "type": "old-article-bestseller",
+      "settings": {
+        "show_collection": true,
+        "heading": "",
+        "collection": "bestsellers",
+        "buttontext": "",
+        "buttontext2": "",
+        "show_product": false,
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "fb10c378-8f59-404f-be27-6e53dbbb087c",
+    "00d5e88e-a15e-4897-816e-9ac27a36cf87",
+    "a735921b-f544-449c-83fe-44a324c5703b",
+    "d0ba6f73-2d76-4d51-8757-1486c6657118",
+    "5f2c5fc5-d7da-49dc-90c5-54a9b1bc3940",
+    "c6e99fa1-7423-41a0-90b5-8e42c6822a1a",
+    "b15d1fc7-3544-4bb1-848b-bc39d2e7559c",
+    "aba8706c-decc-4803-af6a-66e21cc514c8"
+  ]
+}

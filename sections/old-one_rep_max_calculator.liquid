@@ -1,0 +1,530 @@
+<style>
+    	tr.heding-row {    background: beige;}
+    	h3.answer {    padding: 10px;}
+    	super{    color:red;  }
+
+    	.range-container {  position: relative;}
+  	input[type="range"] + label { padding: 5px 0;}
+
+
+  .represults {
+   display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: normal;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: #f9f9f9;
+      width: 40%;
+      margin: auto;
+  }
+
+  /* Table styling */
+  .rep-max-results table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .rep-max-results th,
+  .rep-max-results td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+
+  .rep-max-results th {
+    background-color: #41b5e8;
+    color: white;
+    font-weight: 600;
+  }
+
+  .rep-max-results tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  /* Center-align small screens */
+  .rep-max-results table {
+    margin: 0 auto;
+  }
+
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .represults {
+      width: 100%;
+      margin: auto;
+  }
+    .rep-max-results table {
+      font-size: 14px;
+    }
+
+    .rep-max-results th, .rep-max-results td {
+      padding: 8px;
+    }
+
+    .rep-max-results table {
+      /* display: block; */
+      overflow-x: auto;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+
+  /* Responsive layout for small devices */
+  @media (max-width: 480px) {
+      .represults {
+      width: 100%;
+      margin: auto;
+        padding: 10px;
+  }
+
+
+    .rep-max-results table {
+      font-size: 12px;
+    }
+  }
+</style>
+<div class="main">
+  <div class="xgen-inner">
+    <div class="cal-header">
+      {% if section.settings.header_image != blank %}
+        <img src="{{section.settings.header_image | img_url: 'master'}}" alt="section.settings.header_image">
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h3 style>{{ section.settings.title }}</h3>
+      {% endif %}
+
+      {% if section.settings.detail != blank %}
+        <p>{{ section.settings.detail }}</p>
+      {% endif %}
+    </div>
+
+    <form
+      id="email_signup"
+      class="tlc-form klaviyo_styling klaviyo_gdpr_embed_TkSUKF"
+      action="//manage.kmail-lists.com/subscriptions/subscribe"
+      data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
+      method="GET"
+      target="_blank"
+    >
+      <input type="hidden" name="calculator-name" value="rep">
+
+      <input type="hidden" name="g" value="TkSUKF">
+      <input type="hidden" name="$fields" value="$consent">
+      <input type="hidden" name="$list_fields" value="$consent">
+
+      <div class="form-group gender">
+        <label class="main-label">GENDER</label>
+        <input type="radio" class="fgender" name="fgender" value="female" required id="female">
+        <label for="female" class="label2">{% render 'xicon-femail' %} Female</label>
+        <input type="radio" name="fgender" class="fgender" value="male" checked="" id="male">
+        <label for="male" class="label2">{% render 'xicon-mail' %} Male</label>
+        <!-- <input type="radio" class="fgender" name="fgender" value="other" id="other">
+        <label for="other" class="label2">{% render 'xicon-other' %} Other</label> -->
+      </div>
+
+      <span style="color:red;font-size:10px;" class="height_msg"></span>
+      <div class="form-group cominput" style="border-bottom: solid 1px rgba(184,184,189,.2);">
+        <label for="weight-lift" class="main-label">Weight lifted<super>*</super></label>
+        <div class="input-group">
+          <input id="weight-lift" type="number" name="or-weight" class="form-control" placeholder="" min="0" required>
+          <input type="radio" name="weight-unit" value="lbs" required="" id="weightlbs">
+          <label for="weightlbs" class="label2">lbs</label>
+          <input type="radio" name="weight-unit" value="kg" required="" checked id="weightkg">
+          <label for="weightkg" class="label2">kg</label>
+          
+        </div>
+      </div>
+      <div class="form-group range">
+        <label for="range" class="main-label" style="font-weight:400">Reps Completed</label>
+        <div class="range-container input-group">
+          <div class="rangemm">
+            <span>0</span>
+            <span>12</span>
+          </div>
+          <input type="range" id="range" min="0" max="12" value="1" step="1">
+          <label for="range" id="repsrange">1</label>
+          <input type="hidden" id="newrange" name="or-reps" value="1">
+        </div>
+      </div>
+
+
+
+      <span style="color:red;font-size:10px;" class="email_msg"></span>
+      <div class="form-group email">
+        <label for="email" class="main-label">Email Address <super>*</super></label>
+        <div class="input-group">
+          <input type="text" name="email" placeholder="name@example.com" id="email">
+        </div>
+      </div>
+
+      <div class="form-group agree">
+        <div class="input-group">
+          <input type="checkbox" name="term1" id="chkboxone"
+          ><label for="chkboxone" class="label2"
+            >I understand that the results provided by this calculator are estimations based on scientific and clinical
+            data and are not intended to replace advice from a qualified healthcare professional. Always consult with a
+            physician or dietitian before starting a new diet or exercise program.</label
+          >
+        </div>
+      </div>
+
+      <div class="form-group agree">
+        <div class="input-group">
+          <input type="checkbox" name="term2" id="chkboxtwo" checked
+          ><label for="chkboxtwo" class="label2"
+            >Transparent Labs can occationally send me product recommendations and promotional emails.</label
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="button" class="bmrbtn one-rm-calculator" disabled>Calculate</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 text-blue-500 bmr-resourse-detail">
+    <div class="rich-text py-8 space-y-4">
+      {% if section.settings.resources_heading != blank %}
+        <h2 class="">{{ section.settings.resources_heading }}</h2>
+      {% endif %}
+      {% if section.settings.resources_detail != blank %}
+        <p class="">{{ section.settings.resources_detail }}</p>
+      {% endif %}
+      {% if section.settings.references_heading != blank %}
+        <h2 class="">{{ section.settings.references_heading }}</h2>
+      {% endif %}
+      {% if section.settings.references_detail != blank %}
+        <p class="">{{ section.settings.references_detail }}</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="represults"></div>
+  <div class="flex xgen-new-collection" id="xgen-new-collection">
+    <div class="flex-1">
+      <div id="onerep-output-four" style="display:none;">
+        <div class="xgen-tagging">
+          {% if section.settings.heading != blank %}
+            <h2 class="user_goal">{{ section.settings.heading }}</h2>
+          {% endif %}
+          {% if section.settings.detail != blank %}
+            <p class="goal_subtitle">{{ section.settings.resultdetail }}</p>
+          {% endif %}
+        </div>
+        <div class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3">
+            {% if section.settings.product_list != blank %}
+              {% for product in section.settings.product_list %}
+                {%- render 'old-single_product_grid' with product: product -%}
+              {% endfor %}
+            {% else %}
+            {% assign product_list = 'creatine-hmb,bulk-preworkout,cyclic-dextrin'
+              | split: ','
+            %}
+            {% for product_handle in product_list -%}
+              {%- assign product = all_products[product_handle] -%}
+              {% if product != blank %}
+                {%- render 'old-single_product_grid' with product: product -%}
+              {% endif %}
+              
+            {%- endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="https://www.klaviyo.com/media/js/public/klaviyo_subscribe.js" defer></script>
+
+<script>
+  /**
+   * Converts form data to URL encoded string
+   * @param {HTMLFormElement} form - The form element
+   * @returns {string} URL encoded form data
+   */
+  function serializeForm(form) {
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+    
+    for (const [key, value] of formData.entries()) {
+      params.append(key, value);
+    }
+    
+    return params.toString();
+  }
+
+     document.addEventListener('DOMContentLoaded', function() {
+     const chkboxone = document.getElementById('chkboxone');
+     const bmrBtn = document.querySelector('.bmrbtn');
+     const range = document.getElementById("range");
+
+     /**
+      * Maps a number from one range to another range
+      * @param {number} num - The number to map
+      * @param {number} in_min - Input range minimum
+      * @param {number} in_max - Input range maximum  
+      * @param {number} out_min - Output range minimum
+      * @param {number} out_max - Output range maximum
+      * @returns {number} Mapped value
+      */
+     const scale = (num, in_min, in_max, out_min, out_max) => {	
+       return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+     };
+
+     // Range slider functionality
+     if (range) {
+       range.addEventListener("input", (e) => {
+         const value = +e.target.value;
+         const label = e.target.nextElementSibling;
+
+         const range_width = getComputedStyle(e.target).getPropertyValue("width");
+         const label_width = getComputedStyle(label).getPropertyValue("width");
+
+         const num_range_width = +range_width.substring(0, range_width.length - 2);
+         const num_label_width = +label_width.substring(0, label_width.length - 2);
+
+         const max = +e.target.max;
+         const min = +e.target.min;
+
+         const left =
+           value * (num_range_width / max) -
+           num_label_width / 2 +
+           scale(value, min, max, 10, -10);
+
+         label.style.left = `${left}px`;
+         label.innerHTML = value;
+
+         // Set newrange value based on reps completed
+         const newrangeInput = document.getElementById("newrange");
+         if (newrangeInput) {
+           const repValues = {
+             1: 1,
+             2: 0.95,
+             3: 0.93,
+             4: 0.9,
+             5: 0.87,
+             6: 0.85,
+             7: 0.83,
+             8: 0.8,
+             9: 0.77,
+             10: 0.75,
+             11: 0.73
+           };
+           newrangeInput.value = repValues[value] || 0.70;
+         }
+       });
+     }
+
+     // Initial checkbox change handler
+     if (chkboxone) {
+       chkboxone.addEventListener('change', function() {
+         if (this.checked) {
+           bmrBtn.disabled = false;
+         } else {
+           bmrBtn.disabled = true;
+         }
+       });
+     }
+
+     // Klaviyo integration
+     if (typeof KlaviyoSubscribe !== 'undefined') {
+       KlaviyoSubscribe.attachToForms('#email_signup', {
+         success: function($form) {
+           console.log($form);
+           const form = document.getElementById('email_signup');
+           const formdata = serializeForm(form);
+           console.log("https://www.transparentlabs.com/pages/calculator-results?" + formdata);
+           window.location.href = "https://www.transparentlabs.com/pages/calculator-results?" + formdata;
+           
+           // Get email for tracking
+           const email = form.querySelector('[name="email"]').value;
+           _learnq.push(['identify', { $email: email }]);
+           _learnq.push(['track', 'Signed Up for Newsletter']);
+         },
+         hide_form_on_success: true,
+         extra_properties: {
+           $source: '$embed',
+           $method_type: "Klaviyo Form",
+           $method_id: 'embed',
+           $consent_version: 'Embed default text'
+         }
+              });
+     }
+
+     // One rep max calculator functionality
+     const oneRmCalculatorBtn = document.querySelector(".one-rm-calculator");
+     if (oneRmCalculatorBtn) {
+       oneRmCalculatorBtn.addEventListener("click", () => {
+         // Get input values
+         const weightLifted = parseFloat(document.getElementById("weight-lift").value);
+         const repsCompleted = parseInt(document.getElementById("range").value);
+         const unit = document.querySelector('input[name="weight-unit"]:checked').value;
+
+         // Validation
+         if (isNaN(weightLifted) || weightLifted <= 0) {
+           alert("Please enter a valid weight greater than 0.");
+           return;
+         }
+
+         if (isNaN(repsCompleted) || repsCompleted < 1 || repsCompleted > 50) {
+           alert("Please select a valid number of reps between 1 and 50.");
+           return;
+         }
+
+         // Convert weight to kg if the input unit is lbs
+         const weightInKg = unit === "lbs" ? weightLifted / 2.20462 : weightLifted;
+
+         // Calculate 1RM using the Epley formula
+         const oneRM = weightInKg * (1 + 0.0333 * repsCompleted);
+
+         // Convert back to lbs if needed
+         const finalOneRM = unit === "lbs" ? oneRM * 2.20462 : oneRM;
+
+         // Define REP MAX percentages
+         const repMaxPercentages = {
+           2: 0.95,
+           3: 0.93,
+           4: 0.90,
+           5: 0.87,
+           6: 0.85,
+           7: 0.83,
+           8: 0.80,
+           9: 0.77,
+           10: 0.75,
+         };
+
+         // Generate REP MAX table
+         let repMaxTableHTML = `
+           <div class="rep-max-results">
+             <h4>One-Repetition Maximum (1RM): <strong>${finalOneRM.toFixed(1)} ${unit}</h4>
+             <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+               <thead>
+                 <tr>
+                   <th>REP MAX</th>
+                   <th>% of 1RM</th>
+                   <th>Weight (${unit})</th>
+                 </tr>
+               </thead>
+               <tbody>
+         `;
+
+         for (const [rep, percentage] of Object.entries(repMaxPercentages)) {
+           const weight = finalOneRM * percentage;
+           repMaxTableHTML += `
+             <tr>
+               <td>${rep}RM</td>
+               <td>${(percentage * 100).toFixed(0)}%</td>
+               <td>${weight.toFixed(1)}</td>
+             </tr>
+           `;
+         }
+
+         repMaxTableHTML += `
+               </tbody>
+             </table>
+           </div>
+         `;
+
+         // Display the results below the form
+         const resultDiv = document.querySelector(".rep-max-results");
+         if (resultDiv) {
+           resultDiv.remove(); // Remove old results if they exist
+         }
+         document.querySelector(".represults").insertAdjacentHTML("beforeend", repMaxTableHTML);
+         
+         // Show product recommendations with smooth animation
+         const onerepOutputFour = document.getElementById('onerep-output-four');
+         if (onerepOutputFour) {
+           onerepOutputFour.style.display = 'block';
+           // Add smooth show animation
+           onerepOutputFour.style.opacity = '0';
+           onerepOutputFour.style.transition = 'opacity 0.5s ease-in-out';
+           setTimeout(() => {
+             onerepOutputFour.style.opacity = '1';
+           }, 10);
+         }
+         // Redirect to the results section
+         const resultsSection = document.querySelector(".rep-max-results");
+         if (resultsSection) {
+           resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+         }
+       });
+     }
+
+     // Enable the calculate button only after agreeing to terms
+     const checkboxes = document.querySelectorAll("input[type='checkbox']");
+     if (checkboxes.length > 0) {
+       checkboxes.forEach((checkbox) =>
+         checkbox.addEventListener("change", () => {
+           const allChecked = Array.from(checkboxes).every((cb) => cb.checked);
+           const calculatorBtn = document.querySelector(".one-rm-calculator");
+           if (calculatorBtn) {
+             calculatorBtn.disabled = !allChecked;
+           }
+         })
+       );
+     }
+   });
+</script>
+
+{% schema %}
+  {
+    "name": "one_rep_max_calculator",
+    "class": "td-legacy",
+    "settings": [
+	{
+		"type":"image_picker",
+		"id":"header_image",
+		"label":"Choose image"
+	},
+	{
+		"type":"text",
+		"id":"title",
+		"label":"Title"
+	},
+	{
+		"type":"textarea",
+		"id":"detail",
+		"label":"Subtitle"
+	},
+	{
+    	"type":"text",
+        "id":"resources_heading",
+        "label":"Resources heading"
+	},
+    {
+        "type":"richtext",
+        "id":"resources_detail",
+        "label":"Resources details"
+    },
+    {
+        "type":"text",
+        "id":"references_heading",
+        "label":"References heading"
+     },
+    {
+    	"type":"richtext",
+    	"id":"references_detail",
+    	"label":"References details"
+    },
+    {
+      "type":"product_list",
+      "id":"product_list",
+      "label":"Product list"
+    }
+],
+"presets":[
+		{
+			"name": "one_rep_max_calculator"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}

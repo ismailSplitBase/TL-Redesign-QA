@@ -1,0 +1,179 @@
+{%  stylesheet %}
+.sb-compare-products__heading {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 32px;
+  line-height: 1.2;
+  padding: 0 16px;
+  max-width: 1300px;
+  margin: 0 auto 32px;
+}
+.sb-compare-products__container .swiper,
+.sb-compare-products__container .sb-pagination-wrapper {
+  padding: 0 16px;
+}
+.sb-compare-products__container .swiper-slide {
+  height: auto; 
+}
+.sb-compare-products__container .sb-pagination-wrapper {
+  padding-top: 20px;
+}
+@media screen and (min-width: 1024px) {
+  .sb-compare-products__container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 64px;
+    box-sizing: content-box;
+  }
+  /* TODO should look to add class to indivate it is full screen */
+  .sb-compare-products__container .sb-pagination-wrapper {
+    display: none;
+  }
+  .sb-compare-products__heading {
+    margin: 0 auto 48px;
+    font-size: 40px;
+  }
+}
+
+{% endstylesheet %}
+
+{% liquid
+  assign products = section.settings.products_to_show
+  assign should_render = false
+  if section.settings.use_product_comparison == true and product and product.metafields.custom.compare_product_list.value.count > 0
+    assign products = product.metafields.custom.compare_product_list.value
+    assign should_render = true
+  elsif products != blank and products.size > 0
+    assign should_render = true
+  endif
+%}
+{% if should_render %}
+<div class="sb-compare-products sb-styled-element" id="sb-compare-products" style="{%  render 'style-attributes', settings: section.settings, mobile_multiple: 0.55 %} --border-color: rgba({{ section.settings.ch_fg_color.rgb |  replace: " ", "," }}, 0.3);">
+  <div class="sb-compare-products__container">
+      {% if section.settings.heading != blank %}
+        <h2 class="sb-compare-products__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+        <div class="sb-compare-products__slider">
+          {% liquid
+            assign slides = null | sort
+            for product in products
+              capture slide_content
+                render 'compare-product-card', product: product
+              endcapture
+              capture slide_content
+                render 'swiper-slide', children: slide_content
+              endcapture
+              assign slide_content = slide_content | sort
+              assign slides = slides | concat: slide_content
+            endfor
+            if slides.size > 0
+              content_for 'block', type: '_slider', id: 'static-slider', children: slides
+            else
+              render 'sb-no-content', context: "collection products"
+            endif
+          %}
+        </div>
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "SB Compare Products",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_product_comparison",
+      "label": "Use Product Comparison",
+      "default": true,
+      "info": "Enable this to Compare Product List of the Product. Will override blocks."
+    },
+    {
+      "type": "product_list",
+      "id": "products_to_show",
+      "label": "Products",
+      "info": "Only shown when 'Use Product Comparison' is disabled"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Main Section Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color"
+    },
+    {
+      "type": "paragraph",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_copy_color",
+      "label": "Copy custom color"
+    },
+    {
+      "type": "color_background",
+      "id": "ch_bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "ch_accent_color",
+      "label": "Accent Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Compare Products",
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,156 @@
+{% comment %} https://cdn.shopify.com/videos/c/o/v/3922a54df87648329093ac0b6a76ecd7.mp4 {% endcomment %}
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+<div class="xt-story-combo">
+
+  {% if section.settings.type=='Video' %}
+    <div class="video-wraper">
+      
+      <div class="videomobile" style="padding:170.67% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/796403611?h=1e679fc00c&background=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+      <div class="videodesktop" style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/794219816?h=f7df9ec787&transparent=0&background=1&autoplay=1&loop=1&title=0&byline=0&portrait=1&muted=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" data-ready="true"  allow="autoplay; fullscreen;" allowfullscreen></iframe></div>
+      <!--   <video playsinline="" autoplay="" muted="" loop=""><source src="{{ section.settings.videourl }}" type="video/mp4"></video> -->
+      <div class="content">
+        {%  if section.settings.heading != 'blank' %}
+            <h2>{{ section.settings.heading }}</h2>
+        {% endif %}
+        {%  if section.settings.subheading != 'blank' %}
+            <p>{{ section.settings.subheading }}</p>
+        {% endif %}
+        {%  if section.settings.btn_link != 'blank' %}
+          
+          <a href="{{ section.settings.btn_link }}" class="btn">{{ section.settings.btn_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <div class="container">
+  
+      <div class="banner-wraper">
+        {% if section.settings.image != 'blank' %}
+          <img class="mainimg desktop" src="{{ section.settings.image | img_url : 'master' }}" alt="{% if section.settings.image.alt %}{{ section.settings.image.alt }}{% else %}Our Story Banner Desktop{% endif %}" loading="lazy" />
+        {% endif %}
+        {% if section.settings.mobile_image != 'blank' %}
+          <img class="mainimg mobile" src="{{ section.settings.mobile_image | img_url : 'master' }}" alt="{% if section.settings.mobile_image.alt %}{{ section.settings.mobile_image.alt }}{% else %}Our Story Banner Mobile{% endif %}" loading="lazy" />
+        {% endif %}
+  
+        <div class="content">
+          {% if section.settings.logo_image != 'blank' %}
+            <img src="{{ section.settings.logo_image | img_url : 'master' }}" alt="{% if section.settings.logo_image.alt %}{{ section.settings.logo_image.alt }}{% else %}Logo Image{% endif %}" loading="lazy">
+          {% endif %}
+          {% if section.settings.bannersubheading != 'blank' %}
+            <p>{{ section.settings.bannersubheading }}</p>
+          {% endif %}
+          {% if section.settings.bannerheading != 'blank' %}
+            <h2>{{ section.settings.bannerheading }}</h2>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+
+
+
+{% schema %}
+  {
+    "name": "Our story banner-video",
+    "class": "td-legacy",
+    "settings": [
+      {
+      "type": "text",
+      "id": "vidURL",
+      "label": "Video URL"
+    },
+      {
+        "type": "radio",
+        "id": "type",
+        "label": "Select banner or video",
+        "options": [
+          { "value": "Banner", "label": "Banner" },
+          { "value": "Video", "label": "Video" }
+        ],
+        "default": "Banner",
+        "info": "Text"
+      },
+       {
+        "type":"url",
+        "id":"videourl",
+        "label":"Use video url"
+      },
+      {
+        "type":"text",
+        "id":"heading",
+        "label":"Video heading"
+      },
+      {
+        "type":"textarea",
+        "id":"subheading",
+        "label":"Video sub heading"
+      },
+      {
+        "type":"text",
+        "id":"btn_text",
+        "label":"Video button Text"
+      },
+      {
+        "type":"url",
+        "id":"btn_link",
+        "label":"Button Link"
+      },
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Banner Image"
+      },
+      {
+        "type":"image_picker",
+        "id":"mobile_image",
+        "label":"Mobile Banner Image"
+        
+      },
+      {
+        "type":"image_picker",
+        "id":"logo_image",
+        "label":"Use logo image"
+      },
+      {
+        "type":"text",
+        "id":"bannerheading",
+        "label":"Banner heading",
+        "default":"Labdoor Certified"
+      },
+      {
+        "type":"textarea",
+        "id":"bannersubheading",
+        "label":"Banner sub heading",
+        "default":"The Purest Whey Protein in the world. Certified by Labdoor."
+      }
+    ],
+    "presets":[
+		{
+			"name": "Our story banner and video"
+		}
+	]
+  }
+{% endschema %}
+
+<style>
+  .videodesktop {    display:block;}
+  .videomobile {    display:none;}
+ @media only screen and (min-width: 0px) and (max-width: 767px){
+     .videodesktop {    display:none;}
+  .videomobile {    display:block;}
+ }
+
+
+</style>
+  
+  
+
+
+{% javascript %}
+{% endjavascript %} 

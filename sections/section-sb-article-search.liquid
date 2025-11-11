@@ -1,0 +1,26 @@
+  {%- comment %} Articles Grid {% endcomment -%}
+  <div id="section-sb-article-search">
+    {% paginate search.results by settings.search_results_article_page %}
+    <div class="sb-articles-grid-container page-width" id="grid-articles">
+      <ul class="sb-articles-grid sb-search-results {% if search.results.size == 0 %}sb-search-empty{% endif %}" role="list">
+        {%- for item in search.results -%}
+          {% if item.object_type == 'article' %}
+            <li class="sb-articles-grid__item sb-articles-grid__item--dt{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {% render 'featured-post',
+                article: item,
+                show_image: true,
+                show_blog_title: true
+              %}
+            </li>
+            <li class="sb-articles-grid__item sb-articles-grid__item--mb{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {% render 'sb-predictive-search-article-card', article: item %}
+            </li>
+          {% endif %}
+        {%- endfor -%}
+      </ul>
+    </div>
+    {%- if paginate.pages > 1 -%}
+      {% render 'pagination', paginate: paginate %}
+    {%- endif -%}
+  {% endpaginate %}
+  </div>

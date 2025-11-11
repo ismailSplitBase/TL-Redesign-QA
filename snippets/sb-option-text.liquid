@@ -1,0 +1,14 @@
+{% unless values %}
+  {% assign values = product.options_by_name['Flavor'].values %}
+{% endunless %}
+{% if values.size > 0 %}
+  <span class="sb-option-text">
+    {{ values.size }} Flavor{% if values.size > 1 %}s{% endif %} {{ postfix }}
+  </span>
+{% else %}
+  <span class="sb-option-text">
+    Now
+  </span>
+{% endif %}
+
+

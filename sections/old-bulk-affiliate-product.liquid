@@ -1,0 +1,210 @@
+<section class="TL_aff_content">
+  
+  <style>
+.slick-prev {    left: 25px !important;    z-index: 1;}
+.slick-next {    right: 25px !important;    z-index: 1;}
+.xgen-new-collection .xgen-new-product .xgen-ptitle {margin: 0px 0;}
+.xgen-new-collection .xgen-new-product .button-alt {width: auto;}
+</style>
+
+<div class="flex xgen-new-collection affiliate-xgen recharge-xgen" id="xgen-new-collection">
+  <div class="flex-1">
+    <div  class="pt-4">
+          <div class="xgen-tagging">
+            {% if section.settings.img != blank %}
+            	{{ section.settings.img | image_tag: loading: 'lazy', alt: section.settings.img.alt | default: 'Affiliate Xgen Banner' }}
+            {% endif %}
+            {% if section.settings.title != blank %}
+            	<h2>{{ section.settings.title}}</h2>
+            {% endif %}
+            
+            {% if section.settings.subtitle != blank %}
+            	<p>{{ section.settings.subtitle}}</p>
+            {% endif %}
+          
+          </div>
+      
+      <!--static tagging -->
+      
+      
+      {% for block in section.blocks %}
+          <div class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3">
+		  {% assign product_1 = block.settings.product_1 | strip %}
+          {% assign product_2 = block.settings.product_2  %}
+          {% assign product_3 = block.settings.product_3 | strip  %}
+          
+            {% assign p_type1 = block.settings.product_type %}
+            {% assign p_type2= block.settings.product_type_1 %}
+            {% assign p_type3 = block.settings.product_type_2 %}
+
+            {% assign detail1 = block.settings.detail_1 %}
+            {% assign detail2 = block.settings.detail_2 %}
+            {% assign detail3 = block.settings.detail_3 %}
+            
+            
+            {% assign discount_text1 = section.settings.discount_month %}
+            {% assign discount_text2 = section.settings.discount_days %}
+            {% assign percent_text =  section.settings.percent_text %}
+            
+          {% if product_1 != blank %}
+            {% for pure_product in collections.all.products %}
+              {% if pure_product.handle == product_1 %}
+                {% render 'old-affiliate-single-subscription' with product: pure_product, block_id: block.id, product_type: p_type1, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text, detail: detail1%} 
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        
+          {% if product_2 != blank %}
+          	 
+                {% render 'old-affiliate-stack-product-grid' with product: product_2, block_id: block.id, product_type: p_type2, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text, detail: detail2  %}
+             
+          {% endif %}
+          {% if product_3 != blank %}
+          	 {% for pure_product in collections.all.products %}
+              {% if pure_product.handle == product_3 %}
+                {% render 'old-affiliate-single-product-grid' with product: pure_product, block_id: block.id, product_type: p_type3, dis_text_month: discount_text1, dis_text_days: discount_text2, sub_percent_text: percent_text, detail: detail3 %} 
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+         </div>
+    
+     {% endfor %}
+      
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "bulk-affiliate-pdp",
+    "class": "td-legacy",
+    "settings": [
+	{
+    	"type":"image_picker",
+        "id":"img",
+        "label":"Select Image"
+	},
+      {
+    	"type":"text",
+        "id":"title",
+        "label":"Section Title"
+	},
+    {
+    	"type":"textarea",
+        "id":"subtitle",
+        "label":"Section Subtitle"
+	},
+	{
+    	"type":"text",
+        "id":"discount_month",
+        "label":"Discount text by month",
+		"default":"Deliver Every Month"
+	},
+	{
+    	"type":"text",
+        "id":"discount_days",
+        "label":"Discount text by days",
+		"default":"Deliver Every 45 days"
+	},
+	{
+    	"type":"text",
+        "id":"percent_text",
+        "label":"Subcription percent Off text",
+		"default":"10% Off"
+	}
+],
+	"blocks":[
+		{
+			"name":"product",
+			"type":"text",
+			"settings":[
+				{
+                    "type":"text",
+                    "id":"collection_type",
+                    "label":"collection type"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+				{
+                    "type":"text",
+                    "id":"product_type",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_1",
+                    "label":"Select single product"
+                },
+                {
+                    "type":"html",
+                    "id":"detail_1",
+                    "label":"Product deatil"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+				{
+                    "type":"text",
+                    "id":"product_type_1",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_2",
+                    "label":"Select stack product"
+                },
+                {
+                    "type":"html",
+                    "id":"detail_2",
+                    "label":"Product deatil"
+                },
+				{
+                  	"type":"header",
+                  	"content":"product"
+  				},
+                {
+                    "type":"text",
+                    "id":"product_type_2",
+                    "label":"Product type"
+                },
+				{
+                    "type":"product",
+                    "id":"product_3",
+                    "label":"Select simple product"
+                },
+                {
+                    "type":"html",
+                    "id":"detail_3",
+                    "label":"Product deatil"
+                }
+			]
+		}
+	],
+	
+	"presets":[
+		{
+			"name": "bulk affiliate pdp"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

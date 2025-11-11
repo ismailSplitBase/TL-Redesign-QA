@@ -1,0 +1,1417 @@
+{{ 'old-xt-quiz-ability.css' | asset_url | stylesheet_tag }}
+<div class="xt-quiz-ability">
+  <div class="xgen-inner">
+    {% for block in section.blocks %}
+      {% if block.type == 'Quiz' %}
+        <div class="wraper" id="step{{ forloop.index }}" {% unless forloop.first %}style="display:none;"{% endunless %}>
+          
+          {% if block.settings.heading != blank %}
+            <div class="heading">{{ block.settings.heading }}</div>
+          {% endif %}
+          
+          {% if block.settings.subheading != blank %}
+            <div class="subheading">{{ block.settings.subheading }}</div>
+          {% endif %}
+          
+          {% if block.settings.btn_text != blank %}
+            <button class="mainbtn {% if forloop.first %}startButton{% else %}nextButton{% endif %}" {% if forloop.first %}id="startButton"{% endif %}>{{ block.settings.btn_text }} {% render 'old-xt-quiz-arrow' %}</button>
+          {% endif %}
+          
+        </div>
+        
+        {% elsif block.type == 'Quizwithinput'%}
+        
+          <div class="wraper" id="step{{ forloop.index }}" {% unless forloop.first %}style="display:none;"{% endunless %}>
+            
+            {% if block.settings.heading %}
+              <div class="heading small">{{ block.settings.heading }}</div>
+            {% endif %}
+            
+            {% if block.settings.subheading != blank %}
+              <div class="subheading">{{ block.settings.subheading }}</div>
+            {% endif %}
+            
+            {% if block.settings.inputelement != blank %}
+             <div class="xform">
+                <input type="text" name="name" class="xinput" placeholder="{{ block.settings.placeholder }}">
+              </div>
+              {% endif %}
+            
+            {% if block.settings.btn_text != blank %}
+              <button class="mainbtn nextButton">{{ block.settings.btn_text }} {% render 'old-xt-quiz-arrow' %}</button>
+            {% endif %}
+            
+          </div>
+        
+        {% elsif block.type == 'Quizwithoption'%}
+        
+          <div class="wraper" id="step{{ forloop.index }}" {% unless forloop.first %}style="display:none;"{% endunless %}>
+            
+            {% if block.settings.heading != blank %}
+              <div class="heading">{{ block.settings.heading }}</div>
+            {% endif %}
+
+            {% if block.settings.subheading != blank %}
+              <div class="subheading small">{{ block.settings.subheading }}</div>
+            {% endif %}
+            
+            <div class="btn-wrap {% unless block.settings.target == 'gender' %}item4{% endunless %} {{ block.settings.target }}">
+              
+            {% if block.settings.option1 != blank %}
+              <button data-{{ block.settings.target }}="{{ block.settings.datavalue1 }}" class="xbtn active">{{ block.settings.option1 }}</button>
+            {% endif %}
+ 
+            {% if block.settings.option2 != blank %}
+              <button data-{{ block.settings.target }}="{{ block.settings.datavalue2 }}" class="xbtn">{{ block.settings.option2 }}</button>
+            {% endif %}
+              
+            {% if block.settings.option3 != blank %}
+              <button data-{{ block.settings.target }}="{{ block.settings.datavalue3 }}" class="xbtn">{{ block.settings.option3 }}</button>
+            {% endif %}
+              
+            {% if block.settings.option4 != blank %}
+              <button data-{{ block.settings.target }}="{{ block.settings.datavalue4 }}" class="xbtn">{{ block.settings.option4 }}</button>
+            {% endif %}
+
+              {% if block.settings.option5 != blank %}
+              <button  data-{{ block.settings.target }}="{{ block.settings.datavalue5 }}" class="xbtn {% if block.settings.target == 'restrictions' %}skipbtn{% endif %}">{{ block.settings.option5 }}</button>
+            {% endif %}
+
+              
+              
+            </div>
+            
+            {% if block.settings.btn_text != blank %}
+              <button class="mainbtn nextButton" >{{ block.settings.btn_text }} {% render 'old-xt-quiz-arrow' %}</button>
+            {% endif %}
+
+             {% if block.settings.skip_btn_text != blank %}
+              <button class="skipbtn nextButton">{{ block.settings.skip_btn_text }}</button>
+            {% endif %}
+            
+          </div>
+        {% elsif block.type == 'Quizwithresult'%}
+          <div class="wraper" id="step{{ forloop.index }}" style="display:none;">
+            
+            {% if block.settings.heading %}
+              <div class="heading">{{ block.settings.heading }}</div>
+            {% endif %}
+            
+            {% if block.settings.subheading != blank %}
+              <div class="subheading small">{{ block.settings.subheading }}</div>
+            {% endif %}
+            
+            {% if block.settings.inputelement != blank %}
+              <div class="xform">
+                <form
+                  id="email_signup"
+                  class="tlc-form klaviyo_styling klaviyo_gdpr_embed_SgP6hy"
+                  action="//manage.kmail-lists.com/subscriptions/subscribe"
+                  data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
+                  method="GET"
+                >
+                <input type="email" class="email xinput" placeholder="{{ block.settings.placeholder }}">
+                  <input type="hidden" name="quiz" value="uuiz">
+                  <input type="hidden" name="g" value="SgP6hy">
+                  <input type="hidden" name="$fields" value="$consent">
+                  <input type="hidden" name="$list_fields" value="$consent" X>
+                </form>
+              </div>
+            {% endif %}
+            
+            {% if block.settings.btn_text != blank %}
+              <button class="mainbtn nextButton">{{ block.settings.btn_text }} {% render 'old-xt-quiz-arrow' %}</button>
+            {% endif %}
+            
+            {% if block.settings.skip_btn_text != blank %}
+              <button class="skipbtn nextButton">{{ block.settings.skip_btn_text }}</button>
+            {% endif %}
+            
+          </div>
+        {% elsif block.type == 'Quizwithloading'%}
+          <div class="wraper loading" id="customizing" style="display:none;">
+            {% if block.settings.heading %}
+                <div class="heading">{{ block.settings.heading }}</div>
+            {% endif %}
+            <img
+              class="loader"
+              src="https://cdn.shopify.com/s/files/1/0866/7664/files/loading.webp?v=1739216836"
+              width=""
+              height=""
+            >
+          </div>
+        {% elsif block.type == 'Quizwithtags'%}
+          <div class="wraper" id="step{{ forloop.index }}" style="display:none;">
+            {% if block.settings.heading %}
+              <div class="heading"><span id="custom-heading">John</span>, {{  block.settings.heading }}</div>
+            {% endif %}
+            <div class="tags" id="tagsWrapper">
+            </div>
+          </div>
+        
+        
+        {% endif %}
+    {% endfor %}
+
+  </div>
+
+  {% for block in section.blocks %}
+  {% if block.type == 'Resultrecommendationone'%}
+   <div class="wraper" id="xt-recommended-result" style="display:none;">
+          <div class="heading">Start with these core essentials:</div>
+          <div class="subheading small">These should form the foundation of your daily routine.</div>
+    
+          <div class="product-wraper">
+            {% for quiz_data in metaobjects.quiz_recommendation_data.values %}
+              <div class="pcard" data-handle="{{ quiz_data.product.value.handle }}"  style="display:none;order:-1;">
+                <div class="img">
+                  {% assign variants = quiz_data.product.value.variants %}
+                  {% assign first_variant = variants.first %}
+                  <img
+                    src="{{ first_variant.image | img_url: 'master' }}"
+                    alt="{{ first_variant.title }}"
+                  >
+                </div>
+                <div class="rating">
+                  <div class='jdgm-widget jdgm-preview-badge' data-id='{{ quiz_data.product.value.id }}'> 
+                    
+                    <p class="ml-3 text-gray-500">
+                      {{ quiz_data.product.value.metafields.judgeme.badge }}
+                    <a class="open-review-details">{{ quiz_data.product.value.metafields.reviews.rating_count }} Reviews</a>
+                      <!-- <span class="font-bold text-black">{{ quiz_data.product.value.metafields.reviews.rating.value }}</span>/5.0 -->
+                    </p>
+                  </div>
+                </div>
+                <div class="ptitle">{{ quiz_data.product.value.title }}</div>
+                <div class="desc">
+                  <ul>
+                    {% for point in quiz_data.benifits.value %}
+                     <li>{{ point }}</li> 
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="flavor">
+                  <a href="{{ quiz_data.product.value.url }}">
+                    {% if quiz_data.product.value.options[0] == 'Title' or quiz_data.product.value.options[0] == 'Serving Size' %}
+                      {% if quiz_data.product.value.variants.size > 1 %}
+                        Available in {{ quiz_data.product.value.variants.size }} options
+                      {% else %}
+                        Available in {{ quiz_data.product.value.variants.size }} option
+                      {% endif %}
+                    {% else %}
+                      {% for option in quiz_data.product.value.options_with_values %}
+                        {% if option.name == "Flavor" %}
+                          {% assign flavor_count = option.values | size %}
+                        {% endif %}
+                      {% endfor %}
+                      {% if flavor_count > 0 %}
+                        <p>Available in {{ flavor_count }} flavors</p>
+                      {% else %}
+                        <p>No flavors available</p>
+                      {% endif %}
+                    {% endif %} 
+                  </a>
+                </div>
+                
+                <!-- Add To Cart Form -->
+                <form method="post" action="/cart/add" class="product-form" data-product-id="{{ quiz_data.product.value.id }}">
+                  {% if quiz_data.product.value.variants.size == 1 %}
+                    {% comment %}
+                      <input type="hidden" name="id" value="{{ quiz_data.product.value.selected_or_first_available_variant.id }}">
+                      {% if quiz_data.product.value.selling_plan_groups.size > 0 %}
+                        {% assign first_selling_plan = quiz_data.product.value.selling_plan_groups[0].selling_plans[0] %}
+                        <input type="hidden" name="selling_plan" value="{{ first_selling_plan.id }}">
+                      {% endif %}
+                      <button type="submit" class="btn">Add To Cart</button>
+                    {% endcomment %}
+                     <button type="button" class="btn open-drawer btn-{{ quiz_data.product.value.id }}" data-product-id="{{ quiz_data.product.value.id }}">Select Options</button>
+                  {% else %}
+                     <button type="button" class="btn open-drawer btn-{{ quiz_data.product.value.id }}" data-product-id="{{ quiz_data.product.value.id }}">Select Options</button>
+                  {% endif %}
+                </form>
+              </div>
+            {% endfor %}
+          </div>
+        </div> 
+    
+  {% elsif block.type == 'Resultrecommendationtwo' %}
+    
+     <div class="wraper" id="xt-recommended-result-2" style="display:none;">
+      <div class="heading">Complete your stack:</div>
+      <div class="subheading small">These key building blocks will take your progress to the next level.</div>
+
+          <div class="product-wraper">
+        {% for quiz_data in metaobjects.quiz_recommendation_data.values %}
+          <div class="pcard" data-handle="{{ quiz_data.product.value.handle }}"  style="display:none;order:-1;">
+            <div class="img">
+              {% assign variants = quiz_data.product.value.variants %}
+              {% assign first_variant = variants.first %}
+              <img
+                src="{{ first_variant.image | img_url: 'master' }}"
+                alt="{{ first_variant.title }}"
+              >
+            </div>
+            <div class="rating">
+              <div class='jdgm-widget jdgm-preview-badge' data-id='{{ quiz_data.product.value.id }}'> 
+                {{ quiz_data.product.value.metafields.judgeme.badge }}
+                <p class="ml-3 text-gray-500">
+                  <!-- <span class="font-bold text-black">{{ quiz_data.product.value.metafields.reviews.rating.value }}</span>/5.0 -->
+                  <a class="open-review-details">{{ quiz_data.product.value.metafields.reviews.rating_count }} Reviews</a>
+                </p>
+              </div>
+            </div>
+            <div class="ptitle">{{ quiz_data.product.value.title }}</div>
+            <div class="desc">
+              <ul>
+                {% for point in quiz_data.benifits.value %}
+                 <li>{{ point }}</li> 
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="flavor">
+              <a href="{{ quiz_data.product.value.url }}">
+                {% if quiz_data.product.value.options[0] == 'Title' or quiz_data.product.value.options[0] == 'Serving Size' %}
+                  {% if quiz_data.product.value.variants.size > 1 %}
+                    Available in {{ quiz_data.product.value.variants.size }} options
+                  {% else %}
+                    Available in {{ quiz_data.product.value.variants.size }} option
+                  {% endif %}
+                {% else %}
+                  {% for option in quiz_data.product.value.options_with_values %}
+                    {% if option.name == "Flavor" %}
+                      {% assign flavor_count = option.values | size %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if flavor_count > 0 %}
+                    <p>Available in {{ flavor_count }} flavors</p>
+                  {% else %}
+                    <p>No flavors available</p>
+                  {% endif %}
+                {% endif %} 
+              </a>
+            </div>
+      
+             <!-- Add To Cart Form -->
+            <form method="post" action="/cart/add" class="product-form" data-product-id="{{ quiz_data.product.value.id }}">
+              {% if quiz_data.product.value.variants.size == 1 %}
+                {% comment %}
+                  <input type="hidden" name="id" value="{{ quiz_data.product.value.selected_or_first_available_variant.id }}">
+                  {% if quiz_data.product.value.selling_plan_groups.size > 0 %}
+                    {% assign first_selling_plan = quiz_data.product.value.selling_plan_groups[0].selling_plans[0] %}
+                    <input type="hidden" name="selling_plan" value="{{ first_selling_plan.id }}">
+                  {% endif %}
+                  <button type="submit" class="btn">Add To Cart</button>
+                {% endcomment %}
+                <button type="button" class="btn open-drawer btn-{{ quiz_data.product.value.id }}" data-product-id="{{ quiz_data.product.value.id }}">Select Options</button>
+              {% else %}
+                <button type="button" class="btn open-drawer btn-{{ quiz_data.product.value.id }}" data-product-id="{{ quiz_data.product.value.id }}">Select Options</button>
+              {% endif %}
+            </form>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+  <div class="wraper" style="display:none;" id="shopall">
+    {% if section.settings.shopalltext != blank or section.settings.shopalllink != blank %}
+      <a href="{{ section.settings.shopalllink }}" class="shopalllink">{{ section.settings.shopalltext }} {% render 'old-xt-quiz-arrow' %}</a>
+    {% endif %}
+    
+    {% if section.settings.retaketesttext != blank or section.settings.retaketestlink != blank %}
+      <a href="{{ section.settings.retaketestlink }}" class="retaketestlink">{{ section.settings.retaketesttext }} 
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1.0652 8.1739L15.1522 8.1739M15.1522 8.1739L8.49999 14.8261M15.1522 8.1739L8.49999 1.52173" stroke="black" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+      </a>
+    {% endif %}
+  </div>
+
+  <div id="sticky-checkout" style="display:none;">
+    <a href="/checkout" class="sticky-checkout-btn">
+      Proceed to Checkout (<span id="sticky-cart-count">{% if cart.item_count > 1 %} {{ cart.item_count }} items {% else %} {{ cart.item_count }} item {% endif %}</span>)
+    </a>
+  </div>
+</div>
+
+<!-- variant drawer -->
+{% render 'old-quiz-option-cart' %}
+
+
+<style>
+  
+</style>
+
+<div
+  id="recommended-product-data"
+  data-products='[
+    {% for quiz_data in metaobjects.quiz_recommendation_data.values %}
+      {
+        "product": {{ quiz_data.product.value.handle | json }},
+        "benefit": {{ quiz_data.benifits.value | json }},
+        "src": {{ quiz_data.product.value.featured_image | image_url | json }},
+        "name": {{ quiz_data.custom_product_title.value | json }},
+        "url":"https://{{ shop.domain }}{{ quiz_data.product.value.url }}",
+        "genderMen": {{ quiz_data.men.value | json }},
+        "genderWomen": {{ quiz_data.women.value | json }},
+        "genderNoPref": {{ quiz_data.no_preference.value | json }},
+        "goalbuildMuscle": {{ quiz_data.goal_build_lean_muscle.value | json }},
+        "goalimproveStrength": {{ quiz_data.goal_improve_strength.value | json }},
+        "goalloseBodyFat": {{ quiz_data.goal_lose_body_fat.value | json }},
+        "goalImproveHealth": {{ quiz_data.goal_improve_health.value | json }},
+        "activityStrength": {{ quiz_data.activity_strength_training.value | json }},
+        "activityCardio": {{ quiz_data.activity_cardio.value | json }},
+        "activityMobility": {{ quiz_data.activity_mobility_training.value | json }},
+        "activitySports": {{ quiz_data.activity_sports.value | json }},
+        "dietVegan": {{ quiz_data.diet_vegan.value | json }},
+        "DietDairyFree": {{ quiz_data.diet_dairy.value | json }},
+        "dietNoNatural": {{ quiz_data.diet_no_natural.value | json }},
+        "dietStimulent": {{ quiz_data.diet_stimulent.value | json }},
+        "dietNone": {{ quiz_data.diet_none.value | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]'
+></div>
+        
+<script>
+  document.addEventListener("DOMContentLoaded", function () 
+  {
+     // Function to handle radio button change (scoped to the correct drawer)
+      function handleRadioChange(event) {
+        const radio = event.target;
+        const drawer = radio.closest(".xproduct"); // Get the closest variant drawer
+      
+        if (drawer) {
+          // Remove 'active' class only from freq-boxes inside this specific drawer
+          drawer.querySelectorAll(".freq-box").forEach((box) => box.classList.remove("active"));
+      
+          // Add 'active' class to the closest .freq-box of the selected radio
+          radio.closest(".freq-box").classList.add("active");
+        }
+      }
+      
+      // Open drawer when clicking on the Select Options button
+      document.querySelectorAll(".open-drawer").forEach(button => {
+        button.addEventListener("click", function () {
+          const productId = this.dataset.productId;
+      
+          // Hide any previously open drawer
+          document.querySelectorAll(".xproduct").forEach(product => product.style.display = "none");
+          
+          document.querySelector(".xt-quiz-option-cart").classList.add("xactive");
+      
+          const popup = document.getElementById(`variant-drawer-${productId}`);
+          if (popup) {
+            popup.style.display = "flex";
+      
+            // Ensure correct initial state when opening the drawer
+            const activeRadio = popup.querySelector(".freq-radio:checked");
+            if (activeRadio) {
+              activeRadio.closest(".freq-box").classList.add("active");
+            }
+      
+            // Attach event listeners only inside this specific drawer
+            popup.querySelectorAll(".freq-radio").forEach((radio) => {
+              radio.addEventListener("change", handleRadioChange);
+            });
+          }
+        });
+      });
+
+
+    function updateVariantId(form, variants) 
+    {
+      let selectedOptions = [];
+
+      // Handle select elements for dropdown options
+      form.querySelectorAll(".product-option-dropdown").forEach(select => {
+          selectedOptions[select.dataset.optionIndex] = select.value;
+      });
+  
+      // Handle checked radio buttons for radio button options
+      form.querySelectorAll(".product-option-radio:checked").forEach(radio => {
+          selectedOptions[radio.dataset.optionIndex] = radio.value;
+      });
+  
+      // Find matching variant based on selected options
+      let matchedVariant = variants.find(v => {
+          return v.options.every((opt, index) => opt === selectedOptions[index]);
+      });
+  
+      if (matchedVariant) 
+      {     
+        const variantDrawer = document.getElementById(`variant-drawer-${matchedVariant.featured_image.product_id}`);
+  
+        if (variantDrawer) 
+        {
+          const images = variantDrawer.querySelectorAll(".img img");
+          // //console.log("Images found:", images.length);
+          if(images.length > 1)
+          {
+             images.forEach(img => {
+                if (img.dataset.variantId == matchedVariant.id) {
+                    img.style.display = "block";  // Show selected variant image
+                } 
+                else 
+                {
+                  img.style.display = "none";   // Hide other images
+                }
+            });
+          }      
+        }
+      }
+
+      
+
+      // Update the hidden input with the selected variant ID
+      const variantIdInput = form.querySelector(".selected-variant-id");
+      if (matchedVariant && variantIdInput) {
+          variantIdInput.value = matchedVariant.id;
+      }
+  
+      // Update the price fields (assuming they have classes .product-price and .product-compare-price)
+      const priceField = form.querySelector(".product-price");
+      const compareAtPriceField = form.querySelector(".product-compare-price");
+      const oneTimePriceField = form.querySelector(".one-time-price");
+
+      if (matchedVariant) 
+      {
+        // Try to get the first selling plan allocation, if available
+        const sellingPlan = matchedVariant.selling_plan_allocations && matchedVariant.selling_plan_allocations[0];
+        if (sellingPlan) 
+        {
+          // Use selling_plan_allocations price
+          const price = sellingPlan.price / 100;  // Assuming the price is in cents
+          const compareAtPrice = sellingPlan.compare_at_price ? sellingPlan.compare_at_price / 100 : null;
+          // Fallback: Use variant's regular price and compare_at_price
+          const oneTimePrice = matchedVariant.price / 100;  // Variant price in cents
+          // Update the price field
+          if (oneTimePriceField) {
+              oneTimePriceField.innerText = `$${oneTimePrice.toFixed(2)}`;
+          }
+          // Update the price field
+          if (priceField) 
+          {
+              priceField.innerText = `$${price.toFixed(2)}`;
+          }
+          // Update the compare-at price field
+          if (compareAtPriceField) 
+          {
+            if (compareAtPrice) 
+            {
+              compareAtPriceField.innerText = `$${compareAtPrice.toFixed(2)}`;
+              compareAtPriceField.style.display = 'block';  // Show compare price
+            } 
+            else
+            {
+              compareAtPriceField.style.display = 'none';  // Hide compare price if not available
+            }
+          }
+        } 
+        else 
+        {
+          // Fallback: Use variant's regular price and compare_at_price
+          const price = matchedVariant.price / 100;  // Variant price in cents
+          const compareAtPrice = matchedVariant.compare_at_price ? matchedVariant.compare_at_price / 100 : null;
+
+          // Update the price field
+          if (priceField) 
+          {
+            priceField.innerText = `$${price.toFixed(2)}`;
+          }
+
+          // Update the compare-at price field
+          if (compareAtPriceField) 
+          {
+            if (compareAtPrice) 
+            {
+              compareAtPriceField.innerText = `$${compareAtPrice.toFixed(2)}`;
+              compareAtPriceField.style.display = 'block';  // Show compare price
+            } 
+            else 
+            {
+              compareAtPriceField.style.display = 'none';  // Hide compare price if not available
+            }
+          }
+        }
+      }
+    }
+    // end of updateVariantId()
+
+  // Handling the variant popup form
+  document.querySelectorAll(".variant-form").forEach(form => {
+    const productId = form.dataset.productId;
+    const variantDataElement = document.getElementById(`product-variants-${productId}`);
+    if (!variantDataElement) return;
+
+    const variants = JSON.parse(variantDataElement.textContent);
+
+    // Update variant ID for the popup form when options are selected
+    form.querySelectorAll(".product-option-radio").forEach(input => {
+      input.addEventListener("change", function () {
+        // Remove active class from all labels
+        form.querySelectorAll(".size").forEach(label => label.classList.remove("active"));
+        // Add active class to the selected radio's parent label
+        if (this.checked) {
+            this.closest(".size").classList.add("active");
+        }
+
+            let selectedOptions = [];
+            // Handle select elements for dropdown options
+            form.querySelectorAll(".product-option-dropdown").forEach(select => {
+                selectedOptions[select.dataset.optionIndex] = select.value;
+            });
+            // Handle checked radio buttons for radio button options
+            form.querySelectorAll(".product-option-radio:checked").forEach(radio => {
+                selectedOptions[radio.dataset.optionIndex] = radio.value;
+            });
+            let availableOptions = {}; // Store available options for each dropdown
+    
+            form.querySelectorAll(".product-option-dropdown").forEach(select => {
+              let optionIndex = select.dataset.optionIndex;
+          
+              // Get all unique available values for this option
+              let availableValues = [...new Set(
+                  variants
+                      .filter(v => v.options.slice(0, optionIndex)
+                          .every((opt, idx) => selectedOptions[idx] === opt))
+                      .map(v => v.options[optionIndex])
+              )];
+          
+              // Store available options
+              availableOptions[optionIndex] = availableValues;
+          
+              let firstAvailableOption = null;
+          
+              // Loop through each option and enable/disable based on availability
+              select.querySelectorAll("option").forEach(option => {
+                  if (availableValues.includes(option.value)) {
+                      option.disabled = false;
+                      option.style.display = "block";
+                      if (!firstAvailableOption) {
+                          firstAvailableOption = option; // Set the first available option
+                      }
+                  } else {
+                      option.disabled = true;
+                      option.style.display = "none";
+                      option.removeAttribute("selected"); // Ensure unavailable options are not selected
+                  }
+              });
+          
+              // Select the first available option by default and set the 'selected' attribute
+              if (firstAvailableOption) {
+                  select.value = firstAvailableOption.value; // Set the dropdown value
+                  firstAvailableOption.setAttribute("selected", "selected"); // Set the 'selected' attribute
+              }
+          });
+
+        // update variants
+        updateVariantId(form, variants);
+      });
+    });
+
+    // Update variant ID for the popup form when options are selected
+    form.querySelectorAll(".product-option-dropdown").forEach(input => {
+      input.addEventListener("change", function () {
+        updateVariantId(form, variants);
+      });
+    });
+
+    // Update variant ID for the popup form when options are selected
+    form.querySelectorAll(".product-option-dropdown").forEach(input => {
+      updateVariantId(form, variants);
+    });
+
+    // Handle the popup form submission
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      let formData = new FormData();
+      let variantId = form.querySelector(".selected-variant-id")?.value;
+
+      if (!variantId) {
+        alert("Please select all required options.");
+        return;
+      }
+
+      formData.append("id", variantId);
+      formData.append("quantity", 1);
+
+      // Check the value of plan-freq and conditionally add the selling_plan
+      const planFreq = form.querySelector("[name='plan-freq']:checked")?.value;
+
+      if (planFreq === "subscription") {
+        let sellingPlanSelect = form.querySelector("[name='selling_plan']");
+        if (sellingPlanSelect && sellingPlanSelect.value) {
+          formData.append("selling_plan", sellingPlanSelect.value);
+        }
+      }
+
+      let addToCartButton = form.querySelector("button[type='submit']");
+        // Get the product ID from the form's associated button
+      let productId = form.querySelector(".btn")?.getAttribute("data-product-id");
+      let originalButtonText = addToCartButton.innerText;
+      let checkoutBtn = document.getElementById('sticky-checkout');
+      let cartCount = document.getElementById('sticky-cart-count');
+      
+      if (productId) {
+        let relatedButtons = document.querySelectorAll(`.btn-${productId}`);
+        // Change text for all related buttons
+        relatedButtons.forEach(btn => btn.innerText = "Adding...");
+      }
+
+      fetch("/cart/add.js", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Update cart count after adding
+        fetch('/cart.js')
+          .then(response => response.json())
+          .then(cart => {
+            const cartCountElement = document.getElementById('cart-count');
+            if (cart.item_count < 1) {
+              if (cartCountElement) cartCountElement.innerHTML = "";
+              checkoutBtn.style.display = "none"; // Hide button
+            } else {
+              if (cartCountElement) cartCountElement.innerHTML = "<number class='number'>" + cart.item_count + "</number>";
+              checkoutBtn.style.display = "flex"; // Show button
+              const stickyCartCount = document.getElementById('sticky-cart-count');
+              if (stickyCartCount) {
+                stickyCartCount.innerHTML = "<number class='number'>" + cart.item_count + "</number> " + (cart.item_count === 1 ? "item" : "items");
+              }
+            }
+          })
+          .catch(error => console.error('Error fetching cart:', error));
+
+        
+        if (productId) 
+        {
+          let relatedButtons = document.querySelectorAll(`.btn-${productId}`);
+          
+          relatedButtons.forEach(btn => {
+            btn.classList.add("added");
+            btn.innerHTML = `Added to Cart <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" rx="10" fill="#1DB31B"/><path d="M8.42774 14.3337L4.66666 10.1492L5.50714 9.18306L8.42774 12.4013L14.4701 5.66699L15.3333 6.63318L8.42774 14.3337Z" fill="white"/></svg>`;
+          });
+    
+          // setTimeout(() => {
+          //   relatedButtons.forEach(btn => {
+          //     btn.classList.remove("added");
+          //     btn.innerText = "Select Options";
+          //   });
+          // }, 5000);
+        }
+
+        // document.querySelector(".variant-drawer").style.display = "none";
+        document.querySelector(".xt-quiz-option-cart").classList.remove("xactive");
+        document.querySelectorAll(".xproduct").forEach(product => product.style.display = "none");
+        // openCartMenu();
+        publish(PUB_SUB_EVENTS.cartUpdate, {source: 'xt-quiz-ability'});
+        (document.querySelector('cart-notification') || document.querySelector('cart-drawer'))?.openCartDrawer()
+      })
+      .catch(error => {
+        console.error("Error adding to cart:", error);
+      });
+    });
+  });
+});
+</script>
+        
+
+<script async type="text/javascript" src="//static.klaviyo.com/onsite/js/pk_2e80bc1b7291e29799ef971e221b87ba1d/klaviyo.js"></script>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 8;
+  let userResponses = {};
+
+  // Start Button event listener
+  document.getElementById("startButton").addEventListener("click", function () {
+      showNextStep();
+  });
+
+  document.addEventListener('click', function (e) 
+  {
+    // Handle gender selection (step 3)
+    if (e.target && e.target.classList.contains('xbtn') && e.target.closest('.gender')) {
+      handleActiveClassToggle(e.target, '.gender', false);
+    }
+  
+    // Handle goal selection (step 4)
+    if (e.target && e.target.classList.contains('xbtn') && e.target.closest('.goal')) {
+      handleActiveClassToggle(e.target, '.goal', true);
+    }
+  
+    // Handle training selection (step 5)
+    if (e.target && e.target.classList.contains('xbtn') && e.target.closest('.training')) {
+      handleActiveClassToggle(e.target, '.training', true);
+    }
+  
+    // Handle dietary restrictions selection (step 6)
+    if (e.target && e.target.classList.contains('xbtn') && e.target.closest('.restrictions')) {
+      handleActiveClassToggle(e.target, '.restrictions', true);
+    }
+  });
+
+  function handleActiveClassToggle(clickedButton, parentSelector, isMultiSelect = false) 
+  {
+ 
+    let optionBtnClasses = clickedButton.classList;
+    // //console.log(optionBtnClasses);
+    const parent = clickedButton.closest(parentSelector);
+    const buttons = parent.querySelectorAll('.xbtn');
+    if (isMultiSelect) 
+    {
+      if(optionBtnClasses.contains('skipbtn'))
+      {
+        buttons.forEach(button => button.classList.remove('active'));
+        clickedButton.classList.add('active');
+      }
+      else
+      {
+        // For multi-selection (goals, training, restrictions), toggle the 'active' class
+        clickedButton.classList.toggle('active');
+        buttons.forEach(button => {
+            if (button.classList.contains('skipbtn')) {
+                button.classList.remove('active');
+            }
+        });
+      }
+      
+    } 
+    else {
+      // For single-selection (gender), remove 'active' from all and add to clicked one
+     
+      buttons.forEach(button => button.classList.remove('active'));
+      clickedButton.classList.add('active');
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () 
+  {
+    // Remove 'active' class from all buttons on page load
+    document.querySelectorAll(".xbtn.active").forEach(btn => btn.classList.remove("active"));
+  });
+
+  document.querySelectorAll(".nextButton").forEach(button => {
+    button.addEventListener("click", function (event) {
+    let buttonClasses = event.target.classList;
+    // //console.log(buttonClasses);
+    if (currentStep === 2) 
+    {
+      const nameInput = document.querySelector('input[name="name"]');
+      if (nameInput && nameInput.value) 
+      {
+        userResponses.name = nameInput.value;
+        showNextStep();
+      } 
+      else 
+      {
+        alert("Please enter your name.");
+      }
+    } 
+    else if (currentStep === 3) 
+    {
+      const selectedGender = document.querySelector('.gender .xbtn.active');
+      if (selectedGender) 
+      {
+        userResponses.gender = selectedGender.dataset.gender;
+        // //console.log("Gender selected:", userResponses.gender);
+        showNextStep();
+      } 
+      else 
+      {
+        alert("Please select a gender.");
+      }
+    } 
+    else if (currentStep === 4) 
+    {
+      const selectedGoals = document.querySelectorAll('.goal .xbtn.active');
+      if (selectedGoals.length > 0) 
+      {
+        userResponses.goals = Array.from(selectedGoals).map(button => button.dataset.goal);
+        // //console.log("Goals selected:", userResponses.goals);
+        showNextStep();
+      } 
+      else 
+      {
+        alert("Please select at least one goal.");
+      }
+    } 
+    else if (currentStep === 5) 
+    {
+      const selectedTrainings = document.querySelectorAll('.training .xbtn.active');
+      if (selectedTrainings.length > 0) 
+      {
+        userResponses.trainings = Array.from(selectedTrainings).map(button => button.dataset.training);
+        // //console.log("Trainings selected:", userResponses.trainings);
+        showNextStep();
+      } 
+      else 
+      {
+        alert("Please select at least one training type.");
+      }
+    } 
+    else if (currentStep === 6) 
+    {
+      const selectedRestrictions = document.querySelectorAll('.restrictions .xbtn.active');
+      function myGreeting() 
+      {
+        document.getElementById('customizing').style.display = "none";
+        showNextStep();
+      }
+      if (buttonClasses.contains("skipbtn")) 
+      {
+        userResponses.restrictions = 'dietNone';
+        document.getElementById(`step${currentStep}`).style.display = "none";
+        document.getElementById('customizing').style.display = "block";
+        setTimeout(myGreeting, 3000);
+      }
+      else
+      {
+        if (selectedRestrictions.length > 0) 
+        {
+          userResponses.restrictions = Array.from(selectedRestrictions).map(button => button.dataset.restrictions);
+          document.getElementById(`step${currentStep}`).style.display = "none";
+          document.getElementById('customizing').style.display = "block";
+            setTimeout(myGreeting, 3000);
+        }
+        else
+        {
+          alert("Please select at least one restriction type.");
+        }
+      }
+      
+    } 
+    else if (currentStep === 7) 
+    {
+      const productDataElement = document.getElementById("recommended-product-data");
+      const productsJson = productDataElement.getAttribute("data-products");
+      const products = JSON.parse(productsJson);
+      const selectedCriteria = userResponses;
+         
+      // Extract keys to use for score calculation
+      const scoreKeys = [
+                selectedCriteria.gender,
+                ...selectedCriteria.goals,
+                ...selectedCriteria.trainings,
+                ...selectedCriteria.restrictions
+      ];
+            
+      // Calculate scores for each product
+      const calculatedProducts = products.map(product => {
+        product.calculatedScore = scoreKeys.reduce((sum, key) => {
+        // Add the product's value for the given key, defaulting to 0 if undefined
+        return sum + (product[key] || 0);
+        }, 0);
+        return product;
+        }).sort((a, b) => b.calculatedScore - a.calculatedScore); // Sort by calculated score in descending order
+            
+        // Assign new recommendations based on the sorted products
+        calculatedProducts.forEach((product, index) => {
+          product.newRecs = index + 1; // Rank the products
+        });
+
+        // Get the top 5 sorted products
+        const topFiveProducts = calculatedProducts.slice(0, 5);
+          
+        // Assign new recommendations based on the sorted products
+        topFiveProducts.forEach((product, index) => {
+          product.newRecs = index + 1; // Rank the products
+        });
+            
+
+        // Dynamically set the name
+        document.getElementById('custom-heading').textContent = selectedCriteria.name;
+
+        const tagMappings = {
+            genderMen: "Best for Men",
+            genderWomen: "Best for Women",
+            genderNoPref: "No Preference",
+            goalbuildMuscle: "Build Muscle",
+            goalimproveStrength: "Improve Strength",
+            goalloseBodyFat: "Lose Body Fat",
+            goalImproveHealth: "Improve Health",
+            activityStrength: "Support Strength Training",
+            activityCardio: "Support Cardio Training",
+            activityMobility: "Support Mobility Training",
+            activitySports: "Support Sports Training",
+            dietVegan: "Vegan",
+            DietDairyFree: "Dairy-Free",
+            dietNoNatural: "No Natural Flavors",
+            dietStimulent: "Stimulant-Free",
+            dietNone: "No Dietary Restrictions"
+          };
+
+          const tagsContainer = document.getElementById("tagsWrapper");
+          const types = ["gender", "goals", "trainings", "restrictions"];
+            
+          // Function to render products on the page
+          async function renderProducts() 
+          {
+
+            types.forEach(type => {
+              const values = Array.isArray(selectedCriteria[type]) ? selectedCriteria[type] : [selectedCriteria[type]];
+              values.forEach(value => {
+
+                // //console.log(value);
+                  if (tagMappings[value]) 
+                  {
+                      const tagElement = document.createElement("div");
+                      tagElement.classList.add("tag");
+                      tagElement.innerHTML = `
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="40" height="40" rx="20" fill="#1B73B3"></rect>
+                                <path d="M17.3468 27.5L11 20.2578L12.4183 18.5855L17.3468 24.1555L27.5434 12.5L29 14.1723L17.3468 27.5Z" fill="white"></path>
+                            </svg>
+                            <span>${tagMappings[value]}</span>
+                      `;
+                      tagsContainer.appendChild(tagElement);
+                  }
+              });
+            });
+            
+            document.getElementById('xt-recommended-result').style.display = "block";
+            document.getElementById('xt-recommended-result-2').style.display = "block"
+            document.getElementById('shopall').style.display = "block"
+
+            const firstPart = topFiveProducts.slice(0, 2); // First part: 1, 2
+            const secondPart = topFiveProducts.slice(2, 5); // Second part: 3, 4, 5
+          
+            function updateVisibility(containerId, products) 
+            {
+              const container = document.querySelector(`#${containerId}`);
+              if (!container) return;
+            
+              const productCards = Array.from(container.querySelectorAll('.pcard'));
+            
+              // Iterate over products and update visibility
+              products.forEach((product, index) => {
+                  const card = productCards.find(card => card.getAttribute('data-handle') === product.product);
+                  if (card) 
+                  {
+                      card.style.display = 'flex'; // Show matched products
+                      card.style.order = index;  // Assign order based on index
+                  }
+              });
+            }
+          
+            updateVisibility('xt-recommended-result', firstPart);
+            updateVisibility('xt-recommended-result-2', secondPart);       
+          }
+      
+        if (buttonClasses.contains("skipbtn")) 
+        { 
+
+          // Call render function
+          renderProducts();
+          showNextStep();
+        } 
+        else if(buttonClasses.contains("nextButton"))
+        {
+          // Validate email function
+          function validateEmail(email) {
+              const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+              return emailPattern.test(email);
+          }
+          
+          // Get the input value
+          const nameInput = document.querySelector('.email').value;
+  
+          // Validate email
+          if (validateEmail(nameInput)) 
+          {
+            if (nameInput)
+            { 
+              // No need to check nameInput.value (it's already a string)
+              userResponses.name = nameInput; // Assign the value directly
+              // Prepare product data for submission
+                          
+              var recommended_fiveoutput = topFiveProducts.map(({ product, url, benefit, src, name, calculatedScore, newRecs }) => ({
+                              product,
+                              url,
+                              benefit,
+                              src,
+                              name,
+                              calculatedScore,
+                              newRecs
+              }));
+
+               klaviyo.identify({
+              // Change the line below to dynamically print the user's email.
+                'email' : nameInput
+              });
+                         
+              _learnq.push(['track', 'Quiz Completed', {
+                              email: nameInput,
+                              userResponses: userResponses,
+                              recommended_output:recommended_fiveoutput// Submitting the table data
+              }]);
+              
+                const options = {
+                  method: 'POST',
+                  headers: {
+                    accept: 'application/vnd.api+json',
+                    revision: '2025-01-15',
+                    'content-type': 'application/vnd.api+json'
+                  },
+                  body: JSON.stringify({
+                    data: {
+                      type: "profile",
+                      attributes: {
+                        email: nameInput, 
+                        properties: { 
+                          "quiz_answer_1": userResponses.name,
+                          "quiz_answer_2": userResponses.gender,
+                          "quiz_answer_3": userResponses.goals,
+                          "quiz_answer_4": userResponses.trainings,
+                          "quiz_answer_5": userResponses.restrictions,
+                          "quiz_recommendation": recommended_fiveoutput
+                        }
+                      }
+                    }
+                  })
+                };
+
+                fetch('https://a.klaviyo.com/client/profiles?company_id=qxNUDF', options)
+                .then(res => {
+                  if (!res.ok) {
+                    throw new Error(`Network response was not ok: ${res.status}`);
+                  }
+                  return res.text();
+                })
+                .then(text => {
+                  try {
+                    const data = text ? JSON.parse(text) : {};
+                    // //console.log(data);
+                  } catch (err) {
+                    console.error("Failed to parse JSON:", err);
+                    //console.log("Raw response text:", text);
+                  }
+                })
+                .catch(err => console.error("Fetch error:", err));
+            
+                renderProducts();
+                showNextStep();
+              }
+          }
+          else 
+          {
+              alert("Please enter a valid email address in the format: example@domain.com.");
+          }
+        }      
+        }  
+        else 
+        {
+            //console.log("Final responses:", userResponses);
+        }
+    });
+  });
+
+  function showNextStep() 
+  {
+    // Hide current step
+    document.getElementById(`step${currentStep}`).style.display = "none";
+    // Increment step number
+    currentStep++;
+    // Show the next step
+    if (currentStep <= totalSteps) 
+    {
+      document.getElementById(`step${currentStep}`).style.display = "block";
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Quiz Ability",
+  "class": "td-legacy",
+  "settings": [   
+    {
+      "type": "text",
+      "id": "shopalltext",
+      "label": "Shop all text",
+      "default":"Shop all"
+    },
+    {
+      "type": "url",
+      "id": "shopalllink",
+      "label": "Url"
+    },
+    {
+      "type": "text",
+      "id": "retaketesttext",
+      "label": "Retake quiz text",
+      "default":"Retake the Quiz"
+    },
+    {
+      "type": "url",
+      "id": "retaketestlink",
+      "label": "Url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Quiz",
+      "name": "quiz",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Hi! What can we call you?"
+        },
+        {
+          "id": "subheading",
+          "type": "textarea",
+          "label": "Sub title",
+          "default": "Unlock your science-based recommendation by taking our 3-minute quiz."
+        },
+        {
+          "id": "btn_text",
+          "type": "text",
+          "label": "Button text",
+          "default": "Next"
+        }
+      ]
+    },
+    {
+      "type": "Quizwithinput",
+      "name": "quiz with input",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Hi! What can we call you?"
+        },
+        {
+          "id": "subheading",
+          "type": "textarea",
+          "label": "Sub title",
+          "default": "Unlock your science-based recommendation by taking our 3-minute quiz."
+        },
+        {
+          "id": "inputelement",
+          "type": "checkbox",
+          "label": "Enable",
+          "info": "Input box for name and email box"
+        },
+         {
+          "id": "placeholder",
+          "type": "text",
+          "label": "Placeholder",
+           "default": "Placeholder"
+        },
+        {
+          "id": "btn_text",
+          "type": "text",
+          "label": "Button text",
+          "default": "Next"
+        },
+        {
+          "id": "skip_btn_text",
+          "type": "text",
+          "label": "Skip button text",
+          "default": "Skip"
+        }
+      ]
+    },
+    {
+      "type": "Quizwithresult",
+      "name": "quiz with result",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Hi! What can we call you?"
+        },
+        {
+          "id": "subheading",
+          "type": "textarea",
+          "label": "Sub title",
+          "default": "Unlock your science-based recommendation by taking our 3-minute quiz."
+        },
+        {
+          "id": "inputelement",
+          "type": "checkbox",
+          "label": "Enable",
+          "info": "Input box for name and email box"
+        },
+         {
+          "id": "placeholder",
+          "type": "text",
+          "label": "Placeholder",
+           "default": "Placeholder"
+        },
+        {
+          "id": "btn_text",
+          "type": "text",
+          "label": "Button text",
+          "default": "Next"
+        },
+        {
+          "id": "skip_btn_text",
+          "type": "text",
+          "label": "Skip button text",
+          "default": "Skip"
+        }
+      ]
+    },
+    {
+      "type": "Quizwithoption",
+      "name": "quiz with option",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Hi! What can we call you?"
+        },
+        {
+          "id": "subheading",
+          "type": "textarea",
+          "label": "Sub title",
+          "default": "Unlock your science-based recommendation by taking our 3-minute quiz."
+        },
+        {
+          "id": "target",
+          "type": "text",
+          "label": "Target"
+        },
+        {
+          "id": "option1",
+          "type": "text",
+          "label": "Option 1"
+        },
+        {
+          "id": "datavalue1",
+          "type": "text",
+          "label": "Data value 1"
+        },
+        {
+          "id": "option2",
+          "type": "text",
+          "label": "Option 2"
+        },
+        {
+          "id": "datavalue2",
+          "type": "text",
+          "label": "Data value 2"
+        },
+        {
+          "id": "option3",
+          "type": "text",
+          "label": "Option 3"
+        },
+        {
+          "id": "datavalue3",
+          "type": "text",
+          "label": "Data value 3"
+        },
+        {
+          "id": "option4",
+          "type": "text",
+          "label": "Option 4"
+        },
+        {
+          "id": "datavalue4",
+          "type": "text",
+          "label": "Data value 4"
+        },
+        {
+          "id": "option5",
+          "type": "text",
+          "label": "Option 5"
+        },
+        {
+          "id": "datavalue5",
+          "type": "text",
+          "label": "Data value 5"
+        },
+        {
+          "id": "btn_text",
+          "type": "text",
+          "label": "Button text",
+          "default": "Next"
+        },
+        {
+          "id": "skip_btn_text",
+          "type": "text",
+          "label": "Skip button text",
+          "default": "Skip"
+        }
+        
+      ]
+    },
+    {
+      "type": "Quizwithloading",
+      "name": "quiz with loading",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Hi! What can we call you?"
+        }
+      ]
+    },
+    {
+      "type": "Quizwithtags",
+      "name": "quiz with tags",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Hi! What can we call you?"
+        }
+      ]
+    },
+    {
+      "type": "Resultrecommendationone",
+      "name": "Result recommendation one",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Hi! What can we call you?"
+        },
+        {
+          "id": "subheading",
+          "type": "textarea",
+          "label": "Sub title",
+          "default": "Unlock your science-based recommendation by taking our 3-minute quiz."
+        }
+      ]
+    },
+    {
+      "type": "Resultrecommendationtwo",
+      "name": "Result recommendation two",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Hi! What can we call you?"
+        },
+        {
+          "id": "subheading",
+          "type": "textarea",
+          "label": "Sub title",
+          "default": "Unlock your science-based recommendation by taking our 3-minute quiz."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quiz Ability"
+    }
+  ]
+}
+{% endschema %}

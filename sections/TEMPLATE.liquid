@@ -1,0 +1,158 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    --sb-fg-color: {{ section.settings.fg_color }};
+    --bg-color: {{ section.settings.bg_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- capture sliderOptions -%}
+  {
+    "centeredSlides": false,
+    "slidesPerView": 2,
+    "spaceBetween": 1,
+    "loop": {{ section.settings.loop }},
+    {%- if section.settings.autorotate -%}
+      "autoplay": {
+        "delay": {{ autorotate_speed }}
+      },
+    {%- endif -%}
+    {%- if section.settings.show_pagination != blank -%}
+      "pagination": {
+        "el": ".swiper-pagination",
+        "clickable": true
+      },
+    {%- endif -%}
+    {%- if section.settings.show_navigation_arrows != blank -%}
+      "navigation": {
+        "nextEl": ".swiper-button-next",
+        "prevEl": ".swiper-button-prev"
+      },
+    {%- endif -%}
+    "breakpoints": {
+      "768": {
+        "slidesPerView": 4
+      }
+    }
+  }  
+{%- endcapture -%}
+
+<div class="section-{{ section.id }}-padding sb-section__container">
+  <div class="sb-content__container">
+    <div>This is the content</div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Template",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Slider"
+    },
+    {
+      "type": "select",
+      "id": "show_pagination",
+      "label": "Show pagination",
+      "options": [
+        {
+          "value": "never",
+          "label": "Never"
+        },
+        {
+          "value": "always",
+          "label": "Always"
+        }
+      ],
+      "default": "never"
+    },
+    {
+      "type": "select",
+      "id": "show_navigation_arrows",
+      "label": "Show navigation arrows",
+      "options": [
+        {
+          "value": "never",
+          "label": "Never"
+        },
+        {
+          "value": "always",
+          "label": "Always"
+        }
+      ],
+      "default": "always"
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop slides",
+      "default": true,
+      "info": "Requires 2x the number of visible slides "
+    },
+    {
+      "type": "checkbox",
+      "id": "autorotate",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autorotate_speed",
+      "label": "Change slides every",
+      "max": 9,
+      "min": 3,
+      "step": 2,
+      "unit": " s",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Template"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,187 @@
+{% assign product = section.settings.product %} 
+
+<div class="container">
+  <div class="asrv-page" id="asrv-product">
+    <div class="asrv-gallery">
+       <div class="banner-slider">
+          <div class="slider slider-nav thumb-image">
+            {% for image in product.images %}
+              <img src="{{ image.src | product_img_url: 'medium' }}" alt="{{ image.alt }}" loading="lazy">
+              <div class="thumbnail-image">
+                <div class="thumbImg">
+                    <img src="{{ image.src | product_img_url: 'medium' }}" alt="slider img {{ forloop.index }}" loading="lazy">
+                </div>
+              </div>
+            {% endfor %}
+            </div>
+            <div class="slider slider-for">
+              {% for image in product.images %}
+                  <div class="slider-banner-image">
+                    <img src="{{ image.src | product_img_url: 'master' }}" alt="Car Image {{ forloop.index }}" loading="lazy">
+                  </div> 
+              {% endfor %}
+            </div>
+        </div>
+
+        <div class="asrv-product-form">
+          {% if section.settings.product != blank %}
+          
+            {% include 'old-product-card' product:product %}
+          {% endif %}
+        </div>
+      
+      </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "ASRV Product",
+  "class": "td-legacy",
+  "settings": [
+    {
+      "type":"product",
+      "label":"select product",
+      "id":"product"
+    },
+      {
+      	"type":"text",
+      	"id":"sdetail",
+      	"label":"Badge 1",
+		"default":"NEW!"
+      },
+      {
+      	"type":"text",
+      	"id":"sdetail1",
+      	"label":"Badge 2",
+		"default":"15% off"
+      },
+      {
+      	"type":"text",
+      	"id":"sdetail2",
+      	"label":"Badge 3",
+		"default":"Free Shipping"
+      },
+      {
+      	"type":"textarea",
+      	"id":"slistinformation",
+      	"label":"information"
+      },{
+    	"type":"text",
+        "id":"title",
+        "label":"Section Title"
+	},
+    {
+    	"type":"textarea",
+        "id":"subtitle",
+        "label":"Section Subtitle"
+	},
+	{
+    	"type":"text",
+        "id":"onetimetext",
+        "label":"One time purchase text",
+		"default":"One-Time Purchase"
+	},
+	{
+    	"type":"text",
+        "id":"onetimesubtext",
+        "label":"One time purchase sub text",
+		"default":"Give it a try"
+	},
+	{
+    	"type":"text",
+        "id":"subscribetext",
+        "label":"Subscribe and Save text",
+		"default":"Subscribe & Save"
+	}
+],
+	"presets":[
+		{
+			"name": "ASRV Product"
+		}
+	]
+}
+{% endschema %}
+
+  <script>
+
+    $('.slider-for').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+       infinite: false,
+    fade: true,
+    asNavFor: '.slider-nav'
+});
+$('.slider-nav').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    vertical:true,
+   infinite: false,
+    asNavFor: '.slider-for',
+    dots: false,
+    focusOnSelect: true,
+    verticalSwiping:true,
+    responsive: [
+    {
+        breakpoint: 992,
+        settings: {
+          vertical: false,
+        }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        vertical: false,
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        vertical: false,
+        slidesToShow: 1,
+      }
+    },
+    {
+      breakpoint: 380,
+      settings: {
+        vertical: false,
+        slidesToShow: 1,
+      }
+    }
+    ]
+});
+  $(".product_slider").slick({
+    dots: false,
+    infinite: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows:false,
+    prevArrow:"<button class='slick-prev slick-arrow' aria-label='Previous' type='button'><img src='https://cdn.shopify.com/s/files/1/0866/7664/files/chevron_right.png?v=1660762411'></button>",
+    nextArrow:"<button class='slick-next slick-arrow' aria-label='Previous' type='button'><img src='https://cdn.shopify.com/s/files/1/0866/7664/files/chevron_right.png?v=1660762411'></button>",
+    responsive:[
+      {
+            breakpoint: 1366,
+            settings: {
+                slidesToShow: 4
+            }
+        },
+        {
+            breakpoint: 1023,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 1,
+                arrows:false,
+                centerMode:true
+            }
+        }
+    ]
+  });
+</script>
+

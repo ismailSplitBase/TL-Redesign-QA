@@ -1,0 +1,341 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "sb-main-collection-banner",
+      "settings": {
+        "heading": "{{ collection.title }}",
+        "description": "{{ collection.description }}",
+        "show_breadcrumb": true,
+        "fg_color": "",
+        "secondary_fg_color": "",
+        "bg_color": "",
+        "padding_top": 24,
+        "padding_bottom": 0
+      }
+    },
+    "product-grid": {
+      "type": "sb-main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": false,
+        "filter_collections": [
+          "bestsellers",
+          "proteinseries",
+          "build-muscle",
+          "preseries",
+          "health-wellness",
+          "weight-loss"
+        ],
+        "mb_dual_columns": true,
+        "disable_slider": false,
+        "fg_color": "#111314",
+        "bg_color": "",
+        "ch_fg_color": "",
+        "ch_bg_color": "#F8F9FB",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "sb_featured_reviews_m8HAD6": {
+      "type": "sb-featured-reviews",
+      "blocks": {
+        "featured_review_fJXjtP": {
+          "type": "_featured-review",
+          "name": "Featured Review Card",
+          "settings": {
+            "author": "Daniel Jon Orozco",
+            "heading": "The Real Deal",
+            "review": "“Creatine HMB definitely will increase your reps due to the strength increase. It unquestionably works!”",
+            "product": "creatine-hmb"
+          },
+          "blocks": {}
+        },
+        "featured_review_79aThU": {
+          "type": "_featured-review",
+          "name": "Featured Review Card",
+          "settings": {
+            "author": "Sean Montgomery",
+            "heading": "Clean Protein",
+            "review": "“I use TL creatine which I love so I decided to give their protein a shot, and I am a big fan. It mixes easily in my shaker cup and doesn’t make you feel bloated after you drink it. Love how clean the product is and will be buying again soon!”",
+            "product": "whey-protein-isolate"
+          },
+          "blocks": {}
+        },
+        "featured_review_RGrnA4": {
+          "type": "_featured-review",
+          "name": "Featured Review Card",
+          "settings": {
+            "author": "Austin Reed",
+            "heading": "Everything Feels Clean",
+            "review": "“I’ve used many pre-workouts, and this one is hands down the best if you’re looking for good ingredients and a great workout! The stimulant isn’t overwhelming at all and I get a great pump every time!”",
+            "product": "lean-preworkout"
+          },
+          "blocks": {}
+        },
+        "static-slider": {
+          "type": "_slider",
+          "static": true,
+          "settings": {
+            "slides_per_view": 1.2,
+            "space_between_slides": 24,
+            "centered_slides": false,
+            "show_pagination": "always",
+            "show_page_count": "always",
+            "loop": true,
+            "autorotate": false,
+            "mousewheel": true,
+            "autorotate_speed": 5,
+            "slides_offset": 0
+          },
+          "blocks": {
+            "slide_breakpoint_NXWmHK": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 990,
+                "slides_per_view": 2.6,
+                "space_between_slides": 25,
+                "slides_offset": 0
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_NXWmHB": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1280,
+                "slides_per_view": 2.9,
+                "space_between_slides": 25,
+                "slides_offset": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_breakpoint_NXWmHK",
+            "slide_breakpoint_NXWmHB"
+          ]
+        }
+      },
+      "block_order": [
+        "featured_review_fJXjtP",
+        "featured_review_79aThU",
+        "featured_review_RGrnA4"
+      ],
+      "name": "SB Featured Reviews",
+      "settings": {
+        "heading": "58,934 Verified\n5 Star Reviews From Our Customers",
+        "fg_color": "#111314",
+        "bg_color": "#F8F9FB",
+        "accent_color": "#334fb4",
+        "ch_fg_color": "#111314",
+        "ch_bg_color": "#fff",
+        "ch_accent_color": "#1b73b3",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "sb_marquee_W7kgnN": {
+      "type": "sb-marquee",
+      "blocks": {
+        "item_WrdtAp": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/VP_-_Natural_Grass-Fed_Ingredients.svg",
+            "text": "Natural & Grass-Fed Ingredients"
+          }
+        },
+        "item_qyKzxa": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/tl-transparent-white.png",
+            "text": "Complete Label Transparency"
+          }
+        },
+        "item_mTdJUT": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/tl-dose-white.png",
+            "text": "Clinically-Dosed Formulas"
+          }
+        },
+        "item_6CYYqV": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/tl-tpt-white.png",
+            "text": "3rd-Party Lab Tested"
+          }
+        }
+      },
+      "block_order": [
+        "item_WrdtAp",
+        "item_qyKzxa",
+        "item_mTdJUT",
+        "item_6CYYqV"
+      ],
+      "name": "SB Marquee",
+      "settings": {
+        "speed": 45,
+        "fg_color": "#ffffff",
+        "bg_color": "linear-gradient(57deg, rgba(23, 52, 70, 1), rgba(23, 52, 70, 1) 100%)",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "sb_faq_yxhBtB": {
+      "type": "sb-faq",
+      "blocks": {
+        "question_wiM7Gx": {
+          "type": "question",
+          "settings": {
+            "question": "What’s the difference between Bulk and Lean pre-workouts?",
+            "answer": "<p><a href=\"/products/bulk-preworkout\" title=\"Bulk Pre-Workout\">Bulk</a> is our clinically dosed pre-workout powder for athletes, bodybuilders, and gym-goers looking to build lean muscle mass. <a href=\"https://www.transparentlabs.com/products/lean-preworkout\" title=\"https://www.transparentlabs.com/products/lean-preworkout\">Lean</a> is an advanced thermogenic pre-workout formula that supports fat-burning pathways while increasing athletic performance.<br/><br/></p>"
+          }
+        },
+        "question_tbxhVk": {
+          "type": "question",
+          "settings": {
+            "question": "Which Transparent Labs supplements stack well together?",
+            "answer": "<p>Many of our products can be stacked. For example, <a href=\"https://www.transparentlabs.com/products/creatine-hmb\"><span style=\"text-decoration:underline\">Creatine HMB</span></a> and <a href=\"https://www.transparentlabs.com/products/hydrate\"><span style=\"text-decoration:underline\">Hydrate</span></a> pair well with any of the <a href=\"https://www.transparentlabs.com/collections/preseries\"><span style=\"text-decoration:underline\">pre-workout formulas</span></a> and <a href=\"https://www.transparentlabs.com/collections/proteinseries\"><span style=\"text-decoration:underline\">protein powders</span></a>. </p>"
+          }
+        },
+        "question_fHyQqM": {
+          "type": "question",
+          "settings": {
+            "question": "Are Transparent Labs' best-selling supplements third-party tested?",
+            "answer": "<p>Yes, you can view the results on our <a href=\"https://www.transparentlabs.com/pages/third-party-tests\"><span style=\"text-decoration:underline\">Third-Party Tests</span></a> page.</p>"
+          }
+        },
+        "question_rdMegn": {
+          "type": "question",
+          "settings": {
+            "question": "What makes Transparent Labs supplements different from other brands?",
+            "answer": "<p>You get what you pay for, and many supplement companies are just in it to move as much product as possible at the expense of quality, efficacy, and safety. We’re proud to offer <a href=\"https://www.transparentlabs.com/collections/new-arrivals\"><span style=\"text-decoration:underline\">industry-leading formulas</span></a> with an unmatched commitment to using high-quality raw materials, natural ingredients, and <a href=\"https://www.transparentlabs.com/blogs/all/supplement-proprietary-blends\"><span style=\"text-decoration:underline\">full-disclosure labeling practices</span></a>. </p>"
+          }
+        },
+        "question_ic3jHQ": {
+          "type": "question",
+          "settings": {
+            "question": "Which Transparent Labs supplements are best for beginners?",
+            "answer": "<p>For beginners who want to improve their athletic performance and body composition, we recommend either <a href=\"https://www.transparentlabs.com/products/bulk-preworkout\"><span style=\"text-decoration:underline\">Bulk Pre-Workout</span></a> or <a href=\"https://www.transparentlabs.com/products/lean-preworkout\"><span style=\"text-decoration:underline\">Lean Pre-Workout</span></a> along with <a href=\"https://www.transparentlabs.com/products/proteinseries-100-grass-fed-whey-protein-isolate\"><span style=\"text-decoration:underline\">100% Grass-Fed Whey Protein Isolate</span></a> or <a href=\"https://www.transparentlabs.com/products/organic-vegan-protein-powder\"><span style=\"text-decoration:underline\">Organic Vegan Protein Powder</span></a>, and <a href=\"https://www.transparentlabs.com/products/creatine-hmb\"><span style=\"text-decoration:underline\">Creatine HMB</span></a>.</p>"
+          }
+        },
+        "question_TEX4tA": {
+          "type": "question",
+          "settings": {
+            "question": "What are the most popular Transparent Labs supplements?",
+            "answer": "<p>In no particular order, our five best-selling products are <a href=\"https://www.transparentlabs.com/products/proteinseries-100-grass-fed-whey-protein-isolate\"><span style=\"text-decoration:underline\">100% Grass-Fed Whey Protein Isolate</span></a>, <a href=\"https://www.transparentlabs.com/products/bulk-preworkout\"><span style=\"text-decoration:underline\">Bulk Pre-Workout</span></a>, <a href=\"https://www.transparentlabs.com/products/lean-preworkout\"><span style=\"text-decoration:underline\">Lean Pre-Workout</span></a>, <a href=\"https://www.transparentlabs.com/products/creatine-hmb\"><span style=\"text-decoration:underline\">Creatine HMB</span></a>, and <a href=\"https://www.transparentlabs.com/products/prebiotic-greens\"><span style=\"text-decoration:underline\">Prebiotic Greens</span></a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_wiM7Gx",
+        "question_tbxhVk",
+        "question_fHyQqM",
+        "question_rdMegn",
+        "question_ic3jHQ",
+        "question_TEX4tA"
+      ],
+      "name": "SB FAQ",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "use_template_faq": false,
+        "link": "",
+        "cta": "",
+        "fg_color": "#111314",
+        "bg_color": "",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "sb_featured_blog_FcV36x": {
+      "type": "sb-featured-blog",
+      "blocks": {
+        "static-blog-card": {
+          "type": "_blog-card",
+          "static": true,
+          "settings": {
+            "show_blog_title": true,
+            "fg_color": "#111314",
+            "bg_color": "#fff"
+          },
+          "blocks": {}
+        },
+        "static-slider": {
+          "type": "_slider",
+          "static": true,
+          "settings": {
+            "slides_per_view": 1.3,
+            "space_between_slides": 24,
+            "centered_slides": false,
+            "show_pagination": "always",
+            "show_page_count": "always",
+            "loop": false,
+            "autorotate": false,
+            "mousewheel": true,
+            "autorotate_speed": 5,
+            "slides_offset": 16
+          },
+          "blocks": {
+            "slide_breakpoint_Tp9r8Y": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1024,
+                "slides_per_view": 3.5,
+                "space_between_slides": 24,
+                "slides_offset": 48
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_raE4jA": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1440,
+                "slides_per_view": 3.5,
+                "space_between_slides": 24,
+                "slides_offset": 64
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_breakpoint_Tp9r8Y",
+            "slide_breakpoint_raE4jA"
+          ]
+        }
+      },
+      "name": "SB Featured Blog Posts",
+      "settings": {
+        "heading": "Start Learning",
+        "link_text": "Read More",
+        "featured_blog": "all",
+        "max_articles": 10,
+        "fg_color": "",
+        "bg_color": "#F8F9FB",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "sb_featured_reviews_m8HAD6",
+    "sb_marquee_W7kgnN",
+    "sb_faq_yxhBtB",
+    "sb_featured_blog_FcV36x"
+  ]
+}

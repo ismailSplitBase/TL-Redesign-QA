@@ -1,0 +1,106 @@
+{% if section.settings.width != blank %}
+  {% assign img_width = section.settings.width %}
+  {% if img_width == 'small' %}
+      <style> .xt-latest-banner .banner-wraper .banner-img{  width:30%;}    </style>  
+    {% endif %}
+    {% if img_width == 'medium' %}
+      <style> .xt-latest-banner .banner-wraper .banner-img{  width:45%;}    </style>  
+      {% endif %}
+    {% if img_width == 'large' %}
+      <style> .xt-latest-banner .banner-wraper .banner-img{  width:60%;}    </style>  
+    {% endif %}
+{% endif %}
+<style>
+  @media only screen and (min-width: 0px) and (max-width: 767px){
+.xt-latest-banner .banner-wraper .banner-img {
+    order: -1;
+    width: 95% !important;
+}}</style>
+
+{% assign blog_tag = false %}
+  {% assign base_url =  canonical_url %}
+  {% assign splitted_url = base_url | split: '/' %}
+  {% for chunks_of_url in splitted_url %}
+  {% if forloop.last %}
+    {% assign new_chunk = chunks_of_url | split: '-' %}
+    {% assign downcased_new_chunk = new_chunk[0] | downcase %}
+    {% if downcased_new_chunk == 'tlb' %}
+      {% assign blog_tag =  true %}
+    {% else %}
+      {% assign blog_tag =  false %}
+    {% endif %}
+    {% endif %}
+{% endfor %}
+
+  {% if blog_tag == true %}
+    <!-- do not show banner  -->
+  {% else %}
+    <!-- show banner  -->
+    <div class="xt-latest-banner">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="banner-wraper">
+          <div class="banner-text">
+            {% if section.settings.banner_heading != blank %}
+              <h2>{{ section.settings.banner_heading }}</h2>
+            {% endif %}
+            {% if section.settings.sub_heading != blank %}
+              <p>{{ section.settings.sub_heading }}</p>
+            {% endif %}
+          </div>
+          <div class="banner-img">
+            {% if section.settings.banner_image != blank %}
+              <img src="{{ section.settings.banner_image | img_url: 'master' }}" alt="{% if section.settings.banner_image.alt %}{{ section.settings.banner_image.alt }}{% else %}Main Blog Banner{% endif %}" loading="lazy">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "Latest Blog Banner",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"text",
+        "id":"banner_heading",
+        "label":"Banner heading"
+      },
+      {
+           "type":"radio",
+           "id":"width",
+           "label":"image size",
+           "options": [
+             { "value": "small", "label": "Small" },
+             { "value": "medium", "label": "Medium" },
+             { "value": "large", "label": "Large" }
+           ],
+           "default":   "medium"
+      },
+      {
+        "type":"text",
+        "id":"sub_heading",
+        "label":"Banner sub heading"
+      },
+      {
+        "type":"image_picker",
+        "id":"banner_image",
+        "label":"Banner Image"
+      }
+    ],
+    "presets":[
+      {
+        "name": "Latest Blog Banner"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %} 
+{% endjavascript %}

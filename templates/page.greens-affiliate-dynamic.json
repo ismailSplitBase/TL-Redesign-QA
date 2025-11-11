@@ -1,0 +1,336 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "f338a9c2-3168-494e-b4e7-b08979119509": {
+      "type": "old-bulk-affiliate-main-banner",
+      "settings": {
+        "image_only": false,
+        "top_heading": "Transparent Labs Prebiotic Greens",
+        "image": "shopify://shop_images/Greens_Desktop.jpg",
+        "mobile_image": "shopify://shop_images/Greens_Mobile.jpg",
+        "heading": "ALL-NATURAL SUPERFOOD GREENS",
+        "mbsubheading": "",
+        "subheading": "◦ Each serving of this stellar gut-health formula packs 8+ grams of Prebiotic Fibers and Digestion-Resistant Starches.\n<br>\n<br>\n\t\n◦ Sourced from Organic Green Superfoods including Cracked-Cell Spirulina, Acacia Fiber, Jerusalem Artichoke, and Green Banana Flour.",
+        "btn_text": "SHOP GREENS",
+        "btn_link": "#xgen-new-collection"
+      }
+    },
+    "d673ab08-bc60-40e7-940f-b90137eb58ce": {
+      "type": "old-bulk-affiliate-scoop",
+      "blocks": {
+        "ed0451d0-c644-4dd2-b8e2-98da1c77dae5": {
+          "type": "text",
+          "settings": {
+            "title": "$1.40 PER SERVING"
+          }
+        },
+        "e02460ea-e73b-4d0b-a52d-6ed45a8a2b47": {
+          "type": "text",
+          "settings": {
+            "title": "100% TRANSPARENT LABEL"
+          }
+        },
+        "cfa209f3-1852-48e3-bae1-159aedcfe96f": {
+          "type": "text",
+          "settings": {
+            "title": "ALL NATURAL INGREDIENTS"
+          }
+        },
+        "b9de01da-7e6d-4add-9f86-aa187a8fbc4b": {
+          "type": "text",
+          "settings": {
+            "title": "$2.63 PER SERVING"
+          }
+        },
+        "182ad636-3033-4fd2-9a7f-0f05f358e658": {
+          "type": "text",
+          "settings": {
+            "title": "HIDDEN PROPRIETARY BLENDS"
+          }
+        },
+        "13727330-ac10-46c7-b49c-a45eb8d98a4f": {
+          "type": "text",
+          "settings": {
+            "title": "PROPRIETARY SYNTHETIC VITAMINS"
+          }
+        }
+      },
+      "block_order": [
+        "ed0451d0-c644-4dd2-b8e2-98da1c77dae5",
+        "e02460ea-e73b-4d0b-a52d-6ed45a8a2b47",
+        "cfa209f3-1852-48e3-bae1-159aedcfe96f",
+        "b9de01da-7e6d-4add-9f86-aa187a8fbc4b",
+        "182ad636-3033-4fd2-9a7f-0f05f358e658",
+        "13727330-ac10-46c7-b49c-a45eb8d98a4f"
+      ],
+      "settings": {
+        "heading": "THE REAL SCOOP",
+        "subheading": "TRANSPARENT LABS GREENS vs. THE OTHERS",
+        "limage": "shopify://shop_images/Greens_Lander_Original.png",
+        "rimage": "shopify://shop_images/AG1_Lander_NoBG.png",
+        "btn_text": "SHOP GREENS",
+        "btn_link": "#xgen-new-collection"
+      }
+    },
+    "c70dec47-0c2c-46fa-a7f6-efa1df957373": {
+      "type": "old-bulk-affiliate-icons",
+      "blocks": {
+        "e5f6ecdd-bd06-4e0b-b4c3-ddbdd91539c4": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Organic_Green_Banana_Flour.png",
+            "title": "SUPPORTS A HEALTHY GUT BIOME"
+          }
+        },
+        "b0962df3-6584-49ab-bc75-2cd89389c880": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Promote_Healthy_Nutrient_Digestion_Absorption.png",
+            "title": "PROMOTES NUTRIENT DIGESTION AND ABSORPTION"
+          }
+        },
+        "463078b3-9a15-439e-b00f-18ff2054b39e": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Fight_Inflammation_Oxidative_Stress.png",
+            "title": "FIGHTS INFLAMMATION & OXIDATIVE STRESS"
+          }
+        }
+      },
+      "block_order": [
+        "e5f6ecdd-bd06-4e0b-b4c3-ddbdd91539c4",
+        "b0962df3-6584-49ab-bc75-2cd89389c880",
+        "463078b3-9a15-439e-b00f-18ff2054b39e"
+      ],
+      "settings": {}
+    },
+    "1a9b2478-a05d-4c94-bdc0-0cf466ca7f06": {
+      "type": "old-bulk-affiliate-ingrediants",
+      "blocks": {
+        "64f9369c-4c8c-46b2-a8da-8199fefb813b": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Organic_Green_Banana_Flour.png",
+            "title": "Organic Green Banana Flour",
+            "desc": "Digestion-resistant starches from green banana flour are an innovative breakthrough in nutritional science. Much like dietary fiber, digestion-resistant starch is fermented to short-chain fatty acids that promote gut health by feeding \"friendly\" intestinal microflora."
+          }
+        },
+        "5bd4f26a-f488-491d-8619-b464bc6390f0": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Desktop-Icon-3.png",
+            "title": "ORGANIC ACACIA FIBER",
+            "desc": "Sourced from the sap of Acacia Senegal trees, Acacia fiber has been shown to lower cholesterol levels, regulate blood sugar, promote healthy digestion, and protect against diabetes."
+          }
+        },
+        "a168efc7-f15a-4b87-bc00-5d85f88e730d": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/myHMB.png",
+            "title": "Organic Spirulina & Chlorella",
+            "desc": "Chlorella and spirulina are extremely nutrient-dense algae containing abundant amounts of Vitamins A, B1, B2, B3, and B6. They are also rich in vital minerals such as calcium, iron, magnesium, phosphorus, and zinc. Broken-cell forms of these superfoods promote absorption."
+          }
+        },
+        "36e94a24-53ed-4fdf-bd05-49451468503a": {
+          "type": "image",
+          "settings": {
+            "icon": "shopify://shop_images/Promote_Healthy_Nutrient_Digestion_Absorption.png",
+            "title": "ORGANIC JERUSALEM ARTICHOKE INULIN",
+            "desc": "Jerusalem Artichoke is rich in Inulin, potent prebiotic that stimulates the growth of healthy gut bacteria, as well as improve mineral absorption and blood lipid profiles."
+          }
+        }
+      },
+      "block_order": [
+        "64f9369c-4c8c-46b2-a8da-8199fefb813b",
+        "5bd4f26a-f488-491d-8619-b464bc6390f0",
+        "a168efc7-f15a-4b87-bc00-5d85f88e730d",
+        "36e94a24-53ed-4fdf-bd05-49451468503a"
+      ],
+      "settings": {
+        "title": "GREEN SUPERFOODS, BACKED BY SCIENCE.",
+        "dimage": "shopify://shop_images/Greens_Lander_Original.png",
+        "mimage": "shopify://shop_images/Greens_Lander_Original.png",
+        "btn_text": "View Full Ingredients",
+        "pimage": "shopify://shop_images/Prebiotic_Greens_-_Full_Ingredients.webp",
+        "product": "",
+        "product_title": "",
+        "product_sub_title": ""
+      }
+    },
+    "b45048cd-f528-475a-8264-4f948b471942": {
+      "type": "old-bulk-affiliate-product",
+      "blocks": {
+        "bcb9ce21-18c1-46b0-8c85-660b280e6d68": {
+          "type": "text",
+          "settings": {
+            "collection_type": "",
+            "product_type": "SUBSCRIBE AND SAVE",
+            "product_1": "greens",
+            "detail_1": "• Save 10% and get Free Shipping on every order<br>\n• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_1": "MAXIMUM RESULTS",
+            "product_2": "gut-essentials-stack",
+            "detail_2": "• Subscribe to our top 3 Gut Health supplements: Prebiotic Greens, Collagen Hydrolysate, and Gut Health Probiotic<br>\n• Save 10% and get Free Shipping on every order<br>\n• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or pause any Time",
+            "product_type_2": "ONE-TIME PURCHASE",
+            "product_3": "greens",
+            "detail_3": "<span style=\"text-decoration: line-through;\">• Exclusive Promotions &amp; Discounts<br>\n• Free Shipping<br>\n</span>"
+          }
+        }
+      },
+      "block_order": [
+        "bcb9ce21-18c1-46b0-8c85-660b280e6d68"
+      ],
+      "settings": {
+        "title": "",
+        "subtitle": "YOUR CHOICE: SUBSCRIBE, STACK, OR SOLO",
+        "discount_month": "Deliver Every Month",
+        "discount_days": "Deliver Every 45 days",
+        "percent_text": "10% Off"
+      }
+    },
+    "main": {
+      "type": "old-bulk-affiliate",
+      "blocks": {
+        "3df6f53c-b737-4255-b6b0-710b24dfc82c": {
+          "type": "text",
+          "settings": {
+            "collection_type": "",
+            "product_type": "BEST DEAL",
+            "product_1": "bulk-preworkout",
+            "detail_1": "• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_1": "MAXIMUM RESULTS",
+            "product_2": "muscle-building-stacks",
+            "detail_2": "• <strong>OPTIMIZED BUNDLE MAXIMIZES GAINS</strong><br>\n• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time",
+            "product_type_2": "ONE-TIME PURCHASE",
+            "product_3": "bulk-preworkout",
+            "detail_3": "<span style=\"text-decoration: line-through;\">• Exclusive Promotions &amp; Discounts<br>\n• Choose Shipping Frequency<br>\n• Cancel or Pause Any Time</span>"
+          }
+        }
+      },
+      "block_order": [
+        "3df6f53c-b737-4255-b6b0-710b24dfc82c"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "YOUR CHOICE: SOLO, SUBSCRIPTION, OR STACK SUBSCRIPTION",
+        "subtitle": "",
+        "discount_month": "Deliver Every Month",
+        "discount_days": "Deliver Every 45 days",
+        "percent_text": "10% Off"
+      }
+    },
+    "d5dae2ee-29b0-4b3e-9fa5-433d1cdde0e0": {
+      "type": "old-bulk-affiliate-body-banner",
+      "settings": {
+        "image": "shopify://shop_images/image_attempt2.jpg"
+      }
+    },
+    "a6d8a429-db3b-4902-b34e-eca0a36a6aaf": {
+      "type": "old-index-pertner-icons",
+      "blocks": {
+        "12b15581-3a2d-4dd0-a28f-f7cc94d48ed9": {
+          "type": "text",
+          "settings": {
+            "icon_text": "AS SEEN ON"
+          }
+        },
+        "a565879d-c6c4-4c9d-946d-58494f22b423": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Group_352.png",
+            "icon_text": ""
+          }
+        },
+        "7ebf789f-0951-416e-8a4e-6f7d661d3d42": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/2560px-Healthline_logo.png",
+            "icon_text": ""
+          }
+        },
+        "77109622-4312-42b4-b9f1-242d38fe7ca3": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/logo1200x630.png",
+            "icon_text": ""
+          }
+        },
+        "3acc0958-bf37-47c7-addf-d80007f12f8d": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/livestrong-logo.png",
+            "icon_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "12b15581-3a2d-4dd0-a28f-f7cc94d48ed9",
+        "a565879d-c6c4-4c9d-946d-58494f22b423",
+        "7ebf789f-0951-416e-8a4e-6f7d661d3d42",
+        "77109622-4312-42b4-b9f1-242d38fe7ca3",
+        "3acc0958-bf37-47c7-addf-d80007f12f8d"
+      ],
+      "settings": {
+        "index-partner-icons": "index partner icons"
+      }
+    },
+    "42981725-61f5-4256-a388-54f731e0ba6d": {
+      "type": "old-bulk-affiliate-reviews",
+      "blocks": {
+        "cedd8563-f887-4f56-80c3-649593bd5442": {
+          "type": "text",
+          "settings": {
+            "rating": "5",
+            "review": "“Amazing greens product, best one I have ever had. Not getting any of that nasty dirt flavor from other fiber supplements. Enjoying this once a day with a meal to get that extra fiber and greens lacking from my diet.\"",
+            "name": "Luis R."
+          }
+        },
+        "aa1eb5a1-f64e-4cfe-89e0-506e013ca7d4": {
+          "type": "text",
+          "settings": {
+            "rating": "5",
+            "review": "\"This product has drastically improved my gut health and more. If you aren't using already then I highly recommend utilizing it in your regular morning routine.\"",
+            "name": "Erica H."
+          }
+        },
+        "da50697f-8e87-4bb5-8fe5-c0b15dfa57da": {
+          "type": "text",
+          "settings": {
+            "rating": "5",
+            "review": "\"Great product, works really well, and gives you just the right amount of prebiotics. I take it in the morning or after lunch, works well either way! Quality is fantastic and very easy to digest.\"",
+            "name": "Radu D."
+          }
+        }
+      },
+      "block_order": [
+        "cedd8563-f887-4f56-80c3-649593bd5442",
+        "aa1eb5a1-f64e-4cfe-89e0-506e013ca7d4",
+        "da50697f-8e87-4bb5-8fe5-c0b15dfa57da"
+      ],
+      "settings": {
+        "heading": "Don’t Just Take Our Word For It",
+        "subheading": "Read what fitness enthusiasts and avid gym-goers are saying about Prebiotic Greens:",
+        "btn_text": "SHOP GREENS",
+        "btn_link": "#xgen-new-collection"
+      }
+    }
+  },
+  "order": [
+    "f338a9c2-3168-494e-b4e7-b08979119509",
+    "d673ab08-bc60-40e7-940f-b90137eb58ce",
+    "c70dec47-0c2c-46fa-a7f6-efa1df957373",
+    "1a9b2478-a05d-4c94-bdc0-0cf466ca7f06",
+    "b45048cd-f528-475a-8264-4f948b471942",
+    "main",
+    "d5dae2ee-29b0-4b3e-9fa5-433d1cdde0e0",
+    "a6d8a429-db3b-4902-b34e-eca0a36a6aaf",
+    "42981725-61f5-4256-a388-54f731e0ba6d"
+  ]
+}

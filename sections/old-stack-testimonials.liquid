@@ -1,0 +1,84 @@
+<div class="xgen-stack-slider">
+    <div class="{% if template.name contains 'product' %} xgen-inner {% endif %}">
+    <div class="regular slider">
+      
+      {% for block in section.blocks %}
+        <div class="items">
+          {% if block.settings.image_desktop!=blank %}
+            {% assign image_desktop = block.settings.image_desktop | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+          	<img class="items-desktop" src="{{ block.settings.image_desktop | img_url : 'master' }}" alt="{% if block.settings.image_desktop.alt %}{{ block.settings.image_desktop.alt }}{% else %}{{ image_desktop }}{% endif %}" loading="lazy">
+          {% endif %}
+          {% if block.settings.image_mobile != blank %}
+            {% assign image_mobile = block.settings.image_mobile | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+          	<img class="items-mobile" src="{{ block.settings.image_mobile | img_url : 'master' }}" alt="{% if block.settings.image_desktop.alt %}{{ block.settings.image_desktop.alt }}{% else %}{{ image_mobile }}{% endif %}" loading="lazy">
+          {% endif %}
+          <div class="stack-text">
+            
+            {% if block.settings.text %}
+            	<p>{{ block.settings.text }}</p>
+            {% endif %}
+            
+            {% if block.settings.name %}
+            	<h2>{{ block.settings.name }}</h2>
+            {% endif %}
+            
+            {% if block.settings.text2 %}
+            	<h3>{{ block.settings.text2 }}</h3>
+            {% endif %}
+            
+            
+          </div>
+        </div>
+      {% endfor %}
+      
+      
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Stack Testimonials",
+    "class": "td-legacy",
+    "settings": [],
+	"blocks":[
+		{
+			"name":"slide",
+			"type":"image",
+      "limit": 1,
+			"settings":[
+				{
+					"type":"image_picker",
+					"id":"image_desktop",
+					"label":"Choose Desktop Image"
+				},
+				{
+					"type":"image_picker",
+					"id":"image_mobile",
+					"label":"Choose Mobile Image"
+				},
+				{
+					"type":"textarea",
+					"id":"text",
+					"label":"Enter Text"
+				},
+				{
+					"type":"text",
+					"id":"name",
+					"label":"Enter Name"
+				},
+				{
+					"type":"text",
+					"id":"text2",
+					"label":"Enter Text"
+				}
+			]
+		}
+	],
+	"presets":[
+		{
+			"name": "Stack Testimonials"
+		}
+	]
+  }
+{% endschema %}

@@ -1,0 +1,77 @@
+{% liquid
+  assign product_count = 0
+  if block.settings.desktop_menu_type == "single_feature"
+    assign product_count = 6
+  elsif block.settings.desktop_menu_type == "double_feature"
+    assign product_count = 3
+  endif
+%}
+
+<div class="sb-megamenu-feature">
+  <div class="sb-megamenu-feature__head">
+    <h2 class="sb-megamenu-feature__title">
+      {{ link.title }}
+    </h2>
+    {% render 'sb-button', button_text: 'View All', button_type: 'link', button_url: link.url %}
+  </div>
+  <div class="sb-megamenu-feature__container{% if block.settings.desktop_menu_type == 'double_feature' %} sb-megamenu-feature__container--double{% endif %}">
+    <div class="sb-megamenu-feature__content">
+      {% comment %} Product list {% endcomment %}
+      <div class="sb-megamenu-feature__products">
+        {% for product in block.settings.collection.products limit: product_count %}
+          <div class="sb-megamenu-feature__product">
+            <a class="sb-megamenu-feature__product-link" href="{{ product.url }}">
+              {{ product.featured_image | image_url: width: "120" | image_tag: class: 'sb-megamenu-feature__product-image', alt: product.title }}
+              <h3 class="sb-megamenu-feature__product-title">
+                {{ product.title }}
+              </h3>
+              {% if product.metafields.custom.plp_product_short_description != blank %}
+                <div class="sb-megamenu-feature__product-description">
+                  <span>
+                    {{ product.metafields.custom.plp_product_short_description }}
+                  </span>
+                </div>
+              {% endif %}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% comment %} Feature cards {% endcomment %}
+      <div class="sb-megamenu-feature__cards">
+        {% if block.settings.image_one_link != blank %}
+          <a href="{{ block.settings.image_one_link }}" class="sb-megamenu-feature__card">
+            <h3 class="sb-megamenu-feature__card-title">
+              <span>
+                {{ block.settings.image_one_title }}
+              </span>
+              {% render 'sb-icon--right-arrow' %}
+            </h3>
+            <div class="sb-megamenu-feature__card-description">
+              <span>
+                {{ block.settings.image_one_description }}
+              </span>
+            </div>
+            {{ block.settings.image_one | image_url: width: "520" | image_tag: class: 'sb-megamenu-feature__card-image' }}
+          </a>
+        {% endif %}
+        {% if block.settings.image_two_link != blank and block.settings.desktop_menu_type == 'double_feature' %}
+          <a href="{{ block.settings.image_two_link }}" class="sb-megamenu-feature__card">
+            <h3 class="sb-megamenu-feature__card-title">
+              <span>
+                {{ block.settings.image_two_title }}
+              </span>
+              {% render 'sb-icon--right-arrow' %}
+            </h3>
+            <div class="sb-megamenu-feature__card-description">
+              <span>
+                {{ block.settings.image_two_description }}
+              </span>
+            </div>
+            {{ block.settings.image_two | image_url: width: "400" | image_tag: class: 'sb-megamenu-feature__card-image' }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

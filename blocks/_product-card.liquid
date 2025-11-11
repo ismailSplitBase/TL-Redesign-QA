@@ -1,0 +1,86 @@
+{%  if block.settings.product != empty %}
+  {%  assign product = block.settings.product %}
+  <div class="sb-product-card">
+    <div class="sb-product-card__tags">
+      {% assign tags = product.tags %}
+      {% if tags contains "best-seller" %}
+        <div class="sb-product-card__tag sb-product-card__tag--best-seller">
+          Best Seller
+        </div>
+      {% endif %}
+      {% if tags contains "new" or tags contains "New" %}
+        <div class="sb-product-card__tag sb-product-card__tag--new">
+          New
+        </div>
+      {% endif %}
+    </div>
+    <div class="sb-product-card__media">
+      {% if block.settings.show_media_gallery %}
+        This would need to show the media
+      {% else %}
+        {{ product.featured_image | image_url: width: "400" | image_tag: class: 'sb-product-card__image', alt: product.title }}
+      {% endif %}
+    </div>
+    <div class="sb-product-card__content">
+      {% if block.blocks.size > 0 %}
+        <div class="sb-product-card__blocks">
+          {% content_for 'blocks' %}
+        </div>
+      {% endif %}
+      <h3 class="sb-product-card__title">
+        {{ product.title }}
+      </h3>
+      <div class="sb-product-card__footer">
+        <div class="sb-product-card__price">
+          {% if product.compare_at_price > product.price %}
+            <span class="sb-product-card__price--compare">
+              {{ product.compare_at_price | money }}
+            </span>
+          {% endif %}
+          <span class="sb-product-card__price--current">
+            {{ product.price | money }}
+          </span>
+        </div>
+        <a href="{{ product.url }}" class="sb-product-card__cta">
+          Shop {% render 'sb-option-text', product: product %}
+        </a>
+      </div>
+
+    </div>
+
+    {% comment %} NOTE asssess just using horizon? {% endcomment %}
+  </div>
+{%  endif %}
+{% schema %}
+{
+  "name": "Product Card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Text Alignment",
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_media_gallery",
+      "label": "Show Media Gallery",
+      "default": false
+    },
+  ],
+  "blocks": [{
+    "type": "@app",
+  }],
+  "presets": [
+    {
+      "name": "Product Card"
+    }
+  ]
+}
+{% endschema %}

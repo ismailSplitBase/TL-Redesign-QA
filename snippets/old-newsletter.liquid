@@ -1,0 +1,51 @@
+<div class="newsletter-form">
+  {% form 'customer', id: 'newsletter-form' %}
+    {% if form.posted_successfully? or request.params.customer_posted %}
+      <p class="thanks__message">Thanks for subscribing!</p>
+    {% elsif form.errors %}
+      {% for field in form.errors %}
+        <p class="error__message"><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+      {% endfor %}
+    {% endif %}
+
+    <input type="hidden" name="form_location" value="top-newsletter">
+
+    {% if template contains 'password' %}
+      <input type="hidden" name="contact[tags]" value="prospect,password page"/>
+    {% else %}
+      <input type="hidden" name="contact[tags]" value="newsletter" />
+    {% endif %}
+
+    <div class="space-y-4 text-blue-500">
+      <input type="hidden" name="challenge" value="false" />
+      <fieldset>
+        <label for="firstName" class="visually-hidden">First Name</label>
+        <input
+          id="firstName"
+          class="text-input"
+          name="contact[first_name]"
+          placeholder="First Name"
+          type="text"
+        />
+      </fieldset>
+      <fieldset>
+        <label for="Email" class="visually-hidden">Email Address</label>
+        <input
+          id="Email"
+          autocapitalize="off"
+          autocorrect="off"
+          class="text-input"
+          name="contact[email]"
+          placeholder="Email Address"
+          type="email"
+        />
+      </fieldset>
+      <button id="submitbtn" class="button w-full" type="submit">Sign Up</button>
+  
+      <p class="error-message" id="newsletter__Error--message">
+        {% render 'old-icon-error' %} {{ 'templates.contact.form.error_message' | t }}
+      </p>
+   
+    </div>
+  {% endform %}
+</div>

@@ -1,0 +1,302 @@
+{% stylesheet %}
+.sb-product-testing__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  gap: 64px;
+}
+
+.sb-product-testing__heading {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--sb-fg-color, #fff);
+  margin: 0;
+}
+.sb-product-testing__heading > p,
+.sb-product-testing__content > p {
+  margin: 0;
+}
+.sb-product-testing__heading > p:not(:last-child),
+.sb-product-testing__content > p:not(:last-child) {
+  margin-bottom: 16px;
+}
+.sb-product-testing__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sb-product-testing__content {
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.sb-product-testing__links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sb-product-testing__link {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--sb-fg-color, #ffffff);
+  text-decoration: none;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
+  transition: opacity 0.2s ease;
+}
+.sb-product-testing__link span {
+  max-width: 310px;
+}
+
+.sb-product-testing__link:hover {
+  opacity: 0.8;
+}
+
+
+.sb-product-testing__link-arrow {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.sb-product-testing__link-arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sb-product-testing__link-arrow path {
+  stroke: var(--sb-fg-color, #ffffff);
+}
+
+.sb-product-testing__badges {
+  display: flex; 
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.sb-product-testing__badge {
+  max-width: 80px;
+}
+
+.sb-product-testing__badge img {
+  width: 100%;
+  height: auto;
+}
+.sb-product-testing__container + sb-modal .sb-modal__body {
+  padding: 24px 16px;
+  border-radius: 8px;
+  background-color: var(--sb-modal-bg);
+}
+.sb-product-testing__container + sb-modal .sb-pdf-viewer {
+  height: 100%;
+}
+.sb-product-testing__container + sb-modal .sb-pdf-viewer__close {
+  box-shadow: none;
+  background: transparent;
+  border: none;
+}
+.sb-product-testing__container + sb-modal .sb-pdf-viewer__close svg {
+  width: 20px;
+  height: 20px;
+}
+.sb-product-testing__container + sb-modal .sb-pdf-viewer__canvas {
+  box-shadow: none;
+  width: 100%;
+}
+.sb-product-testing__container + sb-modal .sb-pdf-viewer__close {
+  top: 8px;
+  right: 8px;
+}
+@media screen and (min-width: 768px) {
+  .sb-product-testing__link span {
+    max-width: unset;
+  }
+  .sb-product-testing__container + sb-modal .sb-pdf-viewer__close {
+    top: 16px;
+    right: 8px;
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .sb-product-testing__container {
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 6px;
+    gap: 80px;
+  }
+  .sb-product-testing__heading {
+    font-size: 28px;
+  }
+  
+  .sb-product-testing__link {
+    padding: 16px 0 24px;
+    font-size: 18px;
+  }
+}
+{% endstylesheet %}
+{% liquid
+  assign links = product.metafields.custom.product_description_links.value
+  assign badges = product.metafields.custom.product_informed_choice_badges.value
+  if block.settings.use_description_links == false
+    assign links = block.settings.source_links
+  endif
+  if block.settings.use_badges == false
+    assign badges = null
+  endif
+%}
+{% assign modal_id = 'sb-modal-' |  append: section.id %}
+
+<div class="sb-product-testing__container sb-styled-element" style="{%  render 'style-attributes', settings: block.settings, mobile_multiple: 1.3 %}">
+  {% if block.settings.heading != empty or block.settings.content != empty %}
+    <div class="sb-product-testing__header">
+      {% if block.settings.heading != empty %}
+        <h2 class="sb-product-testing__heading">{{ block.settings.heading }}</h2>
+      {% endif %}
+      {% if block.settings.content != empty %}
+        <div class="sb-product-testing__content">{{ block.settings.content }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+  <div class="sb-product-testing__body">
+  {% if links != empty %}
+    <div class="sb-product-testing__links">
+      {% for link in links %}
+        <sb-pdf-viewer modal-id="{{ modal_id }}">
+          <a href="{{ link.description_link }}" class="sb-product-testing__link" target="_blank">
+            <span>{{ link.description_link_text }}</span>
+            <div class="sb-product-testing__link-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                <g clip-path="url(#clip0_5161_1716)">
+                  <path d="M-1.74846e-07 9.55322L16 9.55322M16 9.55322L11.75 13.5532M16 9.55322L11.75 5.55322" stroke="currentColor" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_5161_1716">
+                    <rect width="18" height="18" fill="currentColor" transform="translate(18 0.0532227) rotate(90)"/>
+                  </clipPath>
+                </defs>
+                </svg>
+            </div>
+          </a>
+        </sb-pdf-viewer>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if block.settings.use_badges == false and block.blocks.size > 0 %}
+    <div class="sb-product-testing__badges">
+      {% content_for 'blocks' %}
+    </div>
+  {% elsif block.settings.use_badges == true and badges != empty %}
+    <div class="sb-product-testing__badges">
+      {% for badge in badges %}
+        <div class="sb-product-testing__badge">
+          {{ badge | image_url: width: auto, height: auto | image_tag }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  </div>
+</div>
+{% render 'sb-modal', modal_id: modal_id %}
+{% render 'sb-pdf-template' %}
+
+<script src="{{ 'sb-pdf-viewer.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Product Testing",
+  "tag": null,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_description_links",
+      "label": "Use Description Links",
+      "default": true,
+      "info": "Enable this to Product Description Links of the Product"
+    },
+    {
+      "type": "metaobject_list",
+      "id": "source_links",
+      "label": "Default Description Links",
+      "metaobject_type": "product_description_links"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_badges",
+      "label": "Use Product Informed Choice Badges",
+      "default": true,
+      "info": "Enable this to Product Informed Choice Badges of the Product. Will override blocks."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0A3049"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_product_choice_badge"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Testing"
+    }
+  ]
+}
+{% endschema %}

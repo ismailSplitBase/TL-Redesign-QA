@@ -1,0 +1,280 @@
+{{ 'testimonial.css' | asset_url | stylesheet_tag }}
+
+<div class="custom-testimonial-slider" id="section--{{ section.id }}" data-speed="40">
+  <div class="slider-track">
+    {% assign repeat_times = 20 %}
+    {% assign dummy_array = (1..repeat_times) | join: ',' | split: ',' %}
+        
+    {% for _ in dummy_array %}
+      {% for block in section.blocks %}
+        <div class="testimonial-item">
+          <div class="testimonial-content">
+            <!-- Placeholder Image -->
+            <div class="testimonial-logo">
+              {% if block.settings.logo %}
+                {% assign file_name = block.settings.logo | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+                <img src="{{ block.settings.logo | image_url: width: auto, height: auto }}" alt="{{ file_name }}" class="testimonial-image" loading="lazy" width="100%" height="100%" />
+              {% else %}
+                <div class="placeholder-image">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+            
+            <!-- Placeholder Text -->
+            <div class="testimonial-text">
+              <p>
+                {% if block.settings.testimonial_text != blank %}
+                  {{ block.settings.testimonial_text }}
+                {% else %}
+                  This is a placeholder testimonial text. Add your customer testimonial here.
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+    
+    <!-- If No Blocks Exist, Show Default Placeholders -->
+    {% if section.blocks.size == 0 %}
+      {% for i in (1..5) %}
+        <div class="testimonial-item">
+          <div class="testimonial-content">
+            <div class="testimonial-logo placeholder-image">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+            <div class="testimonial-text">
+              <p>This is a placeholder testimonial text. Add your customer testimonial here.</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+<script>
+ document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.querySelector('.custom-testimonial-slider');
+    const track = document.querySelector('.slider-track');
+    const originalItems = Array.from(track.querySelectorAll('.testimonial-item'));
+    
+    if (!slider || !track || originalItems.length === 0) return;
+    
+    // Get speed from data attribute (pixels per second)
+    let speed = parseInt(slider.dataset.speed) || 50;
+    
+    let position = 0, animationId = null, lastTimestamp = 0;
+    // Only pause for desktop logic
+    let isPaused = false;
+    // For drag (desktop only!)
+    let isDragging = false, startX = 0, startPosition = 0;
+
+    // Mobile detection: width < 992px = mobile/tablet, else desktop
+    function isDesktop() { return window.innerWidth > 991; }
+
+    // Fixed direction - always move left
+    const direction = -1;
+    const itemWidth = originalItems[0].offsetWidth;
+    const totalWidth = originalItems.length * itemWidth;
+
+    // Infinite loop logic
+    function setupInfiniteLoop() {
+      // Remove clones, keep originals
+      while (track.children.length > originalItems.length) {
+        track.removeChild(track.lastChild);
+      }
+      // Clone enough sets
+      const containerWidth = slider.offsetWidth;
+      const neededSets = Math.max(3, Math.ceil((containerWidth * 3) / totalWidth));
+      for (let i = 0; i < neededSets; i++) {
+        originalItems.forEach(item => {
+          const clone = item.cloneNode(true);
+          track.appendChild(clone);
+        });
+      }
+      // Prepend for looping
+      for (let j = originalItems.length - 1; j >= 0; j--) {
+        const clone = originalItems[j].cloneNode(true);
+        track.prepend(clone);
+      }
+      // Start in original set so no "jump"
+      position = -1 * totalWidth;
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${position}px)`;
+      void track.offsetWidth; // force reflow
+      track.style.transition = '';
+    }
+
+    function checkBoundaries() {
+      const items = track.querySelectorAll('.testimonial-item');
+      const totalTrackWidth = items.length * itemWidth;
+      if (Math.abs(position) > totalTrackWidth - slider.offsetWidth - itemWidth) {
+        position += totalWidth;
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${position}px)`;
+        void track.offsetWidth;
+        track.style.transition = '';
+      }
+    }
+    // Marquee animation loop
+    function animate(timestamp) {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const elapsed = timestamp - lastTimestamp;
+      // For mobile, isPaused is always false; for desktop it works as coded
+      if (!isPaused) {
+        position += (direction * speed * elapsed) / 1000;
+        track.style.transform = `translateX(${position}px)`;
+        checkBoundaries();
+      }
+      lastTimestamp = timestamp;
+      animationId = requestAnimationFrame(animate);
+    }
+    function startAnimation() {
+      if (animationId) cancelAnimationFrame(animationId);
+      lastTimestamp = 0;
+      animationId = requestAnimationFrame(animate);
+    }
+
+    // Desktop events only!
+    function pauseAnimation() { if (isDesktop()) isPaused = true; }
+    function resumeAnimation() { if (isDesktop()) isPaused = false; }
+
+    function handleDragStart(e) {
+      if (!isDesktop()) return; // only desktop
+      pauseAnimation();
+      isDragging = true;
+      startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+      startPosition = position;
+      // only listen on desktop
+      document.addEventListener('mousemove', handleDragMove);
+      document.addEventListener('mouseup', handleDragEnd);
+      e.preventDefault && e.preventDefault();
+    }
+    function handleDragMove(e) {
+      if (!isDesktop() || !isDragging) return;
+      const x = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+      const diff = x - startX;
+      position = startPosition + diff;
+      track.style.transform = `translateX(${position}px)`;
+      checkBoundaries();
+      e.preventDefault && e.preventDefault();
+    }
+    function handleDragEnd(e) {
+      if (!isDesktop()) return;
+      isDragging = false;
+      // resume if not hovered
+      if (!slider.matches(':hover')) resumeAnimation();
+      document.removeEventListener('mousemove', handleDragMove);
+      document.removeEventListener('mouseup', handleDragEnd);
+      e && e.preventDefault && e.preventDefault();
+    }
+    // Only desktop: set up event listeners
+    function setupDesktopEvents() {
+      track.addEventListener('mousedown', handleDragStart);
+      slider.addEventListener('mouseenter', pauseAnimation);
+      slider.addEventListener('mouseleave', resumeAnimation);
+    }
+    function removeDesktopEvents() {
+      track.removeEventListener('mousedown', handleDragStart);
+      slider.removeEventListener('mouseenter', pauseAnimation);
+      slider.removeEventListener('mouseleave', resumeAnimation);
+      document.removeEventListener('mousemove', handleDragMove);
+      document.removeEventListener('mouseup', handleDragEnd);
+    }
+
+    // Re-setup on resize (to support orientation change, etc)
+    let lastKnownWidth = window.innerWidth;
+    function handleResize() {
+      const currentWidth = window.innerWidth;
+      if (currentWidth !== lastKnownWidth) {
+        setupInfiniteLoop();
+        // ...plus whatever else you want here (like device type swapping)
+        const nowDesktop = isDesktop();
+        if (nowDesktop !== lastDeviceTypeDesktop) {
+          if (nowDesktop) {
+            setupDesktopEvents();
+          } else {
+            removeDesktopEvents();
+            isPaused = false; // Always running on mobile
+          }
+          lastDeviceTypeDesktop = nowDesktop;
+        }
+        lastKnownWidth = currentWidth;
+      }
+    }
+
+    function init() {
+      setupInfiniteLoop();
+      // Initial event set
+      if (isDesktop()) setupDesktopEvents();
+      // Always running on mobile
+      startAnimation();
+      // Resize (for responsive handling)
+      window.addEventListener('resize', handleResize);
+    }
+
+    init();
+ });
+</script>
+
+{% style %}
+  
+  #section--{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  #section--{{ section.id }} .testimonial-text {
+    color: {{ section.settings.content_color }};
+  }
+
+{% endstyle %}
+
+
+{% schema %}
+{
+  "name": "Testimonial Slider",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#173446"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Content Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_text",
+          "label": "Testimonial Text",
+          "default": "This is a placeholder testimonial text. Add your customer testimonial here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Slider"
+    }
+  ]
+}
+{% endschema %}

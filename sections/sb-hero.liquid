@@ -1,0 +1,662 @@
+{% comment %} Opacity overlay is applied using the CSS brightness filter. To keep the input intuitive we flip the opacity setting's value in the liquid {% endcomment %}
+{% liquid
+  assign buttons = section.blocks | where: 'type', 'button'
+  assign overlay_opacity = 1
+  if section.settings.show_overlay
+    assign overlay_opacity = 1 | minus: section.settings.overlay_opacity 
+  endif
+  assign subscribers_block = section.blocks | where: 'type', 'subscribers' | first
+%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }}{
+    --sb-overlay: {{ overlay_opacity }};
+  }
+
+  {% if subscribers_block != blank %}
+    .sb-hero-content__subscribers--{{ subscribers_block.id }} {
+        --sb-fg-color: {{ subscribers_block.settings.fg_color }};
+        --bg-color: {{ subscribers_block.settings.bg_color }};
+      }
+      @media (min-width: 768px) {
+        .sb-hero-content__subscribers--{{ subscribers_block.id }} {
+          {% if subscribers_block.settings.fg_color_desktop.alpha > 0 %}--sb-fg-color: {{ subscribers_block.settings.fg_color_desktop }};{% endif %}
+          --bg-color: {{ subscribers_block.settings.bg_color_desktop }};
+        }
+      }
+  {% endif %}
+{%- endstyle -%}
+
+{% stylesheet %}
+  .sb-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Media heights */
+  .sb-hero--mobile-small {
+    --mobile-media-height: 250px;
+  }
+
+  .sb-hero--mobile-medium {
+    --mobile-media-height: 300px;
+  }
+
+  .sb-hero--mobile-large {
+    --mobile-media-height: 400px;
+  }
+
+  .sb-hero--mobile-full {
+    --mobile-media-height: auto;
+  }
+
+  .sb-hero--desktop-small {
+    --desktop-media-height: 400px;
+  }
+
+  .sb-hero--desktop-medium {
+    --desktop-media-height: 550px;
+  }
+
+  .sb-hero--desktop-large {
+    --desktop-media-height: 650px;
+  }
+
+  .sb-hero--desktop-full {
+    --desktop-media-height: auto;
+  }
+
+  .sb-hero__media {
+    position: relative;
+    width: 100%;
+    height: var(--mobile-media-height);
+    overflow: hidden;
+  }
+
+  .sb-hero__media-mobile {
+    display: flex;
+  }
+
+  .sb-hero__media-desktop {
+    display: none;
+  }
+
+  .sb-hero__image,
+  .sb-hero__video {
+    width: 100%;
+    height: var(--mobile-media-height);
+    object-fit: cover;
+  }
+
+  /* Subscribers block */
+  .sb-hero-content__subscribers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 14px 4px 4px;
+    background-color: var(--bg-color);
+    color: var(--sb-fg-color);
+    border-radius: 9999px;
+    width: fit-content;
+  }
+  .sb-hero-content__container .sb-hero-content__subscribers{
+    display: none;
+  }
+  .sb-hero__media .sb-hero-content__subscribers{
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - var(--sb-padding-inline) * 2);
+    justify-content: center;
+  }
+  .sb-hero-content__subscribers-content{
+    font-size: calc(14 / var(--sb-base-font-size, 16) * 1rem);
+    white-space: nowrap;
+  }
+  .sb-hero-content__subscribers-content *:first-child {
+    margin-top: 0;
+  }
+  .sb-hero-content__subscribers-content *:last-child {
+    margin-bottom: 0;
+  }
+
+  .sb-hero-content__subscribers img {
+    max-width: 106px;
+    height: auto;
+  }
+  
+  @media screen and (min-width: 370px){
+    .sb-hero-content__subscribers-content{
+      font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+    }
+  }
+
+  /* Content containers */
+  .sb-hero-content__container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    padding: 40px var(--sb-padding-inline) 16px;
+  }
+
+  .sb-hero-content__heading {
+    font-size: calc(28 / var(--sb-base-font-size, 16) * 1rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-block: 0 8px;
+    color: var(--sb-fg-color);
+  }
+
+  .sb-hero-content__text {
+    font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+    line-height: 1.3;
+    margin-bottom: 0;
+    color: var(--sb-fg-color-lightened);
+  }
+  .sb-hero-content__text *:first-child {
+    margin-top: 0;
+  }
+  .sb-hero-content__text *:last-child {
+    margin-bottom: 0;
+  }
+
+  .sb-hero-content__buttons {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sb-hero .sb-button__link{
+    width: 100%;
+  }
+
+  /* Desktop Layout */
+  @media (min-width: 768px) {
+    .sb-hero {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .sb-hero__media {
+      height: var(--desktop-media-height);
+      filter: brightness(var(--sb-overlay));
+    }
+
+    .sb-hero__image,
+    .sb-hero__video{
+      height: var(--desktop-media-height);
+    }
+
+    .sb-hero__media-mobile {
+      display: none;
+    }
+
+    .sb-hero__media-desktop {
+      display: flex;
+    }
+
+    .sb-hero__media .sb-hero-content__subscribers {
+      display: none;
+    }
+    .sb-hero-content__container .sb-hero-content__subscribers{
+      display: flex;
+      margin-bottom: 10px;
+    }
+    .sb-hero-content__container{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding-block: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 600px;
+      margin-inline: var(--sb-padding-inline);
+      padding-inline: 0;
+    }
+
+    .sb-hero-content__heading {
+      font-size: calc(40 / var(--sb-base-font-size, 16) * 1rem);
+      color: var(--sb-fg-color-desktop);
+      margin-bottom: 10px;
+    }
+
+    .sb-hero-content__text {
+      font-size: calc(22 / var(--sb-base-font-size, 16) * 1rem);
+      color: var(--sb-fg-color-desktop);
+    }
+
+    .sb-hero-content__buttons{
+      margin-top: 32px;
+    }
+
+    .sb-hero .sb-button__link{
+      max-width: 360px;
+    }
+
+    .sb-hero-content__subscribers img {
+      max-width: 130px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sb-hero-content__heading {
+      font-size: calc(48 / var(--sb-base-font-size, 16) * 1rem);
+    }
+
+    .sb-hero-content__buttons{
+      margin-top: 40px;
+    }
+  }
+
+  @media screen and (min-width: 1920px){
+    .sb-hero--desktop-small {
+      --desktop-media-height: 600px;
+    }
+
+    .sb-hero--desktop-medium {
+      --desktop-media-height: 800px;
+    }
+
+    .sb-hero--desktop-large {
+      --desktop-media-height: 900px;
+    }
+
+    .sb-hero-content__container{
+      --sb-padding-inline: calc((100vw - var(--page-width) - 15px) / 2);
+    }
+
+    .sb-hero-content__heading{
+      margin-bottom: 14px;
+    }
+
+    .sb-hero .sb-button__link{
+      max-width: 400px;
+    }
+  }
+{% endstylesheet %}
+
+{% comment %} 
+ Subscribers block
+  - This block has 2 different content positions:
+    - Mobile: inside of the media container
+    - Desktop: inside of the content container
+{% endcomment %}
+{% capture subscribers_feature %}
+  {% if subscribers_block != blank %}
+    <div
+      class="sb-hero-content__subscribers sb-hero-content__subscribers--{{ subscribers_block.id }}"
+      {{ subscribers_block.shopify_attributes }}
+    >
+      {% if subscribers_block.settings.image != blank %}
+        {{ subscribers_block.settings.image | image_url: width: 260 | image_tag: class: 'sb-hero-content__subscribers-image' }}
+      {% endif %}
+      {% if subscribers_block.settings.content != blank %}
+        <div class="sb-hero-content__subscribers-content">
+          {{ subscribers_block.settings.content }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endcapture %}
+
+<div 
+  id="Hero-{{ section.id }}"
+  class="sb-hero sb-styled-element sb-hero--mobile-{{ section.settings.mobile_media_height }} sb-hero--desktop-{{ section.settings.desktop_media_height }}" 
+  style="{% render 'style-attributes', settings: section.settings %}"
+>
+  {% comment %} Background Media {% endcomment %}
+  {% if section.settings.desktop_img != blank or section.settings.mobile_img != blank %}
+    <div class="sb-hero__media">
+      {% if section.settings.media_source == 'image' %}
+        {% if section.settings.mobile_img != blank %}
+          <div class="sb-hero__media-mobile">
+            {{ section.settings.mobile_img | image_url: width: 800 | image_tag: class: 'sb-hero__image', loading: 'eager' }}
+          </div>
+        {% endif %}
+        {% if section.settings.desktop_img != blank %}
+          <div class="sb-hero__media-desktop">
+            {{ section.settings.desktop_img | image_url: width: 1920 | image_tag: class: 'sb-hero__image', loading: 'eager' }}
+          </div>
+        {% endif %}
+      {% elsif section.settings.media_source == 'video' %}
+        {% if section.settings.mobile_video != blank %}
+          <div class="sb-hero__media-mobile">
+            {{ section.settings.mobile_video | video_tag: class: 'sb-hero__video', autoplay: true, loop: true, muted: true }}
+          </div>
+        {% endif %}
+        {% if section.settings.desktop_video != blank %}
+          <div class="sb-hero__media-desktop">
+            {{ section.settings.desktop_video | video_tag: class: 'sb-hero__video', autoplay: true, loop: true, muted: true }}
+          </div>
+        {% endif %}
+      {% endif %}
+      
+      {% comment %} Mobile subscribers block {% endcomment %}
+      {{ subscribers_feature }}
+    </div>
+  {% endif %}
+
+  {% comment %} Main content {% endcomment %}
+  <div class="sb-hero-content__container">
+    {% for block in section.blocks %}
+      {% if block.type == 'subscribers' %}
+        {{ subscribers_feature }}
+      {% elsif block.type == 'heading' %}
+        {% if block.settings.heading != empty %}
+          <h1 class="sb-hero-content__heading" {{ block.shopify_attributes }}>{{ block.settings.heading }}</h1>
+        {% endif %}
+      {% elsif block.type == 'text' %}
+        {% if block.settings.text != empty %}
+          <div class="sb-hero-content__text" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% if buttons.size > 0 %}
+      <div class="sb-hero-content__buttons">
+        {% for button in buttons %}
+          {% render 'sb-button' with button: button.settings, block_attributes: button.shopify_attributes %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SB Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "select",
+      "id": "media_source",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "image",
+      "label": "Media Source"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_img",
+      "label": "Mobile Image",
+      "visible_if": "{{ section.settings.media_source == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_img",
+      "label": "Desktop Image",
+      "visible_if": "{{ section.settings.media_source == 'image' }}"
+    },
+    {
+      "type": "video",
+      "id": "mobile_video",
+      "label": "Mobile Video",
+      "visible_if": "{{ section.settings.media_source == 'video' }}"
+    },
+    {
+      "type": "video",
+      "id": "desktop_video",
+      "label": "Desktop Video",
+      "visible_if": "{{ section.settings.media_source == 'video' }}"
+    },
+    {
+      "type": "select",
+      "id": "desktop_media_height",
+      "label": "Desktop Media Height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "full",
+          "label": "Fit Content"
+        }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "select",
+      "id": "mobile_media_height",
+      "label": "Mobile Media Height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "full",
+          "label": "Fit Content"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show Overlay on Media",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "default": 0.5,
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "visible_if": "{{ section.settings.show_overlay == true }}"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Text Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "fg_color_desktop",
+      "label": "Desktop Text Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subscribers",
+      "name": "Subscribers",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Profile Images",
+          "info": "Upload an image showing multiple profile pictures"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>44,213+ Active Subscribers</p>"
+        },
+        {
+          "type": "color",
+          "id": "fg_color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color_background",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "rgba(255, 255, 255, 0.1)"
+        },
+        {
+          "type": "color",
+          "id": "fg_color_desktop",
+          "label": "Desktop Text Color"
+        },
+        {
+          "type": "color_background",
+          "id": "bg_color_desktop",
+          "label": "Desktop Background Color"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Natural Supplements That Get You to Your Goal"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Transparent, science-backed supplements made with natural ingredients.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        },
+        {
+          "type": "select",
+          "id": "button_type",
+          "label": "Button Type",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "outline",
+              "label": "Outline"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_arrow",
+          "label": "Show Arrow",
+          "default": false,
+          "info": "The arrow will always display for 'Link' buttons"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Mobile Button Color"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Mobile Button Text Color"
+        },
+        {
+          "type": "color",
+          "id": "button_color_desktop",
+          "label": "Desktop Button Color"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color_desktop",
+          "label": "Desktop Button Text Color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Hero",
+      "blocks": [
+        {
+          "type": "subscribers"
+        },
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Supplements",
+            "button_type": ""
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "button_text": "Find my supplement routine",
+            "button_type": "secondary"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

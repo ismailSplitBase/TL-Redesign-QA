@@ -1,0 +1,564 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1655469428e65a4bb7": {
+      "type": "old-stack-banner",
+      "settings": {
+        "image1": "shopify://shop_images/no_cta_Desktop_banner.jpg",
+        "image2": "shopify://shop_images/no_cta_Mobile_banner.jpg",
+        "heading": "",
+        "text": "",
+        "btn_text": "",
+        "btn_url": "#summit_details"
+      }
+    },
+    "16582528170c67c49e": {
+      "type": "old-stack-icon-with-text",
+      "blocks": {
+        "2ebc4a0e-37dc-47f4-8645-40faf4152d9d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Group_358.png",
+            "heading": "Save 10%",
+            "text": ""
+          }
+        },
+        "45594f03-167e-4b3f-a487-14aea9ca285c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Group_357.png",
+            "heading": "Free Shipping",
+            "text": ""
+          }
+        },
+        "4c0380a0-b0bc-4047-9bce-6ae57296f6d0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Group_359.png",
+            "heading": "Flexible Delivery Timeframes",
+            "text": ""
+          }
+        },
+        "c4750876-4bc3-4288-8d95-2bab2059f616": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Group_360.png",
+            "heading": "Cancel or Pause Any Time",
+            "text": ""
+          }
+        },
+        "d52b189e-831a-4f7b-bf74-16bea30c99e1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Group_361.png",
+            "heading": "Early Access  to Promotions",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "2ebc4a0e-37dc-47f4-8645-40faf4152d9d",
+        "45594f03-167e-4b3f-a487-14aea9ca285c",
+        "4c0380a0-b0bc-4047-9bce-6ae57296f6d0",
+        "c4750876-4bc3-4288-8d95-2bab2059f616",
+        "d52b189e-831a-4f7b-bf74-16bea30c99e1"
+      ],
+      "disabled": true,
+      "settings": {
+        "icon_align": "top",
+        "theading": "Subscribers Get More!",
+        "sheading": "",
+        "btn_text": "",
+        "btn_url": "#"
+      }
+    },
+    "16554706039e96901f": {
+      "type": "old-stack-custom",
+      "blocks": {
+        "afc41a53-ee89-43ca-85af-2b3d612b1aaf": {
+          "type": "text",
+          "settings": {
+            "product": "bulk-preworkout",
+            "subtitle": "Best Seller",
+            "summary": "Developed using key ingredients, all backed by published scientific research, are included at clinically effective dosages."
+          }
+        },
+        "c6a68f22-3951-4a03-a4ec-d2aa68380f4c": {
+          "type": "text",
+          "settings": {
+            "product": "whey-protein-isolate",
+            "subtitle": "Best Seller",
+            "summary": "Made from naturally fed, hormone-free cow whey and free of artificial sweeteners, food dyes, gluten, and preservatives."
+          }
+        },
+        "55b8578c-7d8d-4482-8738-c47ab47341f3": {
+          "type": "text",
+          "settings": {
+            "product": "creatine-hmb",
+            "subtitle": "Best Seller",
+            "summary": "When combined, Creatine monohydrate and HMB have been shown to enhance strength, increase endurance, decrease fat mass, and prevent lean muscle loss."
+          }
+        },
+        "18ca179a-cd6b-4c61-82e2-3ecddfa77880": {
+          "type": "text",
+          "settings": {
+            "product": "bulk-black-pre-workout",
+            "subtitle": "Best Seller",
+            "summary": "The epitome of a hard-hitting, clinically dosed pre-workout, with 100% formula transparency, proven nitric oxide boosters, hard-hitting nootropics, and muscle fortifiers."
+          }
+        }
+      },
+      "block_order": [
+        "afc41a53-ee89-43ca-85af-2b3d612b1aaf",
+        "c6a68f22-3951-4a03-a4ec-d2aa68380f4c",
+        "55b8578c-7d8d-4482-8738-c47ab47341f3",
+        "18ca179a-cd6b-4c61-82e2-3ecddfa77880"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Subscribe to Our Bestsellers!",
+        "subheading": "",
+        "btn_text": "Shop Now",
+        "btn_url": "shopify://collections/bestsellers"
+      }
+    },
+    "1655739736575d8af4": {
+      "type": "old-stack_collection",
+      "blocks": {
+        "0938fc20-e094-4896-b523-7f18493b3251": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Trending",
+            "product_type": "Bulking",
+            "product_1": "muscle-building-stacks",
+            "product_type_1": "Plant-Based Traning",
+            "product_2": "vegan-strength-stack-1",
+            "product_type_2": "Cutting",
+            "product_3": "fat-burning-essentials-stack",
+            "product_type_3": "",
+            "product_4": "",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        },
+        "0162247e-ec91-46b1-9e83-3e95d063775b": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Bulking",
+            "product_type": "Bulking",
+            "product_1": "muscle-building-stacks",
+            "product_type_1": "Bulking",
+            "product_2": "hardgainer-essentials-stack",
+            "product_type_2": "",
+            "product_3": "",
+            "product_type_3": "",
+            "product_4": "",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        },
+        "95678b4a-99e0-4c20-8daa-52ccafe33f0d": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Cutting",
+            "product_type": "Cutting",
+            "product_1": "fat-burning-essentials-stack",
+            "product_type_1": "Cutting",
+            "product_2": "stim-free-fat-burning-essentials-stack",
+            "product_type_2": "",
+            "product_3": "",
+            "product_type_3": "",
+            "product_4": "",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        },
+        "f803ce8d-b820-4089-99b8-a835e679b6d3": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Health & Wellness",
+            "product_type": "Health & Wellness",
+            "product_1": "gut-essentials-stack",
+            "product_type_1": "Health & Wellness",
+            "product_2": "nootropic-essentials-stack",
+            "product_type_2": "Health & Wellness",
+            "product_3": "mens-wellness-stack",
+            "product_type_3": "Health & Wellness",
+            "product_4": "womens-wellness-stack",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        },
+        "6e81ea6a-9e03-456b-88bd-2dd31374438e": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Plant-Based Traning",
+            "product_type": "Plant-Based Traning",
+            "product_1": "vegan-strength-stack-1",
+            "product_type_1": "Plant-Based Traning",
+            "product_2": "gut-essentials-stack",
+            "product_type_2": "Plant-Based Traning",
+            "product_3": "the-ultimate-pump-stack",
+            "product_type_3": "",
+            "product_4": "",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        },
+        "9a021da7-1287-486b-be5b-263e33d79878": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Stimulant-Free",
+            "product_type": "Stimulant-Free",
+            "product_1": "stim-free-muscle-building-essentials-stack",
+            "product_type_1": "Stimulant-Free",
+            "product_2": "stim-free-fat-burning-essentials-stack",
+            "product_type_2": "Stimulant-Free",
+            "product_3": "the-ultimate-pump-stack",
+            "product_type_3": "",
+            "product_4": "",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        },
+        "1eb2502c-3b8a-451c-8519-5c2dcf73984c": {
+          "type": "text",
+          "settings": {
+            "collection_type": "Body Recomposition",
+            "product_type": "Body Recomposition",
+            "product_1": "body-recomposition-essentials-stack",
+            "product_type_1": "",
+            "product_2": "",
+            "product_type_2": "",
+            "product_3": "",
+            "product_type_3": "",
+            "product_4": "",
+            "product_type_4": "",
+            "product_5": "",
+            "product_type_5": "",
+            "product_6": "",
+            "product_type_6": "",
+            "product_7": "",
+            "product_type_7": "",
+            "product_8": ""
+          }
+        }
+      },
+      "block_order": [
+        "0938fc20-e094-4896-b523-7f18493b3251",
+        "0162247e-ec91-46b1-9e83-3e95d063775b",
+        "95678b4a-99e0-4c20-8daa-52ccafe33f0d",
+        "f803ce8d-b820-4089-99b8-a835e679b6d3",
+        "6e81ea6a-9e03-456b-88bd-2dd31374438e",
+        "9a021da7-1287-486b-be5b-263e33d79878",
+        "1eb2502c-3b8a-451c-8519-5c2dcf73984c"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Science-Backed Stacks",
+        "subtitle": "",
+        "discount_month": "Deliver Every Month",
+        "discount_days": "Deliver Every 45 days",
+        "percent_text": "10% Off."
+      }
+    },
+    "16554705889a4e2109": {
+      "type": "old-stack-testimonials",
+      "blocks": {
+        "fb5c56e3-ac45-4fa9-b4c2-bf3fd0478693": {
+          "type": "image",
+          "settings": {
+            "image_desktop": "shopify://shop_images/Davey_Testimonial_Desktop_Banner.png",
+            "image_mobile": "shopify://shop_images/Davey_Testimonial_Mobile_Banner.png",
+            "text": "",
+            "name": "",
+            "text2": ""
+          }
+        }
+      },
+      "block_order": [
+        "fb5c56e3-ac45-4fa9-b4c2-bf3fd0478693"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "165546997779bf0c81": {
+      "type": "old-stack-comparison",
+      "blocks": {
+        "ce46bdc0-406a-4bea-aead-66128619099f": {
+          "type": "text",
+          "settings": {
+            "text1": "Free Shipping",
+            "text2": "Orders over $150",
+            "text3": "All orders"
+          }
+        },
+        "9c1d4a72-3907-41a7-922a-ab23687d1ddd": {
+          "type": "text",
+          "settings": {
+            "text1": "Discount",
+            "text2": "N",
+            "text3": "15% off"
+          }
+        },
+        "33f0d431-7588-44d7-b583-51a66932bd27": {
+          "type": "text",
+          "settings": {
+            "text1": "Flexible Ordering Timeframes",
+            "text2": "N",
+            "text3": "Y"
+          }
+        },
+        "5a966e4d-cc77-45b4-ad7a-cfd4cad09c19": {
+          "type": "text",
+          "settings": {
+            "text1": "Early Access To Promotions",
+            "text2": "N",
+            "text3": "Y"
+          }
+        },
+        "fe586bd4-11d0-448d-bf09-0b7dd3f114ec": {
+          "type": "text",
+          "settings": {
+            "text1": "Cancel At Any Time, Risk Free",
+            "text2": "N",
+            "text3": "Y"
+          }
+        }
+      },
+      "block_order": [
+        "ce46bdc0-406a-4bea-aead-66128619099f",
+        "9c1d4a72-3907-41a7-922a-ab23687d1ddd",
+        "33f0d431-7588-44d7-b583-51a66932bd27",
+        "5a966e4d-cc77-45b4-ad7a-cfd4cad09c19",
+        "fe586bd4-11d0-448d-bf09-0b7dd3f114ec"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Pick the plan that works for you",
+        "subheading": "Try TL for the first time or subscribe to your favorite stack and save. Enjoy the flexibility of choosing the ideal recurring order time frame that works for you and gaining access to exclusive Transparent Labs promotions. You can cancel your subscription at any time without any fees or penalties.",
+        "btn_text": "Explore Stacks",
+        "btn_url": "#"
+      }
+    },
+    "16554699829f6f1f7a": {
+      "type": "old-stack-icon-with-text",
+      "blocks": {
+        "2574a527-c1fa-4d9f-bd8d-d14dd70bce84": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_120.png",
+            "heading": "Sign up for free with Email",
+            "text": ""
+          }
+        },
+        "fb376db1-038e-4f6d-bed1-6f75d783e324": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_119.png",
+            "heading": "Get an Extra entry with SMS",
+            "text": ""
+          }
+        },
+        "ee1c4ad2-6a8c-41b1-9646-f0c2b1db4c42": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_119_1.png",
+            "heading": "Tag your friends on Instagram!",
+            "text": "*No extra entries"
+          }
+        },
+        "cb343900-6b56-417b-8847-18112e7090b6": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "heading": "Control Your Orders",
+            "text": "Change your products and delivery times. Cancel or pause your order anytime."
+          }
+        }
+      },
+      "block_order": [
+        "2574a527-c1fa-4d9f-bd8d-d14dd70bce84",
+        "fb376db1-038e-4f6d-bed1-6f75d783e324",
+        "ee1c4ad2-6a8c-41b1-9646-f0c2b1db4c42",
+        "cb343900-6b56-417b-8847-18112e7090b6"
+      ],
+      "settings": {
+        "icon_align": "left",
+        "theading": "How To Enter",
+        "sheading": "",
+        "btn_text": "",
+        "btn_url": ""
+      }
+    },
+    "16813908728b229c2e": {
+      "type": "apps",
+      "blocks": {
+        "a9284efe-6f19-429f-bc94-078354bae2bb": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "<div class=\"klaviyo-form-STCyAj\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "a9284efe-6f19-429f-bc94-078354bae2bb"
+      ],
+      "settings": {}
+    },
+    "165546960618a56af4": {
+      "type": "old-stack-find",
+      "disabled": true,
+      "settings": {
+        "heading": "Dial in the perfect stack",
+        "subheading": "Enter your information and goals below, and we will pair you with the stacks that fit your needs.",
+        "btn_text": "",
+        "btn_url": ""
+      }
+    },
+    "6e29bca4-dbee-4290-8ed4-00b7956b1af1": {
+      "type": "old-hafthorssummitsection",
+      "disabled": true,
+      "settings": {}
+    },
+    "sb_tabbed_collections_yqeBXG": {
+      "type": "sb-tabbed-collections",
+      "blocks": {
+        "static-slider": {
+          "type": "_slider",
+          "static": true,
+          "settings": {
+            "slides_per_view": 1.1,
+            "space_between_slides": 10,
+            "centered_slides": false,
+            "show_pagination": "always",
+            "show_page_count": "always",
+            "loop": false,
+            "autorotate": false,
+            "autorotate_speed": 5,
+            "slides_offset": 16
+          },
+          "blocks": {
+            "slide_breakpoint_4dnDaj": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1024,
+                "slides_per_view": 4.2,
+                "space_between_slides": 24,
+                "slides_offset": 48
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_KzKnCn": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1440,
+                "slides_per_view": 4.4,
+                "space_between_slides": 24,
+                "slides_offset": 64
+              },
+              "blocks": {}
+            },
+            "slide_breakpoint_eJkULk": {
+              "type": "_slide-breakpoint",
+              "name": "Break Point",
+              "settings": {
+                "breakpoint": 1920,
+                "slides_per_view": 5.1,
+                "space_between_slides": 36,
+                "slides_offset": 64
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_breakpoint_4dnDaj",
+            "slide_breakpoint_KzKnCn",
+            "slide_breakpoint_eJkULk"
+          ]
+        }
+      },
+      "name": "SB Tabbed Collections",
+      "settings": {
+        "heading": "Explore Our Supplements",
+        "link_text": "View All",
+        "collections": [
+          "bestsellers",
+          "proteinseries",
+          "build-muscle",
+          "health-wellness"
+        ],
+        "products_to_show": 8,
+        "disable_slider": false,
+        "fg_color": "#121212",
+        "bg_color": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
+        "accent_color": "",
+        "ch_fg_color": "#121212",
+        "ch_bg_color": "#F8F9FB",
+        "ch_accent_color": "",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "1655469428e65a4bb7",
+    "16582528170c67c49e",
+    "16554706039e96901f",
+    "1655739736575d8af4",
+    "16554705889a4e2109",
+    "165546997779bf0c81",
+    "16554699829f6f1f7a",
+    "16813908728b229c2e",
+    "165546960618a56af4",
+    "6e29bca4-dbee-4290-8ed4-00b7956b1af1",
+    "sb_tabbed_collections_yqeBXG"
+  ]
+}

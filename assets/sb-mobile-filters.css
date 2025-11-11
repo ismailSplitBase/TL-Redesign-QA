@@ -1,0 +1,462 @@
+/* TD Mobile Filters - Custom Styling for Figma Design */
+
+/* ===== COLLECTION FILTER TABS ===== */
+.mobile-facets__collection-tabs {
+  padding: 24px 0 20px;
+  border-bottom: 1px solid #f5f5f5;
+  background: #ffffff;
+}
+
+.sb-mobile-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sb-mobile-filter-tab {
+  display: flex;
+  align-items: center;
+  padding: 4px 12px 6px;
+  border-radius: 20px;
+  font-family: var(--sb-font-family-body);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 130%;
+  text-decoration: none;
+  border: 1px solid #e5e5e5;
+  background: #ffffff;
+  color: #111314;
+  transition: all 0.2s ease;
+  height: fit-content;
+}
+
+.sb-mobile-filter-tab:hover {
+  background: #f8f8f8;
+  border-color: #d0d0d0;
+}
+
+.sb-mobile-filter-tab--active {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.sb-mobile-filter-tab--active:hover {
+  background: #1a1a1a;
+}
+
+/* ===== CURRENTLY SELECTED SECTION ===== */
+.sb-mobile-currently-selected {
+  padding: 20px 0;
+  background: #ffffff;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.sb-mobile-currently-selected__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.sb-mobile-currently-selected__title {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #111314;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.sb-mobile-clear-all-link {
+  font-size: 14px;
+  color: #11131480;
+  font-weight: 500;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.sb-mobile-clear-all-link:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.sb-mobile-currently-selected__pills {
+  display: flex;
+  margin-top: 3px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sb-mobile-selected-pill {
+  --color-foreground: 103, 103, 103;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 4px 8px 5px 12px;
+  font-size: 14px;
+  color: rgb(var(--color-foreground));
+  border: 1px solid rgb(var(--color-foreground));
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  gap: 6px;
+  line-height: 130%;
+}
+
+.sb-mobile-selected-pill:hover {
+  background: #e8e8e8;
+}
+
+.sb-mobile-selected-pill__text {
+  font-weight: 400;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.sb-mobile-selected-pill__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.sb-mobile-selected-pill__remove svg {
+  width: 100%;
+  height: 100%;
+  margin-top: 3px;
+  color: rgba(103, 103, 103, 0.4);
+}
+
+/* ===== FILTER SECTIONS STYLING ===== */
+.mobile-facets__main {
+  background: #ffffff;
+  padding: 0;
+}
+
+.mobile-facets__details {
+  border-bottom: 1px solid #f5f5f5;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+.mobile-facets__details[open] {
+  padding-bottom: 20px;
+}
+
+.mobile-facets__summary {
+  padding: 20px 0;
+  background: #ffffff;
+  border: none;
+  letter-spacing: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111314;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  list-style: none;
+}
+
+.mobile-facets__summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-facets__summary > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile-facets__summary-label {
+  font-weight: 500;
+  color: #000000;
+}
+
+.mobile-facets__selected {
+  color: #666666;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.mobile-facets__selected.hidden {
+  display: none;
+}
+
+.mobile-facets__arrow {
+  transition: transform 0.3s ease;
+  color: #666666;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.mobile-facets__details .mobile-facets__arrow .icon-caret {
+  position: unset;
+  width: 100%;
+  height: 100%;
+  color: #666666;
+}
+
+.mobile-facets__details[open] .mobile-facets__arrow {
+  transform: rotate(180deg);
+}
+
+/* Accordion Animation Styles - CSS Only */
+.mobile-facets__display {
+  background: #ffffff;
+  padding: 0;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-facets__details[open] .mobile-facets__display {
+  max-height: 1500px;
+  /* Large enough to accommodate most filter content */
+  opacity: 1;
+  padding: 0;
+}
+
+/* Smooth content animation */
+.mobile-facets__list,
+.mobile-facets__header,
+.facets__price {
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.mobile-facets__details:not([open]) .mobile-facets__list,
+.mobile-facets__details:not([open]) .mobile-facets__header,
+.mobile-facets__details:not([open]) .facets__price {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.mobile-facets-wrap {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.mobile-facets__header {
+  padding: 0;
+  color: #666666;
+  font-size: 14px;
+  border: none;
+}
+
+/* ===== CHECKBOXES AND LABELS ===== */
+
+.mobile-facets__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-facets__item {
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-facets__label {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #000000;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  border-bottom: none;
+}
+
+.mobile-facets__item:last-child .mobile-facets__label {
+  border-bottom: none;
+}
+
+.mobile-facets__label:hover {
+  color: #666666;
+}
+
+.mobile-facets__checkbox {
+  width: 20px;
+  height: 20px;
+  margin: 0 12px 0 0;
+  accent-color: #000000;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.facet-checkbox__text {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 0;
+  width: 100%;
+}
+
+.facet-checkbox__text-label {
+  font-weight: inherit;
+  flex: 1;
+  color: #173446;
+}
+
+.facet-checkbox__text-count {
+  color: #11131466;
+}
+
+/* Count styling */
+.mobile-facets__label .facet-checkbox__text span:last-child {
+  color: #999999;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+/* Hide default SVG icons */
+.mobile-facets__label .mobile-facets__highlight {
+  display: none;
+}
+
+/* Show More/Less Button Styling */
+.mobile-facets__display show-more-button {
+  padding: 12px 0 0;
+}
+
+.mobile-facets__display .button-show-more {
+  color: #666666;
+  font-size: 14px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.mobile-facets__display .button-show-more:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+/* Price Range Styling */
+.mobile-facets__display .facets__price {
+  padding: 0;
+}
+
+.mobile-facets__display .facets__price .field {
+  margin-bottom: 12px;
+}
+
+/* ===== APPLY FILTERS BUTTON ===== */
+.mobile-facets__footer {
+  padding: 24px 0 0;
+  background: #ffffff;
+  border-top: 1px solid #f5f5f5;
+  margin-top: auto;
+}
+
+.sb-mobile-apply-filters-btn {
+  width: 100%;
+  background: #173446;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+}
+
+.sb-mobile-apply-filters-btn:hover {
+  background: #1f4444;
+}
+
+.sb-mobile-apply-filters-btn__icon {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.sb-mobile-apply-filters-btn__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== MOBILE FACETS HEADER STYLING ===== */
+.mobile-facets__header {
+  background: #ffffff;
+  padding: 0;
+  position: relative;
+}
+
+.mobile-facets__heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111314;
+  margin: 0;
+  text-align: left;
+}
+
+.mobile-facets__count {
+  display: none;
+  /* Hide product count in header for cleaner design */
+}
+
+/* ===== CLOSE BUTTON STYLING ===== */
+.mobile-facets__close {
+  position: fixed;
+  top: 32px;
+  right: 16px;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #111314;
+  transition: color 0.2s ease;
+}
+
+.mobile-facets__close:hover {
+  color: #000000;
+}
+
+.mobile-facets__close .svg-wrapper {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media screen and (max-width: 420px) {
+  .sb-mobile-filter-tabs {
+    gap: 6px;
+  }
+
+  .mobile-facets__submenu {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .mobile-facets__summary {
+    padding: 16px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .facet-checkbox__text-label {
+    color: #111314CC;
+    font-size: 14px;
+  }
+}

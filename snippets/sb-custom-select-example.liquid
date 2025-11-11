@@ -1,0 +1,138 @@
+{%- comment -%}
+  TD Custom Select Example
+  
+  A demonstration of how to use the sb-custom-select web component.
+  This snippet shows various configurations and usage patterns.
+  
+  Usage:
+  {% render 'sb-custom-select-example' %}
+{%- endcomment -%}
+
+<script src="{{ 'sb-custom-select.js' | asset_url }}" defer></script>
+
+<div class="sb-custom-select-examples" style="{% render 'style-attributes' %}">
+  <div class="sb-styled-element" style="padding: var(--sb-padding-top, 40px) 0 var(--sb-padding-bottom, 40px);">
+    
+    <h2 style="margin-bottom: 30px; color: var(--sb-fg-color, #111314);">Custom Select Examples</h2>
+    
+    <!-- Basic Example -->
+    <div style="margin-bottom: 20px;">
+      <label for="contact-subject" style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--sb-fg-color, #111314);">
+        Contact Subject
+      </label>
+      <sb-custom-select style="max-width: 400px;">
+        <select id="contact-subject" name="contact_subject" required>
+          <option value="">Subject*</option>
+          <option value="general">General inquiry</option>
+          <option value="support">Product support</option>
+          <option value="sales">Sales question</option>
+          <option value="feedback">Feedback</option>
+        </select>
+      </sb-custom-select>
+    </div>
+    
+    <!-- Pre-selected Example -->
+    <div style="margin-bottom: 20px;">
+      <label for="product-category" style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--sb-fg-color, #111314);">
+        Product Category (Pre-selected)
+      </label>
+      <sb-custom-select style="max-width: 400px;">
+        <select id="product-category" name="product_category">
+          <option value="">Select a category</option>
+          <option value="supplements">Supplements</option>
+          <option value="protein" selected>Protein Powder</option>
+          <option value="vitamins">Vitamins</option>
+          <option value="accessories">Accessories</option>
+        </select>
+      </sb-custom-select>
+    </div>
+    
+    <!-- With Disabled Options -->
+    <div style="margin-bottom: 20px;">
+      <label for="shipping-option" style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--sb-fg-color, #111314);">
+        Shipping Options (Some Disabled)
+      </label>
+      <sb-custom-select style="max-width: 400px;">
+        <select id="shipping-option" name="shipping_option">
+          <option value="">Choose shipping method</option>
+          <option value="standard">Standard (5-7 days)</option>
+          <option value="express">Express (2-3 days)</option>
+          <option value="overnight" disabled>Overnight (Currently unavailable)</option>
+          <option value="pickup">Store pickup</option>
+        </select>
+      </sb-custom-select>
+    </div>
+    
+    <!-- Disabled Select -->
+    <div style="margin-bottom: 20px;">
+      <label for="disabled-select" style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--sb-fg-color, #111314); opacity: 0.5;">
+        Disabled Select
+      </label>
+      <sb-custom-select style="max-width: 400px;">
+        <select id="disabled-select" name="disabled_select" disabled>
+          <option value="">This select is disabled</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+        </select>
+      </sb-custom-select>
+    </div>
+    
+    <!-- JavaScript Integration Example -->
+    <div style="margin-bottom: 20px;">
+      <label for="js-select" style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--sb-fg-color, #111314);">
+        JavaScript Integration Test
+      </label>
+      <sb-custom-select id="js-select-example" style="max-width: 400px;">
+        <select id="js-select" name="js_select">
+          <option value="">Select to see events</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+      </sb-custom-select>
+      
+      <div id="event-log" style="margin-top: 10px; padding: 10px; background: #f8f9fb; border-radius: 4px; font-family: monospace; font-size: 12px; min-height: 60px;">
+        <strong>Event Log:</strong><br>
+        <span id="event-messages">Interact with the select above to see events...</span>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  // JavaScript integration example
+  document.addEventListener('DOMContentLoaded', function() {
+    const jsSelect = document.getElementById('js-select-example');
+    const eventLog = document.getElementById('event-messages');
+    
+    if (jsSelect && eventLog) {
+      let events = [];
+      
+      function logEvent(message) {
+        events.push(`${new Date().toLocaleTimeString()}: ${message}`);
+        if (events.length > 5) events.shift(); // Keep only last 5 events
+        eventLog.innerHTML = events.join('<br>');
+      }
+      
+      // Listen for custom select events
+      jsSelect.addEventListener('sb-custom-select:open', function(e) {
+        logEvent(`SELECT OPENED - Name: ${e.detail.name}`);
+      });
+      
+      jsSelect.addEventListener('sb-custom-select:close', function(e) {
+        logEvent(`SELECT CLOSED - Name: ${e.detail.name}, Value: ${e.detail.value}`);
+      });
+      
+      jsSelect.addEventListener('sb-custom-select:change', function(e) {
+        logEvent(`SELECTION CHANGED - Value: "${e.detail.value}", Text: "${e.detail.text}"`);
+      });
+      
+      // Programmatic value setting example
+      setTimeout(() => {
+        logEvent('Programmatically setting value to "option2"...');
+        jsSelect.setValue('option2');
+      }, 1000);
+    }
+  });
+</script> 

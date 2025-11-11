@@ -1,0 +1,112 @@
+<div id="section-sb-product-search">
+  <facet-filters-form class="facets facets-vertical-sort sb-page-width sb-dt-filters small-hide">
+    <form class="facets-vertical-form" id="FacetSortForm">
+
+      <div class="product-count-vertical light" role="status">
+        {%- render 'loading-spinner' -%}
+      </div>
+    </form>
+  </facet-filters-form>
+  <div
+      class="facets-vertical sb-facets-vertical sb-page-width sb-search-results {% if search.results.size == 0 %}sb-search-empty{% endif %}"
+  >
+    {%- if search.filters != empty -%}
+      <aside
+        aria-labelledby="verticalTitle"
+        class="facets-wrapper"
+        id="main-search-filters"
+        data-id="{{ section.id }}"
+      >
+        {% render 'facets',
+          results: search,
+          enable_filtering: true,
+          enable_sorting: false,
+          filter_type: 'vertical',
+          paginate: paginate,
+          collection_filters: []
+        %}
+      </aside>
+    {%- endif -%}
+    <div class="product-grid-container" id="ProductGridContainer">
+      {%- if search.results.size == 0 and search.filters != empty -%}
+        <div
+          class="template-search__results collection collection--empty"
+          id="product-grid"
+          data-id="{{ section.id }}"
+        >
+          <div class="loading-overlay gradient"></div>
+          <div class="title-wrapper center">
+            <h2 class="title title--primary">
+              {{ 'sections.collection_template.empty' | t -}}
+              <br>
+              {{
+                'sections.collection_template.use_fewer_filters_html'
+                | t: link: search_url, class: 'underlined-link link'
+              }}
+            </h2>
+          </div>
+        </div>
+      {%- else -%}
+        {% paginate search.results by settings.search_results_product_page %}
+          {%- comment %} Separate products/pages from articles {% endcomment -%}
+          <div
+            class="template-search__results collection"
+            id="product-grid"
+            data-id="{{ section.id }}"
+          >
+            <div class="loading-overlay gradient"></div>
+            <ul
+              class="product-grid sb-product-grid"
+              role="list"
+            >
+              {%- for item in search.results -%}
+                {%- if item.object_type == 'product' -%}
+                  <li
+                    class="grid__item sb-product-grid__item scroll-trigger animate--slide-in"
+                      data-cascade
+                  >
+                    {%- case item.object_type -%}
+                      {%- when 'product' -%}
+                        <div class="main-search__card main-search__card--mb">
+                          {% render 'product-card--mb-search', product: item %}
+                        </div>
+                        <div class="main-search__card main-search__card--dt">
+                          {% render 'product-card', product: item, disable_slider: false, first_image_loading: 'eager' %}
+                        </div>
+                      {%- when 'page' -%}
+                        <div class="article-card-wrapper card-wrapper underline-links-hover">
+                          <div
+                            class="card card--card card--text ratio color-{{ settings.blog_card_color_scheme }}"
+                            style="--ratio-percent: 100%;"
+                          >
+                            <div class="card__content">
+                              <div class="card__information">
+                                <h3 class="card__heading">
+                                  <a href="{{ item.url }}" class="full-unstyled-link">
+                                    {{ item.title | truncate: 50 | escape }}
+                                  </a>
+                                </h3>
+                              </div>
+                              <div class="card__badge {{ settings.badge_position }}">
+                                <span class="badge color-{{ settings.color_schemes | first }}">
+                                  {{- 'templates.search.page' | t -}}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    {%- endcase -%}
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+            {%- if paginate.pages > 1 -%}
+              {% render 'pagination', paginate: paginate %}
+            {%- endif -%}
+
+          </div>
+        {% endpaginate %}
+      {%- endif -%}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+/**
+ * TD Accordion Component Styles
+ * Following BEM methodology with sb- prefix
+ */
+
+:root {
+  --sb-accordion-border-color: var(--color-border, #e8e8e8);
+  --sb-accordion-background: var(--color-background, #ffffff);
+  --sb-accordion-text-color: var(--color-text, #333333);
+  --sb-accordion-trigger-padding: var(--spacing-md, 1rem);
+  --sb-accordion-content-padding: var(--spacing-md, 1rem);
+  --sb-accordion-transition-speed: 0.3s;
+}
+
+.sb-accordion {
+  width: 100%;
+  border: 1px solid var(--sb-accordion-border-color);
+  border-radius: var(--border-radius-sm, 4px);
+  overflow: hidden;
+  background-color: var(--sb-accordion-background);
+}
+
+.sb-accordion__trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--sb-accordion-trigger-padding);
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--sb-accordion-text-color);
+  font-weight: 500;
+  transition: background-color var(--sb-accordion-transition-speed);
+}
+
+.sb-accordion__trigger:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.sb-accordion__trigger:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.sb-accordion__trigger::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--sb-accordion-transition-speed);
+  margin-left: 10px;
+}
+
+.sb-accordion__item--expanded .sb-accordion__trigger::after {
+  transform: rotate(-135deg);
+}
+
+.sb-accordion__content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 var(--sb-accordion-content-padding);
+  transition: max-height var(--sb-accordion-transition-speed),
+    padding var(--sb-accordion-transition-speed);
+}
+
+.sb-accordion__item--expanded .sb-accordion__content {
+  padding: var(--sb-accordion-content-padding);
+  /* max-height is set dynamically in JavaScript */
+}
+
+/* Optional dark theme support */
+.sb-accordion--dark {
+  --sb-accordion-border-color: var(--color-border-dark, #444444);
+  --sb-accordion-background: var(--color-background-dark, #333333);
+  --sb-accordion-text-color: var(--color-text-dark, #ffffff);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+
+  .sb-accordion__trigger,
+  .sb-accordion__content {
+    padding: calc(var(--sb-accordion-trigger-padding) * 0.75);
+  }
+}

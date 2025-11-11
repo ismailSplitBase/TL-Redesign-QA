@@ -1,0 +1,121 @@
+<style>
+  .TL_aff_hero 
+  {
+    {% if section.settings.image!=blank %}
+      background-image: url("{{ section.settings.image | img_url : 'master' }}");
+      background-size: cover;
+      background-position: 51% 16%;
+    {% endif %}
+  }
+  @media only screen and (max-width: 600px)
+  {
+    .TL_aff_hero 
+    {
+      {% if section.settings.image!=blank %}
+        background-image: url("{{ section.settings.mobile_image | img_url : 'master' }}");
+        background-size: cover;
+        background-position: 51% 16%;
+      {% endif %}
+    }
+    
+  }
+  @media only screen and (max-width: 425px) {
+    .TL_aff_hero-banner {
+      font-size:0.9em;
+    }
+  }
+  @media only screen and (max-width: 414px) {
+    .TL_aff_hero-banner {
+      font-size:0.8em;
+      padding:8px 8px 8px 20px;
+    }
+  }
+
+  
+</style>
+
+<section class="TL_aff_content">
+    <a href="{{ section.settings.btn_link }}">
+  <div class="TL_aff_hero">
+
+    {% if section.settings.top_heading!=blank %}
+      <div class="TL_aff_hero-banner">{{ section.settings.top_heading }}</div>
+    {% endif %}
+
+<!--     <div class="darken_it"></div> -->
+
+    <div class="TL_aff_hero_inner">
+    
+
+      {% if section.settings.heading!=blank %}
+        <h1>{{ section.settings.heading }}</h1>
+      {% endif %}
+
+      {% if section.settings.subheading!=blank %}
+        <p>{{ section.settings.subheading }}</p>
+      {% endif %}
+
+      {% if section.settings.btn_text != blank %}
+      <a href="{{ section.settings.btn_link }}" class="TL_aff_button">{{ section.settings.btn_text }}</a>
+      {% endif %}
+    
+
+    </div>
+
+  </div>
+  </a>
+</section>
+{% schema %}
+  {
+    "name": "influencer-main-banner",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type":"text",
+        "id":"top_heading",
+        "label":"Top Text"
+      },
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Banner Image"
+      },
+       {
+        "type":"image_picker",
+        "id":"mobile_image",
+        "label":"Mobile Banner Image"
+      },
+      {
+        "type":"text",
+        "id":"heading",
+        "label":"Heading"
+      },
+      {
+        "type":"textarea",
+        "id":"subheading",
+        "label":"Sub Heading"
+      },
+      {
+        "type":"text",
+        "id":"btn_text",
+        "label":"Button Text"
+      },
+      {
+        "type":"url",
+        "id":"btn_link",
+        "label":"Button Link"
+      }
+    ],
+    "presets":[
+		{
+			"name": "bulk-affiliate-mainbanner"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

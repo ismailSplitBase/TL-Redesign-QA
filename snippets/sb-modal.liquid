@@ -1,0 +1,228 @@
+{% comment %}
+  Transparent Labs Modal Component
+
+  Usage:
+  {% render 'sb-modal', 
+    modal_id: 'unique-modal-id',
+    heading: 'Modal Title',
+    children: '<p>Modal content goes here</p>'
+  %}
+
+  Parameters:
+  - modal_id: Unique identifier for the modal (required)
+  - heading: Modal title (optional)
+  - children: HTML content for modal body (optional)
+  - class: Additional CSS classes (optional)
+  - attributes: Additional HTML attributes (optional)
+
+  To open the modal from any element, add:
+  data-modal-trigger="{{ modal_id }}"
+
+  Or use JavaScript:
+  document.dispatchEvent(new CustomEvent('sb-modal:open', { detail: { modalId: 'modal-id' } }));
+{% endcomment %}
+
+{%- liquid
+  assign default_id = 'sb-modal-' | append: 'now' | date: '%s' | append: '-' | append: forloop.index0 | default: 0
+  assign modal_id = modal_id | default: default_id
+  assign modal_heading = heading | default: ''
+  assign modal_children = children | default: ''
+  assign modal_class = class | default: ''
+  assign modal_attributes = attributes | default: ''
+-%}
+
+<sb-modal 
+  data-modal-id="{{ modal_id }}"
+  {% if modal_heading != blank %}data-heading="{{ modal_heading | escape }}"{% endif %}
+  {% if modal_class != blank %}class="{{ modal_class }}"{% endif %}
+  {{ modal_attributes }}
+>
+  <div class="sb-modal__overlay" data-modal-overlay>
+    <div class="sb-modal__dialog" tabindex="-1">
+      {% if modal_heading != blank %}
+        <div class="sb-modal__header">
+          <button class="sb-modal__close" data-modal-close aria-label="Close modal">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      {% endif %}
+      <div class="sb-modal__body">
+        {{ modal_children }}
+      </div>
+    </div>
+  </div>
+</sb-modal>
+
+<script src="{{ 'sb-modal.js' | asset_url }}" defer></script>
+
+{% stylesheet %}
+  /* Modal Component Styles */
+  :root {
+    --sb-modal-overlay-bg: rgba(0, 0, 0, 0.5);
+    --sb-modal-bg: #ffffff;
+    --sb-modal-border-radius: 8px;
+    --sb-modal-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    --sb-modal-max-width: 600px;
+    --sb-modal-max-height: 80vh;
+    --sb-modal-padding: 1.5rem;
+    --sb-modal-header-padding: 1rem 1.5rem;
+    --sb-modal-z-index: 1000;
+    --sb-modal-animation-duration: 0.3s;
+    --sb-modal-close-size: 24px;
+    --sb-modal-close-color: #FFF;
+    --sb-modal-close-hover-color: #333;
+  }
+
+  .sb-modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--sb-modal-overlay-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--sb-modal-z-index);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--sb-modal-animation-duration) ease,
+                visibility var(--sb-modal-animation-duration) ease;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .sb-modal__overlay--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .sb-modal__dialog {
+    width: 100%;
+    max-width: var(--sb-modal-max-width);
+    max-height: var(--sb-modal-max-height);
+    position: relative;
+    transform: scale(0.9) translateY(-20px);
+    transition: transform var(--sb-modal-animation-duration) ease;
+    display: flex;
+    flex-direction: column;
+    outline: none;
+  }
+
+  .sb-modal__dialog--active {
+    transform: scale(1) translateY(0);
+  }
+
+  .sb-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: var(--sb-modal-header-padding);
+    flex-shrink: 0;
+  }
+
+  .sb-modal__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.5;
+  }
+
+  .sb-modal__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--sb-modal-close-size);
+    height: var(--sb-modal-close-size);
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--sb-modal-close-color);
+    transition: color 0.2s ease, background-color 0.2s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+    padding: 0;
+  }
+
+  .sb-modal__close:hover,
+  .sb-modal__close:focus {
+    color: var(--sb-modal-close-hover-color);
+    background-color: #f3f4f6;
+  }
+
+  .sb-modal__close svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .sb-modal__body {
+    padding: var(--sb-modal-padding);
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  /* Responsive design */
+  @media (max-width: 640px) {
+    :root {
+      --sb-modal-max-width: calc(100vw - 2rem);
+      --sb-modal-padding: 1rem;
+      --sb-modal-header-padding: 0.75rem 1rem;
+    }
+
+    .sb-modal__overlay {
+      padding: 0.5rem;
+      align-items: flex-start;
+      padding-top: 2rem;
+    }
+
+    .sb-modal__dialog {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    .sb-modal__title {
+      font-size: 1.125rem;
+    }
+
+    .sb-modal__close {
+      margin-left: 0.5rem;
+    }
+  }
+
+  /* Animation for content updates */
+  .sb-modal__body {
+    transition: opacity 0.2s ease;
+  }
+
+  .sb-modal__body--updating {
+    opacity: 0.7;
+  }
+
+  /* Custom scrollbar for modal body */
+  .sb-modal__body::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .sb-modal__body::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+  }
+
+  .sb-modal__body::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+
+  .sb-modal__body::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+
+  /* Prevent background scroll when modal is open */
+  body.sb-modal-open {
+    overflow: hidden;
+  }
+{% endstylesheet %} 

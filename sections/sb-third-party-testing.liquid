@@ -1,0 +1,1375 @@
+{%  stylesheet %}
+  .sb-third-party-testing {
+    /* CSS Custom Properties - Consolidated repeated values */
+    --sb-font-primary: var(--sb-font-family-heading);
+    --sb-font-secondary: var(--sb-font-family-body);
+    --sb-font-secondary-bold: 'Neue Haas Unica W1G Bold', sans-serif;
+    --sb-color-white: #ffffff;
+    --sb-border-radius-sm: 2px;
+    --sb-border-radius-md: 4px;
+    --sb-border-radius-lg: 6px;
+    --sb-border-radius-xl: 22px;
+    --sb-border-radius-xxl: 40px;
+    --sb-transition: 0.3s ease;
+    --sb-transition-fast: 0.2s ease;
+    --sb-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --sb-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Base Typography */
+  .sb-third-party-testing__title {
+    font-family: var(--sb-font-primary);
+    font-weight: 600;
+    letter-spacing: 0;
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--sb-fg-color);
+    margin: 0;
+  }
+
+  .sb-third-party-testing__description {
+    font-family: var(--sb-font-secondary);
+    font-weight: 400;
+    letter-spacing: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--sb-fg-color-lightened);
+    margin: 0;
+  }
+
+  /* Base Layout - Mobile First */
+  .sb-third-party-testing__content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sb-third-party-testing__main,
+  .sb-third-party-testing__sidebar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sb-third-party-testing__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Search Section */
+  .sb-third-party-testing__search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sb-third-party-testing__search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sb-third-party-testing__search-input-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .sb-third-party-testing__search-input:focus-visible {
+    outline: none !important;
+    box-shadow: none;
+  }
+  .sb-third-party-testing__search-input-wrapper .sb-third-party-testing__search-input:focus{
+    border-color: var(--sb-fg-color-lightened);
+    --tw-ring-color: var(--sb-fg-color-lightened);
+  }
+
+  .sb-third-party-testing__search-input {
+    width: 100%;
+    height: 44px;
+    padding: 0 24px 6px 24px;
+    background: var(--sb-color-white);
+    border: none;
+    border-bottom: 1px solid var(--sb-fg-color);
+    font-family: var(--sb-font-secondary);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--sb-fg-color);
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .sb-third-party-testing__search-input::placeholder {
+    color: color-mix(in srgb, var(--sb-fg-color) 64%, transparent);
+  }
+
+  .sb-third-party-testing__search-form .sb-button__link--small.sb-button__link{
+    font-weight: 600;
+    padding-inline: 40px;
+  }
+
+  /* Search Results */
+  .sb-third-party-testing__search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--sb-color-white);
+    max-height: 280px;
+    overflow-y: auto;
+    z-index: 999;
+    display: none;
+    padding: 12px;
+  }
+
+  .sb-third-party-testing__search-results--visible {
+    display: block;
+  }
+
+  .sb-third-party-testing__search-result {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: opacity var(--sb-transition-fast);
+  }
+
+  .sb-third-party-testing__search-result:hover {
+    opacity: 0.7;
+  }
+
+  .sb-third-party-testing__search-result-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    background: var(--sb-color-background-light);
+    border-radius: var(--sb-border-radius-sm);
+    flex-shrink: 0;
+  }
+
+  .sb-third-party-testing__search-result-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .sb-third-party-testing__search-result-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .sb-third-party-testing__search-result-title {
+    font-family: var(--sb-font-secondary);
+    font-weight: 300;
+    font-size: 16px;
+    color: #000;
+    font-style: normal;
+    letter-spacing: 0;
+    line-height: 1.3;
+    color: var(--sb-fg-color);
+    margin: 0;
+  }
+
+  .sb-third-party-testing__search-result-details {
+    display: flex;
+    gap: 8px;
+    color: #000;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .sb-third-party-testing__search-result-lot,
+  .sb-third-party-testing__search-result-date {
+    font-family: var(--sb-font-secondary);
+    font-weight: 400;
+    font-size: 14px !important;
+    opacity: 0.64;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .sb-third-party-testing__search-result-type {
+    font-family: var(--sb-font-secondary);
+    font-weight: 600;
+    font-size: 16px !important;
+    letter-spacing: 0;
+    line-height: 1.3;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .sb-third-party-testing__search-result-separator {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: black;
+  }
+
+  .sb-third-party-testing__search-result-divider {
+    width: 100%;
+    height: 1px;
+    background: color-mix(in srgb, var(--sb-fg-color) 12%, transparent);
+    margin: 8px 0;
+  }
+
+  /* Common Text Styles */
+  .sb-third-party-testing__search-heading-separator {
+    width: 15px;
+    height: 1.2px;
+    margin: 0 4px;
+    background: black;
+    transform: rotate(180deg);
+  }
+
+  .sb-third-party-testing__recent-title--hidden {
+    display: none;
+  }
+
+  /* Learn More Link */
+  .sb-third-party-testing__learn-more {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .sb-third-party-testing__learn-more-link {
+    font-family: var(--sb-font-secondary);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--sb-fg-color-lightened);
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-underline-position: from-font;
+  }
+
+  .sb-third-party-testing__info-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--sb-fg-color-lightened);
+    stroke-width: 1.25px;
+  }
+
+  /* Loading States */
+  .sb-third-party-testing__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    gap: 12px;
+  }
+
+  .sb-third-party-testing__loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--sb-fg-color);
+    border-radius: 50%;
+    animation: sb-spin 1s linear infinite;
+  }
+
+  .sb-third-party-testing__loading-text {
+    font-family: var(--sb-font-secondary);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--sb-fg-color-lightened);
+  }
+
+  @keyframes sb-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .sb-third-party-testing__no-results {
+    padding: 16px;
+    text-align: center;
+    color: #666;
+  }
+
+  /* Recent Section */
+  .sb-third-party-testing__recent-section {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sb-third-party-testing__recent-section--visible {
+    display: flex;
+  }
+
+  .sb-third-party-testing__recent-title {
+    font-family: var(--sb-font-primary);
+    font-weight: 600;
+    letter-spacing: 0;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--sb-fg-color);
+    margin: 0;
+  }
+
+  .sb-third-party-testing__recent-product {
+    background: var(--sb-color-white);
+    border-radius: var(--sb-border-radius-lg);
+    padding: 12px;
+    display: none;
+  }
+
+  .sb-third-party-testing__recent-product--visible {
+    display: block;
+  }
+
+  .sb-third-party-testing__recent-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--sb-spacing-md, 12px);
+    text-align: left;
+  }
+
+  .sb-third-party-testing__recent-image {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: var(--sb-border-radius-md);
+    background: var(--sb-bg-color);
+    flex-shrink: 0;
+  }
+
+  .sb-third-party-testing__recent-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
+  }
+
+  .sb-third-party-testing__recent-product-title {
+    font-family: var(--sb-font-secondary);
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--sb-fg-color);
+    margin: 0;
+  }
+
+  .sb-third-party-testing__recent-description {
+    font-family: var(--sb-font-secondary);
+    font-weight: 400;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    color: color-mix(in srgb, var(--sb-fg-color) 72%, transparent);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .sb-third-party-testing__view-product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    text-decoration: none;
+  }
+
+  .sb-third-party-testing__view-product-text {
+    font-family: var(--sb-font-secondary);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 1;
+    color: var(--sb-fg-color);
+  }
+
+  .sb-third-party-testing__search-history-left-content-mobile,
+  .sb-third-party-testing__search-history-separator-mobile {
+    display: none;
+  }
+
+  .sb-third-party-testing__search-history-left-content-desktop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .history-line-item icon:first-of-type {
+    opacity: .64;
+  }
+
+  .history-line-item {
+    line-height: 1;
+  }
+
+  .sb-third-party-testing__search-history-thumb-img {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    object-fit: cover;
+  }
+
+  .sb-only-desktop {
+    display: none;
+  }
+
+  .sb-third-party-testing__view-product-icon {
+    width: 14px;
+    height: 14px;
+    transform: rotate(90deg);
+  }
+
+  /* Keep Shopping Links */
+  .sb-third-party-testing__keep-shopping {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    width: max-content;
+    border-bottom: 1.5px solid black;
+    padding-bottom: 3px;
+    font-weight: 700;
+    transition: var(--sb-transition-fast);
+    margin: 0 auto 15px;
+    justify-content: center;
+  }
+
+  .sb-third-party-testing__view-product {
+    display: flex;
+    width: max-content;
+    border-bottom: 1.5px solid black;
+    padding-bottom: 3px;
+    font-weight: 700;
+    transition: var(--sb-transition-fast);
+  }
+
+  .sb-third-party-testing__keep-shopping-text {
+    font-family: var(--sb-font-secondary);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 1;
+    color: var(--sb-fg-color);
+  }
+
+  .sb-third-party-testing__keep-shopping-icon {
+    width: 18px;
+    height: 18px;
+    transform: rotate(90deg);
+  }
+
+  .sb-third-party-testing__keep-shopping--desktop {
+    display: none;
+  }
+
+  /* Search History */
+  .sb-third-party-testing__search-history {
+    display: none;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .sb-third-party-testing__search-history--visible {
+    display: flex;
+  }
+
+  .sb-third-party-testing__search-history-title {
+    font-family: var(--sb-font-primary);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--sb-fg-color);
+    margin: 0;
+  }
+
+  .sb-third-party-testing__search-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sb-third-party-testing__search-history-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sb-third-party-testing__search-history-divider {
+    width: 100%;
+    height: 0.5px;
+    display: block !important;
+    background: color-mix(in srgb, var(--sb-fg-color) 30%, transparent);
+  }
+
+  .sb-third-party-testing__search-history-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .sb-third-party-testing__search-history-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .sb-third-party-testing__search-history-separator {
+    display: none;
+  }
+
+  .sb-third-party-testing__search-history-date {
+    font-family: var(--sb-font-secondary);
+    font-weight: 400;
+    letter-spacing: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: color-mix(in srgb, var(--sb-fg-color) 64%, transparent);
+    order: 1;
+  }
+
+  .sb-third-party-testing__search-history-product {
+    font-family: var(--sb-font-secondary);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0;
+    max-width: 250px;
+    line-height: 1.4;
+    color: var(--sb-fg-color);
+    order: 2;
+  }
+
+  .sb-third-party-testing__search-history-type {
+    font-family: var(--sb-font-secondary-bold);
+    font-weight: 800;
+    letter-spacing: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--sb-color-primary);
+    order: 3;
+  }
+
+  .sb-third-party-testing__search-history-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: 0;
+    margin-top: -8px;
+  }
+
+  .sb-third-party-testing__search-history-link {
+    font-family: var(--sb-font-secondary);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--sb-color-primary);
+    text-decoration: none;
+  }
+
+  .sb-third-party-testing__search-history-arrow {
+    width: 14px;
+    height: 14px;
+    transform: rotate(90deg);
+  }
+
+  /* Empty State */
+  .sb-third-party-testing__empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 32px;
+    text-align: center;
+  }
+
+  .sb-third-party-testing__empty-text {
+    font-family: var(--sb-font-secondary);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--sb-color-secondary);
+    margin: 0 0 8px 0;
+  }
+
+  .sb-third-party-testing__empty-subtext {
+    font-family: var(--sb-font-secondary);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--sb-color-secondary);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  /* Modal Styles */
+  .sb-third-party-testing .sb-modal__dialog {
+    --sb-modal-max-width: 700px;
+    max-height: unset;
+    padding: 0 16px;
+  }
+
+  .sb-third-party-testing .sb-modal__body {
+    padding: 0;
+    max-height: 90vh;
+  }
+
+  .sb-third-party-testing .sb-modal__overlay {
+    background: rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(3px);
+  }
+
+  /* PDF Viewer Styles */
+  .sb-pdf-viewer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--sb-color-white);
+    overflow: hidden;
+    position: relative;
+  }
+
+
+  .sb-pdf-viewer__close{
+    color: var(--sb-color-primary, #111314);
+  }
+  .sb-pdf-viewer__close {
+    position: fixed;
+    top: -30px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    stroke: var(--sb-color-primary, #111314);
+    cursor: pointer;
+    z-index: 10;
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+    border: 0;
+  }
+
+  .sb-third-party-testing__search-form .sb-button {
+    min-width: 160px;
+  }
+
+  .sb-pdf-viewer__close:hover svg {
+    opacity: 0.75;
+  }
+
+  .sb-pdf-viewer__close svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--sb-color-primary);
+    stroke-width: 1.5px;
+    transition: var(--sb-transition-fast);
+  }
+
+  .sb-pdf-viewer__container {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .sb-pdf-viewer__canvas {
+    max-width: 100%;
+    box-shadow: var(--sb-shadow-light);
+    width: 100%;
+  }
+
+  .sb-pdf-viewer__loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .sb-pdf-viewer__loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--sb-color-primary);
+    border-radius: 50%;
+    animation: sb-pdf-spin 1s linear infinite;
+  }
+
+  .sb-third-party-testing__search-input {
+      -webkit-appearance: none;
+      -moz-appearance: none;  
+      border-radius: 0 !important;
+  }
+
+  @keyframes sb-pdf-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .sb-modal__body {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Tablet Styles */
+  @media (min-width: 768px) {
+    .sb-third-party-testing__content {
+      padding: 64px 32px;
+      gap: 48px;
+    }
+
+    .sb-only-desktop {
+      display: inline-block;
+    }
+
+    .sb-third-party-testing__title {
+      font-size: 38px;
+    }
+
+    .sb-third-party-testing__description {
+      font-size: 18px;
+    }
+
+    .sb-third-party-testing__search-form {
+      flex-direction: row;
+      gap: 16px;
+    }
+    .sb-third-party-testing__search-button {
+      width: auto;
+      justify-content: flex-start;
+    }
+
+    .sb-third-party-testing__search-input {
+      height: 48px;
+      font-size: 18px;
+    }
+
+    .sb-third-party-testing__search-button {
+      height: 48px;
+      border-radius: var(--sb-border-radius-xxl);
+    }
+
+    .sb-third-party-testing__search-button-icon {
+      width: 22px;
+      height: 18px;
+    }
+
+    .sb-third-party-testing__search-results {
+      padding: 16px;
+      max-height: 300px;
+    }
+
+    .sb-third-party-testing__search-result {
+      padding: 0;
+    }
+
+    .sb-third-party-testing__search-result-image {
+      width: 44px;
+      height: 44px;
+    }
+
+    .sb-third-party-testing__search-result-title {
+      color: #000;
+      font-family: var(--sb-font-family-body);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 140%;
+    }
+
+    .sb-third-party-testing__search-result-type,
+    .sb-third-party-testing__search-result-date {
+      font-size: 12px;
+    }
+
+    .sb-third-party-testing__search-result-divider {
+      margin: 10px 0;
+    }
+
+    .sb-third-party-testing__recent-content {
+      gap: 14px;
+    }
+
+    .sb-third-party-testing__recent-image {
+      width: 126px;
+      height: 126px;
+    }
+
+    .sb-third-party-testing__recent-info {
+      padding: 0 0 12px 0;
+      gap: 8px;
+    }
+
+    .sb-third-party-testing__recent-product-title {
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .sb-third-party-testing__recent-description {
+      font-size: 14px;
+      line-height: 1.4;
+      -webkit-line-clamp: 2;
+    }
+
+    .sb-third-party-testing__view-product {
+      margin-top: 12px;
+    }
+
+    .sb-third-party-testing__view-product-text {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .sb-third-party-testing__view-product-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .sb-third-party-testing__search-history-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .sb-third-party-testing__search-history-left {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sb-third-party-testing__search-history-separator {
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: var(--sb-color-border-dark, #111314);
+      transform: rotate(180deg);
+    }
+
+    .sb-third-party-testing__search-history-date {
+      font-size: 16px;
+      order: 0;
+    }
+
+    .sb-third-party-testing__search-history-product {
+      font-size: 16px;
+      font-weight: 400;
+      order: 0;
+    }
+
+    .sb-third-party-testing__search-history-type {
+      font-size: 16px;
+      order: 0;
+    }
+
+    .sb-third-party-testing__search-history-type--mobile-only {
+      display: none;
+    }
+
+    .sb-third-party-testing__search-history-right {
+      margin-top: 0;
+      min-width: 120px;
+    }
+
+    .sb-third-party-testing__search-history-link {
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .sb-third-party-testing__search-history-arrow {
+      width: 18px;
+      height: 18px;
+    }
+
+    .sb-third-party-testing__keep-shopping--mobile {
+      display: none;
+    }
+
+    .sb-third-party-testing__keep-shopping--desktop {
+      display: flex !important;
+      margin: 0 !important;
+    }
+
+    .sb-third-party-testing__view-product-icon,
+    .sb-third-party-testing__keep-shopping-icon {
+      color: black;
+      font-weight: 700;
+    }
+
+    .sb-pdf-viewer__close {
+      top: 10px;
+      right: 25px;
+    }
+  }
+
+  /* --- MOBILE SEARCH HISTORY STYLES (below 768px) --- */
+  @media (max-width: 767px) {
+    /* Sidebar and search history container */
+    .sb-third-party-testing__sidebar {
+      margin: 0 auto;
+    }
+    .sb-third-party-testing__search-history {
+      gap: 0;
+      padding: 0 0 8px 0;
+    }
+    .sb-third-party-testing__search-history-title {
+      font-size: 22px;
+      font-weight: 700;
+      padding-bottom: 12px;
+    }
+    .sb-third-party-testing__search-history-list {
+      gap: 0;
+      padding: 0;
+    }
+    .sb-third-party-testing__search-history-item {
+      padding: 8px 0;
+      gap: 12px;
+      background: transparent;
+    }
+    .sb-third-party-testing__search-history-divider {
+      margin: 0 0 8px 0;
+      height: 1px;
+      background: #111314;
+      opacity: 0.3;
+    }
+    .sb-third-party-testing__search-history-content {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .sb-third-party-testing__search-history-left {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      width: auto;
+      flex: 1 1 auto;
+    }
+    .sb-third-party-testing__search-history-date {
+      font-size: 14px;
+      color: #888;
+      font-weight: 400;
+      margin-bottom: 2px;
+    }
+    .sb-third-party-testing__search-history-product {
+      font-size: 14px;
+      font-weight: 400;
+      color:  #111314;
+      margin-bottom: 0;
+    }
+    .sb-third-party-testing__search-history-product-mobile {
+      font-size: 14px;
+      line-height: 140%;
+      letter-spacing: 0%;
+    }
+    .sb-third-party-testing__search-history-left-content-mobile {
+      display: block;
+      line-height: 1.1;
+      padding-bottom: 8px;
+    }
+    .sb-third-party-testing__search-history-left-content-desktop {
+      display: none;
+    }
+    .sb-third-party-testing__search-history-type {
+      font-size: 16px;
+      font-weight: 700;
+      color:  #111314;
+      margin-bottom: 0;
+    }
+    .sb-third-party-testing__search-history-right {
+      flex-direction: row;
+      align-items: center;
+      gap: 6px;
+      margin-top: 0;
+      min-width: 100px;
+      justify-content: flex-end;
+    }
+    .sb-third-party-testing__search-history-link {
+      font-size: 14px;
+      font-weight: 300;
+      color: #111;
+      padding-right: 2px;
+    }
+    .sb-third-party-testing__search-history-arrow {
+      width: 18px;
+      height: 18px;
+      color: #111;
+    }
+    .sb-third-party-testing__search-history-separator {
+      display: none !important;
+    }
+    .sb-third-party-testing__search-history-thumb,
+    .sb-third-party-testing__search-history-thumb-img,
+    .sb-only-desktop {
+      display: none !important;
+    }
+  }
+
+  /* Desktop Styles */
+  @media (min-width: 1200px) {
+    .sb-third-party-testing__content {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 48px;
+      padding: 88px 64px;
+    }
+
+    .sb-third-party-testing__main,
+    .sb-third-party-testing__sidebar {
+      flex: 1 1 0;
+      max-width: 620px;
+      gap: 48px;
+    }
+  }
+{% endstylesheet %}
+
+{%- style -%}
+  /* COLORS */
+  #shopify-section-{{ section.id }}{
+    {% if section.settings.tooltip_bg_color.alpha > 0 %}
+      --sb-tooltip-bg-color: {{ section.settings.tooltip_bg_color }};
+    {% endif %}
+    {% if section.settings.tooltip_text_color.alpha > 0 %}
+      --sb-tooltip-text-color: {{ section.settings.tooltip_text_color }};
+    {% endif %}
+  }
+{%- endstyle -%}
+
+<script src="{{ 'certificate-of-analysis-json-data.js' | asset_url }}" defer></script>
+{% assign modal_id = 'sb-modal-' |  append: section.id %}
+<div class="sb-styled-element" style="{%  render 'style-attributes', settings: section.settings %}">
+  <div class="sb-third-party-testing__content sb-page-width">
+    <div class="sb-third-party-testing__main">
+      <div class="sb-third-party-testing__header">
+        {% if section.settings.heading != blank %}
+          <h1 class="sb-third-party-testing__title">{{ section.settings.heading }}</h1>
+        {% endif %}
+
+        {% if section.settings.richtext_content != blank %}
+          <div class="sb-third-party-testing__description">
+            {{ section.settings.richtext_content | strip_html }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.tooltip != blank %}
+          <div class="sb-third-party-testing__learn-more">
+            {% render 'sb-tooltip', 
+              trigger_text: 'Learn More',
+              content: section.settings.tooltip,
+              trigger_class: 'sb-third-party-testing__learn-more-link',
+              icon_class: 'sb-third-party-testing__info-icon' %}
+          </div>
+        {% endif %}
+      </div>
+
+      <sb-product-search class="sb-third-party-testing__search-section" data-modal-id="{{ modal_id }}">
+        <div class="sb-third-party-testing__search-form">
+          <div class="sb-third-party-testing__search-input-wrapper">
+            <input 
+              type="text" 
+              class="sb-third-party-testing__search-input" 
+              placeholder="Enter Product Name"
+              data-search-input
+            >
+            <div class="sb-third-party-testing__search-results" data-search-results></div>
+          </div>
+          {% comment %} {% assign button_color = section.settings.ch_fg_color | default: '#000'   %}
+          {% assign button_text_color = section.settings.ch_bg_color | default: '#fff' %} {% endcomment %}
+          {% comment %} {% assign button = null | default: button_text:"Search", button_url:'#', button_color: button_color, button_text_color: button_text_color, button_type: 'button' %} {% endcomment %}
+          {% comment %} {% render 'sb-button', button: button, additional_attributes: 'data-search-button', style: 'small' %} {% endcomment %}
+        </div>
+
+        {% if section.settings.keep_shopping_text != blank and section.settings.keep_shopping_url != blank %}
+          <div class="sb-third-party-testing__keep-shopping--mobile">
+            {% render 'sb-button', button_type: 'link', button_text: section.settings.keep_shopping_text, button_url: section.settings.keep_shopping_url%}
+          </div>
+        {% endif %}
+      </sb-product-search>
+
+      <div class="sb-third-party-testing__recent-section" data-recent-section>
+        <h2 class="sb-third-party-testing__recent-title sb-third-party-testing__recent-title--hidden" data-recent-title>Most Recent Search</h2>
+        <div class="sb-third-party-testing__recent-product" data-recent-product>
+          <div class="sb-third-party-testing__recent-content" data-recent-content></div>
+        </div>
+      </div>
+
+      {% if section.settings.keep_shopping_text != blank and section.settings.keep_shopping_url != blank %}
+        <div class="sb-third-party-testing__keep-shopping--desktop">
+          {% render 'sb-button', button_type: 'link', button_text: section.settings.keep_shopping_text, button_url: section.settings.keep_shopping_url %}
+        </div>
+      {% endif %}
+
+      <!-- HTML Template for Recent Product -->
+      <template id="recent-product-template">
+        <div class="sb-third-party-testing__recent-image" data-image></div>
+        <div class="sb-third-party-testing__recent-info">
+          <h3 class="sb-third-party-testing__recent-product-title" data-title></h3>
+          <p class="sb-third-party-testing__recent-description" data-description></p>
+          {% render 'sb-button', button_type: 'link', button_text: 'View Product', button_url: '#', additional_attributes: 'data-link' %}
+        </div>
+      </template>
+    </div>
+
+    <div class="sb-third-party-testing__sidebar">
+      <div class="sb-third-party-testing__search-history" data-search-history-section>
+        <h2 class="sb-third-party-testing__search-history-title">Search History</h2>
+        <div class="sb-third-party-testing__search-history-list" data-search-history-list>
+          <!-- Search history items will be populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HTML Template for Search Result Item -->
+<template id="search-result-item-template">
+  <div class="sb-third-party-testing__search-result" 
+       data-product-handle=""
+       data-product-title=""
+       data-lot-number=""
+       data-pdf-url=""
+       data-analysis-type=""
+       data-test-date=""
+       data-product-data="">
+    <div class="sb-third-party-testing__search-result-image-wrapper">
+      <div class="sb-third-party-testing__search-result-image" data-image-container></div>
+    </div>
+    <div class="sb-third-party-testing__search-result-info">
+      <div class="sb-third-party-testing__search-result-title-wrapper">
+        <h3 class="sb-third-party-testing__search-result-title" data-title></h3>
+        <span class="sb-third-party-testing__search-heading-separator">&nbsp;</span>
+        <span class="sb-third-party-testing__search-result-type" data-analysis-display-child></span>
+      </div>
+      
+      <div class="sb-third-party-testing__search-result-details">
+        {% comment %} <span class="sb-third-party-testing__search-result-lot" data-lot-number-child></span>
+        <span class="sb-third-party-testing__search-result-separator"></span> {% endcomment %}
+        <span class="sb-third-party-testing__search-result-date" data-test-date-child></span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- HTML Template for Search Result Divider -->
+<template id="search-result-divider-template">
+  <div class="sb-third-party-testing__search-result-divider">&nbsp;</div>
+</template>
+
+<!-- HTML Template for Loading State -->
+<template id="search-loading-template">
+  <div class="sb-third-party-testing__loading">
+    <div class="sb-third-party-testing__loading-spinner"></div>
+    <span class="sb-third-party-testing__loading-text">Searching...</span>
+  </div>
+</template>
+
+<!-- HTML Template for No Results -->
+<template id="search-no-results-template">
+  <div class="sb-third-party-testing__no-results" data-message>
+    No results found for your search.
+  </div>
+</template>
+
+<!-- HTML Template for Search History Item -->
+<template id="search-history-item-template">
+  <div class="sb-third-party-testing__search-history-item">
+    <div class="sb-third-party-testing__search-history-divider"></div>
+    <div class="sb-third-party-testing__search-history-content">
+      <div class="sb-third-party-testing__search-history-left">
+        <div class="sb-third-party-testing__search-history-left-content-mobile">
+          <span class="sb-third-party-testing__search-history-date" data-date></span>
+          <span class="sb-third-party-testing__search-history-product sb-third-party-testing__search-history-product-mobile" data-product-name></span>
+        </div>
+        <div class="sb-third-party-testing__search-history-left-content-desktop">
+          <div class="history-line-item">
+            <span class="sb-third-party-testing__search-history-date search-results-date" data-date></span>
+            <icon>&nbsp; — &nbsp;</icon>
+            <span class="sb-third-party-testing__search-history-product search-results-product-name" data-product-name></span>
+            <icon>&nbsp; — &nbsp;</icon>
+            {% comment %} <div class="sb-third-party-testing__search-history-thumb sb-only-desktop" data-history-image></div>
+            <icon>&nbsp; — &nbsp;</icon> {% endcomment %}
+            <span class="sb-third-party-testing__search-history-type search-results-analysis-type" data-test-type></span>
+          </div>
+        </div>
+        <span class="sb-third-party-testing__search-history-type sb-third-party-testing__search-history-type--mobile-only" data-test-type></span>
+      </div>
+      <div class="sb-third-party-testing__search-history-right">
+        <a href="#" class="sb-third-party-testing__search-history-link" data-pdf-link>Open PDF</a>
+        <svg class="sb-third-party-testing__search-history-arrow" fill="none" viewBox="0 0 18 18">
+          <path d="M9.5 18L9.5 2M9.5 2L13.5 6.25M9.5 2L5.5 6.25" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.28571"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</template>
+
+{% render 'sb-modal', modal_id: modal_id %}
+{% render 'sb-pdf-template' %}
+<!-- PDF Viewer Template -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js" defer></script>
+
+<script>
+  /**
+   * Product Data Map - Generated directly in section
+   * Simple mapping of product handles to their full product data
+   */
+  window.tdProductData = {};
+    
+  {% for product in collections["all"].products %}
+    window.tdProductData[`{{ product.handle }}`] = {{ product | json }};
+    window.tdProductData[`{{ product.handle }}`]['metafields'] = {{ product.metafields.custom | json }};
+  {% endfor %}
+</script>
+<script src="{{ 'sb-tooltip.js' | asset_url }}" defer></script>
+<script src="{{ 'sb-product-search.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "SB Third Party Testing",
+  "class": "sb-third-party-testing",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Transparent Labs 3rd Party Testing"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext_content",
+      "label": "Content",
+      "default": "<p>Enter a product name below to search for its Certificates of Analysis, Ingredient Tests, and Gluten Tests.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "tooltip",
+      "label": "Tooltip Content",
+      "info": "Rich content for the tooltip. Use 'Certificate of Analysis' in the text to show the structured sections, or enter custom content.",
+      "default": "<p>Certificate of Analysis - Shows detailed information about our testing process</p>"
+    },
+    {
+      "type": "header",
+      "content": "Keep Shopping Link"
+    },
+    {
+      "type": "text",
+      "id": "keep_shopping_text",
+      "label": "Link Text",
+      "default": "Keep Shopping"
+    },
+    {
+      "type": "url",
+      "id": "keep_shopping_url",
+      "label": "Link URL",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Section Colors"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Text Color",
+      "default": "#111314"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#F8F9FB"
+    },
+    {
+      "type": "paragraph",
+      "content": "Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "ch_fg_color",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "ch_bg_color",
+      "label": "Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "paragraph",
+      "content": "Tooltip Colors"
+    },
+    {
+      "type": "color",
+      "id": "tooltip_bg_color",
+      "label": "Tooltip Background Color",
+      "default": "#334155"
+    },
+    {
+      "type": "color",
+      "id": "tooltip_text_color",
+      "label": "Tooltip Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Third Party Testing"
+    }
+  ]
+}
+{% endschema %} 

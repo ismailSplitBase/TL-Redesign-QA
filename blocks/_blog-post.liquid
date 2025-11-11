@@ -1,0 +1,443 @@
+<div class="sb-styled-element sb-blog-post">
+  <div class="sb-blog-post__header">
+    <!-- Category -->
+    {% if blog.title %}
+      <div class="sb-blog-post__category">{{ blog.title }}</div>
+    {% endif %}
+    
+    <div class="sb-blog-post__content-wrapper">
+      <!-- Title -->
+      <h1 class="sb-blog-post__title">{{ article.title }}</h1>
+      
+      <!-- Hero Image -->
+      {% if article.image != blank %}
+        <div class="sb-blog-post__image-wrapper">
+          {{- article.image | image_url: width: 800 | image_tag: 
+              class: 'sb-blog-post__image',
+              alt: article.image.alt | default: article.title,
+              loading: 'eager'
+          -}}
+        </div>
+      {% endif %}
+      
+      <!-- Metadata -->
+      <div class="sb-blog-post__metadata">
+        {% if block.settings.show_author %}
+          <div class="sb-blog-post__author">
+            <span class="sb-blog-post__label">Written by</span>
+            <span class="sb-blog-post__author-name" data-scroll-target="#blog-author">{{ article.author }}</span>
+          </div>
+        {% endif %}
+        
+        {% if block.settings.show_reviewer and block.settings.reviewer_src != empty %}
+          <div class="sb-blog-post__reviewer">
+            <span class="sb-blog-post__label">Reviewed by</span>
+            <span class="sb-blog-post__reviewer-name">{{ block.settings.reviewer_src }}</span>
+          </div>
+        {% endif %}
+        
+        <div class="sb-blog-post__date">
+          <span class="sb-blog-post__label">Last updated on</span>
+          <span class="sb-blog-post__date-value">{{ article.published_at | date: "%B %d, %Y" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="sb-blog-post__content">
+    {{ article.content }}
+  </div>
+  
+  <div class="sb-blog-post__actions">
+    {% if blog.previous_article %}
+      <a href="{{ blog.previous_article.url }}" class="sb-blog-post__link previous">
+        <span>Previous post</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+          <g clip-path="url(#clip0_4247_5624)">
+          <path d="M16 9.55371L1.74846e-07 9.55371M1.74846e-07 9.55371L4.25 13.5537M1.74846e-07 9.55371L4.25 5.55371" stroke="#111314" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_4247_5624">
+          <rect width="18" height="18" fill="white" transform="translate(18 0.0537109) rotate(90)"/>
+          </clipPath>
+          </defs>
+        </svg>
+      </a>
+    {% endif %}
+    {% if blog.next_article %}
+      <a href="{{ blog.next_article.url }}" class="sb-blog-post__link next">
+        <span>Next post</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+          <g clip-path="url(#clip0_4247_5629)">
+            <path d="M-1.74846e-07 9.55371L16 9.55371M16 9.55371L11.75 13.5537M16 9.55371L11.75 5.55371" stroke="#111314" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <defs>
+            <clipPath id="clip0_4247_5629">
+              <rect width="18" height="18" fill="white" transform="translate(18 0.0537109) rotate(90)"/>
+            </clipPath>
+          </defs>
+        </svg>
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-scroll-target]').forEach(element => {
+      const target = document.querySelector(element.getAttribute('data-scroll-target'));
+      if (target) {
+        element.classList.add('sb-blog-post__author-name--clickable');
+        element.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: target.offsetTop - 20, behavior: 'smooth' });
+        });
+      }
+    });
+  });
+{% endjavascript %}
+
+{% stylesheet %}
+
+  .sb-blog-post__header {
+    padding-top: 32px;
+    padding-bottom: 40px;
+  }
+  
+  .sb-blog-post__category {
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    opacity: 0.6;
+  }
+  
+  .sb-blog-post__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .sb-blog-post__title {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--sb-fg-color, #000);
+  }
+  
+  .sb-blog-post__metadata {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .sb-blog-post__author,
+  .sb-blog-post__reviewer,
+  .sb-blog-post__date {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    line-height: 1.4;
+  }
+  
+  .sb-blog-post__label, .sb-blog-post__date-value {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; 
+    opacity: 0.75;
+  }
+  
+  .sb-blog-post__author-name {
+    color: var(--sb-fg-color, #000);
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  /* Clickable state - only applied when target element exists */
+  .sb-blog-post__author-name--clickable {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: text-decoration 0.2s ease;
+  }
+  
+  .sb-blog-post__reviewer-name,
+  .sb-blog-post__date-value {
+    color: var(--sb-fg-color, #000);
+    font-weight: 500;
+  }
+  
+  .sb-blog-post__image-wrapper {
+    width: 100%;
+    aspect-ratio: 106 / 45;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .sb-blog-post__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  
+  .sb-blog-post__content {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    padding-top: 40px;
+    overflow: auto;
+  }
+  
+  /* Enhanced blog content styles based on designs */
+  .sb-blog-post__content h1,
+  .sb-blog-post__content h2,
+  .sb-blog-post__content h3,
+  .sb-blog-post__content h4,
+  .sb-blog-post__content h5,
+  .sb-blog-post__content h6 {
+    color: var(--sb-fg-color, #000);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  
+  .sb-blog-post__content p {
+    margin-bottom: 1.25rem;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.72;
+  }
+  
+  .sb-blog-post__content a {
+    text-decoration: underline;
+    text-decoration-color: #1B73B3;
+    color: var(--sb-fg-color, #007bff);
+  }
+  
+  .sb-blog-post__content a:hover {
+    text-decoration: underline;
+    text-decoration-color: #1B73B3;
+  }
+  
+  .sb-blog-post__content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+  
+  .sb-blog-post__content ul {
+    margin: 1.25rem 0 1.5rem 1.5rem;
+  }
+  
+  .sb-blog-post__content ul li,
+  .sb-blog-post__content ol li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .sb-blog-post__content ol {
+    list-style-type: decimal;
+    padding-left: 24px;
+    margin: 16px 0;
+  }
+  
+  .sb-blog-post__content ul {
+    list-style-type: disc;
+  }
+  
+  /* Checkmark list styling */
+  .sb-blog-post__content ul.checkmark-list li {
+    position: relative;
+    padding-left: 28px;
+    list-style-type: none;
+  }
+  
+  .sb-blog-post__content ul.checkmark-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+  }
+  
+  .sb-blog-post__actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Link style requested - scoped to blog post */
+  .sb-blog-post__link {
+    color: var(--sb-fg-color, #111314);
+    font-family: var(--font-neue, inherit);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    gap: 10px;
+    align-items: center;
+    text-decoration: none;
+  }
+  .sb-blog-post__link.previous {
+    flex-direction: row-reverse;
+  }
+  .sb-blog-post__link::before {
+    content: "";
+    width: calc(100% - 28px);
+    position: absolute;
+    height: 1px;
+    bottom: -3px;
+    background: var(--sb-fg-color, #111314);
+    transition: 0.3s;
+  }
+  .sb-blog-post__link:hover::before {
+    width: 100%;
+  }
+
+  .sb-blog-post__content p:first-child {
+    margin-top: 0;
+  }
+  
+  /* Desktop Styles */
+  @media (min-width: 768px) {
+    .sb-blog-post {
+      padding: var(--sb-padding-top, 40px) 0 var(--sb-padding-bottom, 40px);
+    }
+    
+    .sb-blog-post__title {
+      margin-bottom: 2rem;
+    }
+    
+    .sb-blog-post__content-wrapper {
+      gap: 2rem;
+    }
+    
+    .sb-blog-post__metadata {
+      gap: 0.75rem;
+    }
+    
+    /* Desktop blog content styles */
+    .sb-blog-post__content h1 {
+      font-size: 40px;
+    }
+    
+    .sb-blog-post__content h2 {
+      font-size: 38px;
+      margin: 48px 0 32px;
+    }
+    
+    .sb-blog-post__content h3 {
+      font-size: 32px;
+    }
+    .sb-blog-post__nav-link {
+      gap: 16px;
+      font-size: 16px;
+    }
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 767px) {
+    .sb-blog-post {
+      padding: var(--sb-padding-top, 24px) 0 var(--sb-padding-bottom, 24px);
+    }
+    .sb-blog-post__link {
+      font-size: 14px;
+    }
+    
+    .sb-blog-post__content {
+      margin-bottom: 1.5rem;
+    }
+    
+    .sb-blog-post__content p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    
+    .sb-blog-post__content h1 {
+      font-size: 24px;
+    }
+    
+    .sb-blog-post__content h2 {
+      font-size: 22px;
+    }
+    
+    .sb-blog-post__content h3 {
+      font-size: 20px;
+    }
+    
+    .sb-blog-post__content img {
+      margin: 1rem 0;
+    }
+    
+    .sb-blog-post__content ul {
+      margin: 1rem 0 1.25rem 1.25rem;
+    }
+    
+    .sb-blog-post__content ul li,
+    .sb-blog-post__content ol li {
+      margin-bottom: 0.5rem;
+    }
+
+    .sb-blog-post__author,
+    .sb-blog-post__reviewer {
+      flex-direction: column;
+      margin-bottom: 8px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .sb-blog-post__content-wrapper {
+      gap: 2.5rem;
+    }
+    .sb-blog-post__header {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SB - Blog Post",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type":"checkbox",
+      "id":"show_author",
+      "label":"Show Author",
+      "default": true
+    },
+    {
+      "type":"checkbox",
+      "id":"show_reviewer",
+      "label":"Show Reviewer",
+      "default": true
+    },
+    {
+      "type":"text",
+      "id":"reviewer_src",
+      "label":"Reviewer",
+      "info": "Enter the name of the reviewer",
+      "visible_if": "{{ block.settings.show_reviewer == true }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB - Blog Post"
+    }
+  ]
+}
+{% endschema %}

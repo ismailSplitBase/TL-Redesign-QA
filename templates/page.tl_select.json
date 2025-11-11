@@ -1,0 +1,207 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "old-main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "1656328127b1100824": {
+      "type": "old-index-slider-v2",
+      "blocks": {
+        "54880d1e-a6e3-4ec5-a43b-a97fe2ee1575": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/TL_Select_web_banner_1.jpg",
+            "mobile_image": "shopify://shop_images/TL_Select_mobile_banner.jpg",
+            "alignment": "center_left",
+            "text_color": "",
+            "text_2_color": "",
+            "text": "",
+            "text_2": "",
+            "button_color": "",
+            "button_text": "",
+            "button_url": "https://transparentlabs.grin.live/",
+            "banner_url": "https://transparentlabs.grin.live/",
+            "add_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "54880d1e-a6e3-4ec5-a43b-a97fe2ee1575"
+      ],
+      "settings": {}
+    },
+    "1656329312631b1af6": {
+      "type": "old-select-tab",
+      "settings": {
+        "tab1_img": "shopify://shop_images/tl_logo_blue.png",
+        "tab1": "Select",
+        "tab2_img": "shopify://shop_images/TL_logo_gold.png",
+        "tab2": "Select Gold",
+        "tab3_img": "shopify://shop_images/TL_logo_platinum.png",
+        "tab3": "Select Platinum"
+      }
+    },
+    "1656330317f4f8f515": {
+      "type": "old-tl-select-slider",
+      "blocks": {
+        "73e1a69b-685d-4efd-8176-84364e42ba37": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/paul-desktop.png",
+            "image1": "shopify://shop_images/paul-mobile.png",
+            "text": "\"It is a truly unique experience to be part of a team that promotes clean and science-backed supplements. The TL Select community always has my back!”",
+            "name": "PAUL SKLAR",
+            "text2": "TL SELECT",
+            "text3": "@paulsklarxfit"
+          }
+        }
+      },
+      "block_order": [
+        "73e1a69b-685d-4efd-8176-84364e42ba37"
+      ],
+      "settings": {}
+    },
+    "165633352943db5b8a": {
+      "type": "old-tl-select-perks",
+      "blocks": {
+        "32ebc286-6a2b-4660-b0ec-df60a626a678": {
+          "type": "text",
+          "settings": {
+            "text": "10% discount code"
+          }
+        },
+        "d621239f-ed59-4fc1-abeb-b09742ab5d72": {
+          "type": "text",
+          "settings": {
+            "text": "25% personal discount code"
+          }
+        },
+        "f0e611a5-932a-42da-89ef-d75063426348": {
+          "type": "text",
+          "settings": {
+            "text": "competitive commission"
+          }
+        },
+        "8e1aa618-90ae-497d-97ba-f0ba1609f585": {
+          "type": "text",
+          "settings": {
+            "text": "complimentary product & apparel"
+          }
+        },
+        "9e0ae2d9-017f-40ed-8107-e80311560a20": {
+          "type": "text",
+          "settings": {
+            "text": "ig top fan contest"
+          }
+        },
+        "7054793a-78f9-47e3-afdb-745cbce82f6d": {
+          "type": "text",
+          "settings": {
+            "text": "access to private tl select chat"
+          }
+        },
+        "73753d7e-c70e-4adf-b189-b6421d5ce319": {
+          "type": "text",
+          "settings": {
+            "text": "insider news & updates"
+          }
+        }
+      },
+      "block_order": [
+        "32ebc286-6a2b-4660-b0ec-df60a626a678",
+        "d621239f-ed59-4fc1-abeb-b09742ab5d72",
+        "f0e611a5-932a-42da-89ef-d75063426348",
+        "8e1aa618-90ae-497d-97ba-f0ba1609f585",
+        "9e0ae2d9-017f-40ed-8107-e80311560a20",
+        "7054793a-78f9-47e3-afdb-745cbce82f6d",
+        "73753d7e-c70e-4adf-b189-b6421d5ce319"
+      ],
+      "settings": {
+        "heading": "PERKS FOR ALL MEMBERS",
+        "btn_text": "APPLY NOW",
+        "btn_url": "https://transparentlabs.grin.live/"
+      }
+    },
+    "1656337979b39076f9": {
+      "type": "old-tl-select-packages",
+      "settings": {
+        "bg_img": "shopify://shop_images/Select_Teirs_BG.png",
+        "heading1": "Select",
+        "text1": "<p>Acceptance package: 3 free products</p><p>10% commission</p><p>25% personal use discount code</p><p>IG Top Fan Contest: chance to win $!</p><p>Social Media Coaching</p>",
+        "heading2": "Select Gold",
+        "text2": "<p>Acceptance package: 4 free products</p><p>15% commission</p><p>25% personal use discount code</p><p>IG Top Fan Contest: chance to win $!</p><p>2 free products monthly</p><p>Receive pre-launch products</p><p>Photoshoot opportunities</p>",
+        "heading3": "Select Platinum",
+        "text3": "<p>Acceptance package: 5 free products</p><p>20% commission</p><p>25% personal use discount code</p><p>$200 value of products monthly</p><p>IG Top Fan Contest: chance to win $!</p><p>Receive pre-launch products</p><p>Photoshoot opportunities</p><p>Potential travel opportunities</p>"
+      }
+    },
+    "16563380437bdbf2a4": {
+      "type": "old-tl-select-faq",
+      "blocks": {
+        "61287713-6531-4537-9440-748055b5c7ec": {
+          "type": "text",
+          "settings": {
+            "question": "HOW DOES YOUR PROGRAM WORK?",
+            "answer": "<p>Your role as a TL Select is to share your love for Transparent Labs, our products & apparel. Each tier includes monthly requirements. We track all sales, content posts, and performance! As sales increase, so do your incentives!</p>"
+          }
+        },
+        "83d4b86f-8bae-467e-a1cd-5212eb29ef8a": {
+          "type": "text",
+          "settings": {
+            "question": "HOW LONG DOES THE SCREENING PROCESS TAKE?",
+            "answer": "<p>Please note that due to a higher volume of applications at times, the screening process may take 1-5 business days. </p>"
+          }
+        },
+        "76c24297-9be7-4ed3-8a91-3d6f8f27a193": {
+          "type": "text",
+          "settings": {
+            "question": "HOW DO I REACH THE NEXT TIER?",
+            "answer": "<p>We monitor your sales and performance closely. As sales and performance increase, you will be rewarded and accepted into the next tier! </p>"
+          }
+        },
+        "096bae64-09ff-41fb-8a95-806627b7a9a2": {
+          "type": "text",
+          "settings": {
+            "question": "IS THERE A COST TO JOIN?",
+            "answer": "<p>No. There is no start-up cost to join our TL Select team! </p>"
+          }
+        },
+        "d24175a1-0eb3-442c-b3c3-5924d3aa6c53": {
+          "type": "text",
+          "settings": {
+            "question": "WHO DO I CONTACT FOR PROGRAM INQUIRIES?",
+            "answer": "<p>Please reach out to our Influencer Management Team at <a href=\"mailto:ambassadors@jackedfactory.com\"><span style=\"text-decoration:underline\">ambassadors@transparentlabs.com</span></a> for any further inquiries.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "61287713-6531-4537-9440-748055b5c7ec",
+        "83d4b86f-8bae-467e-a1cd-5212eb29ef8a",
+        "76c24297-9be7-4ed3-8a91-3d6f8f27a193",
+        "096bae64-09ff-41fb-8a95-806627b7a9a2",
+        "d24175a1-0eb3-442c-b3c3-5924d3aa6c53"
+      ],
+      "settings": {
+        "heading": "FAQS"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1656328127b1100824",
+    "1656329312631b1af6",
+    "1656330317f4f8f515",
+    "165633352943db5b8a",
+    "1656337979b39076f9",
+    "16563380437bdbf2a4"
+  ]
+}

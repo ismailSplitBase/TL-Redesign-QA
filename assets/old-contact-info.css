@@ -1,0 +1,171 @@
+section#contact-info-section {
+  margin-top: 88px;
+  margin-bottom: 0;
+}
+
+div#stay-informed-form {
+  padding-top: 40px;
+}
+
+#contact-info-section .container {
+  max-width: 1056px !important;
+}
+
+.contact-info-section-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.contact-info-section-top {
+  text-align: center;
+}
+
+.contact-info-section-top h1 {
+  margin-bottom: 24px;
+}
+
+.contact-info-wrap {
+  display: flex;
+  gap: 48px;
+}
+
+.contact-info-item {
+  padding: 22px 24px;
+  border-radius: 6px;
+  text-align: center;
+  flex: 1;
+}
+
+.contact-info-item-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.contact-info-item h3 {
+  margin-bottom: 2px;
+  font-weight: 400;
+  font-family: var(--font-neue);
+}
+
+.contact-info-Number-Email a {
+  font-weight: 700;
+  display: block;
+  font-family: var(--font-neue);
+}
+
+.contact-info-Number-Email {
+  margin-bottom: 24px;
+}
+
+.contact-info-button {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-info-button a.button {
+  width: auto;
+  padding: 7px 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.contact-info-section-bottom {
+  max-width: 572px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.contact-info-section-bottom li {
+  padding: 13px 0;
+  border-top: 1px solid rgb(17 19 20 / 30%);
+}
+
+.contact-info-section-bottom li {
+  padding: 16px 0 24px;
+  border-top: 1px solid rgb(17 19 20 / 30%);
+}
+
+.contact-info-section-bottom li a {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  font-family: var(--font-neue);
+}
+
+.contact-info-section-bottom li svg {
+  margin-top: 3px;
+}
+
+.contact-form-note .rte p {
+  margin-bottom: 40px;
+}
+
+.contact-form-note .rte p:last-child {
+   margin-bottom: 0; 
+}
+
+.contact-info-item:first-child .button {
+  background: #111314;
+  color: #ffffff;
+}
+
+.contact-info-item:first-child .button:hover {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.20) 100%), #111314;
+  opacity: 1;
+}
+
+.contact-info-item:last-child .button {
+  background: #039846;
+  color: #ffffff;
+}
+
+.contact-info-item:last-child .button:hover {
+  background: #006E31;
+      opacity: 1;
+}
+
+@media only screen and (max-width:767px) {
+
+  .contact-info-wrap {
+    display: block;
+  }
+
+  section#contact-info-section {
+    margin-top: 40px;
+    margin-bottom: 0;
+  }
+
+  div#stay-informed-form {
+    padding-top: 6px;
+  }
+
+  .contact-info-section-top {
+    text-align: left;
+  }
+
+  .contact-info-section-top h1 {
+    margin-bottom: 24px;
+    font-size: 32px;
+  }
+
+  .contact-info-section-wrap {
+    gap: 32px;
+  }
+
+  .contact-info-wrap {
+    gap: 16px;
+    flex-direction: column;
+  }
+
+  .contact-info-item-icon {
+    margin-bottom: 10px;
+  }
+  
+}

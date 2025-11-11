@@ -1,0 +1,171 @@
+{% stylesheet %}
+  .sb-featured-blog {
+    overflow-x: hidden; /* Prevent page scroll */
+  }
+  .sb-featured-blog__header.sb-page-width {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--sb-fg-color);
+    margin-bottom: 32px;
+  }
+  .sb-featured-blog__heading {
+    font-size: calc(28 / var(--sb-base-font-size, 16) * 1rem);
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 0;
+    margin: 0;
+    color: var(--sb-fg-color);
+  }
+  .sb-featured-blog .sb-pagination-wrapper{
+    padding-inline: var(--sb-padding-inline);
+    margin-top: 32px;
+  }
+  .sb-featured-blog__slider-wrapper .swiper-slide {
+    height: auto;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 767px) {
+    .sb-featured-blog__header.sb-page-width {
+      margin-bottom: 24px;
+    }
+    .sb-featured-blog__heading {
+      font-size: 24px;
+    }
+  }
+
+  @media screen and (min-width: 1024px){
+    .sb-featured-blog .sb-pagination-wrapper{
+      margin-top: 40px;
+    }
+    .sb-featured-blog__header.sb-page-width {
+      margin-bottom: 40px;
+    }
+  }
+
+  @media screen and (min-width: 1440px){
+    .sb-featured-blog .sb-pagination-wrapper{
+      margin-top: 48px;
+      margin-right: calc((100vw - var(--page-width, 1420px)) / 2);
+    }
+    .sb-featured-blog__header.sb-page-width {
+      margin-bottom: 48px;
+    }
+    .sb-featured-blog__slider-wrapper {
+      max-width: calc(100% - ((100% - var(--page-width, 1420px)) / 2));
+      margin-left: auto;
+    }
+  }
+{% endstylesheet %}
+
+<div class="sb-featured-blog sb-styled-element" style="{% render 'style-attributes', settings: section.settings, mobile_multiple: 0.6 %}">
+  <div class="sb-featured-blog__header sb-page-width">
+      {% if section.settings.heading != empty %}
+        <h2 class="sb-featured-blog__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% render 'sb-button', button_text: section.settings.link_text, button_url: section.settings.featured_blog.url, button_type: 'link' %}
+  </div>
+  <div class="sb-featured-blog__slider-wrapper">
+    {% # theme-check-disable %}
+    {% comment %} Disable 'content_for block capture' check {% endcomment %}
+    {% liquid
+      assign slides = null | sort
+      for post in section.settings.featured_blog.articles, limit: section.settings.max_articles
+        capture slide_content
+          content_for 'block', type: '_blog-card', id: 'static-blog-card', article: post, blog: section.settings.featured_blog
+        endcapture
+        capture slide_content
+          render 'swiper-slide', children: slide_content
+        endcapture
+        assign slide_content = slide_content | sort
+        assign slides = slides | concat: slide_content
+      endfor
+      if slides.size > 0
+        content_for 'block', type: '_slider', id: 'static-slider', children: slides, classes: 'sb-featured-blog__slider'
+      else
+        render 'sb-no-content', context: "blog posts"
+      endif
+    %}
+    {% # theme-check-enable %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SB Featured Blog Posts",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text"
+    },
+    {
+      "type": "blog",
+      "id": "featured_blog",
+      "label": "Featured Blog"
+    },
+    {
+      "type": "range",
+      "id": "max_articles",
+      "label": "Maximum Articles",
+      "min": 1,
+      "max": 16,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Blog card color settings are located on the blog card block."
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "presets": [ 
+    {
+      "name": "SB Featured Blog Posts"
+    }
+  ]
+}
+{% endschema %}

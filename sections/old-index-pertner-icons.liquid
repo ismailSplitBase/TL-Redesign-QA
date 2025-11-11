@@ -1,0 +1,48 @@
+<section class="TL_PressBar">
+  {% for block in section.blocks %}
+  <div>
+    {% if block.settings.icon != blank %}
+      {% assign icon_name = block.settings.icon | split: '/' | last | split: '.' | first | replace: '/', ' ' | replace: '-', ' ' | replace: '_', ' ' %}
+      <img src="{{ block.settings.icon | img_url: 'master'}}" alt="{% if block.settings.icon.alt %}{{ block.settings.icon.alt }}{% else %}{{ icon_name }}{% endif %}" loading="lazy">
+    {% else %}
+      <h4>{{ block.settings.icon_text }}</h4>      
+    {% endif %}
+  </div>
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "index partner icons",
+  "class": "index-partner-icons td-legacy",
+  "settings": [
+    {
+      "id": "index-partner-icons",
+      "type": "text",
+      "label": "title",
+      "default": "index partner icons"
+    }
+  ],
+	"blocks":[
+		{
+			"name":"icons",
+			"type":"text",
+			"settings":[
+  				{
+                    "type":"image_picker",
+                    "id":"icon",
+                    "label":"Choose icon"
+                },
+    			{
+                    "type":"text",
+                    "id":"icon_text",
+                    "label":"text"
+                }
+			]
+		}
+	],
+  "presets": [{
+    "name": "index partner icons"
+  }]
+}
+{% endschema %}

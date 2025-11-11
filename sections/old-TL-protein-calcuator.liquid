@@ -1,0 +1,502 @@
+<div class="main">
+  <div class="xgen-inner">
+    <div class="cal-header">
+      {% if section.settings.header_image != blank %}
+        <img src="{{section.settings.header_image | img_url: 'master'}}" alt="section.settings.header_image">
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h3 style>{{ section.settings.title }}</h3>
+      {% endif %}
+
+      {% if section.settings.detail != blank %}
+        <p>{{ section.settings.detail }}</p>
+      {% endif %}
+    </div>
+    <form
+      id="email_signup"
+      class="tlc-form klaviyo_styling klaviyo_gdpr_embed_XeGdeE"
+      action="//manage.kmail-lists.com/subscriptions/subscribe"
+      data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
+      method="GET"
+      target="_blank"
+    >
+      <input type="hidden" name="calculator-name" value="protein">
+      <input type="hidden" name="g" value="XeGdeE">
+      <input type="hidden" name="$fields" value="$consent">
+      <input type="hidden" name="$list_fields" value="$consent" X>
+
+      <div style="color:red;font-size:10px;" class="weight_msg"></div>
+      <div class="form-group cominput">
+        <label class="main-label">Weight<super>*</super></label>
+        <div class="input-group">
+          <input type="number" name="weight" id="weight" placeholder="" required min="0">
+          <input type="radio" name="weight-unit" value="lbs" required="" id="weightlbs">
+          <label for="weightlbs" class="label2">lbs</label>
+          <input type="radio" name="weight-unit" value="kg" required="" checked id="weightkg">
+          <label for="weightkg" class="label2">kg</label>
+        </div>
+      </div>
+
+      <div class="form-group mygoal">
+        <!-- add hideshow class to make this option available for womens -->
+        <label class="main-label">My Lifestyle</label>
+        <div class="input-group">
+          <input type="radio" name="Lifestyle" value="Sedentary" checked id="Lifestyleone">
+          <label for="Lifestyleone" class="label2">
+            {% render 'xicon-sedentary' %}
+            <p>
+              Sedentary<br>
+              <span>Spend most of the day sitting ie. Working on computer, no exercise)</span>
+            </p>
+            {% render 'xicon-check' %}
+          </label>
+
+          <input type="radio" name="Lifestyle" value="Moderately Active" id="Lifestyletwo">
+          <label for="Lifestyletwo" class="label2">
+            {% render 'xicon-light-activity' %}
+            <p>
+              Moderately Active <br>
+              <span>Spend a good part of the day on my feet (ie. Teacher, Real Estate)</span>
+            </p>
+            {% render 'xicon-check' %}
+          </label>
+
+          <input type="radio" name="Lifestyle" value="Highly Active" id="Lifestylethree">
+          <label for="Lifestylethree" class="label2">
+            {% render 'xicon-active' %}
+            <p>
+              Highly Active <br>
+              <span>Spend a good part of the day doing physical activites (ie. Waitress, UPS Driver)</span>
+            </p>
+            {% render 'xicon-check' %}
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group mygoal">
+        <!-- add hideshow class to make this option available for womens -->
+        <label class="main-label">My Goal</label>
+        <div class="input-group">
+          <input type="radio" name="Goal" value="Weight Loss" checked id="goalone"
+          ><label for="goalone" class="label2">
+            {%- render 'xicon-lose-weight' %} Weight Loss {% render 'xicon-check' -%}
+          </label>
+          <input type="radio" name="Goal" value="Muscle Maintenance" id="goaltwo"
+          ><label for="goaltwo" class="label2">
+            {%- render 'xicon-get-shredded' %} Muscle Maintenance {% render 'xicon-check' -%}
+          </label>
+          <input type="radio" name="Goal" value="Muscle Gain" id="goalfour"
+          ><label for="goalfour" class="label2">
+            {%- render 'xicon-bulk-up' %} Muscle Gain {% render 'xicon-check' -%}
+          </label>
+        </div>
+      </div>
+
+      <div style="color:red;font-size:10px;" class="email_msg"></div>
+      <div class="form-group email">
+        <label class="main-label">Email Address<super>*</super></label>
+        <div class="input-group">
+          <input type="text" name="email" placeholder="name@example.com" id="email">
+        </div>
+      </div>
+
+      <div class="form-group agree">
+        <div class="input-group">
+          <input type="checkbox" name="term[]" id="chkboxone"
+          ><label for="chkboxone" class="label2"
+            >I understand that the results provided by this calculator are estimations based on scientific and clinical
+            data and are not intended to replace advice from a qualified healthcare professional. Always consult with a
+            physician or dietitian before starting a new diet or exercise program.</label
+          >
+        </div>
+      </div>
+      <div class="form-group agree">
+        <div class="input-group">
+          <input type="checkbox" name="term[]" id="chkboxtwo" checked
+          ><label for="chkboxtwo" class="label2"
+            >Transparent Labs can occationally send me product recommendations and promotional emails.</label
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="button" id="calorie-calculator-btn" class="bmrbtn" disabled>
+          Calculate
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="max-w-6xl mx-auto px-4 text-blue-500 bmr-resourse-detail">
+    <div class="rich-text py-8 space-y-4">
+      {% if section.settings.resources_heading != blank %}
+        <h2 class="">{{ section.settings.resources_heading }}</h2>
+      {% endif %}
+      {% if section.settings.resources_detail != blank %}
+        <p class="">{{ section.settings.resources_detail }}</p>
+      {% endif %}
+      {% if section.settings.references_heading != blank %}
+        <h2 class="">{{ section.settings.references_heading }}</h2>
+      {% endif %}
+      {% if section.settings.references_detail != blank %}
+        <p class="">{{ section.settings.references_detail }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="tlresult-wraper tl-protein" style="display:none;">
+  <div class="max-w-7xl mx-auto">
+    <div class="xheading">
+      <h2>Recommended Minimum Daily Protein Intake = <span class="pro-one">[# calculated] grams</span></h2>
+      <p>
+        You’ll notice our protein calculator suggests eating more protein for fat loss than muscle building. This is not
+        an error. As referenced on the previous page, recent studies have shown that athletes and bodybuilders are able
+        to maintain more lean body mass during a weight-loss phase by consuming a larger proportion of calories from
+        protein.
+        <br>
+        During a bulking phase, protein intake doesn’t need to be as high since you will be in an energy surplus —
+        allowing for more calories from carbohydrates and fats.
+      </p>
+    </div>
+    <div class="tlres">
+      <div class="circle-wraper">
+        <div class="circle">
+          <p>
+            <strong class=" recproteinoutput1">80 g</strong> <br>
+            per day
+          </p>
+        </div>
+      </div>
+
+      <div class="out-wraper">
+        <div class="xreslist">
+          <i class="xsedentary"></i>
+          <span class="xname">Recommended Dietary Allowance (RDA)</span>
+          <span class="xcount proteinoutput1">80 g</span>
+        </div>
+
+        <div class="xreslist">
+          <i class="xlight"></i>
+          <span class="xname">Bulking</span>
+          <span class="xcount proteinoutput2">130 g</span>
+        </div>
+
+        <div class="xreslist">
+          <i class="xhigh"></i>
+          <span class="xname">Fat Loss</span>
+          <span class="xcount proteinoutput3">90 g</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="flex xgen-new-collection" id="xgen-new-collection">
+  <div class="flex-1">
+    <div id="protein-output-five" style="display:none;">
+      <div class="xgen-tagging">
+        {% if section.settings.heading != blank %}
+          <h2 class="user_goal">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.detail != blank %}
+          <p class="goal_subtitle">{{ section.settings.detail }}</p>
+        {% endif %}
+      </div>
+      <div class="gap-8 grid grid-cols-1 mb-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3">
+        {% if section.settings.product_list != blank %}
+          {% assign product_list = section.settings.product_list %}
+          {% for product_handle in product_list %}
+            {% render 'old-single_product_grid' with product: product %}
+          {% endfor %}
+        {% else %}
+          {% assign product_list = 'proteinseries-100-grass-fed-whey-protein-isolate,casein-protein,organic-vegan-protein-powder'
+            | split: ','
+          %}
+          {% for product_handle in product_list %}
+            {% assign product = all_products[product_handle] %}
+            {% if product != blank %}
+              {% render 'old-single_product_grid' with product: product %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://www.klaviyo.com/media/js/public/klaviyo_subscribe.js" defer></script>
+<script>
+  /**
+   * Converts form data to URL encoded string
+   * @param {HTMLFormElement} form - The form element
+   * @returns {string} URL encoded form data
+   */
+  function serializeForm(form) {
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+    
+    for (const [key, value] of formData.entries()) {
+      params.append(key, value);
+    }
+    
+    return params.toString();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const chkboxone = document.getElementById('chkboxone');
+    const bmrBtn = document.querySelector('.bmrbtn');
+    const emailInput = document.getElementById('email');
+    const weightInput = document.getElementById('weight');
+    const emailMsg = document.querySelector('.email_msg');
+    const weightMsg = document.querySelector('.weight_msg');
+    const calculatorBtn = document.getElementById('calorie-calculator-btn');
+
+    // Initial checkbox change handler
+    chkboxone.addEventListener('change', function() {
+      if (this.checked) {
+        bmrBtn.disabled = false;
+      } else {
+        bmrBtn.disabled = true;
+      }
+    });
+
+    // Klaviyo integration
+    if (typeof KlaviyoSubscribe !== 'undefined') {
+      console.log('KlaviyoSubscribe', KlaviyoSubscribe);
+      KlaviyoSubscribe.attachToForms('#email_signup', {
+        success: function($form) {
+          console.log($form);
+          const form = document.getElementById('email_signup');
+          const formdata = serializeForm(form);
+          console.log("https://www.transparentlabs.com/pages/calculator-results?" + formdata);
+          window.location.href = "https://www.transparentlabs.com/pages/calculator-results?" + formdata;
+          
+          // Get email for tracking
+          const email = form.querySelector('[name="email"]').value;
+          _learnq.push(['identify', { $email: email }]);
+          _learnq.push(['track', 'Signed Up for Newsletter']);
+        },
+        hide_form_on_success: true,
+        extra_properties: {
+          $source: '$embed',
+          $method_type: "Klaviyo Form",
+          $method_id: 'embed',
+          $consent_version: 'Embed default text'
+        }
+      });
+    } else {
+      console.log('KlaviyoSubscribe not found');
+    }
+    /**
+     * Validates email format
+     * @param {string} email - Email to validate
+     * @returns {boolean} True if email is valid
+     */
+    function validateEmail(email) {
+      const regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return regex.test(email);
+    }
+
+    /**
+     * Checks all form fields and enables/disables submit button
+     */
+    function checkAllFields() {
+      const weight = parseFloat(weightInput.value);
+      const email = emailInput.value;
+      const emailValid = validateEmail(email);
+
+      // Enable button only if all fields are valid and checkbox is checked
+      if (!isNaN(weight) && weight > 0 && emailValid && chkboxone.checked) {
+        bmrBtn.disabled = false;
+      } else {
+        bmrBtn.disabled = true;
+      }
+    }
+
+    // Email validation
+    emailInput.addEventListener('change', function() {
+      const email = this.value;
+      const emailValid = validateEmail(email);
+
+      if (!emailValid) {
+        emailMsg.textContent = "Please enter a valid email!";
+        bmrBtn.disabled = true;
+      } else {
+        emailMsg.textContent = "";
+        checkAllFields();
+      }
+    });
+
+    // Weight validation
+    weightInput.addEventListener('change', function() {
+      const weight = parseFloat(this.value);
+      if (isNaN(weight) || weight <= 0) {
+        weightMsg.textContent = "Please enter a valid weight greater than 0!";
+        bmrBtn.disabled = true;
+      } else {
+        weightMsg.textContent = "";
+        checkAllFields();
+      }
+    });
+
+    // Checkbox validation
+    chkboxone.addEventListener('change', function() {
+      checkAllFields();
+    });
+
+    // Protein calculation
+    calculatorBtn.addEventListener('click', function() {
+      let weight = parseFloat(weightInput.value);
+      const weightUnit = document.querySelector('input[name="weight-unit"]:checked').value;
+      const goal = document.querySelector('input[name="Goal"]:checked').value;
+      const activity = document.querySelector('input[name="Lifestyle"]:checked').value;
+
+      // Convert lbs to kg if needed
+      if (weightUnit === "lbs") {
+        weight = weight / 2.205;
+      }
+
+      // Calculate protein based on goal
+      let protein = 0;
+      if (goal === "Weight Loss") {
+        protein = weight * 2.65;
+      } else if (goal === "Muscle Maintenance") {
+        protein = weight * 1.5;
+      } else if (goal === "Muscle Gain") {
+        protein = weight * 1.9;
+      }
+
+      // Adjust for activity level
+      if (activity === "Sedentary") {
+        protein *= 0.95;
+      } else if (activity === "Highly Active") {
+        protein *= 1.05;
+      }
+
+      // Calculate different protein recommendations
+      const sedentaryAdultsResult = 0.95 * weight;
+      const buildingMuscleMassResult = 1.5 * weight;
+      const fatLossResult = 2.65 * weight;
+
+      const fixedSedentaryAdultsResult = sedentaryAdultsResult.toFixed();
+      const fixedBuildingMuscleMassResult = buildingMuscleMassResult.toFixed();
+      const fixedFatLossResult = fatLossResult.toFixed();
+
+      // Update UI with results
+      const proOne = document.querySelector('.pro-one');
+      const recProteinOutput1 = document.querySelector('.recproteinoutput1');
+      const proteinOutput1 = document.querySelector('.proteinoutput1');
+      const proteinOutput2 = document.querySelector('.proteinoutput2');
+      const proteinOutput3 = document.querySelector('.proteinoutput3');
+
+      if (proOne) proOne.textContent = protein.toFixed() + "  grams/day";
+      if (recProteinOutput1) recProteinOutput1.textContent = protein.toFixed() + " g";
+      if (proteinOutput1) proteinOutput1.textContent = fixedSedentaryAdultsResult + " g";
+      if (proteinOutput2) proteinOutput2.textContent = fixedBuildingMuscleMassResult + " g";
+      if (proteinOutput3) proteinOutput3.textContent = fixedFatLossResult + " g";
+
+      // Show results
+      const resultsElements = document.querySelectorAll('.results');
+      resultsElements.forEach(el => el.style.display = 'block');
+
+      const proteinResult = document.getElementById('protein_result');
+      if (proteinResult) proteinResult.textContent = protein + " grams/day";
+
+      const tlProtein = document.querySelector('.tl-protein');
+      if (tlProtein) {
+        tlProtein.style.display = 'block';
+        // Add smooth show animation
+        tlProtein.style.opacity = '0';
+        tlProtein.style.transition = 'opacity 0.5s ease-in-out';
+        setTimeout(() => {
+          tlProtein.style.opacity = '1';
+        }, 10);
+      }
+
+      const proteinOutputFive = document.getElementById('protein-output-five');
+      if (proteinOutputFive) proteinOutputFive.style.display = 'block';
+
+      const proteinResourceDetail = document.querySelector('.protein-resourse-detail');
+      if (proteinResourceDetail) proteinResourceDetail.style.display = 'block';
+
+      // Smooth scroll to results
+      const resultsSection = document.querySelector('.tl-protein');
+      if (resultsSection) {
+        const headerOffset = 100;
+        const elementPosition = resultsSection.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "TL-protein-calcuator",
+    "class": "td-legacy",
+    "settings": [
+	{
+		"type":"image_picker",
+		"id":"header_image",
+		"label":"Choose image"
+	},
+	{
+		"type":"text",
+		"id":"title",
+		"label":"Title"
+	},
+	{
+		"type":"textarea",
+		"id":"detail",
+		"label":"Subtitle"
+	},
+	{
+    	"type":"text",
+        "id":"resources_heading",
+        "label":"Resources heading"
+	},
+    {
+        "type":"richtext",
+        "id":"resources_detail",
+        "label":"Resources details"
+    },
+    {
+        "type":"text",
+        "id":"references_heading",
+        "label":"References heading"
+     },
+    {
+    	"type":"richtext",
+    	"id":"references_detail",
+    	"label":"References details"
+    },
+    {
+      "type":"product_list",
+      "id":"product_list",
+      "label":"Product list"
+    }
+	],
+"presets":[
+		{
+			"name": "TL-protein-calcuator"
+		}
+	]
+  }
+
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+ 

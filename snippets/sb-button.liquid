@@ -1,0 +1,241 @@
+{% comment %}
+  Renders a button component with different styles
+
+  Accepts:
+  - button: {Object} Button settings object from section blocks
+    - button_text: {String} The text to display on the button
+    - button_url: {String} The URL the button should link to
+    - button_type: {String} The style of button ("", "secondary", "link", "button")
+    - button_color: {String} Custom button color (optional)
+    - button_text_color: {String} Custom button text color (optional)
+  - style: {String} Additional style variant ("small") (optional). When set to 'small', matches the Figma design for compact buttons: background #111314, text #F8F9FB, border-radius 24px, font 16px/1.4, padding 6px 16px 8px 16px.
+  - additional_attributes: {String} Additional attributes to add to the button (optional)
+
+  Usage:
+  {% render 'sb-button', button: button_settings %}
+  {% render 'sb-button', button: button_settings, style: 'small' %}
+{% endcomment %}
+
+{% stylesheet %}
+  .sb-button {
+    display: block;
+  }
+
+  .sb-button__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 9999px;
+    font-weight: 500;
+    padding: 10px 10px 12px;
+    font-family: var(--sb-font-family-body);
+    font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+  }
+
+  .sb-button__link,
+  .sb-button__link--secondary,
+  .sb-button__link--outline,
+  .sb-button__link--button{
+    width: 100%;
+  }
+
+  .sb-button__link--primary,
+  .sb-button__link--button {
+    background: var(--sb-bg-color);
+    color: var(--sb-fg-color);
+    border: 1px solid var(--sb-bg-color);
+  }
+
+  .sb-button__link--button {
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .sb-button__link--primary:hover,
+  .sb-button__link--button:hover {
+    background: var(--sb-fg-color);
+    color: var(--sb-bg-color);
+    border-color: var(--sb-bg-color); 
+  }
+
+  .sb-button__link--secondary {
+    background: var(--sb-fg-color);
+    color: var(--sb-bg-color);
+    border: 1px solid var(--sb-fg-color);
+  }
+
+  .sb-button__link--secondary:hover {
+    background: var(--sb-bg-color);
+    color: var(--sb-fg-color);
+    border-color: var(--sb-fg-color);
+  }
+
+  .sb-button__link--link.sb-button__link {
+    background: transparent;
+    color: var(--sb-fg-color);
+    border: none;
+    padding: 0;
+    border-bottom: 1px solid var(--sb-fg-color);
+    border-radius: 0;
+    min-width: 0;
+    width: auto;
+    white-space: nowrap;
+  }
+
+  /* Small variant styles from Figma */
+  .sb-button__link--small.sb-button__link  {
+    background: var(--sb-bg-color);
+    color: var(--sb-fg-color);
+    border-radius: 24px;
+    font-size: calc(16 / var(--sb-base-font-size, 16) * 1rem);
+    line-height: 1.4;
+    border: none;
+    padding: 6px 16px 8px 16px;
+    text-align: center;
+    min-width: 0;
+    box-shadow: none;
+    height: auto;
+  }
+
+  .sb-button__link--small:hover {
+    opacity: 0.8;
+    background: var(--sb-bg-color);
+    color: var(--sb-fg-color);
+  }
+
+  .sb-button__link--outline {
+    background: transparent;
+    color: var(--sb-fg-color);
+    border: 1px solid var(--sb-fg-color);
+  }
+
+  .sb-button__link--outline:hover {
+    opacity: 0.8;
+  }
+
+  .sb-button__text {
+    display: inline-block;
+  }
+
+  .sb-button__arrow {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+  }
+
+  .sb-button__link:hover .sb-button__arrow {
+    transform: translateX(4px);
+  }
+
+  custom-link {
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 767px){
+    .sb-button__link,
+    .sb-button__link--secondary,
+    .sb-button__link--outline,
+    .sb-button__link--button{
+      width: auto;
+      min-width: 360px;
+    }
+    .sb-button__link--outline, .sb-button__link--outline:has(.sb-button__arrow):hover {
+      background: var(--sb-bg-color-desktop, var(--sb-bg-color));
+      color: var(--sb-fg-color-desktop, var(--sb-fg-color));
+      border-color: var(--sb-fg-color-desktop, var(--sb-fg-color));
+    }
+    .sb-button__link--primary, .sb-button__link--primary:has(.sb-button__arrow):hover {
+      background: var(--sb-bg-color-desktop, var(--sb-bg-color));
+      color: var(--sb-fg-color-desktop, var(--sb-fg-color));
+      border-color: var(--sb-bg-color-desktop, var(--sb-bg-color));
+    }
+    .sb-button__link--primary:hover {
+      background: var(--sb-fg-color-desktop, var(--sb-fg-color));
+      color: var(--sb-bg-color-desktop, var(--sb-bg-color));
+      border-color: var(--sb-fg-color-desktop, var(--sb-fg-color));
+    }
+
+    .sb-button__link--secondary, .sb-button__link--secondary:has(.sb-button__arrow):hover {
+      background: var(--sb-fg-color-desktop, var(--sb-fg-color));
+      color: var(--sb-bg-color-desktop, var(--sb-bg-color));
+      border-color: var(--sb-fg-color-desktop, var(--sb-fg-color));
+    }
+    .sb-button__link--secondary:hover {
+      background: var(--sb-bg-color-desktop, var(--sb-bg-color));
+      color: var(--sb-fg-color-desktop, var(--sb-fg-color));
+      border-color: var(--sb-bg-color-desktop, var(--sb-bg-color));
+    }
+
+    .sb-button__link--link {
+      color: var(--sb-fg-color-desktop, var(--sb-fg-color));
+    }
+  }
+
+  @media screen and (min-width: 1920px){
+    .sb-button__link,
+    .sb-button__link--secondary,
+    .sb-button__link--outline,
+    .sb-button__link--button{
+      min-width: 400px;
+    }
+  }
+{% endstylesheet %}
+
+{% liquid
+  if button_text == blank
+    assign button_text = button.button_text
+  endif
+  if button_url == blank
+    assign button_url = button.button_url
+  endif
+  if button_type == blank
+    assign button_type = button.button_type | default: 'primary'
+  endif
+  assign button_color = button.button_color
+  assign button_text_color = button.button_text_color
+  assign button_style = style | default: ''
+  assign button_color_desktop = button.button_color_desktop
+  assign button_text_color_desktop = button.button_text_color_desktop
+  assign button_arrow = button.button_arrow | default: false
+%}
+
+{% if button_text != blank and button_url != blank %}
+  <div class="sb-button">
+    <a
+      href="{{ button_url }}"
+      class="sb-button__link sb-button__link--{{ button_type }}{% if button_style == 'small' and button_type != 'link' %} sb-button__link--small{% endif %} 
+      {% if button_url contains '#' %} hidden{% endif %}"
+      {% if button_color != blank or button_text_color != blank %}
+      style="
+        {% if button_color != blank %}--sb-bg-color: {{ button_color }};{% endif %}
+        {% if button_text_color != blank %}--sb-fg-color: {{ button_text_color }};{% endif %}
+          {% if button_color_desktop.alpha > 0 or button_type == 'outline' and button_color_desktop != blank %}--sb-bg-color-desktop: {{ button_color_desktop }};{% endif %}
+          {% if button_text_color_desktop.alpha > 0 %}--sb-fg-color-desktop: {{ button_text_color_desktop }};{% endif %}
+      "
+      {% endif %}
+      {{ additional_attributes }}
+    >
+      <span class="sb-button__text">{{ button_text }}</span>
+      {% if button_type == 'link' %}
+        <div class="sb-button__arrow">
+          {% render 'sb-icon--right-arrow' %}
+        </div>
+      {% elsif button_type == 'button' %}
+        <div class="sb-button__arrow">
+          <svg class="sb-button__arrow" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.56526 8.13044L15.6522 8.13044M15.6522 8.13044L9.00005 14.7826M15.6522 8.13044L9.00005 1.47827" stroke="currentColor" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      {% elsif button_arrow %}
+        <div class="sb-button__arrow">
+          {% render 'sb-icon--button-arrow' %}
+        </div>
+      {% endif %}
+    </a>
+  </div>
+{% endif %}

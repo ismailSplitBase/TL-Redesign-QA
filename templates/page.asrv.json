@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "old-main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "d447ba10-3ab0-4d16-9a40-ae205f30fa72": {
+      "type": "old-asrv-banner",
+      "blocks": {
+        "40add329-4c2c-41df-a2cc-62794d78f45c": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/NEW_ASRV_Now_Live_Desktop_Banner.png",
+            "mobile_image": "shopify://shop_images/NEW_ASRV_Now_Live_Mobile_Banner.png",
+            "banner_url": "#asrv-product",
+            "alignment": "center_left",
+            "text_color": "",
+            "text_2_color": "",
+            "text": "",
+            "text_2": "",
+            "button_color": "",
+            "button_text": "",
+            "button_url": "",
+            "add_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "40add329-4c2c-41df-a2cc-62794d78f45c"
+      ],
+      "settings": {}
+    },
+    "1fcdd1e6-1c9d-443e-a0cd-f5586fc0d53a": {
+      "type": "old-index-icon-with-text",
+      "blocks": {
+        "582f6dd5-948e-4309-a95a-21eb02fd64ea": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Breathable_Fabric_Icon_fe32e324-14d4-4931-958e-2e2426a99559.png",
+            "icon_text": "Breathable<br>Fabric"
+          }
+        },
+        "155deb7d-3937-48bb-8b9c-ce094566edf7": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Sweat_Wicking_Icon_962b6952-5a11-404d-8d4b-6c668663394b.png",
+            "icon_text": "Sweat<br>Wicking"
+          }
+        },
+        "ff8b7c8a-69e7-41b1-98d0-9c61b71f3f92": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Light_Weight_Icon_f25b45e2-8b0d-4d39-9ee6-281a2583aab6.png",
+            "icon_text": "Light<br>Weight"
+          }
+        },
+        "de1e1b73-8b93-4a6d-be7e-7e97019afa68": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Odor_Resistant_Icon_7023e1b7-f7b6-4224-881c-f61a8110b291.png",
+            "icon_text": "OdorResistant"
+          }
+        }
+      },
+      "block_order": [
+        "582f6dd5-948e-4309-a95a-21eb02fd64ea",
+        "155deb7d-3937-48bb-8b9c-ce094566edf7",
+        "ff8b7c8a-69e7-41b1-98d0-9c61b71f3f92",
+        "de1e1b73-8b93-4a6d-be7e-7e97019afa68"
+      ],
+      "settings": {
+        "index-icon-with-text": "Icon with text"
+      }
+    },
+    "e18fa7ad-c0db-497b-812b-cc5b12b2e8d9": {
+      "type": "old-asrv-product",
+      "settings": {
+        "product": "tl-asrv-tee",
+        "sdetail": "NEW!",
+        "sdetail1": "10% off",
+        "sdetail2": "Free Shipping",
+        "slistinformation": "",
+        "title": "",
+        "subtitle": "",
+        "onetimetext": "One-Time Purchase",
+        "onetimesubtext": "Give it a try",
+        "subscribetext": "Subscribe & Save"
+      }
+    },
+    "625a38f6-8886-40e2-96ff-032f023bdf50": {
+      "type": "old-asrv-featured-image",
+      "blocks": {
+        "68e413ae-f2c3-4f76-8b6b-7727a5ab9480": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Now_Live_Product_Highlight_Banner_Desktop.png",
+            "mobile_image": "shopify://shop_images/Now_Live_Product_Highlight_Banner_Mobile.png",
+            "banner_url": "#asrv-product"
+          }
+        }
+      },
+      "block_order": [
+        "68e413ae-f2c3-4f76-8b6b-7727a5ab9480"
+      ],
+      "settings": {}
+    },
+    "2c96bdbc-fd41-4527-a526-9688bbdeb722": {
+      "type": "old-asrv-gallery",
+      "settings": {
+        "image_1": "shopify://shop_images/Lifestyle1_desktop_d8444afe-578c-4711-ade1-10dcec7125ab.png",
+        "image_2": "shopify://shop_images/Lifestyle2_Desktop_New.png",
+        "image_3": "shopify://shop_images/Lifestyle3_desktop_8fefd989-9dd6-45d2-aedf-b33b6e702d10.png",
+        "image_mob_1": "shopify://shop_images/Lifestyle1_Mobile_1f86ebcf-338c-4ca9-8a1b-59d11b4a6646.png",
+        "image_mob_2": "shopify://shop_images/Lifestyle2_Mobile_New_c7df7707-fbe9-4c33-9895-3249aa851de2.png",
+        "image_mob_3": "shopify://shop_images/Lifestyle3_Mobile_33c97796-2e76-42fc-a822-b3bb6bd4a4f8.png"
+      }
+    },
+    "d3e3b350-f392-4c8f-930f-4cdbc18a0cff": {
+      "type": "old-article-bestseller",
+      "settings": {
+        "show_collection": true,
+        "heading": "SHOP OUR BESTSELLERS",
+        "collection": "bestsellers",
+        "buttontext": "",
+        "buttontext2": "",
+        "show_product": false,
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "d447ba10-3ab0-4d16-9a40-ae205f30fa72",
+    "1fcdd1e6-1c9d-443e-a0cd-f5586fc0d53a",
+    "e18fa7ad-c0db-497b-812b-cc5b12b2e8d9",
+    "625a38f6-8886-40e2-96ff-032f023bdf50",
+    "2c96bdbc-fd41-4527-a526-9688bbdeb722",
+    "d3e3b350-f392-4c8f-930f-4cdbc18a0cff"
+  ]
+}

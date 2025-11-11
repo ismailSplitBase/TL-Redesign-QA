@@ -1,0 +1,232 @@
+{{ 'old-contact-form-page.css' | asset_url | stylesheet_tag }}
+
+<div id="stay-informed-form" class="contact-form-wrap-main">
+  <div class="container">
+    <div class="contact-form-wrap" style="background-color:{{ section.settings.block_background_color }};">
+      <div class="contact-form-heading">
+        {%- if section.settings.title != blank -%}
+          <h3 class="rte">{{ section.settings.title }}</h3>
+        {%- endif -%}
+
+        {%- if section.settings.content != blank -%}
+          <div class="rte">
+            {{ section.settings.content }}
+          </div>
+        {%- endif -%}
+      </div>
+    
+     {% form 'contact', id: 'contact_form' %}
+       {%- if form.posted_successfully? -%}
+         <p class="form-success-message">
+           {{ 'templates.contact.form.post_success' | t }}
+          </p>
+        {%- endif -%}
+        
+        {%- if form.errors -%}
+          <ul class="form-errors">
+            {%- for field in form.errors -%}
+              <li>
+                {{ field }} - {{ form.errors.messages[field] }}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+       
+        <div class="form-field-group">
+          <input id="contact__name" type="text" name="contact[first_name]" placeholder="{{ 'templates.contact.form.first_name' | t }}*" class="form-input"/>
+          <input id="contact__email" type="email" name="contact[email]" placeholder="{{ 'templates.contact.form.email_address' | t }}*" class="form-input"/>
+        </div>
+        <div class="form-field-group">
+          <input type="tel" name="contact[phone]" placeholder="Phone Number" class="form-input"/>
+          <input type="text" name="contact[order_number]" placeholder="Order Number" class="form-input"/>
+        </div>
+        <div class="form-field custom-dropdown">
+          <div class="dropdown-selected" tabindex="0">
+            Subject*
+          </div>
+          <ul class="dropdown-list">
+            <li data-value="order_tracking_status">{{ 'templates.contact.form.order_tracking_status' | t }}</li>
+            <li data-value="damaged_missing_item">{{ 'templates.contact.form.damaged_missing_item' | t }}</li>
+            <li data-value="product_questions">{{ 'templates.contact.form.product_questions' | t }} </li>
+            <li data-value="subscription_help">{{ 'templates.contact.form.subscription_help' | t }}</li>
+            <li data-value="returns_refunds">{{ 'templates.contact.form.returns_refunds' | t }}</li>
+            <li data-value="other_general_inquiry">{{ 'templates.contact.form.other_general_inquiry' | t }}</li>
+          </ul>
+          <input type="hidden" name="contact[subject]" id="dropdown-input" required>
+          <div class="custom-dropdownarrow">
+            <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path id="Vector" d="M0.961578 6.56361C0.961578 6.67432 1.00534 6.78761 1.0903 6.87256C1.26022 7.04248 1.53826 7.04248 1.70818 6.87256L7.52392 1.05682L13.2547 6.78761C13.4246 6.95752 13.7027 6.95752 13.8726 6.78761C14.0425 6.61769 14.0425 6.33965 13.8726 6.16973L7.83285 0.127437C7.66294 -0.0424783 7.3849 -0.0424783 7.21498 0.127437L1.0903 6.25211C1.00277 6.33965 0.961578 6.45034 0.961578 6.56361Z" fill="#111314"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="form-field">
+          <textarea name="contact[message]" id="message-field" placeholder="{{ 'templates.contact.form.message' | t }}*" class="form-textarea"></textarea>
+        </div>
+    
+        <button type="submit" class="form-button" id="contactSubmit"> 
+          {{ 'templates.contact.form.send' | t }}
+          <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_5908_43)">
+              <path d="M1.5652 12.1739L15.6522 12.1739M15.6522 12.1739L8.99999 18.8261M15.6522 12.1739L8.99999 5.52173" stroke="white" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_5908_43"><rect width="21.913" height="18" fill="white" transform="translate(18 0.043457) rotate(90)"/></clipPath>
+            </defs>
+          </svg>
+        </button>
+
+        <p class="error-message" id="error__message">
+          {% render 'old-icon-error' %} {{ 'templates.contact.form.error_message' | t }}
+        </p>
+      {% endform %}
+    </div>
+
+    {%- if section.settings.content_note != blank -%}           
+      <div class="contact-form-note">
+        <div class="rte">
+          {{ section.settings.content_note }}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% style %}
+
+  #shopify-section-{{ section.id }} .contact-form-heading h3 {
+    color: {{ section.settings.heading_color }};
+  }
+
+  #shopify-section-{{ section.id }} .contact-form-heading *,
+  #shopify-section-{{ section.id }} .contact-form-note * {
+    color: {{ section.settings.content_color }};
+  }
+  
+{% endstyle %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.querySelector('.custom-dropdown');
+    const selected = dropdown.querySelector('.dropdown-selected');
+    const dropdownList = dropdown.querySelector('.dropdown-list');
+    const dropdownInput = document.querySelector('#dropdown-input');
+  
+    selected.addEventListener('click', () => {
+      dropdownList.style.display = dropdownList.style.display === 'block' ? 'none' : 'block';
+      selected.classList.toggle('active');
+      dropdown.classList.toggle('active');
+    });
+    dropdownList.addEventListener('click', (e) => {
+      if (e.target.tagName === 'LI') {
+        const value = e.target.dataset.value;
+        const text = e.target.textContent;
+  
+        selected.textContent = text;
+        dropdownInput.value = value;
+  
+        dropdownList.querySelectorAll('li').forEach((li) => li.classList.remove('selected'));
+        e.target.classList.add('selected');
+
+        dropdownList.style.display = 'none';
+        selected.classList.remove('active');
+        dropdown.classList.remove('active');
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdownList.style.display = 'none';
+        selected.classList.remove('active');
+        dropdown.classList.remove('active');
+      }
+    });
+    
+    document.getElementById("contactSubmit").addEventListener("click", function(event) {
+      let valid = true;
+    
+      const firstName = document.getElementById("contact__name");
+      const contactEmail = document.getElementById("contact__email");
+      const messageField = document.getElementById("message-field");
+      const dropdownInput = document.getElementById("dropdown-input");
+      const dropdownField = document.querySelector(".custom-dropdown");
+      const errorMessage = document.getElementById("error__message");
+    
+      firstName.classList.remove("error-field");
+      contactEmail.classList.remove("error-field");
+      messageField.classList.remove("error-field");
+      dropdownField.classList.remove("error-field");
+      errorMessage.classList.remove("show");
+    
+      if (!firstName.value.trim()) {
+        firstName.classList.add("error-field");
+        valid = false;
+      }
+    
+      if (!contactEmail.value.trim() || !contactEmail.value.includes("@")) {
+        contactEmail.classList.add("error-field");
+        valid = false;
+      }
+    
+      if (!messageField.value.trim()) {
+        messageField.classList.add("error-field");
+        valid = false;
+      }
+
+      if (!dropdownInput.value.trim()) {
+        dropdownField.classList.add("error-field");
+        valid = false;
+      }
+      
+      if (!valid) {
+        errorMessage.classList.add("show");
+        event.preventDefault();
+      }
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Contact form section",
+    "class": "td-legacy",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Contact Transparent Labs"
+      },
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Heading Below Content",
+        "default": "<p>We respond to inquiries in the order they are received, from oldest to newest. We work Monday through Friday, 7:30am EST to 3:30pm EST, and aim to reply within 24 hours.</p>"
+      },
+      {
+        "type": "richtext",
+        "id": "content_note",
+        "label": "Content Form Note",
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#173446"
+      },
+      {
+        "type": "color",
+        "id": "content_color",
+        "label": "Content Color",
+        "default": "#142835"
+      },
+      {
+        "type": "color",
+        "id": "block_background_color",
+        "label": "Background Color",
+        "default": "#F8F9FB"
+      }
+    ],
+    "presets": [{
+        "name": "Contact form section"
+    }]
+  }
+{% endschema %}

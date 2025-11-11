@@ -1,0 +1,23 @@
+{% style %}
+  .sb-additional-button__wrapper .sb-button {
+    width: 100%;
+  }
+  
+  .sb-additional-button__wrapper custom-link {
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 1080px){
+    .sb-additional-button__wrapper--{{ block.id }} .sb-button a {
+      {% if block.settings.button_color_mb != blank %}
+        --sb-bg-color: {{ block.settings.button_color_mb }} !important;
+      {% endif %}
+      {% if block.settings.button_text_color_mb != blank %}
+        --sb-fg-color: {{ block.settings.button_text_color_mb }} !important;
+      {% endif %}
+    }
+  }
+{% endstyle %}
+<div class="sb-additional-button__wrapper sb-additional-button__wrapper--{{ block.id }}">
+  {% render 'sb-button' with button: block.settings %}
+</div>

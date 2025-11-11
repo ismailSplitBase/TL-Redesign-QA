@@ -1,0 +1,640 @@
+{% comment %}
+  Affiliate Product Card Component
+  
+  Renders a product card for affiliate products with subscription options.
+  Supports multiple product variants, subscription frequencies, and dynamic pricing.
+  
+  @param {object} product - The product object
+  @param {string} block_id - Unique block identifier
+  @param {string} collection - Collection context
+{% endcomment %}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign short_title = product.metafields.product_details.title
+  assign subtitle = product.metafields.product_details.subtitle
+-%}
+
+<product-grid-item class="sb-affiliate-product-card sb-product-card {% for tag in product.tags %}{% if tag contains 'TLsvegan' %} sb-vegan {% elsif tag contains "StimulantFree" %} sb-stimulant-free {% endif %} {% endfor %}bg-white flex flex-col p-4 rounded-xl text-blue-500 sb-product-{{ product.id }}-{{ block_id }}">
+  
+  <div class="sb-product-image" style="display:none;">
+    {% assign split_title = product.title | split: '|' %}
+    {% if product.variants.size == 1 or product.tags contains 'use-featured-image' %}
+      <a class="block mx-auto w-64" href="{{ product.url | within: collection }}">
+        {{ product.featured_image | image_url: width: 500, height: 500 | image_tag: loading: 'lazy', width: 500, height: 500, alt: product.featured_image.alt }}
+      </a>
+    {% else %}
+      <div class="swiper render-swiper">
+        <div class="swiper-wrapper">
+          {% for variant in product.variants %}
+            {% if variant.option2 == '2 Tub' or variant.option2 == '3 Tub' %}
+              {% continue %}
+            {% endif %}
+            <div class="swiper-slide" data-variant-id="{{ variant.id }}">
+              <a class="block mx-auto w-64" href="{{ product.url | within: collection }}">
+                {{ product.featured_image | image_url: width: 500, height: 500 | image_tag: loading: 'lazy', width: 500, height: 500, alt: product.featured_image.alt }}
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  
+  <div class="sb-product-info">
+    <div class="sb-product-info-inner">
+      <div class="flex sb-title-flex">
+        <h3 class="sb-product-title">
+          {{ short_title }}
+        </h3>
+        <h2 class="font-semibold text-xl sb-product-subtitle">
+          {{ subtitle }}
+        </h2>
+      </div>
+      
+      <div class="flex items-center text-sm sb-product-rating">
+        <div class="flex space-x-1 text-orange-400">
+          {%- assign review_average = product.metafields.yotpo.reviews_average | times: 1 -%}
+          {%- for i in (1..5) -%}
+            {%- assign index_minus_one = i | minus: 1 -%}
+            {%- assign mod = review_average | modulo: index_minus_one -%}
+
+            {%- if review_average >= i -%}
+              <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                <path d="m47.961 48h-47.945l39.914 31.543-15.941 48.441 40.059-29.871 39.938 29.871-15.871-48.863 39.918-31.121h-47.945l-16.094-47.996z" fill="currentColor"></path>
+              </svg>
+            {%- elsif mod >= 0.5 -%}
+              <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                <path d="m128.02 48h-47.953l-16.094-48-16.031 48h-47.969l39.937 31.555-15.953 48.445 39.984-29.812 0.09375-0.0625 39.938 29.875-15.875-48.867zm-39.594 58.531-24.371-18.547-0.058594 0.0625v-56.953l10.164 24.906h29.812l-25.453 19.43z" fill="currentColor"></path>
+              </svg>
+            {%- else -%}
+              <svg class="h-4 w-4" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                <path d="m64.008 31.113 10.172 24.887h29.809l-25.449 19.426 9.9023 31.105-24.387-18.543-24.387 18.109 9.8711-30.156-25.539-19.941h29.871l10.137-24.887m-16.043 16.887h-47.949l39.914 31.551-15.93 48.445 40.055-29.867 39.934 29.871-15.875-48.871 39.918-31.129h-47.945l-16.094-47.996z" fill="currentColor"></path>
+              </svg>
+            {%- endif %}
+          {%- endfor -%}
+        </div>
+
+        <p class="ml-3 text-gray-500">
+          <span class="font-bold text-black">{{ product.metafields.yotpo.reviews_average }}</span>/5.0
+        </p>
+      </div>
+            
+      {% if product.metafields.custom.hide_best_seller_text == true %}
+        {% if product.metafields.custom.best_seller_text_and_other_text != blank %}
+          <div class="sb-product-tags" style="">
+            {% assign text_strings = product.metafields.custom.best_seller_text_and_other_text | split:',' %}
+            {% for text in text_strings %}
+              {% if forloop.first %}
+                <span>Bestseller</span>  
+              {% else %}
+                <span>{{ text }}</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% elsif product.metafields.custom.hide_best_seller_text == false %}
+        {% if product.metafields.custom.best_seller_text_and_other_text != blank %}
+          <div class="sb-product-tags" style="">
+            {% assign text_strings = product.metafields.custom.best_seller_text_and_other_text | split:',' %}
+            {% for text in text_strings %}
+              {% unless text == "Bestseller" %}
+                <span>{{ text }}</span>
+              {% endunless %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% else %}
+        <div class="sb-product-tags" style="">
+          <span>Bestseller</span>
+        </div>
+      {% endif %}
+
+      <div class="font-semibold text-blue-400 text-xl sb-variant-price">
+        {% if product.selected_or_first_available_selling_plan_allocation == blank %}
+          <div class="sb-single-price-{{ block_id }}-{{ product.id }}">{{ product.price | money }}</div>
+          <del class="sb-single-compare-price-{{ block_id }}-{{ product.id }}">{{ product.compare_at_price | money }}</del>
+        {% else %}
+          <div class="sb-recurring-price-{{ block_id }}-{{ product.id }}"></div>
+          <del class="sb-compare-price-{{ block_id }}-{{ product.id }}"></del>
+        {% endif %}
+      </div> 
+    </div>
+
+    <div class="sb-product-description sb-product-detail-{{ product.id }}">
+      {% if product.metafields.custom.product_overview_detail != blank %}
+        {{ product.metafields.custom.product_overview_detail }}
+      {% endif %}
+    </div> 
+    
+    <div class="sb-package-list-wrapper sb-variant-options">
+      {% if product.variants.size > 0 %}
+        {% if product.options[0] %}
+          <div class="sb-package-list">
+            <div class="sb-input-wrapper">
+              {% assign used = '' %}
+              <label for="sb-select-option1-{{ product.id }}-{{ block_id }}">{{ product.options[0] }}</label>
+              <select id="sb-select-option1-{{ product.id }}-{{ block_id }}" class="sb-variant-select">
+                {% for variant in product.variants %}
+                  {% unless used contains variant.option1 %}
+                    {% if product.selected_or_first_available_variant.id == variant.id %}
+                      <option value="{{ variant.option1 }}" selected>{{ variant.option1 }}</option>
+                    {% else %}
+                      <option value="{{ variant.option1 }}">{{ variant.option1 }}</option>
+                    {% endif %}
+                    {% capture used %}{{ used }} {{ variant.option1 }}{% endcapture %}
+                  {% endunless %}
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if product.options[1] %}
+          <div class="sb-package-list" {% if product.options[1] == 'Quantity' %} style="display:none;" {% endif %}>
+            <div class="sb-input-wrapper">        
+              {% assign used = '' %}
+              <label for="sb-select-option2-{{ product.id }}-{{ block_id }}">{{ product.options[1] }}</label>
+              <select id="sb-select-option2-{{ product.id }}-{{ block_id }}" class="sb-variant-select">
+                {% for variant in product.variants %}
+                  {% unless used contains variant.option2 %}
+                    {% if product.selected_or_first_available_variant.id == variant.id %}
+                      <option value="{{ variant.option2 }}" selected>{{ variant.option2 }}</option>
+                    {% else %}
+                      <option value="{{ variant.option2 }}">{{ variant.option2 }}</option>
+                    {% endif %}
+                    {% capture used %}{{ used }} {{ variant.option2 }}{% endcapture %}
+                  {% endunless %}
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if product.options[2] %}
+          <div class="sb-package-list" {% if product.options[2] == 'Quantity' %} style="display:none;" {% endif %}>
+            <div class="sb-input-wrapper">        
+              {% assign used = '' %}
+              <label for="sb-select-option3-{{ product.id }}-{{ block_id }}">{{ product.options[2] }}</label>
+              <select id="sb-select-option3-{{ product.id }}-{{ block_id }}" class="sb-variant-select">
+                {% for variant in product.variants %}
+                  {% unless used contains variant.option3 %}
+                    {% if product.selected_or_first_available_variant.id == variant.id %}
+                      <option value="{{ variant.option3 }}" selected>{{ variant.option3 }}</option>
+                    {% else %}
+                      <option value="{{ variant.option3 }}">{{ variant.option3 }}</option>
+                    {% endif %}
+                    {% capture used %}{{ used }} {{ variant.option3 }}{% endcapture %}
+                  {% endunless %}
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+              
+      <input type="hidden" name="id" id="sb-product-variant-{{ product.id }}-{{ block_id }}" class="sb-variant-id" value="{{ product.selected_or_first_available_variant.id }}" />	
+      <input type="hidden" name="available" id="sb-product-available-{{ product.id }}-{{ block_id }}" value="{% if product.available %}true{% else %}false{% endif %}" />	
+
+      {% unless product.selected_or_first_available_selling_plan_allocation == blank %}
+        <div class="sb-selling-plans-{{ product.id }}-{{ block_id }}" style="display:none;"></div>                
+
+        <div class="sb-delivery-frequency sb-delivery-frequency-{{ block_id }}-{{ product.id }}" style="display:none;">
+          <label>
+            <input type="radio" name="sb-purchase-option-{{ product.id }}-{{ block_id }}" class="sb-onetime-option" value="onetime" checked="checked">
+            <div class="sb-option-text">
+              <span class="sb-option-label">One time order</span>
+              <span class="sb-option-sublabel">Give it a Try</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="sb-delivery-frequency sb-delivery-last" style="display:none;">
+          <label>
+            <input type="radio" name="sb-purchase-option-{{ product.id }}-{{ block_id }}" value="subsave">
+            <span class="sb-option-label">Deliver Every</span>
+            <select class="sb-selling-plan-select-{{ block_id }}-{{ product.id }}"></select>
+          </label>
+          <div class="sb-subscription-tags">
+            {% if product.metafields.custom.add_percentage_text != blank %}
+              <span>{{ product.metafields.custom.add_percentage_text }}</span>
+            {% else %}
+              <span>10% Off</span>
+            {% endif %}
+            {% unless product.metafields.custom.hide_free_shipping_badge == false %}
+              <span>Free Shipping</span>
+            {% endunless %}
+          </div>
+        </div>
+      {% endunless %}
+
+      {% assign frequency_text = product.metafields.custom.subscription_frequency_text | split: ',' %}
+      {% assign f_text_zero = frequency_text[0] %}
+      {% assign f_text_one = frequency_text[1] %}
+      {% assign f_text_two = frequency_text[2] %}
+      {% assign f_text_three = frequency_text[3] %}
+
+      <div class="sb-price-button-grid">
+        <div class="sb-price-text">
+          <div class="flex items-center sb-quantity-button">
+            <div class="">
+              <legacy-quantity-input>
+                <div class="flex items-center text-blue-500">
+                  <button class="bg-gray-300 flex h-10 items-center justify-center rounded-full text-blue-light w-10" type="button">
+                    {% render 'old-icon-minus' %}
+                  </button>
+                  
+                  <input
+                    class="border-2 border-gray-300 bg-transparent hide-selectors outline-none mx-2 rounded text-center w-16 focus:ring-0"
+                    min="1"
+                    name="quantity"
+                    type="number"
+                    value="1"
+                    id="sb-product-quantity-{{ block_id }}-{{ product.id }}"
+                  />
+
+                  <button class="bg-gray-300 flex h-10 items-center justify-center rounded-full text-blue-light w-10" type="button">
+                    {% render 'old-icon-plus' %}
+                  </button>
+                </div>
+              </legacy-quantity-input>
+            </div>
+            <div class="w-full" id="add-to-cart-button-container">
+              <button class="sb-submit-button-{{ block_id }}-{{ product.id }} button-alt">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</product-grid-item>
+
+<script type="text/javascript">
+/**
+ * Affiliate Product Card Functionality
+ * Handles individual product subscriptions and cart management with vanilla JavaScript
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  const productId = '{{ product.id }}';
+  const blockId = '{{ block_id }}';
+  const productKey = `${blockId}-${productId}`;
+  
+  /**
+   * Format price from cents to dollars
+   * @param {number} num - Price in cents
+   * @returns {string} Formatted price with 2 decimal places
+   */
+  function formatPrice(num) {  
+    return (num / 100).toFixed(2);
+  }
+
+  /**
+   * Update cart count display in header
+   * @param {number} count - Number of items in cart
+   */
+  function updateCartCount(count) {
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+      if (count < 1) {
+        cartCountElement.innerHTML = "";
+      } else {
+        cartCountElement.innerHTML = `<number class='number'>${count}</number>`;
+      }
+    }
+  }
+
+  /**
+   * Update variant selection and pricing
+   * Handles option changes for the product variants
+   */
+  function updateVariantSelection() {
+    const option1Select = document.getElementById(`sb-select-option1-${productId}-${blockId}`);
+    const option2Select = document.getElementById(`sb-select-option2-${productId}-${blockId}`);
+    const option3Select = document.getElementById(`sb-select-option3-${productId}-${blockId}`);
+    
+    const opt1 = option1Select ? option1Select.value : null;
+    const opt2 = option2Select ? option2Select.value : null;
+    const opt3 = option3Select ? option3Select.value : null;
+    
+    const variants = {{ product.variants | json }};
+    let selectedVariant = null;
+    
+    // Find matching variant
+    for (const variant of variants) {
+      const match1 = !opt1 || variant.option1 === opt1;
+      const match2 = !opt2 || variant.option2 === opt2;
+      const match3 = !opt3 || variant.option3 === opt3;
+      
+      if (match1 && match2 && match3) {
+        selectedVariant = variant;
+        break;
+      }
+    }
+    
+    const variantInput = document.getElementById(`sb-product-variant-${productId}-${blockId}`);
+    const availableInput = document.getElementById(`sb-product-available-${productId}-${blockId}`);
+    const submitButton = document.querySelector(`.sb-submit-button-${blockId}-${productId}`);
+    
+    if (selectedVariant && variantInput && availableInput) {
+      variantInput.value = selectedVariant.id;
+      availableInput.value = selectedVariant.available ? 'true' : 'false';
+      
+      // Update button state
+      if (submitButton) {
+        if (selectedVariant.available) {
+          submitButton.disabled = false;
+          const purchaseOption = document.querySelector(`input[name="sb-purchase-option-${productId}-${blockId}"]:checked`);
+          submitButton.textContent = (purchaseOption && purchaseOption.value === 'subsave') ? 'Subscribe' : 'Add To Cart';
+        } else {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Sold Out';
+        }
+      }
+      
+      // Update single product pricing
+      {% if product.selected_or_first_available_selling_plan_allocation == blank %}
+        const singlePriceElement = document.querySelector(`.sb-single-price-${blockId}-${productId}`);
+        if (singlePriceElement) {
+          singlePriceElement.textContent = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          }).format(selectedVariant.price / 100);
+        }
+      {% endif %}
+    }
+  }
+
+  /**
+   * Update subscription pricing based on selected plan
+   * @param {string} sellingPlanValue - Selected selling plan value
+   */
+  function updateSubscriptionPricing(sellingPlanValue) {
+    const recurringPriceElement = document.querySelector(`.sb-recurring-price-${blockId}-${productId}`);
+    const comparePriceElement = document.querySelector(`.sb-compare-price-${blockId}-${productId}`);
+    
+    if (!recurringPriceElement || !comparePriceElement) return;
+    
+    const planElement = document.querySelector(`.sb-selling-plan-${sellingPlanValue}`);
+    if (planElement) {
+      const recurringPrice = parseInt(planElement.getAttribute('data-price'));
+      const comparePrice = parseInt(planElement.getAttribute('data-otp'));
+      
+      if (!isNaN(recurringPrice)) {
+        recurringPriceElement.textContent = "$" + formatPrice(recurringPrice);
+      }
+      if (!isNaN(comparePrice)) {
+        comparePriceElement.textContent = "$" + formatPrice(comparePrice);
+      }
+    }
+  }
+
+  /**
+   * Initialize selling plans for subscription products
+   */
+  function initializeSellingPlans() {
+    const variants = {{ product.variants | json }};
+    const rechargeSellingPlanGroup = {{ product.selling_plan_groups | where: "app_id", "SKIO" | json }};
+    
+    if (rechargeSellingPlanGroup.length > 0 && variants.length > 0) {
+      const rechargeAllocations = variants[0].selling_plan_allocations.filter(allocation => 
+        allocation.selling_plan_group_id == rechargeSellingPlanGroup[0].id
+      );
+      
+      const planContainer = document.querySelector(`.sb-selling-plans-${productId}-${blockId}`);
+      const selectElement = document.querySelector(`.sb-selling-plan-select-${blockId}-${productId}`);
+      
+      if (planContainer && selectElement) {
+        rechargeAllocations.forEach((plan, index) => {
+          // Create hidden input for plan data
+          const input = document.createElement('input');
+          input.className = `sb-onetime sb-selling-plan-${index}`;
+          input.setAttribute('data-stack', `${blockId}-${productId}`);
+          input.setAttribute('data-price', plan.price);
+          input.setAttribute('data-otp', plan.compare_at_price);
+          input.name = 'selling_plan';
+          input.value = plan.selling_plan_id;
+          input.type = 'hidden';
+          planContainer.appendChild(input);
+          
+          // Create select options
+          let optionText = '';
+          if (index === 0) optionText = '{{ f_text_zero | default: "15 days" }}';
+          else if (index === 1) optionText = '{{ f_text_one | default: "30 days" }}';
+          else if (index === 2) optionText = '{{ f_text_two | default: "45 days" }}';
+          else if (index === 3) optionText = '{{ f_text_three | default: "90 days" }}';
+          
+          if (optionText) {
+            const option = document.createElement('option');
+            option.value = `selling_plan_${index}`;
+            option.textContent = optionText;
+            if (index === 1) option.selected = true; // Default to 30 days
+            selectElement.appendChild(option);
+          }
+        });
+      }
+    }
+  }
+
+  /**
+   * Setup purchase option change handlers
+   */
+  function setupPurchaseOptionHandlers() {
+    const purchaseOptions = document.querySelectorAll(`input[name="sb-purchase-option-${productId}-${blockId}"]`);
+    const submitButton = document.querySelector(`.sb-submit-button-${blockId}-${productId}`);
+    
+    purchaseOptions.forEach(option => {
+      option.addEventListener('change', function() {
+        const availableInput = document.getElementById(`sb-product-available-${productId}-${blockId}`);
+        const isAvailable = availableInput ? availableInput.value === 'true' : true;
+        
+        if (submitButton) {
+          if (isAvailable) {
+            submitButton.disabled = false;
+            submitButton.textContent = this.value === 'subsave' ? 'Subscribe' : 'Add To Cart';
+          } else {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sold Out';
+          }
+        }
+        
+        // Update pricing for subscription products
+        {% unless product.selected_or_first_available_selling_plan_allocation == blank %}
+          if (this.value === 'subsave') {
+            const selectElement = document.querySelector(`.sb-selling-plan-select-${blockId}-${productId}`);
+            if (selectElement) {
+              updateSubscriptionPricing(selectElement.value);
+            }
+          } else {
+            // Show one-time pricing
+            const recurringPriceElement = document.querySelector(`.sb-recurring-price-${blockId}-${productId}`);
+            const comparePriceElement = document.querySelector(`.sb-compare-price-${blockId}-${productId}`);
+            const planElement = document.querySelector('.sb-selling-plan-0');
+            
+            if (recurringPriceElement && planElement) {
+              const otpPrice = parseInt(planElement.getAttribute('data-otp'));
+              if (!isNaN(otpPrice)) {
+                recurringPriceElement.textContent = "$" + formatPrice(otpPrice);
+                if (comparePriceElement) {
+                  comparePriceElement.textContent = "";
+                }
+              }
+            }
+          }
+        {% endunless %}
+      });
+    });
+  }
+
+  /**
+   * Setup variant selection change handlers
+   */
+  function setupVariantHandlers() {
+    const selectors = [
+      `sb-select-option1-${productId}-${blockId}`,
+      `sb-select-option2-${productId}-${blockId}`,
+      `sb-select-option3-${productId}-${blockId}`
+    ];
+    
+    selectors.forEach(selectorId => {
+      const element = document.getElementById(selectorId);
+      if (element) {
+        element.addEventListener('change', updateVariantSelection);
+      }
+    });
+  }
+
+  /**
+   * Add product to cart with modern fetch API
+   * @param {Array} items - Array of items to Add To Cart
+   * @param {HTMLElement} submitButton - Submit button element
+   */
+  async function addToCart(items, submitButton) {
+    if (!items.length) return;
+    
+    const originalText = submitButton.textContent;
+    submitButton.textContent = submitButton.textContent === 'Add To Cart' ? 'Adding...' : 'Subscribing...';
+    submitButton.disabled = true;
+    
+    try {
+      const cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+      
+      // Prepare request body for multiple items
+      const requestBody = {
+        items: items.map(item => {
+          const cartItem = {
+            id: item.id,
+            quantity: item.quantity
+          };
+          
+          if (item.selling_plan) {
+            cartItem.selling_plan = item.selling_plan;
+          }
+          
+          return cartItem;
+        })
+      };
+      
+      if (cart) {
+        requestBody.sections = cart.getSectionsToRender().map(section => section.id);
+      }
+      
+      // Add items to cart
+      const response = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody)
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      // Update cart display and publish events
+      if (cart && data.sections) {
+        cart.renderContents(data);
+        publish(PUB_SUB_EVENTS.cartUpdate, {source: 'affiliate-product-card'});
+        cart.openCartDrawer();
+      } else {
+        // Fallback cart count update
+        const cartResponse = await fetch('/cart.js');
+        const cartData = await cartResponse.json();
+        updateCartCount(cartData.item_count);
+        publish(PUB_SUB_EVENTS.cartUpdate, {source: 'affiliate-product-card'});
+      }
+      
+    } catch (error) {
+      console.error('Error adding product to cart:', error);
+    } finally {
+      submitButton.textContent = originalText;
+      submitButton.disabled = false;
+    }
+  }
+
+  /**
+   * Setup submit button functionality
+   */
+  function setupSubmitButton() {
+    const submitButton = document.querySelector(`.sb-submit-button-${blockId}-${productId}`);
+    if (!submitButton) return;
+    
+    submitButton.addEventListener('click', async function() {
+      const variantInput = document.getElementById(`sb-product-variant-${productId}-${blockId}`);
+      const quantityInput = document.getElementById(`sb-product-quantity-${blockId}-${productId}`);
+      const purchaseOption = document.querySelector(`input[name="sb-purchase-option-${productId}-${blockId}"]:checked`);
+      
+      if (!variantInput) return;
+      
+      const variantId = parseInt(variantInput.value);
+      const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+      
+      if (isNaN(variantId) || variantInput.value === 'sold out') {
+        console.error('Invalid variant selected');
+        return;
+      }
+      
+      const items = [];
+      
+      if (purchaseOption && purchaseOption.value === 'subsave') {
+        // Subscription purchase
+        const selectElement = document.querySelector(`.sb-selling-plan-select-${blockId}-${productId}`);
+        if (selectElement) {
+          const sellingPlanValue = selectElement.value;
+          const planElement = document.querySelector(`.sb-${sellingPlanValue}`);
+          
+          if (planElement) {
+            items.push({
+              id: variantId,
+              quantity: quantity,
+              selling_plan: parseInt(planElement.value)
+            });
+          }
+        }
+      } else {
+        // One-time purchase
+        items.push({
+          id: variantId,
+          quantity: quantity
+        });
+      }
+      
+      await addToCart(items, this);
+    });
+  }
+
+  // Initialize all functionality
+  initializeSellingPlans();
+  setupVariantHandlers();
+  setupPurchaseOptionHandlers();
+  setupSubmitButton();
+  
+  // Initial variant selection update
+  updateVariantSelection();
+});
+</script>
+
+
+  

@@ -1,0 +1,143 @@
+{% comment %}
+  Renders a product media modal. Also see 'product-media-gallery'
+
+  Accepts:
+  - product: {Object} Product liquid object
+  - variant_images: {Array} Product images associated with a variant
+
+  Usage:
+  {% render 'product-media-modal' %}
+{% endcomment %}
+
+{%- capture sliderOptions -%}
+{
+  "centeredSlides": true,
+  "slidesPerView": 1,
+  "spaceBetween": 10,
+  "loop": true,
+  "navigation": {
+      "nextEl": ".sb-product-media-modal__arrows--{{ section.id }} .sb-next-arrow",
+      "prevEl": ".sb-product-media-modal__arrows--{{ section.id }} .sb-prev-arrow"
+    }
+}  
+{%- endcapture -%}
+{% stylesheet %}
+.sb-media-modal .product-media-modal__content {
+  padding: 0;
+}
+.sb-product-media-modal__arrows {
+  position: absolute;
+  top: 50%;
+  z-index: 19;
+  display: flex!important;
+  justify-content: space-between;
+  width: 100%;
+}
+.sb-media-modal .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sb-media-modal .swiper-slide img {
+  height: 100vh;
+  object-fit: contain;
+  width: 100vw;
+}
+{% endstylesheet %}
+<product-modal id="ProductModal-{{ section.id }}" class="sb-media-modal product-media-modal media-modal">
+  <div
+    class="product-media-modal__dialog color-{{ section.settings.color_scheme }} gradient"
+    role="dialog"
+    aria-label="{{ 'products.modal.label' | t }}"
+    aria-modal="true"
+    tabindex="-1"
+  >
+    <button
+      id="ModalClose-{{ section.id }}"
+      type="button"
+      class="product-media-modal__toggle"
+      aria-label="{{ 'accessibility.close' | t }}"
+    >
+      {{ 'icon-close.svg' | inline_asset_content }}
+    </button>
+
+    <div
+      class="product-media-modal__content color-{{ section.settings.color_scheme }} gradient"
+      role="document"
+      aria-label="{{ 'products.modal.label' | t }}"
+      tabindex="0"
+    >
+      {%- liquid
+        assign variant_options = ''
+        if product.selected_or_first_available_variant.option1 and product.selected_or_first_available_variant.option1 != blank
+          assign variant_options = variant_options | append: product.selected_or_first_available_variant.option1 | downcase | append: '|'
+        endif
+        if product.selected_or_first_available_variant.option2 and product.selected_or_first_available_variant.option2 != blank
+          assign variant_options = variant_options | append: product.selected_or_first_available_variant.option2 | downcase | append: '|'
+        endif
+        if product.selected_or_first_available_variant.option3 and product.selected_or_first_available_variant.option3 != blank
+          assign variant_options = variant_options | append: product.selected_or_first_available_variant.option3 | downcase | append: '|'
+        endif
+        assign variant_options_array = variant_options | split: '|'
+      -%}
+
+      <swiper-slider
+        data-swiper-options='{{ sliderOptions }}'
+        class="swiper-slider-container active"
+      >
+        <div class="swiper" data-swiper>
+          <div class="swiper-wrapper">
+            {%- if product.selected_or_first_available_variant.featured_media != null -%}
+              {%- assign media = product.selected_or_first_available_variant.featured_media -%}
+              <div class="swiper-slide" data-swiper-slide>
+                {% render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants %}
+              </div>
+            {%- endif -%}
+
+            {%- for media in product.media -%}
+              {%- if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id -%}
+                {%- assign variant_image = true -%}
+              {%- else -%}
+                {%- assign variant_image = false -%}
+              {%- endif -%}
+
+              {%- assign show_this_media = false -%}
+              {%- assign media_alt_lower = media.alt | default: '' | downcase -%}
+              
+              {%- assign show_this_media = true -%}
+              {%- unless media.alt contains 'all' -%}
+                {%- for elm in variant_options_array -%}
+                  {%- unless media_alt_lower contains elm -%}
+                    {%- assign show_this_media = false -%}
+                  {%- endunless -%}
+                {%- endfor -%}
+              {%- endunless -%}
+
+              {%- if show_this_media and media.id != product.selected_or_first_available_variant.featured_media.id -%}
+                <div class="swiper-slide" data-swiper-slide>
+                  {% render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image %}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </swiper-slider>
+
+      <div class="sb-product-media-modal__arrows sb-product-media-modal__arrows--{{ section.id }}">
+        <svg class="sb-prev-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+          <g clip-path="url(#clip0_9342_71)">
+          <path d="M11.7406 15.925C11.875 15.925 12.0125 15.8719 12.1156 15.7688C12.3219 15.5625 12.3219 15.225 12.1156 15.0188L5.05625 7.95942L12.0125 1.00317C12.2188 0.796924 12.2188 0.459424 12.0125 0.253174C11.8063 0.0469237 11.4688 0.0469237 11.2625 0.253174L3.92813 7.58442C3.72188 7.79067 3.72188 8.12817 3.92813 8.33442L11.3625 15.7688C11.4687 15.875 11.6031 15.925 11.7406 15.925Z" fill="currentColor" fill-opacity="0.6"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_9342_71">
+          <rect width="16" height="16" transform="translate(0 16.0532) rotate(-90)"/>
+          </clipPath>
+          </defs>
+        </svg>
+        <svg class="sb-next-arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
+          <path d="M1.25939 0.181396C1.12502 0.181396 0.987499 0.234521 0.884375 0.337646C0.678124 0.543896 0.678124 0.881396 0.884375 1.08765L7.94375 8.14702L0.987499 15.1033C0.781248 15.3095 0.781248 15.647 0.987499 15.8533C1.19375 16.0595 1.53125 16.0595 1.7375 15.8533L9.07187 8.52202C9.27812 8.31577 9.27812 7.97827 9.07187 7.77202L1.6375 0.337646C1.53125 0.231396 1.39689 0.181396 1.25939 0.181396Z" fill="currentColor" fill-opacity="0.6"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</product-modal>
