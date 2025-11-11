@@ -218,7 +218,7 @@
 
                             {%- capture text_value -%}
                               <span class="facet-checkbox__text" aria-hidden="true">
-                                <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> <span class="facet-checkbox__text-count">{{- value.count -}}</span>
+                                <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> <span class="facet-checkbox__text-count">({{- value.count -}})</span>
                               </span>
                               <span class="visually-hidden">
                                 {{- value.label | escape }} (

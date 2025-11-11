@@ -1146,6 +1146,16 @@ input.mobile-facets__checkbox {
   padding: 0;
 }
 
+
+.facets-vertical .facets__summary span.facets__summary-label{
+  font-weight: 500;
+}
+
+.mobile-facets__inner{
+  max-width: 500px;
+  border: 0 ;
+}
+
 @media screen and (min-width: 750px) {
   .facets-vertical {
     display: flex;

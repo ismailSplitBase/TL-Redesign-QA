@@ -398,6 +398,16 @@ a.product__text {
   display: none;
 }
 
+
+.product__info-wrapper .product__text > p{
+  opacity: 1;
+}
+.product__info-wrapper span.metafield-multi_line_text_field {
+  opacity: 1;
+  line-height: 140%;
+  color: #111314b8;
+}
+
 @media screen and (max-width: 749px) {
   .jdgm-prev-badge__text {
     font-size: 14px;

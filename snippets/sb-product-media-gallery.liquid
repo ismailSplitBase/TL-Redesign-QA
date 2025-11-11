@@ -117,7 +117,6 @@ media-gallery .tl-badge-img img {
   assign media_count = 0
 -%}
 
-  
 
 <media-gallery
   id="MediaGallery-{{ section.id }}"
@@ -149,7 +148,7 @@ media-gallery .tl-badge-img img {
           data-media-id="{{ section.id }}-{{ featured_media.id }}"
         >
           {% if product.metafields.custom.trust_badge != blank %}
-            <p class="tl-badge-img">
+            {% comment %} <p class="tl-badge-img">
               <img
                 loading="lazy"
                 src="{{ product.metafields.custom.trust_badge.value | img_url: 'master' }}"
@@ -157,7 +156,7 @@ media-gallery .tl-badge-img img {
                 height="auto"
                 alt="Trust Badge"
               >
-            </p>
+            </p> {% endcomment %}
           {% endif %}
           {% render 'sb-product-tags' %}
           {%- assign media_position = 1 -%}

@@ -76,6 +76,7 @@
   gap: 4px;
   line-height: 130%;
   letter-spacing: 0%;
+  align-items: flex-start;
 }
 .sb-featured-review-card__product-image {
   width: 56px;
@@ -97,8 +98,33 @@
   border-bottom: 1px solid var(--sb-ch-fg-color, var(--sb-fg-color, #1F2937));
 }
 .sb-featured-review-card__cta:hover .sb-button__arrow {
-  transform: translateX(4px);
+  /* transform: translateX(4px); */
 }
+
+.sb-featured-review-card__cta{
+  position: relative;
+}
+
+.sb-featured-review-card__cta span{
+  border: 0;
+}
+
+.sb-featured-review-card__cta:after{
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 1px;
+    bottom: 0px;
+    left: 0;
+    background: #111314;
+    transition: width 0.3s ease;
+  }
+
+  .sb-featured-review-card__cta:hover:after{
+    width: 100%;
+  }
+
+
 .sb-featured-review-card__product-title {
   font-size: calc(15 / var(--sb-base-font-size, 16) * 1rem);
   font-weight: 400;
